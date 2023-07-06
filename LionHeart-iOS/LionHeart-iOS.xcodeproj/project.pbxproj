@@ -18,38 +18,16 @@
 		B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8622A5529B000F0DB19 /* HTTPHeaderField.swift */; };
 		B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8642A5529F100F0DB19 /* BaseResponse.swift */; };
 		B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E86B2A5564DD00F0DB19 /* Encodable+.swift */; };
-		B59891FC2A56B24500CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59891FB2A56B24500CE1FEB /* .gitkeep */; };
-		B59891FE2A56B24F00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59891FD2A56B24F00CE1FEB /* .gitkeep */; };
-		B59892012A56B27E00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892002A56B27E00CE1FEB /* .gitkeep */; };
-		B59892152A56B63B00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892142A56B63B00CE1FEB /* .gitkeep */; };
-		B59892172A56B64200CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892162A56B64200CE1FEB /* .gitkeep */; };
-		B59892192A56B64C00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892182A56B64C00CE1FEB /* .gitkeep */; };
-		B598921B2A56B65400CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598921A2A56B65400CE1FEB /* .gitkeep */; };
-		B598921D2A56B65A00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598921C2A56B65A00CE1FEB /* .gitkeep */; };
-		B598921F2A56B66100CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598921E2A56B66100CE1FEB /* .gitkeep */; };
-		B59892212A56B66700CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892202A56B66700CE1FEB /* .gitkeep */; };
-		B59892232A56B66D00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892222A56B66D00CE1FEB /* .gitkeep */; };
-		B59892372A56B71A00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892362A56B71A00CE1FEB /* .gitkeep */; };
-		B59892392A56B72100CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892382A56B72100CE1FEB /* .gitkeep */; };
-		B598923B2A56B73D00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598923A2A56B73D00CE1FEB /* .gitkeep */; };
-		B598923D2A56B74600CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598923C2A56B74600CE1FEB /* .gitkeep */; };
-		B598923F2A56B75200CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598923E2A56B75200CE1FEB /* .gitkeep */; };
-		B59892412A56B75800CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892402A56B75800CE1FEB /* .gitkeep */; };
-		B59892432A56B77000CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892422A56B77000CE1FEB /* .gitkeep */; };
-		B59892452A56B77B00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892442A56B77B00CE1FEB /* .gitkeep */; };
-		B59892472A56B79A00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892462A56B79A00CE1FEB /* .gitkeep */; };
-		B59892492A56B7A000CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892482A56B7A000CE1FEB /* .gitkeep */; };
-		B598924B2A56B7A500CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598924A2A56B7A500CE1FEB /* .gitkeep */; };
-		B598924D2A56B7AB00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598924C2A56B7AB00CE1FEB /* .gitkeep */; };
-		B598924F2A56B7B500CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598924E2A56B7B500CE1FEB /* .gitkeep */; };
-		B59892512A56B7BA00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892502A56B7BA00CE1FEB /* .gitkeep */; };
-		B59892532A56B7E600CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892522A56B7E600CE1FEB /* .gitkeep */; };
-		B59892552A56B7ED00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892542A56B7ED00CE1FEB /* .gitkeep */; };
-		B59892572A56B7F300CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892562A56B7F300CE1FEB /* .gitkeep */; };
-		B59892592A56B7FA00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892582A56B7FA00CE1FEB /* .gitkeep */; };
-		B59892662A56B96000CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892652A56B96000CE1FEB /* .gitkeep */; };
-		B59892682A56B96E00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892672A56B96E00CE1FEB /* .gitkeep */; };
-		B598926A2A56B97900CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892692A56B97900CE1FEB /* .gitkeep */; };
+		B598926F2A56C21800CE1FEB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B598926E2A56C21800CE1FEB /* FirebaseAnalytics */; };
+		B59892712A56C21800CE1FEB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B59892702A56C21800CE1FEB /* FirebaseAnalyticsSwift */; };
+		B59892732A56C21800CE1FEB /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B59892722A56C21800CE1FEB /* FirebaseCrashlytics */; };
+		B59892752A56C21800CE1FEB /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = B59892742A56C21800CE1FEB /* FirebaseInAppMessaging-Beta */; };
+		B59892772A56C21800CE1FEB /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = B59892762A56C21800CE1FEB /* FirebaseInAppMessagingSwift-Beta */; };
+		B59892792A56C21800CE1FEB /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = B59892782A56C21800CE1FEB /* FirebaseInstallations */; };
+		B598927B2A56C21800CE1FEB /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B598927A2A56C21800CE1FEB /* FirebaseMessaging */; };
+		B598927D2A56C21800CE1FEB /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = B598927C2A56C21800CE1FEB /* FirebaseRemoteConfig */; };
+		B598927F2A56C21800CE1FEB /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B598927E2A56C21800CE1FEB /* FirebaseRemoteConfigSwift */; };
+		B59892832A56C93400CE1FEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59892822A56C93400CE1FEB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +96,8 @@
 		B59892652A56B96000CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59892672A56B96E00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59892692A56B97900CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSDebug.entitlements"; sourceTree = "<group>"; };
+		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +105,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59892732A56C21800CE1FEB /* FirebaseCrashlytics in Frameworks */,
+				B59892712A56C21800CE1FEB /* FirebaseAnalyticsSwift in Frameworks */,
+				B598927B2A56C21800CE1FEB /* FirebaseMessaging in Frameworks */,
+				B598927F2A56C21800CE1FEB /* FirebaseRemoteConfigSwift in Frameworks */,
+				B59892772A56C21800CE1FEB /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
+				B59892792A56C21800CE1FEB /* FirebaseInstallations in Frameworks */,
+				B598926F2A56C21800CE1FEB /* FirebaseAnalytics in Frameworks */,
+				B59892752A56C21800CE1FEB /* FirebaseInAppMessaging-Beta in Frameworks */,
+				B598927D2A56C21800CE1FEB /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,12 +157,14 @@
 		B532E8302A5525C600F0DB19 /* LionHeart-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */,
 				B598925D2A56B87D00CE1FEB /* Application */,
 				B59892022A56B29B00CE1FEB /* Scenes */,
 				B59891F52A56B10D00CE1FEB /* Global */,
 				B532E8672A552B0600F0DB19 /* Settings */,
 				B532E8612A55260C00F0DB19 /* Network */,
 				B532E8352A5525C600F0DB19 /* ViewController.swift */,
+				B59892822A56C93400CE1FEB /* GoogleService-Info.plist */,
 			);
 			path = "LionHeart-iOS";
 			sourceTree = "<group>";
@@ -655,6 +646,17 @@
 			dependencies = (
 			);
 			name = "LionHeart-iOS";
+			packageProductDependencies = (
+				B598926E2A56C21800CE1FEB /* FirebaseAnalytics */,
+				B59892702A56C21800CE1FEB /* FirebaseAnalyticsSwift */,
+				B59892722A56C21800CE1FEB /* FirebaseCrashlytics */,
+				B59892742A56C21800CE1FEB /* FirebaseInAppMessaging-Beta */,
+				B59892762A56C21800CE1FEB /* FirebaseInAppMessagingSwift-Beta */,
+				B59892782A56C21800CE1FEB /* FirebaseInstallations */,
+				B598927A2A56C21800CE1FEB /* FirebaseMessaging */,
+				B598927C2A56C21800CE1FEB /* FirebaseRemoteConfig */,
+				B598927E2A56C21800CE1FEB /* FirebaseRemoteConfigSwift */,
+			);
 			productName = "LionHeart-iOS";
 			productReference = B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -727,6 +729,9 @@
 				Base,
 			);
 			mainGroup = B532E8252A5525C600F0DB19;
+			packageReferences = (
+				B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B532E82F2A5525C600F0DB19 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -743,40 +748,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B59892552A56B7ED00CE1FEB /* .gitkeep in Resources */,
-				B59891FC2A56B24500CE1FEB /* .gitkeep in Resources */,
 				B532E83E2A5525C700F0DB19 /* LaunchScreen.storyboard in Resources */,
-				B598924D2A56B7AB00CE1FEB /* .gitkeep in Resources */,
-				B59892512A56B7BA00CE1FEB /* .gitkeep in Resources */,
-				B598921F2A56B66100CE1FEB /* .gitkeep in Resources */,
-				B598923F2A56B75200CE1FEB /* .gitkeep in Resources */,
-				B59892412A56B75800CE1FEB /* .gitkeep in Resources */,
-				B59892212A56B66700CE1FEB /* .gitkeep in Resources */,
-				B59892452A56B77B00CE1FEB /* .gitkeep in Resources */,
-				B59892012A56B27E00CE1FEB /* .gitkeep in Resources */,
-				B59892682A56B96E00CE1FEB /* .gitkeep in Resources */,
-				B59892432A56B77000CE1FEB /* .gitkeep in Resources */,
-				B598921B2A56B65400CE1FEB /* .gitkeep in Resources */,
-				B59892152A56B63B00CE1FEB /* .gitkeep in Resources */,
+				B59892832A56C93400CE1FEB /* GoogleService-Info.plist in Resources */,
 				B532E83B2A5525C700F0DB19 /* Assets.xcassets in Resources */,
-				B59892232A56B66D00CE1FEB /* .gitkeep in Resources */,
-				B59892472A56B79A00CE1FEB /* .gitkeep in Resources */,
-				B59891FE2A56B24F00CE1FEB /* .gitkeep in Resources */,
-				B59892592A56B7FA00CE1FEB /* .gitkeep in Resources */,
-				B598924B2A56B7A500CE1FEB /* .gitkeep in Resources */,
-				B598921D2A56B65A00CE1FEB /* .gitkeep in Resources */,
-				B598923D2A56B74600CE1FEB /* .gitkeep in Resources */,
-				B59892492A56B7A000CE1FEB /* .gitkeep in Resources */,
-				B59892172A56B64200CE1FEB /* .gitkeep in Resources */,
-				B59892662A56B96000CE1FEB /* .gitkeep in Resources */,
-				B598924F2A56B7B500CE1FEB /* .gitkeep in Resources */,
-				B598926A2A56B97900CE1FEB /* .gitkeep in Resources */,
-				B59892392A56B72100CE1FEB /* .gitkeep in Resources */,
-				B59892192A56B64C00CE1FEB /* .gitkeep in Resources */,
-				B59892372A56B71A00CE1FEB /* .gitkeep in Resources */,
-				B59892572A56B7F300CE1FEB /* .gitkeep in Resources */,
-				B598923B2A56B73D00CE1FEB /* .gitkeep in Resources */,
-				B59892532A56B7E600CE1FEB /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,6 +951,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "LionHeart-iOS/LionHeart-iOSDebug.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1162,6 +1137,65 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B598926E2A56C21800CE1FEB /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B59892702A56C21800CE1FEB /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		B59892722A56C21800CE1FEB /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		B59892742A56C21800CE1FEB /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		B59892762A56C21800CE1FEB /* FirebaseInAppMessagingSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessagingSwift-Beta";
+		};
+		B59892782A56C21800CE1FEB /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		B598927A2A56C21800CE1FEB /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		B598927C2A56C21800CE1FEB /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		B598927E2A56C21800CE1FEB /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B532E8262A5525C600F0DB19 /* Project object */;
 }
