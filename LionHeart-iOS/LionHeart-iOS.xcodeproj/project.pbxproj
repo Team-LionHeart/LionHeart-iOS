@@ -18,6 +18,38 @@
 		B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8622A5529B000F0DB19 /* HTTPHeaderField.swift */; };
 		B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8642A5529F100F0DB19 /* BaseResponse.swift */; };
 		B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E86B2A5564DD00F0DB19 /* Encodable+.swift */; };
+		B59891FC2A56B24500CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59891FB2A56B24500CE1FEB /* .gitkeep */; };
+		B59891FE2A56B24F00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59891FD2A56B24F00CE1FEB /* .gitkeep */; };
+		B59892012A56B27E00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892002A56B27E00CE1FEB /* .gitkeep */; };
+		B59892152A56B63B00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892142A56B63B00CE1FEB /* .gitkeep */; };
+		B59892172A56B64200CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892162A56B64200CE1FEB /* .gitkeep */; };
+		B59892192A56B64C00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892182A56B64C00CE1FEB /* .gitkeep */; };
+		B598921B2A56B65400CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598921A2A56B65400CE1FEB /* .gitkeep */; };
+		B598921D2A56B65A00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598921C2A56B65A00CE1FEB /* .gitkeep */; };
+		B598921F2A56B66100CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598921E2A56B66100CE1FEB /* .gitkeep */; };
+		B59892212A56B66700CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892202A56B66700CE1FEB /* .gitkeep */; };
+		B59892232A56B66D00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892222A56B66D00CE1FEB /* .gitkeep */; };
+		B59892372A56B71A00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892362A56B71A00CE1FEB /* .gitkeep */; };
+		B59892392A56B72100CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892382A56B72100CE1FEB /* .gitkeep */; };
+		B598923B2A56B73D00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598923A2A56B73D00CE1FEB /* .gitkeep */; };
+		B598923D2A56B74600CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598923C2A56B74600CE1FEB /* .gitkeep */; };
+		B598923F2A56B75200CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598923E2A56B75200CE1FEB /* .gitkeep */; };
+		B59892412A56B75800CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892402A56B75800CE1FEB /* .gitkeep */; };
+		B59892432A56B77000CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892422A56B77000CE1FEB /* .gitkeep */; };
+		B59892452A56B77B00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892442A56B77B00CE1FEB /* .gitkeep */; };
+		B59892472A56B79A00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892462A56B79A00CE1FEB /* .gitkeep */; };
+		B59892492A56B7A000CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892482A56B7A000CE1FEB /* .gitkeep */; };
+		B598924B2A56B7A500CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598924A2A56B7A500CE1FEB /* .gitkeep */; };
+		B598924D2A56B7AB00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598924C2A56B7AB00CE1FEB /* .gitkeep */; };
+		B598924F2A56B7B500CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B598924E2A56B7B500CE1FEB /* .gitkeep */; };
+		B59892512A56B7BA00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892502A56B7BA00CE1FEB /* .gitkeep */; };
+		B59892532A56B7E600CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892522A56B7E600CE1FEB /* .gitkeep */; };
+		B59892552A56B7ED00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892542A56B7ED00CE1FEB /* .gitkeep */; };
+		B59892572A56B7F300CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892562A56B7F300CE1FEB /* .gitkeep */; };
+		B59892592A56B7FA00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892582A56B7FA00CE1FEB /* .gitkeep */; };
+		B59892662A56B96000CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892652A56B96000CE1FEB /* .gitkeep */; };
+		B59892682A56B96E00CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892672A56B96E00CE1FEB /* .gitkeep */; };
+		B598926A2A56B97900CE1FEB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = B59892692A56B97900CE1FEB /* .gitkeep */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +86,38 @@
 		B532E8642A5529F100F0DB19 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		B532E8692A552BA500F0DB19 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		B532E86B2A5564DD00F0DB19 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		B59891FB2A56B24500CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59891FD2A56B24F00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892002A56B27E00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892142A56B63B00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892162A56B64200CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892182A56B64C00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598921A2A56B65400CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598921C2A56B65A00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598921E2A56B66100CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892202A56B66700CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892222A56B66D00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892362A56B71A00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892382A56B72100CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598923A2A56B73D00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598923C2A56B74600CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598923E2A56B75200CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892402A56B75800CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892422A56B77000CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892442A56B77B00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892462A56B79A00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892482A56B7A000CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598924A2A56B7A500CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598924C2A56B7AB00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B598924E2A56B7B500CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892502A56B7BA00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892522A56B7E600CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892542A56B7ED00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892562A56B7F300CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892582A56B7FA00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892652A56B96000CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892672A56B96E00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		B59892692A56B97900CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,13 +168,12 @@
 		B532E8302A5525C600F0DB19 /* LionHeart-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B598925D2A56B87D00CE1FEB /* Application */,
+				B59892022A56B29B00CE1FEB /* Scenes */,
+				B59891F52A56B10D00CE1FEB /* Global */,
 				B532E8672A552B0600F0DB19 /* Settings */,
 				B532E8612A55260C00F0DB19 /* Network */,
-				B532E8312A5525C600F0DB19 /* AppDelegate.swift */,
-				B532E8332A5525C600F0DB19 /* SceneDelegate.swift */,
 				B532E8352A5525C600F0DB19 /* ViewController.swift */,
-				B532E83A2A5525C700F0DB19 /* Assets.xcassets */,
-				B532E83C2A5525C700F0DB19 /* LaunchScreen.storyboard */,
 			);
 			path = "LionHeart-iOS";
 			sourceTree = "<group>";
@@ -136,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				B532E8662A5529F700F0DB19 /* Base */,
-				B532E86B2A5564DD00F0DB19 /* Encodable+.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -165,6 +227,416 @@
 				B532E8692A552BA500F0DB19 /* Development.xcconfig */,
 			);
 			path = Configurations;
+			sourceTree = "<group>";
+		};
+		B59891F52A56B10D00CE1FEB /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				B59891FF2A56B25C00CE1FEB /* Literals */,
+				B59891F92A56B13300CE1FEB /* Resources */,
+				B59891F82A56B12E00CE1FEB /* UIComponents */,
+				B59891F72A56B12B00CE1FEB /* Utils */,
+				B59891F62A56B12600CE1FEB /* Extensions */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		B59891F62A56B12600CE1FEB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B532E86B2A5564DD00F0DB19 /* Encodable+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B59891F72A56B12B00CE1FEB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B59891FD2A56B24F00CE1FEB /* .gitkeep */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B59891F82A56B12E00CE1FEB /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B59891FB2A56B24500CE1FEB /* .gitkeep */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		B59891F92A56B13300CE1FEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B532E83A2A5525C700F0DB19 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B59891FF2A56B25C00CE1FEB /* Literals */ = {
+			isa = PBXGroup;
+			children = (
+				B59892002A56B27E00CE1FEB /* .gitkeep */,
+			);
+			path = Literals;
+			sourceTree = "<group>";
+		};
+		B59892022A56B29B00CE1FEB /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B598920F2A56B44200CE1FEB /* Curriculum */,
+				B598920E2A56B41500CE1FEB /* MyPage */,
+				B59892092A56B36B00CE1FEB /* Article */,
+				B59892082A56B36400CE1FEB /* BookMark */,
+				B59892072A56B35D00CE1FEB /* Today */,
+				B59892062A56B34700CE1FEB /* TabBar */,
+				B59892052A56B34200CE1FEB /* Onboarding */,
+				B59892042A56B33D00CE1FEB /* Login */,
+				B59892032A56B33400CE1FEB /* Splash */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		B59892032A56B33400CE1FEB /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				B59892222A56B66D00CE1FEB /* .gitkeep */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		B59892042A56B33D00CE1FEB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B59892202A56B66700CE1FEB /* .gitkeep */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B59892052A56B34200CE1FEB /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B59892352A56B70D00CE1FEB /* Cells */,
+				B59892342A56B70B00CE1FEB /* Views */,
+				B59892332A56B70200CE1FEB /* ViewControllers */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B59892062A56B34700CE1FEB /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B598921C2A56B65A00CE1FEB /* .gitkeep */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		B59892072A56B35D00CE1FEB /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				B59892322A56B6F900CE1FEB /* Cells */,
+				B59892312A56B6F700CE1FEB /* Views */,
+				B59892302A56B6F300CE1FEB /* ViewControllers */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		B59892082A56B36400CE1FEB /* BookMark */ = {
+			isa = PBXGroup;
+			children = (
+				B598922F2A56B6ED00CE1FEB /* Cells */,
+				B598922E2A56B6E700CE1FEB /* Views */,
+				B598922D2A56B6E300CE1FEB /* ViewControllers */,
+			);
+			path = BookMark;
+			sourceTree = "<group>";
+		};
+		B59892092A56B36B00CE1FEB /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				B598920C2A56B3B700CE1FEB /* ArticleListByCategory */,
+				B59892102A56B47C00CE1FEB /* ArticleCategory */,
+				B598920D2A56B3E900CE1FEB /* ArticleListByWeek */,
+				B598920B2A56B3A300CE1FEB /* ArticleDetail */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		B598920B2A56B3A300CE1FEB /* ArticleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B598922B2A56B6C100CE1FEB /* Cells */,
+				B598922A2A56B6BE00CE1FEB /* Views */,
+				B59892292A56B6BA00CE1FEB /* ViewControllers */,
+			);
+			path = ArticleDetail;
+			sourceTree = "<group>";
+		};
+		B598920C2A56B3B700CE1FEB /* ArticleListByCategory */ = {
+			isa = PBXGroup;
+			children = (
+				B59892132A56B53B00CE1FEB /* Cells */,
+				B59892122A56B52F00CE1FEB /* ViewControllers */,
+				B59892112A56B52B00CE1FEB /* Views */,
+			);
+			path = ArticleListByCategory;
+			sourceTree = "<group>";
+		};
+		B598920D2A56B3E900CE1FEB /* ArticleListByWeek */ = {
+			isa = PBXGroup;
+			children = (
+				B59892282A56B6AF00CE1FEB /* Cells */,
+				B59892272A56B6AA00CE1FEB /* ViewControllers */,
+				B59892262A56B6A500CE1FEB /* Views */,
+			);
+			path = ArticleListByWeek;
+			sourceTree = "<group>";
+		};
+		B598920E2A56B41500CE1FEB /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				B59892642A56B95600CE1FEB /* Views */,
+				B59892632A56B95100CE1FEB /* ViewControllers */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		B598920F2A56B44200CE1FEB /* Curriculum */ = {
+			isa = PBXGroup;
+			children = (
+				B59892622A56B94D00CE1FEB /* Cells */,
+				B59892612A56B94B00CE1FEB /* Views */,
+				B59892602A56B94700CE1FEB /* ViewControllers */,
+			);
+			path = Curriculum;
+			sourceTree = "<group>";
+		};
+		B59892102A56B47C00CE1FEB /* ArticleCategory */ = {
+			isa = PBXGroup;
+			children = (
+				B598922C2A56B6CA00CE1FEB /* Cells */,
+				B59892252A56B6A000CE1FEB /* ViewControllers */,
+				B59892242A56B69D00CE1FEB /* Views */,
+			);
+			path = ArticleCategory;
+			sourceTree = "<group>";
+		};
+		B59892112A56B52B00CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B59892462A56B79A00CE1FEB /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B59892122A56B52F00CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B59892442A56B77B00CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59892132A56B53B00CE1FEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B59892422A56B77000CE1FEB /* .gitkeep */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B59892242A56B69D00CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B598924C2A56B7AB00CE1FEB /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B59892252A56B6A000CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B598924A2A56B7A500CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59892262A56B6A500CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B59892522A56B7E600CE1FEB /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B59892272A56B6AA00CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B59892502A56B7BA00CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59892282A56B6AF00CE1FEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B598924E2A56B7B500CE1FEB /* .gitkeep */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B59892292A56B6BA00CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B59892582A56B7FA00CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B598922A2A56B6BE00CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B59892562A56B7F300CE1FEB /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B598922B2A56B6C100CE1FEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B59892542A56B7ED00CE1FEB /* .gitkeep */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B598922C2A56B6CA00CE1FEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B59892482A56B7A000CE1FEB /* .gitkeep */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B598922D2A56B6E300CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B59892182A56B64C00CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B598922E2A56B6E700CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B598923E2A56B75200CE1FEB /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B598922F2A56B6ED00CE1FEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B59892402A56B75800CE1FEB /* .gitkeep */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B59892302A56B6F300CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B598921A2A56B65400CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59892312A56B6F700CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B598923A2A56B73D00CE1FEB /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B59892322A56B6F900CE1FEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B598923C2A56B74600CE1FEB /* .gitkeep */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B59892332A56B70200CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B598921E2A56B66100CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59892342A56B70B00CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B59892382A56B72100CE1FEB /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B59892352A56B70D00CE1FEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B59892362A56B71A00CE1FEB /* .gitkeep */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B598925D2A56B87D00CE1FEB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B532E83C2A5525C700F0DB19 /* LaunchScreen.storyboard */,
+				B532E8312A5525C600F0DB19 /* AppDelegate.swift */,
+				B532E8332A5525C600F0DB19 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B59892602A56B94700CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B59892142A56B63B00CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59892612A56B94B00CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B59892672A56B96E00CE1FEB /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B59892622A56B94D00CE1FEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B59892692A56B97900CE1FEB /* .gitkeep */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B59892632A56B95100CE1FEB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B59892652A56B96000CE1FEB /* .gitkeep */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B59892642A56B95600CE1FEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B59892162A56B64200CE1FEB /* .gitkeep */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,8 +743,40 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59892552A56B7ED00CE1FEB /* .gitkeep in Resources */,
+				B59891FC2A56B24500CE1FEB /* .gitkeep in Resources */,
 				B532E83E2A5525C700F0DB19 /* LaunchScreen.storyboard in Resources */,
+				B598924D2A56B7AB00CE1FEB /* .gitkeep in Resources */,
+				B59892512A56B7BA00CE1FEB /* .gitkeep in Resources */,
+				B598921F2A56B66100CE1FEB /* .gitkeep in Resources */,
+				B598923F2A56B75200CE1FEB /* .gitkeep in Resources */,
+				B59892412A56B75800CE1FEB /* .gitkeep in Resources */,
+				B59892212A56B66700CE1FEB /* .gitkeep in Resources */,
+				B59892452A56B77B00CE1FEB /* .gitkeep in Resources */,
+				B59892012A56B27E00CE1FEB /* .gitkeep in Resources */,
+				B59892682A56B96E00CE1FEB /* .gitkeep in Resources */,
+				B59892432A56B77000CE1FEB /* .gitkeep in Resources */,
+				B598921B2A56B65400CE1FEB /* .gitkeep in Resources */,
+				B59892152A56B63B00CE1FEB /* .gitkeep in Resources */,
 				B532E83B2A5525C700F0DB19 /* Assets.xcassets in Resources */,
+				B59892232A56B66D00CE1FEB /* .gitkeep in Resources */,
+				B59892472A56B79A00CE1FEB /* .gitkeep in Resources */,
+				B59891FE2A56B24F00CE1FEB /* .gitkeep in Resources */,
+				B59892592A56B7FA00CE1FEB /* .gitkeep in Resources */,
+				B598924B2A56B7A500CE1FEB /* .gitkeep in Resources */,
+				B598921D2A56B65A00CE1FEB /* .gitkeep in Resources */,
+				B598923D2A56B74600CE1FEB /* .gitkeep in Resources */,
+				B59892492A56B7A000CE1FEB /* .gitkeep in Resources */,
+				B59892172A56B64200CE1FEB /* .gitkeep in Resources */,
+				B59892662A56B96000CE1FEB /* .gitkeep in Resources */,
+				B598924F2A56B7B500CE1FEB /* .gitkeep in Resources */,
+				B598926A2A56B97900CE1FEB /* .gitkeep in Resources */,
+				B59892392A56B72100CE1FEB /* .gitkeep in Resources */,
+				B59892192A56B64C00CE1FEB /* .gitkeep in Resources */,
+				B59892372A56B71A00CE1FEB /* .gitkeep in Resources */,
+				B59892572A56B7F300CE1FEB /* .gitkeep in Resources */,
+				B598923B2A56B73D00CE1FEB /* .gitkeep in Resources */,
+				B59892532A56B7E600CE1FEB /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
