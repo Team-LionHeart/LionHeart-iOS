@@ -35,6 +35,7 @@
 		B598928E2A57A80A00CE1FEB /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = B598928D2A57A80A00CE1FEB /* KakaoSDKTalk */; };
 		B59892902A57A80A00CE1FEB /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = B598928F2A57A80A00CE1FEB /* KakaoSDKTemplate */; };
 		B59892922A57A80A00CE1FEB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = B59892912A57A80A00CE1FEB /* KakaoSDKUser */; };
+		B59892972A57AA3000CE1FEB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B59892962A57AA3000CE1FEB /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 				B598927F2A56C21800CE1FEB /* FirebaseRemoteConfigSwift in Frameworks */,
 				B59892772A56C21800CE1FEB /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				B59892882A57A80A00CE1FEB /* KakaoSDKAuth in Frameworks */,
+				B59892972A57AA3000CE1FEB /* SnapKit in Frameworks */,
 				B598928C2A57A80A00CE1FEB /* KakaoSDKShare in Frameworks */,
 				B59892792A56C21800CE1FEB /* FirebaseInstallations in Frameworks */,
 				B598926F2A56C21800CE1FEB /* FirebaseAnalytics in Frameworks */,
@@ -677,6 +679,7 @@
 				B598928D2A57A80A00CE1FEB /* KakaoSDKTalk */,
 				B598928F2A57A80A00CE1FEB /* KakaoSDKTemplate */,
 				B59892912A57A80A00CE1FEB /* KakaoSDKUser */,
+				B59892962A57AA3000CE1FEB /* SnapKit */,
 			);
 			productName = "LionHeart-iOS";
 			productReference = B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */;
@@ -753,6 +756,7 @@
 			packageReferences = (
 				B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B59892842A57A80A00CE1FEB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				B59892952A57AA3000CE1FEB /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = B532E82F2A5525C600F0DB19 /* Products */;
 			projectDirPath = "";
@@ -1177,6 +1181,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		B59892952A57AA3000CE1FEB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1259,6 +1271,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B59892842A57A80A00CE1FEB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		B59892962A57AA3000CE1FEB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B59892952A57AA3000CE1FEB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
