@@ -10,11 +10,16 @@ import UIKit
 import Firebase
 import FirebaseMessaging
 
+import KakaoSDKCommon
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        let kakaoNativeAppKey = Config.kakaoNativeAppKey
+        KakaoSDK.initSDK(appKey: kakaoNativeAppKey)
 
         // Firebase 초기화 세팅
         FirebaseApp.configure()

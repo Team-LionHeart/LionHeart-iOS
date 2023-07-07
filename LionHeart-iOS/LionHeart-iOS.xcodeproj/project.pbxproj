@@ -35,6 +35,7 @@
 		B598928E2A57A80A00CE1FEB /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = B598928D2A57A80A00CE1FEB /* KakaoSDKTalk */; };
 		B59892902A57A80A00CE1FEB /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = B598928F2A57A80A00CE1FEB /* KakaoSDKTemplate */; };
 		B59892922A57A80A00CE1FEB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = B59892912A57A80A00CE1FEB /* KakaoSDKUser */; };
+		B59892942A57A93300CE1FEB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892932A57A93300CE1FEB /* Config.swift */; };
 		B59892972A57AA3000CE1FEB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B59892962A57AA3000CE1FEB /* SnapKit */; };
 		B598929A2A57AA8000CE1FEB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B59892992A57AA8000CE1FEB /* Lottie */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		B59892692A56B97900CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSDebug.entitlements"; sourceTree = "<group>"; };
 		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B59892932A57A93300CE1FEB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +248,7 @@
 				B59891F82A56B12E00CE1FEB /* UIComponents */,
 				B59891F72A56B12B00CE1FEB /* Utils */,
 				B59891F62A56B12600CE1FEB /* Extensions */,
+				B59892932A57A93300CE1FEB /* Config.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
+				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
