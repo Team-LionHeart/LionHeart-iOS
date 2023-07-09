@@ -39,6 +39,7 @@
 		B59892972A57AA3000CE1FEB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B59892962A57AA3000CE1FEB /* SnapKit */; };
 		B598929A2A57AA8000CE1FEB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B59892992A57AA8000CE1FEB /* Lottie */; };
 		B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892E42A5B109900CE1FEB /* ScreenUtils.swift */; };
+		B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -123,6 +124,7 @@
 		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B59892932A57A93300CE1FEB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B59892E42A5B109900CE1FEB /* ScreenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtils.swift; sourceTree = "<group>"; };
+		B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarType.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		B59891F52A56B10D00CE1FEB /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				B59892E62A5B14F600CE1FEB /* Enums */,
 				B59891FF2A56B25C00CE1FEB /* Literals */,
 				B59891F92A56B13300CE1FEB /* Resources */,
 				B59891F82A56B12E00CE1FEB /* UIComponents */,
@@ -718,6 +721,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B59892E62A5B14F600CE1FEB /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		C0DF03292A5A91450037F740 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +901,7 @@
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
+				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
