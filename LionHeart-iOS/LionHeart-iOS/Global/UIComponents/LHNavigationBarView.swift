@@ -131,13 +131,6 @@ final class LHNavigationBarView: UIView {
     private func setButtonWithRightBarItems() {
         rightBarItemsStackView.isHidden = false
 
-        if type == .today {
-            leftBarItem.setImage(UIImage(systemName: "scribble"), for: .normal)
-        } else {
-            leftBarItem.setTitle(type.title, for: .normal)
-            leftBarItem.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        }
-
         rightFirstBarItem.addButtonAction { [weak self] _ in
             guard let self else { return }
             rightFirstBarItemHandler?()
@@ -146,6 +139,13 @@ final class LHNavigationBarView: UIView {
             guard let self else { return }
             rightSecondBarItemHandler?()
         }
+
+        if type == .today {
+            leftBarItem.setImage(UIImage(systemName: "scribble"), for: .normal)
+            return
+        }
+        leftBarItem.setTitle(type.title, for: .normal)
+        leftBarItem.titleLabel?.font = .boldSystemFont(ofSize: 14)
     }
 
     private func setCloseButtonWithTitle() {
