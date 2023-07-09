@@ -38,6 +38,7 @@
 		B59892942A57A93300CE1FEB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892932A57A93300CE1FEB /* Config.swift */; };
 		B59892972A57AA3000CE1FEB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B59892962A57AA3000CE1FEB /* SnapKit */; };
 		B598929A2A57AA8000CE1FEB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B59892992A57AA8000CE1FEB /* Lottie */; };
+		B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */; };
 		B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892E42A5B109900CE1FEB /* ScreenUtils.swift */; };
 		B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
@@ -123,6 +124,7 @@
 		B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSDebug.entitlements"; sourceTree = "<group>"; };
 		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B59892932A57A93300CE1FEB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHNavigationBarView.swift; sourceTree = "<group>"; };
 		B59892E42A5B109900CE1FEB /* ScreenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtils.swift; sourceTree = "<group>"; };
 		B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarType.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				B59891FB2A56B24500CE1FEB /* .gitkeep */,
+				B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
+				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
