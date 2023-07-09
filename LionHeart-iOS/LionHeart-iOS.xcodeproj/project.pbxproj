@@ -50,6 +50,36 @@
 		C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF033C2A5A95420037F740 /* UIStackView+.swift */; };
 		C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF033E2A5A959A0037F740 /* UIButton+.swift */; };
 		C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03402A5A95E40037F740 /* UIImage+.swift */; };
+		C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */; };
+		C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03462A5A9AA40037F740 /* CurriculumView.swift */; };
+		C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03482A5A9ACB0037F740 /* DummyModel.swift */; };
+		C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */; };
+		C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034C2A5A9B8D0037F740 /* MyPageView.swift */; };
+		C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */; };
+		C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */; };
+		C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */; };
+		C0DF03552A5A9BD60037F740 /* ArticleListByCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */; };
+		C0DF03572A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03562A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift */; };
+		C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */; };
+		C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */; };
+		C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */; };
+		C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035E2A5A9C330037F740 /* ArticleListByWeekViewController.swift */; };
+		C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03602A5A9C400037F740 /* ArticleListByWeekView.swift */; };
+		C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */; };
+		C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */; };
+		C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */; };
+		C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03682A5A9C8D0037F740 /* BookMarkTableViewCell.swift */; };
+		C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036A2A5A9C930037F740 /* BookMarkView.swift */; };
+		C0DF036D2A5A9C9A0037F740 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036C2A5A9C9A0037F740 /* BookMarkViewController.swift */; };
+		C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */; };
+		C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03702A5A9CAF0037F740 /* TodayView.swift */; };
+		C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03722A5A9CB50037F740 /* TodayViewController.swift */; };
+		C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03742A5A9CD00037F740 /* TabBarViewController.swift */; };
+		C0DF03772A5A9CE70037F740 /* OnboardingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03762A5A9CE70037F740 /* OnboardingTableViewCell.swift */; };
+		C0DF03792A5A9CEE0037F740 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03782A5A9CEE0037F740 /* OnboardingView.swift */; };
+		C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */; };
+		C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */; };
+		C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037E2A5A9D090037F740 /* SplashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,35 +118,6 @@
 		B532E86B2A5564DD00F0DB19 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		B59891FB2A56B24500CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59891FD2A56B24F00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892142A56B63B00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892162A56B64200CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892182A56B64C00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598921A2A56B65400CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598921C2A56B65A00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598921E2A56B66100CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892202A56B66700CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892222A56B66D00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892362A56B71A00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892382A56B72100CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598923A2A56B73D00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598923C2A56B74600CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598923E2A56B75200CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892402A56B75800CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892422A56B77000CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892442A56B77B00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892462A56B79A00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892482A56B7A000CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598924A2A56B7A500CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598924C2A56B7AB00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B598924E2A56B7B500CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892502A56B7BA00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892522A56B7E600CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892542A56B7ED00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892562A56B7F300CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892582A56B7FA00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892652A56B96000CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892672A56B96E00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892692A56B97900CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSDebug.entitlements"; sourceTree = "<group>"; };
 		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B59892932A57A93300CE1FEB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -132,6 +133,36 @@
 		C0DF033C2A5A95420037F740 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		C0DF033E2A5A959A0037F740 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		C0DF03402A5A95E40037F740 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewCell.swift; sourceTree = "<group>"; };
+		C0DF03462A5A9AA40037F740 /* CurriculumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumView.swift; sourceTree = "<group>"; };
+		C0DF03482A5A9ACB0037F740 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
+		C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewController.swift; sourceTree = "<group>"; };
+		C0DF034C2A5A9B8D0037F740 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewController.swift; sourceTree = "<group>"; };
+		C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryView.swift; sourceTree = "<group>"; };
+		C0DF03562A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewController.swift; sourceTree = "<group>"; };
+		C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryView.swift; sourceTree = "<group>"; };
+		C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekTableViewCell.swift; sourceTree = "<group>"; };
+		C0DF035E2A5A9C330037F740 /* ArticleListByWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekViewController.swift; sourceTree = "<group>"; };
+		C0DF03602A5A9C400037F740 /* ArticleListByWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekView.swift; sourceTree = "<group>"; };
+		C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
+		C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
+		C0DF03682A5A9C8D0037F740 /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
+		C0DF036A2A5A9C930037F740 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
+		C0DF036C2A5A9C9A0037F740 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
+		C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
+		C0DF03702A5A9CAF0037F740 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		C0DF03722A5A9CB50037F740 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		C0DF03742A5A9CD00037F740 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		C0DF03762A5A9CE70037F740 /* OnboardingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTableViewCell.swift; sourceTree = "<group>"; };
+		C0DF03782A5A9CEE0037F740 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C0DF037E2A5A9D090037F740 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				C0DF032E2A5A92170037F740 /* NameSpace.swift */,
+				C0DF03482A5A9ACB0037F740 /* DummyModel.swift */,
 			);
 			path = Literals;
 			sourceTree = "<group>";
@@ -344,7 +376,7 @@
 		B59892032A56B33400CE1FEB /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				B59892222A56B66D00CE1FEB /* .gitkeep */,
+				C0DF037E2A5A9D090037F740 /* SplashViewController.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -352,7 +384,7 @@
 		B59892042A56B33D00CE1FEB /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B59892202A56B66700CE1FEB /* .gitkeep */,
+				C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -370,7 +402,7 @@
 		B59892062A56B34700CE1FEB /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				B598921C2A56B65A00CE1FEB /* .gitkeep */,
+				C0DF03742A5A9CD00037F740 /* TabBarViewController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -468,7 +500,7 @@
 		B59892112A56B52B00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B59892462A56B79A00CE1FEB /* .gitkeep */,
+				C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -476,7 +508,7 @@
 		B59892122A56B52F00CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B59892442A56B77B00CE1FEB /* .gitkeep */,
+				C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -484,7 +516,7 @@
 		B59892132A56B53B00CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B59892422A56B77000CE1FEB /* .gitkeep */,
+				C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -492,7 +524,7 @@
 		B59892242A56B69D00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B598924C2A56B7AB00CE1FEB /* .gitkeep */,
+				C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -500,7 +532,7 @@
 		B59892252A56B6A000CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B598924A2A56B7A500CE1FEB /* .gitkeep */,
+				C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -508,7 +540,7 @@
 		B59892262A56B6A500CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B59892522A56B7E600CE1FEB /* .gitkeep */,
+				C0DF03602A5A9C400037F740 /* ArticleListByWeekView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -516,7 +548,7 @@
 		B59892272A56B6AA00CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B59892502A56B7BA00CE1FEB /* .gitkeep */,
+				C0DF035E2A5A9C330037F740 /* ArticleListByWeekViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -524,7 +556,7 @@
 		B59892282A56B6AF00CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B598924E2A56B7B500CE1FEB /* .gitkeep */,
+				C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -532,7 +564,7 @@
 		B59892292A56B6BA00CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B59892582A56B7FA00CE1FEB /* .gitkeep */,
+				C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -540,7 +572,7 @@
 		B598922A2A56B6BE00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B59892562A56B7F300CE1FEB /* .gitkeep */,
+				C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -548,7 +580,7 @@
 		B598922B2A56B6C100CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B59892542A56B7ED00CE1FEB /* .gitkeep */,
+				C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -556,7 +588,7 @@
 		B598922C2A56B6CA00CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B59892482A56B7A000CE1FEB /* .gitkeep */,
+				C0DF03562A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -564,7 +596,7 @@
 		B598922D2A56B6E300CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B59892182A56B64C00CE1FEB /* .gitkeep */,
+				C0DF036C2A5A9C9A0037F740 /* BookMarkViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -572,7 +604,7 @@
 		B598922E2A56B6E700CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B598923E2A56B75200CE1FEB /* .gitkeep */,
+				C0DF036A2A5A9C930037F740 /* BookMarkView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -580,7 +612,7 @@
 		B598922F2A56B6ED00CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B59892402A56B75800CE1FEB /* .gitkeep */,
+				C0DF03682A5A9C8D0037F740 /* BookMarkTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -588,7 +620,7 @@
 		B59892302A56B6F300CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B598921A2A56B65400CE1FEB /* .gitkeep */,
+				C0DF03722A5A9CB50037F740 /* TodayViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -596,7 +628,7 @@
 		B59892312A56B6F700CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B598923A2A56B73D00CE1FEB /* .gitkeep */,
+				C0DF03702A5A9CAF0037F740 /* TodayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -604,7 +636,7 @@
 		B59892322A56B6F900CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B598923C2A56B74600CE1FEB /* .gitkeep */,
+				C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -612,7 +644,7 @@
 		B59892332A56B70200CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B598921E2A56B66100CE1FEB /* .gitkeep */,
+				C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -620,7 +652,7 @@
 		B59892342A56B70B00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B59892382A56B72100CE1FEB /* .gitkeep */,
+				C0DF03782A5A9CEE0037F740 /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -628,7 +660,7 @@
 		B59892352A56B70D00CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B59892362A56B71A00CE1FEB /* .gitkeep */,
+				C0DF03762A5A9CE70037F740 /* OnboardingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -646,7 +678,7 @@
 		B59892602A56B94700CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B59892142A56B63B00CE1FEB /* .gitkeep */,
+				C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -654,7 +686,7 @@
 		B59892612A56B94B00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B59892672A56B96E00CE1FEB /* .gitkeep */,
+				C0DF03462A5A9AA40037F740 /* CurriculumView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -662,7 +694,7 @@
 		B59892622A56B94D00CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B59892692A56B97900CE1FEB /* .gitkeep */,
+				C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -670,7 +702,7 @@
 		B59892632A56B95100CE1FEB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B59892652A56B96000CE1FEB /* .gitkeep */,
+				C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -678,7 +710,7 @@
 		B59892642A56B95600CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B59892162A56B64200CE1FEB /* .gitkeep */,
+				C0DF034C2A5A9B8D0037F740 /* MyPageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -850,25 +882,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
+				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
+				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
+				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
+				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
+				C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
+				C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */,
+				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
+				C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */,
+				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,
+				C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */,
+				C0DF03772A5A9CE70037F740 /* OnboardingTableViewCell.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
+				C0DF03792A5A9CEE0037F740 /* OnboardingView.swift in Sources */,
+				C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
+				C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */,
+				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
+				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
+				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
+				C0DF03552A5A9BD60037F740 /* ArticleListByCategoryView.swift in Sources */,
+				C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */,
+				C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
+				C0DF036D2A5A9C9A0037F740 /* BookMarkViewController.swift in Sources */,
+				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
+				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
+				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
+				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
+				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
+				C0DF03572A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift in Sources */,
+				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
+				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
