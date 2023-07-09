@@ -1,16 +1,16 @@
 //
-//  TodayViewController.swift
+//  ChallengeViewController.swift
 //  LionHeart-iOS
 //
 //  Created by uiskim on 2023/07/09.
-//  Copyright (c) 2023 Today. All rights reserved.
+//  Copyright (c) 2023 Challenge. All rights reserved.
 //
 
 import UIKit
 
 import SnapKit
 
-final class TodayViewController: UIViewController {
+final class ChallengeViewController: UIViewController {
     
 
     public override func viewDidLoad() {
@@ -33,9 +33,9 @@ final class TodayViewController: UIViewController {
     }
 }
 
-private extension TodayViewController {
+private extension ChallengeViewController {
     func setUI() {
-        view.backgroundColor = .blue
+        view.backgroundColor = .red
     }
     
     func setHierarchy() {
