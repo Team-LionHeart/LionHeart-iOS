@@ -38,6 +38,10 @@
 		B59892942A57A93300CE1FEB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892932A57A93300CE1FEB /* Config.swift */; };
 		B59892972A57AA3000CE1FEB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B59892962A57AA3000CE1FEB /* SnapKit */; };
 		B598929A2A57AA8000CE1FEB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B59892992A57AA8000CE1FEB /* Lottie */; };
+		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
+		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
+		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
+		C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03302A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +80,6 @@
 		B532E86B2A5564DD00F0DB19 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		B59891FB2A56B24500CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59891FD2A56B24F00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59892002A56B27E00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59892142A56B63B00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59892162A56B64200CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59892182A56B64C00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -109,6 +112,10 @@
 		B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSDebug.entitlements"; sourceTree = "<group>"; };
 		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B59892932A57A93300CE1FEB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
+		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
+		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
+		C0DF03302A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +242,7 @@
 		B532E8682A552B2400F0DB19 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				B59892932A57A93300CE1FEB /* Config.swift */,
 				B532E8692A552BA500F0DB19 /* Development.xcconfig */,
 			);
 			path = Configurations;
@@ -248,7 +256,7 @@
 				B59891F82A56B12E00CE1FEB /* UIComponents */,
 				B59891F72A56B12B00CE1FEB /* Utils */,
 				B59891F62A56B12600CE1FEB /* Extensions */,
-				B59892932A57A93300CE1FEB /* Config.swift */,
+				C0DF03292A5A91450037F740 /* Protocols */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -288,7 +296,7 @@
 		B59891FF2A56B25C00CE1FEB /* Literals */ = {
 			isa = PBXGroup;
 			children = (
-				B59892002A56B27E00CE1FEB /* .gitkeep */,
+				C0DF032E2A5A92170037F740 /* NameSpace.swift */,
 			);
 			path = Literals;
 			sourceTree = "<group>";
@@ -651,6 +659,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C0DF03292A5A91450037F740 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */,
+				C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */,
+				C0DF03302A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -811,10 +829,14 @@
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
+				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
+				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
+				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
+				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
