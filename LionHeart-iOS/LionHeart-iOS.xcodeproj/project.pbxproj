@@ -80,6 +80,10 @@
 		C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */; };
 		C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */; };
 		C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037E2A5A9D090037F740 /* SplashViewController.swift */; };
+		C0DF038A2A5B88660037F740 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0DF03892A5B88660037F740 /* Pretendard-SemiBold.ttf */; };
+		C0DF038D2A5B88720037F740 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0DF038B2A5B88720037F740 /* Pretendard-Medium.ttf */; };
+		C0DF038E2A5B88720037F740 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0DF038C2A5B88720037F740 /* Pretendard-Regular.ttf */; };
+		C0DF03902A5B88820037F740 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0DF038F2A5B88820037F740 /* Pretendard-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +167,10 @@
 		C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0DF037E2A5A9D090037F740 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C0DF03892A5B88660037F740 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
+		C0DF038B2A5B88720037F740 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.ttf"; sourceTree = "<group>"; };
+		C0DF038C2A5B88720037F740 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
+		C0DF038F2A5B88820037F740 /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +335,7 @@
 		B59891F72A56B12B00CE1FEB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C0DF03882A5B883D0037F740 /* Font */,
 				B59891FD2A56B24F00CE1FEB /* .gitkeep */,
 			);
 			path = Utils;
@@ -725,6 +734,17 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		C0DF03882A5B883D0037F740 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C0DF038F2A5B88820037F740 /* Pretendard-Bold.ttf */,
+				C0DF038B2A5B88720037F740 /* Pretendard-Medium.ttf */,
+				C0DF038C2A5B88720037F740 /* Pretendard-Regular.ttf */,
+				C0DF03892A5B88660037F740 /* Pretendard-SemiBold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -855,9 +875,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0DF038A2A5B88660037F740 /* Pretendard-SemiBold.ttf in Resources */,
+				C0DF038D2A5B88720037F740 /* Pretendard-Medium.ttf in Resources */,
+				C0DF038E2A5B88720037F740 /* Pretendard-Regular.ttf in Resources */,
 				B532E83E2A5525C700F0DB19 /* LaunchScreen.storyboard in Resources */,
 				B59892832A56C93400CE1FEB /* GoogleService-Info.plist in Resources */,
 				B532E83B2A5525C700F0DB19 /* Assets.xcassets in Resources */,
+				C0DF03902A5B88820037F740 /* Pretendard-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
