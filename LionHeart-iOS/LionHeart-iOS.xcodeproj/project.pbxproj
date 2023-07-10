@@ -41,6 +41,8 @@
 		B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */; };
 		B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892E42A5B109900CE1FEB /* ScreenUtils.swift */; };
 		B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */; };
+		B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892EB2A5B94E100CE1FEB /* UIApplication+.swift */; };
+		B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59892ED2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -119,14 +121,14 @@
 		B532E8642A5529F100F0DB19 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		B532E8692A552BA500F0DB19 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		B532E86B2A5564DD00F0DB19 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
-		B59891FB2A56B24500CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		B59891FD2A56B24F00CE1FEB /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSDebug.entitlements"; sourceTree = "<group>"; };
 		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B59892932A57A93300CE1FEB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHNavigationBarView.swift; sourceTree = "<group>"; };
 		B59892E42A5B109900CE1FEB /* ScreenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtils.swift; sourceTree = "<group>"; };
 		B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarType.swift; sourceTree = "<group>"; };
+		B59892EB2A5B94E100CE1FEB /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		B59892ED2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLayoutManager.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				C0DF033C2A5A95420037F740 /* UIStackView+.swift */,
 				C0DF033E2A5A959A0037F740 /* UIButton+.swift */,
 				C0DF03402A5A95E40037F740 /* UIImage+.swift */,
+				B59892EB2A5B94E100CE1FEB /* UIApplication+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,8 +337,8 @@
 		B59891F72A56B12B00CE1FEB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B59891FD2A56B24F00CE1FEB /* .gitkeep */,
 				B59892E42A5B109900CE1FEB /* ScreenUtils.swift */,
+				B59892ED2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -343,7 +346,6 @@
 		B59891F82A56B12E00CE1FEB /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				B59891FB2A56B24500CE1FEB /* .gitkeep */,
 				B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */,
 			);
 			path = UIComponents;
@@ -908,6 +910,7 @@
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
+				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
 				C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
@@ -916,6 +919,7 @@
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
+				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
