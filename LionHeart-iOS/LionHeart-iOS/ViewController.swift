@@ -14,6 +14,13 @@ import KakaoSDKAuth
 import KakaoSDKUser
 
 class ViewController: UIViewController {
+    
+    private let testLable: UILabel = {
+        let label = UILabel()
+        label.text = "폰트테스트라벨입니다"
+        label.font = .pretendard(.body4)
+        return label
+    }()
 
     // MARK: - 카카오 로그인 예시
 
@@ -39,6 +46,13 @@ class ViewController: UIViewController {
         kakaoLoginButton.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+        
+        view.addSubview(testLable)
+        testLable.snp.makeConstraints { make in
+            make.top.equalTo(kakaoLoginButton.snp.bottom)
+            make.centerX.equalToSuperview()
+        }
+        
     }
 
     @objc func kakaoLoginButtonTapped() {
