@@ -35,7 +35,7 @@ final class CurriculumViewController: UIViewController {
 
 private extension CurriculumViewController {
     func setUI() {
-        
+        view.backgroundColor = .gray
     }
     
     func setHierarchy() {

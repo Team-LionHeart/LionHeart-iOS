@@ -34,3 +34,9 @@ extension UIImage {
         return renderImage
     }
 }
+
+extension UIImage {
+    static func assetImage(_ name: Constant.ImageName) -> UIImage? {
+        return UIImage(named: name.real)
+    }
+}

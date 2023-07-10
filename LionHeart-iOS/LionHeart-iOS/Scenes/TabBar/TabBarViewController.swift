@@ -12,45 +12,40 @@ import SnapKit
 
 final class TabBarViewController: UITabBarController {
     
-
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
-        setUI()
+        let todayViewController = UINavigationController(rootViewController: TodayViewController())
+        todayViewController.tabBarItem = UITabBarItem(title: "투데이", image: .assetImage(.home), tag: 0)
         
-        // MARK: - addsubView
-        setHierarchy()
+        let articleCategoryViewController = UINavigationController(rootViewController: ArticleCategoryViewController())
+        articleCategoryViewController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         
-        // MARK: - autolayout설정
-        setLayout()
+        let curriculumViewController = UINavigationController(rootViewController: CurriculumViewController())
+        curriculumViewController.tabBarItem = UITabBarItem(title: "커리큘럼", image: .assetImage(.curriculum), tag: 2)
         
-        // MARK: - button의 addtarget설정
-        setAddTarget()
+        let challengeViewController = UINavigationController(rootViewController: ChallengeViewController())
+        challengeViewController.tabBarItem = UITabBarItem(title: "챌린지", image: .assetImage(.challenge), tag: 3)
         
-        // MARK: - delegate설정
-        setDelegate()
-
-    }
-}
-
-private extension TabBarViewController {
-    func setUI() {
+        self.viewControllers = [todayViewController, articleCategoryViewController, curriculumViewController, challengeViewController]
         
-    }
-    
-    func setHierarchy() {
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = .black
+        let tabBarItemAppearance = UITabBarItemAppearance()
+        tabBarItemAppearance.normal.iconColor = .gray
+        tabBarItemAppearance.selected.iconColor = .white
+        tabBarItemAppearance.normal.titleTextAttributes = [ .foregroundColor : UIColor.gray, .font : UIFont.systemFont(ofSize: 9)]
+        tabBarItemAppearance.selected.titleTextAttributes = [ .foregroundColor : UIColor.white, .font : UIFont.systemFont(ofSize: 9, weight: .bold)]
+        tabBarAppearance.inlineLayoutAppearance = tabBarItemAppearance
+        tabBarAppearance.stackedLayoutAppearance = tabBarItemAppearance
+        tabBarAppearance.compactInlineLayoutAppearance = tabBarItemAppearance
         
-    }
-    
-    func setLayout() {
-        
+        self.tabBar.standardAppearance = tabBarAppearance
+        self.tabBar.scrollEdgeAppearance = tabBarAppearance
     }
     
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tabBar.frame.size.height = 100
+        tabBar.frame.origin.y = view.frame.height - 100
     }
 }
