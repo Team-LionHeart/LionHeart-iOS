@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.text = "폰트테스트라벨입니다"
         label.font = .pretendard(.body4)
+        label.textColor = .designSystem(.componentLionRed)
         return label
     }()
 
@@ -37,7 +38,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .designSystem(.background)
         setLayout()
     }
 

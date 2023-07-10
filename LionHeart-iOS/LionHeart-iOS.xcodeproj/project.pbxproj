@@ -86,6 +86,9 @@
 		C0DF03902A5B88820037F740 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0DF038F2A5B88820037F740 /* Pretendard-Bold.ttf */; };
 		C0DF03922A5B88CC0037F740 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03912A5B88CC0037F740 /* Font.swift */; };
 		C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03932A5B8C610037F740 /* UIFont+.swift */; };
+		C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03952A5B8FB10037F740 /* Palette.swift */; };
+		C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03972A5B90790037F740 /* UIColor+.swift */; };
+		C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03992A5B908E0037F740 /* CGColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +177,9 @@
 		C0DF038F2A5B88820037F740 /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
 		C0DF03912A5B88CC0037F740 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		C0DF03932A5B8C610037F740 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		C0DF03952A5B8FB10037F740 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		C0DF03972A5B90790037F740 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		C0DF03992A5B908E0037F740 /* CGColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +338,8 @@
 				C0DF033E2A5A959A0037F740 /* UIButton+.swift */,
 				C0DF03402A5A95E40037F740 /* UIImage+.swift */,
 				C0DF03932A5B8C610037F740 /* UIFont+.swift */,
+				C0DF03972A5B90790037F740 /* UIColor+.swift */,
+				C0DF03992A5B908E0037F740 /* CGColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				C0DF03882A5B883D0037F740 /* Font */,
+				C0DF03952A5B8FB10037F740 /* Palette.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -919,6 +928,7 @@
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
 				C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */,
+				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
@@ -929,6 +939,7 @@
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
+				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */,
 				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,
 				C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */,
@@ -949,6 +960,7 @@
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
 				C0DF036D2A5A9C9A0037F740 /* BookMarkViewController.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
+				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
