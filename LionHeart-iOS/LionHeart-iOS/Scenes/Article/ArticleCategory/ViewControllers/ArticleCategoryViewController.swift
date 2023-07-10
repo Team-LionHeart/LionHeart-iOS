@@ -35,7 +35,7 @@ final class ArticleCategoryViewController: UIViewController {
 
 private extension ArticleCategoryViewController {
     func setUI() {
-        
+        view.backgroundColor = .orange
     }
     
     func setHierarchy() {

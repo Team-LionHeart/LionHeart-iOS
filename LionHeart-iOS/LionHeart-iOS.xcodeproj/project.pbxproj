@@ -80,6 +80,8 @@
 		C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */; };
 		C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */; };
 		C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037E2A5A9D090037F740 /* SplashViewController.swift */; };
+		C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03802A5AF51C0037F740 /* Constant.swift */; };
+		C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03842A5AF7B70037F740 /* ChallengeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +165,8 @@
 		C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0DF037E2A5A9D090037F740 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C0DF03802A5AF51C0037F740 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C0DF03842A5AF7B70037F740 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +357,7 @@
 			children = (
 				C0DF032E2A5A92170037F740 /* NameSpace.swift */,
 				C0DF03482A5A9ACB0037F740 /* DummyModel.swift */,
+				C0DF03802A5AF51C0037F740 /* Constant.swift */,
 			);
 			path = Literals;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 		B59892022A56B29B00CE1FEB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C0DF03822A5AF7A20037F740 /* Challenge */,
 				B598920F2A56B44200CE1FEB /* Curriculum */,
 				B598920E2A56B41500CE1FEB /* MyPage */,
 				B59892092A56B36B00CE1FEB /* Article */,
@@ -725,6 +731,22 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		C0DF03822A5AF7A20037F740 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				C0DF03832A5AF7A90037F740 /* ViewController */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
+		C0DF03832A5AF7A90037F740 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C0DF03842A5AF7B70037F740 /* ChallengeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -886,6 +908,7 @@
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
+				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
@@ -899,6 +922,7 @@
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
+				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */,
 				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,
