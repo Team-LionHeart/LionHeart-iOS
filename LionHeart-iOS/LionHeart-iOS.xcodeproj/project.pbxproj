@@ -48,6 +48,7 @@
 		B598930D2A5BED0F00CE1FEB /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B59893082A5BED0E00CE1FEB /* Pretendard-SemiBold.ttf */; };
 		B598930E2A5BED0F00CE1FEB /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B59893092A5BED0E00CE1FEB /* Pretendard-Bold.ttf */; };
 		B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598930A2A5BED0E00CE1FEB /* Font.swift */; };
+		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -219,6 +220,7 @@
 				B59892792A56C21800CE1FEB /* FirebaseInstallations in Frameworks */,
 				B598926F2A56C21800CE1FEB /* FirebaseAnalytics in Frameworks */,
 				B59892752A56C21800CE1FEB /* FirebaseInAppMessaging-Beta in Frameworks */,
+				B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */,
 				B598927D2A56C21800CE1FEB /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -847,6 +849,7 @@
 				B59892912A57A80A00CE1FEB /* KakaoSDKUser */,
 				B59892962A57AA3000CE1FEB /* SnapKit */,
 				B59892992A57AA8000CE1FEB /* Lottie */,
+				B59893152A5D40FC00CE1FEB /* Kingfisher */,
 			);
 			productName = "LionHeart-iOS";
 			productReference = B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */;
@@ -925,6 +928,7 @@
 				B59892842A57A80A00CE1FEB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				B59892952A57AA3000CE1FEB /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B59892982A57AA8000CE1FEB /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				B59893142A5D40FC00CE1FEB /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = B532E82F2A5525C600F0DB19 /* Products */;
 			projectDirPath = "";
@@ -1425,6 +1429,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		B59893142A5D40FC00CE1FEB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1517,6 +1529,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B59892982A57AA8000CE1FEB /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		B59893152A5D40FC00CE1FEB /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B59893142A5D40FC00CE1FEB /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
