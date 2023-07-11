@@ -151,6 +151,6 @@ private extension OnboardingViewController {
     func setDelegate() {}
     
     func setProgressView() {
-        self.onboardingProgressView.setProgress(0.5, animated: false)
+        self.onboardingProgressView.setProgress(currentPage.progressValue, animated: false)
     }
 }
