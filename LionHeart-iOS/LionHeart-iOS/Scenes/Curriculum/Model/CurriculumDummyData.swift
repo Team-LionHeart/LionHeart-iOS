@@ -22,8 +22,8 @@ struct CurriculumDummyData: AppData {
 extension CurriculumMonthData {
     static func dummy() -> [CurriculumMonthData] {
         return [
-            CurriculumMonthData(month: "1개월", weekDatas: [
-            .init(curriculumWeek: "1주차", curriculumWeekTitle: "1주차 제목", curriculumImage: UIImage(), curriculumText: "1주차 내용"),
+            CurriculumMonthData(month: "2개월", weekDatas: [
+            .init(curriculumWeek: "4주차", curriculumWeekTitle: "아빠가 되기 위한 9개월 로드맵", curriculumImage: UIImage(), curriculumText: "1주차 내용"),
             .init(curriculumWeek: "2주차", curriculumWeekTitle: "2주차 제목", curriculumImage: UIImage(), curriculumText: "2주차 내용")
         ]),
             CurriculumMonthData(month: "2개월", weekDatas: [

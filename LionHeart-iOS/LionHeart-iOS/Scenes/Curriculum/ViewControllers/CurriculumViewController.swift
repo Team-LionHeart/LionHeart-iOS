@@ -13,14 +13,17 @@ import SnapKit
 final class CurriculumViewController: UIViewController{
     
     private let curriculumTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.estimatedRowHeight = 200
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
+        tableView.backgroundColor = .clear
+        tableView.sectionFooterHeight = 40
         return tableView
     }()
     
+   
     private let curriculumViewDatas = CurriculumMonthData.dummy()
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         // MARK: - 컴포넌트 설정
@@ -45,12 +48,12 @@ final class CurriculumViewController: UIViewController{
 
 private extension CurriculumViewController {
     func setUI() {
-        view.backgroundColor = .gray
+        view.backgroundColor = .designSystem(.background)
     }
     
     func setHierarchy() {
         view.addSubviews(curriculumTableView)
-
+        
     }
     
     func setLayout() {
@@ -70,6 +73,8 @@ private extension CurriculumViewController {
     
     func setTableView(){
         CurriculumTableViewCell.register(to: curriculumTableView)
+        curriculumTableView.register(CurriculumTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: CurriculumTableViewHeaderView.identifier)
+        
     }
 }
 
@@ -82,12 +87,27 @@ extension CurriculumViewController: UITableViewDataSource{
         let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
         cell.inputData = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
         cell.selectionStyle = .none
+
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return curriculumViewDatas.count
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = CurriculumTableViewHeaderView(reuseIdentifier: CurriculumTableViewHeaderView.identifier)
+        
+        let month = curriculumViewDatas[section].month
+        headerView.configureHeaderView(month: month)
+        return headerView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+         
+    }
+    
+    
     
 }
 
