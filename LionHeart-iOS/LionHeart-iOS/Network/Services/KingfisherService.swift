@@ -12,7 +12,7 @@ import Kingfisher
 
 final class LHKingFisherService {
 
-    static func fetchImage11(with urlString: String) async throws -> UIImage? {
+    static func fetchImage(with urlString: String) async throws -> UIImage? {
         typealias imageContinuation = CheckedContinuation<UIImage?, Error>
 
         return try await withCheckedThrowingContinuation { imageContinuation in
