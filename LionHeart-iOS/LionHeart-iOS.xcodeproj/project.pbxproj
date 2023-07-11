@@ -98,6 +98,7 @@
 		C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03992A5B908E0037F740 /* CGColor+.swift */; };
 		F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */; };
 		F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */; };
+		F435E04E2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435E04D2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift */; };
 		F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +199,7 @@
 		C0DF03992A5B908E0037F740 /* CGColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
 		F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewHeaderView.swift; sourceTree = "<group>"; };
 		F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumUserInfoView.swift; sourceTree = "<group>"; };
+		F435E04D2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumProgessTableViewHeaderView.swift; sourceTree = "<group>"; };
 		F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDummyData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -334,11 +336,11 @@
 		B59891F52A56B10D00CE1FEB /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				B59892E62A5B14F600CE1FEB /* Enums */,
 				B59891FF2A56B25C00CE1FEB /* Literals */,
 				B59891F92A56B13300CE1FEB /* Resources */,
 				B59891F82A56B12E00CE1FEB /* UIComponents */,
 				B59891F72A56B12B00CE1FEB /* Utils */,
+				B59892E62A5B14F600CE1FEB /* Enums */,
 				B59891F62A56B12600CE1FEB /* Extensions */,
 				C0DF03292A5A91450037F740 /* Protocols */,
 			);
@@ -736,6 +738,7 @@
 				C0DF03462A5A9AA40037F740 /* CurriculumView.swift */,
 				F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */,
 				F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */,
+				F435E04D2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1038,6 +1041,7 @@
 				C0DF03572A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
+				F435E04E2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,

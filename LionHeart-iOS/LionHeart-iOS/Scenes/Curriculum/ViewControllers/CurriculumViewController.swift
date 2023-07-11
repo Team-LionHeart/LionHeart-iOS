@@ -12,7 +12,12 @@ import SnapKit
 
 final class CurriculumViewController: UIViewController{
     
-    let curriculumUserInfoView = CurriculumUserInfoView()
+    
+    let curriculumUserInfoView: CurriculumUserInfoView = {
+        let view = CurriculumUserInfoView()
+        view.backgroundColor = .designSystem(.background)
+        return view
+    }()
     
     private enum Size {
         static let userInfoView: CGFloat = 158 / 375
@@ -133,9 +138,6 @@ extension CurriculumViewController: UITableViewDataSource{
         return 40
         
     }
-    
-    
-    
 }
 
 extension CurriculumViewController: UITableViewDelegate{}
