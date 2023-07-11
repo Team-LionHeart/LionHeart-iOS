@@ -29,12 +29,20 @@ final class GetFatalNicknameViewController: UIViewController {
         return label
     }()
     
-    private let featalNickNameTextfield: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "태명"
-        
-        return textField
+    private let textFieldUnderLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .designSystem(.lionRed)
+        return view
     }()
+    
+    private let fatalNickNameErrorLabel: UILabel = {
+        let label = UILabel()
+        label.font = .pretendard(.body4)
+        label.textColor = .designSystem(.componentLionRed)
+        return label
+    }()
+    
+    private let fatalNickNameTextfield = OnboardingTextfield(textFieldType: .fatalNickname)
     
 
     public override func viewDidLoad() {
@@ -53,6 +61,14 @@ final class GetFatalNicknameViewController: UIViewController {
         
         // MARK: - delegate설정
         setDelegate()
+        
+        setTextField()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.async {
+            self.fatalNickNameTextfield.becomeFirstResponder()
+        }
     }
 }
 
@@ -62,7 +78,7 @@ private extension GetFatalNicknameViewController {
     }
     
     func setHierarchy() {
-        view.addSubviews(titleLabel, descriptionLabel)
+        view.addSubviews(titleLabel, descriptionLabel, fatalNickNameTextfield, textFieldUnderLine, fatalNickNameErrorLabel)
     }
     
     func setLayout() {
@@ -75,6 +91,23 @@ private extension GetFatalNicknameViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.leading.equalTo(titleLabel.snp.leading)
         }
+        
+        fatalNickNameTextfield.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(68)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(35)
+        }
+        
+        textFieldUnderLine.snp.makeConstraints { make in
+            make.top.equalTo(fatalNickNameTextfield.snp.bottom)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(2)
+        }
+        
+        fatalNickNameErrorLabel.snp.makeConstraints { make in
+            make.top.equalTo(fatalNickNameTextfield.snp.bottom).offset(12)
+            make.leading.equalToSuperview().inset(20)
+        }
     }
     
     func setAddTarget() {
@@ -82,6 +115,14 @@ private extension GetFatalNicknameViewController {
     }
     
     func setDelegate() {
-        
     }
+    
+    func setTextField() {
+        if let clearButton = fatalNickNameTextfield.value(forKeyPath: "_clearButton") as? UIButton {
+            clearButton.setImage(UIImage(named: Constant.ImageName.textFieldClear.real), for: .normal)
+        }
+        self.fatalNickNameTextfield.clearButtonMode = UITextField.ViewMode.whileEditing
+    }
+    
+
 }

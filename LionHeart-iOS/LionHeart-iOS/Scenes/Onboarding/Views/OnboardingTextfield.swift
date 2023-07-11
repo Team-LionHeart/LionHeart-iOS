@@ -1,0 +1,63 @@
+//
+//  OnboardingTextfield.swift
+//  LionHeart-iOS
+//
+//  Created by uiskim on 2023/07/11.
+//
+
+import UIKit
+
+final class OnboardingTextfield: UITextField {
+    
+    enum TextFieldType {
+        case pregancy
+        case fatalNickname
+        
+        var placeHolder: String {
+            switch self {
+            case .pregancy:
+                return "1~40주차"
+            case .fatalNickname:
+                return "태명"
+            }
+        }
+    }
+    
+    private var textFieldType: TextFieldType
+    
+    private lazy var clearButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: Constant.ImageName.textFieldClear.real), for: .normal)
+        button.contentMode = .scaleAspectFill
+        return button
+    }()
+    
+    init(textFieldType: TextFieldType) {
+        self.textFieldType = textFieldType
+        super.init(frame: .zero)
+        setUI()
+        setButtonAction()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUI() {
+        self.backgroundColor = .designSystem(.background)
+        self.font = .pretendard(.body1)
+        self.textColor = .designSystem(.white)
+        clearButton.frame = .init(x: 0, y: 0, width: 28, height: 28)
+        clearButton.contentMode = .scaleAspectFit
+        self.setLoginPlaceholder(placeholder: textFieldType.placeHolder)
+        self.rightView = clearButton
+        self.tintColor = .designSystem(.lionRed)
+    }
+    
+    private func setButtonAction() {
+        clearButton.addButtonAction { sender in
+            self.text = ""
+            sender.isHidden = true
+        }
+    }
+}

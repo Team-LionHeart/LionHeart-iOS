@@ -21,6 +21,9 @@ enum Constant {
         case challenge = "ic_challenge"
         case search = "ic_search"
         
+        /// Onboarding
+        case textFieldClear = "ic_X_back"
+        
         var real: String {
             return self.rawValue
         }

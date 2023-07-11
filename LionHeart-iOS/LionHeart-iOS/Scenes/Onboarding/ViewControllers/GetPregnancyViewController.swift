@@ -10,7 +10,10 @@ import UIKit
 
 import SnapKit
 
+
+
 final class GetPregnancyViewController: UIViewController {
+    
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -46,6 +49,11 @@ final class GetPregnancyViewController: UIViewController {
         // MARK: - delegate설정
         setDelegate()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
 }
 

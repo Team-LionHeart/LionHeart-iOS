@@ -22,6 +22,9 @@ final class OnboardingViewController: UIViewController {
         }
     }
     
+    var fatalNickName: String?
+    var pregnancy: Int?
+    
     private var onboardingProgressView: UIProgressView = {
         let progress = UIProgressView()
         progress.progressViewStyle = .bar
@@ -46,6 +49,8 @@ final class OnboardingViewController: UIViewController {
                 }
             case .toCompleteOnboarding:
                 let completeViewController = CompleteOnbardingViewController()
+                let passingData = UserOnboardingModel(pregnacny: self.pregnancy, fatalNickname: self.fatalNickName)
+                completeViewController.userData = passingData
                 self.navigationController?.pushViewController(completeViewController, animated: true)
             }
         }
@@ -53,6 +58,7 @@ final class OnboardingViewController: UIViewController {
     
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
         .backButtonAction {
+            self.view.endEditing(true)
             self.onboardingFlow = self.currentPage.back
             self.onboardingCompletePercentage = self.currentPage.progressValue
         }
@@ -60,7 +66,7 @@ final class OnboardingViewController: UIViewController {
     private let testButton: UIButton = {
         let button = UIButton()
         button.setTitle("다음", for: .normal)
-        button.backgroundColor = .designSystem(.lionRed)
+        button.backgroundColor = .designSystem(.gray600)
         return button
     }()
     
@@ -69,7 +75,7 @@ final class OnboardingViewController: UIViewController {
         return pageViewController
     }()
     
-    private var pageViewControllerDataSource: [UIViewController] = OnboardingPageType.allCases.map{ $0.viewController }
+    private var pageViewControllerDataSource: [UIViewController] = OnboardingPageType.allCases.map{ $0.viewController } 
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,10 +134,11 @@ private extension OnboardingViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(testButton.snp.top)
         }
+        
         testButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalTo(50)
         }
         
         onboardingProgressView.snp.makeConstraints { make in
@@ -147,9 +154,11 @@ private extension OnboardingViewController {
         }
     }
     
-    func setDelegate() {}
+    func setDelegate() {
+    }
     
     func setProgressView() {
         self.onboardingProgressView.setProgress(0.5, animated: false)
     }
 }
+

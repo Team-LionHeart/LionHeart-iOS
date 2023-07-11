@@ -19,7 +19,7 @@ final class CompleteOnbardingViewController: UIViewController {
     var userData: UserOnboardingModel? {
         didSet {
             guard let fatalNickName = userData?.fatalNickname else { return }
-//            self.titleLabel.text = "\(fatalNickName)님/n반가워요!"
+            self.titleLabel.text = "\(fatalNickName)님\n반가워요!"
         }
     }
     
@@ -32,7 +32,6 @@ final class CompleteOnbardingViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .designSystem(.white)
-        label.text = "사랑이아빠님\n반가워요!"
         label.font = .pretendard(.head2)
         label.textAlignment = .center
         label.numberOfLines = 2
