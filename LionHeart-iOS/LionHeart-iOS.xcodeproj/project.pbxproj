@@ -96,6 +96,10 @@
 		C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03952A5B8FB10037F740 /* Palette.swift */; };
 		C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03972A5B90790037F740 /* UIColor+.swift */; };
 		C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03992A5B908E0037F740 /* CGColor+.swift */; };
+		C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */; };
+		C0DF03A12A5CAC220037F740 /* GetFatalNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A02A5CAC220037F740 /* GetFatalNicknameViewController.swift */; };
+		C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */; };
+		C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +197,10 @@
 		C0DF03952A5B8FB10037F740 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		C0DF03972A5B90790037F740 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C0DF03992A5B908E0037F740 /* CGColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
+		C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPregnancyViewController.swift; sourceTree = "<group>"; };
+		C0DF03A02A5CAC220037F740 /* GetFatalNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFatalNicknameViewController.swift; sourceTree = "<group>"; };
+		C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageType.swift; sourceTree = "<group>"; };
+		C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -432,6 +440,7 @@
 		B59892052A56B34200CE1FEB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C0DF03A22A5CACC60037F740 /* OnboardingPageType */,
 				B59892352A56B70D00CE1FEB /* Cells */,
 				B59892342A56B70B00CE1FEB /* Views */,
 				B59892332A56B70200CE1FEB /* ViewControllers */,
@@ -685,6 +694,9 @@
 			isa = PBXGroup;
 			children = (
 				C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */,
+				C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */,
+				C0DF03A02A5CAC220037F740 /* GetFatalNicknameViewController.swift */,
+				C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -799,6 +811,14 @@
 				C0DF03842A5AF7B70037F740 /* ChallengeViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C0DF03A22A5CACC60037F740 /* OnboardingPageType */ = {
+			isa = PBXGroup;
+			children = (
+				C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */,
+			);
+			path = OnboardingPageType;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -968,12 +988,14 @@
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
+				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
+				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
 				C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
@@ -982,11 +1004,13 @@
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
 				C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */,
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
+				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
+				C0DF03A12A5CAC220037F740 /* GetFatalNicknameViewController.swift in Sources */,
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
