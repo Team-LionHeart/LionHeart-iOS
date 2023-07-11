@@ -12,7 +12,11 @@ import SnapKit
 
 final class OnboardingViewController: UIViewController {
     
-    private var onboardingCompletePercentage: Float = 0
+    private var onboardingCompletePercentage: Float = 0 {
+        didSet {
+            self.onboardingProgressView.setProgress(onboardingCompletePercentage, animated: true)
+        }
+    }
     
     private var onboardingProgressView: UIProgressView = {
         let progress = UIProgressView()
@@ -20,11 +24,15 @@ final class OnboardingViewController: UIViewController {
         progress.progressTintColor = .designSystem(.lionRed)
         progress.backgroundColor = .designSystem(.gray800)
         progress.transform = progress.transform.scaledBy(x: 1, y: 2)
-        progress.progress = 0.1
+        progress.progress = 0
         return progress
     }()
     
-    private var currentPage: OnboardingPageType = .getPregnancy
+    private var currentPage: OnboardingPageType = .getPregnancy {
+        didSet {
+            print(currentPage)
+        }
+    }
     
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
         didSet {
@@ -44,7 +52,7 @@ final class OnboardingViewController: UIViewController {
     
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
         .rightFirstBarItemAction {
-            self.navigationController?.popViewController(animated: true)
+            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         }
     
     private let testButton: UIButton = {
@@ -59,7 +67,7 @@ final class OnboardingViewController: UIViewController {
         return pageViewController
     }()
     
-    private var pageViewControllerDataSource: [UIViewController] = OnboardingPageType.allCases.map{$0.viewController}
+    private var pageViewControllerDataSource: [UIViewController] = OnboardingPageType.allCases.map{ $0.viewController }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,10 +91,14 @@ final class OnboardingViewController: UIViewController {
         
         // MARK: - PageViewController 설정
         setPageViewController()
+        
+        // MARK: - ProgressView 설정
+        setProgressView()
     }
     
     func setCurrentPage(index: Int) {
         self.currentPage = OnboardingPageType(rawValue: index) ?? .getPregnancy
+        self.onboardingProgressView.setProgress(currentPage.progressValue, animated: true)
     }
 }
 
@@ -96,7 +108,6 @@ private extension OnboardingViewController {
     }
     
     func setNavigationBar() {
-        
         NavigationBarLayoutManager.add(onboardingNavigationbar)
     }
     
@@ -133,10 +144,13 @@ private extension OnboardingViewController {
     func setAddTarget() {
         testButton.addButtonAction { _ in
             self.onboardingFlow = self.currentPage.forward
+            self.onboardingCompletePercentage = 1
         }
     }
     
     func setDelegate() {}
     
-    
+    func setProgressView() {
+        self.onboardingProgressView.setProgress(0.5, animated: false)
+    }
 }

@@ -34,7 +34,7 @@ final class GetFatalNicknameViewController: UIViewController {
 
 private extension GetFatalNicknameViewController {
     func setUI() {
-        view.backgroundColor = .designSystem(.componentLionRed)
+        view.backgroundColor = .designSystem(.gray500)
     }
     
     func setHierarchy() {
