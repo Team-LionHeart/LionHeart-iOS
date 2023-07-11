@@ -96,6 +96,7 @@
 		C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03952A5B8FB10037F740 /* Palette.swift */; };
 		C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03972A5B90790037F740 /* UIColor+.swift */; };
 		C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03992A5B908E0037F740 /* CGColor+.swift */; };
+		F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +194,7 @@
 		C0DF03952A5B8FB10037F740 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		C0DF03972A5B90790037F740 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C0DF03992A5B908E0037F740 /* CGColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
+		F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDummyData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +522,7 @@
 		B598920F2A56B44200CE1FEB /* Curriculum */ = {
 			isa = PBXGroup;
 			children = (
+				F4490C052A5CEE8000A6D9D7 /* Model */,
 				B59892622A56B94D00CE1FEB /* Cells */,
 				B59892612A56B94B00CE1FEB /* Views */,
 				B59892602A56B94700CE1FEB /* ViewControllers */,
@@ -801,6 +804,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		F4490C052A5CEE8000A6D9D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -973,6 +984,7 @@
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
+				F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
 				C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
