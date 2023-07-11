@@ -58,6 +58,7 @@ final class LHNavigationBarView: UIView {
 
     private var rightFirstBarItemHandler: (() -> Void)?
     private var rightSecondBarItemHandler: (() -> Void)?
+    private var backButtonActionHandler: (() -> Void)?
 
     init(type: LHNavigationType, viewController: UIViewController) {
         self.type = type
@@ -122,6 +123,12 @@ final class LHNavigationBarView: UIView {
     private func setBackButtonWithTitle() {
         self.titleLabel.text = type.title
         self.leftBarItem.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        if type == .onboarding {
+            self.leftBarItem.addButtonAction { _ in
+                self.backButtonActionHandler?()
+            }
+            return
+        }
         self.leftBarItem.addButtonAction { [weak self] _ in
             guard let self else { return }
             self.viewController?.navigationController?.popViewController(animated: true)
@@ -160,6 +167,10 @@ final class LHNavigationBarView: UIView {
 }
 
 extension LHNavigationBarView {
+    func backButtonAction(_ handler: @escaping (() -> Void)) -> Self {
+        self.backButtonActionHandler = handler
+        return self
+    }
     /// 주차별 커리큘럼의 NavigationBar에는 클릭한 cell의 주차 정보가 포함되어 있어 이 메서드로 설정.
     /// - Parameter week: 주차 커리큘럼에서 주차를 설정하기 위한 인자값.
     func setCurriculumWeek(week: Int) {
