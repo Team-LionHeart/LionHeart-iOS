@@ -10,7 +10,36 @@ import UIKit
 
 import SnapKit
 
+enum OnboardingTextFieldResultType {
+    case fatalNicknameTextFieldEmpty
+    case fatalNicknameTextFieldOver
+    case fatalNicknameTextFieldValid
+    
+    case pregnancyTextFieldEmpty
+    case pregnancyTextFieldValid
+    case pregnancyTextFieldOver
+    
+    var errorMessage: String {
+        switch self {
+        case .fatalNicknameTextFieldEmpty, . pregnancyTextFieldEmpty:
+            return "입력된 내용이 없습니다."
+        case .fatalNicknameTextFieldOver:
+            return "10자 이내로 입력해주세요."
+        case .fatalNicknameTextFieldValid, .pregnancyTextFieldValid:
+            return "정상입니다"
+        case .pregnancyTextFieldOver:
+            return "1에서 40 사이의 숫자를 입력해주세요."
+        }
+    }
+}
+
+protocol FatalNicknameCheckDelegate: AnyObject {
+    func checkFatalNickname(resultType: OnboardingTextFieldResultType)
+}
+
 final class GetFatalNicknameViewController: UIViewController {
+    
+    weak var delegate: FatalNicknameCheckDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -118,11 +147,28 @@ private extension GetFatalNicknameViewController {
     }
     
     func setTextField() {
+        fatalNickNameTextfield.delegate = self
         if let clearButton = fatalNickNameTextfield.value(forKeyPath: "_clearButton") as? UIButton {
             clearButton.setImage(UIImage(named: Constant.ImageName.textFieldClear.real), for: .normal)
         }
         self.fatalNickNameTextfield.clearButtonMode = UITextField.ViewMode.whileEditing
     }
-    
+}
 
+extension GetFatalNicknameViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if text.count == 0 {
+            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldEmpty)
+            fatalNickNameErrorLabel.text = OnboardingTextFieldResultType.fatalNicknameTextFieldEmpty.errorMessage
+            fatalNickNameErrorLabel.isHidden = false
+        } else if text.count <= 10 {
+            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldValid)
+            fatalNickNameErrorLabel.isHidden = true
+        } else {
+            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldOver)
+            fatalNickNameErrorLabel.text = OnboardingTextFieldResultType.fatalNicknameTextFieldOver.errorMessage
+            fatalNickNameErrorLabel.isHidden = false
+        }
+    }
 }

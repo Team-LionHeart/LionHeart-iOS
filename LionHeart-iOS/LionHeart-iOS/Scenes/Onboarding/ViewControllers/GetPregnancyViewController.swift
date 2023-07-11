@@ -10,8 +10,6 @@ import UIKit
 
 import SnapKit
 
-
-
 final class GetPregnancyViewController: UIViewController {
     
     

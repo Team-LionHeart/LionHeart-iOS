@@ -61,6 +61,7 @@ final class OnboardingViewController: UIViewController {
             self.view.endEditing(true)
             self.onboardingFlow = self.currentPage.back
             self.onboardingCompletePercentage = self.currentPage.progressValue
+            self.testButton.backgroundColor = .designSystem(.lionRed)
         }
     
     private let testButton: UIButton = {
@@ -75,7 +76,7 @@ final class OnboardingViewController: UIViewController {
         return pageViewController
     }()
     
-    private var pageViewControllerDataSource: [UIViewController] = OnboardingPageType.allCases.map{ $0.viewController } 
+    private var pageViewControllerDataSource: [UIViewController] = []
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +88,8 @@ final class OnboardingViewController: UIViewController {
         
         // MARK: - 네비게이션바 설정
         setNavigationBar()
+        
+        setChildViewController()
         
         // MARK: - autolayout설정
         setLayout()
@@ -157,8 +160,29 @@ private extension OnboardingViewController {
     func setDelegate() {
     }
     
+    func setChildViewController() {
+        let pregnancyViewController = GetPregnancyViewController()
+        pageViewControllerDataSource.append(pregnancyViewController)
+        let fatalNicknameViewController = GetFatalNicknameViewController()
+        fatalNicknameViewController.delegate = self
+        pageViewControllerDataSource.append(fatalNicknameViewController)
+    }
+    
     func setProgressView() {
         self.onboardingProgressView.setProgress(0.5, animated: false)
+    }
+}
+
+extension OnboardingViewController: FatalNicknameCheckDelegate {
+    func checkFatalNickname(resultType: OnboardingTextFieldResultType) {
+        switch resultType {
+        case .fatalNicknameTextFieldEmpty:
+            testButton.backgroundColor = .designSystem(.gray600)
+        case .fatalNicknameTextFieldOver:
+            testButton.backgroundColor = .designSystem(.gray600)
+        case .fatalNicknameTextFieldValid:
+            testButton.backgroundColor = .designSystem(.lionRed)
+        }
     }
 }
 
