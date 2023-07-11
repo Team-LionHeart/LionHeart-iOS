@@ -48,6 +48,7 @@
 		B598930D2A5BED0F00CE1FEB /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B59893082A5BED0E00CE1FEB /* Pretendard-SemiBold.ttf */; };
 		B598930E2A5BED0F00CE1FEB /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B59893092A5BED0E00CE1FEB /* Pretendard-Bold.ttf */; };
 		B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598930A2A5BED0E00CE1FEB /* Font.swift */; };
+		B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */; };
 		B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893122A5D3A4D00CE1FEB /* NetworkError.swift */; };
 		B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893182A5D41F600CE1FEB /* KingfisherService.swift */; };
 		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
@@ -149,6 +150,7 @@
 		B59893082A5BED0E00CE1FEB /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
 		B59893092A5BED0E00CE1FEB /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
 		B598930A2A5BED0E00CE1FEB /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBlockType.swift; sourceTree = "<group>"; };
 		B59893122A5D3A4D00CE1FEB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B59893182A5D41F600CE1FEB /* KingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherService.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				B598922B2A56B6C100CE1FEB /* Cells */,
 				B598922A2A56B6BE00CE1FEB /* Views */,
 				B59892292A56B6BA00CE1FEB /* ViewControllers */,
+				B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */,
 				B59893122A5D3A4D00CE1FEB /* NetworkError.swift */,
 			);
 			path = ArticleDetail;
@@ -995,6 +998,7 @@
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
+				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
