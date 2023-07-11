@@ -37,7 +37,9 @@ final class CurriculumViewController: UIViewController{
         
         // MARK: - delegate설정
         setDelegate()
-
+        
+        // MARK: - tableView Register설정
+        setTableView()
     }
 }
 
@@ -64,6 +66,9 @@ private extension CurriculumViewController {
     func setDelegate() {
         curriculumTableView.dataSource = self
         curriculumTableView.delegate = self
+    }
+    
+    func setTableView(){
         CurriculumTableViewCell.register(to: curriculumTableView)
     }
 }
