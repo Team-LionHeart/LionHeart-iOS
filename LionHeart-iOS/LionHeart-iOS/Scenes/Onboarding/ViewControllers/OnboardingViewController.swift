@@ -42,6 +42,11 @@ final class OnboardingViewController: UIViewController {
         }
     }
     
+    private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
+        .rightFirstBarItemAction {
+            self.navigationController?.popViewController(animated: true)
+        }
+    
     private let testButton: UIButton = {
         let button = UIButton()
         button.setTitle("다음", for: .normal)
@@ -91,10 +96,7 @@ private extension OnboardingViewController {
     }
     
     func setNavigationBar() {
-        let onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
-            .rightFirstBarItemAction {
-                self.navigationController?.popViewController(animated: true)
-            }
+        
         NavigationBarLayoutManager.add(onboardingNavigationbar)
     }
     
@@ -123,7 +125,7 @@ private extension OnboardingViewController {
         }
         
         onboardingProgressView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(60)
+            make.top.equalTo(self.onboardingNavigationbar.snp.bottom)
             make.leading.trailing.equalToSuperview()
         }
     }
@@ -136,5 +138,5 @@ private extension OnboardingViewController {
     
     func setDelegate() {}
     
-
+    
 }
