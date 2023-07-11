@@ -69,7 +69,6 @@
 		C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */; };
 		C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */; };
 		C0DF03552A5A9BD60037F740 /* ArticleListByCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */; };
-		C0DF03572A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03562A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift */; };
 		C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */; };
 		C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */; };
 		C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */; };
@@ -96,6 +95,8 @@
 		C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03952A5B8FB10037F740 /* Palette.swift */; };
 		C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03972A5B90790037F740 /* UIColor+.swift */; };
 		C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03992A5B908E0037F740 /* CGColor+.swift */; };
+		D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */; };
+		D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,7 +167,6 @@
 		C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewController.swift; sourceTree = "<group>"; };
 		C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryView.swift; sourceTree = "<group>"; };
-		C0DF03562A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewController.swift; sourceTree = "<group>"; };
 		C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryView.swift; sourceTree = "<group>"; };
 		C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekTableViewCell.swift; sourceTree = "<group>"; };
@@ -193,6 +193,8 @@
 		C0DF03952A5B8FB10037F740 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		C0DF03972A5B90790037F740 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C0DF03992A5B908E0037F740 /* CGColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
+		D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -530,6 +532,7 @@
 		B59892102A56B47C00CE1FEB /* ArticleCategory */ = {
 			isa = PBXGroup;
 			children = (
+				D3BA0B722A5CFA6400B6361F /* Model */,
 				B598922C2A56B6CA00CE1FEB /* Cells */,
 				B59892252A56B6A000CE1FEB /* ViewControllers */,
 				B59892242A56B69D00CE1FEB /* Views */,
@@ -628,7 +631,7 @@
 		B598922C2A56B6CA00CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C0DF03562A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift */,
+				D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -799,6 +802,14 @@
 				C0DF03842A5AF7B70037F740 /* ChallengeViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D3BA0B722A5CFA6400B6361F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1006,16 +1017,17 @@
 				C0DF03552A5A9BD60037F740 /* ArticleListByCategoryView.swift in Sources */,
 				C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */,
 				C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */,
+				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
 				C0DF036D2A5A9C9A0037F740 /* BookMarkViewController.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
+				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
-				C0DF03572A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
