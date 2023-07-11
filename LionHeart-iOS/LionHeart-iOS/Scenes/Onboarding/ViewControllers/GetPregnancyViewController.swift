@@ -12,10 +12,20 @@ import SnapKit
 
 final class GetPregnancyViewController: UIViewController {
     
-    private let aa: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "sagasgasgasg"
+        label.text = "현재 임신 주수를\n알려주세요"
+        label.font = .pretendard(.head2)
         label.textColor = .designSystem(.white)
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "시기별 맞춤 아티클을 전해드려요."
+        label.font = .pretendard(.body3R)
+        label.textColor = .designSystem(.gray400)
         return label
     }()
     
@@ -41,18 +51,23 @@ final class GetPregnancyViewController: UIViewController {
 
 private extension GetPregnancyViewController {
     func setUI() {
-        view.backgroundColor = .gray
+        view.backgroundColor = .designSystem(.background)
     }
     
     func setHierarchy() {
-        view.addSubview(aa)
-        aa.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        view.addSubviews(titleLabel, descriptionLabel)
     }
     
     func setLayout() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(36)
+            make.leading.equalToSuperview().inset(20)
+        }
         
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.leading.equalTo(titleLabel.snp.leading)
+        }
     }
     
     func setAddTarget() {

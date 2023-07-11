@@ -100,6 +100,7 @@
 		C0DF03A12A5CAC220037F740 /* GetFatalNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A02A5CAC220037F740 /* GetFatalNicknameViewController.swift */; };
 		C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */; };
 		C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */; };
+		C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +202,7 @@
 		C0DF03A02A5CAC220037F740 /* GetFatalNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFatalNicknameViewController.swift; sourceTree = "<group>"; };
 		C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageType.swift; sourceTree = "<group>"; };
 		C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingViewController.swift; sourceTree = "<group>"; };
+		C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnboardingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,6 +442,7 @@
 		B59892052A56B34200CE1FEB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C0DF03A72A5CF0280037F740 /* OnboardingModel */,
 				C0DF03A22A5CACC60037F740 /* OnboardingPageType */,
 				B59892352A56B70D00CE1FEB /* Cells */,
 				B59892342A56B70B00CE1FEB /* Views */,
@@ -821,6 +824,14 @@
 			path = OnboardingPageType;
 			sourceTree = "<group>";
 		};
+		C0DF03A72A5CF0280037F740 /* OnboardingModel */ = {
+			isa = PBXGroup;
+			children = (
+				C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */,
+			);
+			path = OnboardingModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -985,6 +996,7 @@
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
+				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,

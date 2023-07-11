@@ -12,6 +12,30 @@ import SnapKit
 
 final class GetFatalNicknameViewController: UIViewController {
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "태명을 정하셨나요?"
+        label.font = .pretendard(.head2)
+        label.textColor = .designSystem(.white)
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "아직이라면, 닉네임을 적어주세요."
+        label.font = .pretendard(.body3R)
+        label.textColor = .designSystem(.gray400)
+        return label
+    }()
+    
+    private let featalNickNameTextfield: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "태명"
+        
+        return textField
+    }()
+    
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +58,23 @@ final class GetFatalNicknameViewController: UIViewController {
 
 private extension GetFatalNicknameViewController {
     func setUI() {
-        view.backgroundColor = .designSystem(.gray500)
+        view.backgroundColor = .designSystem(.background)
     }
     
     func setHierarchy() {
-        
+        view.addSubviews(titleLabel, descriptionLabel)
     }
     
     func setLayout() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(36)
+            make.leading.equalToSuperview().inset(20)
+        }
         
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.leading.equalTo(titleLabel.snp.leading)
+        }
     }
     
     func setAddTarget() {

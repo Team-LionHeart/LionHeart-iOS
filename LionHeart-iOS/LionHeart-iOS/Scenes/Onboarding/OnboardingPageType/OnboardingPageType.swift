@@ -32,9 +32,9 @@ extension OnboardingPageType {
     var progressValue: Float {
         switch self {
         case .getPregnancy:
-            return 0.5
-        case .getFatalNickname:
             return 1.0
+        case .getFatalNickname:
+            return 0.5
         }
     }
     

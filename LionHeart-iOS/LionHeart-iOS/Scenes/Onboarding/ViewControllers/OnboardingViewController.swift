@@ -12,9 +12,13 @@ import SnapKit
 
 final class OnboardingViewController: UIViewController {
     
+    private var onboardingUser = UserOnboardingModel(pregnacny: 25, fatalNickname: "사랑이")
+    
     private var onboardingCompletePercentage: Float = 0 {
         didSet {
-            self.onboardingProgressView.setProgress(onboardingCompletePercentage, animated: true)
+            UIView.animate(withDuration: 0.2) {
+                self.onboardingProgressView.setProgress(self.onboardingCompletePercentage, animated: true)
+            }
         }
     }
     
@@ -28,11 +32,7 @@ final class OnboardingViewController: UIViewController {
         return progress
     }()
     
-    private var currentPage: OnboardingPageType = .getPregnancy {
-        didSet {
-            print(currentPage)
-        }
-    }
+    private var currentPage: OnboardingPageType = .getPregnancy
     
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
         didSet {
@@ -41,7 +41,8 @@ final class OnboardingViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             case .toGetPregnacny, .toFatalNickname:
                 onboardingPageViewController.setViewControllers([pageViewControllerDataSource[onboardingFlow.rawValue]], direction: oldValue.rawValue > onboardingFlow.rawValue ? .reverse : .forward, animated: true) { _ in
-                    self.setCurrentPage(index: self.onboardingFlow.rawValue)
+                    guard let currentPageType = OnboardingPageType(rawValue: self.onboardingFlow.rawValue) else { return }
+                    self.currentPage = currentPageType
                 }
             case .toCompleteOnboarding:
                 let completeViewController = CompleteOnbardingViewController()
@@ -51,8 +52,9 @@ final class OnboardingViewController: UIViewController {
     }
     
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
-        .rightFirstBarItemAction {
-            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+        .backButtonAction {
+            self.onboardingFlow = self.currentPage.back
+            self.onboardingCompletePercentage = self.currentPage.progressValue
         }
     
     private let testButton: UIButton = {
@@ -95,11 +97,6 @@ final class OnboardingViewController: UIViewController {
         // MARK: - ProgressView 설정
         setProgressView()
     }
-    
-    func setCurrentPage(index: Int) {
-        self.currentPage = OnboardingPageType(rawValue: index) ?? .getPregnancy
-        self.onboardingProgressView.setProgress(currentPage.progressValue, animated: true)
-    }
 }
 
 private extension OnboardingViewController {
@@ -127,7 +124,9 @@ private extension OnboardingViewController {
     
     func setLayout() {
         onboardingPageViewController.view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(self.onboardingNavigationbar.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(testButton.snp.top)
         }
         testButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
@@ -144,13 +143,13 @@ private extension OnboardingViewController {
     func setAddTarget() {
         testButton.addButtonAction { _ in
             self.onboardingFlow = self.currentPage.forward
-            self.onboardingCompletePercentage = 1
+            self.onboardingCompletePercentage = self.currentPage.progressValue
         }
     }
     
     func setDelegate() {}
     
     func setProgressView() {
-        self.onboardingProgressView.setProgress(currentPage.progressValue, animated: false)
+        self.onboardingProgressView.setProgress(0.5, animated: false)
     }
 }
