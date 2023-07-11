@@ -79,7 +79,6 @@
 		C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */; };
 		C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035E2A5A9C330037F740 /* ArticleListByWeekViewController.swift */; };
 		C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03602A5A9C400037F740 /* ArticleListByWeekView.swift */; };
-		C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */; };
 		C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */; };
 		C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */; };
 		C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03682A5A9C8D0037F740 /* BookMarkTableViewCell.swift */; };
@@ -180,7 +179,6 @@
 		C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF035E2A5A9C330037F740 /* ArticleListByWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekViewController.swift; sourceTree = "<group>"; };
 		C0DF03602A5A9C400037F740 /* ArticleListByWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekView.swift; sourceTree = "<group>"; };
-		C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		C0DF03682A5A9C8D0037F740 /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
@@ -634,7 +632,7 @@
 		B598922B2A56B6C100CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */,
+				B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1035,7 +1033,6 @@
 				C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
-				C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
