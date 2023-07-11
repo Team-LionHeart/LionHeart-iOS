@@ -97,6 +97,7 @@
 		C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03972A5B90790037F740 /* UIColor+.swift */; };
 		C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03992A5B908E0037F740 /* CGColor+.swift */; };
 		F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */; };
+		F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */; };
 		F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,7 @@
 		C0DF03972A5B90790037F740 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C0DF03992A5B908E0037F740 /* CGColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
 		F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewHeaderView.swift; sourceTree = "<group>"; };
+		F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumUserInfoView.swift; sourceTree = "<group>"; };
 		F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDummyData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -733,6 +735,7 @@
 			children = (
 				C0DF03462A5A9AA40037F740 /* CurriculumView.swift */,
 				F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */,
+				F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1016,6 +1019,7 @@
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
 				C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */,
+				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,

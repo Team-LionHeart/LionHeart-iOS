@@ -19,7 +19,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
 //    var floatingButtonTapped: Bool = false
 
     private enum Size {
-        static let widthRatio: CGFloat = 120 / 335
+        static let contentImageView: CGFloat = 120 / 335
     }
     
     let curriculumWholeStackView: UIStackView = {
@@ -163,7 +163,7 @@ private extension CurriculumTableViewCell {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalToSuperview()
             $0.width.equalTo(Constant.Screen.width - 40)
-            $0.height.equalTo(contentImageView.snp.width).multipliedBy(Size.widthRatio)
+            $0.height.equalTo(contentImageView.snp.width).multipliedBy(Size.contentImageView)
         }
         
         contentTextLabel.snp.makeConstraints{

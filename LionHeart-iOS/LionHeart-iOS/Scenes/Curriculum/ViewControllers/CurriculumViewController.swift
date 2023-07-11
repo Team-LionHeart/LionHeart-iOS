@@ -12,16 +12,28 @@ import SnapKit
 
 final class CurriculumViewController: UIViewController{
     
+    let curriculumUserInfoView = CurriculumUserInfoView()
+    
+    private enum Size {
+        static let userInfoView: CGFloat = 158 / 375
+    }
+    
+    private let gradientImage: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "gradient1"))
+        return image
+    }()
+    
     private let curriculumTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.backgroundColor = .clear
         tableView.sectionFooterHeight = 40
+        tableView.separatorStyle = .none
         return tableView
     }()
     
-   
+    
     private let curriculumViewDatas = CurriculumMonthData.dummy()
     
     public override func viewDidLoad() {
@@ -52,14 +64,29 @@ private extension CurriculumViewController {
     }
     
     func setHierarchy() {
-        view.addSubviews(curriculumTableView)
-        
+        view.addSubviews(curriculumUserInfoView, curriculumTableView, gradientImage)
     }
     
     func setLayout() {
-        curriculumTableView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+        curriculumUserInfoView.snp.makeConstraints{
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.width.equalTo(Constant.Screen.width)
+            $0.height.equalTo(curriculumUserInfoView.snp.width).multipliedBy(Size.userInfoView)
+            
         }
+        
+        curriculumTableView.snp.makeConstraints{
+            $0.top.equalTo(curriculumUserInfoView.snp.bottom)
+            $0.trailing.bottom.leading.equalToSuperview()
+        }
+        
+        gradientImage.snp.makeConstraints{
+            $0.top.equalTo(curriculumUserInfoView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        
     }
     
     func setAddTarget() {
@@ -87,7 +114,7 @@ extension CurriculumViewController: UITableViewDataSource{
         let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
         cell.inputData = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
         cell.selectionStyle = .none
-
+        
         return cell
     }
     
@@ -104,7 +131,7 @@ extension CurriculumViewController: UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
-         
+        
     }
     
     

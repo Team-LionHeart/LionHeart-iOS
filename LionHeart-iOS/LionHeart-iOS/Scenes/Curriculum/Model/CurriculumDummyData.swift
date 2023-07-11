@@ -7,6 +7,17 @@
 
 import UIKit
 
+struct UserInfoData: AppData{
+    let userName: String
+    let userWeekInfo: Int
+    let userDayInfo: Int
+}
+
+extension UserInfoData {
+    static func dummy() -> UserInfoData {
+        return UserInfoData(userName: "곽성준", userWeekInfo: 15, userDayInfo: 3)
+    }
+}
 
 struct CurriculumMonthData: AppData{
     let month: String
