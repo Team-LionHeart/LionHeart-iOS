@@ -13,13 +13,12 @@ import Kingfisher
 final class LHKingFisherService {
 
     static func fetchImage(with urlString: String) async throws -> UIImage? {
-        typealias imageContinuation = CheckedContinuation<UIImage?, Error>
+        typealias ImageContinuation = CheckedContinuation<UIImage?, Error>
 
-        return try await withCheckedThrowingContinuation { imageContinuation in
+        return try await withCheckedThrowingContinuation { ImageContinuation in
 
             guard let url = URL(string: urlString) else {
-                return imageContinuation.resume(throwing: NetworkError.urlEncodingError)
-
+                return ImageContinuation.resume(throwing: NetworkError.urlEncodingError)
             }
             
             let resource = KF.ImageResource(downloadURL: url, cacheKey: urlString)
