@@ -41,7 +41,7 @@ enum BlockType: String {
 
 struct ArticleBlockData: AppData {
     let content: String
-    let caption: String? // 표제
+    let caption: String?
 }
 
 enum BlockTypeAppData {
@@ -60,6 +60,7 @@ enum BlockTypeAppData {
 
 extension ArticleDetail {
 
+    /// DTO에서 내가 정의한 데이터로 변환하기 위한 메서드
     func toAppData() -> [BlockTypeAppData?] {
         let thumbNailModel = ArticleBlockData(content: self.mainImageUrl, caption: self.mainImageCaption)
         let thumbNail = BlockTypeAppData.thumbnail(model: thumbNailModel)
@@ -71,6 +72,16 @@ extension ArticleDetail {
             thumbNail, title
         ]
 
+        let typeDatas = makeArticleDetailType(contents: self.contents)
+
+        blockTypeDatas.append(contentsOf: typeDatas)
+        /// ending
+        blockTypeDatas.append(.endNote)
+        return blockTypeDatas
+    }
+
+    private func makeArticleDetailType(contents: [ArticleBlock]) -> [BlockTypeAppData?] {
+        var blockTypes: [BlockTypeAppData?] = []
         self.contents.forEach { articleBlock in
             guard let block = BlockType(rawValue: articleBlock.type) else { return }
 
@@ -95,16 +106,14 @@ extension ArticleDetail {
                 type = .image(model: imageModel)
             }
 
-            blockTypeDatas.append(type)
+            blockTypes.append(type)
         }
-
-        /// ending
-        blockTypeDatas.append(.endNote)
-        return blockTypeDatas
+        return blockTypes
     }
 
 }
 
+// MARK: - Dummy
 
 extension ArticleDetail {
     static func dummy() -> ArticleDetail {
