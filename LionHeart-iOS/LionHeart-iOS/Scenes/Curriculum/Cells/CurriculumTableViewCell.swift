@@ -10,7 +10,15 @@ import UIKit
 
 import SnapKit
 
+protocol CurriculumTableViewToggleButtonTappedProtocol: AnyObject {
+    func toggleButtonTapped(indexPath: IndexPath?)
+}
+
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
+    
+    weak var delegate: CurriculumTableViewToggleButtonTappedProtocol?
+    
+    var cellIndexPath: IndexPath?
     
     private enum Size {
         static let contentImageView: CGFloat = 120 / 335
@@ -31,11 +39,11 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         return stackView
     }()
     
-    private let curriculumContentStackView: UIStackView = {
+    let curriculumContentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
-        //        stackView.isHidden = true
+//        stackView.isHidden = true
         return stackView
     }()
     
@@ -75,16 +83,20 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     lazy var curriculumToggleDirectionButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "Vector1"), for: .normal)
+        button.addButtonAction { _ in
+            self.delegate?.toggleButtonTapped(indexPath: self.cellIndexPath)
+        }
         return button
     }()
     
     var inputData: CurriculumDummyData? {
         didSet {
-            self.weekLabel.text = inputData?.curriculumWeek
-            self.weekTitleLabel.text = inputData?.curriculumWeekTitle
-            self.contentImageView.image = inputData?.curriculumImage
-            self.contentTextLabel.text = inputData?.curriculumText
-            
+            guard let inputData else { return }
+            self.weekLabel.text = inputData.curriculumWeek
+            self.weekTitleLabel.text = inputData.curriculumWeekTitle
+            self.contentImageView.image = inputData.curriculumImage
+            self.contentTextLabel.text = inputData.curriculumText
+            self.curriculumContentStackView.isHidden = !inputData.isHidden
         }
     }
     
@@ -106,6 +118,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 private extension CurriculumTableViewCell {
@@ -132,36 +145,14 @@ private extension CurriculumTableViewCell {
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
-        curriculumWeekLabelStackView.snp.makeConstraints{
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-        }
-        
         divider.snp.makeConstraints{
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(1)
             $0.bottom.equalToSuperview()
         }
         
-        curriculumContentStackView.snp.makeConstraints{
-            $0.top.equalTo(curriculumWeekLabelStackView.snp.bottom).inset(-15)
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
-        
         contentImageView.snp.makeConstraints{
-            $0.leading.trailing.equalToSuperview()
-            $0.top.equalToSuperview()
-            $0.width.equalTo(Constant.Screen.width - 40)
             $0.height.equalTo(contentImageView.snp.width).multipliedBy(Size.contentImageView)
         }
-        
-        contentTextLabel.snp.makeConstraints{
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(36)
-        }
     }
-    
-    
-    
-    
 }

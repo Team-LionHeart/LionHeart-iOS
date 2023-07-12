@@ -77,6 +77,11 @@ final class CurriculumUserInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+
+    }
+    
+    override func layoutSubviews() {
         // MARK: - 컴포넌트 설정
         setUI()
         
@@ -85,7 +90,6 @@ final class CurriculumUserInfoView: UIView {
         
         // MARK: - autolayout설정
         setLayout()
-
     }
     
     @available(*, unavailable)

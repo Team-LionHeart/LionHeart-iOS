@@ -10,9 +10,9 @@ import UIKit
 
 import SnapKit
 
-final class CurriculumViewController: UIViewController{
+final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
-    var userInfoData = UserInfoData.dummy()    
+    var userInfoData = UserInfoData.dummy()
         
     lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()
@@ -33,7 +33,7 @@ final class CurriculumViewController: UIViewController{
     private let curriculumTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
+//        tableView.estimatedRowHeight = 200
         tableView.backgroundColor = .clear
         tableView.sectionFooterHeight = 40
         tableView.separatorStyle = .none
@@ -41,7 +41,7 @@ final class CurriculumViewController: UIViewController{
     }()
     
     
-    private let curriculumViewDatas = CurriculumMonthData.dummy()
+    private var curriculumViewDatas = CurriculumMonthData.dummy()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +121,8 @@ extension CurriculumViewController: UITableViewDataSource{
         let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
         cell.inputData = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
         cell.selectionStyle = .none
-        
+        cell.delegate = self
+        cell.cellIndexPath = indexPath
         return cell
     }
     
@@ -139,6 +140,24 @@ extension CurriculumViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
         
+    }
+    
+    func toggleButtonTapped(indexPath: IndexPath?) {
+        guard let indexPath = indexPath else { return }
+        
+        let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
+        
+        curriculumViewDatas[indexPath.section].weekDatas[indexPath.row] = .init(
+            curriculumWeek: previousWeekDatas.curriculumWeek,
+            curriculumWeekTitle: previousWeekDatas.curriculumWeekTitle,
+            curriculumImage: previousWeekDatas.curriculumImage,
+            curriculumText: previousWeekDatas.curriculumText,
+            isHidden: !previousWeekDatas.isHidden
+        )
+    
+        curriculumTableView.reloadRows(at: [indexPath], with: .automatic)
+        
+
     }
 }
 
