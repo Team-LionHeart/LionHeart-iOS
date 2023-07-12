@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
-
+    
     private enum Size {
         static let contentImageView: CGFloat = 120 / 335
     }
@@ -20,7 +20,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 15
-       return stackView
+        return stackView
     }()
     
     private let curriculumWeekLabelStackView: UIStackView = {
@@ -28,14 +28,14 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.spacing = 8
-       return stackView
+        return stackView
     }()
     
     private let curriculumContentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
-//        stackView.isHidden = true
+        //        stackView.isHidden = true
         return stackView
     }()
     
@@ -63,19 +63,19 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         label.font = .pretendard(.body3R)
         label.textColor = .designSystem(.gray500)
         label.numberOfLines = 0
-       return label
+        return label
     }()
     
     private let divider: UIView = {
         let line = UIView()
         line.backgroundColor = .designSystem(.gray800)
-       return line
+        return line
     }()
     
     lazy var curriculumToggleDirectionButton: UIButton = {
-        lazy var button = UIButton()
+        var button = UIButton()
         button.setImage(UIImage(named: "Vector1"), for: .normal)
-       return button
+        return button
     }()
     
     var inputData: CurriculumDummyData? {
@@ -88,7 +88,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         }
     }
     
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // MARK: - 컴포넌트 설정
@@ -99,7 +99,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         
         // MARK: - autolayout설정
         setLayout()
-
+        
     }
     
     @available(*, unavailable)
