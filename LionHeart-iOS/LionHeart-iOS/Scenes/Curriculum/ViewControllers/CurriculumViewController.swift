@@ -13,7 +13,8 @@ import SnapKit
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
     var userInfoData = UserInfoData.dummy()
-        
+    
+    
     lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()
         view.backgroundColor = .designSystem(.background)
@@ -62,6 +63,13 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         
         // MARK: - tableView Register설정
         setTableView()
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        let desiredSection = 1
+        let desiredRow = 0
+        let indexPath = IndexPath(row: desiredRow, section: desiredSection)
+        self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
     }
 }
 
@@ -92,8 +100,6 @@ private extension CurriculumViewController {
             $0.top.equalTo(curriculumUserInfoView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
         }
-        
-        
     }
     
     func setAddTarget() {
