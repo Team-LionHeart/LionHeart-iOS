@@ -11,12 +11,6 @@ import UIKit
 import SnapKit
 
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
-    
-//    //버튼 돌아가있는지 확인하는 버튼
-//    var isButtonRotated: Bool = false
-//
-//    //플로팅버튼을 토글 버튼처럼 활용하기 위한 bool 변수
-//    var floatingButtonTapped: Bool = false
 
     private enum Size {
         static let contentImageView: CGFloat = 120 / 335
@@ -105,12 +99,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         
         // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
+
     }
     
     @available(*, unavailable)
@@ -134,7 +123,7 @@ private extension CurriculumTableViewCell {
     func setLayout() {
         
         curriculumToggleDirectionButton.snp.makeConstraints{
-            $0.top.equalTo(curriculumWholeStackView.snp.top).inset(0.6)
+            $0.top.equalTo(curriculumWholeStackView.snp.top).inset(0.5)
             $0.trailing.equalToSuperview().inset(20)
         }
         
@@ -172,20 +161,7 @@ private extension CurriculumTableViewCell {
         }
     }
     
-    func setAddTarget() {
-        
-    }
     
-    func setDelegate() {
-        
-    }
     
-    //버튼 돌아가는 애니메이션
-//    func rotateFloatingButton() {
-//        let rotationAngle: CGFloat = isButtonRotated ? 0.0 : .pi / 2.0
-//        UIView.animate(withDuration: 0.4) {
-//            self.curriculumToggleDirectionButton.transform = CGAffineTransform(rotationAngle: rotationAngle)
-//        }
-//        isButtonRotated.toggle()
-//    }
+    
 }

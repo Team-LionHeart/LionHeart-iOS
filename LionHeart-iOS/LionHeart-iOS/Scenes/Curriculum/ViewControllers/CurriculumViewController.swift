@@ -12,10 +12,12 @@ import SnapKit
 
 final class CurriculumViewController: UIViewController{
     
-    
-    let curriculumUserInfoView: CurriculumUserInfoView = {
+    var userInfoData = UserInfoData.dummy()    
+        
+    lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()
         view.backgroundColor = .designSystem(.background)
+        view.userInfo = userInfoData
         return view
     }()
     
@@ -105,7 +107,7 @@ private extension CurriculumViewController {
     
     func setTableView(){
         CurriculumTableViewCell.register(to: curriculumTableView)
-        curriculumTableView.register(CurriculumTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: CurriculumTableViewHeaderView.identifier)
+        curriculumTableView.register(CurriculumTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: CurriculumTableViewHeaderView.className)
         
     }
 }
@@ -128,7 +130,7 @@ extension CurriculumViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = CurriculumTableViewHeaderView(reuseIdentifier: CurriculumTableViewHeaderView.identifier)
+        let headerView = CurriculumTableViewHeaderView(reuseIdentifier: CurriculumTableViewHeaderView.className)
         
         let month = curriculumViewDatas[section].month
         headerView.configureHeaderView(month: month)

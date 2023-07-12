@@ -12,8 +12,6 @@ import SnapKit
 
 final class CurriculumTableViewHeaderView: UITableViewHeaderFooterView {
     
-    static var identifier = "CurriculumTableViewHeaderViewView"
-    
     var headerNameLabel: UILabel = {
         let header = UILabel()
         header.font = .pretendard(.head2)
@@ -23,6 +21,7 @@ final class CurriculumTableViewHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        
         // MARK: - 컴포넌트 설정
         setUI()
         

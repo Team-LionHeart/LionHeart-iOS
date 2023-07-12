@@ -11,8 +11,12 @@ import UIKit
 import SnapKit
 
 final class CurriculumUserInfoView: UIView {
-    
-    private let userInfoData = UserInfoData.dummy()
+        
+    var userInfo: UserInfoData? {
+        didSet {
+            configureUserInfo(data: userInfo)
+        }
+    }
     
     private let nowLable: UILabel = {
         let label = UILabel()
@@ -81,14 +85,7 @@ final class CurriculumUserInfoView: UIView {
         
         // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
-        
-        configureUserInfo(fetusName: userInfoData.fetusName, userWeek: userInfoData.userWeekInfo, userDay: userInfoData.userDayInfo)
+
     }
     
     @available(*, unavailable)
@@ -130,7 +127,7 @@ private extension CurriculumUserInfoView {
         
         weekLabel.snp.makeConstraints{
             $0.leading.equalTo(weekImageView.snp.trailing).offset(6)
-            $0.top.equalTo(fetusNameLabel.snp.bottom).offset(8)
+            $0.centerY.equalTo(userWeekLabel)
         }
         
         dayImageView.snp.makeConstraints{
@@ -145,26 +142,16 @@ private extension CurriculumUserInfoView {
         
         dayLabel.snp.makeConstraints{
             $0.leading.equalTo(dayImageView.snp.trailing).offset(6)
-            $0.top.equalTo(fetusNameLabel.snp.bottom).offset(8)
+            $0.centerY.equalTo(userWeekLabel)
         }
         
-        
-        
-        
     }
     
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-    
-    func configureUserInfo(fetusName: String, userWeek: Int, userDay: Int){
-        self.fetusNameLabel.text = "\(fetusName) 아빠님은"
-        self.userWeekLabel.text = "\(userWeek)"
-        self.userDayLabel.text = "\(userDay)"
+    func configureUserInfo(data: UserInfoData?) {
+        guard let data = data else {return}
+        self.fetusNameLabel.text = "\(data.fetusName) 아빠님은"
+        self.userWeekLabel.text = "\(data.userWeekInfo)"
+        self.userDayLabel.text = "\(data.userDayInfo)"
         
     }
 }
