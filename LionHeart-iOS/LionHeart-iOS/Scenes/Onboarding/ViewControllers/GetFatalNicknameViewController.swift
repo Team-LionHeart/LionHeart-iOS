@@ -106,7 +106,7 @@ private extension GetFatalNicknameViewController {
     
     func setLayout() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(36)
+            make.top.equalToSuperview().inset(40)
             make.leading.equalToSuperview().inset(20)
         }
         
@@ -124,7 +124,7 @@ private extension GetFatalNicknameViewController {
         textFieldUnderLine.snp.makeConstraints { make in
             make.top.equalTo(fatalNickNameTextfield.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(2)
+            make.height.equalTo(1.5)
         }
         
         fatalNickNameErrorLabel.snp.makeConstraints { make in

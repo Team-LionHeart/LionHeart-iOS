@@ -85,8 +85,6 @@
 		C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03702A5A9CAF0037F740 /* TodayView.swift */; };
 		C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03722A5A9CB50037F740 /* TodayViewController.swift */; };
 		C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03742A5A9CD00037F740 /* TabBarViewController.swift */; };
-		C0DF03772A5A9CE70037F740 /* OnboardingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03762A5A9CE70037F740 /* OnboardingTableViewCell.swift */; };
-		C0DF03792A5A9CEE0037F740 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03782A5A9CEE0037F740 /* OnboardingView.swift */; };
 		C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */; };
 		C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */; };
 		C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037E2A5A9D090037F740 /* SplashViewController.swift */; };
@@ -105,6 +103,9 @@
 		C0F029C02A5E84EE00E0D185 /* NewOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029BF2A5E84EE00E0D185 /* NewOnboardingViewController.swift */; };
 		C0F029C22A5E8C0800E0D185 /* PregnancyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C12A5E8C0800E0D185 /* PregnancyCollectionViewCell.swift */; };
 		C0F029C42A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C32A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift */; };
+		C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */; };
+		C0F029C92A5EFC1F00E0D185 /* LHOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */; };
+		C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,8 +192,6 @@
 		C0DF03702A5A9CAF0037F740 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		C0DF03722A5A9CB50037F740 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		C0DF03742A5A9CD00037F740 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		C0DF03762A5A9CE70037F740 /* OnboardingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTableViewCell.swift; sourceTree = "<group>"; };
-		C0DF03782A5A9CEE0037F740 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0DF037E2A5A9D090037F740 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +210,9 @@
 		C0F029BF2A5E84EE00E0D185 /* NewOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOnboardingViewController.swift; sourceTree = "<group>"; };
 		C0F029C12A5E8C0800E0D185 /* PregnancyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PregnancyCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0F029C32A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetusNameCollectionViewCell.swift; sourceTree = "<group>"; };
+		C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHProgressView.swift; sourceTree = "<group>"; };
+		C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingController.swift; sourceTree = "<group>"; };
+		C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,9 +453,9 @@
 		B59892052A56B34200CE1FEB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C0F029C52A5EFB5B00E0D185 /* OnboardingComponent */,
 				C0DF03A72A5CF0280037F740 /* OnboardingModel */,
 				C0DF03A22A5CACC60037F740 /* OnboardingPageType */,
-				B59892352A56B70D00CE1FEB /* Cells */,
 				B59892342A56B70B00CE1FEB /* Views */,
 				B59892332A56B70200CE1FEB /* ViewControllers */,
 			);
@@ -716,18 +718,9 @@
 		B59892342A56B70B00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C0DF03782A5A9CEE0037F740 /* OnboardingView.swift */,
 				C0DF03AA2A5D73C80037F740 /* OnboardingTextfield.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		B59892352A56B70D00CE1FEB /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				C0DF03762A5A9CE70037F740 /* OnboardingTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		B598925D2A56B87D00CE1FEB /* Application */ = {
@@ -858,6 +851,16 @@
 				C0F029BF2A5E84EE00E0D185 /* NewOnboardingViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C0F029C52A5EFB5B00E0D185 /* OnboardingComponent */ = {
+			isa = PBXGroup;
+			children = (
+				C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */,
+				C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */,
+				C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */,
+			);
+			path = OnboardingComponent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1026,6 +1029,7 @@
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
+				C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
@@ -1058,10 +1062,8 @@
 				C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */,
 				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,
 				C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */,
-				C0DF03772A5A9CE70037F740 /* OnboardingTableViewCell.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
 				C0F029C42A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift in Sources */,
-				C0DF03792A5A9CEE0037F740 /* OnboardingView.swift in Sources */,
 				C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
@@ -1074,6 +1076,7 @@
 				C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
 				C0DF036D2A5A9C9A0037F740 /* BookMarkViewController.swift in Sources */,
+				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
@@ -1088,6 +1091,7 @@
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				C0DF03AB2A5D73C80037F740 /* OnboardingTextfield.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
+				C0F029C92A5EFC1F00E0D185 /* LHOnboardingController.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,

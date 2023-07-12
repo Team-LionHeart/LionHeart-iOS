@@ -125,7 +125,7 @@ private extension GetPregnancyViewController {
     
     func setLayout() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(36)
+            make.top.equalToSuperview().inset(40)
             make.leading.equalToSuperview().inset(20)
         }
         
