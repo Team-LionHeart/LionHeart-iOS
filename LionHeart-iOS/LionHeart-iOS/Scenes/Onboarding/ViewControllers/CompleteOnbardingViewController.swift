@@ -67,13 +67,6 @@ final class CompleteOnbardingViewController: UIViewController {
         
         // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
-
     }
 }
 
@@ -108,13 +101,5 @@ private extension CompleteOnbardingViewController {
             make.bottom.equalToSuperview().inset(60)
             make.height.equalTo(50)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
     }
 }

@@ -12,16 +12,17 @@ import SnapKit
 
 final class OnboardingViewController: UIViewController {
     
-    typealias OnboardingView = UIViewController
+    typealias OnboardingViews = [UIViewController]
     
     private let nextButton = LHOnboardingButton()
-    private var onboardingProgressView = LHProgressView()
+    private let onboardingProgressView = LHProgressView()
     private let onboardingViewController = LHOnboardingController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    private var pageDataSource: [OnboardingView] = []
-    private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
+    private var pageDataSource: OnboardingViews = []
     private var fatalNickName: String?
     private var pregnancy: Int?
     private var currentPage: OnboardingPageType = .getPregnancy
+    private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
+    
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
         didSet {
             switch onboardingFlow {
@@ -141,12 +142,7 @@ extension OnboardingViewController: FatalNicknameCheckDelegate {
     }
     
     func checkFatalNickname(resultType: OnboardingFatalNicknameTextFieldResultType) {
-        switch resultType {
-        case .fatalNicknameTextFieldEmpty, .fatalNicknameTextFieldOver:
-            nextButton.isHidden = true
-        case .fatalNicknameTextFieldValid:
-            nextButton.isHidden = false
-        }
+        nextButton.isHidden = resultType.isHidden
     }
 }
 
@@ -156,12 +152,7 @@ extension OnboardingViewController: PregnancyCheckDelegate {
     }
     
     func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType) {
-        switch resultType {
-        case .pregnancyTextFieldEmpty, .pregnancyTextFieldOver:
-            nextButton.isHidden = true
-        case .pregnancyTextFieldValid:
-            nextButton.isHidden = false
-        }
+        nextButton.isHidden = resultType.isHidden
     }
 }
 

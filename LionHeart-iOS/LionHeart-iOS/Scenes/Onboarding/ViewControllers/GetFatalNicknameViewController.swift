@@ -15,7 +15,6 @@ enum OnboardingFatalNicknameTextFieldResultType {
     case fatalNicknameTextFieldOver
     case fatalNicknameTextFieldValid
 
-    
     var errorMessage: String {
         switch self {
         case .fatalNicknameTextFieldEmpty:
@@ -24,6 +23,15 @@ enum OnboardingFatalNicknameTextFieldResultType {
             return "10자 이내로 입력해주세요."
         case .fatalNicknameTextFieldValid:
             return "정상입니다"
+        }
+    }
+    
+    var isHidden: Bool {
+        switch self {
+        case .fatalNicknameTextFieldEmpty, .fatalNicknameTextFieldOver:
+            return true
+        case .fatalNicknameTextFieldValid:
+            return false
         }
     }
 }
@@ -67,29 +75,22 @@ final class GetFatalNicknameViewController: UIViewController {
         return label
     }()
     
-    let fatalNickNameTextfield = OnboardingTextfield(textFieldType: .fatalNickname)
+    private let fatalNickNameTextfield = OnboardingTextfield(textFieldType: .fatalNickname)
     
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
+
         setUI()
         
-        // MARK: - addsubView
         setHierarchy()
         
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
         
         setTextField()
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         fatalNickNameTextfield.becomeFirstResponder()
     }
@@ -133,13 +134,6 @@ private extension GetFatalNicknameViewController {
         }
     }
     
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-    }
-    
     func setTextField() {
         fatalNickNameTextfield.delegate = self
         if let clearButton = fatalNickNameTextfield.value(forKeyPath: "_clearButton") as? UIButton {
@@ -164,7 +158,6 @@ extension GetFatalNicknameViewController: UITextFieldDelegate {
             fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldOver.errorMessage
             fatalNickNameErrorLabel.isHidden = false
         }
-        
         delegate?.sendFatalNickname(nickName: text)
     }
 }

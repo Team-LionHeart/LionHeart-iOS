@@ -25,6 +25,15 @@ enum OnboardingPregnancyTextFieldResultType {
             return "1에서 40 사이의 숫자를 입력해주세요."
         }
     }
+    
+    var isHidden: Bool {
+        switch self {
+        case .pregnancyTextFieldEmpty, .pregnancyTextFieldOver:
+            return true
+        case .pregnancyTextFieldValid:
+            return false
+        }
+    }
 }
 
 protocol PregnancyCheckDelegate: AnyObject {
@@ -53,7 +62,7 @@ final class GetPregnancyViewController: UIViewController {
         return label
     }()
     
-    let pregnancyTextfield = OnboardingTextfield(textFieldType: .pregancy)
+    private let pregnancyTextfield = OnboardingTextfield(textFieldType: .pregancy)
     
     private let boundaryBox: UIView = {
         let view = UIView()
@@ -89,25 +98,13 @@ final class GetPregnancyViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
         setDelegate()
-        pregnancyTextfield.textAlignment = .right
-        pregnancyTextfield.keyboardType = .numberPad
-        
-
+        setTextField()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         pregnancyTextfield.becomeFirstResponder()
     }
@@ -151,13 +148,15 @@ private extension GetPregnancyViewController {
         
     }
     
-    func setAddTarget() {
-    }
-    
     func setDelegate() {
         pregnancyTextfield.delegate = self
     }
- 
+    
+    func setTextField() {
+        pregnancyTextfield.textAlignment = .right
+        pregnancyTextfield.keyboardType = .numberPad
+    }
+    
 }
 
 extension GetPregnancyViewController: UITextFieldDelegate {
@@ -178,7 +177,6 @@ extension GetPregnancyViewController: UITextFieldDelegate {
             delegate?.checkPregnancy(resultType: .pregnancyTextFieldOver)
             pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
         }
-        
         delegate?.sendPregnancyContent(pregnancy: textNumber)
     }
 }
