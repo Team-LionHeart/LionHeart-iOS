@@ -45,39 +45,14 @@ struct ArticleBlockData: AppData {
 }
 
 enum BlockTypeAppData {
-    // image: String, caption: String?)
     case thumbnail(model: ArticleBlockData)
-    // title: String, author: String
     case articleTitle(model: ArticleBlockData)
-    // title: String, body: String
     case editorNote(model: ArticleBlockData)
-    // title: String
     case chapterTitle(model: ArticleBlockData)
-    // body: String, caption: String?
     case body(model: ArticleBlockData)
-    // title: String
     case generalTitle(model: ArticleBlockData)
-    // content: String, caption: String?
     case image(model: ArticleBlockData)
-
-    var bottomInset: CGFloat {
-        switch self {
-        case .thumbnail:
-            return 22
-        case .articleTitle:
-            return 60
-        case .editorNote:
-            return 75
-        case .chapterTitle:
-            return 36
-        case .body:
-            return 68
-        case .generalTitle:
-            return 28
-        case .image:
-            return 72
-        }
-    }
+    case endNote
 }
 
 
@@ -123,6 +98,8 @@ extension ArticleDetail {
             blockTypeDatas.append(type)
         }
 
+        /// ending
+        blockTypeDatas.append(.endNote)
         return blockTypeDatas
     }
 
@@ -140,10 +117,13 @@ extension ArticleDetail {
             contents: [
                 .init(type: "EDITOR_NOTE", content: "안녕하세요, 아기사자님!\n라이온하트에서 오늘은 출산카드와 관련된 이야기를 들려드리려고 해요.", caption: "Editor's Note"),
                 .init(type: "CHAPTER_TITLE", content: "Chapter 1.\n아빠가 되는 시작,\n임신바우처 신청의 모든 것이\n궁금한 당신께", caption: nil),
-                .init(type: "BODY", content: "농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼", caption: nil),
+                .init(type: "BODY", content: "농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처\n\n럼농담처럼처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처", caption: nil),
                 .init(type: "GENERAL_TITLE", content: "출산카드? 임신바우처를 알려드려요", caption: nil),
-                .init(type: "BODY", content: "농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처", caption: "* 2023년 7월을 기준으로 총 4개 카드사에서 발급받을 수 있어요!"),
                 .init(type: "IMAGE", content: "https://fastly.picsum.photos/id/1015/1000/1000.jpg?hmac=wXOEk3ji7xYdDAiL84drLIJpFh7VuqcFYOpx9LPMos0", caption: "caption copyright"),
+                .init(type: "BODY", content: "농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처", caption: "* 2023년 7월을 기준으로 총 4개 카드사에서 발급받을 수 있어요!"),
+                .init(type: "BODY", content: "농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처\n\n럼농담처럼처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처럼농담처", caption: nil),
+                .init(type: "GENERAL_TITLE", content: "출산카드? 임신바우처를 알려드려요", caption: nil),
+                .init(type: "EDITOR_NOTE", content: "안녕하세요, 아기사자님!\n라이온하트에서 오늘은 출산카드와 관련된 이야기를 들려드리려고 해요.", caption: "Editor's Note"),
             ])
     }
 }
