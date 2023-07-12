@@ -30,7 +30,7 @@ final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionV
     
     lazy var categoryInfoLabel: UILabel = {
         let label = UILabel()
-        label.textColor =  .white
+        label.textColor =  .designSystem(.white)
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         return label
     }()
@@ -62,7 +62,7 @@ final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionV
 
 private extension ArticleCategoryCollectionViewCell {
     func setUI() {
-        layer.masksToBounds = true
+        backgroundColor = .designSystem(.background)
     }
     
     func setHierarchy() {
@@ -71,12 +71,11 @@ private extension ArticleCategoryCollectionViewCell {
     }
     
     func setLayout() {
-        categoryImageView.snp.makeConstraints {make in
+        categoryImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         categoryInfoLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(8)
-            make.leading.equalToSuperview().inset(8)
+            make.bottom.leading.equalToSuperview().inset(8)
         }
     }
     
