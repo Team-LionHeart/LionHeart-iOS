@@ -1,11 +1,12 @@
 //
-//  ArticleBlockType.swift
+//  ArticleDetail.swift
 //  LionHeart-iOS
 //
-//  Created by 김민재 on 2023/07/11.
+//  Created by 김민재 on 2023/07/12.
 //
 
 import UIKit
+
 
 // MARK: - DTO
 
@@ -26,35 +27,12 @@ struct ArticleBlock: Response, DTO {
 
 @frozen
 enum BlockType: String {
-    /// Title
     case generalTitle = "GENERAL_TITLE"
     case chapterTitle = "CHAPTER_TITLE"
-    /// Editor
     case editorNote = "EDITOR_NOTE"
-    /// Body
     case body = "BODY"
-    /// Image
     case image = "IMAGE"
 }
-
-// MARK: - AppData
-
-struct ArticleBlockData: AppData {
-    let content: String
-    let caption: String?
-}
-
-enum BlockTypeAppData {
-    case thumbnail(model: ArticleBlockData)
-    case articleTitle(model: ArticleBlockData)
-    case editorNote(model: ArticleBlockData)
-    case chapterTitle(model: ArticleBlockData)
-    case body(model: ArticleBlockData)
-    case generalTitle(model: ArticleBlockData)
-    case image(model: ArticleBlockData)
-    case endNote
-}
-
 
 // MARK: DTO -> AppData
 
@@ -136,3 +114,4 @@ extension ArticleDetail {
             ])
     }
 }
+
