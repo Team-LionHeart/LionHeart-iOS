@@ -44,8 +44,8 @@ final class OnboardingTextfield: UITextField {
     }
     
     private func setUI() {
-        self.backgroundColor = .designSystem(.background)
-        self.font = .pretendard(.body1)
+        self.backgroundColor = .clear
+        self.font = .pretendard(.head2)
         self.textColor = .designSystem(.white)
         clearButton.frame = .init(x: 0, y: 0, width: 28, height: 28)
         clearButton.contentMode = .scaleAspectFit

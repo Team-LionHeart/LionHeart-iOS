@@ -1,41 +1,32 @@
 //
-//  GetFatalNicknameViewController.swift
+//  FetusNameCollectionViewCell.swift
 //  LionHeart-iOS
 //
-//  Created by uiskim on 2023/07/11.
-//  Copyright (c) 2023 GetFatalNickname. All rights reserved.
+//  Created by uiskim on 2023/07/12.
+//  Copyright (c) 2023 FetusName. All rights reserved.
 //
 
 import UIKit
 
 import SnapKit
 
-enum OnboardingFatalNicknameTextFieldResultType {
-    case fatalNicknameTextFieldEmpty
-    case fatalNicknameTextFieldOver
-    case fatalNicknameTextFieldValid
-
+final class FetusNameCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
-    var errorMessage: String {
-        switch self {
-        case .fatalNicknameTextFieldEmpty:
-            return "입력된 내용이 없습니다."
-        case .fatalNicknameTextFieldOver:
-            return "10자 이내로 입력해주세요."
-        case .fatalNicknameTextFieldValid:
-            return "정상입니다"
+    var inputData: DummyModel? {
+        didSet {
+            /// action
         }
     }
-}
-
-protocol FatalNicknameCheckDelegate: AnyObject {
-    func checkFatalNickname(resultType: OnboardingFatalNicknameTextFieldResultType)
-    func sendFatalNickname(nickName: String)
-}
-
-final class GetFatalNicknameViewController: UIViewController {
     
-    weak var delegate: FatalNicknameCheckDelegate?
+    var isFocusted: Bool = false {
+        didSet {
+            if isFocusted {
+                self.fatalNickNameTextfield.becomeFirstResponder()
+            } else {
+                self.fatalNickNameTextfield.resignFirstResponder()
+            }
+        }
+    }
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -68,10 +59,9 @@ final class GetFatalNicknameViewController: UIViewController {
     }()
     
     let fatalNickNameTextfield = OnboardingTextfield(textFieldType: .fatalNickname)
-    
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         // MARK: - 컴포넌트 설정
         setUI()
         
@@ -88,20 +78,22 @@ final class GetFatalNicknameViewController: UIViewController {
         setDelegate()
         
         setTextField()
-        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        fatalNickNameTextfield.becomeFirstResponder()
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+
 }
 
-private extension GetFatalNicknameViewController {
+private extension FetusNameCollectionViewCell {
     func setUI() {
-        view.backgroundColor = .designSystem(.background)
+        backgroundColor = .designSystem(.background)
     }
     
     func setHierarchy() {
-        view.addSubviews(titleLabel, descriptionLabel, fatalNickNameTextfield, textFieldUnderLine, fatalNickNameErrorLabel)
+        addSubviews(titleLabel, descriptionLabel, fatalNickNameTextfield, textFieldUnderLine, fatalNickNameErrorLabel)
     }
     
     func setLayout() {
@@ -122,7 +114,7 @@ private extension GetFatalNicknameViewController {
         }
         
         textFieldUnderLine.snp.makeConstraints { make in
-            make.top.equalTo(fatalNickNameTextfield.snp.bottom).offset(8)
+            make.top.equalTo(fatalNickNameTextfield.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(2)
         }
@@ -141,30 +133,9 @@ private extension GetFatalNicknameViewController {
     }
     
     func setTextField() {
-        fatalNickNameTextfield.delegate = self
         if let clearButton = fatalNickNameTextfield.value(forKeyPath: "_clearButton") as? UIButton {
             clearButton.setImage(UIImage(named: Constant.ImageName.textFieldClear.real), for: .normal)
         }
         self.fatalNickNameTextfield.clearButtonMode = UITextField.ViewMode.whileEditing
-    }
-}
-
-extension GetFatalNicknameViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        if text.count == 0 {
-            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldEmpty)
-            fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldEmpty.errorMessage
-            fatalNickNameErrorLabel.isHidden = false
-        } else if text.count <= 10 {
-            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldValid)
-            fatalNickNameErrorLabel.isHidden = true
-        } else {
-            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldOver)
-            fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldOver.errorMessage
-            fatalNickNameErrorLabel.isHidden = false
-        }
-        
-        delegate?.sendFatalNickname(nickName: text)
     }
 }

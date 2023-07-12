@@ -102,6 +102,9 @@
 		C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */; };
 		C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */; };
 		C0DF03AB2A5D73C80037F740 /* OnboardingTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03AA2A5D73C80037F740 /* OnboardingTextfield.swift */; };
+		C0F029C02A5E84EE00E0D185 /* NewOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029BF2A5E84EE00E0D185 /* NewOnboardingViewController.swift */; };
+		C0F029C22A5E8C0800E0D185 /* PregnancyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C12A5E8C0800E0D185 /* PregnancyCollectionViewCell.swift */; };
+		C0F029C42A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C32A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +208,9 @@
 		C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingViewController.swift; sourceTree = "<group>"; };
 		C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnboardingModel.swift; sourceTree = "<group>"; };
 		C0DF03AA2A5D73C80037F740 /* OnboardingTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextfield.swift; sourceTree = "<group>"; };
+		C0F029BF2A5E84EE00E0D185 /* NewOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOnboardingViewController.swift; sourceTree = "<group>"; };
+		C0F029C12A5E8C0800E0D185 /* PregnancyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PregnancyCollectionViewCell.swift; sourceTree = "<group>"; };
+		C0F029C32A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetusNameCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,6 +417,7 @@
 		B59892022A56B29B00CE1FEB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C0F029BD2A5E84D200E0D185 /* NewOnboarding */,
 				C0DF03822A5AF7A20037F740 /* Challenge */,
 				B598920F2A56B44200CE1FEB /* Curriculum */,
 				B598920E2A56B41500CE1FEB /* MyPage */,
@@ -835,6 +842,24 @@
 			path = OnboardingModel;
 			sourceTree = "<group>";
 		};
+		C0F029BD2A5E84D200E0D185 /* NewOnboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C0F029BE2A5E84DD00E0D185 /* ViewController */,
+				C0F029C12A5E8C0800E0D185 /* PregnancyCollectionViewCell.swift */,
+				C0F029C32A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift */,
+			);
+			path = NewOnboarding;
+			sourceTree = "<group>";
+		};
+		C0F029BE2A5E84DD00E0D185 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C0F029BF2A5E84EE00E0D185 /* NewOnboardingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1004,6 +1029,7 @@
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
+				C0F029C22A5E8C0800E0D185 /* PregnancyCollectionViewCell.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
@@ -1034,6 +1060,7 @@
 				C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */,
 				C0DF03772A5A9CE70037F740 /* OnboardingTableViewCell.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
+				C0F029C42A5E8E2D00E0D185 /* FetusNameCollectionViewCell.swift in Sources */,
 				C0DF03792A5A9CEE0037F740 /* OnboardingView.swift in Sources */,
 				C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
@@ -1052,6 +1079,7 @@
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
+				C0F029C02A5E84EE00E0D185 /* NewOnboardingViewController.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
 				C0DF03572A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift in Sources */,

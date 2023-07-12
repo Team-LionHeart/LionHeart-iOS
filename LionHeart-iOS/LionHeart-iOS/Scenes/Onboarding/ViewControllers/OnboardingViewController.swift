@@ -12,8 +12,6 @@ import SnapKit
 
 final class OnboardingViewController: UIViewController {
     
-    private var onboardingUser = UserOnboardingModel(pregnacny: 25, fatalNickname: "사랑이")
-    
     private var onboardingCompletePercentage: Float = 0 {
         didSet {
             UIView.animate(withDuration: 0.2) {
@@ -22,8 +20,8 @@ final class OnboardingViewController: UIViewController {
         }
     }
     
-    var fatalNickName: String?
-    var pregnancy: Int?
+    private var fatalNickName: String?
+    private var pregnancy: Int?
     
     private var onboardingProgressView: UIProgressView = {
         let progress = UIProgressView()
@@ -35,11 +33,10 @@ final class OnboardingViewController: UIViewController {
         return progress
     }()
     
-    var currentPage: OnboardingPageType?
+    private var currentPage: OnboardingPageType = .getPregnancy
     
-    var onboardingFlow: OnbardingFlowType? {
+    private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
         didSet {
-            guard let onboardingFlow, let oldValue else { return }
             switch onboardingFlow {
             case .toLogin:
                 self.navigationController?.popViewController(animated: true)
@@ -47,11 +44,10 @@ final class OnboardingViewController: UIViewController {
             case .toGetPregnacny, .toFatalNickname:
                 onboardingPageViewController.setViewControllers([pageViewControllerDataSource[onboardingFlow.rawValue]],
                                                                 direction: oldValue.rawValue > onboardingFlow.rawValue ? .reverse : .forward,
-                                                                animated: false) { complete in
-                    guard let currentPageType = OnboardingPageType(rawValue: onboardingFlow.rawValue) else { return }
+                                                                animated: false) { _ in
+                    guard let currentPageType = OnboardingPageType(rawValue: self.onboardingFlow.rawValue) else { return }
                     self.currentPage = currentPageType
                 }
-                
                 
             case .toCompleteOnboarding:
                 let completeViewController = CompleteOnbardingViewController()
@@ -65,15 +61,16 @@ final class OnboardingViewController: UIViewController {
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
         .backButtonAction {
             self.view.endEditing(true)
-            guard let currentPage = self.currentPage else { return }
-            self.onboardingFlow = currentPage.back
-            self.onboardingCompletePercentage = self.currentPage?.progressValue ?? 0
+            self.testButton.isHidden = false
+            self.onboardingFlow = self.currentPage.back
+            self.onboardingCompletePercentage = self.currentPage.progressValue
         }
     
     private let testButton: UIButton = {
         let button = UIButton()
         button.setTitle("다음", for: .normal)
-        button.backgroundColor = .designSystem(.gray600)
+        button.backgroundColor = .designSystem(.lionRed)
+        button.isHidden = true
         return button
     }()
     
@@ -89,13 +86,19 @@ final class OnboardingViewController: UIViewController {
         // MARK: - 컴포넌트 설정
         setUI()
         
-        // MARK: - addsubView
-        setHierarchy()
+        setChildViewController()
         
         // MARK: - 네비게이션바 설정
         setNavigationBar()
         
-        setChildViewController()
+        // MARK: - PageViewController 설정
+        setPageViewController()
+        
+        // MARK: - ProgressView 설정
+        setProgressView()
+        
+        // MARK: - addsubView
+        setHierarchy()
         
         // MARK: - autolayout설정
         setLayout()
@@ -106,11 +109,7 @@ final class OnboardingViewController: UIViewController {
         // MARK: - delegate설정
         setDelegate()
         
-        // MARK: - PageViewController 설정
-        setPageViewController()
-        
-        // MARK: - ProgressView 설정
-        setProgressView()
+
     }
 }
 
@@ -126,8 +125,8 @@ private extension OnboardingViewController {
     func setHierarchy() {
         addChild(onboardingPageViewController)
         view.addSubview(onboardingPageViewController.view)
-        view.addSubview(testButton)
         view.addSubview(onboardingProgressView)
+        view.addSubview(testButton)
     }
     
     func setPageViewController() {
@@ -144,6 +143,7 @@ private extension OnboardingViewController {
             make.bottom.equalTo(testButton.snp.top)
         }
         
+        
         testButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
@@ -158,10 +158,20 @@ private extension OnboardingViewController {
     
     func setAddTarget() {
         testButton.addButtonAction { _ in
-            self.view.endEditing(true)
-            guard let currentPage = self.currentPage else { return }
-            self.onboardingFlow = currentPage.forward
-            self.onboardingCompletePercentage = self.currentPage?.progressValue ?? 0
+            guard let fatalNickName = self.fatalNickName else {
+                self.testButton.isHidden = true
+                self.onboardingFlow = self.currentPage.forward
+                self.onboardingCompletePercentage = self.currentPage.progressValue
+                return
+            }
+            if fatalNickName.count >= 1 && fatalNickName.count <= 10 {
+                self.testButton.isHidden = false
+            } else {
+                self.testButton.isHidden = true
+            }
+            
+            self.onboardingFlow = self.currentPage.forward
+            self.onboardingCompletePercentage = self.currentPage.progressValue
         }
     }
     
@@ -183,27 +193,35 @@ private extension OnboardingViewController {
 }
 
 extension OnboardingViewController: FatalNicknameCheckDelegate {
+    func sendFatalNickname(nickName: String) {
+        self.fatalNickName = nickName
+    }
+    
     func checkFatalNickname(resultType: OnboardingFatalNicknameTextFieldResultType) {
         switch resultType {
         case .fatalNicknameTextFieldEmpty:
-            testButton.backgroundColor = .designSystem(.gray600)
+            testButton.isHidden = true
         case .fatalNicknameTextFieldOver:
-            testButton.backgroundColor = .designSystem(.gray600)
+            testButton.isHidden = true
         case .fatalNicknameTextFieldValid:
-            testButton.backgroundColor = .designSystem(.lionRed)
+            testButton.isHidden = false
         }
     }
 }
 
 extension OnboardingViewController: PregnancyCheckDelegate {
+    func sendPregnancyContent(pregnancy: Int) {
+        self.pregnancy = pregnancy
+    }
+    
     func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType) {
         switch resultType {
         case .pregnancyTextFieldEmpty:
-            testButton.backgroundColor = .designSystem(.gray600)
+            testButton.isHidden = true
         case .pregnancyTextFieldValid:
-            testButton.backgroundColor = .designSystem(.lionRed)
+            testButton.isHidden = false
         case .pregnancyTextFieldOver:
-            testButton.backgroundColor = .designSystem(.gray600)
+            testButton.isHidden = true
         }
     }
 }
