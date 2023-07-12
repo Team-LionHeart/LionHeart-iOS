@@ -33,7 +33,7 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     private let curriculumTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = 200
         tableView.backgroundColor = .clear
         tableView.sectionFooterHeight = 40
         tableView.separatorStyle = .none
@@ -154,10 +154,7 @@ extension CurriculumViewController: UITableViewDataSource{
             curriculumText: previousWeekDatas.curriculumText,
             isHidden: !previousWeekDatas.isHidden
         )
-    
         curriculumTableView.reloadRows(at: [indexPath], with: .automatic)
-        
-
     }
 }
 
