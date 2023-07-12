@@ -89,7 +89,6 @@ final class GetFatalNicknameViewController: UIViewController {
         setTextField()
         
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         fatalNickNameTextfield.becomeFirstResponder()
     }

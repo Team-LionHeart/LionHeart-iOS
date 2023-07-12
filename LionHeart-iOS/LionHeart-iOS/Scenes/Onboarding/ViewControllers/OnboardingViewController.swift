@@ -40,7 +40,6 @@ final class OnboardingViewController: UIViewController {
     var onboardingFlow: OnbardingFlowType? {
         didSet {
             guard let onboardingFlow, let oldValue else { return }
-            print(onboardingFlow)
             switch onboardingFlow {
             case .toLogin:
                 self.navigationController?.popViewController(animated: true)
@@ -49,7 +48,6 @@ final class OnboardingViewController: UIViewController {
                 onboardingPageViewController.setViewControllers([pageViewControllerDataSource[onboardingFlow.rawValue]],
                                                                 direction: oldValue.rawValue > onboardingFlow.rawValue ? .reverse : .forward,
                                                                 animated: false) { complete in
-                    print(complete)
                     guard let currentPageType = OnboardingPageType(rawValue: onboardingFlow.rawValue) else { return }
                     self.currentPage = currentPageType
                 }
@@ -68,12 +66,7 @@ final class OnboardingViewController: UIViewController {
         .backButtonAction {
             self.view.endEditing(true)
             guard let currentPage = self.currentPage else { return }
-            switch currentPage {
-            case .getPregnancy:
-                self.onboardingFlow = .toLogin
-            case .getFatalNickname:
-                self.onboardingFlow = .toGetPregnacny
-            }
+            self.onboardingFlow = currentPage.back
             self.onboardingCompletePercentage = self.currentPage?.progressValue ?? 0
         }
     
@@ -167,14 +160,7 @@ private extension OnboardingViewController {
         testButton.addButtonAction { _ in
             self.view.endEditing(true)
             guard let currentPage = self.currentPage else { return }
-            switch currentPage {
-            case .getPregnancy:
-                self.onboardingFlow = .toFatalNickname
-            case .getFatalNickname:
-                self.onboardingFlow = .toCompleteOnboarding
-//            case .inital:
-//                self.onboardingFlow = .inital
-            }
+            self.onboardingFlow = currentPage.forward
             self.onboardingCompletePercentage = self.currentPage?.progressValue ?? 0
         }
     }
@@ -189,8 +175,6 @@ private extension OnboardingViewController {
         let fatalNicknameViewController = GetFatalNicknameViewController()
         fatalNicknameViewController.delegate = self
         pageViewControllerDataSource.append(fatalNicknameViewController)
-//        let initalViewController = ViewController()
-//        pageViewControllerDataSource.append(initalViewController)
     }
     
     func setProgressView() {

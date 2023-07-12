@@ -88,6 +88,7 @@ final class GetPregnancyViewController: UIViewController {
         // MARK: - delegate설정
         setDelegate()
         pregnancyTextfield.textAlignment = .right
+        pregnancyTextfield.keyboardType = .numberPad
         
 
     }
