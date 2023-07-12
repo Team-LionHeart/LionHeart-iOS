@@ -10,31 +10,26 @@ import UIKit
 
 import SnapKit
 
-enum OnboardingTextFieldResultType {
+enum OnboardingFatalNicknameTextFieldResultType {
     case fatalNicknameTextFieldEmpty
     case fatalNicknameTextFieldOver
     case fatalNicknameTextFieldValid
-    
-    case pregnancyTextFieldEmpty
-    case pregnancyTextFieldValid
-    case pregnancyTextFieldOver
+
     
     var errorMessage: String {
         switch self {
-        case .fatalNicknameTextFieldEmpty, . pregnancyTextFieldEmpty:
+        case .fatalNicknameTextFieldEmpty:
             return "입력된 내용이 없습니다."
         case .fatalNicknameTextFieldOver:
             return "10자 이내로 입력해주세요."
-        case .fatalNicknameTextFieldValid, .pregnancyTextFieldValid:
+        case .fatalNicknameTextFieldValid:
             return "정상입니다"
-        case .pregnancyTextFieldOver:
-            return "1에서 40 사이의 숫자를 입력해주세요."
         }
     }
 }
 
 protocol FatalNicknameCheckDelegate: AnyObject {
-    func checkFatalNickname(resultType: OnboardingTextFieldResultType)
+    func checkFatalNickname(resultType: OnboardingFatalNicknameTextFieldResultType)
 }
 
 final class GetFatalNicknameViewController: UIViewController {
@@ -71,7 +66,7 @@ final class GetFatalNicknameViewController: UIViewController {
         return label
     }()
     
-    private let fatalNickNameTextfield = OnboardingTextfield(textFieldType: .fatalNickname)
+    let fatalNickNameTextfield = OnboardingTextfield(textFieldType: .fatalNickname)
     
 
     public override func viewDidLoad() {
@@ -92,12 +87,11 @@ final class GetFatalNicknameViewController: UIViewController {
         setDelegate()
         
         setTextField()
+        
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.async {
-            self.fatalNickNameTextfield.becomeFirstResponder()
-        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fatalNickNameTextfield.becomeFirstResponder()
     }
 }
 
@@ -160,14 +154,14 @@ extension GetFatalNicknameViewController: UITextFieldDelegate {
         guard let text = textField.text else { return }
         if text.count == 0 {
             delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldEmpty)
-            fatalNickNameErrorLabel.text = OnboardingTextFieldResultType.fatalNicknameTextFieldEmpty.errorMessage
+            fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldEmpty.errorMessage
             fatalNickNameErrorLabel.isHidden = false
         } else if text.count <= 10 {
             delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldValid)
             fatalNickNameErrorLabel.isHidden = true
         } else {
             delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldOver)
-            fatalNickNameErrorLabel.text = OnboardingTextFieldResultType.fatalNicknameTextFieldOver.errorMessage
+            fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldOver.errorMessage
             fatalNickNameErrorLabel.isHidden = false
         }
     }

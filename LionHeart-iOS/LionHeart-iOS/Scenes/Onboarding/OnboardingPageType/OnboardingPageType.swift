@@ -8,8 +8,8 @@
 import UIKit
 
 enum OnboardingPageType: Int, CaseIterable {
-    case getPregnancy
-    case getFatalNickname
+    case getPregnancy = 0
+    case getFatalNickname = 1
 }
 
 enum OnbardingFlowType: Int {
@@ -20,21 +20,13 @@ enum OnbardingFlowType: Int {
 }
 
 extension OnboardingPageType {
-    var viewController: UIViewController {
-        switch self {
-        case .getPregnancy:
-            return GetPregnancyViewController()
-        case .getFatalNickname:
-            return GetFatalNicknameViewController()
-        }
-    }
     
     var progressValue: Float {
         switch self {
         case .getPregnancy:
-            return 1.0
-        case .getFatalNickname:
             return 0.5
+        case .getFatalNickname:
+            return 1.0
         }
     }
     

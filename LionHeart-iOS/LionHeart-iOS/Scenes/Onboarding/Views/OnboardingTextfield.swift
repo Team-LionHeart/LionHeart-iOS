@@ -16,7 +16,7 @@ final class OnboardingTextfield: UITextField {
         var placeHolder: String {
             switch self {
             case .pregancy:
-                return "1~40주차"
+                return "1~40"
             case .fatalNickname:
                 return "태명"
             }

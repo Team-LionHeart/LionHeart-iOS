@@ -35,18 +35,26 @@ final class OnboardingViewController: UIViewController {
         return progress
     }()
     
-    private var currentPage: OnboardingPageType = .getPregnancy
+    var currentPage: OnboardingPageType?
     
-    private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
+    var onboardingFlow: OnbardingFlowType? {
         didSet {
+            guard let onboardingFlow, let oldValue else { return }
+            print(onboardingFlow)
             switch onboardingFlow {
             case .toLogin:
                 self.navigationController?.popViewController(animated: true)
+                
             case .toGetPregnacny, .toFatalNickname:
-                onboardingPageViewController.setViewControllers([pageViewControllerDataSource[onboardingFlow.rawValue]], direction: oldValue.rawValue > onboardingFlow.rawValue ? .reverse : .forward, animated: true) { _ in
-                    guard let currentPageType = OnboardingPageType(rawValue: self.onboardingFlow.rawValue) else { return }
+                onboardingPageViewController.setViewControllers([pageViewControllerDataSource[onboardingFlow.rawValue]],
+                                                                direction: oldValue.rawValue > onboardingFlow.rawValue ? .reverse : .forward,
+                                                                animated: false) { complete in
+                    print(complete)
+                    guard let currentPageType = OnboardingPageType(rawValue: onboardingFlow.rawValue) else { return }
                     self.currentPage = currentPageType
                 }
+                
+                
             case .toCompleteOnboarding:
                 let completeViewController = CompleteOnbardingViewController()
                 let passingData = UserOnboardingModel(pregnacny: self.pregnancy, fatalNickname: self.fatalNickName)
@@ -59,9 +67,14 @@ final class OnboardingViewController: UIViewController {
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
         .backButtonAction {
             self.view.endEditing(true)
-            self.onboardingFlow = self.currentPage.back
-            self.onboardingCompletePercentage = self.currentPage.progressValue
-            self.testButton.backgroundColor = .designSystem(.lionRed)
+            guard let currentPage = self.currentPage else { return }
+            switch currentPage {
+            case .getPregnancy:
+                self.onboardingFlow = .toLogin
+            case .getFatalNickname:
+                self.onboardingFlow = .toGetPregnacny
+            }
+            self.onboardingCompletePercentage = self.currentPage?.progressValue ?? 0
         }
     
     private let testButton: UIButton = {
@@ -152,8 +165,17 @@ private extension OnboardingViewController {
     
     func setAddTarget() {
         testButton.addButtonAction { _ in
-            self.onboardingFlow = self.currentPage.forward
-            self.onboardingCompletePercentage = self.currentPage.progressValue
+            self.view.endEditing(true)
+            guard let currentPage = self.currentPage else { return }
+            switch currentPage {
+            case .getPregnancy:
+                self.onboardingFlow = .toFatalNickname
+            case .getFatalNickname:
+                self.onboardingFlow = .toCompleteOnboarding
+//            case .inital:
+//                self.onboardingFlow = .inital
+            }
+            self.onboardingCompletePercentage = self.currentPage?.progressValue ?? 0
         }
     }
     
@@ -162,10 +184,13 @@ private extension OnboardingViewController {
     
     func setChildViewController() {
         let pregnancyViewController = GetPregnancyViewController()
+        pregnancyViewController.delegate = self
         pageViewControllerDataSource.append(pregnancyViewController)
         let fatalNicknameViewController = GetFatalNicknameViewController()
         fatalNicknameViewController.delegate = self
         pageViewControllerDataSource.append(fatalNicknameViewController)
+//        let initalViewController = ViewController()
+//        pageViewControllerDataSource.append(initalViewController)
     }
     
     func setProgressView() {
@@ -174,7 +199,7 @@ private extension OnboardingViewController {
 }
 
 extension OnboardingViewController: FatalNicknameCheckDelegate {
-    func checkFatalNickname(resultType: OnboardingTextFieldResultType) {
+    func checkFatalNickname(resultType: OnboardingFatalNicknameTextFieldResultType) {
         switch resultType {
         case .fatalNicknameTextFieldEmpty:
             testButton.backgroundColor = .designSystem(.gray600)
@@ -186,3 +211,15 @@ extension OnboardingViewController: FatalNicknameCheckDelegate {
     }
 }
 
+extension OnboardingViewController: PregnancyCheckDelegate {
+    func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType) {
+        switch resultType {
+        case .pregnancyTextFieldEmpty:
+            testButton.backgroundColor = .designSystem(.gray600)
+        case .pregnancyTextFieldValid:
+            testButton.backgroundColor = .designSystem(.lionRed)
+        case .pregnancyTextFieldOver:
+            testButton.backgroundColor = .designSystem(.gray600)
+        }
+    }
+}

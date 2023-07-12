@@ -63,6 +63,8 @@ class ViewController: UIViewController {
 //            loginKakaoWithWeb()
 //        }
         let nextVC = OnboardingViewController()
+        nextVC.currentPage = .getPregnancy
+        nextVC.onboardingFlow = .toGetPregnacny
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
