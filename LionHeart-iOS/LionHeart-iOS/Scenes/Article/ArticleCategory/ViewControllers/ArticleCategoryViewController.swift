@@ -34,7 +34,7 @@ final class ArticleCategoryViewController: UIViewController {
         label.text = "카테고리별\n아티클 모아보기"
         label.numberOfLines = 2
         label.font = .pretendard(.head2)
-        label.textColor = .designSystem(.black)
+        label.textColor = .designSystem(.white)
         return label
     }()
     
