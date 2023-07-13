@@ -106,6 +106,7 @@
 		F435E04E2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435E04D2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift */; };
 		F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435E0532A5E67BF0098E691 /* NSObject+.swift */; };
 		F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */; };
+		F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		F435E04D2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumProgessTableViewHeaderView.swift; sourceTree = "<group>"; };
 		F435E0532A5E67BF0098E691 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDummyData.swift; sourceTree = "<group>"; };
+		F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumImagesByWeek.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +419,7 @@
 				C0DF03482A5A9ACB0037F740 /* DummyModel.swift */,
 				C0DF03802A5AF51C0037F740 /* Constant.swift */,
 				B51220592A5FAA47006CBE2D /* ImageLiterals.swift */,
+				F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */,
 			);
 			path = Literals;
 			sourceTree = "<group>";
@@ -1052,7 +1055,6 @@
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
-				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
@@ -1093,12 +1095,12 @@
 				C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
-				C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */,
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
 				C0DF03552A5A9BD60037F740 /* ArticleListByCategoryView.swift in Sources */,
+				F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */,
 				C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */,
 				C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
