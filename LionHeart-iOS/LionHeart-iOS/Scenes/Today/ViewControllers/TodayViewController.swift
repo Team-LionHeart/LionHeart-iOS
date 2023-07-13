@@ -22,17 +22,10 @@ final class TodayViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
         setUI()
-        
         setNavigationBar()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
         setTapGesture()
     }
 }

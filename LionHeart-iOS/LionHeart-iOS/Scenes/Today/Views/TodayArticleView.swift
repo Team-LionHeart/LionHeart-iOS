@@ -60,20 +60,9 @@ final class TodayArticleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
     }
     
     override func draw(_ rect: CGRect) {
@@ -132,13 +121,5 @@ private extension TodayArticleView {
             make.height.equalTo(40)
             make.width.equalTo(110)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
     }
 }
