@@ -112,7 +112,13 @@ private extension NewOnboardingViewController {
             make.height.equalTo(368)
         }
         
-
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.3) {
+            self.testButton.snp.makeConstraints { make in
+                make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
+                make.leading.trailing.equalToSuperview()
+                make.height.equalTo(50)
+            }
+        }
     }
     
     func setAddTarget() {

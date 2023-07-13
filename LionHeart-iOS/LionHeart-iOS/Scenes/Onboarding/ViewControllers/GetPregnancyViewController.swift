@@ -45,6 +45,8 @@ final class GetPregnancyViewController: UIViewController {
     
     weak var delegate: PregnancyCheckDelegate?
     
+    var textfieldTrailingInset: Constraint?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "현재 임신 주수를\n알려주세요"
@@ -63,6 +65,12 @@ final class GetPregnancyViewController: UIViewController {
     }()
     
     private let pregnancyTextfield = OnboardingTextfield(textFieldType: .pregancy)
+    
+    private let textBox: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
     
     private let boundaryBox: UIView = {
         let view = UIView()
@@ -116,8 +124,9 @@ private extension GetPregnancyViewController {
     }
     
     func setHierarchy() {
-        view.addSubviews(titleLabel, descriptionLabel, boundaryBox, pregnancyErrorLabel)
-        boundaryBox.addSubview(pregnancyTextFieldStackView)
+        view.addSubviews(titleLabel, descriptionLabel, textBox, boundaryBox, pregnancyErrorLabel)
+        textBox.addSubviews(pregnancyTextfield, fixedWeedLabel)
+        boundaryBox.addSubviews(textBox)
     }
     
     func setLayout() {
@@ -131,8 +140,22 @@ private extension GetPregnancyViewController {
             make.leading.equalTo(titleLabel.snp.leading)
         }
         
-        pregnancyTextFieldStackView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+        textBox.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            textfieldTrailingInset = make.centerX.equalTo(boundaryBox.snp.centerX).offset(0).constraint
+        }
+        
+        pregnancyTextfield.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(5)
+            make.leading.equalToSuperview().inset(5)
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(fixedWeedLabel.snp.leading).offset(-4)
+        }
+        
+        fixedWeedLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(5)
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(5)
         }
         
         boundaryBox.snp.makeConstraints { make in
@@ -165,6 +188,7 @@ extension GetPregnancyViewController: UITextFieldDelegate {
         if text.count == 0 {
             delegate?.checkPregnancy(resultType: .pregnancyTextFieldEmpty)
             pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldEmpty.errorMessage
+            textfieldTrailingInset?.update(offset: 0)
         }
         guard let textNumber = Int(text) else { return }
         if textNumber == 0 {
@@ -177,6 +201,23 @@ extension GetPregnancyViewController: UITextFieldDelegate {
             delegate?.checkPregnancy(resultType: .pregnancyTextFieldOver)
             pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
         }
+        
+        if text.count == 1 {
+            textfieldTrailingInset?.update(offset: -12)
+        } else if text.count == 2 {
+            textfieldTrailingInset?.update(offset: -6)
+        }
+        
         delegate?.sendPregnancyContent(pregnancy: textNumber)
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 { return true }
+        }
+        guard let text = textField.text else { return false }
+        return text.count >= 2 ? false : true
+    }
+
 }
