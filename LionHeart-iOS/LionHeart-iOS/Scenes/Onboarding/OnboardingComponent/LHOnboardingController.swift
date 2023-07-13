@@ -9,6 +9,11 @@ import UIKit
 
 final class LHOnboardingController: UIPageViewController {
     
+    init() {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        self.disableSwipeGesture()
+    }
+    
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: style, navigationOrientation: navigationOrientation)
         self.disableSwipeGesture()

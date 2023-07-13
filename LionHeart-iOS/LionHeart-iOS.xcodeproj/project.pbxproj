@@ -99,11 +99,14 @@
 		C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */; };
 		C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */; };
 		C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */; };
-		C0DF03AB2A5D73C80037F740 /* OnboardingTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03AA2A5D73C80037F740 /* OnboardingTextfield.swift */; };
+		C0DF03AB2A5D73C80037F740 /* NHOnboardingTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03AA2A5D73C80037F740 /* NHOnboardingTextfield.swift */; };
 		C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */; };
 		C0F029C92A5EFC1F00E0D185 /* LHOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */; };
 		C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */; };
 		C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */; };
+		C0F029D12A5FA87900E0D185 /* Float+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D02A5FA87900E0D185 /* Float+.swift */; };
+		C0F029D42A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D32A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift */; };
+		C0F029D62A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D52A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,11 +207,14 @@
 		C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageType.swift; sourceTree = "<group>"; };
 		C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingViewController.swift; sourceTree = "<group>"; };
 		C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnboardingModel.swift; sourceTree = "<group>"; };
-		C0DF03AA2A5D73C80037F740 /* OnboardingTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextfield.swift; sourceTree = "<group>"; };
+		C0DF03AA2A5D73C80037F740 /* NHOnboardingTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHOnboardingTextfield.swift; sourceTree = "<group>"; };
 		C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHProgressView.swift; sourceTree = "<group>"; };
 		C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingController.swift; sourceTree = "<group>"; };
 		C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingButton.swift; sourceTree = "<group>"; };
 		C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+.swift"; sourceTree = "<group>"; };
+		C0F029D02A5FA87900E0D185 /* Float+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+.swift"; sourceTree = "<group>"; };
+		C0F029D32A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPregnancyTextFieldResultType.swift; sourceTree = "<group>"; };
+		C0F029D52A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFatalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +378,7 @@
 				C0DF03992A5B908E0037F740 /* CGColor+.swift */,
 				B59892EB2A5B94E100CE1FEB /* UIApplication+.swift */,
 				C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */,
+				C0F029D02A5FA87900E0D185 /* Float+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -449,10 +456,10 @@
 		B59892052A56B34200CE1FEB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C0F029D22A5FA8DD00E0D185 /* OnboardingTextFieldResultType */,
 				C0F029C52A5EFB5B00E0D185 /* OnboardingComponent */,
 				C0DF03A72A5CF0280037F740 /* OnboardingModel */,
 				C0DF03A22A5CACC60037F740 /* OnboardingPageType */,
-				B59892342A56B70B00CE1FEB /* Views */,
 				B59892332A56B70200CE1FEB /* ViewControllers */,
 			);
 			path = Onboarding;
@@ -711,14 +718,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		B59892342A56B70B00CE1FEB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C0DF03AA2A5D73C80037F740 /* OnboardingTextfield.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		B598925D2A56B87D00CE1FEB /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,11 +833,21 @@
 		C0F029C52A5EFB5B00E0D185 /* OnboardingComponent */ = {
 			isa = PBXGroup;
 			children = (
+				C0DF03AA2A5D73C80037F740 /* NHOnboardingTextfield.swift */,
 				C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */,
 				C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */,
 				C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */,
 			);
 			path = OnboardingComponent;
+			sourceTree = "<group>";
+		};
+		C0F029D22A5FA8DD00E0D185 /* OnboardingTextFieldResultType */ = {
+			isa = PBXGroup;
+			children = (
+				C0F029D32A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift */,
+				C0F029D52A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift */,
+			);
+			path = OnboardingTextFieldResultType;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1024,6 +1033,7 @@
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
+				C0F029D62A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */,
 				C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */,
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
@@ -1033,11 +1043,13 @@
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
 				C0DF03A12A5CAC220037F740 /* GetFatalNicknameViewController.swift in Sources */,
+				C0F029D42A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift in Sources */,
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */,
 				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,
+				C0F029D12A5FA87900E0D185 /* Float+.swift in Sources */,
 				C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
 				C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */,
@@ -1065,7 +1077,7 @@
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
-				C0DF03AB2A5D73C80037F740 /* OnboardingTextfield.swift in Sources */,
+				C0DF03AB2A5D73C80037F740 /* NHOnboardingTextfield.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
 				C0F029C92A5EFC1F00E0D185 /* LHOnboardingController.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  OnboardingTextfield.swift
+//  NHOnboardingTextfield.swift
 //  LionHeart-iOS
 //
 //  Created by uiskim on 2023/07/11.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OnboardingTextfield: UITextField {
+final class NHOnboardingTextfield: UITextField {
     
     enum TextFieldType {
         case pregancy

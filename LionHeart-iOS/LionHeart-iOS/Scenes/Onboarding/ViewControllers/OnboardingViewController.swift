@@ -14,15 +14,19 @@ final class OnboardingViewController: UIViewController {
     
     typealias OnboardingViews = [UIViewController]
     
-    private let nextButton = LHOnboardingButton()
-    private let onboardingProgressView = LHProgressView()
-    private let onboardingViewController = LHOnboardingController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    private var pageDataSource: OnboardingViews = []
+    /// passing data property
     private var fatalNickName: String?
     private var pregnancy: Int?
-    private var currentPage: OnboardingPageType = .getPregnancy
+    
+    /// component property
+    private let nextButton = LHOnboardingButton()
+    private let onboardingProgressView = LHProgressView()
+    private let onboardingViewController = LHOnboardingController()
+    private var pageDataSource: OnboardingViews = []
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
     
+    /// onboarding flow property
+    private var currentPage: OnboardingPageType = .getPregnancy
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
         didSet {
             switch onboardingFlow {
@@ -100,26 +104,14 @@ private extension OnboardingViewController {
     func setAddTarget() {
         nextButton.addButtonAction { _ in
             guard let fatalNickName = self.fatalNickName else {
-                self.nextButton.isHidden = true
-                self.onboardingFlow = self.currentPage.forward
-                self.onboardingCompletePercentage = self.currentPage.progressValue
+                self.nextOnboardingProcessWithNonActiveButtonState()
                 return
             }
-            if fatalNickName.count >= 1 && fatalNickName.count <= 10 {
-                self.nextButton.isHidden = false
-            } else {
-                self.nextButton.isHidden = true
-            }
-            
-            self.onboardingFlow = self.currentPage.forward
-            self.onboardingCompletePercentage = self.currentPage.progressValue
+            self.nextOnboaringProcess(nickName: fatalNickName, minCount: 1, maxCount: 10)
         }
         
         onboardingNavigationbar.backButtonAction {
-            self.view.endEditing(true)
-            self.nextButton.isHidden = false
-            self.onboardingFlow = self.currentPage.back
-            self.onboardingCompletePercentage = self.currentPage.progressValue
+            self.backOnboardingProcess()
         }
     }
     
@@ -136,6 +128,7 @@ private extension OnboardingViewController {
         self.onboardingProgressView.setProgress(0.5, animated: false)
     }
 }
+
 
 extension OnboardingViewController: FatalNicknameCheckDelegate {
     func sendFatalNickname(nickName: String) {
@@ -182,5 +175,26 @@ extension OnboardingViewController {
         let passingData = UserOnboardingModel(pregnacny: self.pregnancy, fatalNickname: self.fatalNickName)
         completeViewController.userData = passingData
         self.navigationController?.pushViewController(completeViewController, animated: true)
+    }
+}
+
+private extension OnboardingViewController {
+    func nextOnboaringProcess(nickName: String, minCount: Int, maxCount: Int) {
+        self.nextButton.isHidden = nickName.count >= minCount && nickName.count <= maxCount ? false : true
+        self.onboardingFlow = self.currentPage.forward
+        self.onboardingCompletePercentage = self.currentPage.progressValue
+    }
+    
+    func nextOnboardingProcessWithNonActiveButtonState() {
+        self.nextButton.isHidden = true
+        self.onboardingFlow = self.currentPage.forward
+        self.onboardingCompletePercentage = self.currentPage.progressValue
+    }
+    
+    func backOnboardingProcess() {
+        self.view.endEditing(true)
+        self.nextButton.isHidden = false
+        self.onboardingFlow = self.currentPage.back
+        self.onboardingCompletePercentage = self.currentPage.progressValue
     }
 }
