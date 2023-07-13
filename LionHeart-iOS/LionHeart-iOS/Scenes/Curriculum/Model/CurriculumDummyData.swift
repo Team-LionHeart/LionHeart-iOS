@@ -15,7 +15,7 @@ struct UserInfoData: AppData{
 
 extension UserInfoData {
     static func dummy() -> UserInfoData {
-        return UserInfoData(fetusName: "곽성준", userWeekInfo: 14, userDayInfo: 3)
+        return UserInfoData(fetusName: "곽성준", userWeekInfo: 7, userDayInfo: 3)
     }
 }
 

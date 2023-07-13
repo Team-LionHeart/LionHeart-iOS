@@ -125,7 +125,8 @@ private extension CurriculumUserInfoView {
         }
         
         userWeekLabel.snp.makeConstraints{
-            $0.leading.equalTo(weekImageView.snp.leading).offset(5)
+//            $0.leading.equalTo(weekImageView.snp.leading).offset(5)
+            $0.centerX.equalTo(weekImageView)
             $0.top.equalTo(fetusNameLabel.snp.bottom).offset(12)
         }
         

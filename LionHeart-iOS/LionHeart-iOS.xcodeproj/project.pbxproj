@@ -62,7 +62,6 @@
 		C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF033E2A5A959A0037F740 /* UIButton+.swift */; };
 		C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03402A5A95E40037F740 /* UIImage+.swift */; };
 		C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */; };
-		C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03462A5A9AA40037F740 /* CurriculumView.swift */; };
 		C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03482A5A9ACB0037F740 /* DummyModel.swift */; };
 		C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */; };
 		C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034C2A5A9B8D0037F740 /* MyPageView.swift */; };
@@ -164,7 +163,6 @@
 		C0DF033E2A5A959A0037F740 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		C0DF03402A5A95E40037F740 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewCell.swift; sourceTree = "<group>"; };
-		C0DF03462A5A9AA40037F740 /* CurriculumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumView.swift; sourceTree = "<group>"; };
 		C0DF03482A5A9ACB0037F740 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewController.swift; sourceTree = "<group>"; };
 		C0DF034C2A5A9B8D0037F740 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
@@ -740,7 +738,6 @@
 		B59892612A56B94B00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C0DF03462A5A9AA40037F740 /* CurriculumView.swift */,
 				F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */,
 				F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */,
 				F435E04D2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift */,
@@ -992,7 +989,6 @@
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
-				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
