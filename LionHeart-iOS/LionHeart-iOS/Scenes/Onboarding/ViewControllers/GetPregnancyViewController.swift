@@ -80,21 +80,12 @@ final class GetPregnancyViewController: UIViewController {
         return view
     }()
     
-    private let fixedWeedLabel: UILabel = {
+    private let fixedWeekLabel: UILabel = {
         let label = UILabel()
         label.text = "주차"
         label.font = .pretendard(.head2)
         label.textColor = .designSystem(.white)
         return label
-    }()
-    
-    private lazy var pregnancyTextFieldStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [pregnancyTextfield, fixedWeedLabel])
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .center
-        stackView.spacing = 4
-        return stackView
     }()
     
     private let pregnancyErrorLabel: UILabel = {
@@ -125,7 +116,7 @@ private extension GetPregnancyViewController {
     
     func setHierarchy() {
         view.addSubviews(titleLabel, descriptionLabel, textBox, boundaryBox, pregnancyErrorLabel)
-        textBox.addSubviews(pregnancyTextfield, fixedWeedLabel)
+        textBox.addSubviews(pregnancyTextfield, fixedWeekLabel)
         boundaryBox.addSubviews(textBox)
     }
     
@@ -149,10 +140,10 @@ private extension GetPregnancyViewController {
             make.top.bottom.equalToSuperview().inset(5)
             make.leading.equalToSuperview().inset(5)
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(fixedWeedLabel.snp.leading).offset(-4)
+            make.trailing.equalTo(fixedWeekLabel.snp.leading).offset(-4)
         }
         
-        fixedWeedLabel.snp.makeConstraints { make in
+        fixedWeekLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(5)
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(5)
@@ -165,8 +156,8 @@ private extension GetPregnancyViewController {
         }
         
         pregnancyErrorLabel.snp.makeConstraints { make in
-            make.top.equalTo(boundaryBox.snp.bottom).offset(20)
-            make.leading.equalToSuperview().inset(36)
+            make.top.equalTo(boundaryBox.snp.bottom).offset(8)
+            make.leading.equalTo(boundaryBox.snp.leading)
         }
         
     }
@@ -184,11 +175,15 @@ private extension GetPregnancyViewController {
 
 extension GetPregnancyViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        
         guard let text = textField.text else { return }
         if text.count == 0 {
+            textField.placeholder = "1~40"
             delegate?.checkPregnancy(resultType: .pregnancyTextFieldEmpty)
             pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldEmpty.errorMessage
             textfieldTrailingInset?.update(offset: 0)
+        } else {
+            textField.placeholder = ""
         }
         guard let textNumber = Int(text) else { return }
         if textNumber == 0 {
@@ -201,13 +196,6 @@ extension GetPregnancyViewController: UITextFieldDelegate {
             delegate?.checkPregnancy(resultType: .pregnancyTextFieldOver)
             pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
         }
-        
-        if text.count == 1 {
-            textfieldTrailingInset?.update(offset: -12)
-        } else if text.count == 2 {
-            textfieldTrailingInset?.update(offset: -6)
-        }
-        
         delegate?.sendPregnancyContent(pregnancy: textNumber)
     }
     

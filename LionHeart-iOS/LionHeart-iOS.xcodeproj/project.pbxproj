@@ -106,6 +106,7 @@
 		C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */; };
 		C0F029C92A5EFC1F00E0D185 /* LHOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */; };
 		C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */; };
+		C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +214,7 @@
 		C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHProgressView.swift; sourceTree = "<group>"; };
 		C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingController.swift; sourceTree = "<group>"; };
 		C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingButton.swift; sourceTree = "<group>"; };
+		C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +377,7 @@
 				C0DF03972A5B90790037F740 /* UIColor+.swift */,
 				C0DF03992A5B908E0037F740 /* CGColor+.swift */,
 				B59892EB2A5B94E100CE1FEB /* UIApplication+.swift */,
+				C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
 				C0F029C02A5E84EE00E0D185 /* NewOnboardingViewController.swift in Sources */,
+				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
 				C0DF03572A5A9BED0037F740 /* ArticleCategoryTableViewCell.swift in Sources */,

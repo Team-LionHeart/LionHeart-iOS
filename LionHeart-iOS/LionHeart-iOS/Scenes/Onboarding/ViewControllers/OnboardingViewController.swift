@@ -62,6 +62,7 @@ private extension OnboardingViewController {
     
     func setNavigationBar() {
         NavigationBarLayoutManager.add(onboardingNavigationbar)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func setHierarchy() {
