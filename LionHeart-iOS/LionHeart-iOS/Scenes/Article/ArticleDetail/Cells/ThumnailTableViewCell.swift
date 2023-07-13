@@ -68,8 +68,6 @@ private extension ThumnailTableViewCell {
     
     func setHierarchy() {
         contentView.addSubviews(thumbnailImageView, imageCaptionLabel, bookMarkButton)
-
-//        thumbnailImageView.addSubview(bookMarkButton)
     }
     
     func setLayout() {
@@ -84,11 +82,6 @@ private extension ThumnailTableViewCell {
             make.centerX.equalTo(thumbnailImageView)
             make.bottom.equalToSuperview().inset(22)
         }
-
-//        bookMarkButton.snp.makeConstraints { make in
-//            make.top.equalToSuperview().inset(10)
-//            make.trailing.equalToSuperview().inset(10)
-//        }
 
         bookMarkButton.snp.makeConstraints{
             $0.top.equalToSuperview().inset(10)

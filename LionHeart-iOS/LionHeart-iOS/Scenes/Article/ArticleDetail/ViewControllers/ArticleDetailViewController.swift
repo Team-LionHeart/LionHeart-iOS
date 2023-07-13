@@ -105,7 +105,6 @@ extension ArticleDetailViewController: UITableViewDelegate {
 
 extension ArticleDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 8
         return articleDatas.count
     }
 
@@ -117,9 +116,8 @@ extension ArticleDetailViewController: UITableViewDataSource {
             cell.inputData = thumbnailModel
             cell.selectionStyle = .none
             cell.bookmarkButtonDidTap = {
-                print("book mark tapped !!!!!")
+                // TODO: Network POST 북마크
             }
-//            cell.isUserInteractionEnabled = true
             return cell
         case .articleTitle(let titleModel):
             let cell = TitleTableViewCell.dequeueReusableCell(to: articleTableView)
