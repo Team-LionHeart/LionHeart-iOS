@@ -113,6 +113,7 @@
 		C0F029E42A5FB08700E0D185 /* NHUnderLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */; };
 		C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */; };
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
+		C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +228,7 @@
 		C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHUnderLine.swift; sourceTree = "<group>"; };
 		C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundContainerView.swift; sourceTree = "<group>"; };
+		C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHRoundButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -855,6 +857,7 @@
 				C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */,
 				C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */,
 				C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */,
+				C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */,
 			);
 			path = OnboardingComponent;
 			sourceTree = "<group>";
@@ -1065,6 +1068,7 @@
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
 				C0DF03A12A5CAC220037F740 /* GetFatalNicknameViewController.swift in Sources */,
 				C0F029D42A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift in Sources */,
+				C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */,
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,

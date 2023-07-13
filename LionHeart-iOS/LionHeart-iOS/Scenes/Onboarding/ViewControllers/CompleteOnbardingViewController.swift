@@ -23,49 +23,21 @@ final class CompleteOnbardingViewController: UIViewController {
         }
     }
     
+    private let titleLabel = LHOnboardingTitle()
+    private let descriptionLabel = LHOnboardingDescription("아티클 맞춤 환경이 준비되었어요.")
+    private let startButton = LHRoundButton(cornerRadius: 8, title: "시작하기")
+    
+    /// 추후 삭제할 component
     private let welcomeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .designSystem(.white)
         return imageView
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .designSystem(.white)
-        label.font = .pretendard(.head2)
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "아티클 맞춤 환경이 준비되었어요."
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray400)
-        return label
-    }()
-    
-    private let startButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("시작하기", for: .normal)
-        button.titleLabel?.font = .pretendard(.subHead2)
-        button.setTitleColor(.designSystem(.white), for: .normal)
-        button.backgroundColor = .designSystem(.lionRed)
-        button.layer.cornerRadius = 4
-        button.clipsToBounds = true
-        return button
-    }()
-
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
     }
 }
