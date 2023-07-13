@@ -111,9 +111,9 @@
 		C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */; };
 		C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */; };
 		C0F029D12A5FA87900E0D185 /* Float+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D02A5FA87900E0D185 /* Float+.swift */; };
-		C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitle.swift */; };
-		C0F029E02A5FAD1200E0D185 /* LHOnboardingDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescription.swift */; };
-		C0F029E22A5FAE2700E0D185 /* LHOnboardingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */; };
+		C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift */; };
+		C0F029E02A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift */; };
+		C0F029E22A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E12A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift */; };
 		C0F029E42A5FB08700E0D185 /* NHUnderLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */; };
 		C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */; };
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
@@ -236,9 +236,9 @@
 		C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingButton.swift; sourceTree = "<group>"; };
 		C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+.swift"; sourceTree = "<group>"; };
 		C0F029D02A5FA87900E0D185 /* Float+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+.swift"; sourceTree = "<group>"; };
-		C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingTitle.swift; sourceTree = "<group>"; };
-		C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingDescription.swift; sourceTree = "<group>"; };
-		C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingError.swift; sourceTree = "<group>"; };
+		C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingTitleLabel.swift; sourceTree = "<group>"; };
+		C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingDescriptionLabel.swift; sourceTree = "<group>"; };
+		C0F029E12A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingErrorLabel.swift; sourceTree = "<group>"; };
 		C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHUnderLine.swift; sourceTree = "<group>"; };
 		C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundContainerView.swift; sourceTree = "<group>"; };
@@ -933,9 +933,9 @@
 				C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */,
 				C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */,
 				C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */,
-				C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitle.swift */,
-				C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescription.swift */,
-				C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */,
+				C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift */,
+				C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift */,
+				C0F029E12A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift */,
 				C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */,
 				C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */,
 				C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */,
@@ -1156,7 +1156,7 @@
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
-				C0F029E22A5FAE2700E0D185 /* LHOnboardingError.swift in Sources */,
+				C0F029E22A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
 				B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
@@ -1176,7 +1176,7 @@
 				C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
-				C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitle.swift in Sources */,
+				C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift in Sources */,
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
@@ -1190,7 +1190,7 @@
 				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
-				C0F029E02A5FAD1200E0D185 /* LHOnboardingDescription.swift in Sources */,
+				C0F029E02A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,

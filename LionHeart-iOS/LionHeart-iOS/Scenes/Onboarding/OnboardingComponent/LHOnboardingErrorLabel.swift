@@ -1,5 +1,5 @@
 //
-//  LHOnboardingError.swift
+//  LHOnboardingErrorLabel.swift
 //  LionHeart-iOS
 //
 //  Created by uiskim on 2023/07/13.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LHOnboardingError: UILabel {
+final class LHOnboardingErrorLabel: UILabel {
     
     init() {
         super.init(frame: .zero)

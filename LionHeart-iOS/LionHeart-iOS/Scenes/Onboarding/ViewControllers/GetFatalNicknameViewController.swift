@@ -18,9 +18,9 @@ protocol FatalNicknameCheckDelegate: AnyObject {
 final class GetFatalNicknameViewController: UIViewController {
     
     weak var delegate: FatalNicknameCheckDelegate?
-    private let titleLabel = LHOnboardingTitle("태명을 정하셨나요?")
-    private let descriptionLabel = LHOnboardingDescription("아직이라면, 닉네임을 적어주세요.")
-    private let fatalNickNameErrorLabel = LHOnboardingError()
+    private let titleLabel = LHOnboardingTitleLabel("태명을 정하셨나요?")
+    private let descriptionLabel = LHOnboardingDescriptionLabel("아직이라면, 닉네임을 적어주세요.")
+    private let fatalNickNameErrorLabel = LHOnboardingErrorLabel()
     private let fatalNickNameTextfield = NHOnboardingTextfield(textFieldType: .fatalNickname)
     private let textFieldUnderLine = NHUnderLine(lineColor: .designSystem(.lionRed))
     
