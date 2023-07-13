@@ -94,8 +94,8 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
             self.weekTitleLabel.text = inputData.curriculumWeekTitle
             self.contentImageView.image = inputData.curriculumImage
             self.contentTextLabel.text = inputData.curriculumText
-            self.curriculumContentStackView.isHidden = !inputData.isHidden // false -> true -> 안보이게됨
-            self.weekLabel.textColor = inputData.isHidden
+            self.curriculumContentStackView.isHidden = !inputData.isExpanded // false -> true -> 안보이게됨
+            self.weekLabel.textColor = inputData.isExpanded
             ? .designSystem(.componentLionRed)
             : .designSystem(.gray500)
         }

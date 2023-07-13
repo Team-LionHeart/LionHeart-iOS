@@ -119,7 +119,7 @@ private extension CurriculumViewController {
         let indexPath = IndexPath(row: desireRow, section: desireSection)
         
         
-        curriculumViewDatas[desireSection].weekDatas[desireRow].isHidden = true
+        curriculumViewDatas[desireSection].weekDatas[desireRow].isExpanded = true
         
         self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
     }
@@ -161,7 +161,7 @@ extension CurriculumViewController: UITableViewDataSource {
     
         let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
         
-        curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isHidden = !previousWeekDatas.isHidden
+        curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
         curriculumTableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
