@@ -9,12 +9,12 @@ import UIKit
 
 enum OnboardingPageType: Int, CaseIterable {
     case getPregnancy = 0
-    case getFatalNickname = 1
+    case getFetalNickname = 1
 }
 
 enum OnbardingFlowType: Int {
     case toGetPregnacny
-    case toFatalNickname
+    case toFetalNickname
     case toLogin
     case toCompleteOnboarding
 }
@@ -25,7 +25,7 @@ extension OnboardingPageType {
         switch self {
         case .getPregnancy:
             return .half
-        case .getFatalNickname:
+        case .getFetalNickname:
             return .full
         }
     }
@@ -33,8 +33,8 @@ extension OnboardingPageType {
     var forward: OnbardingFlowType {
         switch self {
         case .getPregnancy:
-            return .toFatalNickname
-        case .getFatalNickname:
+            return .toFetalNickname
+        case .getFetalNickname:
             return .toCompleteOnboarding
         }
     }
@@ -43,7 +43,7 @@ extension OnboardingPageType {
         switch self {
         case .getPregnancy:
             return .toLogin
-        case .getFatalNickname:
+        case .getFetalNickname:
             return .toGetPregnacny
         }
     }

@@ -18,8 +18,8 @@ final class CompleteOnbardingViewController: UIViewController {
     
     var userData: UserOnboardingModel? {
         didSet {
-            guard let fatalNickName = userData?.fatalNickname else { return }
-            self.titleLabel.text = "\(fatalNickName)님\n반가워요!"
+            guard let fetalNickName = userData?.fetalNickname else { return }
+            self.titleLabel.text = "\(fetalNickName)님\n반가워요!"
         }
     }
     

@@ -11,13 +11,13 @@ final class NHOnboardingTextfield: UITextField {
     
     enum TextFieldType {
         case pregancy
-        case fatalNickname
+        case fetalNickname
         
         var placeHolder: String {
             switch self {
             case .pregancy:
                 return "1~40"
-            case .fatalNickname:
+            case .fetalNickname:
                 return "태명"
             }
         }

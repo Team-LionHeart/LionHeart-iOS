@@ -54,7 +54,7 @@
 		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
 		B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893182A5D41F600CE1FEB /* KingfisherService.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
-		C09217682A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift */; };
+		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
 		C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
@@ -101,7 +101,7 @@
 		C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03972A5B90790037F740 /* UIColor+.swift */; };
 		C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03992A5B908E0037F740 /* CGColor+.swift */; };
 		C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */; };
-		C0DF03A12A5CAC220037F740 /* GetFatalNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A02A5CAC220037F740 /* GetFatalNicknameViewController.swift */; };
+		C0DF03A12A5CAC220037F740 /* GetFetalNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A02A5CAC220037F740 /* GetFetalNicknameViewController.swift */; };
 		C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */; };
 		C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */; };
 		C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */; };
@@ -179,7 +179,7 @@
 		B59893122A5D3A4D00CE1FEB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B59893182A5D41F600CE1FEB /* KingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherService.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
-		C09217662A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFatalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
+		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
 		C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPregnancyTextFieldResultType.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 		C0DF03972A5B90790037F740 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C0DF03992A5B908E0037F740 /* CGColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
 		C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPregnancyViewController.swift; sourceTree = "<group>"; };
-		C0DF03A02A5CAC220037F740 /* GetFatalNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFatalNicknameViewController.swift; sourceTree = "<group>"; };
+		C0DF03A02A5CAC220037F740 /* GetFetalNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFetalNicknameViewController.swift; sourceTree = "<group>"; };
 		C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageType.swift; sourceTree = "<group>"; };
 		C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingViewController.swift; sourceTree = "<group>"; };
 		C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnboardingModel.swift; sourceTree = "<group>"; };
@@ -756,7 +756,7 @@
 			children = (
 				C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */,
 				C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */,
-				C0DF03A02A5CAC220037F740 /* GetFatalNicknameViewController.swift */,
+				C0DF03A02A5CAC220037F740 /* GetFetalNicknameViewController.swift */,
 				C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */,
 			);
 			path = ViewControllers;
@@ -878,7 +878,7 @@
 		C09217652A605DEE00231C66 /* OnboardingTextFieldResultType */ = {
 			isa = PBXGroup;
 			children = (
-				C09217662A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift */,
+				C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */,
 				C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */,
 			);
 			path = OnboardingTextFieldResultType;
@@ -1162,7 +1162,7 @@
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
-				C0DF03A12A5CAC220037F740 /* GetFatalNicknameViewController.swift in Sources */,
+				C0DF03A12A5CAC220037F740 /* GetFetalNicknameViewController.swift in Sources */,
 				C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */,
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
@@ -1197,7 +1197,7 @@
 				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
-				C09217682A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */,
+				C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,

@@ -15,7 +15,7 @@ final class OnboardingViewController: UIViewController {
     typealias OnboardingViews = [UIViewController]
     
     /// passing data property
-    private var fatalNickName: String?
+    private var fetalNickName: String?
     private var pregnancy: Int?
     
     /// component property
@@ -32,7 +32,7 @@ final class OnboardingViewController: UIViewController {
             switch onboardingFlow {
             case .toLogin:
                 presentLoginView()
-            case .toGetPregnacny, .toFatalNickname:
+            case .toGetPregnacny, .toFetalNickname:
                 presentOnboardingView(oldValue: onboardingFlow)
             case .toCompleteOnboarding:
                 presentCompleteOnboardingView()
@@ -103,11 +103,11 @@ private extension OnboardingViewController {
     
     func setAddTarget() {
         nextButton.addButtonAction { _ in
-            guard let fatalNickName = self.fatalNickName else {
+            guard let fetalNickName = self.fetalNickName else {
                 self.nextOnboardingProcessWithNonActiveButtonState()
                 return
             }
-            self.nextOnboaringProcess(nickName: fatalNickName, minCount: 1, maxCount: 10)
+            self.nextOnboaringProcess(nickName: fetalNickName, minCount: 1, maxCount: 10)
         }
         
         onboardingNavigationbar.backButtonAction {
@@ -119,9 +119,9 @@ private extension OnboardingViewController {
         let pregnancyViewController = GetPregnancyViewController()
         pregnancyViewController.delegate = self
         pageDataSource.append(pregnancyViewController)
-        let fatalNicknameViewController = GetFatalNicknameViewController()
-        fatalNicknameViewController.delegate = self
-        pageDataSource.append(fatalNicknameViewController)
+        let fetalNicknameViewController = GetFetalNicknameViewController()
+        fetalNicknameViewController.delegate = self
+        pageDataSource.append(fetalNicknameViewController)
     }
     
     func setProgressView() {
@@ -151,7 +151,7 @@ private extension OnboardingViewController {
     
     func presentCompleteOnboardingView() {
         let completeViewController = CompleteOnbardingViewController()
-        let passingData = UserOnboardingModel(pregnacny: self.pregnancy, fatalNickname: self.fatalNickName)
+        let passingData = UserOnboardingModel(pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
         completeViewController.userData = passingData
         self.navigationController?.pushViewController(completeViewController, animated: true)
     }
@@ -178,12 +178,12 @@ private extension OnboardingViewController {
     }
 }
 
-extension OnboardingViewController: FatalNicknameCheckDelegate {
-    func sendFatalNickname(nickName: String) {
-        self.fatalNickName = nickName
+extension OnboardingViewController: FetalNicknameCheckDelegate {
+    func sendFetalNickname(nickName: String) {
+        self.fetalNickName = nickName
     }
     
-    func checkFatalNickname(resultType: OnboardingFatalNicknameTextFieldResultType) {
+    func checkFetalNickname(resultType: OnboardingFetalNicknameTextFieldResultType) {
         nextButton.isHidden = resultType.isHidden
     }
 }

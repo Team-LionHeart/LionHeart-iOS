@@ -9,5 +9,5 @@ import UIKit
 
 struct UserOnboardingModel: AppData {
     var pregnacny: Int?
-    var fatalNickname: String?
+    var fetalNickname: String?
 }
