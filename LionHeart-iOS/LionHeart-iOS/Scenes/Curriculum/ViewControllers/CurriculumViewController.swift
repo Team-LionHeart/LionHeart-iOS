@@ -158,13 +158,7 @@ extension CurriculumViewController: UITableViewDataSource {
     
         let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
         
-        curriculumViewDatas[indexPath.section].weekDatas[indexPath.row] = .init(
-            curriculumWeek: previousWeekDatas.curriculumWeek,
-            curriculumWeekTitle: previousWeekDatas.curriculumWeekTitle,
-            curriculumImage: previousWeekDatas.curriculumImage,
-            curriculumText: previousWeekDatas.curriculumText,
-            isHidden: !previousWeekDatas.isHidden
-        )
+        curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isHidden = !previousWeekDatas.isHidden
         curriculumTableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
