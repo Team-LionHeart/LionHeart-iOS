@@ -24,43 +24,39 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         static let contentImageView: CGFloat = 120 / 335
     }
     
-    let curriculumWholeStackView: UIStackView = {
+    private let curriculumWeekLableView = UIView()
+    
+    private let curriculumWholeStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 15
         return stackView
     }()
     
-    private let curriculumWeekLabelStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 8
-        return stackView
-    }()
-    
-    let curriculumContentStackView: UIStackView = {
+    private let curriculumContentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
-//        stackView.isHidden = true
         return stackView
     }()
     
-    var weekLabel: UILabel = {
+    private let weekLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body2M)
         label.textColor = .designSystem(.gray500)
-        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         label.backgroundColor = .designSystem(.background)
         return label
     }()
+    
     private let weekTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body2R)
         label.textColor = .designSystem(.gray100)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        label.textAlignment = .left
         return label
     }()
+    
     private let contentImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .designSystem(.lionRed)
@@ -83,11 +79,13 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     lazy var curriculumToggleDirectionButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "Vector1"), for: .normal)
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addButtonAction { _ in
             self.delegate?.toggleButtonTapped(indexPath: self.cellIndexPath)
         }
         return button
     }()
+    
     
     var inputData: CurriculumDummyData? {
         didSet {
@@ -102,7 +100,6 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
             : .designSystem(.gray500)
         }
     }
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -121,7 +118,6 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 private extension CurriculumTableViewCell {
@@ -130,17 +126,32 @@ private extension CurriculumTableViewCell {
     }
     
     func setHierarchy() {
-        contentView.addSubviews(curriculumWholeStackView, divider, curriculumToggleDirectionButton)
-        curriculumWholeStackView.addArrangedSubviews(curriculumWeekLabelStackView, curriculumContentStackView)
-        curriculumWeekLabelStackView.addArrangedSubviews(weekLabel, weekTitleLabel)
+        
+        curriculumWeekLableView.addSubviews(weekLabel, weekTitleLabel, curriculumToggleDirectionButton)
         curriculumContentStackView.addArrangedSubviews(contentImageView, contentTextLabel)
+        curriculumWholeStackView.addArrangedSubviews(curriculumWeekLableView, curriculumContentStackView)
+        contentView.addSubviews(curriculumWholeStackView, divider)
+        
     }
     
     func setLayout() {
+    
+        weekLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+        
+        weekTitleLabel.snp.makeConstraints{
+            $0.centerY.equalTo(weekLabel)
+            $0.leading.equalTo(weekLabel.snp.trailing).offset(8).priority(.high)
+        }
         
         curriculumToggleDirectionButton.snp.makeConstraints{
-            $0.top.equalTo(curriculumWholeStackView.snp.top).inset(0.5)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.leading.greaterThanOrEqualTo(weekTitleLabel.snp.trailing).offset(8)
+            $0.centerY.equalTo(weekLabel)
+            $0.trailing.equalToSuperview()
         }
         
         curriculumWholeStackView.snp.makeConstraints{
