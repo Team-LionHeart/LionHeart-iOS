@@ -54,6 +54,8 @@
 		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
 		B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893182A5D41F600CE1FEB /* KingfisherService.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
+		C09217682A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift */; };
+		C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -109,8 +111,6 @@
 		C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */; };
 		C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */; };
 		C0F029D12A5FA87900E0D185 /* Float+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D02A5FA87900E0D185 /* Float+.swift */; };
-		C0F029D42A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D32A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift */; };
-		C0F029D62A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D52A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift */; };
 		C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitle.swift */; };
 		C0F029E02A5FAD1200E0D185 /* LHOnboardingDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescription.swift */; };
 		C0F029E22A5FAE2700E0D185 /* LHOnboardingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */; };
@@ -179,6 +179,8 @@
 		B59893122A5D3A4D00CE1FEB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B59893182A5D41F600CE1FEB /* KingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherService.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
+		C09217662A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFatalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
+		C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPregnancyTextFieldResultType.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -234,8 +236,6 @@
 		C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingButton.swift; sourceTree = "<group>"; };
 		C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+.swift"; sourceTree = "<group>"; };
 		C0F029D02A5FA87900E0D185 /* Float+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+.swift"; sourceTree = "<group>"; };
-		C0F029D32A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPregnancyTextFieldResultType.swift; sourceTree = "<group>"; };
-		C0F029D52A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFatalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
 		C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingTitle.swift; sourceTree = "<group>"; };
 		C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingDescription.swift; sourceTree = "<group>"; };
 		C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingError.swift; sourceTree = "<group>"; };
@@ -498,7 +498,7 @@
 		B59892052A56B34200CE1FEB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C0F029D22A5FA8DD00E0D185 /* OnboardingTextFieldResultType */,
+				C09217652A605DEE00231C66 /* OnboardingTextFieldResultType */,
 				C0F029C52A5EFB5B00E0D185 /* OnboardingComponent */,
 				C0DF03A72A5CF0280037F740 /* OnboardingModel */,
 				C0DF03A22A5CACC60037F740 /* OnboardingPageType */,
@@ -875,6 +875,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C09217652A605DEE00231C66 /* OnboardingTextFieldResultType */ = {
+			isa = PBXGroup;
+			children = (
+				C09217662A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift */,
+				C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */,
+			);
+			path = OnboardingTextFieldResultType;
+			sourceTree = "<group>";
+		};
 		C0DF03292A5A91450037F740 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -933,14 +942,6 @@
 			);
 			path = OnboardingComponent;
 			sourceTree = "<group>";
-		};
-		C0F029D22A5FA8DD00E0D185 /* OnboardingTextFieldResultType */ = {
-			isa = PBXGroup;
-			children = (
-				C0F029D32A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift */,
-				C0F029D52A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift */,
-			);
-			path = OnboardingTextFieldResultType;
 		};
 		D3BA0B722A5CFA6400B6361F /* Model */ = {
 			isa = PBXGroup;
@@ -1131,6 +1132,7 @@
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
+				C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */,
 				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
@@ -1150,7 +1152,6 @@
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
-				C0F029D62A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */,
 				C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */,
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
@@ -1162,7 +1163,6 @@
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
 				C0DF03A12A5CAC220037F740 /* GetFatalNicknameViewController.swift in Sources */,
-				C0F029D42A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift in Sources */,
 				C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */,
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
@@ -1177,7 +1177,6 @@
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
 				C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitle.swift in Sources */,
-				C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */,
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
@@ -1198,6 +1197,7 @@
 				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
+				C09217682A605DEE00231C66 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
