@@ -55,6 +55,7 @@
 		B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */; };
 		B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B52A5DD5FE0021BE5E /* TitleTableViewCell.swift */; };
 		B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B72A5DDDFD0021BE5E /* EditorTableViewCell.swift */; };
+		B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B92A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
@@ -159,6 +160,7 @@
 		B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumnailTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2B52A5DD5FE0021BE5E /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2B72A5DDDFD0021BE5E /* EditorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTableViewCell.swift; sourceTree = "<group>"; };
+		B5C6A2B92A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTitleTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
@@ -644,6 +646,7 @@
 				B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */,
 				B5C6A2B52A5DD5FE0021BE5E /* TitleTableViewCell.swift */,
 				B5C6A2B72A5DDDFD0021BE5E /* EditorTableViewCell.swift */,
+				B5C6A2B92A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1087,6 +1090,7 @@
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
 				B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */,
 				C0DF036D2A5A9C9A0037F740 /* BookMarkViewController.swift in Sources */,
+				B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
