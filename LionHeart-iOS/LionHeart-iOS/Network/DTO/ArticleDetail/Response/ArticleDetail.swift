@@ -39,14 +39,14 @@ enum BlockType: String {
 extension ArticleDetail {
 
     /// DTO에서 내가 정의한 데이터로 변환하기 위한 메서드
-    func toAppData() -> [BlockTypeAppData?] {
+    func toAppData() -> [BlockTypeAppData] {
         let thumbNailModel = ArticleBlockData(content: self.mainImageUrl, caption: self.mainImageCaption)
         let thumbNail = BlockTypeAppData.thumbnail(model: thumbNailModel)
 
         let titleModel = ArticleBlockData(content: self.title, caption: self.author)
         let title = BlockTypeAppData.articleTitle(model: titleModel)
 
-        var blockTypeDatas: [BlockTypeAppData?] = [
+        var blockTypeDatas: [BlockTypeAppData] = [
             thumbNail, title
         ]
 
@@ -58,12 +58,12 @@ extension ArticleDetail {
         return blockTypeDatas
     }
 
-    private func makeArticleDetailType(contents: [ArticleBlock]) -> [BlockTypeAppData?] {
-        var blockTypes: [BlockTypeAppData?] = []
+    private func makeArticleDetailType(contents: [ArticleBlock]) -> [BlockTypeAppData] {
+        var blockTypes: [BlockTypeAppData] = []
         self.contents.forEach { articleBlock in
             guard let block = BlockType(rawValue: articleBlock.type) else { return }
 
-            var type: BlockTypeAppData?
+            var type: BlockTypeAppData = .none
 
             switch block {
             case .generalTitle:

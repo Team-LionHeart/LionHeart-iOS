@@ -14,6 +14,7 @@ struct ArticleBlockData: AppData {
     let caption: String?
 }
 
+@frozen
 enum BlockTypeAppData {
     case thumbnail(model: ArticleBlockData)
     case articleTitle(model: ArticleBlockData)
@@ -23,4 +24,5 @@ enum BlockTypeAppData {
     case generalTitle(model: ArticleBlockData)
     case image(model: ArticleBlockData)
     case endNote
+    case none
 }
