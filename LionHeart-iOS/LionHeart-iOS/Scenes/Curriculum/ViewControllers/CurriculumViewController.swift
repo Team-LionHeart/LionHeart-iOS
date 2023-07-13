@@ -12,9 +12,9 @@ import SnapKit
 
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
-    var userInfoData = UserInfoData.dummy()
+    private var userInfoData = UserInfoData.dummy()
     
-    lazy var curriculumUserInfoView: CurriculumUserInfoView = {
+    private lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()
         view.backgroundColor = .designSystem(.background)
         view.userInfo = userInfoData
@@ -24,6 +24,8 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     private enum Size {
         static let userInfoView: CGFloat = 158 / 375
     }
+    
+    private var isFirstPresented: Bool = true
     
     private let gradientImage: UIImageView = {
         let image = UIImageView(image: ImageLiterals.Curriculum.gradient)
@@ -61,12 +63,12 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         setTableView()
         
     }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        scrollToUserWeek()
+    override func viewDidLayoutSubviews() {
+        if isFirstPresented {
+            self.scrollToUserWeek()
+        }
     }
+    
 }
 
 private extension CurriculumViewController {
@@ -154,6 +156,7 @@ extension CurriculumViewController: UITableViewDataSource {
     }
     
     func toggleButtonTapped(indexPath: IndexPath?) {
+        self.isFirstPresented = false
         guard let indexPath = indexPath else { return }
     
         let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
