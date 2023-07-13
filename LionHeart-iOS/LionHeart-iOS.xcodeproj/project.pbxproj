@@ -48,7 +48,11 @@
 		B598930D2A5BED0F00CE1FEB /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B59893082A5BED0E00CE1FEB /* Pretendard-SemiBold.ttf */; };
 		B598930E2A5BED0F00CE1FEB /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B59893092A5BED0E00CE1FEB /* Pretendard-Bold.ttf */; };
 		B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598930A2A5BED0E00CE1FEB /* Font.swift */; };
+		B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */; };
+		B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893122A5D3A4D00CE1FEB /* NetworkError.swift */; };
 		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
+		B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893182A5D41F600CE1FEB /* KingfisherService.swift */; };
+		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -75,7 +79,6 @@
 		C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */; };
 		C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035E2A5A9C330037F740 /* ArticleListByWeekViewController.swift */; };
 		C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03602A5A9C400037F740 /* ArticleListByWeekView.swift */; };
-		C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */; };
 		C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */; };
 		C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */; };
 		C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03682A5A9C8D0037F740 /* BookMarkTableViewCell.swift */; };
@@ -152,6 +155,10 @@
 		B59893082A5BED0E00CE1FEB /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
 		B59893092A5BED0E00CE1FEB /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
 		B598930A2A5BED0E00CE1FEB /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBlockType.swift; sourceTree = "<group>"; };
+		B59893122A5D3A4D00CE1FEB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B59893182A5D41F600CE1FEB /* KingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherService.swift; sourceTree = "<group>"; };
+		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -178,7 +185,6 @@
 		C0DF035C2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF035E2A5A9C330037F740 /* ArticleListByWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekViewController.swift; sourceTree = "<group>"; };
 		C0DF03602A5A9C400037F740 /* ArticleListByWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByWeekView.swift; sourceTree = "<group>"; };
-		C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		C0DF03682A5A9C8D0037F740 /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
@@ -307,6 +313,8 @@
 		B532E8612A55260C00F0DB19 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B5C6A2C32A5EF4AC0021BE5E /* DTO */,
+				B59893172A5D41E300CE1FEB /* Services */,
 				B532E8662A5529F700F0DB19 /* Base */,
 			);
 			path = Network;
@@ -315,6 +323,7 @@
 		B532E8662A5529F700F0DB19 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				B59893122A5D3A4D00CE1FEB /* NetworkError.swift */,
 				B532E8622A5529B000F0DB19 /* HTTPHeaderField.swift */,
 				B532E8642A5529F100F0DB19 /* BaseResponse.swift */,
 			);
@@ -496,6 +505,7 @@
 		B598920B2A56B3A300CE1FEB /* ArticleDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B5C6A2C92A5EF5210021BE5E /* Model */,
 				B598922B2A56B6C100CE1FEB /* Cells */,
 				B598922A2A56B6BE00CE1FEB /* Views */,
 				B59892292A56B6BA00CE1FEB /* ViewControllers */,
@@ -637,7 +647,6 @@
 		B598922B2A56B6C100CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C0DF03622A5A9C580037F740 /* ArticleDetailTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -793,6 +802,46 @@
 				B598930A2A5BED0E00CE1FEB /* Font.swift */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		B59893172A5D41E300CE1FEB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B59893182A5D41F600CE1FEB /* KingfisherService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B5C6A2C32A5EF4AC0021BE5E /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				B5C6A2C42A5EF4B10021BE5E /* ArticleDetail */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		B5C6A2C42A5EF4B10021BE5E /* ArticleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B5C6A2C52A5EF4C30021BE5E /* Response */,
+			);
+			path = ArticleDetail;
+			sourceTree = "<group>";
+		};
+		B5C6A2C52A5EF4C30021BE5E /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		B5C6A2C92A5EF5210021BE5E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C0DF03292A5A91450037F740 /* Protocols */ = {
@@ -1004,6 +1053,7 @@
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
+				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
@@ -1016,6 +1066,7 @@
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
 				C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
+				B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
@@ -1024,6 +1075,7 @@
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
+				B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
@@ -1060,6 +1112,7 @@
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
+				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				F435E04E2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
