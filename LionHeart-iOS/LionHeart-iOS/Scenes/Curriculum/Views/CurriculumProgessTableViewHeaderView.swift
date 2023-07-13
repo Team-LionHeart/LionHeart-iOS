@@ -1,25 +1,27 @@
 //
-//  ArticleCategoryTableViewCell.swift
+//  CurriculumProgessTableViewHeaderView.swift
 //  LionHeart-iOS
 //
-//  Created by uiskim on 2023/07/09.
-//  Copyright (c) 2023 ArticleCategory. All rights reserved.
+//  Created by 곽성준 on 2023/07/12.
+//  Copyright (c) 2023 CurriculumProgessTableViewHeader. All rights reserved.
 //
 
 import UIKit
 
 import SnapKit
 
-final class ArticleCategoryTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
+final class CurriculumProgessTableViewHeaderView: UIView {
     
-    var inputData: DummyModel? {
-        didSet {
-            /// action
-        }
-    }
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    private let progressBar: UIProgressView = {
+        let proView = UIProgressView()
+        proView.setProgress(0.1, animated: true)
+        proView.progress = 0.1
+        proView.trackTintColor = .white
+        proView.progressTintColor = .red
+        return proView
+    }()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         // MARK: - 컴포넌트 설정
         setUI()
         
@@ -40,9 +42,10 @@ final class ArticleCategoryTableViewCell: UITableViewCell, TableViewCellRegister
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }
 
-private extension ArticleCategoryTableViewCell {
+private extension CurriculumProgessTableViewHeaderView {
     func setUI() {
         
     }
