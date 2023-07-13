@@ -39,6 +39,7 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         tableView.backgroundColor = .clear
         tableView.sectionFooterHeight = 40
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
