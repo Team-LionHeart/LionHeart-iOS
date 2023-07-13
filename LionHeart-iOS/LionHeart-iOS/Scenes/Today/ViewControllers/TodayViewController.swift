@@ -32,6 +32,8 @@ final class TodayViewController: UIViewController {
         
         // MARK: - autolayout설정
         setLayout()
+        
+        setTapGesture()
     }
 }
 
@@ -65,5 +67,15 @@ private extension TodayViewController {
             make.centerX.equalToSuperview()
             make.height.equalTo(mainArticlImageView.snp.width).multipliedBy(TodayArticleImage.ratio)
         }
+    }
+    
+    func setTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(articleTapped(_:)))
+        mainArticlImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func articleTapped(_ sender: UIButton) {
+        let articleDetailViewController = ArticleDetailViewController()
+        self.navigationController?.pushViewController(articleDetailViewController, animated: true)
     }
 }
