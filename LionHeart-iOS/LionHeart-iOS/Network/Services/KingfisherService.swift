@@ -26,9 +26,9 @@ final class LHKingFisherService {
                 switch result {
                 case .success(let imageResult):
                     let image = imageResult.image
-                    return imageContinuation.resume(returning: image)
+                    return ImageContinuation.resume(returning: image)
                 case .failure(_):
-                    return imageContinuation.resume(throwing: NetworkError.fetchImageError)
+                    return ImageContinuation.resume(throwing: NetworkError.fetchImageError)
                 }
             }
         }
