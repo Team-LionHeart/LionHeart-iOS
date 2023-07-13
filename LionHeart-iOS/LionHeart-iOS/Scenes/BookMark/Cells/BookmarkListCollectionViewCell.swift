@@ -10,12 +10,14 @@ import UIKit
 
 import SnapKit
 
-final class BookmarkCollectionViewCell: UICollectionViewCell,
+final class BookmarkListCollectionViewCell: UICollectionViewCell,
                                         CollectionViewCellRegisterDequeueProtocol {
     
     private enum Size {
         static let widthHeightRatio: CGFloat = 80/125
     }
+    
+    var bookmarkButtonClosure: ((Int) -> Void)?
     
     var inputData: DummyModel? {
         didSet {
@@ -36,6 +38,7 @@ final class BookmarkCollectionViewCell: UICollectionViewCell,
         label.lineBreakMode = .byWordWrapping
         label.font = .pretendard(.title2)
         label.textColor = .designSystem(.white)
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return label
     }()
     
@@ -44,12 +47,18 @@ final class BookmarkCollectionViewCell: UICollectionViewCell,
         label.text = "신체 변화 ⋅ 건강 ⋅ 아무튼 태그"
         label.font = .pretendard(.body4)
         label.textColor = .designSystem(.gray400)
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return label
     }()
     
     private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blue
+        button.setImage(.assetImage(.bookmarkActiveSmall), for: .normal)
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        button.addButtonAction { [weak self] _ in
+            guard let self else { return }
+            self.bookmarkButtonClosure?(self.tag)
+        }
         return button
     }()
     
@@ -61,20 +70,9 @@ final class BookmarkCollectionViewCell: UICollectionViewCell,
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // MARK: - 컴포넌트 설정
-        setUI()
         
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
     }
     
     @available(*, unavailable)
@@ -83,11 +81,7 @@ final class BookmarkCollectionViewCell: UICollectionViewCell,
     }
 }
 
-private extension BookmarkCollectionViewCell {
-    func setUI() {
-        backgroundColor = .clear
-    }
-    
+private extension BookmarkListCollectionViewCell {
     func setHierarchy() {
         addSubviews(articleImageView, articleTitleLabel, tagLabel, bookmarkButton, bottomLineView)
     }
@@ -102,7 +96,7 @@ private extension BookmarkCollectionViewCell {
         articleTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalTo(articleImageView.snp.trailing).offset(13)
-            $0.trailing.equalTo(bookmarkButton.snp.leading).offset(-4)
+            $0.trailing.equalTo(bookmarkButton.snp.leading).offset(-8)
         }
         
         tagLabel.snp.makeConstraints {
@@ -112,8 +106,6 @@ private extension BookmarkCollectionViewCell {
         
         bookmarkButton.snp.makeConstraints {
             $0.top.trailing.equalToSuperview()
-            // 임의 코드
-            $0.height.width.equalTo(28)
         }
         
         bottomLineView.snp.makeConstraints {
@@ -121,13 +113,5 @@ private extension BookmarkCollectionViewCell {
             $0.bottom.equalToSuperview()
             $0.height.equalTo(1)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
     }
 }

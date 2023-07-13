@@ -12,44 +12,24 @@ import SnapKit
 
 final class BookmarkViewController: UIViewController {
     
-    private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
+    private var bookmarkDataList: [String] = ["1", "2", "3", "4", "5", "", ""]
     
-    private let bookmarkDetailLabel: UILabel = {
-        let label = UILabel()
-        label.text = """
-                     사랑이 아빠님이
-                     보관한 아티클이에요
-                     """
-        label.numberOfLines = 0
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
+    private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
     
     private lazy var bookmarkCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .designSystem(.background)
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
+        
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
         setDelegate()
-        
         registerCell()
 
     }
@@ -61,25 +41,15 @@ private extension BookmarkViewController {
     }
     
     func setHierarchy() {
-        view.addSubviews(navigationBar, bookmarkDetailLabel, bookmarkCollectionView)
+        view.addSubviews(navigationBar, bookmarkCollectionView)
     }
     
     func setLayout() {
         NavigationBarLayoutManager.add(navigationBar)
-        
-        bookmarkDetailLabel.snp.makeConstraints {
-            $0.top.equalTo(navigationBar.snp.bottom).offset(32)
-            $0.leading.equalToSuperview().inset(20)
-        }
-        
         bookmarkCollectionView.snp.makeConstraints {
-            $0.top.equalTo(bookmarkDetailLabel.snp.bottom).offset(36)
+            $0.top.equalTo(navigationBar.snp.bottom)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-    }
-    
-    func setAddTarget() {
-        
     }
     
     func setDelegate() {
@@ -88,37 +58,59 @@ private extension BookmarkViewController {
     }
     
     func registerCell() {
-        BookmarkCollectionViewCell.register(to: bookmarkCollectionView)
-    }
-    
-    func setArticleCollectionViewlayout() {
-        
+        BookmarkDetailCollectionViewCell.register(to: bookmarkCollectionView)
+        BookmarkListCollectionViewCell.register(to: bookmarkCollectionView)
     }
 }
 
 extension BookmarkViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        if section == 0 {
+            return 1
+        } else {
+            bookmarkDataList.isEmpty ?
+            collectionView.setEmptyView(emptyText: """
+                                                   아직 담아본 아티클이 없어요.
+                                                   다른 아티클을 읽어볼까요?
+                                                   """) :
+            collectionView.restore()
+            return bookmarkDataList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = BookmarkCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-        return cell
+        if indexPath.section == 0 {
+            let cell = BookmarkDetailCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
+            return cell
+        } else {
+            let cell = BookmarkListCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
+            cell.bookmarkButtonClosure = { indexPathItem in
+                self.bookmarkDataList.remove(at: indexPathItem)
+                collectionView.deleteItems(at: [IndexPath(item: indexPathItem, section: 1)])
+            }
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = Constant.Screen.width - 40
-        let height = width * (100/320)
-        return CGSize(width: width, height: height)
+        if indexPath.section == 0 {
+            return CGSize(width: Constant.Screen.width, height: ScreenUtils.getHeight(124))
+        } else {
+            return CGSize(width: Constant.Screen.width - 40, height: ScreenUtils.getHeight(100))
+        }
     }
 }
 
 extension BookmarkViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        section == 1 ? UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20) : UIEdgeInsets()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        section == 1 ? 20 : CGFloat()
     }
 }
