@@ -14,7 +14,6 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     
     var userInfoData = UserInfoData.dummy()
     
-    
     lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()
         view.backgroundColor = .designSystem(.background)
@@ -54,22 +53,19 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         
         // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
+                
         // MARK: - delegate설정
         setDelegate()
         
         // MARK: - tableView Register설정
         setTableView()
-
+        
     }
+    
+   
     override func viewDidAppear(_ animated: Bool) {
-        let desiredSection = 1
-        let desiredRow = 0
-        let indexPath = IndexPath(row: desiredRow, section: desiredSection)
-        self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+
+        scrollToUserWeek()
     }
 }
 
@@ -102,10 +98,6 @@ private extension CurriculumViewController {
         }
     }
     
-    func setAddTarget() {
-        
-    }
-    
     func setDelegate() {
         curriculumTableView.dataSource = self
         curriculumTableView.delegate = self
@@ -116,9 +108,22 @@ private extension CurriculumViewController {
         curriculumTableView.register(CurriculumTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: CurriculumTableViewHeaderView.className)
         
     }
+    
+    // viewDidAppear
+    func scrollToUserWeek() {
+        let userWeek = userInfoData.userWeekInfo
+        let desireSection = (userWeek / 4) - 1
+        let desireRow = (userWeek % 4)
+        let indexPath = IndexPath(row: desireRow, section: desireSection)
+        
+        
+        curriculumViewDatas[desireSection].weekDatas[desireRow].isHidden = true
+        
+        self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+    }
 }
 
-extension CurriculumViewController: UITableViewDataSource{
+extension CurriculumViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return curriculumViewDatas[section].weekDatas.count
     }
@@ -143,11 +148,11 @@ extension CurriculumViewController: UITableViewDataSource{
         headerView.configureHeaderView(month: month)
         return headerView
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
-        
     }
-    
+
     func toggleButtonTapped(indexPath: IndexPath?) {
         guard let indexPath = indexPath else { return }
         

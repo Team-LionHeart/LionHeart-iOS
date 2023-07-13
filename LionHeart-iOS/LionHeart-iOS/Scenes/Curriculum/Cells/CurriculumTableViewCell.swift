@@ -47,7 +47,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         return stackView
     }()
     
-    private let weekLabel: UILabel = {
+    var weekLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body2M)
         label.textColor = .designSystem(.gray500)
@@ -96,7 +96,10 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
             self.weekTitleLabel.text = inputData.curriculumWeekTitle
             self.contentImageView.image = inputData.curriculumImage
             self.contentTextLabel.text = inputData.curriculumText
-            self.curriculumContentStackView.isHidden = !inputData.isHidden
+            self.curriculumContentStackView.isHidden = !inputData.isHidden // false -> true -> 안보이게됨
+            self.weekLabel.textColor = inputData.isHidden
+            ? .designSystem(.componentLionRed)
+            : .designSystem(.gray500)
         }
     }
     
