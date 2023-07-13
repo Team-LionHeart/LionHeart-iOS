@@ -129,28 +129,7 @@ private extension OnboardingViewController {
     }
 }
 
-
-extension OnboardingViewController: FatalNicknameCheckDelegate {
-    func sendFatalNickname(nickName: String) {
-        self.fatalNickName = nickName
-    }
-    
-    func checkFatalNickname(resultType: OnboardingFatalNicknameTextFieldResultType) {
-        nextButton.isHidden = resultType.isHidden
-    }
-}
-
-extension OnboardingViewController: PregnancyCheckDelegate {
-    func sendPregnancyContent(pregnancy: Int) {
-        self.pregnancy = pregnancy
-    }
-    
-    func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType) {
-        nextButton.isHidden = resultType.isHidden
-    }
-}
-
-extension OnboardingViewController {
+private extension OnboardingViewController {
     func fillProgressView(from input: Float) {
         UIView.animate(withDuration: 0.2) {
             self.onboardingProgressView.setProgress(input, animated: true)
@@ -196,5 +175,25 @@ private extension OnboardingViewController {
         self.nextButton.isHidden = false
         self.onboardingFlow = self.currentPage.back
         self.onboardingCompletePercentage = self.currentPage.progressValue
+    }
+}
+
+extension OnboardingViewController: FatalNicknameCheckDelegate {
+    func sendFatalNickname(nickName: String) {
+        self.fatalNickName = nickName
+    }
+    
+    func checkFatalNickname(resultType: OnboardingFatalNicknameTextFieldResultType) {
+        nextButton.isHidden = resultType.isHidden
+    }
+}
+
+extension OnboardingViewController: PregnancyCheckDelegate {
+    func sendPregnancyContent(pregnancy: Int) {
+        self.pregnancy = pregnancy
+    }
+    
+    func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType) {
+        nextButton.isHidden = resultType.isHidden
     }
 }

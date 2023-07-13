@@ -18,56 +18,13 @@ protocol PregnancyCheckDelegate: AnyObject {
 final class GetPregnancyViewController: UIViewController {
     
     weak var delegate: PregnancyCheckDelegate?
-    
-    var textfieldTrailingInset: Constraint?
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "현재 임신 주수를\n알려주세요"
-        label.font = .pretendard(.head2)
-        label.textColor = .designSystem(.white)
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "시기별 맞춤 아티클을 전해드려요."
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray400)
-        return label
-    }()
-    
+    private let titleLabel = LHOnboardingTitle("현재 임신 주수를\n알려주세요")
+    private let descriptionLabel = LHOnboardingDescription("시기별 맞춤 아티클을 전해드려요")
     private let pregnancyTextfield = NHOnboardingTextfield(textFieldType: .pregancy)
-    
-    private let textBox: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }()
-    
-    private let boundaryBox: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray900)
-        view.layer.cornerRadius = 8
-        view.clipsToBounds = true
-        return view
-    }()
-    
-    private let fixedWeekLabel: UILabel = {
-        let label = UILabel()
-        label.text = "주차"
-        label.font = .pretendard(.head2)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
-    
-    private let pregnancyErrorLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.componentLionRed)
-        return label
-    }()
+    private let fixedWeekLabel = LHOnboardingTitle("주차")
+    private var pregnancyErrorLabel = LHOnboardingError()
+    private let userInputContainerView = ContainerView()
+    private let roundRectView = RoundContainerView()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,9 +46,10 @@ private extension GetPregnancyViewController {
     }
     
     func setHierarchy() {
-        view.addSubviews(titleLabel, descriptionLabel, textBox, boundaryBox, pregnancyErrorLabel)
-        textBox.addSubviews(pregnancyTextfield, fixedWeekLabel)
-        boundaryBox.addSubviews(textBox)
+        
+        userInputContainerView.addSubviews(pregnancyTextfield, fixedWeekLabel)
+        roundRectView.addSubviews(userInputContainerView)
+        view.addSubviews(titleLabel, descriptionLabel, roundRectView, pregnancyErrorLabel)
     }
     
     func setLayout() {
@@ -105,9 +63,15 @@ private extension GetPregnancyViewController {
             make.leading.equalTo(titleLabel.snp.leading)
         }
         
-        textBox.snp.makeConstraints { make in
+        userInputContainerView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            textfieldTrailingInset = make.centerX.equalTo(boundaryBox.snp.centerX).offset(0).constraint
+            make.centerX.equalTo(roundRectView.snp.centerX)
+        }
+        
+        fixedWeekLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(5)
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(5)
         }
         
         pregnancyTextfield.snp.makeConstraints { make in
@@ -117,21 +81,15 @@ private extension GetPregnancyViewController {
             make.trailing.equalTo(fixedWeekLabel.snp.leading).offset(-4)
         }
         
-        fixedWeekLabel.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(5)
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(5)
-        }
-        
-        boundaryBox.snp.makeConstraints { make in
+        roundRectView.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(36)
             make.leading.trailing.equalToSuperview().inset(36)
             make.height.equalTo(72)
         }
         
         pregnancyErrorLabel.snp.makeConstraints { make in
-            make.top.equalTo(boundaryBox.snp.bottom).offset(8)
-            make.leading.equalTo(boundaryBox.snp.leading)
+            make.top.equalTo(roundRectView.snp.bottom).offset(8)
+            make.leading.equalTo(roundRectView.snp.leading)
         }
         
     }
@@ -149,27 +107,25 @@ private extension GetPregnancyViewController {
 
 extension GetPregnancyViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        
         guard let text = textField.text else { return }
+        
+        /// textField의 text의 갯수에 따른 로직
+        textField.placeholder = text.count == 0 ? "1~40" : ""
         if text.count == 0 {
-            textField.placeholder = "1~40"
-            delegate?.checkPregnancy(resultType: .pregnancyTextFieldEmpty)
-            pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldEmpty.errorMessage
-            textfieldTrailingInset?.update(offset: 0)
-        } else {
-            textField.placeholder = ""
+            textFieldSettingWhenEmpty()
         }
+        
+        /// textField의 text의 숫자에 따른 로직
         guard let textNumber = Int(text) else { return }
         if textNumber == 0 {
-            delegate?.checkPregnancy(resultType: .pregnancyTextFieldEmpty)
-            pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
-        } else if (1 <= textNumber) && (textNumber <= 40) {
-            delegate?.checkPregnancy(resultType: .pregnancyTextFieldValid)
-            pregnancyErrorLabel.text = ""
+            textFieldSettingWhenInputNumberZero()
+        } else if 1 <= textNumber && textNumber <= 40 {
+            textFieldSettingWhenInputNumberValid()
         } else {
-            delegate?.checkPregnancy(resultType: .pregnancyTextFieldOver)
-            pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
+            textFieldSettingWhenInpubNumberOver()
         }
+        
+        /// 현재 textField에 text를 PageViewController로 보내주는 delegate
         delegate?.sendPregnancyContent(pregnancy: textNumber)
     }
     
@@ -182,4 +138,26 @@ extension GetPregnancyViewController: UITextFieldDelegate {
         return text.count >= 2 ? false : true
     }
 
+}
+
+extension GetPregnancyViewController {
+    func textFieldSettingWhenEmpty() {
+        delegate?.checkPregnancy(resultType: .pregnancyTextFieldEmpty)
+        pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldEmpty.errorMessage
+    }
+    
+    func textFieldSettingWhenInputNumberZero() {
+        delegate?.checkPregnancy(resultType: .pregnancyTextFieldEmpty)
+        pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
+    }
+    
+    func textFieldSettingWhenInputNumberValid() {
+        delegate?.checkPregnancy(resultType: .pregnancyTextFieldValid)
+        pregnancyErrorLabel.text = ""
+    }
+    
+    func textFieldSettingWhenInpubNumberOver() {
+        delegate?.checkPregnancy(resultType: .pregnancyTextFieldOver)
+        pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
+    }
 }

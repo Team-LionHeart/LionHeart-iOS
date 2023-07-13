@@ -107,6 +107,12 @@
 		C0F029D12A5FA87900E0D185 /* Float+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D02A5FA87900E0D185 /* Float+.swift */; };
 		C0F029D42A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D32A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift */; };
 		C0F029D62A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029D52A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift */; };
+		C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitle.swift */; };
+		C0F029E02A5FAD1200E0D185 /* LHOnboardingDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescription.swift */; };
+		C0F029E22A5FAE2700E0D185 /* LHOnboardingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */; };
+		C0F029E42A5FB08700E0D185 /* NHUnderLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */; };
+		C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */; };
+		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +221,12 @@
 		C0F029D02A5FA87900E0D185 /* Float+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+.swift"; sourceTree = "<group>"; };
 		C0F029D32A5FA90000E0D185 /* OnboardingPregnancyTextFieldResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPregnancyTextFieldResultType.swift; sourceTree = "<group>"; };
 		C0F029D52A5FA95300E0D185 /* OnboardingFatalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFatalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
+		C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingTitle.swift; sourceTree = "<group>"; };
+		C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingDescription.swift; sourceTree = "<group>"; };
+		C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingError.swift; sourceTree = "<group>"; };
+		C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHUnderLine.swift; sourceTree = "<group>"; };
+		C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */,
+				C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -837,6 +850,11 @@
 				C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */,
 				C0F029C82A5EFC1F00E0D185 /* LHOnboardingController.swift */,
 				C0F029CA2A5F034400E0D185 /* LHOnboardingButton.swift */,
+				C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitle.swift */,
+				C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescription.swift */,
+				C0F029E12A5FAE2700E0D185 /* LHOnboardingError.swift */,
+				C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */,
+				C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */,
 			);
 			path = OnboardingComponent;
 			sourceTree = "<group>";
@@ -1011,6 +1029,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F029E42A5FB08700E0D185 /* NHUnderLine.swift in Sources */,
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
@@ -1023,6 +1042,7 @@
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
+				C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
@@ -1038,6 +1058,7 @@
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
+				C0F029E22A5FAE2700E0D185 /* LHOnboardingError.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
@@ -1055,6 +1076,7 @@
 				C0DF03612A5A9C400037F740 /* ArticleListByWeekView.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
+				C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitle.swift in Sources */,
 				C0DF03632A5A9C580037F740 /* ArticleDetailTableViewCell.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
@@ -1067,6 +1089,7 @@
 				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
+				C0F029E02A5FAD1200E0D185 /* LHOnboardingDescription.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
@@ -1082,6 +1105,7 @@
 				C0F029C92A5EFC1F00E0D185 /* LHOnboardingController.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
+				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

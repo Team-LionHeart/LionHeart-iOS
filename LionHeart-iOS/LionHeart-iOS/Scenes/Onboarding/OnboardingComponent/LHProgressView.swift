@@ -9,8 +9,8 @@ import UIKit
 
 final class LHProgressView: UIProgressView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         self.progressViewStyle = .bar
         self.progressTintColor = .designSystem(.lionRed)
         self.backgroundColor = .designSystem(.gray800)

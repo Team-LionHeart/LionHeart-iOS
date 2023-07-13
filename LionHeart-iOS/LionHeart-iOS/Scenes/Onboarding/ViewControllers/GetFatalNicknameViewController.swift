@@ -18,51 +18,19 @@ protocol FatalNicknameCheckDelegate: AnyObject {
 final class GetFatalNicknameViewController: UIViewController {
     
     weak var delegate: FatalNicknameCheckDelegate?
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "태명을 정하셨나요?"
-        label.font = .pretendard(.head2)
-        label.textColor = .designSystem(.white)
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "아직이라면, 닉네임을 적어주세요."
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray400)
-        return label
-    }()
-    
-    private let textFieldUnderLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.lionRed)
-        return view
-    }()
-    
-    private let fatalNickNameErrorLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.componentLionRed)
-        return label
-    }()
-    
+    private let titleLabel = LHOnboardingTitle("태명을 정하셨나요?")
+    private let descriptionLabel = LHOnboardingDescription("아직이라면, 닉네임을 적어주세요.")
+    private let fatalNickNameErrorLabel = LHOnboardingError()
     private let fatalNickNameTextfield = NHOnboardingTextfield(textFieldType: .fatalNickname)
+    private let textFieldUnderLine = NHUnderLine(lineColor: .designSystem(.lionRed))
     
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-
         setUI()
-        
         setHierarchy()
-        
         setLayout()
-        
         setTextField()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,17 +89,31 @@ extension GetFatalNicknameViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }
         if text.count == 0 {
-            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldEmpty)
-            fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldEmpty.errorMessage
-            fatalNickNameErrorLabel.isHidden = false
+            textFieldSettingWhenEmpty()
         } else if text.count <= 10 {
-            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldValid)
-            fatalNickNameErrorLabel.isHidden = true
+            textFieldSettingWhenValid()
         } else {
-            delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldOver)
-            fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldOver.errorMessage
-            fatalNickNameErrorLabel.isHidden = false
+            textFieldSettingWhenOver()
         }
         delegate?.sendFatalNickname(nickName: text)
+    }
+}
+
+private extension GetFatalNicknameViewController {
+    func textFieldSettingWhenEmpty() {
+        delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldEmpty)
+        fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldEmpty.errorMessage
+        fatalNickNameErrorLabel.isHidden = false
+    }
+    
+    func textFieldSettingWhenValid() {
+        delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldValid)
+        fatalNickNameErrorLabel.isHidden = true
+    }
+    
+    func textFieldSettingWhenOver() {
+        delegate?.checkFatalNickname(resultType: .fatalNicknameTextFieldOver)
+        fatalNickNameErrorLabel.text = OnboardingFatalNicknameTextFieldResultType.fatalNicknameTextFieldOver.errorMessage
+        fatalNickNameErrorLabel.isHidden = false
     }
 }
