@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A3D72872A5D405C00A36189 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D72862A5D405C00A36189 /* BookmarkCollectionViewCell.swift */; };
+		B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51220592A5FAA47006CBE2D /* ImageLiterals.swift */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
 		B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8352A5525C600F0DB19 /* ViewController.swift */; };
@@ -126,6 +127,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B51220592A5FAA47006CBE2D /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
 		4A3D72862A5D405C00A36189 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				C0DF032E2A5A92170037F740 /* NameSpace.swift */,
 				C0DF03482A5A9ACB0037F740 /* DummyModel.swift */,
 				C0DF03802A5AF51C0037F740 /* Constant.swift */,
+				B51220592A5FAA47006CBE2D /* ImageLiterals.swift */,
 			);
 			path = Literals;
 			sourceTree = "<group>";
@@ -874,7 +877,7 @@
 			isa = PBXGroup;
 			children = (
 				D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */,
-				);
+			);
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -1068,6 +1071,7 @@
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
 				B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
+				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
