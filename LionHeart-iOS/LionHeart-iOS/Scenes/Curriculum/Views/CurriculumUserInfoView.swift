@@ -34,7 +34,7 @@ final class CurriculumUserInfoView: UIView {
     }()
     
     private let weekImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "2word"))
+        let imageView = UIImageView(image: ImageLiterals.Curriculum.weekBackground)
         return imageView
     }()
     
@@ -54,7 +54,7 @@ final class CurriculumUserInfoView: UIView {
     }()
     
     private let dayImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "1word"))
+        let imageView = UIImageView(image: ImageLiterals.Curriculum.dayBackground)
         return imageView
     }()
     

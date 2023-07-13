@@ -78,7 +78,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     
     lazy var curriculumToggleDirectionButton: UIButton = {
         var button = UIButton()
-        button.setImage(UIImage(named: "Vector1"), for: .normal)
+        button.setImage(ImageLiterals.Curriculum.arrowDownSmall, for: .normal)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addButtonAction { _ in
             self.delegate?.toggleButtonTapped(indexPath: self.cellIndexPath)

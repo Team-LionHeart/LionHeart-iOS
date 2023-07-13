@@ -26,7 +26,7 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     }
     
     private let gradientImage: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "gradient1"))
+        let image = UIImageView(image: ImageLiterals.Curriculum.gradient)
         return image
     }()
     
@@ -53,7 +53,7 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         
         // MARK: - autolayout설정
         setLayout()
-                
+        
         // MARK: - delegate설정
         setDelegate()
         
@@ -62,9 +62,9 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         
     }
     
-   
+    
     override func viewDidAppear(_ animated: Bool) {
-
+        
         scrollToUserWeek()
     }
 }
@@ -152,10 +152,10 @@ extension CurriculumViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
-
+    
     func toggleButtonTapped(indexPath: IndexPath?) {
         guard let indexPath = indexPath else { return }
-        
+    
         let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
         
         curriculumViewDatas[indexPath.section].weekDatas[indexPath.row] = .init(
