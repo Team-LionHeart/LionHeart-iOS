@@ -12,21 +12,12 @@ import SnapKit
 
 final class TodayViewController: UIViewController {
     
-    enum Ratio {
-        static let imageRatio: CGFloat = 400/335
+    enum TodayArticleImage {
+        static let ratio: CGFloat = 400/335
     }
 
-    
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
-    private var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head1)
-        label.textColor = .designSystem(.white)
-        label.numberOfLines = 2
-        label.text = "사랑이 아빠님,\n오늘의 아티클이에요"
-        return label
-    }()
-    
+    private var titleLabel = LHTodayArticleTitle(nickName: "사랑이")
     private var mainArticlImageView = TodayArticleView()
 
     public override func viewDidLoad() {
@@ -41,12 +32,6 @@ final class TodayViewController: UIViewController {
         
         // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
     }
 }
 
@@ -78,15 +63,7 @@ private extension TodayViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(28)
             make.width.equalTo(ScreenUtils.getWidth(335))
             make.centerX.equalToSuperview()
-            make.height.equalTo(mainArticlImageView.snp.width).multipliedBy(Ratio.imageRatio)
+            make.height.equalTo(mainArticlImageView.snp.width).multipliedBy(TodayArticleImage.ratio)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
     }
 }
