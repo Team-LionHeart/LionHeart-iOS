@@ -54,7 +54,6 @@ final class TodayArticleView: UIView {
         let label = UILabel()
         label.font = .pretendard(.body2R)
         label.textColor = .designSystem(.gray400)
-        label.setTextWithLineHeight(lineHeight: 24)
         label.numberOfLines = 3
         return label
     }()
@@ -129,6 +128,8 @@ private extension TodayArticleView {
         mainArticlImageView.image = UIImage(named: "today_test_image")
         weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
         articleTitleLabel.text = data.articleTitle
+        articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
         descriptionLabel.text = data.articleDescription
+        descriptionLabel.setTextWithLineHeight(lineHeight: 24)
     }
 }
