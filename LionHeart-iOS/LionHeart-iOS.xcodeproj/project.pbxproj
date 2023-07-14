@@ -101,6 +101,7 @@
 		C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03972A5B90790037F740 /* UIColor+.swift */; };
 		C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03992A5B908E0037F740 /* CGColor+.swift */; };
 		D30CBA1A2A60384C00C8636B /* ChallengeDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CBA192A60384C00C8636B /* ChallengeDummy.swift */; };
+		D30CBA1D2A6141C300C8636B /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CBA1C2A6141C300C8636B /* ChallengeDayCheckCollectionViewCollectionViewCell.swift */; };
 		D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */; };
 		D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */; };
 		F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */; };
@@ -209,6 +210,7 @@
 		C0DF03972A5B90790037F740 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C0DF03992A5B908E0037F740 /* CGColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
 		D30CBA192A60384C00C8636B /* ChallengeDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDummy.swift; sourceTree = "<group>"; };
+		D30CBA1C2A6141C300C8636B /* ChallengeDayCheckCollectionViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDayCheckCollectionViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryModel.swift; sourceTree = "<group>"; };
 		F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewHeaderView.swift; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 		C0DF03822A5AF7A20037F740 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D30CBA1B2A61419900C8636B /* Cells */,
 				D30CBA182A60383800C8636B /* Model */,
 				C0DF03832A5AF7A90037F740 /* ViewController */,
 			);
@@ -882,6 +885,14 @@
 				D30CBA192A60384C00C8636B /* ChallengeDummy.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D30CBA1B2A61419900C8636B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D30CBA1C2A6141C300C8636B /* ChallengeDayCheckCollectionViewCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		D3BA0B722A5CFA6400B6361F /* Model */ = {
@@ -1068,6 +1079,7 @@
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
+				D30CBA1D2A6141C300C8636B /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
