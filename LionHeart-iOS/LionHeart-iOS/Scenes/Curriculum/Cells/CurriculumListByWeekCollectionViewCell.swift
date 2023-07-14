@@ -20,10 +20,6 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         let tableView = UITableView()
         tableView.contentInsetAdjustmentBehavior = .always
         tableView.backgroundColor = .designSystem(.background)
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 200
-        
-        
         return tableView
     }()
     
