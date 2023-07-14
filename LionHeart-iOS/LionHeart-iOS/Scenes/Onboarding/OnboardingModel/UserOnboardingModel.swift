@@ -8,6 +8,7 @@
 import UIKit
 
 struct UserOnboardingModel: AppData {
+    var kakaoAccessToken: String?
     var pregnacny: Int?
     var fetalNickname: String?
 }

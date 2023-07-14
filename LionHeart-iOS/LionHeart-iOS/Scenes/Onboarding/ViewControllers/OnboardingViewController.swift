@@ -17,6 +17,7 @@ final class OnboardingViewController: UIViewController {
     /// passing data property
     private var fetalNickName: String?
     private var pregnancy: Int?
+    private var kakaoAccessToken: String?
     
     /// component property
     private let nextButton = LHOnboardingButton()
@@ -56,6 +57,10 @@ final class OnboardingViewController: UIViewController {
         setHierarchy()
         setLayout()
         setAddTarget()
+    }
+    
+    func setKakaoAccessToken(_ token: String) {
+        self.kakaoAccessToken = token
     }
 }
 
@@ -151,7 +156,7 @@ private extension OnboardingViewController {
     
     func presentCompleteOnboardingView() {
         let completeViewController = CompleteOnbardingViewController()
-        let passingData = UserOnboardingModel(pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
+        let passingData = UserOnboardingModel(kakaoAccessToken: "카카오어세스토큰", pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
         completeViewController.userData = passingData
         self.navigationController?.pushViewController(completeViewController, animated: true)
     }
