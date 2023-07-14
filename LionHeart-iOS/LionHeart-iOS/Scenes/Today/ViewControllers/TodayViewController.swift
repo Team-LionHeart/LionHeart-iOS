@@ -15,10 +15,12 @@ final class TodayViewController: UIViewController {
     enum TodayArticleImage {
         static let ratio: CGFloat = 400/335
     }
+    
+    private var todayArticleData = TodayArticle.dummy
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
     private var titleLabel = LHTodayArticleTitle(nickName: "사랑이")
-    private var mainArticlImageView = TodayArticleView()
+    private var mainArticleView = TodayArticleView()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ final class TodayViewController: UIViewController {
         setHierarchy()
         setLayout()
         setTapGesture()
+        setData()
     }
 }
 
@@ -41,7 +44,7 @@ private extension TodayViewController {
     
     func setHierarchy() {
         view.addSubview(todayNavigationBar)
-        view.addSubviews(titleLabel, mainArticlImageView)
+        view.addSubviews(titleLabel, mainArticleView)
     }
     
     func setLayout() {
@@ -54,17 +57,21 @@ private extension TodayViewController {
             make.leading.equalToSuperview().inset(20)
         }
         
-        mainArticlImageView.snp.makeConstraints { make in
+        mainArticleView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(28)
             make.width.equalTo(ScreenUtils.getWidth(335))
             make.centerX.equalToSuperview()
-            make.height.equalTo(mainArticlImageView.snp.width).multipliedBy(TodayArticleImage.ratio)
+            make.height.equalTo(mainArticleView.snp.width).multipliedBy(TodayArticleImage.ratio)
         }
     }
     
     func setTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(articleTapped(_:)))
-        mainArticlImageView.addGestureRecognizer(tapGesture)
+        mainArticleView.addGestureRecognizer(tapGesture)
+    }
+    
+    func setData() {
+        mainArticleView.data = todayArticleData
     }
     
     @objc func articleTapped(_ sender: UIButton) {

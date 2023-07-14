@@ -14,14 +14,12 @@ final class TodayArticleView: UIView {
     
     var data: TodayArticle? {
         didSet {
-            guard let data else { return }
-//            mainArticlImageView.image = 
+            configureView(data: data)
         }
     }
     
     private var mainArticlImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "today_test_image")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -34,7 +32,6 @@ final class TodayArticleView: UIView {
     
     private var weekInfomationLabel: UILabel = {
         let label = UILabel()
-        label.text = "27주 6일차"
         label.font = .pretendard(.body2R)
         label.textColor = .designSystem(.componentLionRed)
         return label
@@ -42,7 +39,6 @@ final class TodayArticleView: UIView {
     
     private var articleTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "출산카드 신청하기\nA to Z"
         label.textColor = .designSystem(.white)
         label.font = .pretendard(.head2)
         label.numberOfLines = 0
@@ -56,11 +52,10 @@ final class TodayArticleView: UIView {
     
     private var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "젖병을 잘못 구매하면, 배앓이를 한다는 말 들어\n보셨나요? 오늘은 신생아에게 가장 중요한 젖병\n이야기를 들려드릴게요."
         label.font = .pretendard(.body2R)
         label.textColor = .designSystem(.gray400)
         label.setTextWithLineHeight(lineHeight: 24)
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         return label
     }()
     
@@ -99,6 +94,7 @@ private extension TodayArticleView {
             make.edges.equalToSuperview()
         }
         
+        weekInfomationLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         weekInfomationLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(8)
             make.leading.equalToSuperview().inset(20)
@@ -125,8 +121,14 @@ private extension TodayArticleView {
         weekInfomationView.snp.makeConstraints { make in
             make.bottom.equalTo(articleTitleLabel.snp.top).offset(-12)
             make.leading.equalToSuperview()
-            make.height.equalTo(40)
-            make.width.equalTo(110)
         }
+    }
+    
+    func configureView(data: TodayArticle?) {
+        guard let data else { return }
+        mainArticlImageView.image = UIImage(named: "today_test_image")
+        weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
+        articleTitleLabel.text = data.articleTitle
+        descriptionLabel.text = data.articleDescription
     }
 }
