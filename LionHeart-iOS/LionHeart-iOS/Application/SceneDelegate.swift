@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         /// 폰트등록
         Font.registerFonts()
         
-        let navigationController = UINavigationController(rootViewController: TabBarViewController())
+        let navigationController = UINavigationController(rootViewController: CurriculumListByWeekViewController())
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
