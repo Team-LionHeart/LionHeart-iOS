@@ -16,7 +16,7 @@ struct TodayArticle: AppData {
 }
 
 extension TodayArticle {
-    static let dummy: TodayArticle {
+    static var dummy: TodayArticle {
         return .init(fetalNickname: "김의성",
                      articleTitle: "안녕하세요\n김의성입니다",
                      articleDescription: "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요",
