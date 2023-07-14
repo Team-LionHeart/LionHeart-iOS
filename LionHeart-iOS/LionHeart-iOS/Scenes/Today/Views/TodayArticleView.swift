@@ -12,6 +12,13 @@ import SnapKit
 
 final class TodayArticleView: UIView {
     
+    var data: TodayArticle? {
+        didSet {
+            guard let data else { return }
+//            mainArticlImageView.image = 
+        }
+    }
+    
     private var mainArticlImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "today_test_image")
