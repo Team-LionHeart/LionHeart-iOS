@@ -63,6 +63,8 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
     private let articleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .white
+        imageView.image = ImageLiterals.ArticleCategory.coupleCategory
+        imageView.layer.opacity = 0.4
         return imageView
     }()
     
@@ -71,6 +73,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         view.layer.cornerRadius = 4
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.masksToBounds = true
+        view.layer.opacity = 0.6
         return view
     }()
     

@@ -48,7 +48,6 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         label.font = .pretendard(.head1)
         label.textColor = .designSystem(.white)
         label.textAlignment = .center
-        label.text = "shfjashfisahilfhsu"
         return label
     }()
     
