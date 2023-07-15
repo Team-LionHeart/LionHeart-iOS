@@ -1,5 +1,5 @@
 //
-//  LHOnboardingController.swift
+//  LHOnboardingPageViewController.swift
 //  LionHeart-iOS
 //
 //  Created by uiskim on 2023/07/13.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LHOnboardingController: UIPageViewController {
+final class LHOnboardingPageViewController: UIPageViewController {
     
     init() {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)

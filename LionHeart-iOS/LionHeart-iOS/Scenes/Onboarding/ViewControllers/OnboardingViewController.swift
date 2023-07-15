@@ -22,7 +22,7 @@ final class OnboardingViewController: UIViewController {
     /// component property
     private let nextButton = LHOnboardingButton()
     private let onboardingProgressView = LHProgressView()
-    private let onboardingViewController = LHOnboardingController()
+    private let onboardingViewController = LHOnboardingPageViewController()
     private var pageDataSource: OnboardingViews = []
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
     
