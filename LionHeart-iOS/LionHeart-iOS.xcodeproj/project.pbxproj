@@ -68,6 +68,10 @@
 		B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */; };
 		B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
+		C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B62A5FFE0E0043EB36 /* UILabel+.swift */; };
+		C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */; };
+		C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07CB8192A62C54D000198CC /* TodayModel.swift */; };
+		C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07CB81D2A62C5B1000198CC /* TodayArticleView.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
 		C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
@@ -100,8 +104,6 @@
 		C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */; };
 		C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036A2A5A9C930037F740 /* BookMarkView.swift */; };
 		C0DF036D2A5A9C9A0037F740 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */; };
-		C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */; };
-		C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03702A5A9CAF0037F740 /* TodayView.swift */; };
 		C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03722A5A9CB50037F740 /* TodayViewController.swift */; };
 		C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03742A5A9CD00037F740 /* TabBarViewController.swift */; };
 		C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */; };
@@ -206,6 +208,10 @@
 		B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTitleTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyRightTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
+		C00780B62A5FFE0E0043EB36 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHTodayArticleTitle.swift; sourceTree = "<group>"; };
+		C07CB8192A62C54D000198CC /* TodayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayModel.swift; sourceTree = "<group>"; };
+		C07CB81D2A62C5B1000198CC /* TodayArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayArticleView.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
 		C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPregnancyTextFieldResultType.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
@@ -239,7 +245,6 @@
 		C0DF036A2A5A9C930037F740 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
 		C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
-		C0DF03702A5A9CAF0037F740 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		C0DF03722A5A9CB50037F740 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		C0DF03742A5A9CD00037F740 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -337,6 +342,7 @@
 				B532E8472A5525C800F0DB19 /* LionHeart-iOSTests */,
 				B532E8512A5525C800F0DB19 /* LionHeart-iOSUITests */,
 				B532E82F2A5525C600F0DB19 /* Products */,
+				C07CB8172A62C4D6000198CC /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -455,6 +461,7 @@
 				C0F029CC2A5F8D2F00E0D185 /* UIPageViewController+.swift */,
 				C0F029D02A5FA87900E0D185 /* Float+.swift */,
 				F435E0532A5E67BF0098E691 /* NSObject+.swift */,
+				C00780B62A5FFE0E0043EB36 /* UILabel+.swift */,
 				4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */,
 			);
 			path = Extensions;
@@ -555,7 +562,8 @@
 		B59892072A56B35D00CE1FEB /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				B59892322A56B6F900CE1FEB /* Cells */,
+				C07CB8182A62C54D000198CC /* Model */,
+				C00780B82A6014870043EB36 /* Component */,
 				B59892312A56B6F700CE1FEB /* Views */,
 				B59892302A56B6F300CE1FEB /* ViewControllers */,
 			);
@@ -785,17 +793,9 @@
 		B59892312A56B6F700CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C0DF03702A5A9CAF0037F740 /* TodayView.swift */,
+				C07CB81D2A62C5B1000198CC /* TodayArticleView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		B59892322A56B6F900CE1FEB /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		B59892332A56B70200CE1FEB /* ViewControllers */ = {
@@ -918,6 +918,30 @@
 			isa = PBXGroup;
 			children = (
 				B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C00780B82A6014870043EB36 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		C07CB8172A62C4D6000198CC /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		C07CB8182A62C54D000198CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C07CB8192A62C54D000198CC /* TodayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1171,6 +1195,7 @@
 			files = (
 				C0F029E42A5FB08700E0D185 /* NHUnderLine.swift in Sources */,
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
+				C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
@@ -1191,6 +1216,7 @@
 				C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
+				C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */,
 				F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
@@ -1200,11 +1226,11 @@
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
 				B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */,
+				C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */,
 				4A8980C22A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
-				C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */,
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
@@ -1243,7 +1269,7 @@
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
 				C0DF036D2A5A9C9A0037F740 /* BookmarkViewController.swift in Sources */,
 				B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */,
-				C0DF036D2A5A9C9A0037F740 /* BookMarkViewController.swift in Sources */,
+				C0DF036D2A5A9C9A0037F740 /* BookmarkViewController.swift in Sources */,
 				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
 				B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
@@ -1252,12 +1278,12 @@
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
-				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
+				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				F435E04E2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift in Sources */,

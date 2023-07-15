@@ -75,7 +75,7 @@ final class LHNavigationBarView: UIView {
     }
 
     private func setStyle() {
-        self.backgroundColor = .designSystem(.background)
+        self.backgroundColor = type == .today ? .designSystem(.black) : .designSystem(.background)
     }
 
     // MARK: - addsubView
