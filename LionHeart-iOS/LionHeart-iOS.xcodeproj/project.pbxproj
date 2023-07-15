@@ -27,6 +27,8 @@
 		B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB642A6134B800D1727C /* setRootViewController.swift */; };
 		B57BEB682A6138F700D1727C /* motion_logo.json in Resources */ = {isa = PBXBuildFile; fileRef = B57BEB672A6138F700D1727C /* motion_logo.json */; };
 		B57BEB6C2A6149AD00D1727C /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB6B2A6149AD00D1727C /* NetworkRequest.swift */; };
+		B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB6D2A6275D600D1727C /* Serviceable.swift */; };
+		B57BEB702A6275F500D1727C /* ViewControllerServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB6F2A6275F500D1727C /* ViewControllerServiceable.swift */; };
 		B598926F2A56C21800CE1FEB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B598926E2A56C21800CE1FEB /* FirebaseAnalytics */; };
 		B59892712A56C21800CE1FEB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B59892702A56C21800CE1FEB /* FirebaseAnalyticsSwift */; };
 		B59892732A56C21800CE1FEB /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B59892722A56C21800CE1FEB /* FirebaseCrashlytics */; };
@@ -160,6 +162,8 @@
 		B57BEB642A6134B800D1727C /* setRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setRootViewController.swift; sourceTree = "<group>"; };
 		B57BEB672A6138F700D1727C /* motion_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = motion_logo.json; sourceTree = "<group>"; };
 		B57BEB6B2A6149AD00D1727C /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		B57BEB6D2A6275D600D1727C /* Serviceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serviceable.swift; sourceTree = "<group>"; };
+		B57BEB6F2A6275F500D1727C /* ViewControllerServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerServiceable.swift; sourceTree = "<group>"; };
 		B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSDebug.entitlements"; sourceTree = "<group>"; };
 		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B59892932A57A93300CE1FEB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -893,6 +897,8 @@
 				C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */,
 				C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */,
 				C0DF03302A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift */,
+				B57BEB6D2A6275D600D1727C /* Serviceable.swift */,
+				B57BEB6F2A6275F500D1727C /* ViewControllerServiceable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1104,6 +1110,7 @@
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
+				B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */,
 				B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
@@ -1122,6 +1129,7 @@
 				C0DF03712A5A9CAF0037F740 /* TodayView.swift in Sources */,
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
+				B57BEB702A6275F500D1727C /* ViewControllerServiceable.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
 				B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
