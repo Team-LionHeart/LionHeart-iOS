@@ -75,7 +75,7 @@ final class LHNavigationBarView: UIView {
     }
 
     private func setStyle() {
-        self.backgroundColor = .designSystem(.background)
+        self.backgroundColor = type == .today ? .designSystem(.black) : .designSystem(.background)
     }
 
     // MARK: - addsubView
@@ -88,7 +88,7 @@ final class LHNavigationBarView: UIView {
     // MARK: - autolayout설정
     private func setLayout() {
         self.snp.makeConstraints { make in
-            make.height.equalTo(ScreenUtils.getHeight(44))
+            make.height.equalTo(ScreenUtils.getHeight(60))
         }
         
         leftBarItem.snp.makeConstraints { make in
@@ -167,6 +167,7 @@ final class LHNavigationBarView: UIView {
 }
 
 extension LHNavigationBarView {
+    @discardableResult
     func backButtonAction(_ handler: @escaping (() -> Void)) -> Self {
         self.backButtonActionHandler = handler
         return self
