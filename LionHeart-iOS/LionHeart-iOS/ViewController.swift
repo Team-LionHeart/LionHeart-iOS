@@ -35,6 +35,12 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(kakaoLoginButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    private let testView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +60,13 @@ class ViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        view.addSubview(testView)
+        testView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.size.equalTo(50)
+        }
+        
     }
 
     @objc func kakaoLoginButtonTapped() {
@@ -62,6 +75,9 @@ class ViewController: UIViewController {
 //        } else {
 //            loginKakaoWithWeb()
 //        }
+
+        LHToast.show(message: "토스트메세지입니다")
+
         let nextVC = OnboardingViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
