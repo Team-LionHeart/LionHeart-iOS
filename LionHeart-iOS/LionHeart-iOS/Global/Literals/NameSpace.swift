@@ -9,3 +9,12 @@ import Foundation
 
 typealias Request = Encodable
 typealias Response = Decodable
+
+enum UserDefaultKey {
+    static let token = "TOKEN"
+}
+
+enum SocialLoginType: String {
+    case kakao = "KAKAO"
+    case apple = "APPLE"
+}
