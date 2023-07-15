@@ -43,7 +43,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         button.addButtonAction { _ in
 
         NotificationCenter.default.post(name: NSNotification.Name("leftButton"),
-                                            object: -1)
+                                            object: nil)
         }
         return button
     }()
@@ -53,7 +53,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         button.setImage(ImageLiterals.Curriculum.arrowRightWeek, for: .normal)
         button.addButtonAction { _ in
             NotificationCenter.default.post(name: NSNotification.Name("rightButton"),
-                                            object: 1)
+                                            object: nil)
         }
         
         return button
