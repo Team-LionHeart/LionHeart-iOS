@@ -79,7 +79,7 @@ private extension GetFetalNicknameViewController {
     func setTextField() {
         fetalNickNameTextfield.delegate = self
         if let clearButton = fetalNickNameTextfield.value(forKeyPath: "_clearButton") as? UIButton {
-            clearButton.setImage(UIImage(named: Constant.ImageName.textFieldClear.real), for: .normal)
+            clearButton.setImage(.assetImage(.textFieldClear), for: .normal)
         }
         self.fetalNickNameTextfield.clearButtonMode = UITextField.ViewMode.whileEditing
     }

@@ -27,7 +27,7 @@ final class NHOnboardingTextfield: UITextField {
     
     private lazy var clearButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: Constant.ImageName.textFieldClear.real), for: .normal)
+        button.setImage(.assetImage(.textFieldClear), for: .normal)
         button.contentMode = .scaleAspectFill
         return button
     }()
