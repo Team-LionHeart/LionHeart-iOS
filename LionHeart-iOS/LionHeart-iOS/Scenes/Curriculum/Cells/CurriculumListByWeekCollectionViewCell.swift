@@ -24,6 +24,7 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         tableView.contentInsetAdjustmentBehavior = .always
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .designSystem(.background)
+        tableView.separatorStyle = .none
         return tableView
     }()
     

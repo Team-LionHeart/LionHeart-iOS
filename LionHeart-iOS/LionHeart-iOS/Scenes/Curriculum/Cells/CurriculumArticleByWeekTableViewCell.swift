@@ -89,6 +89,13 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
     private lazy var bookMarkButton: UIButton = {
         var button = UIButton()
         button.setImage(ImageLiterals.BookMark.inactiveBookmarkSmall, for: .normal)
+        button.setImage(ImageLiterals.BookMark.activeBookmarkSmall, for: .selected)
+        button.addButtonAction { _ in
+            
+            // VC로 넘기기 노티피케이션
+            button.isSelected.toggle()
+          
+        }
         return button
     }()
     
