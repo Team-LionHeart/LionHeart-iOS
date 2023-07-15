@@ -40,6 +40,10 @@ final class CompleteOnbardingViewController: UIViewController {
         setHierarchy()
         setLayout()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 private extension CompleteOnbardingViewController {

@@ -59,6 +59,10 @@ final class OnboardingViewController: UIViewController {
         setAddTarget()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func setKakaoAccessToken(_ token: String) {
         self.kakaoAccessToken = token
     }
@@ -70,13 +74,13 @@ private extension OnboardingViewController {
     }
     
     func setNavigationBar() {
-        NavigationBarLayoutManager.add(onboardingNavigationbar)
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func setHierarchy() {
         addChild(onboardingViewController)
-        view.addSubviews(onboardingViewController.view, onboardingProgressView, nextButton)
+        view.addSubviews(onboardingViewController.view, onboardingNavigationbar, onboardingProgressView, nextButton)
     }
     
     func setPageViewController() {
@@ -91,6 +95,11 @@ private extension OnboardingViewController {
             make.top.equalTo(self.onboardingNavigationbar.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(nextButton.snp.top)
+        }
+        
+        onboardingNavigationbar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
         }
         
         
@@ -140,7 +149,7 @@ private extension OnboardingViewController {
             self.onboardingProgressView.setProgress(input, animated: true)
         }
     }
-
+    
     func presentLoginView() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -148,7 +157,7 @@ private extension OnboardingViewController {
     func presentOnboardingView(oldValue: OnbardingFlowType) {
         onboardingViewController.setViewControllers([pageDataSource[onboardingFlow.rawValue]],
                                                     direction: oldValue.rawValue > onboardingFlow.rawValue ? .reverse : .forward,
-                                                        animated: false) { _ in
+                                                    animated: false) { _ in
             guard let currentPage = OnboardingPageType(rawValue: self.onboardingFlow.rawValue) else { return }
             self.currentPage = currentPage
         }
