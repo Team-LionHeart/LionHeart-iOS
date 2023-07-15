@@ -23,7 +23,7 @@ final class CompleteOnbardingViewController: UIViewController {
         }
     }
     
-    private let titleLabel = LHOnboardingTitleLabel()
+    private let titleLabel = LHOnboardingTitleLabel(nil, align: .center)
     private let descriptionLabel = LHOnboardingDescriptionLabel("아티클 맞춤 환경이 준비되었어요.")
     private let startButton = LHRoundButton(cornerRadius: 8, title: "시작하기")
     

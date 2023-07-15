@@ -18,7 +18,7 @@ protocol FetalNicknameCheckDelegate: AnyObject {
 final class GetFetalNicknameViewController: UIViewController {
     
     weak var delegate: FetalNicknameCheckDelegate?
-    private let titleLabel = LHOnboardingTitleLabel("태명을 정하셨나요?")
+    private let titleLabel = LHOnboardingTitleLabel("태명을 정하셨나요?", align: .left)
     private let descriptionLabel = LHOnboardingDescriptionLabel("아직이라면, 닉네임을 적어주세요.")
     private let fetalNickNameErrorLabel = LHOnboardingErrorLabel()
     private let fetalNickNameTextfield = NHOnboardingTextfield(textFieldType: .fetalNickname)

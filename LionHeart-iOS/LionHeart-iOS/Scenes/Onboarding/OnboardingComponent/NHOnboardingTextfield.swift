@@ -49,7 +49,7 @@ final class NHOnboardingTextfield: UITextField {
         self.textColor = .designSystem(.white)
         clearButton.frame = .init(x: 0, y: 0, width: 28, height: 28)
         clearButton.contentMode = .scaleAspectFit
-        self.setLoginPlaceholder(placeholder: textFieldType.placeHolder)
+        self.setPlaceholder(placeholder: textFieldType.placeHolder, fontColor: .designSystem(.gray700), font: .pretendard(.head2))
         self.rightView = clearButton
         self.tintColor = .designSystem(.lionRed)
     }

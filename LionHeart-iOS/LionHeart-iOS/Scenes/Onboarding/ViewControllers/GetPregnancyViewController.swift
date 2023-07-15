@@ -18,10 +18,10 @@ protocol PregnancyCheckDelegate: AnyObject {
 final class GetPregnancyViewController: UIViewController {
     
     weak var delegate: PregnancyCheckDelegate?
-    private let titleLabel = LHOnboardingTitleLabel("현재 임신 주수를\n알려주세요")
+    private let titleLabel = LHOnboardingTitleLabel("현재 임신 주수를\n알려주세요", align: .left)
     private let descriptionLabel = LHOnboardingDescriptionLabel("시기별 맞춤 아티클을 전해드려요")
     private let pregnancyTextfield = NHOnboardingTextfield(textFieldType: .pregancy)
-    private let fixedWeekLabel = LHOnboardingTitleLabel("주차")
+    private let fixedWeekLabel = LHOnboardingTitleLabel("주차", align: .left)
     private var pregnancyErrorLabel = LHOnboardingErrorLabel()
     private let userInputContainerView = ContainerView()
     private let roundRectView = RoundContainerView()
