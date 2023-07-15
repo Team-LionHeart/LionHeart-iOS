@@ -35,7 +35,7 @@ final class MyPageCustomerServiceCollectionViewCell: UICollectionViewCell, Colle
         return view
     }()
     
-    var inputData: MyPageData? {
+    var inputData: MyPageLocalData? {
         didSet {
             configureData(inputData)
         }
@@ -73,7 +73,6 @@ private extension MyPageCustomerServiceCollectionViewCell {
             $0.width.height.equalTo(24)
         }
         
-        
         bottomView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(1)
@@ -88,7 +87,7 @@ private extension MyPageCustomerServiceCollectionViewCell {
         
     }
     
-    func configureData(_ model: MyPageData?) {
+    func configureData(_ model: MyPageLocalData?) {
         guard let model = model else { return }
         listNameLabel.text =  model.titleLabel
     }

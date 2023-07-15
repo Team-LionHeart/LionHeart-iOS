@@ -12,9 +12,9 @@ import SnapKit
 
 final class MyPageViewController: UIViewController {
     
-    private let myPageServiceLabelList = MyPageData.myPageServiceLabelList
-    private let myPageSectionLabelList = MyPageData.myPageSectionLabelList
-    private let myPageAppSettingLabelList = MyPageAppSettingData.myPageAppSettingDataList
+    private let myPageServiceLabelList = MyPageLocalData.myPageServiceLabelList
+    private let myPageSectionLabelList = MyPageLocalData.myPageSectionLabelList
+    private let myPageAppSettingLabelList = MyPageAppSettinLocalgData.myPageAppSettingDataList
     
     private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
 

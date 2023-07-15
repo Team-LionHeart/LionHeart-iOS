@@ -12,8 +12,6 @@ import SnapKit
 
 final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
-    private var headerViewType: HeaderViewType = .showSwitch
-    
     private let settingLabel = {
         let label = UILabel()
         label.font = .pretendard(.body2M)
@@ -41,7 +39,7 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
         return view
     }()
     
-    var inputData: MyPageAppSettingData? {
+    var inputData: MyPageAppSettinLocalgData? {
         didSet {
             configureData(inputData)
         }
@@ -97,7 +95,7 @@ private extension MyPageAppSettingCollectionViewCell {
         
     }
     
-    func configureData(_ model: MyPageAppSettingData?) {
+    func configureData(_ model: MyPageAppSettinLocalgData?) {
         guard let model = model else { return }
         settingLabel.text = model.appSettingtext
         alarmSwtich.isHidden = !model.showSwitch
