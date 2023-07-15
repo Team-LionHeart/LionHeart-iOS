@@ -13,7 +13,6 @@ final class LHToastView: UIView {
     
     init(message: String, backgroundColor: UIColor? = .designSystem(.gray800), messageColor: UIColor? = .designSystem(.white)) {
         super.init(frame: .zero)
-
         self.messageLabel.textColor = messageColor
         self.messageLabel.text = message
         self.backgroundColor = backgroundColor?.withAlphaComponent(0.8)

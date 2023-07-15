@@ -1,5 +1,5 @@
 //
-//  LHToastFactory.swift
+//  LHToast.swift
 //  LionHeart-iOS
 //
 //  Created by uiskim on 2023/07/14.
@@ -11,7 +11,6 @@ import SnapKit
 
 final class LHToast {
     private static let feedbackGenerator = UINotificationFeedbackGenerator()
-
     static func show (message: String, duration: TimeInterval = 1, completion: (() -> Void)? = nil) {
         let toastView = LHToastView(message: message)
         guard let window = UIWindow.current else { return }

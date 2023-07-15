@@ -56,7 +56,7 @@
 		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
 		B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893182A5D41F600CE1FEB /* KingfisherService.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
-		C09217712A6188A500231C66 /* LHToastFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217702A6188A500231C66 /* LHToastFactory.swift */; };
+		C09217712A6188A500231C66 /* LHToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217702A6188A500231C66 /* LHToast.swift */; };
 		C09217732A61895A00231C66 /* UIWindow+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217722A61895A00231C66 /* UIWindow+.swift */; };
 		C09217752A61898B00231C66 /* LHToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217742A61898B00231C66 /* LHToastView.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
@@ -168,7 +168,7 @@
 		B59893122A5D3A4D00CE1FEB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B59893182A5D41F600CE1FEB /* KingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherService.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
-		C09217702A6188A500231C66 /* LHToastFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHToastFactory.swift; sourceTree = "<group>"; };
+		C09217702A6188A500231C66 /* LHToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHToast.swift; sourceTree = "<group>"; };
 		C09217722A61895A00231C66 /* UIWindow+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+.swift"; sourceTree = "<group>"; };
 		C09217742A61898B00231C66 /* LHToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHToastView.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
@@ -864,7 +864,7 @@
 		C092176F2A61888900231C66 /* LHToast */ = {
 			isa = PBXGroup;
 			children = (
-				C09217702A6188A500231C66 /* LHToastFactory.swift */,
+				C09217702A6188A500231C66 /* LHToast.swift */,
 				C09217742A61898B00231C66 /* LHToastView.swift */,
 			);
 			path = LHToast;
@@ -1139,7 +1139,7 @@
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C09217752A61898B00231C66 /* LHToastView.swift in Sources */,
 				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
-				C09217712A6188A500231C66 /* LHToastFactory.swift in Sources */,
+				C09217712A6188A500231C66 /* LHToast.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
