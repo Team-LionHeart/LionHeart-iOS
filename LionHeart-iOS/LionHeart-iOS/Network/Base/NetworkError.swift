@@ -12,7 +12,7 @@ enum NetworkError: Error, CustomStringConvertible {
     case jsonDecodingError
     case badCasting
     case fetchImageError
-    case clientError(message: String)
+    case clientError(code: String, message: String)
     case serverError
 
     var description: String {
@@ -25,8 +25,8 @@ enum NetworkError: Error, CustomStringConvertible {
             return "잘못된 타입 캐스팅입니다 (HTTPResponse)"
         case .fetchImageError:
             return "Image URL로부터 불러오기 실패"
-        case .clientError(let message):
-            return "클라이언트 에러: \(message)"
+        case .clientError(let code, let message):
+            return "클라이언트 에러 code:\(code), message:\(message)"
         case .serverError:
             return "서버 에러"
         }
