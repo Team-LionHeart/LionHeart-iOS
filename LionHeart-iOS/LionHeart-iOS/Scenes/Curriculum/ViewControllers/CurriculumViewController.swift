@@ -14,6 +14,8 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     
     private var userInfoData = UserInfoData.dummy()
     
+    private let headerHeight: CGFloat = 40.0
+    
     private lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()
         view.backgroundColor = .designSystem(.background)
@@ -153,12 +155,12 @@ extension CurriculumViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return headerHeight
     }
     
     func toggleButtonTapped(indexPath: IndexPath?) {
         self.isFirstPresented = false
-        guard let indexPath = indexPath else { return }
+        guard let indexPath  else { return }
     
         let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
         

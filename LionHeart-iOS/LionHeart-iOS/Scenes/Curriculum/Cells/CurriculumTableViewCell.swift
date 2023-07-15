@@ -24,7 +24,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         static let contentImageView: CGFloat = 120 / 335
     }
     
-    private let curriculumWeekLableView = UIView()
+    private let curriculumWeekLabelView = UIView()
     
     private let curriculumWholeStackView: UIStackView = {
         let stackView = UIStackView()
@@ -127,9 +127,9 @@ private extension CurriculumTableViewCell {
     
     func setHierarchy() {
         
-        curriculumWeekLableView.addSubviews(weekLabel, weekTitleLabel, curriculumToggleDirectionButton)
+        curriculumWeekLabelView.addSubviews(weekLabel, weekTitleLabel, curriculumToggleDirectionButton)
         curriculumContentStackView.addArrangedSubviews(contentImageView, contentTextLabel)
-        curriculumWholeStackView.addArrangedSubviews(curriculumWeekLableView, curriculumContentStackView)
+        curriculumWholeStackView.addArrangedSubviews(curriculumWeekLabelView, curriculumContentStackView)
         contentView.addSubviews(curriculumWholeStackView, divider)
         
     }
