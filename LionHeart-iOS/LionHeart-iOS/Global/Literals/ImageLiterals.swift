@@ -49,6 +49,8 @@ enum ImageLiterals {
 
         static var dayBackground: UIImage { .load(named: "day_background") }
         static var weekBackground: UIImage { .load(named: "week_background") }
+        static var gradient: UIImage { .load(named: "gradient") }
+
     }
 
     enum MyPage {
