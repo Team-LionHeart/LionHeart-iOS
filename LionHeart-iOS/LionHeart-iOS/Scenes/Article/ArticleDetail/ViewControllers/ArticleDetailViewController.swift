@@ -47,13 +47,13 @@ final class ArticleDetailViewController: UIViewController {
         setHierarchy()
         setLayout()
         setTableView()
+        setNavigationBar()
     }
 }
 
 private extension ArticleDetailViewController {
     
     func setHierarchy() {
-//        NavigationBarLayoutManager.add(navigationBar)
         view.addSubviews(navigationBar, articleTableView, progressBar, scrollToTopButton)
     }
     
@@ -82,6 +82,10 @@ private extension ArticleDetailViewController {
     func setTableView() {
         articleTableView.delegate = self
         articleTableView.dataSource = self
+    }
+
+    func setNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
 

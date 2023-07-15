@@ -36,7 +36,10 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
         let button = UIButton()
         button.setImage(UIImage(systemName: "bookmark"), for: .normal)
         button.setImage(UIImage(systemName: "bookmark.fill"), for: .selected)
-        button.addTarget(self, action: #selector(handleBookmarkButtonTap), for: .touchUpInside)
+        button.addButtonAction { [weak self] _ in
+            guard let self else { return }
+            self.bookmarkButtonDidTap?()
+        }
         return button
     }()
 
@@ -51,11 +54,6 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setHierarchy()
         setLayout()
-    }
-
-    @objc
-    func handleBookmarkButtonTap() {
-        bookmarkButtonDidTap?()
     }
     
     @available(*, unavailable)
