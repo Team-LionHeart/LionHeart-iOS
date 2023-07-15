@@ -30,6 +30,5 @@ enum NetworkError: Error, CustomStringConvertible {
             return "📱클라이언트 에러 code: \(code), message:\(message)"
         case .serverError:
             return "🖥️서버 에러"
-        }
     }
 }
