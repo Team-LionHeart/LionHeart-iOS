@@ -73,11 +73,11 @@ final class ChallengeViewController: UIViewController {
     
     private let levelBar: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ImageLiterals.ChallengeBar.exampleDonghyun
+//        imageView.image = ImageLiterals.ChallengeBar.exampleDonghyun
         return imageView
     }()
     
-    private lazy var challengeDayCheckCollectionView: UICollectionView = {
+    private let challengeDayCheckCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
@@ -195,7 +195,7 @@ extension ChallengeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ChallengeDayCheckCollectionViewCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
         cell.backgroundColor = .designSystem(.gray1000)
-        cell.inputString = "\(indexPath.section * 5 + indexPath.row + 1)"
+        cell.inputString = "\(indexPath.section + indexPath.row + 1)"
         return cell
     }
 }
