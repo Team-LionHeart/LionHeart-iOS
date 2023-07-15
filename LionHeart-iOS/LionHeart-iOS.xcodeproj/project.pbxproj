@@ -52,6 +52,14 @@
 		B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893122A5D3A4D00CE1FEB /* NetworkError.swift */; };
 		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
 		B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893182A5D41F600CE1FEB /* KingfisherService.swift */; };
+		B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B12A5DB0B10021BE5E /* ArticleDetailTableView.swift */; };
+		B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */; };
+		B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B52A5DD5FE0021BE5E /* TitleTableViewCell.swift */; };
+		B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B72A5DDDFD0021BE5E /* EditorTableViewCell.swift */; };
+		B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B92A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift */; };
+		B5C6A2BC2A5DE2A50021BE5E /* BodyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2BB2A5DE2A50021BE5E /* BodyTableViewCell.swift */; };
+		B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */; };
+		B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
@@ -158,6 +166,14 @@
 		B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBlockType.swift; sourceTree = "<group>"; };
 		B59893122A5D3A4D00CE1FEB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B59893182A5D41F600CE1FEB /* KingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherService.swift; sourceTree = "<group>"; };
+		B5C6A2B12A5DB0B10021BE5E /* ArticleDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailTableView.swift; sourceTree = "<group>"; };
+		B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumnailTableViewCell.swift; sourceTree = "<group>"; };
+		B5C6A2B52A5DD5FE0021BE5E /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		B5C6A2B72A5DDDFD0021BE5E /* EditorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTableViewCell.swift; sourceTree = "<group>"; };
+		B5C6A2B92A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTitleTableViewCell.swift; sourceTree = "<group>"; };
+		B5C6A2BB2A5DE2A50021BE5E /* BodyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTableViewCell.swift; sourceTree = "<group>"; };
+		B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTitleTableViewCell.swift; sourceTree = "<group>"; };
+		B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyRightTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
@@ -640,6 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */,
+				B5C6A2B12A5DB0B10021BE5E /* ArticleDetailTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -647,6 +664,13 @@
 		B598922B2A56B6C100CE1FEB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */,
+				B5C6A2B52A5DD5FE0021BE5E /* TitleTableViewCell.swift */,
+				B5C6A2B72A5DDDFD0021BE5E /* EditorTableViewCell.swift */,
+				B5C6A2B92A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift */,
+				B5C6A2BB2A5DE2A50021BE5E /* BodyTableViewCell.swift */,
+				B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */,
+				B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1052,13 +1076,16 @@
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
+				B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */,
 				C0DF03472A5A9AA40037F740 /* CurriculumView.swift in Sources */,
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
+				B5C6A2BC2A5DE2A50021BE5E /* BodyTableViewCell.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
+				B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
@@ -1081,6 +1108,7 @@
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
+				B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */,
 				C0DF03692A5A9C8D0037F740 /* BookMarkTableViewCell.swift in Sources */,
@@ -1102,7 +1130,9 @@
 				C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
+				B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */,
 				C0DF036D2A5A9C9A0037F740 /* BookMarkViewController.swift in Sources */,
+				B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* MyPageView.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
@@ -1118,6 +1148,8 @@
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
+				B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */,
+				B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */,
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
 			);
