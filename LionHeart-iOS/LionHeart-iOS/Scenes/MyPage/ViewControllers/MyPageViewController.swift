@@ -35,7 +35,12 @@ final class MyPageViewController: UIViewController {
         setDelegate()
         registerCell()
         hiddenNavigationBar()
-
+        setTabbar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -79,6 +84,10 @@ private extension MyPageViewController {
     
     func hiddenNavigationBar() {
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    func setTabbar() {
+        self.tabBarController?.tabBar.isHidden = true
     }
 }
 

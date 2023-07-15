@@ -149,7 +149,6 @@ extension CurriculumViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = CurriculumTableViewHeaderView(reuseIdentifier: CurriculumTableViewHeaderView.className)
-        
         let month = curriculumViewDatas[section].month
         headerView.configureHeaderView(month: month)
         return headerView
@@ -170,4 +169,9 @@ extension CurriculumViewController: UITableViewDataSource {
     }
 }
 
-extension CurriculumViewController: UITableViewDelegate{}
+extension CurriculumViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let curriculumListByWeekViewController = CurriculumListByWeekViewController()
+        self.navigationController?.pushViewController(curriculumListByWeekViewController, animated: true)
+    }
+}

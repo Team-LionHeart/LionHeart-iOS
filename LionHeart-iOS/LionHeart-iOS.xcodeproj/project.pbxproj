@@ -83,6 +83,7 @@
 		C09217732A61895A00231C66 /* UIWindow+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217722A61895A00231C66 /* UIWindow+.swift */; };
 		C09A33222A62D46300B40770 /* LHToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A33202A62D46300B40770 /* LHToast.swift */; };
 		C09A33232A62D46300B40770 /* LHToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A33212A62D46300B40770 /* LHToastView.swift */; };
+		C09A33242A630A6400B40770 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -1322,6 +1323,7 @@
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
+				C09A33242A630A6400B40770 /* BookmarkViewController.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
 				C0F029E22A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,

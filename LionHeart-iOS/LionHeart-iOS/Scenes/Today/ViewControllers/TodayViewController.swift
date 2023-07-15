@@ -19,11 +19,13 @@ final class TodayViewController: UIViewController {
     private var todayArticleData = TodayArticle.dummy
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
+    
     private let seperateLine: UIView = {
         let view = UIView()
         view.backgroundColor = .designSystem(.gray800)
         return view
     }()
+    
     private var titleLabel = LHTodayArticleTitle(nickName: "사랑이")
     private var mainArticleView = TodayArticleView()
 
@@ -35,6 +37,7 @@ final class TodayViewController: UIViewController {
         setLayout()
         setTapGesture()
         setData()
+        setButtonAction()
     }
 }
 
@@ -86,6 +89,19 @@ private extension TodayViewController {
     func setData() {
         mainArticleView.data = todayArticleData
     }
+    
+    func setButtonAction() {
+        todayNavigationBar.rightFirstBarItemAction {
+            let bookmarkViewController = BookmarkViewController()
+            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
+        }
+        
+        todayNavigationBar.rightSecondBarItemAction {
+            let myPageViewController = MyPageViewController()
+            self.navigationController?.pushViewController(myPageViewController, animated: true)
+        }
+    }
+    
     
     @objc func articleTapped(_ sender: UIButton) {
         let articleDetailViewController = ArticleDetailViewController()

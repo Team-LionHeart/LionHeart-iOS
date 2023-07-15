@@ -48,6 +48,16 @@ final class ArticleDetailViewController: UIViewController {
         setLayout()
         setTableView()
         setNavigationBar()
+        setTabbar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
@@ -86,6 +96,10 @@ private extension ArticleDetailViewController {
 
     func setNavigationBar() {
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    func setTabbar() {
+        self.tabBarController?.tabBar.isHidden = true
     }
 }
 
