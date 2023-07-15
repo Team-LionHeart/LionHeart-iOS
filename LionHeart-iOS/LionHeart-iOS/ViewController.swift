@@ -30,15 +30,21 @@ class ViewController: UIViewController {
         button.setTitle("카카오로그인하기", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .yellow
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(kakaoLoginButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    private let testView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .designSystem(.background)
+        view.backgroundColor = .designSystem(.black)
         setLayout()
     }
 
@@ -54,14 +60,26 @@ class ViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        view.addSubview(testView)
+        testView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.size.equalTo(50)
+        }
+        
     }
 
     @objc func kakaoLoginButtonTapped() {
-        if UserApi.isKakaoTalkLoginAvailable() {
-            loginKakaoWithApp()
-        } else {
-            loginKakaoWithWeb()
-        }
+//        if UserApi.isKakaoTalkLoginAvailable() {
+//            loginKakaoWithApp()
+//        } else {
+//            loginKakaoWithWeb()
+//        }
+
+        LHToast.show(message: "토스트메세지입니다")
+
+        let nextVC = OnboardingViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
     private func loginKakaoWithApp() {
