@@ -14,11 +14,12 @@ protocol Serviceable {
     /// - Parameters:
     ///   - data: Data타입의 통신 결과
     ///   - decodeType: Data타입의 통신결과를 해당 타입으로 decode
-    func handleErrorCode<T: Response>(data: Data, decodeType: T.Type) throws
+    func handleErrorCode<T: Response>(data: Data, decodeType: T.Type) throws -> T?
 }
 
 extension Serviceable {
-    func handleErrorCode<T: Response>(data: Data, decodeType: T.Type) throws {
+    @discardableResult
+    func handleErrorCode<T: Response>(data: Data, decodeType: T.Type) throws -> T? {
 
         guard let model = try? JSONDecoder().decode(BaseResponse<T>.self, from: data) else {
             throw NetworkError.jsonDecodingError
@@ -35,5 +36,6 @@ extension Serviceable {
         guard !NetworkErrorCode.serverErrorCode.contains(statusCode) else {
             throw NetworkError.serverError
         }
+        return model.data
     }
 }
