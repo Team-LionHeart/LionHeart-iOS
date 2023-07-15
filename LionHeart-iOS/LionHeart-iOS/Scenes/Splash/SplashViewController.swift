@@ -37,11 +37,13 @@ final class SplashViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        lottieImageView.play()
-        guard let token = self.checkTokenIsExist() else { return }
-        Task {
-            await self.refreshToken(token: token)
+        lottieImageView.play { _ in
+            guard let token = self.checkTokenIsExist() else { return }
+            Task {
+                await self.refreshToken(token: token)
+            }
         }
+
     }
 
 }
