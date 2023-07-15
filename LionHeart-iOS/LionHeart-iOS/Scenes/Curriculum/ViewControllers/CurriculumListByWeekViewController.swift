@@ -143,7 +143,7 @@ extension CurriculumListByWeekViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = CurriculumListByWeekCollectionViewCell.dequeueReusableCell(to: curriculumListByWeekCollectionView, indexPath: indexPath)
         cell.inputData = listByWeekDatas[indexPath.item]
-        cell.selectedIndexPathData = indexPath
+        cell.selectedIndexPath = indexPath
         
         return cell
     }

@@ -15,9 +15,7 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
     private enum Size {
         static let weekBackGroundImageSize: CGFloat = (60 / 375) * Constant.Screen.width
     }
-    
-    var selectedIndexPath: IndexPath?
-    
+        
     
     private let curriculumListByWeekTableView: UITableView = {
         let tableView = UITableView()
@@ -36,11 +34,7 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         
     }
     
-    var selectedIndexPathData: IndexPath?{
-        didSet{
-            selectedIndexPath = selectedIndexPathData
-        }
-    }
+    var selectedIndexPath: IndexPath?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,9 +46,6 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         
         // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
         
         // MARK: - delegate설정
         setDelegate()
@@ -86,10 +77,6 @@ private extension CurriculumListByWeekCollectionViewCell {
         }
     }
     
-    func setAddTarget() {
-        
-    }
-    
     func setDelegate() {
         curriculumListByWeekTableView.delegate = self
         curriculumListByWeekTableView.dataSource = self
@@ -116,7 +103,7 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
         if indexPath.row == 0{
             let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
             cell.inputData = inputData
-            cell.indexPathData = indexPath
+            cell.cellIndexPath = indexPath
             
             return cell
         } else {

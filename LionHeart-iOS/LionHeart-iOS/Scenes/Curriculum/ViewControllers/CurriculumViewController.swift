@@ -12,7 +12,7 @@ import SnapKit
 
 final class CurriculumViewController: UIViewController{
     
-    let userInfoData = UserInfoData.dummy()
+    private let userInfoData = UserInfoData.dummy()
         
     lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()

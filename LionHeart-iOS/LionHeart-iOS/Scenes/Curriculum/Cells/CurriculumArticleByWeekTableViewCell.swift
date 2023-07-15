@@ -110,12 +110,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         
         // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
+
         
     }
     
@@ -189,12 +184,5 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.bottom.equalToSuperview()
         }
     }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
+
 }

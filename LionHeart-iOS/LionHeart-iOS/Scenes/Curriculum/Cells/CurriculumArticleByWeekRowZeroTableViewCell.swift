@@ -14,12 +14,6 @@ import SnapKit
 final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
     var cellIndexPath: IndexPath?
-
-    var indexPathData: IndexPath?{
-        didSet{
-            cellIndexPath = indexPathData
-        }
-    }
     
     var inputData: CurriculumWeekData? {
         didSet {
@@ -94,12 +88,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         
         // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
+    
     }
 
     
@@ -145,11 +134,4 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
         }
     }
     
-    func setAddTarget() {
-
-    }
-    
-    func setDelegate() {
-        
-    }
 }
