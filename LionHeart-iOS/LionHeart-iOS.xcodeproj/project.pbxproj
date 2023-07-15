@@ -356,6 +356,10 @@
 			isa = PBXGroup;
 			children = (
 				4A8980C92A614F8700746C58 /* MyPageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};	
 		4A860AD22A626591002BA428 /* Model */ = {
 			isa = PBXGroup;
 			children = (
