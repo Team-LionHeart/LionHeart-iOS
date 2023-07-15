@@ -170,3 +170,5 @@ private extension CurriculumTableViewCell {
         }
     }
 }
+
+

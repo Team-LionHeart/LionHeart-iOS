@@ -12,7 +12,8 @@ import SnapKit
 
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
-    private var userInfoData = UserInfoData.dummy()
+    private let userInfoData = UserInfoData.dummy()
+    
     
     private let headerHeight: CGFloat = 40.0
     
@@ -66,12 +67,12 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         setTableView()
         
     }
+    
     override func viewDidLayoutSubviews() {
         if isFirstPresented {
             self.scrollToUserWeek()
         }
     }
-    
 }
 
 private extension CurriculumViewController {
