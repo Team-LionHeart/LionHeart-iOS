@@ -133,6 +133,8 @@
 		C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */; };
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
 		C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */; };
+		D30CBA1A2A60384C00C8636B /* ChallengeDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CBA192A60384C00C8636B /* ChallengeDummy.swift */; };
+		D3AB54C12A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB54C02A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift */; };
 		D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */; };
 		D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */; };
 		F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */; };
@@ -274,6 +276,8 @@
 		C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundContainerView.swift; sourceTree = "<group>"; };
 		C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHRoundButton.swift; sourceTree = "<group>"; };
+		D30CBA192A60384C00C8636B /* ChallengeDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDummy.swift; sourceTree = "<group>"; };
+		D3AB54C02A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDayCheckCollectionViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryModel.swift; sourceTree = "<group>"; };
 		F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewHeaderView.swift; sourceTree = "<group>"; };
@@ -968,6 +972,8 @@
 		C0DF03822A5AF7A20037F740 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D3AB54BD2A62CDD50017BF53 /* Cells */,
+				D30CBA182A60383800C8636B /* Model */,
 				C0DF03832A5AF7A90037F740 /* ViewController */,
 			);
 			path = Challenge;
@@ -1012,6 +1018,22 @@
 				C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */,
 			);
 			path = OnboardingComponent;
+			sourceTree = "<group>";
+		};
+		D30CBA182A60383800C8636B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D30CBA192A60384C00C8636B /* ChallengeDummy.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D3AB54BD2A62CDD50017BF53 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D3AB54C02A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		D3BA0B722A5CFA6400B6361F /* Model */ = {
@@ -1218,6 +1240,7 @@
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
 				C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */,
 				F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */,
+				D30CBA1A2A60384C00C8636B /* ChallengeDummy.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
 				C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */,
@@ -1294,6 +1317,7 @@
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
 				4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */,
 				B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */,
+				D3AB54C12A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */,
 				B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */,
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
