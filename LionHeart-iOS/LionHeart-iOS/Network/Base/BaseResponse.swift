@@ -8,8 +8,7 @@
 import Foundation
 
 struct BaseResponse<T: Response>: Response {
-    let status: Int
-    let success: Bool
+    let code: String
     let message: String
     let data: T?
 }
