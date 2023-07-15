@@ -41,12 +41,8 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         let button = UIButton(type: .custom)
         button.setImage(ImageLiterals.Curriculum.arrowLeftWeek, for: .normal)
         button.addButtonAction { _ in
-            
-//            guard var cellIndexPath = self.cellIndexPath else { return }
-//            cellIndexPath.row -= 1
-//            let indexPathRow = max(0, cellIndexPath.row)
-            
-            NotificationCenter.default.post(name: NSNotification.Name("leftButton"),
+
+        NotificationCenter.default.post(name: NSNotification.Name("leftButton"),
                                             object: -1)
         }
         return button
