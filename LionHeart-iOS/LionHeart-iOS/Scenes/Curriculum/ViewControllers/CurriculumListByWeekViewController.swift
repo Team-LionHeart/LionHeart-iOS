@@ -116,7 +116,7 @@ private extension CurriculumListByWeekViewController {
     
     @objc
     func rightButtonTapped(notification: NSNotification) {
-        let nextPage = min(3,currentPage + 1)
+        let nextPage = min(listByWeekDatas.count - 1, currentPage + 1)
         self.currentPage = nextPage
         
     }
