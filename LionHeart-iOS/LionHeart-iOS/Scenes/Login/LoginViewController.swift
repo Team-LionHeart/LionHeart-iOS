@@ -88,7 +88,7 @@ private extension LoginViewController {
     
     func setAddTarget() {
         kakakoLoginButton.addButtonAction { sender in
-            let mainViewController = TabBarViewController()
+            let mainViewController = OnboardingViewController()
             self.navigationController?.pushViewController(mainViewController, animated: true)
         }
     }

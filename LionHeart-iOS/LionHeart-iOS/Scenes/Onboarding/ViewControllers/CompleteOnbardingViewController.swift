@@ -39,6 +39,7 @@ final class CompleteOnbardingViewController: UIViewController {
         setUI()
         setHierarchy()
         setLayout()
+        setButtonAction()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -76,6 +77,13 @@ private extension CompleteOnbardingViewController {
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().inset(60)
             make.height.equalTo(50)
+        }
+    }
+    
+    func setButtonAction() {
+        startButton.addButtonAction { sender in
+            let mainTabbarViewController = TabBarViewController()
+            self.navigationController?.pushViewController(mainTabbarViewController, animated: true)
         }
     }
 }
