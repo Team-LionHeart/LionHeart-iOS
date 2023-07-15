@@ -54,6 +54,7 @@ enum ImageLiterals {
     enum MyPage {
         static var newIcon: UIImage { .load(named: "ic_new") }
         static var penIcon: UIImage { .load(named: "ic_pen") }
+        static var penColorIcon: UIImage { .load(named: "ic_pen_color") }
     }
 
     enum NavigationBar {
