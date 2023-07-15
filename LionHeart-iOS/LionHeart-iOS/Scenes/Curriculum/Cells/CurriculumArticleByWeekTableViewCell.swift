@@ -10,12 +10,28 @@ import UIKit
 
 import SnapKit
 
+
+
 final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
+    
+    var inputData: ArticleDataByWeek? {
+        didSet {
+            
+            articleDayLabel.text = inputData?.articleDay
+            articleTagLabel.text = inputData?.articleTags
+            articleReadTimeLabel.text = inputData?.articleReadTime
+            articleDateLabel.text = inputData?.articleDate
+            articleContentLabel.text = inputData?.articleContent
+            
+        }
+    }
+    
+    private let tableViewCellWholeView = UIView()
 
     private enum Size {
         static let readTimeAndBookmarkViewSize: CGFloat = 44 / 335
-        static let articleImageSize: CGFloat = 156 / 335
+        static let articleImageSize: CGFloat = 200 / 335
 
     }
     
@@ -54,15 +70,8 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         return label
     }()
     
-    private let bookMarkButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageLiterals.BookMark.inactiveBookmarkSmall, for: .normal)
-        return button
-    }()
-    
     private let articleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .white
         imageView.image = ImageLiterals.ArticleCategory.coupleCategory
         imageView.layer.opacity = 0.4
         return imageView
@@ -77,19 +86,12 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         return view
     }()
     
-    private let tableViewCellWholeView = UIView()
+    private lazy var bookMarkButton: UIButton = {
+        var button = UIButton()
+        button.setImage(ImageLiterals.BookMark.inactiveBookmarkSmall, for: .normal)
+        return button
+    }()
     
-    var inputData: ArticleDataByWeek? {
-        didSet {
-            
-            articleDayLabel.text = inputData?.articleDay
-            articleTagLabel.text = inputData?.articleTags
-            articleReadTimeLabel.text = inputData?.articleReadTime
-            articleDateLabel.text = inputData?.articleDate
-            articleContentLabel.text = inputData?.articleContent
-            
-        }
-    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

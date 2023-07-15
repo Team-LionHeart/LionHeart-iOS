@@ -35,7 +35,6 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
-        //        stackView.isHidden = true
         return stackView
     }()
     
@@ -160,8 +159,6 @@ private extension CurriculumTableViewCell {
             $0.bottom.equalToSuperview().inset(36)
         }
     }
-    
-    
-    
-    
 }
+
+

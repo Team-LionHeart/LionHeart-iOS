@@ -16,9 +16,13 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         static let weekBackGroundImageSize: CGFloat = (60 / 375) * Constant.Screen.width
     }
     
+    var selectedIndexPath: IndexPath?
+    
+    
     private let curriculumListByWeekTableView: UITableView = {
         let tableView = UITableView()
         tableView.contentInsetAdjustmentBehavior = .always
+        tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .designSystem(.background)
         return tableView
     }()
@@ -29,6 +33,12 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
             curriculumListByWeekTableView.reloadData()
         }
         
+    }
+    
+    var selectedIndexPathData: IndexPath?{
+        didSet{
+            selectedIndexPath = selectedIndexPathData
+        }
     }
     
     override init(frame: CGRect) {
@@ -50,6 +60,8 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         
         // MARK: - tableView Register 설정
         setTableView()
+        
+        
     }
     
     @available(*, unavailable)
@@ -86,8 +98,10 @@ private extension CurriculumListByWeekCollectionViewCell {
         CurriculumArticleByWeekTableViewCell.register(to: curriculumListByWeekTableView)
         CurriculumArticleByWeekRowZeroTableViewCell.register(to: curriculumListByWeekTableView)
         
-        
-        
+        let footerView = UIView()
+        footerView.backgroundColor = .designSystem(.background)
+        footerView.frame.size.height = 76
+        self.curriculumListByWeekTableView.tableFooterView = footerView
     }
 }
 
@@ -101,11 +115,10 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
         if indexPath.row == 0{
             let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
             cell.inputData = inputData
+            cell.indexPathData = indexPath
+            
             return cell
-            
-            
-        }else{
-            
+        } else {
             let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
             cell.inputData = inputData?.articleData[indexPath.row]
             cell.selectionStyle = .none
@@ -116,3 +129,5 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
 }
 
 extension CurriculumListByWeekCollectionViewCell: UITableViewDelegate{}
+
+

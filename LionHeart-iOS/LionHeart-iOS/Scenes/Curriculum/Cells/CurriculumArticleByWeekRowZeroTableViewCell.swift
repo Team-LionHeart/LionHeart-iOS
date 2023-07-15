@@ -10,12 +10,27 @@ import UIKit
 
 import SnapKit
 
+
 final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
+    
+    var cellIndexPath: IndexPath?
+
+    var indexPathData: IndexPath?{
+        didSet{
+            cellIndexPath = indexPathData
+        }
+    }
+    
+    var inputData: CurriculumWeekData? {
+        didSet {
+            weekLabel.text = inputData?.week
+        }
+    }
     
     private enum Size {
         static let weekBackGroundImageSize: CGFloat = 200 / 375
     }
-    
+        
     private let weekBackGroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .designSystem(.gray500)
@@ -23,14 +38,28 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
     }()
     
     private lazy var leftWeekButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setImage(ImageLiterals.Curriculum.arrowLeftWeek, for: .normal)
+        button.addButtonAction { _ in
+            
+//            guard var cellIndexPath = self.cellIndexPath else { return }
+//            cellIndexPath.row -= 1
+//            let indexPathRow = max(0, cellIndexPath.row)
+            
+            NotificationCenter.default.post(name: NSNotification.Name("leftButton"),
+                                            object: -1)
+        }
         return button
     }()
     
     private lazy var rightWeekButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setImage(ImageLiterals.Curriculum.arrowRightWeek, for: .normal)
+        button.addButtonAction { _ in
+            NotificationCenter.default.post(name: NSNotification.Name("rightButton"),
+                                            object: 1)
+        }
+        
         return button
     }()
     
@@ -58,12 +87,6 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         stackView.axis = .vertical
         return stackView
     }()
-       
-    var inputData: CurriculumWeekData? {
-        didSet {
-            weekLabel.text = inputData?.week
-        }
-    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -82,6 +105,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         // MARK: - delegate설정
         setDelegate()
     }
+
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -94,11 +118,12 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
     }
     
     func setHierarchy() {
-        curriculumAndWeekStackView.addArrangedSubviews(weekLabel, curriculumLabel)
         
-        weekBackGroundImageView.addSubviews(leftWeekButton, rightWeekButton, curriculumAndWeekStackView)
-        
-        self.addSubviews(weekBackGroundImageView)
+
+        curriculumAndWeekStackView.addArrangedSubviews(curriculumLabel, weekLabel)
+        weekBackGroundImageView.addSubviews(curriculumAndWeekStackView)
+        contentView.addSubviews(weekBackGroundImageView, leftWeekButton, rightWeekButton)
+
     }
     
     func setLayout() {
@@ -125,7 +150,7 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
     }
     
     func setAddTarget() {
-        
+
     }
     
     func setDelegate() {
