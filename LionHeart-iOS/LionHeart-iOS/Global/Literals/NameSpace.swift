@@ -11,7 +11,7 @@ typealias Request = Encodable
 typealias Response = Decodable
 
 enum UserDefaultKey {
-    static let jwtToken = "JWT"
+    static let token = "TOKEN"
 }
 
 enum SocialLoginType: String {
