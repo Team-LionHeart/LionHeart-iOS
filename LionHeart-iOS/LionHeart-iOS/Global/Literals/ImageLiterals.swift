@@ -25,6 +25,7 @@ enum ImageLiterals {
         static var physicalCategory: UIImage { .load(named: "physical_category") }
         static var prenatalCategory: UIImage { .load(named: "prenatal_category") }
         static var systemCategory: UIImage { .load(named: "system_category") }
+        static var daddyTipCategory: UIImage { .load(named: "daddy_tip_category") }
     }
 
     enum BookMark {
@@ -55,6 +56,7 @@ enum ImageLiterals {
     enum MyPage {
         static var newIcon: UIImage { .load(named: "ic_new") }
         static var penIcon: UIImage { .load(named: "ic_pen") }
+        static var penColorIcon: UIImage { .load(named: "ic_pen_color") }
     }
 
     enum NavigationBar {
@@ -78,7 +80,14 @@ enum ImageLiterals {
     enum Today {
         static var lionHeartLogoBig: UIImage { .load(named: "ic_logo_big") }
     }
-
+    
+    enum ChallengeBadge {
+        static var level01: UIImage { .load(named: "ic_badge_level1") }
+        static var level02: UIImage { .load(named: "ic_badge_level2") }
+        static var level03: UIImage { .load(named: "ic_badge_level3") }
+        static var level04: UIImage { .load(named: "ic_badge_level4") }
+        static var level05: UIImage { .load(named: "ic_badge_level5") }
+    }
 }
 
 

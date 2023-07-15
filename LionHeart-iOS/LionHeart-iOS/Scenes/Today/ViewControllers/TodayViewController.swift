@@ -12,45 +12,83 @@ import SnapKit
 
 final class TodayViewController: UIViewController {
     
+    enum TodayArticleImage {
+        static let ratio: CGFloat = 400/335
+    }
+    
+    private var todayArticleData = TodayArticle.dummy
+
+    private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
+    private let seperateLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .designSystem(.gray800)
+        return view
+    }()
+    private var titleLabel = LHTodayArticleTitle(nickName: "사랑이")
+    private var mainArticleView = TodayArticleView()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
+        setNavigationBar()
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
-
+        setTapGesture()
+        setData()
     }
 }
 
 private extension TodayViewController {
     func setUI() {
-        view.backgroundColor = .blue
+        view.backgroundColor = .designSystem(.black)
+    }
+    
+    func setNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func setHierarchy() {
+        view.addSubviews(todayNavigationBar, seperateLine)
+        view.addSubviews(titleLabel, mainArticleView)
         
     }
     
     func setLayout() {
+        todayNavigationBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+        }
         
+        seperateLine.snp.makeConstraints { make in
+            make.top.equalTo(todayNavigationBar.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(seperateLine.snp.bottom).offset(53)
+            make.leading.equalToSuperview().inset(20)
+        }
+        
+        mainArticleView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(28)
+            make.width.equalTo(ScreenUtils.getWidth(335))
+            make.centerX.equalToSuperview()
+            make.height.equalTo(mainArticleView.snp.width).multipliedBy(TodayArticleImage.ratio)
+        }
     }
     
-    func setAddTarget() {
-        
+    func setTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(articleTapped(_:)))
+        mainArticleView.addGestureRecognizer(tapGesture)
     }
     
-    func setDelegate() {
-        
+    func setData() {
+        mainArticleView.data = todayArticleData
+    }
+    
+    @objc func articleTapped(_ sender: UIButton) {
+        let articleDetailViewController = ArticleDetailViewController()
+        self.navigationController?.pushViewController(articleDetailViewController, animated: true)
     }
 }

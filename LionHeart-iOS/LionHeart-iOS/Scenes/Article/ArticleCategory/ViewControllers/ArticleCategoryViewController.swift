@@ -58,11 +58,8 @@ final class ArticleCategoryViewController: UIViewController {
         super.viewDidLoad()
         // MARK: - 컴포넌트 설정
         setUI()
-        
-        setNavigation()
-        
-        // MARK: - addsubView
         setHierarchy()
+        setNavigation()
         
         // MARK: - autolayout설정
         setLayout()
@@ -79,6 +76,7 @@ final class ArticleCategoryViewController: UIViewController {
 private extension ArticleCategoryViewController {
     func setUI() {
         ArticleCategoryCollectionViewCell.register(to: categoryArticleCollectionView)
+        self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .designSystem(.background)
     }
     
@@ -87,14 +85,7 @@ private extension ArticleCategoryViewController {
     }
     
     func setLayout() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.navigationBar.snp.bottom).offset(28)
-            make.leading.equalToSuperview().inset(20)
-        }
-        navigationBar.snp.makeConstraints { make in
-             make.top.equalTo(view.safeAreaLayoutGuide)
-             make.leading.trailing.equalToSuperview()
-         }
+
          titleLabel.snp.makeConstraints { make in
              make.top.equalTo(navigationBar.snp.bottom).offset(28)
              make.leading.equalToSuperview().inset(20)
@@ -120,7 +111,10 @@ private extension ArticleCategoryViewController {
     }
     
     func setNavigation() {
-        NavigationBarLayoutManager.add(navigationBar)
+        navigationBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+        }
     }
 }
 
