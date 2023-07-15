@@ -8,42 +8,6 @@
 import UIKit
 
 
-/// 서비스 객체에서 필수로 채택해줘야 하는 프로토콜
-protocol Serviceable {
-    func handleErrorCode<T: Response>(data: Data, decodeType: T.Type) throws
-}
-
-extension Serviceable {
-    func handleErrorCode<T: Response>(data: Data, decodeType: T.Type) throws {
-
-
-        guard let model = try? JSONDecoder().decode(BaseResponse<T>.self, from: data) else {
-            throw NetworkError.jsonDecodingError
-        }
-
-        print("✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨")
-        dump(model)
-
-        let statusCode = model.code
-        guard !NetworkErrorCode.clientErrorCode.contains(statusCode) else {
-            throw NetworkError.clientError(code: model.code, message: model.message)
-        }
-
-        guard !NetworkErrorCode.serverErrorCode.contains(statusCode) else {
-            throw NetworkError.serverError
-        }
-    }
-}
-
-protocol ViewControllerServiceable where Self: UIViewController {
-    func handleError(_ error: NetworkError)
-    func handleUnAuthroized(_ error: NetworkError)
-}
-
-
-
-
-
 final class AuthService: Serviceable {
     static let shared = AuthService()
     private init() {}
