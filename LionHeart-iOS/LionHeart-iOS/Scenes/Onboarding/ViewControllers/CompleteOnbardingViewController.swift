@@ -41,10 +41,6 @@ final class CompleteOnbardingViewController: UIViewController {
         setLayout()
         setButtonAction()
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 }
 
 private extension CompleteOnbardingViewController {
