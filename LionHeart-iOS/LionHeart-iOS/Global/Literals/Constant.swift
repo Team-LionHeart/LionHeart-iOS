@@ -21,6 +21,10 @@ enum Constant {
         case challenge = "ic_challenge"
         case search = "ic_search"
         
+        /// Bookmark
+        case bookmarkActiveSmall = "ic_bookmark_active_small"
+        case bookmarkInactiveSmall = "ic_bookmark_inactive_small"
+        
         var real: String {
             return self.rawValue
         }
