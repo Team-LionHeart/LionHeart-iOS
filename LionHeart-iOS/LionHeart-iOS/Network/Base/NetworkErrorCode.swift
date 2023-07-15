@@ -16,5 +16,6 @@ enum NetworkErrorCode {
         "N001", "N002", "N003", "N004", "N005", "N006",
         "C001", "C002", "C003"
     ]
+    static let unauthorizedErrorCode = "U001"
     static let serverErrorCode = ["I001", "B001"]
 }
