@@ -105,6 +105,6 @@ private extension TodayViewController {
     
     @objc func articleTapped(_ sender: UIButton) {
         let articleDetailViewController = ArticleDetailViewController()
-        self.navigationController?.pushViewController(articleDetailViewController, animated: true)
+        self.present(articleDetailViewController, animated: true)
     }
 }

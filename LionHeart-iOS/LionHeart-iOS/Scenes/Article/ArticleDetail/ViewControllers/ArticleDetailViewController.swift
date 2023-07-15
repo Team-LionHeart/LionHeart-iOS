@@ -15,12 +15,7 @@ final class ArticleDetailViewController: UIViewController {
     // MARK: - UI Components
     private lazy var navigationBar = LHNavigationBarView(type: .articleMain, viewController: self)
     
-    private let progressBar: UIProgressView = {
-        let progressBar = UIProgressView()
-        progressBar.progressViewStyle = .default
-        progressBar.tintColor = .designSystem(.lionRed)
-        return progressBar
-    }()
+    private var progressBar = LHProgressView()
 
     private let articleTableView = ArticleDetailTableView()
 
@@ -100,6 +95,9 @@ private extension ArticleDetailViewController {
     
     func setTabbar() {
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationBar.backButtonAction {
+            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+        }
     }
 }
 
