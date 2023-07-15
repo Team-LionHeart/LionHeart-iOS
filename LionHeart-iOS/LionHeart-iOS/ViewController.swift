@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         button.setTitle("카카오로그인하기", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .yellow
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(kakaoLoginButtonTapped), for: .touchUpInside)
         return button
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .designSystem(.background)
+        view.backgroundColor = .designSystem(.black)
         setLayout()
     }
 
@@ -75,7 +75,11 @@ class ViewController: UIViewController {
 //        } else {
 //            loginKakaoWithWeb()
 //        }
+
         LHToast.show(message: "토스트메세지입니다")
+
+        let nextVC = OnboardingViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
     private func loginKakaoWithApp() {
