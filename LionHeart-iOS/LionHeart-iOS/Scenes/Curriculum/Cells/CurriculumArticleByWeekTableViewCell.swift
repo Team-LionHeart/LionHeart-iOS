@@ -74,6 +74,9 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         let imageView = UIImageView()
         imageView.image = ImageLiterals.ArticleCategory.coupleCategory
         imageView.layer.opacity = 0.4
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 4
+        
         return imageView
     }()
     
@@ -82,6 +85,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         view.layer.cornerRadius = 4
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.masksToBounds = true
+        view.backgroundColor = .designSystem(.black)
         view.layer.opacity = 0.6
         return view
     }()
@@ -91,7 +95,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         button.setImage(ImageLiterals.BookMark.inactiveBookmarkSmall, for: .normal)
         button.setImage(ImageLiterals.BookMark.activeBookmarkSmall, for: .selected)
         button.addButtonAction { _ in
-            
+            print("`sdjlfksdjfkldsahfklsdjfklsajfklsjfklsjfklsajfklshfklsjfsklh")
             // VC로 넘기기 노티피케이션
             button.isSelected.toggle()
           
@@ -126,36 +130,15 @@ private extension CurriculumArticleByWeekTableViewCell {
     }
     
     func setHierarchy() {
-        readTimeAndBookmarkView.addSubviews(articleReadTimeLabel, bookMarkButton)
-        tableViewCellWholeView.addSubviews(readTimeAndBookmarkView, articleImageView, articleTagLabel, articleDateLabel, articleDayLabel, articleContentLabel)
+        
+//        readTimeAndBookmarkView.addSubviews(articleReadTimeLabel, bookMarkButton)
+        articleImageView.addSubviews(readTimeAndBookmarkView)
+        tableViewCellWholeView.addSubviews(articleImageView, articleTagLabel, articleDateLabel, articleDayLabel, articleContentLabel, articleReadTimeLabel, bookMarkButton)
         
         contentView.addSubviews(tableViewCellWholeView)
     }
     
     func setLayout() {
-        
-        articleReadTimeLabel.snp.makeConstraints{
-            $0.top.equalToSuperview().inset(13)
-            $0.leading.equalToSuperview().inset(16)
-            $0.bottom.equalTo(articleImageView.snp.top).offset(-13)
-            
-        }
-        
-        bookMarkButton.snp.makeConstraints{
-            $0.top.equalToSuperview().inset(4)
-            $0.trailing.equalToSuperview().inset(8)
-        }
-        
-        readTimeAndBookmarkView.snp.makeConstraints{
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(50)
-        }
-        
-        articleImageView.snp.makeConstraints{
-            $0.top.equalTo(articleReadTimeLabel.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(articleImageView.snp.width).multipliedBy(Size.articleImageSize)
-        }
         
         tableViewCellWholeView.snp.makeConstraints{
             $0.top.equalToSuperview().inset(36)
@@ -163,10 +146,37 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.bottom.equalToSuperview()
         }
         
+        articleImageView.snp.makeConstraints{
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(articleImageView.snp.width).multipliedBy(Size.articleImageSize)
+        }
+        
+        readTimeAndBookmarkView.snp.makeConstraints{
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(44)
+        }
+        
+        bookMarkButton.snp.makeConstraints{
+            $0.top.equalToSuperview().inset(8)
+            $0.trailing.equalToSuperview().inset(8)
+        }
+        
+        articleReadTimeLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview().inset(16)
+            $0.centerY.equalTo(bookMarkButton)
+
+        }
+        
+        
+        
+     
+        
         articleTagLabel.snp.makeConstraints{
             $0.top.equalTo(articleImageView.snp.bottom).offset(16)
             $0.leading.equalToSuperview()
         }
+        
         
         articleDateLabel.snp.makeConstraints{
             $0.top.equalTo(articleImageView.snp.bottom).offset(16)
@@ -183,6 +193,9 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+        
+        
+        
     }
 
 }

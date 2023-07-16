@@ -10,7 +10,6 @@
 		4A2050152A5DCD1900C7AF3C /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */; };
 		4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D72862A5D405C00A36189 /* BookmarkListCollectionViewCell.swift */; };
 		4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A860AD52A6265B2002BA428 /* BookmarkModel.swift */; };
-		4A8980C22A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */; };
 		4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */; };
 		4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */; };
 		4A8980CA2A614F8700746C58 /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C92A614F8700746C58 /* MyPageModel.swift */; };
@@ -373,14 +372,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B512205C2A601104006CBE2D /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				B512205F2A60111C006CBE2D /* Token.swift */,
-			);
-			path = Auth;
-      sourceTree = "<group>";
-     };
 		4A860AD22A626591002BA428 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +396,14 @@
 				4A8980C92A614F8700746C58 /* MyPageModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B512205C2A601104006CBE2D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B512205F2A60111C006CBE2D /* Token.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		B532E8252A5525C600F0DB19 = {
@@ -1359,9 +1358,7 @@
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
 				B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */,
 				C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */,
-				4A8980C22A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
-				4A8980C22A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
@@ -1424,7 +1421,6 @@
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
-				C0DF036F2A5A9CA90037F740 /* TodayTableViewCell.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
