@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class AuthService: Serviceable {
 
     static let shared = AuthService()
@@ -64,33 +63,27 @@ final class AuthService: Serviceable {
         
         return
     }
-}
-
-enum LoginType {
-    case kakao
-    case apple
     
-    var raw: String {
-        return "\(self)".uppercased()
+    func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws {
+        guard let fcmToken = UserDefaultsManager.tokenKey?.fcmToken,
+              let kakaoToken = onboardingModel.kakaoAccessToken,
+              let pregnantWeeks = onboardingModel.pregnacny,
+              let babyNickname = onboardingModel.fetalNickname  else { return }
+        
+        let requestModel = SignUpRequest(socialType: type.raw, token: kakaoToken, fcmToken: fcmToken, pregnantWeeks: pregnantWeeks, babyNickname: babyNickname)
+        
+        let param = requestModel.toDictionary()
+        let body = try JSONSerialization.data(withJSONObject: param)
+        
+        let urlRequest = try NetworkRequest(path: "/v1/auth/signup", httpMethod: .post, body: body).makeURLRequest(isLogined: false)
+        
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        
+        let model = try handleErrorCode(data: data, decodeType: Token.self)
+        
+        UserDefaultsManager.tokenKey?.accessToken = model?.accessToken
+        UserDefaultsManager.tokenKey?.refreshToken = model?.refreshToken
+        
+        return
     }
-}
-
-// UserDefault에 우리가 저장하는 구조체
-struct UserDefaultToken: AppData, Codable {
-    var refreshToken: String?
-    var accessToken: String?
-    let fcmToken: String
-    
-    var isExistJWT: Bool {
-        return !(self.refreshToken == nil)
-    }
-}
-
-
-// 로그인 API에 필요한 body 구조체
-// Data transfer Object (서버 <-> 클라)
-struct LoginRequest: DTO, Request {
-    let socialType: String
-    let token: String
-    let fcmToken: String
 }

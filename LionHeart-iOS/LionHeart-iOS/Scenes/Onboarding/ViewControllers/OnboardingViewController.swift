@@ -161,8 +161,16 @@ private extension OnboardingViewController {
     
     func presentCompleteOnboardingView() {
         let completeViewController = CompleteOnbardingViewController()
-        let passingData = UserOnboardingModel(kakaoAccessToken: "카카오어세스토큰", pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
+        let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
         completeViewController.userData = passingData
+        Task {
+            do {
+                try await AuthService.shared.signUp(type: .kakao, onboardingModel: passingData)
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
         self.navigationController?.pushViewController(completeViewController, animated: true)
     }
 }
@@ -205,5 +213,27 @@ extension OnboardingViewController: PregnancyCheckDelegate {
     
     func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType) {
         nextButton.isHidden = resultType.isHidden
+    }
+}
+
+extension OnboardingViewController: ViewControllerServiceable {
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .urlEncodingError:
+            LHToast.show(message: "인코딩에러")
+        case .jsonDecodingError:
+            LHToast.show(message: "디코딩에러")
+        case .badCasting:
+            LHToast.show(message: "배드캐스트")
+        case .fetchImageError:
+            LHToast.show(message: "이미지패치에러")
+        case .unAuthorizedError:
+            guard let window = self.view.window else { return }
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+        case .clientError(_, let message):
+            LHToast.show(message: message)
+        case .serverError:
+            LHToast.show(message: "서버놈들")
+        }
     }
 }

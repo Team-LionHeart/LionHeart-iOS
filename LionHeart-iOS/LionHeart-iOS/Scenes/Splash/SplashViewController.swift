@@ -30,7 +30,6 @@ final class SplashViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-//        UserDefaultsManager.tokenKey = Token(accessToken: "eyJhbGciOiJIUzUxMiJ9.eyJNRU1CRVJfSUQiOjMsImV4cCI6MTcyMDg5OTMwN30.1sflleOwtvac7GrjQBIRv_LcOr-JVavCY_H6C1ji7y9ove-84MkNynFXKTtL4TCDYsIR0gtbjnKZBYeXEDS2FQ", refreshToken: "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3MjA4OTkzMDd9.ZhIn1NVd2fzYjw4Bs9Drm8AHOzKRh2ovB0e7kWf6Y0Um1uyp54FcAVROcy1KadZB6B0kVE5RFXDfna6cNYbfVA")
         setUI()
         setHierarchy()
         setLayout()
@@ -73,9 +72,8 @@ private extension SplashViewController {
     
     func setLayout() {
         lottieImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
         }
     }
 
@@ -88,9 +86,6 @@ private extension SplashViewController {
 // MARK: - Network
 
 private extension SplashViewController {
-//    func checkTokenIsExist() -> UserDefaultToken {
-//        return UserDefaultsManager.tokenKey?.refreshToken
-//    }
 
     func reissueToken(refreshToken: String, accessToken: String) async throws {
         do {
@@ -117,15 +112,16 @@ private extension SplashViewController {
 
     func handleError(_ error: NetworkError) async {
         switch error {
-        case .clientError(let code, let message):
+        case .clientError(let code, _):
             if code == NetworkErrorCode.unauthorizedErrorCode {
                 guard let token = UserDefaultsManager.tokenKey else { return }
                 await logout(token: token)
                 // LoginVC로 이동하기
                 let loginVC = LoginViewController()
                 setRootViewController(to: loginVC, animation: true)
-            } else {
-                print(code, message)
+            } else if code == NetworkErrorCode.resignedErrorCode {
+                let loginVC = LoginViewController()
+                setRootViewController(to: loginVC, animation: true)
             }
         default:
             print(error)
