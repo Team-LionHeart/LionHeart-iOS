@@ -19,6 +19,7 @@
 		4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */; };
 		4AE19A172A65864F00C1DB7E /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE19A162A65864F00C1DB7E /* BookmarkService.swift */; };
 		4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE19A192A65886100C1DB7E /* BookmarkReponse.swift */; };
+		4AE19A1E2A6597E700C1DB7E /* BookmarkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE19A1D2A6597E700C1DB7E /* BookmarkRequest.swift */; };
 		B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51220592A5FAA47006CBE2D /* ImageLiterals.swift */; };
 		B51220602A60111C006CBE2D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512205F2A60111C006CBE2D /* Token.swift */; };
 		B51220622A60149D006CBE2D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51220612A60149D006CBE2D /* AuthService.swift */; };
@@ -198,6 +199,7 @@
 		4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAppSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AE19A162A65864F00C1DB7E /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
 		4AE19A192A65886100C1DB7E /* BookmarkReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkReponse.swift; sourceTree = "<group>"; };
+		4AE19A1D2A6597E700C1DB7E /* BookmarkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRequest.swift; sourceTree = "<group>"; };
 		B51220592A5FAA47006CBE2D /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
 		B512205F2A60111C006CBE2D /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		B51220612A60149D006CBE2D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 		4AE19A1C2A65887E00C1DB7E /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				4AE19A1D2A6597E700C1DB7E /* BookmarkRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1481,6 +1484,7 @@
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
+				4AE19A1E2A6597E700C1DB7E /* BookmarkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
