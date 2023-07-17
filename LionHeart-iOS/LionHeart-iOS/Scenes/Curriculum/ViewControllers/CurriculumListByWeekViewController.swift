@@ -11,11 +11,11 @@ import UIKit
 import SnapKit
 
 final class CurriculumListByWeekViewController: UIViewController {
+    //api 할 때 구현
+//    var listByWeekDatas: [CurriculumWeekData] = []
     
-    var listByWeekDatas: [CurriculumWeekData] = []
-    
-    var isBookmarkedIndexPath: IndexPath?
-    
+    var listByWeekDatas = CurriculumWeekData.dummy()
+        
     var currentPage: Int = 0 {
         didSet {
             let indexPath = IndexPath(item: currentPage, section: 0)
@@ -61,7 +61,8 @@ final class CurriculumListByWeekViewController: UIViewController {
         // MARK: - notificationCenter 설정
         setNotificationCenter()
         
-        setDataBind()
+        //api 연결할 때 구현
+//        setDataBind()
     }
 }
 
@@ -127,14 +128,9 @@ private extension CurriculumListByWeekViewController {
     @objc
     func bookmarkButtonTapped(notification: NSNotification) {
         guard let isBookmarkedRow = notification.object as? Int  else { return }
-        
         let isBookmarkedPage = currentPage
-        
-        print(isBookmarkedRow)
-        print(isBookmarkedPage)
-        
+
         listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked.toggle()
-        print(listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked)
 
     }
     
@@ -149,11 +145,12 @@ private extension CurriculumListByWeekViewController {
         CurriculumListByWeekCollectionViewCell.register(to: curriculumListByWeekCollectionView)
     }
     
-    func setDataBind() {
-        /// api호출
-        listByWeekDatas = CurriculumWeekData.dummy()
-        self.curriculumListByWeekCollectionView.reloadData()
-    }
+    //api호출 할 때 구현
+//    func setDataBind() {
+//        /// api호출
+//        listByWeekDatas = CurriculumWeekData.dummy()
+//        self.curriculumListByWeekCollectionView.reloadData()
+//    }
 }
 
 extension CurriculumListByWeekViewController: UICollectionViewDataSource {
