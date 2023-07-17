@@ -59,7 +59,7 @@ final class OnboardingViewController: UIViewController {
         setAddTarget()
     }
     
-    func setKakaoAccessToken(_ token: String) {
+    func setKakaoAccessToken(_ token: String?) {
         self.kakaoAccessToken = token
     }
 }
