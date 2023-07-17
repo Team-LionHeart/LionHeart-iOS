@@ -12,11 +12,9 @@ import SnapKit
 
 final class CurriculumListByWeekViewController: UIViewController {
     
-    var listByWeekDatas = CurriculumWeekData.dummy() {
-        didSet{
-            self.curriculumListByWeekCollectionView.reloadData()
-        }
-    }
+    var listByWeekDatas: [CurriculumWeekData] = []
+    
+    var isBookmarkedIndexPath: IndexPath?
     
     var currentPage: Int = 0 {
         didSet {
@@ -63,6 +61,7 @@ final class CurriculumListByWeekViewController: UIViewController {
         // MARK: - notificationCenter 설정
         setNotificationCenter()
         
+        setDataBind()
     }
 }
 
@@ -101,10 +100,14 @@ private extension CurriculumListByWeekViewController {
                                                selector: #selector(leftButtonTapped),
                                                name: NSNotification.Name("leftButton"),
                                                object: nil)
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(rightButtonTapped),
                                                name: NSNotification.Name("rightButton"),
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(bookmarkButtonTapped), name: NSNotification.Name("isArticleBookmarked"), object: nil)
+        
     }
     
     @objc
@@ -121,6 +124,20 @@ private extension CurriculumListByWeekViewController {
         
     }
     
+    @objc
+    func bookmarkButtonTapped(notification: NSNotification) {
+        guard let isBookmarkedRow = notification.object as? Int  else { return }
+        
+        let isBookmarkedPage = currentPage
+        
+        print(isBookmarkedRow)
+        print(isBookmarkedPage)
+        
+        listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked.toggle()
+        print(listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked)
+
+    }
+    
     func setDelegate() {
         
         curriculumListByWeekCollectionView.delegate = self
@@ -130,6 +147,12 @@ private extension CurriculumListByWeekViewController {
     
     func setCollectionView() {
         CurriculumListByWeekCollectionViewCell.register(to: curriculumListByWeekCollectionView)
+    }
+    
+    func setDataBind() {
+        /// api호출
+        listByWeekDatas = CurriculumWeekData.dummy()
+        self.curriculumListByWeekCollectionView.reloadData()
     }
 }
 

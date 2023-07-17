@@ -10,10 +10,13 @@ import UIKit
 
 import SnapKit
 
-
+struct BookmarkButtonTapped{
+    
+}
 
 final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
+    var isBookmarkedIndexPath: IndexPath?
     
     var inputData: ArticleDataByWeek? {
         didSet {
@@ -95,10 +98,13 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         button.setImage(ImageLiterals.BookMark.inactiveBookmarkSmall, for: .normal)
         button.setImage(ImageLiterals.BookMark.activeBookmarkSmall, for: .selected)
         button.addButtonAction { _ in
-            print("`sdjlfksdjfkldsahfklsdjfklsajfklsjfklsjfklsajfklshfklsjfsklh")
+            
             // VC로 넘기기 노티피케이션
+            NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
+                                            object: self.isBookmarkedIndexPath?.row)
+            
+            
             button.isSelected.toggle()
-          
         }
         return button
     }()
@@ -131,7 +137,6 @@ private extension CurriculumArticleByWeekTableViewCell {
     
     func setHierarchy() {
         
-//        readTimeAndBookmarkView.addSubviews(articleReadTimeLabel, bookMarkButton)
         articleImageView.addSubviews(readTimeAndBookmarkView)
         tableViewCellWholeView.addSubviews(articleImageView, articleTagLabel, articleDateLabel, articleDayLabel, articleContentLabel, articleReadTimeLabel, bookMarkButton)
         
@@ -168,15 +173,10 @@ private extension CurriculumArticleByWeekTableViewCell {
 
         }
         
-        
-        
-     
-        
         articleTagLabel.snp.makeConstraints{
             $0.top.equalTo(articleImageView.snp.bottom).offset(16)
             $0.leading.equalToSuperview()
         }
-        
         
         articleDateLabel.snp.makeConstraints{
             $0.top.equalTo(articleImageView.snp.bottom).offset(16)
@@ -193,9 +193,5 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-        
-        
-        
     }
-
 }
