@@ -24,4 +24,16 @@ final class BookmarkService: Serviceable {
             ArticleSummaries(title: $0.title, articleImage: $0.mainImageUrl,
                              bookmarked: $0.isMarked, tags: $0.tags)})
     }
+    
+    func postBookmark(_ model: BookmarkRequest) async throws {
+        let param = model.toDictionary()
+        let body = try JSONSerialization.data(withJSONObject: param)
+        
+        let urlRequest = try NetworkRequest(path: "/v1/article/bookmarks", httpMethod: .post, body: body).makeURLRequest(isLogined: true)
+        
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        try handleErrorCode(data: data, decodeType: String.self)
+        
+        return
+    }
 }
