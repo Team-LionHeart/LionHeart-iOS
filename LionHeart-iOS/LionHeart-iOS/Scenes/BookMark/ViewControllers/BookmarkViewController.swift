@@ -25,13 +25,17 @@ final class BookmarkViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUI()
         setHierarchy()
         setLayout()
         setDelegate()
         registerCell()
-
+        setTabbar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -60,6 +64,10 @@ private extension BookmarkViewController {
     func registerCell() {
         BookmarkDetailCollectionViewCell.register(to: bookmarkCollectionView)
         BookmarkListCollectionViewCell.register(to: bookmarkCollectionView)
+    }
+    
+    func setTabbar() {
+        self.tabBarController?.tabBar.isHidden = true
     }
 }
 
@@ -91,6 +99,7 @@ extension BookmarkViewController: UICollectionViewDataSource {
             cell.bookmarkButtonClosure = { indexPathItem in
                 self.bookmarkDataList.remove(at: indexPathItem)
                 collectionView.deleteItems(at: [IndexPath(item: indexPathItem, section: 1)])
+                LHToast.show(message: "북마크가 해제되었습니다")
             }
             return cell
         }

@@ -59,10 +59,6 @@ final class OnboardingViewController: UIViewController {
         setAddTarget()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     func setKakaoAccessToken(_ token: String) {
         self.kakaoAccessToken = token
     }

@@ -97,7 +97,7 @@ private extension ArticleCategoryViewController {
          categoryArticleCollectionView.snp.makeConstraints { make in
              make.top.equalTo(subtitleLabel.snp.bottom).offset(16)
              make.leading.trailing.equalToSuperview()
-             make.bottom.equalTo(view.safeAreaLayoutGuide)
+             make.bottom.equalToSuperview().inset(100)
          }
     }
     
@@ -134,7 +134,7 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
 
 extension ArticleCategoryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        return UIEdgeInsets(top: 0, left: 20, bottom: 80, right: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
