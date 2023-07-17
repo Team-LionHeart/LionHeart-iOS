@@ -7,18 +7,14 @@
 
 import Foundation
 
-struct BookmarkDummyData: AppData {
-    let nickName: String
-    let articleSummaries: [ArticleSummaries]
+struct BookmarkAppData: AppData {
+    let nickName: String?
+    let articleSummaries: [ArticleSummaries]?
 }
 
 struct ArticleSummaries: AppData {
     let title: String
     let articleImage: String
     let bookmarked: Bool
-    let tags: [Tags]
-}
-
-struct Tags: AppData {
-    let tag: String
+    let tags: [String]
 }
