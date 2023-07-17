@@ -12,7 +12,7 @@ import SnapKit
 
 final class BookmarkViewController: UIViewController {
     
-    private var bookmarkDataList: BookmarkAppData?
+    private var bookmarkAppData: BookmarkAppData?
     
     private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
     
@@ -38,7 +38,7 @@ final class BookmarkViewController: UIViewController {
         
         Task {
             do {
-                self.bookmarkDataList = try await BookmarkService.shared.getBookmark()
+                self.bookmarkAppData = try await BookmarkService.shared.getBookmark()
                 bookmarkCollectionView.reloadData()
             } catch {
                 guard let error = error as? NetworkError else { return }
@@ -116,13 +116,14 @@ extension BookmarkViewController: UICollectionViewDataSource {
         if section == 0 {
             return 1
         } else {
-            bookmarkDataList.isEmpty ?
+            guard let bookmarkListData = bookmarkAppData?.articleSummaries else { return 0 }
+            bookmarkListData.isEmpty ?
             collectionView.setEmptyView(emptyText: """
                                                    아직 담아본 아티클이 없어요.
                                                    다른 아티클을 읽어볼까요?
                                                    """) :
             collectionView.restore()
-            return bookmarkDataList.count
+            return bookmarkListData.count
         }
     }
     
@@ -132,8 +133,11 @@ extension BookmarkViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = BookmarkListCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
+            
+            guard var bookmarkListData = bookmarkAppData?.articleSummaries else { return cell }
+            
             cell.bookmarkButtonClosure = { indexPathItem in
-                self.bookmarkDataList.remove(at: indexPathItem)
+                bookmarkListData.remove(at: indexPathItem)
                 collectionView.deleteItems(at: [IndexPath(item: indexPathItem, section: 1)])
                 LHToast.show(message: "북마크가 해제되었습니다")
             }
