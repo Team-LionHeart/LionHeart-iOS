@@ -78,7 +78,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         return line
     }()
     
-    lazy var curriculumToggleDirectionButton: UIButton = {
+    private lazy var curriculumToggleDirectionButton: UIButton = {
         var button = UIButton()
         button.setImage(ImageLiterals.Curriculum.arrowDownSmall, for: .normal)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -88,7 +88,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         return button
     }()
     
-    lazy var moveToArticleListByWeekButton: UIButton = {
+    private lazy var moveToArticleListByWeekButton: UIButton = {
        let button = UIButton()
         button.setImage(ImageLiterals.Curriculum.arrowRightCircle, for: .normal)
         button.addButtonAction { _ in
