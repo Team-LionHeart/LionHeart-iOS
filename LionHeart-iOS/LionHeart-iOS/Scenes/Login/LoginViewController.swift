@@ -10,7 +10,17 @@ import UIKit
 
 import SnapKit
 
+import KakaoSDKAuth
+import KakaoSDKUser
+
 final class LoginViewController: UIViewController {
+    
+    private var kakaoAccessToken: String? {
+        didSet {
+            guard let isExistAndExpired = UserDefaultsManager.tokenKey?.isExistJWT else { return }
+            isExistAndExpired ? moveUserToTabbarController() : moveUserToOnboardingViewController()
+        }
+    }
     
     private let loginMainImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "loginImage"))
@@ -47,7 +57,6 @@ final class LoginViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         setHierarchy()
         setLayout()
         setAddTarget()
@@ -55,9 +64,27 @@ final class LoginViewController: UIViewController {
 }
 
 private extension LoginViewController {
-    func setUI() {
-        
+    func moveUserToTabbarController() {
+        Task {
+            do {
+                try await AuthService.shared.login(type: .kakao)
+                guard let window = self.view.window else { return }
+                let mainTabbarViewController = TabBarViewController()
+                ViewControllerUtil.setRootViewController(window: window, viewController: mainTabbarViewController, withAnimation: false)
+            } catch {
+                print(error)
+            }
+        }
     }
+    
+    func moveUserToOnboardingViewController() {
+        let onboardingViewController = OnboardingViewController()
+        onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
+        self.navigationController?.pushViewController(onboardingViewController, animated: true)
+    }
+}
+
+private extension LoginViewController {
     
     func setHierarchy() {
         view.addSubviews(loginMainImageView, mainLogoImageView, mainLabel, kakakoLoginButton)
@@ -88,8 +115,33 @@ private extension LoginViewController {
     
     func setAddTarget() {
         kakakoLoginButton.addButtonAction { sender in
-            let mainViewController = OnboardingViewController()
-            self.navigationController?.pushViewController(mainViewController, animated: true)
+            if UserApi.isKakaoTalkLoginAvailable() {
+                self.loginKakaoWithApp()
+            } else {
+                self.loginKakaoWithWeb()
+            }
+        }
+    }
+    
+    private func loginKakaoWithApp() {
+        UserApi.shared.loginWithKakaoTalk { oAuthToken, error in
+            guard error == nil else { return }
+            print("Login with KAKAO App Success !!")
+            guard let oAuthToken = oAuthToken else { return }
+            print(oAuthToken.accessToken)
+            self.kakaoAccessToken = oAuthToken.accessToken
+        }
+    }
+
+    private func loginKakaoWithWeb() {
+        UserApi.shared.loginWithKakaoAccount { oAuthToken, error in
+            guard error == nil else { return }
+            print("Login with KAKAO Web Success !!")
+            guard let oAuthToken = oAuthToken else { return }
+            print(oAuthToken.accessToken)
+            self.kakaoAccessToken = oAuthToken.accessToken
         }
     }
 }
+
+
