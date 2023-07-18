@@ -12,8 +12,8 @@ import SnapKit
 
 final class ArticleListByCategoryHeaderView: UIView {
     
-    private lazy var categoryTagLabel: PaddingLabel = {
-        let label = PaddingLabel()
+    private lazy var categoryTagLabel: UILabelPadding = {
+        let label = UILabelPadding()
         label.text = "출산 직전"
         label.font = .pretendard(.body4)
         label.textColor = .designSystem(.componentLionRed)
