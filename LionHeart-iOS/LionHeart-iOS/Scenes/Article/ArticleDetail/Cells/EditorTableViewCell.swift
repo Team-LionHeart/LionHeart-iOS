@@ -86,5 +86,6 @@ private extension EditorTableViewCell {
         guard let model else { return }
         titleLabel.text = model.caption
         commentLabel.text = model.content
+        commentLabel.setTextWithLineHeight(lineHeight: 26)
     }
 }

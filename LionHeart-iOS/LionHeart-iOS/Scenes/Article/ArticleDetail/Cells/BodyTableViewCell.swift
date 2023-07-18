@@ -14,7 +14,7 @@ final class BodyTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProt
 
     private let bodyLabel: UILabel = {
         let label = UILabel()
-        label.font = .pretendard(.body2R)
+        label.font = .pretendard(.body2R2)
         label.textColor = .designSystem(.gray900)
         label.numberOfLines = 0
         return label
@@ -85,6 +85,7 @@ private extension BodyTableViewCell {
             }
         }
         bodyLabel.text = model.content
+        bodyLabel.setTextWithLineHeight(lineHeight: 26)
     }
 
     func updateBottomInset() {
