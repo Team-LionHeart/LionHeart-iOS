@@ -18,15 +18,16 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     private let userInfoData = UserInfoData.dummy()
     
     private let progressBar: LottieAnimationView = {
-        let lottie = LottieAnimationView(name: "progressbar_5m")
+        let lottie = LottieAnimationView(name: "progressbar_\(UserInfoData.dummy().progress)m")
         return lottie
     }()
+    
     
     private let dDayLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body3R)
         label.textColor = .designSystem(.gray400)
-        label.text = "D-138"
+        label.text = "D-\(UserInfoData.dummy().remainingDay)"
         return label
     }()
     
@@ -104,7 +105,7 @@ private extension CurriculumViewController {
     }
     
     func setLayout() {
-        
+        self.navigationController?.isNavigationBarHidden = true
         navigationBar.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.equalToSuperview()
@@ -203,6 +204,22 @@ extension CurriculumViewController: UITableViewDataSource {
         
         curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
         curriculumTableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
+        
+        guard let indexPath else { return }
+        
+        let listByWeekVC = CurriculumListByWeekViewController()
+        if indexPath.section == curriculumViewDatas.count - 1 {
+            listByWeekVC.firstPresented = (indexPath.section * 4) + indexPath.row + 1
+//            listByWeekVC.currentPage = (indexPath.section * 4) + indexPath.row + 1
+        } else {
+            listByWeekVC.firstPresented = (indexPath.section * 4) + indexPath.row
+//            listByWeekVC.currentPage = (indexPath.section * 4) + indexPath.row
+        }
+        self.navigationController?.pushViewController(listByWeekVC, animated: false)
+        
     }
     
 }

@@ -15,7 +15,15 @@ final class CurriculumListByWeekViewController: UIViewController {
 //    var listByWeekDatas: [CurriculumWeekData] = []
     
     var listByWeekDatas = CurriculumWeekData.dummy()
-        
+    
+    //
+    
+    var firstPresented: Int = 0
+    // Week <- 이걸로 주차별 아티클 조회 API 호출
+    // datas = [ArticleDataByWeek]
+    // collectionview -> TableView 전달
+    // TableView에서 전달받은 저 배열로 데이터 넣어주기
+    
     var currentPage: Int = 0 {
         didSet {
             let indexPath = IndexPath(item: currentPage, section: 0)
@@ -63,6 +71,14 @@ final class CurriculumListByWeekViewController: UIViewController {
         
         //api 연결할 때 구현
 //        setDataBind()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let indexPath = IndexPath(item: self.firstPresented, section: 0)
+        self.curriculumListByWeekCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        self.navigationBar.setCurriculumWeek(week: currentPage + 4)
     }
 }
 
@@ -115,7 +131,6 @@ private extension CurriculumListByWeekViewController {
     func leftButtonTapped(notification: NSNotification) {
         let nextPage: Int = max(0,currentPage - 1)
         self.currentPage = nextPage
-        
     }
     
     @objc
@@ -127,7 +142,7 @@ private extension CurriculumListByWeekViewController {
     
     @objc
     func bookmarkButtonTapped(notification: NSNotification) {
-        guard let isBookmarkedRow = notification.object as? Int  else { return }
+        guard let isBookmarkedRow = notification.object as? Int else { return }
         let isBookmarkedPage = currentPage
 
         listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked.toggle()

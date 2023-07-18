@@ -103,7 +103,6 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
             NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
                                             object: self.isBookmarkedIndexPath?.row)
             
-            
             button.isSelected.toggle()
         }
         return button

@@ -12,6 +12,7 @@ import SnapKit
 
 protocol CurriculumTableViewToggleButtonTappedProtocol: AnyObject {
     func toggleButtonTapped(indexPath: IndexPath?)
+    func moveToListByWeekButtonTapped(indexPath: IndexPath?)
 }
 
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
@@ -60,6 +61,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     private let contentImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .designSystem(.lionRed)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     private let contentTextLabel: UILabel = {
@@ -89,6 +91,9 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     lazy var moveToArticleListByWeekButton: UIButton = {
        let button = UIButton()
         button.setImage(ImageLiterals.Curriculum.arrowRightCircle, for: .normal)
+        button.addButtonAction { _ in
+            self.delegate?.moveToListByWeekButtonTapped(indexPath: self.cellIndexPath)
+        }
         return button
     }()
     
@@ -123,6 +128,8 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
 }
 
 private extension CurriculumTableViewCell {

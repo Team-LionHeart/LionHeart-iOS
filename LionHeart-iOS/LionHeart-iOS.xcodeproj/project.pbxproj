@@ -165,6 +165,7 @@
 		F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435E0532A5E67BF0098E691 /* NSObject+.swift */; };
 		F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */; };
 		F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */; };
+		F4C60E1D2A66B4CE006BBADE /* CurriculumViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C60E1C2A66B4CE006BBADE /* CurriculumViewService.swift */; };
 		F4DB30AE2A611C7C00413EB9 /* CurriculumListByWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30AD2A611C7B00413EB9 /* CurriculumListByWeekViewController.swift */; };
 		F4DB30B02A611C9700413EB9 /* CurriculumListByWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30AF2A611C9700413EB9 /* CurriculumListByWeekData.swift */; };
 		F4DB30B42A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30B32A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift */; };
@@ -337,6 +338,7 @@
 		F435E0532A5E67BF0098E691 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDummyData.swift; sourceTree = "<group>"; };
 		F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumImagesByWeek.swift; sourceTree = "<group>"; };
+		F4C60E1C2A66B4CE006BBADE /* CurriculumViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewService.swift; sourceTree = "<group>"; };
 		F4DB30AD2A611C7B00413EB9 /* CurriculumListByWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByWeekViewController.swift; sourceTree = "<group>"; };
 		F4DB30AF2A611C9700413EB9 /* CurriculumListByWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByWeekData.swift; sourceTree = "<group>"; };
 		F4DB30B32A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByWeekCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1002,6 +1004,7 @@
 			children = (
 				B59893182A5D41F600CE1FEB /* KingfisherService.swift */,
 				B51220612A60149D006CBE2D /* AuthService.swift */,
+				F4C60E1C2A66B4CE006BBADE /* CurriculumViewService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1462,6 +1465,7 @@
 				B51220602A60111C006CBE2D /* Token.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
+				F4C60E1D2A66B4CE006BBADE /* CurriculumViewService.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */,
 				C0DF03AB2A5D73C80037F740 /* NHOnboardingTextfield.swift in Sources */,
