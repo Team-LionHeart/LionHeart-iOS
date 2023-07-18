@@ -11,7 +11,7 @@ import SnapKit
 
 final class LHToast {
     private static let feedbackGenerator = UINotificationFeedbackGenerator()
-    static func show (message: String, duration: TimeInterval = 1, completion: (() -> Void)? = nil) {
+    static func show (message: String, duration: TimeInterval = 1, isTabBar: Bool = false, completion: (() -> Void)? = nil) {
         let toastView = LHToastView(message: message)
         guard let window = UIWindow.current else { return }
         window.subviews
@@ -21,7 +21,10 @@ final class LHToast {
         
         toastView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(20)
+            if isTabBar {
+                make.bottom.equalToSuperview().inset(120)
+            }
+            make.bottom.equalToSuperview().inset(40)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(48)
         }
