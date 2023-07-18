@@ -23,7 +23,7 @@ final class LoginViewController: UIViewController {
     }
     
     private let loginMainImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "loginImage"))
+        let imageView = UIImageView(image: ImageLiterals.Login.loginBackgroundImage)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -47,7 +47,7 @@ final class LoginViewController: UIViewController {
         button.setTitle("카카오로 로그인하기", for: .normal)
         button.titleLabel?.font = .pretendard(.subHead2)
         button.setTitleColor(.designSystem(.black), for: .normal)
-        button.setImage(UIImage(named: "kakaoImage"), for: .normal)
+        button.setImage(ImageLiterals.Login.kakaoLogo, for: .normal)
         button.backgroundColor = .designSystem(.kakao)
         button.marginImageWithText(margin: 8)
         button.layer.cornerRadius = 4
