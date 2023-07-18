@@ -31,8 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         /// 폰트등록
         Font.registerFonts()
-        
-        let navigationController = UINavigationController(rootViewController: TabBarViewController())
+        let navigationController = UINavigationController(rootViewController: SplashViewController())
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }

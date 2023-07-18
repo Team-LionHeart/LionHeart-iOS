@@ -23,4 +23,5 @@ enum Palette: String {
     case lionRed = "LionRed"
     case componentLionRed = "ComponentLionRed"
     case background = "Background"
+    case kakao = "KakaoYellow"
 }

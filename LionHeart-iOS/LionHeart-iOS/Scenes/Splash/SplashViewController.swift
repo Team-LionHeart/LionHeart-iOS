@@ -9,48 +9,123 @@
 import UIKit
 
 import SnapKit
+import Lottie
 
 final class SplashViewController: UIViewController {
-    
 
-    public override func viewDidLoad() {
+    // MARK: - UI Components
+
+    private let lottieImageView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "motion_logo_final")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+
+    // MARK: - Properties
+
+    private let authManager = AuthService.shared
+
+    // MARK: - Life Cycle
+
+    override func viewDidLoad() {
+
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        lottieImageView.play { _ in
+            guard let accessToken = UserDefaultsManager.tokenKey?.accessToken, let refreshToken = UserDefaultsManager.tokenKey?.refreshToken else {
+                let loginViewController = UINavigationController(rootViewController: LoginViewController())
+                guard let window = self.view.window else { return }
+                ViewControllerUtil.setRootViewController(window: window, viewController: loginViewController, withAnimation: true)
+                return
+            }
+            /// nil이 아니면 == refresh토큰이 어떤상태인지는 모르겠으나 있긴하다
+            Task {
+                // 토큰을 refresh합니다.
+                try? await self.reissueToken(refreshToken: refreshToken, accessToken: accessToken)
+            }
+        }
 
     }
+    
+    private func checkIsRefreshTokenExist() -> String? {
+        return UserDefaultsManager.tokenKey?.refreshToken
+    }
+
 }
 
+// MARK: - UI
+
 private extension SplashViewController {
+
     func setUI() {
-        
+        view.backgroundColor = .designSystem(.black)
     }
     
     func setHierarchy() {
-        
+        view.addSubviews(lottieImageView)
     }
     
     func setLayout() {
-        
+        lottieImageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.size.equalTo(220)
+        }
     }
-    
-    func setAddTarget() {
-        
+
+    func setRootViewController(to viewController: UIViewController, animation: Bool) {
+        guard let window = self.view.window else { return }
+        ViewControllerUtil.setRootViewController(window: window, viewController: viewController, withAnimation: animation)
     }
-    
-    func setDelegate() {
+}
+
+// MARK: - Network
+
+private extension SplashViewController {
+
+    func reissueToken(refreshToken: String, accessToken: String) async throws {
+        do {
+            let dtoToken = try await authManager.reissueToken(token: Token(accessToken: accessToken, refreshToken: refreshToken))
         
+            UserDefaultsManager.tokenKey?.accessToken = dtoToken?.accessToken
+            UserDefaultsManager.tokenKey?.refreshToken = dtoToken?.refreshToken
+            
+            let tabBar = TabBarViewController()
+            setRootViewController(to: tabBar, animation: true)
+        } catch {
+            guard let errorModel = error as? NetworkError else { return }
+            await handleError(errorModel)
+        }
+    }
+
+    func logout(token: UserDefaultToken) async {
+        do {
+            try await authManager.logout(token: token)
+        } catch {
+            print(error)
+        }
+    }
+
+    func handleError(_ error: NetworkError) async {
+        switch error {
+        case .clientError(let code, _):
+            if code == NetworkErrorCode.unauthorizedErrorCode {
+                guard let token = UserDefaultsManager.tokenKey else { return }
+                await logout(token: token)
+                // LoginVC로 이동하기
+                let loginVC = LoginViewController()
+                setRootViewController(to: loginVC, animation: true)
+            } else if code == NetworkErrorCode.resignedErrorCode {
+                let loginVC = LoginViewController()
+                setRootViewController(to: loginVC, animation: true)
+            }
+        default:
+            print(error)
+        }
     }
 }

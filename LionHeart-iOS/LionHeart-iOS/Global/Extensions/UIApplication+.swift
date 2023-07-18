@@ -13,6 +13,11 @@ extension UIApplication {
         if let nav = base as? UINavigationController {
             return navigationTopViewController(base: nav.visibleViewController)
         }
+        
+        if let nav = base as? UITabBarController {
+            return navigationTopViewController(base: nav.viewControllers?.first)
+        }
+    
         return base
     }
 }
