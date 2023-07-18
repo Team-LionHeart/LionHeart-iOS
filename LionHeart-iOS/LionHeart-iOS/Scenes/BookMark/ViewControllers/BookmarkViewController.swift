@@ -60,7 +60,6 @@ private extension BookmarkViewController {
         bookmarkCollectionView.delegate = self
         bookmarkCollectionView.dataSource = self
     }
-    
     func registerCell() {
         BookmarkDetailCollectionViewCell.register(to: bookmarkCollectionView)
         BookmarkListCollectionViewCell.register(to: bookmarkCollectionView)
