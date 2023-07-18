@@ -15,8 +15,6 @@ final class TodayViewController: UIViewController {
     enum TodayArticleImage {
         static let ratio: CGFloat = 400/335
     }
-    
-    private var todayArticleData = TodayArticle.dummy
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
     
@@ -26,7 +24,7 @@ final class TodayViewController: UIViewController {
         return view
     }()
     
-    private var titleLabel = LHTodayArticleTitle(nickName: "사랑이")
+    private var titleLabel = LHTodayArticleTitle()
     private var mainArticleView = TodayArticleView()
 
     public override func viewDidLoad() {
@@ -36,11 +34,52 @@ final class TodayViewController: UIViewController {
         setHierarchy()
         setLayout()
         setTapGesture()
-        setData()
         setButtonAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getInquireTodayArticle()
     }
 }
 
+// MARK: - 네트워킹
+extension TodayViewController: ViewControllerServiceable {
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .urlEncodingError:
+            LHToast.show(message: "URL인코딩오류입니다")
+        case .jsonDecodingError:
+            LHToast.show(message: "Json디코딩오류입니다")
+        case .badCasting:
+            LHToast.show(message: "배드퀘스트")
+        case .fetchImageError:
+            LHToast.show(message: "이미지패치실패")
+        case .unAuthorizedError:
+            LHToast.show(message: "인증오류")
+        case .clientError(_, let message):
+            LHToast.show(message: message)
+        case .serverError:
+            LHToast.show(message: "승준이어딧니 내목소리들리니")
+        }
+    }
+}
+
+extension TodayViewController {
+    func getInquireTodayArticle() {
+        Task {
+            do {
+                let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
+                titleLabel.title = responseArticle.articleTitle
+                mainArticleView.data = responseArticle
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
+    }
+}
+
+// MARK: - layout
 private extension TodayViewController {
     func setUI() {
         view.backgroundColor = .designSystem(.black)
@@ -85,11 +124,7 @@ private extension TodayViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(articleTapped(_:)))
         mainArticleView.addGestureRecognizer(tapGesture)
     }
-    
-    func setData() {
-        mainArticleView.data = todayArticleData
-    }
-    
+
     func setButtonAction() {
         todayNavigationBar.rightFirstBarItemAction {
             let bookmarkViewController = BookmarkViewController()

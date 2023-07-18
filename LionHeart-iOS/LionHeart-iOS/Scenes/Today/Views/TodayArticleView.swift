@@ -125,11 +125,18 @@ private extension TodayArticleView {
     
     func configureView(data: TodayArticle?) {
         guard let data else { return }
-        mainArticlImageView.image = UIImage(named: "today_test_image")
         weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
         articleTitleLabel.text = data.articleTitle
         articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
         descriptionLabel.text = data.articleDescription
         descriptionLabel.setTextWithLineHeight(lineHeight: 24)
+        Task {
+            do {
+                let image = try await LHKingFisherService.fetchImage(with: data.mainImageURL)
+                mainArticlImageView.image = image
+            } catch {
+                print(error)
+            }
+        }
     }
 }

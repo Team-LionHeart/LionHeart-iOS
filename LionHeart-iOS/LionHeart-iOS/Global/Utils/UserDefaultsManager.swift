@@ -21,14 +21,14 @@ struct UserDefaultsWrapper<T: Codable> {
 
     var wrappedValue: T? {
         get {
-            guard let loadedData = UserDefaults.standard.object(forKey: UserDefaultKey.token) as? Data,
+            guard let loadedData = UserDefaults.standard.object(forKey: self.key) as? Data,
                   let decodedObject = try? JSONDecoder().decode(T.self, from: loadedData)
             else { return defaultValue }
             return decodedObject
         }
         set {
             if let encodedData = try? JSONEncoder().encode(newValue) {
-                UserDefaults.standard.set(encodedData, forKey: UserDefaultKey.token)
+                UserDefaults.standard.set(encodedData, forKey: self.key)
             }
 
         }
@@ -38,5 +38,5 @@ struct UserDefaultsWrapper<T: Codable> {
 
 struct UserDefaultsManager {
     @UserDefaultsWrapper(key: UserDefaultKey.token, defaultValue: nil)
-    static var tokenKey: Token?
+    static var tokenKey: UserDefaultToken?
 }
