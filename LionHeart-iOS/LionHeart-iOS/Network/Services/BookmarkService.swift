@@ -17,7 +17,7 @@ final class BookmarkService: Serviceable {
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
-        let model = try handleErrorCode(data: data, decodeType: BookmarkResponse.self)
+        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: BookmarkResponse.self)
         
         return BookmarkAppData(nickName: model?.babyNickname,
                                articleSummaries: model?.articleSummaries.map {
@@ -32,7 +32,7 @@ final class BookmarkService: Serviceable {
         let urlRequest = try NetworkRequest(path: "/v1/article/bookmarks", httpMethod: .post, body: body).makeURLRequest(isLogined: true)
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
-        try handleErrorCode(data: data, decodeType: String.self)
+        try dataDecodeAndhandleErrorCode(data: data, decodeType: String.self)
         
         return
     }
