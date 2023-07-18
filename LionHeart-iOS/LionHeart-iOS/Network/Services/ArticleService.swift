@@ -21,6 +21,6 @@ final class ArticleService: Serviceable {
             throw NetworkError.jsonDecodingError
         }
         
-        return .init(fetalNickname: model.babyNickname, articleTitle: model.title, articleDescription: model.editorNoteContent, currentWeek: model.week, currentDay: model.day, mainImageURL: model.mainImageUrl)
+        return .init(fetalNickname: model.babyNickname, articleTitle: model.title, articleDescription: model.editorNoteContent, currentWeek: model.week, currentDay: model.day, mainImageURL: model.mainImageUrl, aticleID: model.articleId)
     }
 }
