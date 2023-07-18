@@ -38,19 +38,11 @@ final class TodayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Task {
-            do {
-                let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
-                titleLabel.title = responseArticle.articleTitle
-                mainArticleView.data = responseArticle
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
-            }
-        }
+        getInquireTodayArticle()
     }
 }
 
+// MARK: - 네트워킹
 extension TodayViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
@@ -70,10 +62,24 @@ extension TodayViewController: ViewControllerServiceable {
             LHToast.show(message: "승준이어딧니 내목소리들리니")
         }
     }
-    
-    
 }
 
+extension TodayViewController {
+    func getInquireTodayArticle() {
+        Task {
+            do {
+                let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
+                titleLabel.title = responseArticle.articleTitle
+                mainArticleView.data = responseArticle
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
+    }
+}
+
+// MARK: - layout
 private extension TodayViewController {
     func setUI() {
         view.backgroundColor = .designSystem(.black)
