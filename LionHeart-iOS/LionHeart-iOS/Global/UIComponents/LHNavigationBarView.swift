@@ -75,7 +75,7 @@ final class LHNavigationBarView: UIView {
     }
 
     private func setStyle() {
-        self.backgroundColor = type == .today ? .designSystem(.black) : .designSystem(.background)
+        self.backgroundColor = type == .today || type == .articleMain ? .designSystem(.black) : .designSystem(.background)
     }
 
     // MARK: - addsubView
@@ -177,7 +177,8 @@ extension LHNavigationBarView {
     func setCurriculumWeek(week: Int) {
         self.titleLabel.text = "\(week)주차 커리큘럼"
     }
-
+    
+    @discardableResult
     /// NavigationBar의 RightBarItems중 왼쪽에 해당하는 아이콘을 눌렀을 때의 Action을 정의하는 메서드.
     /// - Parameter handler: 해당 아이콘을 눌렀을 때 필요한 로직을 담은 클로저
     /// - Returns: LHNavigationBarView타입을 돌려주기 때문에 체이닝으로 연속해서 메서드를 호출가능.
@@ -186,6 +187,7 @@ extension LHNavigationBarView {
         return self
     }
 
+    @discardableResult
     /// NavigationBar의 RightBarItems중 오른쪽에 해당하는 아이콘을 눌렀을 때의 Action을 정의하는 메서드.
     /// - Parameter handler: 해당 아이콘을 눌렀을 때 필요한 로직을 담은 클로저
     /// - Returns: LHNavigationBarView타입을 돌려주기 때문에 체이닝으로 연속해서 메서드를 호출가능.

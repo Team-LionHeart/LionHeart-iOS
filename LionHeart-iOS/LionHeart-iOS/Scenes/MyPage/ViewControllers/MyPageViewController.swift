@@ -25,6 +25,13 @@ final class MyPageViewController: UIViewController {
         return collectionView
     }()
     
+    private let resignButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("회원탈퇴 버튼", for: .normal)
+        button.backgroundColor = .designSystem(.black)
+        return button
+    }()
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,7 +42,12 @@ final class MyPageViewController: UIViewController {
         setDelegate()
         registerCell()
         hiddenNavigationBar()
-
+        setTabbar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -45,7 +57,7 @@ private extension MyPageViewController {
     }
     
     func setHierarchy() {
-        view.addSubviews(navigtaionBar, myPageCollectionView)
+        view.addSubviews(navigtaionBar, myPageCollectionView, resignButton)
     }
     
     func setLayout() {
@@ -59,10 +71,26 @@ private extension MyPageViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        resignButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(300)
+        }
     }
     
     func setAddTarget() {
-        
+        resignButton.addButtonAction { sender in
+            Task {
+                do {
+                    guard let window = self.view.window else { return }
+                    self.resignButton.isUserInteractionEnabled = false
+                    try await AuthService.shared.resignUser()
+                    ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
     
     func setDelegate() {
@@ -79,6 +107,10 @@ private extension MyPageViewController {
     
     func hiddenNavigationBar() {
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    func setTabbar() {
+        self.tabBarController?.tabBar.isHidden = true
     }
 }
 

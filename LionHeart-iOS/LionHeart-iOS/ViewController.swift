@@ -70,11 +70,11 @@ class ViewController: UIViewController {
     }
 
     @objc func kakaoLoginButtonTapped() {
-//        if UserApi.isKakaoTalkLoginAvailable() {
-//            loginKakaoWithApp()
-//        } else {
-//            loginKakaoWithWeb()
-//        }
+        if UserApi.isKakaoTalkLoginAvailable() {
+            loginKakaoWithApp()
+        } else {
+            loginKakaoWithWeb()
+        }
 
         LHToast.show(message: "토스트메세지입니다")
 

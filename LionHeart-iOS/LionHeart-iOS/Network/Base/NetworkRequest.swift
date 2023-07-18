@@ -31,10 +31,10 @@ struct NetworkRequest {
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
 
         if isLogined {
-            guard let token = UserDefaultsManager.tokenKey else {
+            guard let token = UserDefaultsManager.tokenKey?.accessToken else {
                 throw NetworkError.clientError(code: "", message: "알 수 없는 에러: 회원가입까지 마쳤는데 JWT가 저장되있지 않는 상태")
             }
-            urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+            urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
         }
 
         urlRequest.httpBody = self.body
