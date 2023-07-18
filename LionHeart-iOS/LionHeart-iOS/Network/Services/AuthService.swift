@@ -22,7 +22,7 @@ final class AuthService: Serviceable {
 
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
 
-        let model = try handleErrorCode(data: data, decodeType: Token.self)
+        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: Token.self)
 
         return model
     }
@@ -34,7 +34,7 @@ final class AuthService: Serviceable {
 
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
 
-        try handleErrorCode(data: data, decodeType: String.self)
+        try dataDecodeAndhandleErrorCode(data: data, decodeType: String.self)
     }
 
     func login(type: LoginType) async throws {
@@ -50,13 +50,13 @@ final class AuthService: Serviceable {
         let body = try JSONSerialization.data(withJSONObject: param)
         
         // 3. URLRequest 만들기
-        let urlRequest = try NetworkRequest(path: "v1/auth/login", httpMethod: .post, body: body).makeURLRequest(isLogined: false)
+        let urlRequest = try NetworkRequest(path: "/v1/auth/login", httpMethod: .post, body: body).makeURLRequest(isLogined: false)
         
         // 4. 서버 통신
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
         // 5. decode해온 response 받기 + 에러 던지기
-        let model = try handleErrorCode(data: data, decodeType: UserDefaultToken.self)
+        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: UserDefaultToken.self)
         
         UserDefaultsManager.tokenKey?.accessToken = model?.accessToken
         UserDefaultsManager.tokenKey?.refreshToken = model?.refreshToken
@@ -79,7 +79,7 @@ final class AuthService: Serviceable {
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
-        let model = try handleErrorCode(data: data, decodeType: Token.self)
+        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: Token.self)
         
         UserDefaultsManager.tokenKey?.accessToken = model?.accessToken
         UserDefaultsManager.tokenKey?.refreshToken = model?.refreshToken

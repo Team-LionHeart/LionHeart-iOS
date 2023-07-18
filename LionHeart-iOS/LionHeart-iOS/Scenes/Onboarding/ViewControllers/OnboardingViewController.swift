@@ -166,12 +166,12 @@ private extension OnboardingViewController {
         Task {
             do {
                 try await AuthService.shared.signUp(type: .kakao, onboardingModel: passingData)
+                self.navigationController?.pushViewController(completeViewController, animated: true)
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
             }
         }
-        self.navigationController?.pushViewController(completeViewController, animated: true)
     }
 }
 

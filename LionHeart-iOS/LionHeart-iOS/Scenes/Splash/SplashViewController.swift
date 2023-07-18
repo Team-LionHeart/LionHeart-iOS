@@ -16,7 +16,7 @@ final class SplashViewController: UIViewController {
     // MARK: - UI Components
 
     private let lottieImageView: LottieAnimationView = {
-        let view = LottieAnimationView(name: "motion_logo")
+        let view = LottieAnimationView(name: "motion_logo_final")
         view.contentMode = .scaleAspectFit
         return view
     }()
@@ -74,6 +74,7 @@ private extension SplashViewController {
         lottieImageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.size.equalTo(220)
         }
     }
 
