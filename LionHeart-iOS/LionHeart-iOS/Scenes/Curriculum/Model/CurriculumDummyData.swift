@@ -8,14 +8,15 @@
 import UIKit
 
 struct UserInfoData: AppData{
-    let fetusName: String
     let userWeekInfo: Int
     let userDayInfo: Int
+    let progress: Int
+    let remainingDay: Int
 }
 
 extension UserInfoData {
     static func dummy() -> UserInfoData {
-        return UserInfoData(fetusName: "곽성준", userWeekInfo: 10, userDayInfo: 3)
+        return UserInfoData(userWeekInfo: 4, userDayInfo: 2, progress: 10, remainingDay: 150)
     }
 }
 
