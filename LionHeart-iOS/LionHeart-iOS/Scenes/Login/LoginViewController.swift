@@ -17,23 +17,8 @@ final class LoginViewController: UIViewController {
     
     private var kakaoAccessToken: String? {
         didSet {
-            guard let isExist = UserDefaultsManager.tokenKey?.isExistJWT else { return }
-            if isExist {
-                Task {
-                    do {
-                        try await AuthService.shared.login(type: .kakao)
-                        guard let window = self.view.window else { return }
-                        let mainTabbarViewController = TabBarViewController()
-                        ViewControllerUtil.setRootViewController(window: window, viewController: mainTabbarViewController, withAnimation: false)
-                    } catch {
-                        print(error)
-                    }
-                }
-               return
-            }
-            let nextVC = OnboardingViewController()
-            nextVC.setKakaoAccessToken(kakaoAccessToken)
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            guard let isExistAndExpired = UserDefaultsManager.tokenKey?.isExistJWT else { return }
+            isExistAndExpired ? moveUserToTabbarController() : moveUserToOnboardingViewController()
         }
     }
     
@@ -72,7 +57,6 @@ final class LoginViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         setHierarchy()
         setLayout()
         setAddTarget()
@@ -80,9 +64,27 @@ final class LoginViewController: UIViewController {
 }
 
 private extension LoginViewController {
-    func setUI() {
-        
+    func moveUserToTabbarController() {
+        Task {
+            do {
+                try await AuthService.shared.login(type: .kakao)
+                guard let window = self.view.window else { return }
+                let mainTabbarViewController = TabBarViewController()
+                ViewControllerUtil.setRootViewController(window: window, viewController: mainTabbarViewController, withAnimation: false)
+            } catch {
+                print(error)
+            }
+        }
     }
+    
+    func moveUserToOnboardingViewController() {
+        let onboardingViewController = OnboardingViewController()
+        onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
+        self.navigationController?.pushViewController(onboardingViewController, animated: true)
+    }
+}
+
+private extension LoginViewController {
     
     func setHierarchy() {
         view.addSubviews(loginMainImageView, mainLogoImageView, mainLabel, kakakoLoginButton)
