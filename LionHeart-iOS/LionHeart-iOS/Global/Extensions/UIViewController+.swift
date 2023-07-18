@@ -56,3 +56,24 @@ extension UIViewController {
         generator.impactOccurred()
     }
 }
+
+/**
+
+  - Description:
+    배열 형태로 오는 tag 값들을 GUI에 맞는 형태로 가공하여 반환해 주는 메서드입니다.
+
+  - parameters:
+    서버 데이터인 String 타입의 tag 배열을 넣어 줍니다.
+ 
+*/
+
+extension UIViewController {
+    public func makeTagString(tagList: [String]) -> String {
+        var str = ""
+        for tag in tagList.indices {
+            str += tag != tagList.count-1 ? tagList[tag] + " ⋅ " : tagList[tag]
+        }
+        return str
+    }
+}
+
