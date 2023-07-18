@@ -86,4 +86,10 @@ final class AuthService: Serviceable {
         
         return
     }
+    
+    func resignUser() async throws {
+        let urlRequest = try NetworkRequest(path: "/v1/member", httpMethod: .delete).makeURLRequest(isLogined: true)
+        _ = try await URLSession.shared.data(for: urlRequest)
+        UserDefaultsManager.tokenKey?.refreshToken = nil
+    }
 }
