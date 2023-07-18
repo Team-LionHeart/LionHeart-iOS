@@ -25,6 +25,9 @@ enum Constant {
         case bookmarkActiveSmall = "ic_bookmark_active_small"
         case bookmarkInactiveSmall = "ic_bookmark_inactive_small"
         
+        /// Onboarding
+        case textFieldClear = "ic_X_back"
+        
         var real: String {
             return self.rawValue
         }

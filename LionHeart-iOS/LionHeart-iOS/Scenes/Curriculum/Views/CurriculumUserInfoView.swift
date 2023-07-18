@@ -34,7 +34,7 @@ final class CurriculumUserInfoView: UIView {
     }()
     
     private let weekImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "2word"))
+        let imageView = UIImageView(image: ImageLiterals.Curriculum.weekBackground)
         return imageView
     }()
     
@@ -54,7 +54,7 @@ final class CurriculumUserInfoView: UIView {
     }()
     
     private let dayImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "1word"))
+        let imageView = UIImageView(image: ImageLiterals.Curriculum.dayBackground)
         return imageView
     }()
     
@@ -77,6 +77,11 @@ final class CurriculumUserInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+
+    }
+    
+    override func layoutSubviews() {
         // MARK: - 컴포넌트 설정
         setUI()
         
@@ -85,7 +90,6 @@ final class CurriculumUserInfoView: UIView {
         
         // MARK: - autolayout설정
         setLayout()
-
     }
     
     @available(*, unavailable)
@@ -121,7 +125,8 @@ private extension CurriculumUserInfoView {
         }
         
         userWeekLabel.snp.makeConstraints{
-            $0.leading.equalTo(weekImageView.snp.leading).offset(5)
+//            $0.leading.equalTo(weekImageView.snp.leading).offset(5)
+            $0.centerX.equalTo(weekImageView)
             $0.top.equalTo(fetusNameLabel.snp.bottom).offset(12)
         }
         

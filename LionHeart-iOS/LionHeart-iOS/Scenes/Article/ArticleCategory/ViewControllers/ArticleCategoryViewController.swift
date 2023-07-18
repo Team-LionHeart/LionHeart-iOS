@@ -58,11 +58,8 @@ final class ArticleCategoryViewController: UIViewController {
         super.viewDidLoad()
         // MARK: - 컴포넌트 설정
         setUI()
-        
-        setNavigation()
-        
-        // MARK: - addsubView
         setHierarchy()
+        setNavigation()
         
         // MARK: - autolayout설정
         setLayout()
@@ -79,6 +76,7 @@ final class ArticleCategoryViewController: UIViewController {
 private extension ArticleCategoryViewController {
     func setUI() {
         ArticleCategoryCollectionViewCell.register(to: categoryArticleCollectionView)
+        self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .designSystem(.background)
     }
     
@@ -87,14 +85,7 @@ private extension ArticleCategoryViewController {
     }
     
     func setLayout() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.navigationBar.snp.bottom).offset(28)
-            make.leading.equalToSuperview().inset(20)
-        }
-        navigationBar.snp.makeConstraints { make in
-             make.top.equalTo(view.safeAreaLayoutGuide)
-             make.leading.trailing.equalToSuperview()
-         }
+
          titleLabel.snp.makeConstraints { make in
              make.top.equalTo(navigationBar.snp.bottom).offset(28)
              make.leading.equalToSuperview().inset(20)
@@ -106,7 +97,7 @@ private extension ArticleCategoryViewController {
          categoryArticleCollectionView.snp.makeConstraints { make in
              make.top.equalTo(subtitleLabel.snp.bottom).offset(16)
              make.leading.trailing.equalToSuperview()
-             make.bottom.equalTo(view.safeAreaLayoutGuide)
+             make.bottom.equalToSuperview().inset(100)
          }
     }
     
@@ -120,7 +111,10 @@ private extension ArticleCategoryViewController {
     }
     
     func setNavigation() {
-        NavigationBarLayoutManager.add(navigationBar)
+        navigationBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+        }
     }
 }
 
@@ -140,7 +134,7 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
 
 extension ArticleCategoryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        return UIEdgeInsets(top: 0, left: 20, bottom: 80, right: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
