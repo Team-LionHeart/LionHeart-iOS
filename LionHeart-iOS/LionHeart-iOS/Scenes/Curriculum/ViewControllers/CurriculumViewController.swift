@@ -97,12 +97,13 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     override func viewDidLayoutSubviews() {
         if isFirstPresented {
             self.scrollToUserWeek()
-            
+
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getCurriculumData()
+        
     }
 }
 
@@ -171,7 +172,10 @@ private extension CurriculumViewController {
         
     }
     
-    // viewDidAppear
+    /// 더미데이터에서는 더미데이터를가지고 tableview를 그리고  아래함수를 호출했었음
+    /// 근데 데이터를 api로 받아오려고보니 해당함수를 호출할때는 api로 데이터가 받아와지기전임(데이터를 받아오는데 시간이 오래 걸리때문)
+    /// 시간이 걸려서 데이터를 받아오니 expand가 안됨
+    // viewDidLayoutSubviews
     func scrollToUserWeek() {
         
         guard let userInfoData else { return }
@@ -180,12 +184,9 @@ private extension CurriculumViewController {
         let desireSection = (userWeek / 4) - 1
         let desireRow = (userWeek % 4)
         let indexPath = IndexPath(row: desireRow, section: desireSection)
-        /// 더미데이터에서는 더미데이터를가지고 tableview를 그리고  아래함수를 호출했었음
-        /// 근데 데이터를 api로 받아오려고보니 해당함수를 호출할때는 api로 데이터가 받아와지기전임(데이터를 바다오는데 시간이 오래걸리때문)
-        /// 시간이걸려서 데이터를 받아오니 expand가 안됨
+        
         curriculumViewDatas[desireSection].weekDatas[desireRow].isExpanded = true
         self.curriculumTableView.reloadData()
-        
         self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
     }
 }
