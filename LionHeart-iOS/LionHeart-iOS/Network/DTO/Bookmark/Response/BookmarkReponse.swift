@@ -14,6 +14,7 @@ struct BookmarkResponse: DTO, Response {
 
 struct ArticleSummaryDTO: DTO, Response {
     let title: String
+    let articleId: Int
     let mainImageUrl: String
     let isMarked: Bool
     let tags: [String]

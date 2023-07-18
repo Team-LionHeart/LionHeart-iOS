@@ -14,6 +14,7 @@ struct BookmarkAppData: AppData {
 
 struct ArticleSummaries: AppData {
     let title: String
+    let articleID: Int
     let articleImage: String
     let bookmarked: Bool
     let tags: [String]

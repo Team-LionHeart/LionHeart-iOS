@@ -140,10 +140,12 @@ extension BookmarkViewController: UICollectionViewDataSource {
                 
                 Task {
                     do {
+                        // 배열 형태로 해당 articleID를 받음...
+                        // 그거랑 별개로 indexPath로 접근해서 articleID를 넘김
+                        try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: bookmarkListData[indexPath.item].articleID,
+                                                                                      bookmarkStatus: !bookmarkListData[indexPath.item].bookmarked))
                         bookmarkListData.remove(at: indexPath.item)
                         collectionView.deleteItems(at: [indexPath])
-                        try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: indexPath.item,
-                                                                                      bookmarkStatus: false))
                         LHToast.show(message: "북마크가 해제되었습니다")
                     } catch {
                         guard let error = error as? NetworkError else { return }

@@ -21,7 +21,7 @@ final class BookmarkService: Serviceable {
         
         return BookmarkAppData(nickName: model?.babyNickname,
                                articleSummaries: model?.articleSummaries.map {
-            ArticleSummaries(title: $0.title, articleImage: $0.mainImageUrl,
+            ArticleSummaries(title: $0.title, articleID: $0.articleId, articleImage: $0.mainImageUrl,
                              bookmarked: $0.isMarked, tags: $0.tags)})
     }
     
