@@ -136,10 +136,20 @@ extension BookmarkViewController: UICollectionViewDataSource {
             
             guard var bookmarkListData = bookmarkAppData?.articleSummaries else { return cell }
             
-            cell.bookmarkButtonClosure = { indexPathItem in
-                bookmarkListData.remove(at: indexPathItem)
-                collectionView.deleteItems(at: [IndexPath(item: indexPathItem, section: 1)])
-                LHToast.show(message: "북마크가 해제되었습니다")
+            cell.bookmarkButtonClosure = { tag in
+                
+                Task {
+                    do {
+                        bookmarkListData.remove(at: tag)
+                        collectionView.deleteItems(at: [IndexPath(item: tag, section: 1)])
+                        try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: tag,
+                                                                                      bookmarkStatus: false))
+                        LHToast.show(message: "북마크가 해제되었습니다")
+                    } catch {
+                        guard let error = error as? NetworkError else { return }
+                        self.handleError(error)
+                    }
+                }
             }
             return cell
         }
