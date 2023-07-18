@@ -17,8 +17,8 @@ final class LoginViewController: UIViewController {
     
     private var kakaoAccessToken: String? {
         didSet {
-            guard let isExistAndExpired = UserDefaultsManager.tokenKey?.isExistJWT else { return }
-            isExistAndExpired ? moveUserToTabbarController() : moveUserToOnboardingViewController()
+            guard let kakaoToken = self.kakaoAccessToken else { return }
+            self.loginAPI(kakaoToken: kakaoToken)
         }
     }
     
@@ -63,20 +63,39 @@ final class LoginViewController: UIViewController {
     }
 }
 
-private extension LoginViewController {
-    func moveUserToTabbarController() {
+// MARK: - Network
+
+extension LoginViewController: ViewControllerServiceable {
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .clientError(let code, let message):
+            print(code, message)
+            if code == NetworkErrorCode.unfoundUserErrorCode {
+                self.moveUserToOnboardingViewController()
+            }
+        default:
+            LHToast.show(message: error.description)
+        }
+    }
+}
+
+extension LoginViewController {
+    private func loginAPI(kakaoToken: String) {
         Task {
             do {
-                try await AuthService.shared.login(type: .kakao)
+                try await AuthService.shared.login(type: .kakao, kakaoToken: kakaoToken)
                 guard let window = self.view.window else { return }
                 let mainTabbarViewController = TabBarViewController()
                 ViewControllerUtil.setRootViewController(window: window, viewController: mainTabbarViewController, withAnimation: false)
             } catch {
-                print(error)
+                guard let error = error as? NetworkError else {
+                    return
+                }
+                handleError(error)
             }
         }
     }
-    
+
     func moveUserToOnboardingViewController() {
         let onboardingViewController = OnboardingViewController()
         onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
@@ -143,5 +162,3 @@ private extension LoginViewController {
         }
     }
 }
-
-

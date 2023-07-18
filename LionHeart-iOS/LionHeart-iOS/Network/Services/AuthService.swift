@@ -37,13 +37,12 @@ final class AuthService: Serviceable {
         try dataDecodeAndhandleErrorCode(data: data, decodeType: String.self)
     }
 
-    func login(type: LoginType) async throws {
+    func login(type: LoginType, kakaoToken: String) async throws {
         // 1. UserDefault에서 토큰 가져오기
-        let tokens = UserDefaultsManager.tokenKey
-        guard let accessToken = tokens?.accessToken, let fcmToken = tokens?.fcmToken else {
-            throw NetworkError.clientError(code: "", message: "알수없는에러(토큰이 왜없을까요?)")
+        guard let fcmToken = UserDefaultsManager.tokenKey?.fcmToken else {
+            throw NetworkError.clientError(code: "", message: "fcmToken이 없는데 왜 없죠")
         }
-        let loginRequest = LoginRequest(socialType: type.raw, token: accessToken, fcmToken: fcmToken)
+        let loginRequest = LoginRequest(socialType: type.raw, token: kakaoToken, fcmToken: fcmToken)
         
         // 2. 로그인 에 필요한 body 만들기
         let param = loginRequest.toDictionary()
@@ -56,7 +55,7 @@ final class AuthService: Serviceable {
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
         // 5. decode해온 response 받기 + 에러 던지기
-        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: UserDefaultToken.self)
+        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: Token.self)
         
         UserDefaultsManager.tokenKey?.accessToken = model?.accessToken
         UserDefaultsManager.tokenKey?.refreshToken = model?.refreshToken

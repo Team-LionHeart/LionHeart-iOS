@@ -120,7 +120,7 @@ private extension SplashViewController {
                 // LoginVC로 이동하기
                 let loginVC = LoginViewController()
                 setRootViewController(to: loginVC, animation: true)
-            } else if code == NetworkErrorCode.resignedErrorCode {
+            } else if code == NetworkErrorCode.unfoundUserErrorCode {
                 let loginVC = LoginViewController()
                 setRootViewController(to: loginVC, animation: true)
             }
