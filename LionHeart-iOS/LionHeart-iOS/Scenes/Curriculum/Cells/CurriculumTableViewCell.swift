@@ -86,6 +86,11 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         return button
     }()
     
+    lazy var moveToArticleListByWeekButton: UIButton = {
+       let button = UIButton()
+        button.setImage(ImageLiterals.Curriculum.arrowRightCircle, for: .normal)
+        return button
+    }()
     
     var inputData: CurriculumDummyData? {
         didSet {
@@ -128,6 +133,7 @@ private extension CurriculumTableViewCell {
     func setHierarchy() {
         
         curriculumWeekLabelView.addSubviews(weekLabel, weekTitleLabel, curriculumToggleDirectionButton)
+        contentImageView.addSubviews(moveToArticleListByWeekButton)
         curriculumContentStackView.addArrangedSubviews(contentImageView, contentTextLabel)
         curriculumWholeStackView.addArrangedSubviews(curriculumWeekLabelView, curriculumContentStackView)
         contentView.addSubviews(curriculumWholeStackView, divider)
@@ -167,6 +173,11 @@ private extension CurriculumTableViewCell {
         
         contentImageView.snp.makeConstraints{
             $0.height.equalTo(contentImageView.snp.width).multipliedBy(Size.contentImageView)
+        }
+        
+        moveToArticleListByWeekButton.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(12)
         }
     }
 }
