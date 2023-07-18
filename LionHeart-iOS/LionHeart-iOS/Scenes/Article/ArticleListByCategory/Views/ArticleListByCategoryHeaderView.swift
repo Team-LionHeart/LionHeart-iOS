@@ -12,7 +12,7 @@ import SnapKit
 
 final class ArticleListByCategoryHeaderView: UIView {
     
-    private lazy var categoryTagLabel: UILabelPadding = {
+    private let categoryTagLabel: UILabelPadding = {
         let label = UILabelPadding()
         label.text = "출산 직전"
         label.font = .pretendard(.body4)
@@ -36,7 +36,7 @@ final class ArticleListByCategoryHeaderView: UIView {
         return label
     }()
     
-    private lazy var categorysubtitleLabel: UILabel = {
+    private let categorysubtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "라이온하트가 전하는 예산 절약 노하우 대공개"
         label.numberOfLines = 2
