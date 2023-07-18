@@ -156,6 +156,8 @@
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
 		C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */; };
 		D30CBA1A2A60384C00C8636B /* ChallengeDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CBA192A60384C00C8636B /* ChallengeDummy.swift */; };
+		D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34280762A66B90C00DA1499 /* UILabelPadding.swift */; };
+		D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */; };
 		D3AB54C12A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB54C02A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift */; };
 		D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */; };
 		D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */; };
@@ -326,6 +328,8 @@
 		C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundContainerView.swift; sourceTree = "<group>"; };
 		C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHRoundButton.swift; sourceTree = "<group>"; };
 		D30CBA192A60384C00C8636B /* ChallengeDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDummy.swift; sourceTree = "<group>"; };
+		D34280762A66B90C00DA1499 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
+		D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryHeaderView.swift; sourceTree = "<group>"; };
 		D3AB54C02A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDayCheckCollectionViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryModel.swift; sourceTree = "<group>"; };
@@ -560,6 +564,7 @@
 				C09217722A61895A00231C66 /* UIWindow+.swift */,
 				C00780B62A5FFE0E0043EB36 /* UILabel+.swift */,
 				4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */,
+				D34280762A66B90C00DA1499 /* UILabelPadding.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -762,6 +767,7 @@
 			isa = PBXGroup;
 			children = (
 				C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */,
+				D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1380,6 +1386,7 @@
 				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
+				D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
 				B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */,
 				B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */,
@@ -1409,6 +1416,7 @@
 				4A8980C22A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
+				D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
