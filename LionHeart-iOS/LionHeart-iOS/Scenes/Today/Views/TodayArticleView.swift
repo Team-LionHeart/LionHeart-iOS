@@ -18,9 +18,19 @@ final class TodayArticleView: UIView {
         }
     }
     
+    private let backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .designSystem(.black)?.withAlphaComponent(0.2)
+        view.layer.cornerRadius = 4
+        view.clipsToBounds = true
+        return view
+    }()
+    
     private var mainArticlImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 4
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -45,9 +55,10 @@ final class TodayArticleView: UIView {
         return label
     }()
     
-    private var seperateLine: UIView = {
-        let view = UIView()
-        return view
+    private var seperateLine: UIImageView = {
+        let imageview = UIImageView(image: UIImage(named: "MainArticleSeperateLine"))
+        imageview.contentMode = .scaleAspectFill
+        return imageview
     }()
     
     private var descriptionLabel: UILabel = {
@@ -61,44 +72,18 @@ final class TodayArticleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
         setHierarchy()
         setLayout()
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        seperateLine.setGradient(firstColor: .designSystem(.gray400)!, secondColor: .designSystem(.gray600)!.withAlphaComponent(0))
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-private extension TodayArticleView {
-    func setUI() {
         
-    }
-    
-    func setHierarchy() {
-        addSubview(mainArticlImageView)
+        mainArticlImageView.setGradient(firstColor: .designSystem(.black)!.withAlphaComponent(0.2), secondColor: .designSystem(.gray1000)!, axis: .vertical)
+        
         weekInfomationView.addSubview(weekInfomationLabel)
-        mainArticlImageView.addSubviews(descriptionLabel, seperateLine, articleTitleLabel, weekInfomationView)
-    }
-    
-    func setLayout() {
-        mainArticlImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         
-        weekInfomationLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        weekInfomationLabel.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(8)
-            make.leading.equalToSuperview().inset(20)
-            make.trailing.equalToSuperview().inset(16)
-        }
+        mainArticlImageView.addSubviews(descriptionLabel, seperateLine, articleTitleLabel, weekInfomationView)
         
         descriptionLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(36)
@@ -121,19 +106,50 @@ private extension TodayArticleView {
             make.bottom.equalTo(articleTitleLabel.snp.top).offset(-12)
             make.leading.equalToSuperview()
         }
+        
+        weekInfomationLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        weekInfomationLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(8)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
+        articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
+        descriptionLabel.setTextWithLineHeight(lineHeight: 24)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension TodayArticleView {
+    
+    func setHierarchy() {
+        addSubview(mainArticlImageView)
+        mainArticlImageView.addSubviews(backgroundView)
+    }
+    
+    func setLayout() {
+        
+        mainArticlImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     func configureView(data: TodayArticle?) {
         guard let data else { return }
-        weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
-        articleTitleLabel.text = data.articleTitle
-        articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
-        descriptionLabel.text = data.articleDescription
-        descriptionLabel.setTextWithLineHeight(lineHeight: 24)
         Task {
             do {
                 let image = try await LHKingFisherService.fetchImage(with: data.mainImageURL)
                 mainArticlImageView.image = image
+                weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
+                articleTitleLabel.text = data.articleTitle
+                descriptionLabel.text = data.articleDescription
             } catch {
                 print(error)
             }
