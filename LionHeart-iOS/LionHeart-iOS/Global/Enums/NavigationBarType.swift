@@ -10,6 +10,7 @@ import Foundation
 enum LHNavigationType {
     case today
     case explore
+    case curriculumMain
     case curriculumByWeek
     case challenge
     case onboarding
@@ -27,14 +28,13 @@ enum LHNavigationType {
         case .bookmark: return "북마크"
         case .myPage: return "프로필"
         case .exploreEachCategory, .curriculumByWeek, .articleMain: return nil
+        case .curriculumMain: return "커리큘럼"
         }
     }
 
     var leftBarItemType: LeftBarItemType {
         switch self {
-        case .today:
-            return .buttonWithRightBarItems
-        case .explore, .challenge:
+        case .explore, .challenge, .curriculumMain, .today:
             return .buttonWithRightBarItems
         case .articleMain: return .closeButtonWithTitle
         default: return .backButtonWithTitle

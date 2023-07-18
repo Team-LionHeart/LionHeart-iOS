@@ -81,7 +81,7 @@ final class LHNavigationBarView: UIView {
     }
 
     private func setStyle() {
-        self.backgroundColor = type == .today || type == .articleMain ? .designSystem(.black) : .designSystem(.background)
+        self.backgroundColor = .designSystem(.black)
     }
 
     // MARK: - addsubView
@@ -164,7 +164,7 @@ final class LHNavigationBarView: UIView {
             return
         }
         leftBarItem.setTitle(type.title, for: .normal)
-        leftBarItem.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        leftBarItem.titleLabel?.font = .pretendard(.head4)
     }
 
     private func setCloseButtonWithTitle() {
