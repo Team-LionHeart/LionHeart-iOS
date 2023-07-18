@@ -160,6 +160,7 @@ private extension OnboardingViewController {
     }
     
     func presentCompleteOnboardingView() {
+        self.nextButton.isUserInteractionEnabled = false
         let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
         completeViewController.userData = passingData

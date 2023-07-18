@@ -20,13 +20,12 @@ final class LHToast {
         window.addSubview(toastView)
         
         toastView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
             if isTabBar {
                 make.bottom.equalToSuperview().inset(120)
+            } else {
+                make.bottom.equalToSuperview().inset(40)
             }
-            make.bottom.equalToSuperview().inset(40)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(48)
         }
         
         window.layoutSubviews()

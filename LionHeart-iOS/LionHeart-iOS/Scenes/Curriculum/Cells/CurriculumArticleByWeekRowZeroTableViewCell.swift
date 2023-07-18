@@ -12,9 +12,7 @@ import SnapKit
 
 
 final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
-    
-    var cellIndexPath: IndexPath?
-    
+        
     var inputData: CurriculumWeekData? {
         didSet {
             weekLabel.text = inputData?.week
@@ -28,6 +26,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
     private let weekBackGroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .designSystem(.gray500)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -49,7 +48,6 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
             NotificationCenter.default.post(name: NSNotification.Name("rightButton"),
                                             object: nil)
         }
-        
         return button
     }()
     
@@ -88,7 +86,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         
         // MARK: - autolayout설정
         setLayout()
-    
+        
     }
 
     
@@ -104,7 +102,6 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
     
     func setHierarchy() {
         
-
         curriculumAndWeekStackView.addArrangedSubviews(curriculumLabel, weekLabel)
         weekBackGroundImageView.addSubviews(curriculumAndWeekStackView)
         contentView.addSubviews(weekBackGroundImageView, leftWeekButton, rightWeekButton)
