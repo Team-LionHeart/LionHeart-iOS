@@ -154,6 +154,16 @@
 		C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */; };
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
 		C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */; };
+		C0F62FC12A67CDB70003ADFA /* progressbar_10m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FB82A67CDB60003ADFA /* progressbar_10m.json */; };
+		C0F62FC22A67CDB70003ADFA /* progressbar_8m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FB92A67CDB60003ADFA /* progressbar_8m.json */; };
+		C0F62FC32A67CDB70003ADFA /* progressbar_3m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */; };
+		C0F62FC42A67CDB70003ADFA /* progressbar_9m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBB2A67CDB60003ADFA /* progressbar_9m.json */; };
+		C0F62FC52A67CDB70003ADFA /* progressbar_7m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBC2A67CDB60003ADFA /* progressbar_7m.json */; };
+		C0F62FC62A67CDB70003ADFA /* progressbar_4m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBD2A67CDB60003ADFA /* progressbar_4m.json */; };
+		C0F62FC72A67CDB70003ADFA /* progressbar_5m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */; };
+		C0F62FC82A67CDB70003ADFA /* progressbar_6m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */; };
+		C0F62FC92A67CDB70003ADFA /* progressbar_2m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FC02A67CDB60003ADFA /* progressbar_2m.json */; };
+		C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */; };
 		D30CBA1A2A60384C00C8636B /* ChallengeDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CBA192A60384C00C8636B /* ChallengeDummy.swift */; };
 		D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34280762A66B90C00DA1499 /* UILabelPadding.swift */; };
 		D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */; };
@@ -161,15 +171,6 @@
 		D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */; };
 		D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */; };
 		F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */; };
-		F431A8DD2A6669E600B8B2FA /* progressbar_9m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8D42A6669E600B8B2FA /* progressbar_9m.json */; };
-		F431A8DE2A6669E600B8B2FA /* progressbar_3m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8D52A6669E600B8B2FA /* progressbar_3m.json */; };
-		F431A8DF2A6669E600B8B2FA /* progressbar_5m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8D62A6669E600B8B2FA /* progressbar_5m.json */; };
-		F431A8E02A6669E600B8B2FA /* progressbar_7m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8D72A6669E600B8B2FA /* progressbar_7m.json */; };
-		F431A8E12A6669E600B8B2FA /* progressbar_6m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8D82A6669E600B8B2FA /* progressbar_6m.json */; };
-		F431A8E22A6669E600B8B2FA /* progressbar_4m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8D92A6669E600B8B2FA /* progressbar_4m.json */; };
-		F431A8E32A6669E600B8B2FA /* progressbar_10m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8DA2A6669E600B8B2FA /* progressbar_10m.json */; };
-		F431A8E42A6669E600B8B2FA /* progressbar_2m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8DB2A6669E600B8B2FA /* progressbar_2m.json */; };
-		F431A8E52A6669E600B8B2FA /* progressbar_8m.json in Resources */ = {isa = PBXBuildFile; fileRef = F431A8DC2A6669E600B8B2FA /* progressbar_8m.json */; };
 		F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */; };
 		F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435E0532A5E67BF0098E691 /* NSObject+.swift */; };
 		F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */; };
@@ -335,6 +336,15 @@
 		C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundContainerView.swift; sourceTree = "<group>"; };
 		C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHRoundButton.swift; sourceTree = "<group>"; };
+		C0F62FB82A67CDB60003ADFA /* progressbar_10m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_10m.json; sourceTree = "<group>"; };
+		C0F62FB92A67CDB60003ADFA /* progressbar_8m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_8m.json; sourceTree = "<group>"; };
+		C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
+		C0F62FBB2A67CDB60003ADFA /* progressbar_9m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_9m.json; sourceTree = "<group>"; };
+		C0F62FBC2A67CDB60003ADFA /* progressbar_7m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_7m.json; sourceTree = "<group>"; };
+		C0F62FBD2A67CDB60003ADFA /* progressbar_4m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_4m.json; sourceTree = "<group>"; };
+		C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_5m.json; sourceTree = "<group>"; };
+		C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_6m.json; sourceTree = "<group>"; };
+		C0F62FC02A67CDB60003ADFA /* progressbar_2m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_2m.json; sourceTree = "<group>"; };
 		D30CBA192A60384C00C8636B /* ChallengeDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDummy.swift; sourceTree = "<group>"; };
 		D34280762A66B90C00DA1499 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryHeaderView.swift; sourceTree = "<group>"; };
@@ -342,15 +352,6 @@
 		D3BA0B702A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryModel.swift; sourceTree = "<group>"; };
 		F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewHeaderView.swift; sourceTree = "<group>"; };
-		F431A8D42A6669E600B8B2FA /* progressbar_9m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_9m.json; path = ../../../../../../progress_0718_curriculum/progressbar_9m.json; sourceTree = "<group>"; };
-		F431A8D52A6669E600B8B2FA /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_3m.json; path = ../../../../../../progress_0718_curriculum/progressbar_3m.json; sourceTree = "<group>"; };
-		F431A8D62A6669E600B8B2FA /* progressbar_5m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_5m.json; path = ../../../../../../progress_0718_curriculum/progressbar_5m.json; sourceTree = "<group>"; };
-		F431A8D72A6669E600B8B2FA /* progressbar_7m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_7m.json; path = ../../../../../../progress_0718_curriculum/progressbar_7m.json; sourceTree = "<group>"; };
-		F431A8D82A6669E600B8B2FA /* progressbar_6m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_6m.json; path = ../../../../../../progress_0718_curriculum/progressbar_6m.json; sourceTree = "<group>"; };
-		F431A8D92A6669E600B8B2FA /* progressbar_4m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_4m.json; path = ../../../../../../progress_0718_curriculum/progressbar_4m.json; sourceTree = "<group>"; };
-		F431A8DA2A6669E600B8B2FA /* progressbar_10m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_10m.json; path = ../../../../../../progress_0718_curriculum/progressbar_10m.json; sourceTree = "<group>"; };
-		F431A8DB2A6669E600B8B2FA /* progressbar_2m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_2m.json; path = ../../../../../../progress_0718_curriculum/progressbar_2m.json; sourceTree = "<group>"; };
-		F431A8DC2A6669E600B8B2FA /* progressbar_8m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = progressbar_8m.json; path = ../../../../../../progress_0718_curriculum/progressbar_8m.json; sourceTree = "<group>"; };
 		F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumUserInfoView.swift; sourceTree = "<group>"; };
 		F435E0532A5E67BF0098E691 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDummyData.swift; sourceTree = "<group>"; };
@@ -539,16 +540,15 @@
 		B57BEB662A6138EF00D1727C /* Lotties */ = {
 			isa = PBXGroup;
 			children = (
-				F431A8DB2A6669E600B8B2FA /* progressbar_2m.json */,
-				F431A8D52A6669E600B8B2FA /* progressbar_3m.json */,
-				F431A8D92A6669E600B8B2FA /* progressbar_4m.json */,
-				F431A8D62A6669E600B8B2FA /* progressbar_5m.json */,
-				F431A8D82A6669E600B8B2FA /* progressbar_6m.json */,
-				F431A8D72A6669E600B8B2FA /* progressbar_7m.json */,
-				F431A8DC2A6669E600B8B2FA /* progressbar_8m.json */,
-				F431A8D42A6669E600B8B2FA /* progressbar_9m.json */,
-				F431A8DA2A6669E600B8B2FA /* progressbar_10m.json */,
-				B57BEB672A6138F700D1727C /* motion_logo.json */,
+				C0F62FC02A67CDB60003ADFA /* progressbar_2m.json */,
+				C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */,
+				C0F62FBD2A67CDB60003ADFA /* progressbar_4m.json */,
+				C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */,
+				C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */,
+				C0F62FBC2A67CDB60003ADFA /* progressbar_7m.json */,
+				C0F62FB92A67CDB60003ADFA /* progressbar_8m.json */,
+				C0F62FBB2A67CDB60003ADFA /* progressbar_9m.json */,
+				C0F62FB82A67CDB60003ADFA /* progressbar_10m.json */,
 				B53881B52A6649D6002D166E /* motion_logo_final.json */,
 			);
 			path = Lotties;
@@ -1363,23 +1363,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F431A8E32A6669E600B8B2FA /* progressbar_10m.json in Resources */,
-				F431A8DE2A6669E600B8B2FA /* progressbar_3m.json in Resources */,
-				F431A8E22A6669E600B8B2FA /* progressbar_4m.json in Resources */,
-				F431A8E42A6669E600B8B2FA /* progressbar_2m.json in Resources */,
 				B598930D2A5BED0F00CE1FEB /* Pretendard-SemiBold.ttf in Resources */,
-				F431A8E12A6669E600B8B2FA /* progressbar_6m.json in Resources */,
-				F431A8DF2A6669E600B8B2FA /* progressbar_5m.json in Resources */,
+				C0F62FC92A67CDB70003ADFA /* progressbar_2m.json in Resources */,
+				C0F62FC62A67CDB70003ADFA /* progressbar_4m.json in Resources */,
 				B598930B2A5BED0F00CE1FEB /* Pretendard-Medium.ttf in Resources */,
-				F431A8E52A6669E600B8B2FA /* progressbar_8m.json in Resources */,
-				F431A8E02A6669E600B8B2FA /* progressbar_7m.json in Resources */,
+				C0F62FC42A67CDB70003ADFA /* progressbar_9m.json in Resources */,
+				C0F62FC52A67CDB70003ADFA /* progressbar_7m.json in Resources */,
 				B532E83E2A5525C700F0DB19 /* LaunchScreen.storyboard in Resources */,
+				C0F62FC12A67CDB70003ADFA /* progressbar_10m.json in Resources */,
+				C0F62FC82A67CDB70003ADFA /* progressbar_6m.json in Resources */,
+				C0F62FC32A67CDB70003ADFA /* progressbar_3m.json in Resources */,
 				B598930C2A5BED0F00CE1FEB /* Pretendard-Regular.ttf in Resources */,
+				C0F62FC22A67CDB70003ADFA /* progressbar_8m.json in Resources */,
 				B59892832A56C93400CE1FEB /* GoogleService-Info.plist in Resources */,
+				C0F62FC72A67CDB70003ADFA /* progressbar_5m.json in Resources */,
 				B53881B62A6649D6002D166E /* motion_logo_final.json in Resources */,
 				B532E83B2A5525C700F0DB19 /* Assets.xcassets in Resources */,
 				B598930E2A5BED0F00CE1FEB /* Pretendard-Bold.ttf in Resources */,
-				F431A8DD2A6669E600B8B2FA /* progressbar_9m.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1446,7 +1446,6 @@
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
 				B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */,
 				C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */,
-				4A8980C22A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
@@ -1518,6 +1517,7 @@
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */,
+				C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				C0DF035D2A5A9C260037F740 /* ArticleListByWeekTableViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
@@ -1525,7 +1525,6 @@
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				F4C60E1D2A66B4CE006BBADE /* CurriculumViewService.swift in Sources */,
-				F435E04E2A5DD1F30098E691 /* CurriculumProgessTableViewHeaderView.swift in Sources */,
 				C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */,
