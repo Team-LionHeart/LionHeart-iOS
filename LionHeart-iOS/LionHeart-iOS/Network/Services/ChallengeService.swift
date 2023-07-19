@@ -17,8 +17,11 @@ final class ChallengeService: Serviceable {
 
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
      
-        guard  let model = try handleErrorCode(data: data, decodeType: ChallengeDataResponse.self) else { return ChallengeData(babyDaddyName: "", howLongDay: 0, daddyLevel: "", daddyAttendances: []) }
+        guard  let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: ChallengeDataResponse.self) else { return ChallengeData(babyDaddyName: "", howLongDay: 0, daddyLevel: "", daddyAttendances: []) }
         
-        return ChallengeData(babyDaddyName: model.babyNickname, howLongDay: model.day, daddyLevel: model.level, daddyAttendances: model.attendances)
+        return ChallengeData(babyDaddyName: model.babyNickname,
+                             howLongDay: model.day,
+                             daddyLevel: model.level,
+                             daddyAttendances: model.attendances)
     }
 }
