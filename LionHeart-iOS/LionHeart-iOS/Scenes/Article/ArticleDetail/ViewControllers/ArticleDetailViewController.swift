@@ -85,7 +85,7 @@ extension ArticleDetailViewController {
         }
     }
 
-    private func articleBookMark() {
+    private func articleBookMark(articleId: Int, isSelected: Bool) {
         Task {
             do {
                 let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkStatus: isSelected)
@@ -193,7 +193,7 @@ extension ArticleDetailViewController: UITableViewDataSource {
             cell.bookmarkButtonDidTap = { isSelected in
                 guard let articleId = self.articleId else { return }
                 
-                self.articleBookMark()
+                self.articleBookMark(articleId: articleId, isSelected: isSelected)
             }
             return cell
         case .articleTitle(let titleModel):
