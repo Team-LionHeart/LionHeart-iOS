@@ -52,6 +52,7 @@ final class ArticleDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        LoadingIndicator.showLoading()
         getArticleDetail()
     }
     
@@ -69,6 +70,7 @@ extension ArticleDetailViewController {
         Task {
             do {
                 self.articleDatas = try await ArticleService.shared.getArticleDetail(articleId: 0)
+                LoadingIndicator.hideLoading()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -160,9 +162,9 @@ extension ArticleDetailViewController: UITableViewDataSource {
             let cell = ThumnailTableViewCell.dequeueReusableCell(to: articleTableView)
             cell.inputData = thumbnailModel
             cell.selectionStyle = .none
-            cell.bookmarkButtonDidTap = {
-                // TODO: Network POST 북마크
-            }
+//            cell.bookmarkButtonDidTap = {
+//                // TODO: Network POST 북마크
+//            }
             return cell
         case .articleTitle(let titleModel):
             let cell = TitleTableViewCell.dequeueReusableCell(to: articleTableView)
