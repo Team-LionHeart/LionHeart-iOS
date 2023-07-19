@@ -160,18 +160,19 @@ private extension OnboardingViewController {
     }
     
     func presentCompleteOnboardingView() {
+        self.nextButton.isUserInteractionEnabled = false
         let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
         completeViewController.userData = passingData
         Task {
             do {
                 try await AuthService.shared.signUp(type: .kakao, onboardingModel: passingData)
+                self.navigationController?.pushViewController(completeViewController, animated: true)
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
             }
         }
-        self.navigationController?.pushViewController(completeViewController, animated: true)
     }
 }
 

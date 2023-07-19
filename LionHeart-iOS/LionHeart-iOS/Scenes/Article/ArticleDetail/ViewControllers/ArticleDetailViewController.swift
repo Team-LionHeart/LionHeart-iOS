@@ -21,7 +21,7 @@ final class ArticleDetailViewController: UIViewController {
 
     private lazy var scrollToTopButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.up.circle"), for: .normal)
+        button.setImage(ImageLiterals.Article.icFab, for: .normal)
         button.addButtonAction { _ in
             let indexPath = IndexPath(row: 0, section: 0)
             self.articleTableView.scrollToRow(at: indexPath, at: .top, animated: true)
@@ -33,7 +33,11 @@ final class ArticleDetailViewController: UIViewController {
 
     // MARK: - Properties
 
-    private let articleDatas = ArticleDetail.dummy().toAppData()
+    private var articleDatas: [BlockTypeAppData]? {
+        didSet {
+            self.articleTableView.reloadData()
+        }
+    }
 
     private var contentOffsetY: CGFloat = 0
 
@@ -45,12 +49,41 @@ final class ArticleDetailViewController: UIViewController {
         setNavigationBar()
         setTabbar()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getArticleDetail()
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
 }
+
+// MARK: - Network
+
+extension ArticleDetailViewController {
+    func getArticleDetail() {
+
+        Task {
+            do {
+                self.articleDatas = try await ArticleService.shared.getArticleDetail(articleId: 0)
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
+    }
+}
+
+extension ArticleDetailViewController: ViewControllerServiceable {
+    func handleError(_ error: NetworkError) {
+        LHToast.show(message: error.description)
+    }
+}
+
+// MARK: - UI & Layout
 
 private extension ArticleDetailViewController {
     
@@ -117,11 +150,11 @@ extension ArticleDetailViewController: UITableViewDelegate {
 
 extension ArticleDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articleDatas.count
+        return articleDatas?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        guard let articleDatas else { return UITableViewCell() }
         switch articleDatas[indexPath.row] {
         case .thumbnail(let thumbnailModel):
             let cell = ThumnailTableViewCell.dequeueReusableCell(to: articleTableView)
