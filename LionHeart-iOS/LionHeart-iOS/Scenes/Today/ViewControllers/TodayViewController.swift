@@ -15,6 +15,8 @@ final class TodayViewController: UIViewController {
     enum TodayArticleImage {
         static let ratio: CGFloat = 400/335
     }
+    
+    private var todayArticleID: Int?
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
     
@@ -71,6 +73,7 @@ extension TodayViewController {
                 let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
                 titleLabel.title = responseArticle.articleTitle
                 mainArticleView.data = responseArticle
+                todayArticleID = responseArticle.aticleID
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -140,6 +143,7 @@ private extension TodayViewController {
     
     @objc func articleTapped(_ sender: UIButton) {
         let articleDetailViewController = ArticleDetailViewController()
+        // MARK: - 여기 self.todayArticleID 를 넘겨주세요(optional)
         self.present(articleDetailViewController, animated: true)
     }
 }
