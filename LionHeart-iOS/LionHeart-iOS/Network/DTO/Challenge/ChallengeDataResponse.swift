@@ -1,5 +1,5 @@
 //
-//  ChallengeData.swift
+//  ChallengeDataResponse.swift
 //  LionHeart-iOS
 //
 //  Created by 김동현 on 2023/07/19.
