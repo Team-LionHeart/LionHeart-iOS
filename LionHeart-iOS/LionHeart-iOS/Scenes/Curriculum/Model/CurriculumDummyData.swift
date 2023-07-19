@@ -14,6 +14,10 @@ struct UserInfoData: AppData{
     let remainingDay: Int
 }
 
+extension UserInfoData {
+    static var emptyUserInfoData = UserInfoData(userWeekInfo: 0, userDayInfo: 0, progress: 0, remainingDay: 0)
+}
+
 struct CurriculumMonthData: AppData{
     let month: String
     var weekDatas: [CurriculumDummyData]

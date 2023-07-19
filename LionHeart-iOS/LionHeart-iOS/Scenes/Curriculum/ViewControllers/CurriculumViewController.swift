@@ -16,17 +16,12 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
     
     private var userInfoData: UserInfoData? {
-        didSet{
-            guard let userInfoData else { return }
-            dDayLabel.text = "D-\(userInfoData.remainingDay)"
-            let progressName: String = "progressbar_\(userInfoData.progress)m"
-            
-            progressBar.animation = .named(progressName)
-            progressBar.play()
-            curriculumUserInfoView.userInfo = userInfoData
-            
+        didSet {
+            configureUserInfoData()
         }
     }
+    
+    
     
     private let progressBar = LottieAnimationView()
     
@@ -97,7 +92,7 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     override func viewDidLayoutSubviews() {
         if isFirstPresented {
             self.scrollToUserWeek()
-
+            
         }
     }
     
@@ -181,13 +176,24 @@ private extension CurriculumViewController {
         guard let userInfoData else { return }
         
         let userWeek = userInfoData.userWeekInfo
-        let desireSection = (userWeek / 4) - 1
-        let desireRow = (userWeek % 4)
+        let weekPerMonth = 4
+        let desireSection = (userWeek / weekPerMonth) - 1
+        let desireRow = (userWeek % weekPerMonth)
         let indexPath = IndexPath(row: desireRow, section: desireSection)
         
         curriculumViewDatas[desireSection].weekDatas[desireRow].isExpanded = true
         self.curriculumTableView.reloadData()
         self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+    }
+    
+    func configureUserInfoData() {
+        guard let userInfoData else { return }
+        dDayLabel.text = "D-\(userInfoData.remainingDay)"
+        let progressName: String = "progressbar_\(userInfoData.progress)m"
+        
+        progressBar.animation = .named(progressName)
+        progressBar.play()
+        curriculumUserInfoView.userInfo = userInfoData
     }
 }
 
@@ -235,16 +241,19 @@ extension CurriculumViewController: UITableViewDataSource {
         guard let indexPath else { return }
         
         let listByWeekVC = CurriculumListByWeekViewController()
+        
+        
         if indexPath.section == curriculumViewDatas.count - 1 {
             listByWeekVC.firstPresented = (indexPath.section * 4) + indexPath.row + 1
             
         } else {
             listByWeekVC.firstPresented = (indexPath.section * 4) + indexPath.row
-           
+            
         }
         self.navigationController?.pushViewController(listByWeekVC, animated: false)
         
     }
+    
     
 }
 
@@ -256,8 +265,18 @@ extension CurriculumViewController: UITableViewDelegate{
 }
 
 extension CurriculumViewController: ViewControllerServiceable {
+    
     func handleError(_ error: NetworkError) {
-        LHToast.show(message: error.description)
+        switch error {
+        case .unAuthorizedError:
+            guard let window = self.view.window else { return }
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+        case .clientError(_, let message):
+            LHToast.show(message: "\(message)")
+        default:
+            LHToast.show(message: error.description)
+            
+        }
     }
     
 }

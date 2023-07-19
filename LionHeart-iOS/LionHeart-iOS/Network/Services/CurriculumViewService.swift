@@ -16,7 +16,7 @@ final class CurriculumService: Serviceable {
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
-        guard let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CurriculumResponse.self) else { return UserInfoData(userWeekInfo: 0, userDayInfo: 0, progress: 0, remainingDay: 0)}
+        guard let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CurriculumResponse.self) else { return UserInfoData.emptyUserInfoData }
         
         return UserInfoData(userWeekInfo: model.week, userDayInfo: model.day, progress: model.progress + 1, remainingDay: model.remainingDay)
     }

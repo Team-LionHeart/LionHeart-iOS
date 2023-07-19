@@ -128,7 +128,7 @@ extension CurriculumUserInfoView {
     }
     
     func configureUserInfo(data: UserInfoData?) {
-        guard let data = data else { return }
+        guard let data else { return }
         self.userWeekLabel.text = "\(data.userWeekInfo)"
         self.userDayLabel.text = "\(data.userDayInfo)"
         if data.userWeekInfo.description.count >= 2 {
