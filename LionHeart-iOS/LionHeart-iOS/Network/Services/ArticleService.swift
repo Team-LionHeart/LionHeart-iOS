@@ -18,7 +18,7 @@ final class ArticleService: Serviceable {
         guard let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: TodayArticleResponse.self)
         else { return TodayArticle.emptyArticle }
 
-        return .init(fetalNickname: model.babyNickname, articleTitle: model.title, articleDescription: model.editorNoteContent, currentWeek: model.week, currentDay: model.day, mainImageURL: model.mainImageUrl)
+        return .init(fetalNickname: model.babyNickname, articleTitle: model.title, articleDescription: model.editorNoteContent, currentWeek: model.week, currentDay: model.day, mainImageURL: model.mainImageUrl, aticleID: model.articleId)
     }
 
     func getArticleDetail(articleId: Int) async throws -> [BlockTypeAppData] {
