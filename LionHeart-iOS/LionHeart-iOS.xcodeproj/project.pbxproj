@@ -167,15 +167,6 @@
 		C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */; };
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
 		C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */; };
-		C0F62FC12A67CDB70003ADFA /* progressbar_10m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FB82A67CDB60003ADFA /* progressbar_10m.json */; };
-		C0F62FC22A67CDB70003ADFA /* progressbar_8m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FB92A67CDB60003ADFA /* progressbar_8m.json */; };
-		C0F62FC32A67CDB70003ADFA /* progressbar_3m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */; };
-		C0F62FC42A67CDB70003ADFA /* progressbar_9m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBB2A67CDB60003ADFA /* progressbar_9m.json */; };
-		C0F62FC52A67CDB70003ADFA /* progressbar_7m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBC2A67CDB60003ADFA /* progressbar_7m.json */; };
-		C0F62FC62A67CDB70003ADFA /* progressbar_4m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBD2A67CDB60003ADFA /* progressbar_4m.json */; };
-		C0F62FC72A67CDB70003ADFA /* progressbar_5m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */; };
-		C0F62FC82A67CDB70003ADFA /* progressbar_6m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */; };
-		C0F62FC92A67CDB70003ADFA /* progressbar_2m.json in Resources */ = {isa = PBXBuildFile; fileRef = C0F62FC02A67CDB60003ADFA /* progressbar_2m.json */; };
 		C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */; };
 		D30CBA1A2A60384C00C8636B /* ChallengeDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CBA192A60384C00C8636B /* ChallengeDummy.swift */; };
 		D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34280762A66B90C00DA1499 /* UILabelPadding.swift */; };
@@ -362,14 +353,9 @@
 		C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundContainerView.swift; sourceTree = "<group>"; };
 		C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHRoundButton.swift; sourceTree = "<group>"; };
 		C0F62FB82A67CDB60003ADFA /* progressbar_10m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_10m.json; sourceTree = "<group>"; };
-		C0F62FB92A67CDB60003ADFA /* progressbar_8m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_8m.json; sourceTree = "<group>"; };
 		C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
-		C0F62FBB2A67CDB60003ADFA /* progressbar_9m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_9m.json; sourceTree = "<group>"; };
-		C0F62FBC2A67CDB60003ADFA /* progressbar_7m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_7m.json; sourceTree = "<group>"; };
-		C0F62FBD2A67CDB60003ADFA /* progressbar_4m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_4m.json; sourceTree = "<group>"; };
 		C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_5m.json; sourceTree = "<group>"; };
 		C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_6m.json; sourceTree = "<group>"; };
-		C0F62FC02A67CDB60003ADFA /* progressbar_2m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_2m.json; sourceTree = "<group>"; };
 		D30CBA192A60384C00C8636B /* ChallengeDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDummy.swift; sourceTree = "<group>"; };
 		D34280762A66B90C00DA1499 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryHeaderView.swift; sourceTree = "<group>"; };
@@ -1156,6 +1142,10 @@
 			isa = PBXGroup;
 			children = (
 				C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */,
+				C0F62FB82A67CDB60003ADFA /* progressbar_10m.json */,
+				C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */,
+				C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */,
+				C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1425,13 +1415,9 @@
 				B598930B2A5BED0F00CE1FEB /* Pretendard-Medium.ttf in Resources */,
 				4AD6AE122A66F87400A3D745 /* progressbar_9m.json in Resources */,
 				B532E83E2A5525C700F0DB19 /* LaunchScreen.storyboard in Resources */,
-				C0F62FC12A67CDB70003ADFA /* progressbar_10m.json in Resources */,
-				C0F62FC82A67CDB70003ADFA /* progressbar_6m.json in Resources */,
-				C0F62FC32A67CDB70003ADFA /* progressbar_3m.json in Resources */,
 				B598930C2A5BED0F00CE1FEB /* Pretendard-Regular.ttf in Resources */,
 				4AD6AE082A66F84C00A3D745 /* progressbar_4m.json in Resources */,
 				B59892832A56C93400CE1FEB /* GoogleService-Info.plist in Resources */,
-				C0F62FC72A67CDB70003ADFA /* progressbar_5m.json in Resources */,
 				B53881B62A6649D6002D166E /* motion_logo_final.json in Resources */,
 				B532E83B2A5525C700F0DB19 /* Assets.xcassets in Resources */,
 				4AD6AE042A66F83E00A3D745 /* progressbar_2m.json in Resources */,

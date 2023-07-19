@@ -39,6 +39,12 @@ final class ArticleDetailViewController: UIViewController {
         }
     }
 
+//    private var articleDatas: [BlockTypeAppData] = ArticleDetail.dummy().toAppData()
+
+    private var isArticleMarked: Bool?
+
+    private var articleId: Int?
+
     private var contentOffsetY: CGFloat = 0
 
     public override func viewDidLoad() {
@@ -64,22 +70,46 @@ final class ArticleDetailViewController: UIViewController {
 // MARK: - Network
 
 extension ArticleDetailViewController {
-    func getArticleDetail() {
-
+    private func getArticleDetail() {
         Task {
             do {
-                self.articleDatas = try await ArticleService.shared.getArticleDetail(articleId: 0)
+                guard let articleId else {
+                    return
+
+                }
+                self.articleDatas = try await ArticleService.shared.getArticleDetail(articleId: articleId)
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
             }
         }
     }
+
+    private func articleBookMark() {
+        Task {
+            do {
+                let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkStatus: isSelected)
+                try await BookmarkService.shared.postBookmark(bookmarkRequest)
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                self.handleError(error)
+            }
+        }
+
+    }
 }
 
 extension ArticleDetailViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
-        LHToast.show(message: error.description)
+        switch error {
+        case .unAuthorizedError:
+            guard let window = self.view.window else { return }
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+        case .clientError(_, let message):
+            LHToast.show(message: "\(message)")
+        default:
+            LHToast.show(message: error.description)
+        }
     }
 }
 
@@ -124,9 +154,6 @@ private extension ArticleDetailViewController {
     
     func setTabbar() {
         self.tabBarController?.tabBar.isHidden = true
-        self.navigationBar.backButtonAction {
-            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-        }
     }
 }
 
@@ -156,12 +183,17 @@ extension ArticleDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let articleDatas else { return UITableViewCell() }
         switch articleDatas[indexPath.row] {
-        case .thumbnail(let thumbnailModel):
+        case .thumbnail(let isMarked, let thumbnailModel):
             let cell = ThumnailTableViewCell.dequeueReusableCell(to: articleTableView)
+            self.isArticleMarked = isMarked
+            cell.isMarked = self.isArticleMarked
             cell.inputData = thumbnailModel
+            
             cell.selectionStyle = .none
-            cell.bookmarkButtonDidTap = {
-                // TODO: Network POST 북마크
+            cell.bookmarkButtonDidTap = { isSelected in
+                guard let articleId = self.articleId else { return }
+                
+                self.articleBookMark()
             }
             return cell
         case .articleTitle(let titleModel):
@@ -204,4 +236,13 @@ extension ArticleDetailViewController: UITableViewDataSource {
         }
     }
 
+}
+
+
+extension ArticleDetailViewController {
+    /// Article ID를 해당 메서드로 넘긴 후에 해당 VC를 present해주세요
+    /// - Parameter id: articleId
+    func setArticleId(id: Int?) {
+        self.articleId = id
+    }
 }

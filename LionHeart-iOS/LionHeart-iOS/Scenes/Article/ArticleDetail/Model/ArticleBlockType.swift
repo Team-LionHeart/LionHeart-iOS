@@ -16,7 +16,7 @@ struct ArticleBlockData: AppData {
 
 @frozen
 enum BlockTypeAppData {
-    case thumbnail(model: ArticleBlockData)
+    case thumbnail(isMarked: Bool, model: ArticleBlockData)
     case articleTitle(model: ArticleBlockData)
     case editorNote(model: ArticleBlockData)
     case chapterTitle(model: ArticleBlockData)
