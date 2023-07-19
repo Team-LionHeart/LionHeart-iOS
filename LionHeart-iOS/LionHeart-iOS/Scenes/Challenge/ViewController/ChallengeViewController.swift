@@ -11,16 +11,27 @@ import UIKit
 import SnapKit
 import Lottie
 
-struct Example: AppData {
-    let babyDaddyName: String
-    let howLongDay: Int
-    let daddyLevel: String
-    let daddyAttendances: [String]
+enum BadgeLevel: String {
+    case level01 = "1"
+    case level02 = "2"
+    case level03 = "3"
+    case level04 = "4"
+    case level05 = "5"
+    
+    var levelBadge: UIImage {
+        switch self {
+        case .level01: return ImageLiterals.ChallengeBadge.level01
+        case .level02: return ImageLiterals.ChallengeBadge.level02
+        case .level03: return ImageLiterals.ChallengeBadge.level03
+        case .level04: return ImageLiterals.ChallengeBadge.level04
+        case .level05: return ImageLiterals.ChallengeBadge.level05
+        }
+    }
 }
 
 final class ChallengeViewController: UIViewController {
     
-    var inputData: Example? {
+    var inputData: ChallengeData? {
         didSet {
             
             self.nicknameLabel.text = inputData?.babyDaddyName
@@ -30,20 +41,11 @@ final class ChallengeViewController: UIViewController {
                         }
             
             self.challengelevelLabel.text = inputData?.daddyLevel
-
-            if inputData?.daddyLevel == "1" {
-                self.levelBadge.image = ImageLiterals.ChallengeBadge.level01
-            } else if inputData?.daddyLevel == "2" {
-                self.levelBadge.image = ImageLiterals.ChallengeBadge.level02
-            } else if inputData?.daddyLevel == "3" {
-                self.levelBadge.image = ImageLiterals.ChallengeBadge.level03
-            } else if inputData?.daddyLevel == "4" {
-                self.levelBadge.image = ImageLiterals.ChallengeBadge.level04
-            } else if inputData?.daddyLevel == "5" {
-                self.levelBadge.image = ImageLiterals.ChallengeBadge.level05
-            }
-
+            
+            self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "1")?.levelBadge
+            
             self.lottieImageView = LottieAnimationView(name: "Level\(inputData?.daddyLevel ?? "")")
+            self.lottieImageView.play()
             let attributtedString = NSMutableAttributedString(string: self.challengelevelLabel.text ?? "")
             attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (self.challengelevelLabel.text! as NSString).range(of:"Lv.\(inputData?.daddyLevel ?? "")"))
             self.challengelevelLabel.attributedText = attributtedString
@@ -119,7 +121,15 @@ final class ChallengeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        lottieImageView.play()
+
+        Task {
+            do{
+                let model = try await ChallengeService.shared.inquireChallengeInfo()
+                self.inputData = model
+            } catch {
+                 print(error)
+            }
+        }
     }
     
     override func viewDidLoad() {
