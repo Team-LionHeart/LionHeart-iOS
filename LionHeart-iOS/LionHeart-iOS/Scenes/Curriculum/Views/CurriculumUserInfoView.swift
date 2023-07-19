@@ -11,43 +11,28 @@ import UIKit
 import SnapKit
 
 final class CurriculumUserInfoView: UIView {
-        
+    
     var userInfo: UserInfoData? {
         didSet {
             configureUserInfo(data: userInfo)
         }
     }
     
-    private let nowLable: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2R)
-        label.textColor = .designSystem(.lionRed)
-        label.text = "Now"
-        return label
-    }()
-    
-    private let fetusNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
-    
     private let weekImageView: UIImageView = {
-        let imageView = UIImageView(image: ImageLiterals.Curriculum.weekBackground)
+        let imageView = UIImageView()
         return imageView
     }()
     
     private let userWeekLabel: UILabel = {
         let label = UILabel()
-        label.font = .pretendard(.head1)
+        label.font = .pretendard(.head3)
         label.textColor = .designSystem(.gray100)
         return label
     }()
     
     private let weekLabel: UILabel = {
         let label = UILabel()
-        label.font = .pretendard(.head1)
+        label.font = .pretendard(.head3)
         label.textColor = .designSystem(.white)
         label.text = "주"
         return label
@@ -60,14 +45,14 @@ final class CurriculumUserInfoView: UIView {
     
     private let userDayLabel: UILabel = {
         let label = UILabel()
-        label.font = .pretendard(.head1)
+        label.font = .pretendard(.head3)
         label.textColor = .designSystem(.gray100)
         return label
     }()
     
     private let dayLabel: UILabel = {
         let label = UILabel()
-        label.font = .pretendard(.head1)
+        label.font = .pretendard(.head3)
         label.textColor = .designSystem(.white)
         label.text = "일차"
         return label
@@ -77,8 +62,8 @@ final class CurriculumUserInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-
+        
+        
     }
     
     override func layoutSubviews() {
@@ -99,35 +84,25 @@ final class CurriculumUserInfoView: UIView {
     
 }
 
-private extension CurriculumUserInfoView {
+extension CurriculumUserInfoView {
     func setUI() {
         
     }
     
     func setHierarchy() {
-        self.addSubviews(nowLable, fetusNameLabel, userWeekDayInfoView, weekImageView, userWeekLabel, weekLabel, dayImageView, userDayLabel, dayLabel)
+        self.addSubviews(userWeekDayInfoView, weekImageView, userWeekLabel, weekLabel, dayImageView, userDayLabel, dayLabel)
     }
     
     func setLayout() {
-        nowLable.snp.makeConstraints{
+        
+        weekImageView.snp.makeConstraints{
             $0.leading.equalToSuperview().inset(20)
             $0.top.equalToSuperview().inset(24)
         }
         
-        fetusNameLabel.snp.makeConstraints{
-            $0.leading.equalToSuperview().inset(20)
-            $0.top.equalTo(nowLable.snp.bottom).offset(4)
-        }
-        
-        weekImageView.snp.makeConstraints{
-            $0.leading.equalToSuperview().inset(20)
-            $0.top.equalTo(fetusNameLabel.snp.bottom).offset(8)
-        }
-        
         userWeekLabel.snp.makeConstraints{
-//            $0.leading.equalTo(weekImageView.snp.leading).offset(5)
             $0.centerX.equalTo(weekImageView)
-            $0.top.equalTo(fetusNameLabel.snp.bottom).offset(12)
+            $0.centerY.equalTo(weekImageView)
         }
         
         weekLabel.snp.makeConstraints{
@@ -137,12 +112,12 @@ private extension CurriculumUserInfoView {
         
         dayImageView.snp.makeConstraints{
             $0.leading.equalTo(weekLabel.snp.trailing).offset(8)
-            $0.top.equalTo(fetusNameLabel.snp.bottom).offset(8)
+            $0.top.equalToSuperview().inset(24)
         }
         
         userDayLabel.snp.makeConstraints{
             $0.leading.equalTo(dayImageView.snp.leading).offset(4)
-            $0.top.equalTo(fetusNameLabel.snp.bottom).offset(12)
+            $0.centerY.equalTo(dayImageView)
         }
         
         dayLabel.snp.makeConstraints{
@@ -153,10 +128,15 @@ private extension CurriculumUserInfoView {
     }
     
     func configureUserInfo(data: UserInfoData?) {
-        guard let data = data else {return}
-        self.fetusNameLabel.text = "\(data.fetusName) 아빠님은"
+        guard let data else { return }
         self.userWeekLabel.text = "\(data.userWeekInfo)"
         self.userDayLabel.text = "\(data.userDayInfo)"
+        if data.userWeekInfo.description.count >= 2 {
+            weekImageView.image = ImageLiterals.Curriculum.weekBackground
+        } else {
+            weekImageView.image = ImageLiterals.Curriculum.dayBackground
+        }
         
     }
+    
 }

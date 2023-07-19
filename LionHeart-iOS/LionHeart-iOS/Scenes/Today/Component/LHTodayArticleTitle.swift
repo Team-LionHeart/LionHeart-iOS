@@ -9,12 +9,14 @@ import UIKit
 
 final class LHTodayArticleTitle: UILabel {
     
-    private let title: String
+    var title: String? {
+        didSet {
+            self.text = title
+        }
+    }
     
-    init(nickName: String) {
-        self.title = nickName + " 아빠님,\n오늘의 아티클이에요"
+    init() {
         super.init(frame: .zero)
-        self.text = title
         self.font = .pretendard(.head1)
         self.textColor = .designSystem(.white)
         self.numberOfLines = 2

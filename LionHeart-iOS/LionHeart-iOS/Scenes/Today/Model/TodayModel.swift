@@ -13,13 +13,10 @@ struct TodayArticle: AppData {
     var articleDescription: String
     var currentWeek: Int
     var currentDay: Int
+    var mainImageURL: String
+    var aticleID: Int
 }
 
 extension TodayArticle {
-    static var dummy: TodayArticle {
-        return .init(fetalNickname: "김의성",
-                     articleTitle: "안녕하세요\n김의성입니다",
-                     articleDescription: "안녕세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하녕하세요안녕하세요안녕하세요안녕하세요안녕하세요",
-                     currentWeek: 11, currentDay: 12)
-    }
+    static var emptyArticle = TodayArticle(fetalNickname: "", articleTitle: "", articleDescription: "", currentWeek: 0, currentDay: 0, mainImageURL: "", aticleID: 0)
 }

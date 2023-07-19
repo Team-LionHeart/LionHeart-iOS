@@ -16,15 +16,17 @@ final class TodayViewController: UIViewController {
         static let ratio: CGFloat = 400/335
     }
     
-    private var todayArticleData = TodayArticle.dummy
+    private var todayArticleID: Int?
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
+    
     private let seperateLine: UIView = {
         let view = UIView()
         view.backgroundColor = .designSystem(.gray800)
         return view
     }()
-    private var titleLabel = LHTodayArticleTitle(nickName: "사랑이")
+    
+    private var titleLabel = LHTodayArticleTitle()
     private var mainArticleView = TodayArticleView()
 
     public override func viewDidLoad() {
@@ -34,10 +36,53 @@ final class TodayViewController: UIViewController {
         setHierarchy()
         setLayout()
         setTapGesture()
-        setData()
+        setButtonAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getInquireTodayArticle()
     }
 }
 
+// MARK: - 네트워킹
+extension TodayViewController: ViewControllerServiceable {
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .urlEncodingError:
+            LHToast.show(message: "URL인코딩오류입니다", isTabBar: true)
+        case .jsonDecodingError:
+            LHToast.show(message: "Json디코딩오류입니다", isTabBar: true)
+        case .badCasting:
+            LHToast.show(message: "배드퀘스트", isTabBar: true)
+        case .fetchImageError:
+            LHToast.show(message: "이미지패치실패", isTabBar: true)
+        case .unAuthorizedError:
+            LHToast.show(message: "인증오류", isTabBar: true)
+        case .clientError(_, let message):
+            LHToast.show(message: message, isTabBar: true)
+        case .serverError:
+            LHToast.show(message: "승준이어딧니 내목소리들리니", isTabBar: true)
+        }
+    }
+}
+
+extension TodayViewController {
+    func getInquireTodayArticle() {
+        Task {
+            do {
+                let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
+                titleLabel.title = responseArticle.articleTitle
+                mainArticleView.data = responseArticle
+                todayArticleID = responseArticle.aticleID
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
+    }
+}
+
+// MARK: - layout
 private extension TodayViewController {
     func setUI() {
         view.backgroundColor = .designSystem(.black)
@@ -82,13 +127,23 @@ private extension TodayViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(articleTapped(_:)))
         mainArticleView.addGestureRecognizer(tapGesture)
     }
-    
-    func setData() {
-        mainArticleView.data = todayArticleData
+
+    func setButtonAction() {
+        todayNavigationBar.rightFirstBarItemAction {
+            let bookmarkViewController = BookmarkViewController()
+            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
+        }
+        
+        todayNavigationBar.rightSecondBarItemAction {
+            let myPageViewController = MyPageViewController()
+            self.navigationController?.pushViewController(myPageViewController, animated: true)
+        }
     }
+    
     
     @objc func articleTapped(_ sender: UIButton) {
         let articleDetailViewController = ArticleDetailViewController()
-        self.navigationController?.pushViewController(articleDetailViewController, animated: true)
+        // MARK: - 여기 self.todayArticleID 를 넘겨주세요(optional)
+        self.present(articleDetailViewController, animated: true)
     }
 }
