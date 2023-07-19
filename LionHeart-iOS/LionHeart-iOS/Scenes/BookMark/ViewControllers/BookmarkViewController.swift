@@ -12,7 +12,7 @@ import SnapKit
 
 final class BookmarkViewController: UIViewController {
     
-    private var bookmarkDataList: [String] = ["1", "2", "3", "4", "5", "", ""]
+    private var bookmarkAppData: BookmarkAppData?
     
     private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
     
@@ -31,6 +31,20 @@ final class BookmarkViewController: UIViewController {
         setDelegate()
         registerCell()
         setTabbar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Task {
+            do {
+                self.bookmarkAppData = try await BookmarkService.shared.getBookmark()
+                bookmarkCollectionView.reloadData()
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,7 +74,6 @@ private extension BookmarkViewController {
         bookmarkCollectionView.delegate = self
         bookmarkCollectionView.dataSource = self
     }
-    
     func registerCell() {
         BookmarkDetailCollectionViewCell.register(to: bookmarkCollectionView)
         BookmarkListCollectionViewCell.register(to: bookmarkCollectionView)
@@ -68,6 +81,28 @@ private extension BookmarkViewController {
     
     func setTabbar() {
         self.tabBarController?.tabBar.isHidden = true
+    }
+}
+
+extension BookmarkViewController: ViewControllerServiceable {
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .urlEncodingError:
+            LHToast.show(message: "URL Error")
+        case .jsonDecodingError:
+            LHToast.show(message: "Decoding Error")
+        case .badCasting:
+            LHToast.show(message: "Bad Casting")
+        case .fetchImageError:
+            LHToast.show(message: "Image Error")
+        case .unAuthorizedError:
+            guard let window = self.view.window else { return }
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+        case .clientError(_, _):
+            print("뜨면 위험함")
+        case .serverError:
+            LHToast.show(message: "승준이 빠따")
+        }
     }
 }
 
@@ -80,13 +115,14 @@ extension BookmarkViewController: UICollectionViewDataSource {
         if section == 0 {
             return 1
         } else {
-            bookmarkDataList.isEmpty ?
+            guard let bookmarkListData = bookmarkAppData?.articleSummaries else { return 0 }
+            bookmarkListData.isEmpty ?
             collectionView.setEmptyView(emptyText: """
                                                    아직 담아본 아티클이 없어요.
                                                    다른 아티클을 읽어볼까요?
                                                    """) :
             collectionView.restore()
-            return bookmarkDataList.count
+            return bookmarkListData.count
         }
     }
     
@@ -96,10 +132,25 @@ extension BookmarkViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = BookmarkListCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-            cell.bookmarkButtonClosure = { indexPathItem in
-                self.bookmarkDataList.remove(at: indexPathItem)
-                collectionView.deleteItems(at: [IndexPath(item: indexPathItem, section: 1)])
-                LHToast.show(message: "북마크가 해제되었습니다")
+            
+            guard var bookmarkListData = bookmarkAppData?.articleSummaries else { return cell }
+            
+            cell.bookmarkButtonClosure = { indexPath in
+                
+                Task {
+                    do {
+                        // 배열 형태로 해당 articleID를 받음...
+                        // 그거랑 별개로 indexPath로 접근해서 articleID를 넘김
+                        try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: bookmarkListData[indexPath.item].articleID,
+                                                                                      bookmarkStatus: !bookmarkListData[indexPath.item].bookmarked))
+                        bookmarkListData.remove(at: indexPath.item)
+                        collectionView.deleteItems(at: [indexPath])
+                        LHToast.show(message: "북마크가 해제되었습니다")
+                    } catch {
+                        guard let error = error as? NetworkError else { return }
+                        self.handleError(error)
+                    }
+                }
             }
             return cell
         }

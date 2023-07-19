@@ -15,9 +15,7 @@ struct UserInfoData: AppData{
 }
 
 extension UserInfoData {
-    static func dummy() -> UserInfoData {
-        return UserInfoData(userWeekInfo: 4, userDayInfo: 2, progress: 10, remainingDay: 150)
-    }
+    static var emptyUserInfoData = UserInfoData(userWeekInfo: 0, userDayInfo: 0, progress: 0, remainingDay: 0)
 }
 
 struct CurriculumMonthData: AppData{
@@ -38,7 +36,7 @@ extension CurriculumMonthData {
         return [
             CurriculumMonthData(month: "2개월", weekDatas: [
                 .init(curriculumWeek: "4주차", curriculumWeekTitle: "아빠가 되기 위한 9개월 로드맵", curriculumImage: ImageLiterals.Curriculum.week4Image, curriculumText: "4주차에는 처음 부모가 된 예비 아빠들을 위해 출산의 전반적인 로드맵을 다룰 예정이에요. 개인병원과 종합병원 중 어떤 곳을 선택해야 할까요? 출산 예정일은 어떻게 계산할까요? 아빠가 되기 위한 첫 걸음을 함께해보세요.", isExpanded: false),
-                .init(curriculumWeek: "lse5주차", curriculumWeekTitle: "산부인과 첫 진료에 대한 모든 것", curriculumImage: ImageLiterals.Curriculum.week5Image, curriculumText: "5주차에는 산부인과가 조금은 낯선 아빠들을 위해 첫 번째 진료에 대한 아티클을 준비했어요. 산모 수첩은 무엇이고, 초음파 사진은 어떻게 해석해야 할까요? 흥미로운 태몽 이야기와 마인드컨트롤 방법까지, 차근차근 아빠가 될 공부를 시작해요.", isExpanded: false),
+                .init(curriculumWeek: "5주차", curriculumWeekTitle: "산부인과 첫 진료에 대한 모든 것", curriculumImage: ImageLiterals.Curriculum.week5Image, curriculumText: "5주차에는 산부인과가 조금은 낯선 아빠들을 위해 첫 번째 진료에 대한 아티클을 준비했어요. 산모 수첩은 무엇이고, 초음파 사진은 어떻게 해석해야 할까요? 흥미로운 태몽 이야기와 마인드컨트롤 방법까지, 차근차근 아빠가 될 공부를 시작해요.", isExpanded: false),
                 .init(curriculumWeek: "6주차", curriculumWeekTitle: "입덧의 시작과 임신 바우처 신청", curriculumImage: ImageLiterals.Curriculum.week6Image, curriculumText: "6주차에는 임신 초기 단계의 가장 커다란 고비, 입덧에 대한 이야기를 전해드려요. 먹덧, 토덧, 체덧 ⋯ 입덧에도 여러 종류가 있다는 사실을 알고 계셨나요? 더불어 200만원의 임신 바우처와 무료 보건소 혜택까지 꼼꼼하게 준비했으니, 놓치지 마세요.", isExpanded: false),
                 .init(curriculumWeek: "7주차", curriculumWeekTitle: "아기의 심장소리가 주는 힘과 태아 보험", curriculumImage: ImageLiterals.Curriculum.week7Image, curriculumText: "7주차가 되면 아기의 심장소리를 들을 수 있어요. 유산, 조산 등에 대비해 본격적으로 태아보험을 알아보면서, 엄마의 몸과 마음에 찾아온 다양한 변화를 체크해요. 아기를 낳은 후에도 건강한 모습을 유지할 수 있도록 아빠가 먼저 노력해볼까요?", isExpanded: false)
         ]),
