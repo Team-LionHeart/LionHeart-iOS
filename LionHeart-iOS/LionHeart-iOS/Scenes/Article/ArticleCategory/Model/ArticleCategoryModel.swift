@@ -27,3 +27,14 @@ extension CategoryImage {
         ]
     }
 }
+
+enum CategoryString: String {
+    case budgetCategory = "BUDGET"
+    case physicalCategory = "PHYSICAL_CHANGE"
+    case maritalCategory = "MARITAL_RELATIONSHIP"
+    case hospitalCategory = "HOSPITAL_INFORMATION"
+    case systemCategory = "SUPPORT_SYSTEM"
+    case prentalCategory = "PRENATAL_EDUCATION"
+    case babyGoodsCategory = "BABY_GOODS"
+    case dadTisCatogory = "DAD_TIPS"
+}
