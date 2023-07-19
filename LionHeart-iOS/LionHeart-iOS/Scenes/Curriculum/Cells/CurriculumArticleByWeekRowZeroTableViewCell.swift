@@ -10,12 +10,14 @@ import UIKit
 
 import SnapKit
 
-
 final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
         
     var inputData: Int? {
         didSet {
-            weekLabel.text = "\(inputData)주차"
+            guard let inputData else { return }
+            let userWeek = inputData + 4
+            weekLabel.text = "\(userWeek)주차"
+            
         }
     }
     
