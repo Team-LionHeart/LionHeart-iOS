@@ -72,8 +72,8 @@ private extension SplashViewController {
     
     func setLayout() {
         lottieImageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalToSuperview().inset(200)
+            make.centerX.equalToSuperview()
             make.size.equalTo(220)
         }
     }

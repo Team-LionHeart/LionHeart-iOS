@@ -15,7 +15,6 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
     private enum Size {
         static let weekBackGroundImageSize: CGFloat = (60 / 375) * Constant.Screen.width
     }
-        
     
     private let curriculumListByWeekTableView: UITableView = {
         let tableView = UITableView()
@@ -103,14 +102,14 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
         if indexPath.row == 0 {
             let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
             cell.inputData = inputData
-            cell.cellIndexPath = indexPath
-            
             return cell
         } else {
+            
             let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
             cell.inputData = inputData?.articleData[indexPath.row]
             cell.selectionStyle = .none
             cell.backgroundColor = .designSystem(.background)
+            cell.isBookmarkedIndexPath = indexPath
             return cell
         }
     }

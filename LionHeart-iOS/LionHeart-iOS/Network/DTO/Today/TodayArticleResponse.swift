@@ -14,4 +14,5 @@ struct TodayArticleResponse: DTO, Response {
     let editorNoteContent: String
     let week: Int
     let day: Int
+    let articleId: Int
 }

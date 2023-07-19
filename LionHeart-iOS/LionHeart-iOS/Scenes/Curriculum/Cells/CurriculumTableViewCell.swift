@@ -12,6 +12,7 @@ import SnapKit
 
 protocol CurriculumTableViewToggleButtonTappedProtocol: AnyObject {
     func toggleButtonTapped(indexPath: IndexPath?)
+    func moveToListByWeekButtonTapped(indexPath: IndexPath?)
 }
 
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
@@ -60,6 +61,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     private let contentImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .designSystem(.lionRed)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     private let contentTextLabel: UILabel = {
@@ -76,7 +78,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         return line
     }()
     
-    lazy var curriculumToggleDirectionButton: UIButton = {
+    private lazy var curriculumToggleDirectionButton: UIButton = {
         var button = UIButton()
         button.setImage(ImageLiterals.Curriculum.arrowDownSmall, for: .normal)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -86,6 +88,14 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         return button
     }()
     
+    private lazy var moveToArticleListByWeekButton: UIButton = {
+       let button = UIButton()
+        button.setImage(ImageLiterals.Curriculum.arrowRightCircle, for: .normal)
+        button.addButtonAction { _ in
+            self.delegate?.moveToListByWeekButtonTapped(indexPath: self.cellIndexPath)
+        }
+        return button
+    }()
     
     var inputData: CurriculumDummyData? {
         didSet {
@@ -118,6 +128,8 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
 }
 
 private extension CurriculumTableViewCell {
@@ -128,6 +140,7 @@ private extension CurriculumTableViewCell {
     func setHierarchy() {
         
         curriculumWeekLabelView.addSubviews(weekLabel, weekTitleLabel, curriculumToggleDirectionButton)
+        contentImageView.addSubviews(moveToArticleListByWeekButton)
         curriculumContentStackView.addArrangedSubviews(contentImageView, contentTextLabel)
         curriculumWholeStackView.addArrangedSubviews(curriculumWeekLabelView, curriculumContentStackView)
         contentView.addSubviews(curriculumWholeStackView, divider)
@@ -167,6 +180,11 @@ private extension CurriculumTableViewCell {
         
         contentImageView.snp.makeConstraints{
             $0.height.equalTo(contentImageView.snp.width).multipliedBy(Size.contentImageView)
+        }
+        
+        moveToArticleListByWeekButton.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(12)
         }
     }
 }
