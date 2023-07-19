@@ -99,8 +99,7 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            
+        if indexPath.row == 0 {
             let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
             cell.inputData = inputData
             return cell

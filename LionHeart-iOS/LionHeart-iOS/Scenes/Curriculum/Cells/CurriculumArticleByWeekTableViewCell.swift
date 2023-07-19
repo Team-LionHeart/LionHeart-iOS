@@ -131,7 +131,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
 
 private extension CurriculumArticleByWeekTableViewCell {
     func setUI() {
-        
+        contentView.backgroundColor = .designSystem(.background)
     }
     
     func setHierarchy() {
