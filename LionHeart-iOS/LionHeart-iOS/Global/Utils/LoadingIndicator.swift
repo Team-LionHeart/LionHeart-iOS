@@ -13,19 +13,15 @@ final class LoadingIndicator {
         DispatchQueue.main.async {
             guard let window = UIApplication.keyWindow else { return }
 
-            let loadingIndicatorView: UIActivityIndicatorView
-            if let existedView = window.subviews.first(where: { $0 is UIActivityIndicatorView }) as? UIActivityIndicatorView {
-                loadingIndicatorView = existedView
-            } else {
-                loadingIndicatorView = UIActivityIndicatorView(style: .large)
-                loadingIndicatorView.color = .designSystem(.lionRed)
-                loadingIndicatorView.backgroundColor = .designSystem(.black)
-                loadingIndicatorView.frame = window.frame
-                window.addSubview(loadingIndicatorView)
-            }
+            let loadingIndicatorView = UIActivityIndicatorView(style: .large)
+            loadingIndicatorView.color = .designSystem(.lionRed)
+            loadingIndicatorView.backgroundColor = .designSystem(.black)
+
+            loadingIndicatorView.frame = window.frame
+            window.addSubview(loadingIndicatorView)
+
             loadingIndicatorView.startAnimating()
         }
-
     }
 
     static func hideLoading() {
