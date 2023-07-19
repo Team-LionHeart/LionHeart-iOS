@@ -20,7 +20,7 @@ final class TabBarViewController: UITabBarController {
         let articleCategoryViewController = UINavigationController(rootViewController: ArticleCategoryViewController())
         articleCategoryViewController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         
-        let curriculumViewController = CurriculumViewController()
+        let curriculumViewController = UINavigationController(rootViewController: CurriculumViewController())
         curriculumViewController.tabBarItem = UITabBarItem(title: "커리큘럼", image: .assetImage(.curriculum), tag: 2)
         
         let challengeViewController = UINavigationController(rootViewController: ChallengeViewController())

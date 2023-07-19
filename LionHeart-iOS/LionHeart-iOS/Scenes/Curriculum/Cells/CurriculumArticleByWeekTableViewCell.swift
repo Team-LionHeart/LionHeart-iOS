@@ -20,12 +20,17 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
     
     var inputData: ArticleDataByWeek? {
         didSet {
-            
-            articleDayLabel.text = inputData?.articleDay
-            articleTagLabel.text = inputData?.articleTags
-            articleReadTimeLabel.text = inputData?.articleReadTime
-            articleDateLabel.text = inputData?.articleDate
-            articleContentLabel.text = inputData?.articleContent
+            guard let inputData else {
+                return
+            }
+            articleReadTimeLabel.text = "\(inputData.articleReadTime)분 분량"
+            articleTitle.text = inputData.articleTitle
+            Task {
+                let image = try await LHKingFisherService.fetchImage(with: inputData.articleImage)
+                articleImageView.image = image
+            }
+            articleTagLabel.text = inputData.articleTags.joined(separator: " · ")
+            articleContentLabel.text = inputData.articleContent
             
         }
     }
@@ -38,13 +43,13 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
 
     }
     
-    private let articleDayLabel: UILabel = {
+    private let articleTitle: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.head3)
         label.textColor = .designSystem(.white)
         return label
     }()
-    
+
     private let articleTagLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body4)
@@ -56,13 +61,6 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         let label = UILabel()
         label.font = .pretendard(.body4)
         label.textColor = .designSystem(.gray500)
-        return label
-    }()
-    
-    private let articleDateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.gray600)
         return label
     }()
     
@@ -137,7 +135,7 @@ private extension CurriculumArticleByWeekTableViewCell {
     func setHierarchy() {
         
         articleImageView.addSubviews(readTimeAndBookmarkView)
-        tableViewCellWholeView.addSubviews(articleImageView, articleTagLabel, articleDateLabel, articleDayLabel, articleContentLabel, articleReadTimeLabel, bookMarkButton)
+        tableViewCellWholeView.addSubviews(articleImageView, articleTagLabel, articleTitle, articleContentLabel, articleReadTimeLabel, bookMarkButton)
         
         contentView.addSubviews(tableViewCellWholeView)
     }
@@ -177,18 +175,13 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.leading.equalToSuperview()
         }
         
-        articleDateLabel.snp.makeConstraints{
-            $0.top.equalTo(articleImageView.snp.bottom).offset(16)
-            $0.trailing.equalToSuperview()
-        }
-        
-        articleDayLabel.snp.makeConstraints{
+        articleTitle.snp.makeConstraints{
             $0.top.equalTo(articleTagLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
         }
         
         articleContentLabel.snp.makeConstraints{
-            $0.top.equalTo(articleDayLabel.snp.bottom).offset(8)
+            $0.top.equalTo(articleTitle.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
         }

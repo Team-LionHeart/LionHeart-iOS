@@ -7,8 +7,7 @@
 
 import UIKit
 
-struct CurriculumWeekData: AppData{
-    let week: String
+struct CurriculumWeekData: AppData {
     var articleData: [ArticleDataByWeek]
 }
 

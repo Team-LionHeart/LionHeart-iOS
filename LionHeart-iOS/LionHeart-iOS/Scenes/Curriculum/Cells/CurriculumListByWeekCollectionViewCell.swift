@@ -25,13 +25,16 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         return tableView
     }()
     
-    var inputData: CurriculumWeekData?{
+    var weekCount: Int?
+    
+    var inputData: [ArticleDataByWeek]? {
         
-        didSet{
+        didSet {
             curriculumListByWeekTableView.reloadData()
         }
-        
     }
+    
+    
     
     var selectedIndexPath: IndexPath?
     
@@ -95,19 +98,20 @@ private extension CurriculumListByWeekCollectionViewCell {
 extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return inputData?.articleData.count ?? 0
+        guard let inputData else { return  0}
+        return (inputData.count + 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
+        if indexPath.row == 0 {
             
             let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
-            cell.inputData = inputData
+            cell.inputData = self.weekCount
             return cell
         } else {
             
             let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
-            cell.inputData = inputData?.articleData[indexPath.row]
+            cell.inputData = inputData?[indexPath.row - 1]
             cell.selectionStyle = .none
             cell.backgroundColor = .designSystem(.background)
             cell.isBookmarkedIndexPath = indexPath
@@ -116,6 +120,6 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
     }
 }
 
-extension CurriculumListByWeekCollectionViewCell: UITableViewDelegate{}
+extension CurriculumListByWeekCollectionViewCell: UITableViewDelegate {}
 
 

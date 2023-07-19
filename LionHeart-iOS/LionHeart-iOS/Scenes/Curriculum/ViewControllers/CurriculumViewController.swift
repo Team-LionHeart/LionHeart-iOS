@@ -21,8 +21,6 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         }
     }
     
-    
-    
     private let progressBar = LottieAnimationView()
     
     private let dDayLabel: UILabel = {
@@ -238,19 +236,22 @@ extension CurriculumViewController: UITableViewDataSource {
     
     func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
         
-        guard let indexPath else { return }
+        guard let indexPath else {
+            return
+            
+        }
         
         let listByWeekVC = CurriculumListByWeekViewController()
         
         
         if indexPath.section == curriculumViewDatas.count - 1 {
-            listByWeekVC.firstPresented = (indexPath.section * 4) + indexPath.row + 1
+            listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row + 1
             
         } else {
-            listByWeekVC.firstPresented = (indexPath.section * 4) + indexPath.row
-            
+            listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row
         }
-        self.navigationController?.pushViewController(listByWeekVC, animated: false)
+        
+        self.navigationController?.pushViewController(listByWeekVC, animated: true)
         
     }
     
@@ -259,8 +260,8 @@ extension CurriculumViewController: UITableViewDataSource {
 
 extension CurriculumViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let curriculumListByWeekViewController = CurriculumListByWeekViewController()
-        self.navigationController?.pushViewController(curriculumListByWeekViewController, animated: true)
+//        let curriculumListByWeekViewController = CurriculumListByWeekViewController()
+//        self.navigationController?.pushViewController(curriculumListByWeekViewController, animated: true)
     }
 }
 
