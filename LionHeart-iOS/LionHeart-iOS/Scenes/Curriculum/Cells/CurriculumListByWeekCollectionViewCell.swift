@@ -104,7 +104,7 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            
+
             let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
             cell.inputData = self.weekCount
             return cell
@@ -116,6 +116,17 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
             cell.backgroundColor = .designSystem(.background)
             cell.isBookmarkedIndexPath = indexPath
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            return
+        } else {
+            guard let inputData else { return }
+            NotificationCenter.default.post(name: NSNotification.Name("didSelectTableViewCell"),
+                                            object: inputData[indexPath.row - 1].articleId)
+            
         }
     }
 }

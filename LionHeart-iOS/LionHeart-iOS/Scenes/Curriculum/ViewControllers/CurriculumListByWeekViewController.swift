@@ -84,7 +84,6 @@ final class CurriculumListByWeekViewController: UIViewController {
         super.viewDidAppear(animated)
 //        let indexPath = IndexPath(item: self.weekToIndexPathItem, section: 0)
         let indexPath = IndexPath(item: 0, section: 0)
-        LHNavigationBarView(type: .curriculumByWeek, viewController: self)
         self.curriculumListByWeekCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
@@ -97,7 +96,6 @@ private extension CurriculumListByWeekViewController {
     func setHierarchy() {
         self.navigationController?.isNavigationBarHidden = true
         view.addSubviews(navigationBar, curriculumListByWeekCollectionView)
-        navigationBar.setCurriculumWeek(week: 1)
         
     }
     
@@ -129,6 +127,8 @@ private extension CurriculumListByWeekViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(bookmarkButtonTapped), name: NSNotification.Name("isArticleBookmarked"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectTableVIewCell), name: NSNotification.Name("didSelectTableViewCell"), object: nil)
+        
     }
     
     @objc
@@ -146,13 +146,24 @@ private extension CurriculumListByWeekViewController {
     
     @objc
     func bookmarkButtonTapped(notification: NSNotification) {
-        guard let isBookmarkedRow = notification.object as? Int else { return }
+//        guard let isBookmarkedRow = notification.object as? Int else { return }
         let isBookmarkedPage = currentPage
         
-        listByWeekDatas[isBookmarkedRow].isArticleBookmarked.toggle()
+        listByWeekDatas[isBookmarkedPage].isArticleBookmarked.toggle()
         
-//        listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked.toggle()
-
+        //        listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked.toggle()
+        
+    }
+    
+    @objc
+    func didSelectTableVIewCell(notification: NSNotification) {
+        guard let articleId = notification.object as? Int else { return }
+        
+        let articleDetailVC = ArticleDetailViewController()
+        //TODO: - articleId
+        articleDetailVC.modalPresentationStyle = .overFullScreen
+        self.present(articleDetailVC, animated: true)
+        
     }
     
     func setDelegate() {
@@ -166,12 +177,6 @@ private extension CurriculumListByWeekViewController {
         CurriculumListByWeekCollectionViewCell.register(to: curriculumListByWeekCollectionView)
     }
     
-    //api호출 할 때 구현
-//    func setDataBind() {
-//        /// api호출
-//        listByWeekDatas = CurriculumWeekData.dummy()
-//        self.curriculumListByWeekCollectionView.reloadData()
-//    }
 }
 
 extension CurriculumListByWeekViewController: UICollectionViewDataSource {
