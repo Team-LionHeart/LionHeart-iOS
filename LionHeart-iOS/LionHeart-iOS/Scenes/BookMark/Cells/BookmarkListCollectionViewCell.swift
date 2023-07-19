@@ -17,7 +17,7 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
         static let widthHeightRatio: CGFloat = 80/125
     }
     
-    var bookmarkButtonClosure: ((Int) -> Void)?
+    var bookmarkButtonClosure: ((IndexPath) -> Void)?
     
     var inputData: DummyModel? {
         didSet {
@@ -57,7 +57,8 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
         button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         button.addButtonAction { [weak self] _ in
             guard let self else { return }
-            self.bookmarkButtonClosure?(self.tag)
+            guard let indexPath = getIndexPath() else { return }
+            self.bookmarkButtonClosure?(indexPath)
         }
         return button
     }()
@@ -113,5 +114,10 @@ private extension BookmarkListCollectionViewCell {
             $0.bottom.equalToSuperview()
             $0.height.equalTo(1)
         }
+    }
+    
+    func getIndexPath() -> IndexPath? {
+        guard let superView = self.superview as? UICollectionView else { return nil }
+        return superView.indexPath(for: self)
     }
 }
