@@ -40,6 +40,7 @@ final class TodayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        LoadingIndicator.showLoading()
         getInquireTodayArticle()
     }
 }
@@ -74,6 +75,7 @@ extension TodayViewController {
                 titleLabel.title = responseArticle.articleTitle
                 mainArticleView.data = responseArticle
                 todayArticleID = responseArticle.aticleID
+                LoadingIndicator.hideLoading()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
