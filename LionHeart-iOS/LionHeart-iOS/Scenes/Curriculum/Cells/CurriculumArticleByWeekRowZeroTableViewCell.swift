@@ -10,12 +10,15 @@ import UIKit
 
 import SnapKit
 
-
 final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
         
-    var inputData: CurriculumWeekData? {
+    var inputData: Int? {
         didSet {
-            weekLabel.text = inputData?.week
+            guard let inputData else { return }
+            //inputData는 row가 0부터인데 주차정보는 4주차부터 시작이므로 +4를 해줌
+            let userWeek = inputData + 4
+            weekLabel.text = "\(userWeek)주차"
+            
         }
     }
     
