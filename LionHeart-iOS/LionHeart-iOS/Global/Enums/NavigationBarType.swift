@@ -5,7 +5,7 @@
 //  Created by 김민재 on 2023/07/10.
 //
 
-import Foundation
+import UIKit
 
 enum LHNavigationType {
     case today
@@ -38,6 +38,15 @@ enum LHNavigationType {
             return .buttonWithRightBarItems
         case .articleMain: return .closeButtonWithTitle
         default: return .backButtonWithTitle
+        }
+    }
+    
+    var backgroundColor: UIColor? {
+        switch self {
+        case .today:
+            return .designSystem(.black)
+        case .explore, .curriculumMain, .curriculumByWeek, .challenge, .onboarding, .articleMain, .bookmark, .myPage, .exploreEachCategory:
+            return .designSystem(.background)
         }
     }
 }
