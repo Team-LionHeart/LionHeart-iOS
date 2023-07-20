@@ -8,8 +8,8 @@
 import Foundation
 
 struct BookmarkAppData: AppData {
-    let nickName: String?
-    let articleSummaries: [ArticleSummaries]?
+    let nickName: String
+    let articleSummaries: [ArticleSummaries]
 }
 
 struct ArticleSummaries: AppData {
