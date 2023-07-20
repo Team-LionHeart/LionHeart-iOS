@@ -36,12 +36,11 @@ final class BookmarkViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        LoadingIndicator.showLoading()
+        showLoading()
         Task {
             do {
                 self.bookmarkAppData = try await BookmarkService.shared.getBookmark()
-                self.bookmarkList = bookmarkAppData.articleSummaries
-                LoadingIndicator.hideLoading()
+                hideLoading()
                 bookmarkCollectionView.reloadData()
             } catch {
                 guard let error = error as? NetworkError else { return }

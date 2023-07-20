@@ -76,6 +76,7 @@ final class CurriculumListByWeekViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showLoading()
         getListByWeekData()
     }
     
@@ -139,6 +140,7 @@ private extension CurriculumListByWeekViewController {
                 
                 try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: listByWeekDatas[indexPath].articleId,
                                                                               bookmarkStatus: buttonSelected))
+                hideLoading()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -164,7 +166,7 @@ private extension CurriculumListByWeekViewController {
         guard let articleId = notification.object as? Int else { return }
         
         let articleDetailVC = ArticleDetailViewController()
-        //TODO: - articleId
+        articleDetailVC.setArticleId(id: articleId)
         articleDetailVC.modalPresentationStyle = .overFullScreen
         self.present(articleDetailVC, animated: true)
         
@@ -226,10 +228,10 @@ extension CurriculumListByWeekViewController {
     func getListByWeekData() {
         Task {
             do {
-                let responseListByWeek = try await CurriculumService.shared.getArticleListByWeekInfo(week: 6)
+                let responseListByWeek = try await CurriculumService.shared.getArticleListByWeekInfo(week: weekToIndexPathItem + 4)
                 
                 listByWeekDatas = responseListByWeek
-                
+                hideLoading()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)

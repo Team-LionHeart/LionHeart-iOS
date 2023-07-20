@@ -49,10 +49,12 @@ final class ArticleListByCategoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showLoading()
         Task {
             do {
                 self.articleListData = try await ArticleService.shared.getArticleListByCategory(categoryString: categoryString)
                 self.articleListTableView.reloadData()
+                hideLoading()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)

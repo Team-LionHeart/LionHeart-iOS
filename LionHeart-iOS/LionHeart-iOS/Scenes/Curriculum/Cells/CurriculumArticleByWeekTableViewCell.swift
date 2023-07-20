@@ -10,6 +10,7 @@ import UIKit
 
 import SnapKit
 
+
 final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
     var isBookmarkedIndexPath: IndexPath?

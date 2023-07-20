@@ -25,7 +25,6 @@ final class OnboardingViewController: UIViewController {
     private let onboardingViewController = LHOnboardingPageViewController()
     private var pageDataSource: OnboardingViews = []
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
-    private let loadingIndicatorView = LHLoadingView()
     
     /// onboarding flow property
     private var currentPage: OnboardingPageType = .getPregnancy
@@ -169,11 +168,10 @@ private extension OnboardingViewController {
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
         completeViewController.userData = passingData
         Task {
-            self.view.addSubview(loadingIndicatorView)
-            loadingIndicatorView.startAnimating()
+            showLoading()
             do {
                 try await AuthService.shared.signUp(type: .kakao, onboardingModel: passingData)
-                self.loadingIndicatorView.stopAnimating()
+                hideLoading()
                 self.navigationController?.pushViewController(completeViewController, animated: true)
 
             } catch {
