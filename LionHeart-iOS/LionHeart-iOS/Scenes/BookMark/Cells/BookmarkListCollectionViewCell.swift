@@ -19,9 +19,17 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
     
     var bookmarkButtonClosure: ((IndexPath) -> Void)?
     
-    var inputData: DummyModel? {
+    var inputData: ArticleSummaries? {
         didSet {
-            /// action
+            guard let inputData else { return }
+            
+            Task {
+                let image = try await LHKingFisherService.fetchImage(with: inputData.articleImage)
+                articleImageView.image = image
+            }
+            
+            articleTitleLabel.text = inputData.title
+            tagLabel.text =  inputData.tags.joined(separator: " · ")
         }
     }
     

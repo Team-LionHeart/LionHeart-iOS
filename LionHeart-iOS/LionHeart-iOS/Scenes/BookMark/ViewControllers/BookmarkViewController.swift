@@ -134,6 +134,7 @@ extension BookmarkViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = BookmarkListCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
+            cell.inputData = bookmarkList[indexPath.item]
             
             cell.bookmarkButtonClosure = { indexPath in
                 Task {
