@@ -52,7 +52,7 @@ final class ArticleListByCategoryViewController: UIViewController {
         showLoading()
         Task {
             do {
-                self.articleListData = try await ArticleService.shared.getArticleListByCategory(categoryString: categoryString)
+                self.articleListData = try await ArticleService.shared.getArticleListByCategory(categoryString: categoryString).articleData
                 self.articleListTableView.reloadData()
                 hideLoading()
             } catch {

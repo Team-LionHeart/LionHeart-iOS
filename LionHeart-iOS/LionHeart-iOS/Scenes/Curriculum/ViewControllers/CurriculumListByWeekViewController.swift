@@ -11,25 +11,42 @@ import UIKit
 import SnapKit
 
 final class CurriculumListByWeekViewController: UIViewController {
+
+    private let pregnancy = 37
     
     var weekToIndexPathItem: Int = 0 {
         didSet {
-            navigationBar.setCurriculumWeek(week: weekToIndexPathItem + 4)
+            self.curriculumListByWeekCollectionView.reloadData()
         }
     }
+
     
-    var listByWeekDatas: [ArticleDataByWeek] = [] {
+    var listByWeekDatas: CurriculumWeekData? {
         didSet {
             self.curriculumListByWeekCollectionView.reloadData()
         }
     }
     
-    var currentPage: Int = 0 {
+    var currentPage: Int = -1 {
         didSet {
             let indexPath = IndexPath(item: currentPage, section: 0)
             self.curriculumListByWeekCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            
-            self.navigationBar.setCurriculumWeek(week: currentPage + 4)
+
+            let week = currentPage + 4
+
+            self.navigationBar.setCurriculumWeek(week: week)
+
+            // TODO: Network 주차별 아티클 조회
+            if oldValue == currentPage { return }
+            Task {
+                showLoading()
+                let articlesByWeek = try await CurriculumService.shared.getArticleListByWeekInfo(week: week)
+                print("✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨")
+                print(currentPage + 4)
+                self.listByWeekDatas = articlesByWeek
+                hideLoading()
+            }
+
         }
     }
     
@@ -79,13 +96,12 @@ final class CurriculumListByWeekViewController: UIViewController {
         showLoading()
         getListByWeekData()
     }
-    
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        let indexPath = IndexPath(item: self.weekToIndexPathItem, section: 0)
-        let indexPath = IndexPath(item: 0, section: 0)
-        self.curriculumListByWeekCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        let indexPath = IndexPath(item: self.weekToIndexPathItem, section: 0)
+        self.curriculumListByWeekCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
 }
 
@@ -137,8 +153,8 @@ private extension CurriculumListByWeekViewController {
             do {
                 guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
                 guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
-                
-                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: listByWeekDatas[indexPath].articleId,
+                guard let listByWeekDatas else { return }
+                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
                                                                               bookmarkStatus: buttonSelected))
                 hideLoading()
             } catch {
@@ -150,15 +166,23 @@ private extension CurriculumListByWeekViewController {
     
     @objc
     func leftButtonTapped(notification: NSNotification) {
-        let nextPage: Int = max(0,currentPage - 1)
+        let nextIndexPathItem = self.currentPage == -1
+        ? weekToIndexPathItem - 1
+        : currentPage - 1
+
+        let nextPage: Int = max(0, nextIndexPathItem)
         self.currentPage = nextPage
     }
     
     @objc
     func rightButtonTapped(notification: NSNotification) {
-        let nextPage = min(listByWeekDatas.count - 1, currentPage + 1)
+        let nextIndexPathItem = self.currentPage == -1
+        ? weekToIndexPathItem + 1
+        : currentPage + 1
+
+        guard let listByWeekDatas else { return }
+        let nextPage = min(listByWeekDatas.articleData.count - 1, nextIndexPathItem)
         self.currentPage = nextPage
-        
     }
     
     @objc
@@ -188,14 +212,13 @@ private extension CurriculumListByWeekViewController {
 extension CurriculumListByWeekViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-        
+        return pregnancy
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = CurriculumListByWeekCollectionViewCell.dequeueReusableCell(to: curriculumListByWeekCollectionView, indexPath: indexPath)
         
-        cell.weekCount = self.weekToIndexPathItem
+        cell.weekCount = listByWeekDatas?.week
         cell.inputData = listByWeekDatas
         cell.selectedIndexPath = indexPath
         

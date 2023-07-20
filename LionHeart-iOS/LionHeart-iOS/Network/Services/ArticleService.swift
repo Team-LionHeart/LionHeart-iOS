@@ -37,7 +37,7 @@ final class ArticleService: Serviceable {
         return model.toAppData()
     }
     
-    func getArticleListByCategory(categoryString: String) async throws -> [ArticleDataByWeek] {
+    func getArticleListByCategory(categoryString: String) async throws -> CurriculumWeekData {
         let query = Query(category: categoryString)
 
         let urlRequest = try NetworkRequest(path: "/v1/article", httpMethod: .get, query: query).makeURLRequest(isLogined: true)
@@ -45,7 +45,7 @@ final class ArticleService: Serviceable {
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
         guard let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CurriculumListByWeekResponse.self) else {
-            return [ArticleDataByWeek.emptyData]
+            return .init(articleData: [], week: nil)
         }
         
         return model.toAppData()

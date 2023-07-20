@@ -22,14 +22,14 @@ final class CurriculumService: Serviceable {
         return UserInfoData(userWeekInfo: model.week, userDayInfo: model.day, progress: model.progress + 1, remainingDay: model.remainingDay)
     }
     
-    func getArticleListByWeekInfo(week: Int) async throws -> [ArticleDataByWeek] {
+    func getArticleListByWeekInfo(week: Int) async throws -> CurriculumWeekData {
         let urlRequest = try NetworkRequest(path: "v1/article/week/\(week)", httpMethod: .get).makeURLRequest(isLogined: true)
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         guard let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CurriculumListByWeekResponse.self) else {
-            return [ArticleDataByWeek.emptyData]
+            return .init(articleData: [], week: 0)
         }
-        
+
         return model.toAppData()
     }
 }
