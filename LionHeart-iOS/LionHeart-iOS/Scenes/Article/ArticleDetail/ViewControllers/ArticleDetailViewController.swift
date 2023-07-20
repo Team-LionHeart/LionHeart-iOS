@@ -18,6 +18,8 @@ final class ArticleDetailViewController: UIViewController {
     private var progressBar = LHProgressView()
 
     private let articleTableView = ArticleDetailTableView()
+    
+    private let loadingIndicatorView = LHLoadingView()
 
     private lazy var scrollToTopButton: UIButton = {
         let button = UIButton()

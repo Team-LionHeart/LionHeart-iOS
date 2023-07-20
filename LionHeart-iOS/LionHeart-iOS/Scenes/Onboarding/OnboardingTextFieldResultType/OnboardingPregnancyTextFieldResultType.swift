@@ -19,7 +19,7 @@ enum OnboardingPregnancyTextFieldResultType {
         case .pregnancyTextFieldValid:
             return "정상입니다"
         case .pregnancyTextFieldOver:
-            return "1에서 40 사이의 숫자를 입력해주세요."
+            return "4에서 40 사이의 숫자를 입력해주세요."
         }
     }
     

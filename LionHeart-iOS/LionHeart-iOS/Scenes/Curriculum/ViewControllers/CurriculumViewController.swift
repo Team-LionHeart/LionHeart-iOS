@@ -42,7 +42,6 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     
     private enum Size {
         static let userInfoView: CGFloat = 70 / 375
-        static let progressView: CGFloat = 124 / 375
     }
     
     private var isFirstPresented: Bool = true
@@ -138,7 +137,7 @@ private extension CurriculumViewController {
             $0.top.equalTo(curriculumUserInfoView.snp.bottom)
             $0.trailing.leading.equalToSuperview()
             $0.width.equalTo(Constant.Screen.width)
-            $0.height.equalTo(progressBar.snp.width).multipliedBy(Size.progressView)
+            $0.height.equalTo(ScreenUtils.getHeight(180))
         }
         
         curriculumTableView.snp.makeConstraints{
