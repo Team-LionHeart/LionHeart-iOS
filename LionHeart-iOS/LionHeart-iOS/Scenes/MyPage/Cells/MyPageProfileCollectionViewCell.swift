@@ -18,16 +18,12 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell, CollectionVie
     
     private let badgeImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     private let profileLabel = {
         let label = UILabel()
-        label.text = """
-                     사랑이 아빠님,
-                     오늘도 멋진 아빠가 되어 볼까요?
-                     """
         label.numberOfLines = 0
         label.font = .pretendard(.head3)
         label.textColor = .designSystem(.white)
@@ -52,9 +48,15 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell, CollectionVie
         return button
     }()
     
-    var inputData: DummyModel? {
+    var inputData: MyPageAppData? {
         didSet {
-            /// action
+            guard let inputData else { return }
+            
+            profileLabel.text = """
+                                \(inputData.nickname)아빠님,
+                                오늘도 멋진 아빠가 되어 볼까요?
+                                """
+            badgeImageView.image = BadgeLevel(rawValue: inputData.badgeImage)?.badgeImage
         }
     }
 

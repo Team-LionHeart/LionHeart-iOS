@@ -40,6 +40,7 @@ final class BookmarkViewController: UIViewController {
         Task {
             do {
                 self.bookmarkAppData = try await BookmarkService.shared.getBookmark()
+                self.bookmarkList = bookmarkAppData.articleSummaries
                 hideLoading()
                 bookmarkCollectionView.reloadData()
             } catch {
