@@ -14,7 +14,7 @@ final class ArticleListByCategoryViewController: UIViewController {
     
     var categoryString = String()
     var articleListData = [ArticleDataByWeek]()
-
+    
     private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
     
     private let articleListTableView: UITableView = {
@@ -40,6 +40,7 @@ final class ArticleListByCategoryViewController: UIViewController {
         setDelegate()
         
         setTableView()
+        setNotificationCenter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +90,25 @@ private extension ArticleListByCategoryViewController {
     
     func setTableView() {
         CurriculumArticleByWeekTableViewCell.register(to: articleListTableView)
+    }
+    
+    func setNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(bookmarkButtonTapped), name: NSNotification.Name("isArticleBookmarked"), object: nil)
+    }
+    
+    @objc func bookmarkButtonTapped(notification: NSNotification) {
+        Task {
+            do {
+                guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
+                guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
+                
+                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: articleListData[indexPath].articleId,
+                                                                              bookmarkStatus: buttonSelected))
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
     }
 }
 
