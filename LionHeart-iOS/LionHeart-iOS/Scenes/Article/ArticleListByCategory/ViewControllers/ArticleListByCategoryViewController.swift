@@ -21,9 +21,13 @@ final class ArticleListByCategoryViewController: UIViewController {
         let tableView = UITableView()
         tableView.backgroundColor = .designSystem(.background)
         let view = ArticleListByCategoryHeaderView()
-        view.frame = CGRect(x: 0, y: 0, width: Constant.Screen.width, height: 192)
+        view.frame = CGRect(x: 0, y: 0, width: Constant.Screen.width, height: ScreenUtils.getHeight(136))
         tableView.separatorStyle = .none
         tableView.tableHeaderView = view
+        tableView.estimatedRowHeight = 326
+        let footerView = UIView()
+        footerView.frame = .init(x: 0, y: 0, width: Constant.Screen.width, height: 100)
+        tableView.tableFooterView = footerView
         return tableView
     }()
     
@@ -85,7 +89,6 @@ private extension ArticleListByCategoryViewController {
     
     func setDelegate() {
         articleListTableView.dataSource = self
-        articleListTableView.delegate = self
     }
     
     func setTableView() {
@@ -142,13 +145,6 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: articleListTableView)
         cell.inputData = articleListData[indexPath.item]
-        cell.backgroundColor = .designSystem(.background)
         return cell
-    }
-}
-
-extension ArticleListByCategoryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 326
     }
 }
