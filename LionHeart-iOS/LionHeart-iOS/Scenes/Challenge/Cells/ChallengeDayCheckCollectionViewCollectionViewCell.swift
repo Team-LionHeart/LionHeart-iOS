@@ -12,6 +12,8 @@ import SnapKit
 
 final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
+    var textColorBool = false
+    
     var inputData: DummyModel? {
         didSet {
             
@@ -21,6 +23,12 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
     var inputString: String? {
         didSet {
             countLabel.text = inputString
+            
+            if textColorBool {
+                countLabel.textColor = .designSystem(.white)
+            } else {
+                countLabel.textColor = .designSystem(.gray600)
+            }
         }
     }
     

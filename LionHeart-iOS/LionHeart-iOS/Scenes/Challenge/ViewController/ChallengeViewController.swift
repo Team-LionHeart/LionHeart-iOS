@@ -61,12 +61,15 @@ final class ChallengeViewController: UIViewController {
             }
     
             self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
+            
             self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
             self.lottieImageView.play()
             
             let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
+            
             let attributtedString = NSMutableAttributedString(string: fullText)
             attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
+            
             self.challengelevelLabel.attributedText = attributtedString
         }
     }
@@ -272,9 +275,11 @@ extension ChallengeViewController: UICollectionViewDataSource {
         if indexPath.item < tags.count {
             cell.inputString = tags[indexPath.item]
             cell.backgroundColor = .designSystem(.background)
+            cell.textColorBool = true
         } else {
             cell.inputString = "\(indexPath.section + indexPath.row + 1)"
             cell.backgroundColor = .designSystem(.gray1000)
+            cell.textColorBool = false
         }
         return cell
     }
