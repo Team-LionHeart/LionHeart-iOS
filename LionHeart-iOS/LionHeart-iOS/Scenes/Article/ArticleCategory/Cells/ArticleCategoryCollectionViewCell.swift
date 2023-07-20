@@ -12,6 +12,8 @@ import SnapKit
 
 final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
+    var categorayClosure: ((String) -> Void)?
+    
     var inputData: CategoryImage? {
         didSet {
             guard let data = inputData else { return }
@@ -20,7 +22,7 @@ final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionV
         }
     }
     
-    lazy var categoryImageView: UIImageView = {
+    private let categoryImageView: UIImageView = {
         let imageview = UIImageView()
         imageview.contentMode = .scaleToFill
         imageview.clipsToBounds = true
@@ -28,7 +30,7 @@ final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionV
         return imageview
     }()
     
-    lazy var categoryInfoLabel: UILabel = {
+    private let categoryInfoLabel: UILabel = {
         let label = UILabel()
         label.textColor =  .designSystem(.white)
         label.font = .systemFont(ofSize: 16, weight: .semibold)
