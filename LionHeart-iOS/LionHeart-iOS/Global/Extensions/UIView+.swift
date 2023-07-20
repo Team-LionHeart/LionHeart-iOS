@@ -49,7 +49,7 @@ extension UIView{
         layer.insertSublayer(gradient, at: 0)
     }
     
-    func removeGradientInDesignSystem() {
+    func removeGradient() {
         self.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
     }
 }
