@@ -13,29 +13,35 @@ final class LHNavigationBarView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 20)
-        label.textColor = .white
+        label.font = .pretendard(.head4)
+        label.textColor = .designSystem(.white)
         return label
     }()
 
     private let leftBarItem: UIButton = {
         let button = UIButton()
-        button.tintColor = .white
+        button.tintColor = .designSystem(.white)
         return button
     }()
 
     private let rightFirstBarItem: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        button.tintColor = .white
+        button.setImage(ImageLiterals.NavigationBar.bookMark, for: .normal)
+        button.tintColor = .designSystem(.white)
         return button
     }()
 
     private let rightSecondBarItem: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "person.circle"), for: .normal)
-        button.tintColor = .white
+        button.setImage(ImageLiterals.NavigationBar.profile, for: .normal)
+        button.tintColor = .designSystem(.white)
         return button
+    }()
+
+    private let graySepartorLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .designSystem(.gray800)
+        return view
     }()
 
     private lazy var rightBarItemsStackView: UIStackView = {
@@ -75,14 +81,15 @@ final class LHNavigationBarView: UIView {
     }
 
     private func setStyle() {
-        self.backgroundColor = type == .today || type == .articleMain ? .designSystem(.black) : .designSystem(.background)
+        self.backgroundColor = .designSystem(.black)
     }
 
     // MARK: - addsubView
     private func setHierarchy() {
         self.addSubviews(leftBarItem,
                          titleLabel,
-                         rightBarItemsStackView)
+                         rightBarItemsStackView,
+                         graySepartorLine)
     }
 
     // MARK: - autolayout설정
@@ -104,6 +111,11 @@ final class LHNavigationBarView: UIView {
         rightBarItemsStackView.snp.makeConstraints { make in
             make.centerY.equalTo(leftBarItem)
             make.trailing.equalToSuperview().inset(24)
+        }
+
+        graySepartorLine.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.height.equalTo(1)
         }
     }
 
@@ -148,11 +160,11 @@ final class LHNavigationBarView: UIView {
         }
 
         if type == .today {
-            leftBarItem.setImage(UIImage(systemName: "scribble"), for: .normal)
+            leftBarItem.setImage(ImageLiterals.Today.lionHeartLogoBig, for: .normal)
             return
         }
         leftBarItem.setTitle(type.title, for: .normal)
-        leftBarItem.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        leftBarItem.titleLabel?.font = .pretendard(.head4)
     }
 
     private func setCloseButtonWithTitle() {

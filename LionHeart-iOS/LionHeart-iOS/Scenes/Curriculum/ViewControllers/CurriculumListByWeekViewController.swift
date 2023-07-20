@@ -11,29 +11,33 @@ import UIKit
 import SnapKit
 
 final class CurriculumListByWeekViewController: UIViewController {
-    //api 할 때 구현
-//    var listByWeekDatas: [CurriculumWeekData] = []
     
-    var listByWeekDatas = CurriculumWeekData.dummy()
+    var weekToIndexPathItem: Int = 0 {
+        didSet {
+            navigationBar.setCurriculumWeek(week: weekToIndexPathItem + 4)
+        }
+    }
     
-    //
-    
-    var firstPresented: Int = 0
-    // Week <- 이걸로 주차별 아티클 조회 API 호출
-    // datas = [ArticleDataByWeek]
-    // collectionview -> TableView 전달
-    // TableView에서 전달받은 저 배열로 데이터 넣어주기
+    var listByWeekDatas: [ArticleDataByWeek] = [] {
+        didSet {
+            self.curriculumListByWeekCollectionView.reloadData()
+        }
+    }
     
     var currentPage: Int = 0 {
         didSet {
             let indexPath = IndexPath(item: currentPage, section: 0)
             self.curriculumListByWeekCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             
-            self.navigationBar.setCurriculumWeek(week: currentPage+1)
+            self.navigationBar.setCurriculumWeek(week: currentPage + 4)
         }
     }
     
-    private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
+    private lazy var navigationBar: LHNavigationBarView = {
+        let nav = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
+        nav.setCurriculumWeek(week: self.weekToIndexPathItem + 4)
+        return nav
+    }()
     
     private let curriculumListByWeekCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -57,9 +61,6 @@ final class CurriculumListByWeekViewController: UIViewController {
         // MARK: - autolayout설정
         setLayout()
         
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
         // MARK: - delegate설정
         setDelegate()
         
@@ -73,12 +74,17 @@ final class CurriculumListByWeekViewController: UIViewController {
 //        setDataBind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getListByWeekData()
+    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let indexPath = IndexPath(item: self.firstPresented, section: 0)
+//        let indexPath = IndexPath(item: self.weekToIndexPathItem, section: 0)
+        let indexPath = IndexPath(item: 0, section: 0)
         self.curriculumListByWeekCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
-        self.navigationBar.setCurriculumWeek(week: currentPage + 4)
     }
 }
 
@@ -90,7 +96,6 @@ private extension CurriculumListByWeekViewController {
     func setHierarchy() {
         self.navigationController?.isNavigationBarHidden = true
         view.addSubviews(navigationBar, curriculumListByWeekCollectionView)
-        navigationBar.setCurriculumWeek(week: 1)
         
     }
     
@@ -108,9 +113,6 @@ private extension CurriculumListByWeekViewController {
         }
     }
     
-    func setAddTarget() {
-        
-    }
     
     func setNotificationCenter() {
         NotificationCenter.default.addObserver(self,
@@ -124,6 +126,8 @@ private extension CurriculumListByWeekViewController {
                                                object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(bookmarkButtonTapped), name: NSNotification.Name("isArticleBookmarked"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectTableVIewCell), name: NSNotification.Name("didSelectTableViewCell"), object: nil)
         
     }
     
@@ -142,11 +146,24 @@ private extension CurriculumListByWeekViewController {
     
     @objc
     func bookmarkButtonTapped(notification: NSNotification) {
-        guard let isBookmarkedRow = notification.object as? Int else { return }
+//        guard let isBookmarkedRow = notification.object as? Int else { return }
         let isBookmarkedPage = currentPage
-
-        listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked.toggle()
-
+        
+        listByWeekDatas[isBookmarkedPage].isArticleBookmarked.toggle()
+        
+        //        listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked.toggle()
+        
+    }
+    
+    @objc
+    func didSelectTableVIewCell(notification: NSNotification) {
+        guard let articleId = notification.object as? Int else { return }
+        
+        let articleDetailVC = ArticleDetailViewController()
+        //TODO: - articleId
+        articleDetailVC.modalPresentationStyle = .overFullScreen
+        self.present(articleDetailVC, animated: true)
+        
     }
     
     func setDelegate() {
@@ -160,24 +177,20 @@ private extension CurriculumListByWeekViewController {
         CurriculumListByWeekCollectionViewCell.register(to: curriculumListByWeekCollectionView)
     }
     
-    //api호출 할 때 구현
-//    func setDataBind() {
-//        /// api호출
-//        listByWeekDatas = CurriculumWeekData.dummy()
-//        self.curriculumListByWeekCollectionView.reloadData()
-//    }
 }
 
 extension CurriculumListByWeekViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listByWeekDatas.count
+        return 1
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = CurriculumListByWeekCollectionViewCell.dequeueReusableCell(to: curriculumListByWeekCollectionView, indexPath: indexPath)
-        cell.inputData = listByWeekDatas[indexPath.item]
+        
+        cell.weekCount = self.weekToIndexPathItem
+        cell.inputData = listByWeekDatas
         cell.selectedIndexPath = indexPath
         
         return cell
@@ -187,5 +200,37 @@ extension CurriculumListByWeekViewController: UICollectionViewDataSource {
 extension CurriculumListByWeekViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+}
+
+extension CurriculumListByWeekViewController: ViewControllerServiceable {
+    
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .unAuthorizedError:
+            guard let window = self.view.window else { return }
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+        case .clientError(code: _, message: let message):
+            LHToast.show(message: "\(message)")
+        default:
+            LHToast.show(message: error.description)
+        }
+    }
+}
+
+extension CurriculumListByWeekViewController {
+    func getListByWeekData() {
+        Task {
+            do {
+                let responseListByWeek = try await CurriculumService.shared.getArticleListByWeekInfo(week: 6)
+                
+                listByWeekDatas = responseListByWeek
+                
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
+        
     }
 }

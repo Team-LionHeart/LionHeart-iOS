@@ -88,6 +88,11 @@ enum ImageLiterals {
         static var level04: UIImage { .load(named: "ic_badge_level4") }
         static var level05: UIImage { .load(named: "ic_badge_level5") }
     }
+
+    enum Login {
+        static var loginBackgroundImage: UIImage { .load(named: "kakao_login_img") }
+        static var kakaoLogo: UIImage { .load(named: "ic_kakao") }
+    }
 }
 
 

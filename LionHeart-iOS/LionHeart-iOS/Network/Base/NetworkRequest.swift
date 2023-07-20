@@ -10,18 +10,29 @@ import Foundation
 struct NetworkRequest {
     let path: String
     let httpMethod: HttpMethod
+    let query: Request?
     let body: Data?
     let header: [String: String]?
 
-    init(path: String, httpMethod: HttpMethod, body: Data? = nil, header: [String : String]? = nil) {
+    init(path: String, httpMethod: HttpMethod, query: Request? = nil, body: Data? = nil, header: [String : String]? = nil) {
         self.path = path
         self.httpMethod = httpMethod
+        self.query = query
         self.body = body
         self.header = header
     }
 
     func makeURLRequest(isLogined: Bool) throws -> URLRequest {
-        let urlComponents = URLComponents(string: Config.baseURL)
+        var urlComponents = URLComponents(string: Config.baseURL)
+
+        if let query = self.query {
+            let queries = query.toDictionary()
+            let queryItemArray = queries.map {
+                return URLQueryItem(name: $0.key, value: "\($0.value)")
+            }
+            urlComponents?.queryItems = queryItemArray
+        }
+
         guard let urlRequestURL = urlComponents?.url?.appendingPathComponent(self.path) else {
             throw NetworkError.urlEncodingError
         }
