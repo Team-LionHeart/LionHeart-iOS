@@ -9,10 +9,10 @@ import UIKit
 
 struct CurriculumWeekData: AppData {
     var articleData: [ArticleDataByWeek]
+    let week: Int?
 }
 
 struct ArticleDataByWeek: AppData {
-    
     let articleId: Int
     let articleTitle: String
     let articleImage: String

@@ -16,6 +16,7 @@ struct CurriculumResponse: DTO, Response {
 
 struct CurriculumListByWeekResponse: DTO, Response {
     let articleSummaries: [CategoryArticle]
+    let week: Int
 }
 
 struct CategoryArticle: Response {
@@ -30,9 +31,11 @@ struct CategoryArticle: Response {
 
 /// CurriculumListByWeekResponse -> [ArticleDataByWeek]
 extension CurriculumListByWeekResponse {
-    func toAppData() -> [ArticleDataByWeek] {
-        return self.articleSummaries.map { article in
+    func toAppData() -> CurriculumWeekData {
+        let articles = self.articleSummaries.map { article in
             ArticleDataByWeek(articleId: article.articleId, articleTitle: article.title, articleImage: article.mainImageUrl, articleContent: article.firstBodyContent, articleReadTime: article.requiredTime, isArticleBookmarked: article.isMarked, articleTags: article.tags)
         }
+
+        return CurriculumWeekData(articleData: articles, week: self.week)
     }
 }
