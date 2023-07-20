@@ -14,7 +14,7 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
     
     var inputData: DummyModel? {
         didSet {
-            /// action
+            
         }
     }
     
@@ -37,7 +37,6 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
         view.backgroundColor = .designSystem(.gray900)
         return view
     }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

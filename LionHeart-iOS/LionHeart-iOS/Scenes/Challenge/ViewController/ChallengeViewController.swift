@@ -74,8 +74,6 @@ final class ChallengeViewController: UIViewController {
     private enum Size {
         static let cellOffset: CGFloat = 40
         static let numberOfCellsinRow: CGFloat = 0
-        static let blockWidth: CGFloat = 67
-        static let blockHeight: CGFloat = 60
     }
     
     private let leftSeperateLine: UIView = {
@@ -89,6 +87,8 @@ final class ChallengeViewController: UIViewController {
         view.backgroundColor = .designSystem(.background)
         return view
     }()
+    
+    private var tags: [String] = []
     
     private lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
     
@@ -130,10 +130,8 @@ final class ChallengeViewController: UIViewController {
     
     private let challengeDayCheckCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .designSystem(.gray1000)
+        collectionView.backgroundColor = .designSystem(.background)
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
@@ -145,6 +143,8 @@ final class ChallengeViewController: UIViewController {
             do{
                 let model = try await ChallengeService.shared.inquireChallengeInfo()
                 self.inputData = model
+                self.tags = model.daddyAttendances
+                self.challengeDayCheckCollectionView.reloadData()
             } catch {
                  print(error)
             }
@@ -225,7 +225,7 @@ private extension ChallengeViewController {
         challengeDayCheckCollectionView.snp.makeConstraints { make in
             make.top.equalTo(lottieImageView.snp.bottom).offset(28)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview().inset(143)
+            make.height.equalTo(ScreenUtils.getHeight(300))
         }
     }
     
@@ -245,24 +245,37 @@ private extension ChallengeViewController {
 extension ChallengeViewController:
     UICollectionViewDelegateFlowLayout {
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 5
         let height = collectionView.frame.height / 5
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 
 extension ChallengeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ChallengeDayCheckCollectionViewCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-        cell.backgroundColor = .designSystem(.gray1000)
-        cell.inputString = "\(indexPath.section + indexPath.row + 1)"
+        
+        if indexPath.item < tags.count {
+            cell.inputString = tags[indexPath.item]
+            cell.backgroundColor = .designSystem(.background)
+        } else {
+            cell.inputString = "\(indexPath.section + indexPath.row + 1)"
+            cell.backgroundColor = .designSystem(.gray1000)
+        }
         return cell
     }
 }
