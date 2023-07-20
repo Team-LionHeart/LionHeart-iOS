@@ -25,15 +25,7 @@ final class OnboardingViewController: UIViewController {
     private let onboardingViewController = LHOnboardingPageViewController()
     private var pageDataSource: OnboardingViews = []
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
-    
-    let loadingIndicatorView: UIActivityIndicatorView = {
-        let indicatorView = UIActivityIndicatorView(style: .large)
-        indicatorView.color = .designSystem(.lionRed)
-        indicatorView.backgroundColor = .designSystem(.black)
-        indicatorView.frame = .init(x: 0, y: 0, width: Constant.Screen.width, height: Constant.Screen.height)
-        return indicatorView
-    }()
-    
+    private let loadingIndicatorView = LHLoadingView()
     
     /// onboarding flow property
     private var currentPage: OnboardingPageType = .getPregnancy

@@ -169,6 +169,7 @@
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
 		C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */; };
 		C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */; };
+		C0F62FE72A691FC40003ADFA /* LHLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F62FE62A691FC40003ADFA /* LHLoadingView.swift */; };
 		D30CBA1A2A60384C00C8636B /* ChallengeDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CBA192A60384C00C8636B /* ChallengeDummy.swift */; };
 		D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34280762A66B90C00DA1499 /* UILabelPadding.swift */; };
 		D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */; };
@@ -368,6 +369,7 @@
 		C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
 		C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_5m.json; sourceTree = "<group>"; };
 		C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_6m.json; sourceTree = "<group>"; };
+		C0F62FE62A691FC40003ADFA /* LHLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHLoadingView.swift; sourceTree = "<group>"; };
 		D30CBA192A60384C00C8636B /* ChallengeDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDummy.swift; sourceTree = "<group>"; };
 		D34280762A66B90C00DA1499 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryHeaderView.swift; sourceTree = "<group>"; };
@@ -1270,6 +1272,7 @@
 				C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */,
 				C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */,
 				C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */,
+				C0F62FE62A691FC40003ADFA /* LHLoadingView.swift */,
 			);
 			path = OnboardingComponent;
 			sourceTree = "<group>";
@@ -1621,6 +1624,7 @@
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
 				C0F029C92A5EFC1F00E0D185 /* LHOnboardingPageViewController.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
+				C0F62FE72A691FC40003ADFA /* LHLoadingView.swift in Sources */,
 				4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */,
 				4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */,
 				B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */,
