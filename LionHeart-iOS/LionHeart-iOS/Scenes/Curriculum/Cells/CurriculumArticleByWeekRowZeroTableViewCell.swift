@@ -15,6 +15,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
     var inputData: Int? {
         didSet {
             guard let inputData else { return }
+            //inputData는 row가 0부터인데 주차정보는 4주차부터 시작이므로 +4를 해줌
             let userWeek = inputData + 4
             weekLabel.text = "\(userWeek)주차"
             
