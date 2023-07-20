@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CategoryArticle: DTO, Response {
+struct CategoryList: DTO, Response {
     let categoryArticles: [ArticleListByCategoryResponse]?
 }
 
