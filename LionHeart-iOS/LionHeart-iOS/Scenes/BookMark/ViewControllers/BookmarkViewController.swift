@@ -57,6 +57,7 @@ final class BookmarkViewController: UIViewController {
 private extension BookmarkViewController {
     func setUI() {
         view.backgroundColor = .designSystem(.background)
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func setHierarchy() {
@@ -64,7 +65,12 @@ private extension BookmarkViewController {
     }
     
     func setLayout() {
-        NavigationBarLayoutManager.add(navigationBar)
+
+        navigationBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+        }
+        
         bookmarkCollectionView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
