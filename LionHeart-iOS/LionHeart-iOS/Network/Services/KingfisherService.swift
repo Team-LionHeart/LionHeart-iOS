@@ -35,4 +35,18 @@ final class LHKingFisherService {
         
     }
 
+    func unwrapTaskArray<T>(dataTasks: [Task<T, Never>], type: T.Type) async -> [T] {
+        let tasks = dataTasks.map { task in
+            Task {
+                return try await task.result.get()
+            }
+        }
+
+        var result: [T?] = []
+        for task in tasks {
+            result.append(try? await task.result.get())
+        }
+        return result.compactMap { $0 }
+    }
+
 }
