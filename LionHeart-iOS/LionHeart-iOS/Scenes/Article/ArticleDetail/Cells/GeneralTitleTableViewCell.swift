@@ -57,6 +57,7 @@ private extension GeneralTitleTableViewCell {
     func configureCell(_ model: ArticleBlockData?) {
         guard let model else { return }
         titleLabel.text = model.content
+        titleLabel.setTextWithLineHeight(lineHeight: 32)
     }
     
 
