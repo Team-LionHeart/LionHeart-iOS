@@ -19,7 +19,6 @@ final class TodayViewController: UIViewController {
     private var todayArticleID: Int?
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
-    private let loadingIndicatorView = LHLoadingView()
     
     private let seperateLine: UIView = {
         let view = UIView()
@@ -48,6 +47,7 @@ final class TodayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        showLoading()
         getInquireTodayArticle()
     }
     
@@ -69,7 +69,8 @@ extension TodayViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "이미지패치실패", isTabBar: true)
         case .unAuthorizedError:
-            LHToast.show(message: "인증오류", isTabBar: true)
+            guard let window = self.view.window else { return }
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: message, isTabBar: true)
         case .serverError:
@@ -81,8 +82,6 @@ extension TodayViewController: ViewControllerServiceable {
 extension TodayViewController {
     func getInquireTodayArticle() {
         Task {
-            view.addSubview(loadingIndicatorView)
-            loadingIndicatorView.startAnimating()
             do {
                 let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
                 let image = try await LHKingFisherService.fetchImage(with: responseArticle.mainImageURL)
@@ -90,7 +89,7 @@ extension TodayViewController {
                 titleLabel.userNickName = responseArticle.fetalNickname
                 mainArticleView.data = responseArticle
                 todayArticleID = responseArticle.aticleID
-                loadingIndicatorView.stopAnimating()
+                hideLoading()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)

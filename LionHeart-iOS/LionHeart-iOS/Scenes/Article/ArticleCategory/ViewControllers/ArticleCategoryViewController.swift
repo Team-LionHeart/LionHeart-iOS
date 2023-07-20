@@ -23,11 +23,7 @@ final class ArticleCategoryViewController: UIViewController {
     
     private lazy var navigationBar = LHNavigationBarView(type: .explore, viewController: self)
     
-    private var dummyCase = CategoryImage.dummy() {
-        didSet {
-            self.categoryArticleCollectionView.reloadData()
-        }
-    }
+    private var dummyCase = CategoryImage.dummy()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()

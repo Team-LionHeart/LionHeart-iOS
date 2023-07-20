@@ -10,9 +10,6 @@ import UIKit
 
 import SnapKit
 
-struct BookmarkButtonTapped{
-    
-}
 
 final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     

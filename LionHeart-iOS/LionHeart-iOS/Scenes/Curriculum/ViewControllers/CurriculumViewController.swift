@@ -92,6 +92,7 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        showLoading()
         getCurriculumData()
         
     }
@@ -286,7 +287,7 @@ extension CurriculumViewController {
                 let responseCurriculum = try await CurriculumService.shared.getCurriculumServiceInfo()
                 
                 userInfoData = responseCurriculum
-                
+                hideLoading()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)

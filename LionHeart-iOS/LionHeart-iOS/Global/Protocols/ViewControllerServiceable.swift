@@ -7,21 +7,6 @@
 
 import UIKit
 
-final class LHLoadingView: UIActivityIndicatorView {
-
-    init() {
-        super.init(frame: .zero)
-        self.style = .large
-        self.color = .designSystem(.lionRed)
-        self.backgroundColor = .designSystem(.black)
-        self.frame = .init(x: 0, y: 0, width: Constant.Screen.width, height: Constant.Screen.height)
-    }
-
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
 
 /// 네트워크 요청을 하는 ViewController가 채택하는 프로토콜
 protocol ViewControllerServiceable where Self: UIViewController {
