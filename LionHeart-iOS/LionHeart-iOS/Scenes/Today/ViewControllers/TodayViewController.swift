@@ -28,7 +28,14 @@ final class TodayViewController: UIViewController {
     }()
     
     private var titleLabel = LHTodayArticleTitle()
+    private var subTitleLable = LHTodayArticleTitle(initalizeString: "오늘의 아티클이에요")
     private var mainArticleView = TodayArticleView()
+    
+    private var pointImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "TodayArticle_PointImage"))
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +82,7 @@ extension TodayViewController {
             loadingIndicatorView.startAnimating()
             do {
                 let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
-                titleLabel.title = responseArticle.articleTitle
+                titleLabel.userNickName = responseArticle.fetalNickname
                 mainArticleView.data = responseArticle
                 todayArticleID = responseArticle.aticleID
                 loadingIndicatorView.stopAnimating()
@@ -100,7 +107,7 @@ private extension TodayViewController {
     
     func setHierarchy() {
         view.addSubviews(todayNavigationBar, seperateLine)
-        view.addSubviews(titleLabel, mainArticleView)
+        view.addSubviews(titleLabel, subTitleLable, pointImage, mainArticleView)
         
     }
     
@@ -121,8 +128,19 @@ private extension TodayViewController {
             make.leading.equalToSuperview().inset(20)
         }
         
+        subTitleLable.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom)
+            make.leading.equalTo(titleLabel.snp.leading)
+        }
+        
+        pointImage.snp.makeConstraints { make in
+            make.top.equalTo(subTitleLable.snp.top)
+            make.leading.equalTo(subTitleLable.snp.trailing).offset(4)
+            make.size.equalTo(10)
+        }
+        
         mainArticleView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(28)
+            make.top.equalTo(subTitleLable.snp.bottom).offset(28)
             make.width.equalTo(ScreenUtils.getWidth(335))
             make.centerX.equalToSuperview()
             make.height.equalTo(mainArticleView.snp.width).multipliedBy(TodayArticleImage.ratio)
