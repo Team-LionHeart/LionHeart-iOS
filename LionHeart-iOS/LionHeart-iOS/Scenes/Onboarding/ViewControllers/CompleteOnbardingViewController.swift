@@ -30,7 +30,8 @@ final class CompleteOnbardingViewController: UIViewController {
     /// 추후 삭제할 component
     private let welcomeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .designSystem(.white)
+        imageView.image = ImageLiterals.Onboarding.onboardingCompleteImage
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
