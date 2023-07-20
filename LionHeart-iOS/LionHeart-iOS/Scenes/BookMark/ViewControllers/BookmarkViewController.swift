@@ -12,7 +12,8 @@ import SnapKit
 
 final class BookmarkViewController: UIViewController {
     
-    private var bookmarkAppData: BookmarkAppData?
+    private var bookmarkAppData = BookmarkAppData(nickName: "", articleSummaries: [ArticleSummaries]())
+    private var bookmarkList = [ArticleSummaries]()
     
     private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
     
@@ -39,6 +40,7 @@ final class BookmarkViewController: UIViewController {
         Task {
             do {
                 self.bookmarkAppData = try await BookmarkService.shared.getBookmark()
+                self.bookmarkList = bookmarkAppData.articleSummaries
                 LoadingIndicator.hideLoading()
                 bookmarkCollectionView.reloadData()
             } catch {
@@ -116,14 +118,13 @@ extension BookmarkViewController: UICollectionViewDataSource {
         if section == 0 {
             return 1
         } else {
-            guard let bookmarkListData = bookmarkAppData?.articleSummaries else { return 0 }
-            bookmarkListData.isEmpty ?
+            self.bookmarkList.isEmpty ?
             collectionView.setEmptyView(emptyText: """
                                                    아직 담아본 아티클이 없어요.
                                                    다른 아티클을 읽어볼까요?
                                                    """) :
             collectionView.restore()
-            return bookmarkListData.count
+            return self.bookmarkList.count
         }
     }
     
@@ -134,17 +135,12 @@ extension BookmarkViewController: UICollectionViewDataSource {
         } else {
             let cell = BookmarkListCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
             
-            guard var bookmarkListData = bookmarkAppData?.articleSummaries else { return cell }
-            
             cell.bookmarkButtonClosure = { indexPath in
-                
                 Task {
                     do {
-                        // 배열 형태로 해당 articleID를 받음...
-                        // 그거랑 별개로 indexPath로 접근해서 articleID를 넘김
-                        try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: bookmarkListData[indexPath.item].articleID,
-                                                                                      bookmarkStatus: !bookmarkListData[indexPath.item].bookmarked))
-                        bookmarkListData.remove(at: indexPath.item)
+                        try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: self.bookmarkList[indexPath.item].articleID,
+                                                                                      bookmarkStatus: !self.bookmarkList[indexPath.item].bookmarked))
+                        self.bookmarkList.remove(at: indexPath.item)
                         collectionView.deleteItems(at: [indexPath])
                         LHToast.show(message: "북마크가 해제되었습니다")
                     } catch {
