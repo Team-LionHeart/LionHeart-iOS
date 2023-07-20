@@ -52,7 +52,7 @@ final class TodayViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        mainArticleView.mainArticlImageView.removeGradientInDesignSystem()
+        mainArticleView.mainArticlImageView.removeGradient()
     }
 }
 
@@ -75,7 +75,6 @@ extension TodayViewController: ViewControllerServiceable {
         case .serverError:
             LHToast.show(message: "승준이어딧니 내목소리들리니", isTabBar: true)
         }
-        loadingIndicatorView.stopAnimating()
     }
 }
 
@@ -86,12 +85,8 @@ extension TodayViewController {
             loadingIndicatorView.startAnimating()
             do {
                 let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
-                titleLabel.userNickName = responseArticle.fetalNickname
-                mainArticleView.data = responseArticle
-                todayArticleID = responseArticle.aticleID
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.4) {
-                    self.loadingIndicatorView.stopAnimating()
-                }
+                setData(input: responseArticle)
+                loadingIndicatorView.stopAnimating()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -168,6 +163,12 @@ private extension TodayViewController {
             let myPageViewController = MyPageViewController()
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
+    }
+    
+    func setData(input: TodayArticle) {
+        titleLabel.userNickName = input.fetalNickname
+        mainArticleView.data = input
+        todayArticleID = input.aticleID
     }
     
     
