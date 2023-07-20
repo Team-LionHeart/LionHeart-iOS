@@ -85,7 +85,11 @@ extension TodayViewController {
             loadingIndicatorView.startAnimating()
             do {
                 let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
-                setData(input: responseArticle)
+                let image = try await LHKingFisherService.fetchImage(with: responseArticle.mainImageURL)
+                mainArticleView.mainArticlImageView.image = image
+                titleLabel.userNickName = responseArticle.fetalNickname
+                mainArticleView.data = responseArticle
+                todayArticleID = responseArticle.aticleID
                 loadingIndicatorView.stopAnimating()
             } catch {
                 guard let error = error as? NetworkError else { return }
@@ -164,13 +168,6 @@ private extension TodayViewController {
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
-    
-    func setData(input: TodayArticle) {
-        titleLabel.userNickName = input.fetalNickname
-        mainArticleView.data = input
-        todayArticleID = input.aticleID
-    }
-    
     
     @objc func articleTapped(_ sender: UIButton) {
         let articleDetailViewController = ArticleDetailViewController()

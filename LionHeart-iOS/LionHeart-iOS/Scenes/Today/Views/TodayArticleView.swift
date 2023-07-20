@@ -139,20 +139,12 @@ private extension TodayArticleView {
     
     func configureView(data: TodayArticle?) {
         guard let data else { return }
-        Task {
-            do {
-                let image = try await LHKingFisherService.fetchImage(with: data.mainImageURL)
-                mainArticlImageView.image = image
-                weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
-                articleTitleLabel.text = data.articleTitle
-                descriptionLabel.text = data.articleDescription
-                articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
-                descriptionLabel.setTextWithLineHeight(lineHeight: 24)
-                /// 얘도 text가 있을때 적용되는 녀석
-                descriptionLabel.lineBreakMode = .byTruncatingTail
-            } catch {
-                print(error)
-            }
-        }
+        weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
+        articleTitleLabel.text = data.articleTitle
+        descriptionLabel.text = data.articleDescription
+        articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
+        descriptionLabel.setTextWithLineHeight(lineHeight: 24)
+        /// 얘도 text가 있을때 적용되는 녀석
+        descriptionLabel.lineBreakMode = .byTruncatingTail
     }
 }
