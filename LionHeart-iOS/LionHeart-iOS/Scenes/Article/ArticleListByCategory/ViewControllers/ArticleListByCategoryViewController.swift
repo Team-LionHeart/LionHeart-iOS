@@ -13,7 +13,7 @@ import SnapKit
 final class ArticleListByCategoryViewController: UIViewController {
     
     var categoryString = String()
-    var articleListData = [ArticleListByCategoryAppData]()
+    var articleListData = [ArticleDataByWeek]()
 
     private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
     
@@ -40,7 +40,6 @@ final class ArticleListByCategoryViewController: UIViewController {
         setDelegate()
         
         setTableView()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,7 +116,7 @@ extension ArticleListByCategoryViewController: ViewControllerServiceable {
 
 extension ArticleListByCategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return articleListData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -7,6 +7,10 @@
 
 import UIKit
 
+struct Query: Request {
+    let category: String
+}
+
 final class ArticleService: Serviceable {
     static let shared = ArticleService()
     private init() {}
@@ -33,19 +37,17 @@ final class ArticleService: Serviceable {
         return model.toAppData()
     }
     
-    func getArticleListByCategory(categoryString: String) async throws -> [ArticleListByCategoryAppData] {
-        let urlRequest = try NetworkRequest(path: "/v1/article?category=\(categoryString)", httpMethod: .get).makeURLRequest(isLogined: true)
+    func getArticleListByCategory(categoryString: String) async throws -> [ArticleDataByWeek] {
+        let query = Query(category: categoryString)
+
+        let urlRequest = try NetworkRequest(path: "/v1/article", httpMethod: .get, query: query).makeURLRequest(isLogined: true)
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
-        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CategoryArticle.self)
-        
-        var listData = [ArticleListByCategoryAppData]()
-        
-        model?.categoryArticles?.forEach {
-            listData.append(ArticleListByCategoryAppData(articleID: $0.articleId, title: $0.title, mainImageURL: $0.mainImageUrl, articleDetailText: $0.firstBodyContent, requiredTime: $0.requiredTime, isMarked: $0.isMarked, tags: $0.tags))
+        guard let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CurriculumListByWeekResponse.self) else {
+            return [ArticleDataByWeek.emptyData]
         }
         
-        return listData
+        return model.toAppData()
     }
 }
