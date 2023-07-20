@@ -16,7 +16,7 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
         static let thumbnailWidthHeightRatio: CGFloat = 224 / 375
     }
 
-    var bookmarkButtonDidTap: (() -> Void)?
+    var bookmarkButtonDidTap: ((Bool) -> Void)?
 
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -34,11 +34,12 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
 
     private lazy var bookMarkButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        button.setImage(UIImage(systemName: "bookmark.fill"), for: .selected)
+        button.setImage(ImageLiterals.BookMark.inactiveBookmarkBig, for: .normal)
+        button.setImage(ImageLiterals.BookMark.activeBookmarkBig, for: .selected)
         button.addButtonAction { [weak self] _ in
             guard let self else { return }
-            self.bookmarkButtonDidTap?()
+            button.isSelected.toggle()
+            self.bookmarkButtonDidTap?(button.isSelected)
         }
         return button
     }()
@@ -49,6 +50,12 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
         }
     }
 
+    var isMarked: Bool? {
+        didSet {
+            guard let isMarked else { return }
+            bookMarkButton.isSelected = isMarked
+        }
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
