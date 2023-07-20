@@ -26,6 +26,15 @@ final class OnboardingViewController: UIViewController {
     private var pageDataSource: OnboardingViews = []
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
     
+    let loadingIndicatorView: UIActivityIndicatorView = {
+        let indicatorView = UIActivityIndicatorView(style: .large)
+        indicatorView.color = .designSystem(.lionRed)
+        indicatorView.backgroundColor = .designSystem(.black)
+        indicatorView.frame = .init(x: 0, y: 0, width: Constant.Screen.width, height: Constant.Screen.height)
+        return indicatorView
+    }()
+    
+    
     /// onboarding flow property
     private var currentPage: OnboardingPageType = .getPregnancy
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
@@ -37,6 +46,7 @@ final class OnboardingViewController: UIViewController {
                 presentOnboardingView(oldValue: onboardingFlow)
             case .toCompleteOnboarding:
                 presentCompleteOnboardingView()
+
             }
         }
     }
@@ -160,6 +170,9 @@ private extension OnboardingViewController {
     }
     
     func presentCompleteOnboardingView() {
+        self.view.endEditing(true)
+        self.view.addSubview(loadingIndicatorView)
+        loadingIndicatorView.startAnimating()
         self.nextButton.isUserInteractionEnabled = false
         let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
@@ -167,7 +180,9 @@ private extension OnboardingViewController {
         Task {
             do {
                 try await AuthService.shared.signUp(type: .kakao, onboardingModel: passingData)
+                self.loadingIndicatorView.stopAnimating()
                 self.navigationController?.pushViewController(completeViewController, animated: true)
+
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
