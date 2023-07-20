@@ -69,6 +69,7 @@ extension TodayViewController: ViewControllerServiceable {
 extension TodayViewController {
     func getInquireTodayArticle() {
         Task {
+            LoadingIndicator.showLoading()
             do {
                 let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
                 titleLabel.title = responseArticle.articleTitle
@@ -78,6 +79,7 @@ extension TodayViewController {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
             }
+            LoadingIndicator.hideLoading()
         }
     }
 }
