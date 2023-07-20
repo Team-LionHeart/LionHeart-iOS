@@ -38,6 +38,7 @@ final class ArticleDetailViewController: UIViewController {
     private var articleDatas: [BlockTypeAppData]? {
         didSet {
             self.articleTableView.reloadData()
+            hideLoading()
         }
     }
 
@@ -60,8 +61,7 @@ final class ArticleDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.addSubview(loadingIndicatorView)
-        loadingIndicatorView.startAnimating()
+        showLoading()
         getArticleDetail()
     }
     
