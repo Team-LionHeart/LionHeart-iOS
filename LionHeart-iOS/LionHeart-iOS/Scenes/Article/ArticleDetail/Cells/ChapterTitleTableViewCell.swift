@@ -62,6 +62,7 @@ private extension ChapterTitleTableViewCell {
     func configureCell(_ model: ArticleBlockData?) {
         guard let model else { return }
         chapterTitleLabel.text = model.content
+        chapterTitleLabel.setTextWithLineHeight(lineHeight: 32)
     }
 
 }
