@@ -16,8 +16,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         didSet {
             guard let inputData else { return }
             //inputData는 row가 0부터인데 주차정보는 4주차부터 시작이므로 +4를 해줌
-            let userWeek = inputData + 4
-            weekLabel.text = "\(userWeek)주차"
+            weekLabel.text = "\(inputData)주차"
             
         }
     }
@@ -48,6 +47,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         let button = UIButton(type: .custom)
         button.setImage(ImageLiterals.Curriculum.arrowRightWeek, for: .normal)
         button.addButtonAction { _ in
+
             NotificationCenter.default.post(name: NSNotification.Name("rightButton"),
                                             object: nil)
         }

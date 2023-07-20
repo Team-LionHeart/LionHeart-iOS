@@ -16,7 +16,7 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         static let weekBackGroundImageSize: CGFloat = (60 / 375) * Constant.Screen.width
     }
     
-    private let curriculumListByWeekTableView: UITableView = {
+    let curriculumListByWeekTableView: UITableView = {
         let tableView = UITableView()
         tableView.contentInsetAdjustmentBehavior = .always
         tableView.showsVerticalScrollIndicator = false
@@ -25,9 +25,13 @@ final class CurriculumListByWeekCollectionViewCell: UICollectionViewCell, Collec
         return tableView
     }()
     
-    var weekCount: Int?
+    var weekCount: Int? {
+        didSet {
+            curriculumListByWeekTableView.reloadData()
+        }
+    }
     
-    var inputData: [ArticleDataByWeek]? {
+    var inputData: CurriculumWeekData? {
         
         didSet {
             curriculumListByWeekTableView.reloadData()
@@ -98,20 +102,21 @@ private extension CurriculumListByWeekCollectionViewCell {
 extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let inputData else { return  0}
-        return (inputData.count + 1)
+        guard let inputData else { return 0 }
+        return (inputData.articleData.count + 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
 
             let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
-            cell.inputData = self.weekCount
+            guard let weekCount else { return CurriculumTableViewCell() }
+            cell.inputData = inputData?.week
             return cell
         } else {
             
             let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
-            cell.inputData = inputData?[indexPath.row - 1]
+            cell.inputData = inputData?.articleData[indexPath.row - 1]
             cell.selectionStyle = .none
             cell.backgroundColor = .designSystem(.background)
             cell.isBookmarkedIndexPath = indexPath
@@ -125,7 +130,7 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
         } else {
             guard let inputData else { return }
             NotificationCenter.default.post(name: NSNotification.Name("didSelectTableViewCell"),
-                                            object: inputData[indexPath.row - 1].articleId)
+                                            object: inputData.articleData[indexPath.row - 1].articleId)
             
         }
     }
