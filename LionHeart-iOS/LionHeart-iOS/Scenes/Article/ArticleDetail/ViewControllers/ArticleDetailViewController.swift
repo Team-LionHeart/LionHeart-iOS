@@ -18,6 +18,8 @@ final class ArticleDetailViewController: UIViewController {
     private var progressBar = LHProgressView()
 
     private let articleTableView = ArticleDetailTableView()
+    
+    private let loadingIndicatorView = LHLoadingView()
 
     private lazy var scrollToTopButton: UIButton = {
         let button = UIButton()
@@ -52,7 +54,8 @@ final class ArticleDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        LoadingIndicator.showLoading()
+        view.addSubview(loadingIndicatorView)
+        loadingIndicatorView.startAnimating()
         getArticleDetail()
     }
     
@@ -70,7 +73,7 @@ extension ArticleDetailViewController {
         Task {
             do {
                 self.articleDatas = try await ArticleService.shared.getArticleDetail(articleId: 0)
-                LoadingIndicator.hideLoading()
+                loadingIndicatorView.stopAnimating()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)

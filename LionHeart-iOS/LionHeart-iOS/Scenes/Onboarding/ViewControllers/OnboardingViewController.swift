@@ -245,6 +245,5 @@ extension OnboardingViewController: ViewControllerServiceable {
         case .serverError:
             LHToast.show(message: "서버놈들")
         }
-        self.loadingIndicatorView.stopAnimating()
     }
 }
