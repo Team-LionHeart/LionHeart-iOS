@@ -45,8 +45,11 @@ extension UIView{
         } else if axis == .vertical {
             gradient.type = .axial
         }
-
         gradient.frame = bounds
-        layer.addSublayer(gradient)
+        layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func removeGradient() {
+        self.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
     }
 }

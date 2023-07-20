@@ -18,6 +18,8 @@ final class ArticleDetailViewController: UIViewController {
     private var progressBar = LHProgressView()
 
     private let articleTableView = ArticleDetailTableView()
+    
+    private let loadingIndicatorView = LHLoadingView()
 
     private lazy var scrollToTopButton: UIButton = {
         let button = UIButton()
@@ -36,6 +38,7 @@ final class ArticleDetailViewController: UIViewController {
     private var articleDatas: [BlockTypeAppData]? {
         didSet {
             self.articleTableView.reloadData()
+            hideLoading()
         }
     }
 
@@ -58,7 +61,7 @@ final class ArticleDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        LoadingIndicator.showLoading()
+        showLoading()
         getArticleDetail()
     }
     

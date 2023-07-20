@@ -93,6 +93,10 @@ enum ImageLiterals {
         static var loginBackgroundImage: UIImage { .load(named: "kakao_login_img") }
         static var kakaoLogo: UIImage { .load(named: "ic_kakao") }
     }
+    
+    enum Onboarding {
+        static var onboardingCompleteImage: UIImage { .load(named: "onboarding_complete_image") }
+    }
 }
 
 
