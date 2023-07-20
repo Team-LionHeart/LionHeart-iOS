@@ -375,6 +375,7 @@
 		C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
 		C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_5m.json; sourceTree = "<group>"; };
 		C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_6m.json; sourceTree = "<group>"; };
+		D30CBA192A60384C00C8636B /* ChallengeDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDummy.swift; sourceTree = "<group>"; };
 		D34280762A66B90C00DA1499 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		D34280792A67F12200DA1499 /* ChallengeDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDataResponse.swift; sourceTree = "<group>"; };
 		D342807B2A67FE4700DA1499 /* ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeService.swift; sourceTree = "<group>"; };
@@ -1183,6 +1184,10 @@
 			isa = PBXGroup;
 			children = (
 				C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */,
+				C0F62FB82A67CDB60003ADFA /* progressbar_10m.json */,
+				C0F62FBF2A67CDB60003ADFA /* progressbar_6m.json */,
+				C0F62FBA2A67CDB60003ADFA /* progressbar_3m.json */,
+				C0F62FBE2A67CDB60003ADFA /* progressbar_5m.json */,
 				4AD6AE052A66F84300A3D745 /* progressbar_3m.json */,
 				4AD6AE0B2A66F85800A3D745 /* progressbar_6m.json */,
 				4AD6AE0D2A66F85F00A3D745 /* progressbar_7m.json */,

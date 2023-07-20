@@ -22,7 +22,7 @@ final class ArticleService: Serviceable {
     }
 
     func getArticleDetail(articleId: Int) async throws -> [BlockTypeAppData] {
-        let urlRequest = try NetworkRequest(path: "/v1/article/1", httpMethod: .get).makeURLRequest(isLogined: true)
+        let urlRequest = try NetworkRequest(path: "/v1/article/\(articleId)", httpMethod: .get).makeURLRequest(isLogined: true)
 
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
 
