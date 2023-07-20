@@ -35,10 +35,11 @@ final class BookmarkViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        LoadingIndicator.showLoading()
         Task {
             do {
                 self.bookmarkAppData = try await BookmarkService.shared.getBookmark()
+                LoadingIndicator.hideLoading()
                 bookmarkCollectionView.reloadData()
             } catch {
                 guard let error = error as? NetworkError else { return }
@@ -74,7 +75,6 @@ private extension BookmarkViewController {
         bookmarkCollectionView.delegate = self
         bookmarkCollectionView.dataSource = self
     }
-    
     func registerCell() {
         BookmarkDetailCollectionViewCell.register(to: bookmarkCollectionView)
         BookmarkListCollectionViewCell.register(to: bookmarkCollectionView)

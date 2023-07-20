@@ -15,29 +15,28 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
     
-    private let userInfoData = UserInfoData.dummy()
+    private var userInfoData: UserInfoData? {
+        didSet {
+            configureUserInfoData()
+        }
+    }
     
-    private let progressBar: LottieAnimationView = {
-        let lottie = LottieAnimationView(name: "progressbar_\(UserInfoData.dummy().progress)m")
-        return lottie
-    }()
-    
+    private let progressBar = LottieAnimationView()
     
     private let dDayLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body3R)
         label.textColor = .designSystem(.gray400)
-        label.text = "D-\(UserInfoData.dummy().remainingDay)"
         return label
     }()
     
+    private let dDayView = UIView()
     
     private let headerHeight: CGFloat = 40.0
     
     private lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()
         view.backgroundColor = .designSystem(.background)
-        view.userInfo = userInfoData
         return view
     }()
     
@@ -83,14 +82,19 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         // MARK: - tableView Register설정
         setTableView()
         
-        progressBar.play()
         
     }
     
     override func viewDidLayoutSubviews() {
         if isFirstPresented {
             self.scrollToUserWeek()
+            
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getCurriculumData()
+        
     }
 }
 
@@ -100,8 +104,8 @@ private extension CurriculumViewController {
     }
     
     func setHierarchy() {
-        progressBar.addSubview(dDayLabel)
-        view.addSubviews(navigationBar, progressBar, curriculumUserInfoView, curriculumTableView, gradientImage)
+        dDayView.addSubview(dDayLabel)
+        view.addSubviews(navigationBar, progressBar, curriculumUserInfoView, curriculumTableView, gradientImage, dDayView)
     }
     
     func setLayout() {
@@ -109,6 +113,17 @@ private extension CurriculumViewController {
         navigationBar.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.equalToSuperview()
+        }
+        
+        dDayView.snp.makeConstraints{
+            $0.size.equalTo(100)
+            $0.leading.equalToSuperview().inset(48)
+            $0.centerY.equalTo(progressBar)
+            
+        }
+        
+        dDayLabel.snp.makeConstraints{
+            $0.edges.equalToSuperview()
         }
         
         curriculumUserInfoView.snp.makeConstraints{
@@ -124,11 +139,6 @@ private extension CurriculumViewController {
             $0.trailing.leading.equalToSuperview()
             $0.width.equalTo(Constant.Screen.width)
             $0.height.equalTo(progressBar.snp.width).multipliedBy(Size.progressView)
-        }
-        
-        dDayLabel.snp.makeConstraints{
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(48)
         }
         
         curriculumTableView.snp.makeConstraints{
@@ -153,16 +163,33 @@ private extension CurriculumViewController {
         
     }
     
-    // viewDidAppear
+    /// 더미데이터에서는 더미데이터를가지고 tableview를 그리고  아래함수를 호출했었음
+    /// 근데 데이터를 api로 받아오려고보니 해당함수를 호출할때는 api로 데이터가 받아와지기전임(데이터를 받아오는데 시간이 오래 걸리때문)
+    /// 시간이 걸려서 데이터를 받아오니 expand가 안됨
+    // viewDidLayoutSubviews
     func scrollToUserWeek() {
+        
+        guard let userInfoData else { return }
+        
         let userWeek = userInfoData.userWeekInfo
-        let desireSection = (userWeek / 4) - 1
-        let desireRow = (userWeek % 4)
+        let weekPerMonth = 4
+        let desireSection = (userWeek / weekPerMonth) - 1
+        let desireRow = (userWeek % weekPerMonth)
         let indexPath = IndexPath(row: desireRow, section: desireSection)
         
         curriculumViewDatas[desireSection].weekDatas[desireRow].isExpanded = true
-        
+        self.curriculumTableView.reloadData()
         self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+    }
+    
+    func configureUserInfoData() {
+        guard let userInfoData else { return }
+        dDayLabel.text = "D-\(userInfoData.remainingDay)"
+        let progressName: String = "progressbar_\(userInfoData.progress)m"
+        
+        progressBar.animation = .named(progressName)
+        progressBar.play()
+        curriculumUserInfoView.userInfo = userInfoData
     }
 }
 
@@ -198,7 +225,7 @@ extension CurriculumViewController: UITableViewDataSource {
     func toggleButtonTapped(indexPath: IndexPath?) {
         self.isFirstPresented = false
         guard let indexPath  else { return }
-    
+        
         let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
         
         curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
@@ -207,25 +234,65 @@ extension CurriculumViewController: UITableViewDataSource {
     
     func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
         
-        guard let indexPath else { return }
+        guard let indexPath else {
+            return
+            
+        }
         
         let listByWeekVC = CurriculumListByWeekViewController()
+        
+        
         if indexPath.section == curriculumViewDatas.count - 1 {
-            listByWeekVC.firstPresented = (indexPath.section * 4) + indexPath.row + 1
-//            listByWeekVC.currentPage = (indexPath.section * 4) + indexPath.row + 1
+            listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row + 1
+            
         } else {
-            listByWeekVC.firstPresented = (indexPath.section * 4) + indexPath.row
-//            listByWeekVC.currentPage = (indexPath.section * 4) + indexPath.row
+            listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row
         }
-        self.navigationController?.pushViewController(listByWeekVC, animated: false)
+        
+        self.navigationController?.pushViewController(listByWeekVC, animated: true)
         
     }
+    
     
 }
 
 extension CurriculumViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let curriculumListByWeekViewController = CurriculumListByWeekViewController()
-        self.navigationController?.pushViewController(curriculumListByWeekViewController, animated: true)
+//        let curriculumListByWeekViewController = CurriculumListByWeekViewController()
+//        self.navigationController?.pushViewController(curriculumListByWeekViewController, animated: true)
     }
+}
+
+extension CurriculumViewController: ViewControllerServiceable {
+    
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .unAuthorizedError:
+            guard let window = self.view.window else { return }
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+        case .clientError(_, let message):
+            LHToast.show(message: "\(message)")
+        default:
+            LHToast.show(message: error.description)
+            
+        }
+    }
+    
+}
+
+extension CurriculumViewController {
+    func getCurriculumData() {
+        Task {
+            do {
+                let responseCurriculum = try await CurriculumService.shared.getCurriculumServiceInfo()
+                
+                userInfoData = responseCurriculum
+                
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
+    }
+    
 }

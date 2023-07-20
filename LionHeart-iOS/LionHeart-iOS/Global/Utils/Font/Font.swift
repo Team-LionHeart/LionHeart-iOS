@@ -10,7 +10,7 @@ import UIKit
 public enum Font {
     
     public enum PretendardType {
-        case head1, head2, head3, head4, subHead1, subHead2, title1, title2, body1, body2M, body2R, body3M, body3R, body4, body5B, body5M, caption
+        case head1, head2, head3, head4, subHead1, subHead2, title1, title2, body1, body2M, body2R, body2R2,body3M, body3R, body4, body5B, body5M, caption
         
         var Wight: Font.Weight {
             switch self {
@@ -18,6 +18,7 @@ public enum Font {
             case .head1, .head2, .head3, .head4, .title1, .title2: return ._600
             case .subHead2, .body1, .body2M, .body3M, .body5M, .caption: return ._500
             case .subHead1, .body2R, .body3R, .body4: return ._400
+            case .body2R2: return ._400
             }
         }
         
@@ -32,7 +33,7 @@ public enum Font {
             case .body4: return Font.Size._12.rawValue
             case .body5B, .body5M: return Font.Size._9.rawValue
             case .caption: return Font.Size._8.rawValue
-                
+            case .body2R2: return Font.Size._16.rawValue
             }
         }
     }

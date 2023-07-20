@@ -58,6 +58,7 @@ final class ArticleDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        LoadingIndicator.showLoading()
         getArticleDetail()
     }
     
