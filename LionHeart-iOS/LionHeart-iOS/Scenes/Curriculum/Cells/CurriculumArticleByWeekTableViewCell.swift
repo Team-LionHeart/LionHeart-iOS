@@ -28,16 +28,18 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
             }
             articleTagLabel.text = inputData.articleTags.joined(separator: " · ")
             articleContentLabel.text = inputData.articleContent
+            articleContentLabel.lineBreakStrategy = .pushOut
+            articleContentLabel.lineBreakMode = .byTruncatingTail
             
         }
     }
     
     private let tableViewCellWholeView = UIView()
-
+    
     private enum Size {
         static let readTimeAndBookmarkViewSize: CGFloat = 44 / 335
         static let articleImageSize: CGFloat = 200 / 335
-
+        
     }
     
     private let articleTitleLabel: UILabel = {
@@ -46,7 +48,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         label.textColor = .designSystem(.white)
         return label
     }()
-
+    
     private let articleTagLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body4)
@@ -65,21 +67,20 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         let label = UILabel()
         label.font = .pretendard(.body3R)
         label.textColor = .designSystem(.gray300)
+        label.numberOfLines = 2
         return label
     }()
     
     private let articleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ImageLiterals.ArticleCategory.coupleCategory
         imageView.layer.opacity = 0.4
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 4
-        
         return imageView
     }()
     
     private let readTimeAndBookmarkView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.layer.cornerRadius = 4
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.masksToBounds = true
@@ -114,7 +115,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         
         // MARK: - autolayout설정
         setLayout()
-
+        
         
     }
     
@@ -130,10 +131,8 @@ private extension CurriculumArticleByWeekTableViewCell {
     }
     
     func setHierarchy() {
-        
         articleImageView.addSubviews(readTimeAndBookmarkView)
         tableViewCellWholeView.addSubviews(articleImageView, articleTagLabel, articleTitleLabel, articleContentLabel, articleReadTimeLabel, bookMarkButton)
-        
         contentView.addSubviews(tableViewCellWholeView)
     }
     
@@ -164,7 +163,7 @@ private extension CurriculumArticleByWeekTableViewCell {
         articleReadTimeLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().inset(16)
             $0.centerY.equalTo(bookMarkButton)
-
+            
         }
         
         articleTagLabel.snp.makeConstraints{
@@ -179,8 +178,8 @@ private extension CurriculumArticleByWeekTableViewCell {
         
         articleContentLabel.snp.makeConstraints{
             $0.top.equalTo(articleTitleLabel.snp.bottom).offset(8)
-            $0.leading.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(10)
         }
     }
 }

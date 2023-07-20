@@ -19,10 +19,10 @@ final class BookmarkService: Serviceable {
         
         let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: BookmarkResponse.self)
         
-        return BookmarkAppData(nickName: model?.babyNickname,
+        return BookmarkAppData(nickName: model?.babyNickname ?? "",
                                articleSummaries: model?.articleSummaries.map {
             ArticleSummaries(title: $0.title, articleID: $0.articleId, articleImage: $0.mainImageUrl,
-                             bookmarked: $0.isMarked, tags: $0.tags)})
+                             bookmarked: $0.isMarked, tags: $0.tags)} ?? [])
     }
     
     func postBookmark(_ model: BookmarkRequest) async throws {

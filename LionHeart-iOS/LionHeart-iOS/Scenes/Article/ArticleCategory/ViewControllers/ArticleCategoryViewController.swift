@@ -98,7 +98,15 @@ private extension ArticleCategoryViewController {
     }
     
     func setAddTarget() {
+        navigationBar.rightFirstBarItemAction {
+            let bookmarkViewController = BookmarkViewController()
+            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
+        }
         
+        navigationBar.rightSecondBarItemAction {
+            let myPageViewController = MyPageViewController()
+            self.navigationController?.pushViewController(myPageViewController, animated: true)
+        }
     }
     
     func setDelegate() {

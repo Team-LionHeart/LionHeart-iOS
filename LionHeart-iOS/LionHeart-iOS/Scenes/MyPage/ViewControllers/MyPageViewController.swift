@@ -27,8 +27,9 @@ final class MyPageViewController: UIViewController {
     
     private let resignButton: UIButton = {
         let button = UIButton()
-        button.setTitle("회원탈퇴 버튼", for: .normal)
-        button.backgroundColor = .designSystem(.black)
+//        button.setTitle("회원탈퇴 버튼", for: .normal)
+//        button.backgroundColor = .designSystem(.black)
+        button.alpha = 0.1
         return button
     }()
     
@@ -72,9 +73,10 @@ private extension MyPageViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        resignButton.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.size.equalTo(300)
+        resignButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(120)
+            $0.trailing.equalToSuperview().inset(10)
+            $0.height.width.equalTo(50)
         }
     }
     

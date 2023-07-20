@@ -13,7 +13,7 @@ import Lottie
 
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
-    private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
+    private lazy var navigationBar = LHNavigationBarView(type: .curriculumMain, viewController: self)
     
     private var userInfoData: UserInfoData? {
         didSet {
@@ -81,6 +81,7 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         // MARK: - tableView Register설정
         setTableView()
         
+        setAddTarget()
         
     }
     
@@ -161,6 +162,18 @@ private extension CurriculumViewController {
         CurriculumTableViewCell.register(to: curriculumTableView)
         curriculumTableView.register(CurriculumTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: CurriculumTableViewHeaderView.className)
         
+    }
+    
+    func setAddTarget() {
+        navigationBar.rightFirstBarItemAction {
+            let bookmarkViewController = BookmarkViewController()
+            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
+        }
+        
+        navigationBar.rightSecondBarItemAction {
+            let myPageViewController = MyPageViewController()
+            self.navigationController?.pushViewController(myPageViewController, animated: true)
+        }
     }
     
     /// 더미데이터에서는 더미데이터를가지고 tableview를 그리고  아래함수를 호출했었음
