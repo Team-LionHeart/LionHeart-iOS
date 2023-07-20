@@ -163,22 +163,24 @@ private extension OnboardingViewController {
     
     func presentCompleteOnboardingView() {
         self.view.endEditing(true)
-        self.view.addSubview(loadingIndicatorView)
-        loadingIndicatorView.startAnimating()
+
         self.nextButton.isUserInteractionEnabled = false
         let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
         completeViewController.userData = passingData
         Task {
+            self.view.addSubview(loadingIndicatorView)
+            loadingIndicatorView.startAnimating()
             do {
                 try await AuthService.shared.signUp(type: .kakao, onboardingModel: passingData)
-                self.loadingIndicatorView.stopAnimating()
+                
                 self.navigationController?.pushViewController(completeViewController, animated: true)
 
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
             }
+
         }
     }
 }
@@ -243,5 +245,6 @@ extension OnboardingViewController: ViewControllerServiceable {
         case .serverError:
             LHToast.show(message: "서버놈들")
         }
+        self.loadingIndicatorView.stopAnimating()
     }
 }

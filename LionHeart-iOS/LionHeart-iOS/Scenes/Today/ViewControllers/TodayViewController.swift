@@ -63,6 +63,7 @@ extension TodayViewController: ViewControllerServiceable {
         case .serverError:
             LHToast.show(message: "승준이어딧니 내목소리들리니", isTabBar: true)
         }
+        LoadingIndicator.hideLoading()
     }
 }
 
@@ -79,7 +80,7 @@ extension TodayViewController {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
             }
-            LoadingIndicator.hideLoading()
+
         }
     }
 }
