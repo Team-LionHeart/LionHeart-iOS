@@ -26,7 +26,7 @@ final class TodayArticleView: UIView {
         return view
     }()
     
-    private var mainArticlImageView: UIImageView = {
+    var mainArticlImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 4
@@ -78,7 +78,6 @@ final class TodayArticleView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
         mainArticlImageView.setGradient(firstColor: .designSystem(.black)!.withAlphaComponent(0.2), secondColor: .designSystem(.gray1000)!, axis: .vertical)
         
         weekInfomationView.addSubview(weekInfomationLabel)

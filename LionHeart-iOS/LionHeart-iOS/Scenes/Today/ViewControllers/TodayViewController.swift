@@ -50,6 +50,10 @@ final class TodayViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         getInquireTodayArticle()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        mainArticleView.mainArticlImageView.removeGradientInDesignSystem()
+    }
 }
 
 // MARK: - 네트워킹
