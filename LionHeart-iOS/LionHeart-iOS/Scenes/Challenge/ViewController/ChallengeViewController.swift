@@ -9,21 +9,94 @@
 import UIKit
 
 import SnapKit
+import Lottie
+
+enum BadgeLevel: String {
+    case level01 = "LEVEL_ONE"
+    case level02 = "LEVEL_TWO"
+    case level03 = "LEVEL_THREE"
+    case level04 = "LEVEL_FOUR"
+    case level05 = "LEVEL_FIVE"
+    
+    var badgeLevel: Int {
+        switch self {
+        case .level01: return 1
+        case .level02: return 2
+        case .level03: return 3
+        case .level04: return 4
+        case .level05: return 5
+        }
+    }
+    
+    var badgeImage: UIImage {
+        switch self {
+        case .level01: return ImageLiterals.ChallengeBadge.level01
+        case .level02: return ImageLiterals.ChallengeBadge.level02
+        case .level03: return ImageLiterals.ChallengeBadge.level03
+        case .level04: return ImageLiterals.ChallengeBadge.level04
+        case .level05: return ImageLiterals.ChallengeBadge.level05
+        }
+    }
+    
+    var progreddbarLottie: String {
+        switch self {
+        case .level01: return "Level1"
+        case .level02: return "Level2"
+        case .level03: return "Level3"
+        case .level04: return "Level4"
+        case .level05: return "Level5"
+        }
+    }
+}
 
 final class ChallengeViewController: UIViewController {
+    
+    var inputData: ChallengeData? {
+        didSet {
+            guard let babyNickname = inputData?.babyDaddyName else { return }
+            self.nicknameLabel.text = "\(babyNickname)아빠 님,"
+            
+            if let howLongDay = inputData?.howLongDay {
+                            self.challengeDayLabel.text = "\(howLongDay)일째 도전 중"
+            }
+    
+            self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
+            
+            self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
+            self.lottieImageView.play()
+            
+            let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
+            
+            let attributtedString = NSMutableAttributedString(string: fullText)
+            attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
+            
+            self.challengelevelLabel.attributedText = attributtedString
+        }
+    }
     
     private enum Size {
         static let cellOffset: CGFloat = 40
         static let numberOfCellsinRow: CGFloat = 0
-        static let blockWidth: CGFloat = 67
-        static let blockHeight: CGFloat = 60
     }
+    
+    private let leftSeperateLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .designSystem(.background)
+        return view
+    }()
+    
+    private let rightSeperateLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .designSystem(.background)
+        return view
+    }()
+    
+    private var tags: [String] = []
     
     private lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
     
     private let nicknameLabel: UILabel = {
         let label = UILabel()
-        label.text = "동현이는슈퍼맨아빠님,"
         label.font = .pretendard(.body2R)
         label.textColor = .designSystem(.gray200)
         label.textAlignment = .center
@@ -32,7 +105,6 @@ final class ChallengeViewController: UIViewController {
     
     private let challengeDayLabel: UILabel = {
         let label = UILabel()
-        label.text = "23일째 도전 중"
         label.font = .pretendard(.head3)
         label.textColor = .designSystem(.white)
         label.textAlignment = .center
@@ -41,60 +113,60 @@ final class ChallengeViewController: UIViewController {
     
     private let levelBadge: UIImageView = {
         let imageView = UIImageView()
-        //        imageView.image = .assetImage(.img_levelBadge)
         imageView.image = ImageLiterals.ChallengeBadge.level05
         return imageView
-    }()
-    
+        }()
+
     private let challengelevelLabel: UILabel = {
         let label = UILabel()
-        label.text = "사자력 Lv.5"
         label.font = .pretendard(.body4)
         label.textColor = .designSystem(.gray500)
         label.textAlignment = .center
-        
-        let attributtedString = NSMutableAttributedString(string: label.text!)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white), range: (label.text! as NSString).range(of:"Lv.5"))
-        label.attributedText = attributtedString
         return label
     }()
     
-    private let leftLine: UIImageView = {
-        let imageView = UIImageView()
-        //        imageView.image = .assetImage(.leftline)
-        return imageView
-    }()
-    
-    private let rightLine: UIImageView = {
-        let imageView = UIImageView()
-        //        imageView.image = .assetImage(.rightLine)
-        return imageView
-    }()
-    
-    private let levelBar: UIImageView = {
-        let imageView = UIImageView()
-//        imageView.image = ImageLiterals.ChallengeBar.exampleDonghyun
-        return imageView
+    private lazy var lottieImageView: LottieAnimationView = {
+        let view = LottieAnimationView()
+        view.contentMode = .scaleToFill
+        return view
     }()
     
     private let challengeDayCheckCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .designSystem(.gray1000)
+        collectionView.backgroundColor = .designSystem(.background)
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
-    public override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        Task {
+            do{
+                let model = try await ChallengeService.shared.inquireChallengeInfo()
+                self.inputData = model
+                self.tags = model.daddyAttendances
+                self.challengeDayCheckCollectionView.reloadData()
+            } catch {
+                 print(error)
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: - 컴포넌트 설정
         setUI()
         setHierarchy()
         setLayout()
         setNavigationBar()
         setDelegate()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        leftSeperateLine.setGradient(firstColor: .designSystem(.gray800)!, secondColor: .designSystem(.gray400)!, axis: .horizontal)
+        rightSeperateLine.setGradient(firstColor: .designSystem(.gray400)!, secondColor: .designSystem(.gray800)!, axis: .horizontal)
     }
 }
 
@@ -106,7 +178,7 @@ private extension ChallengeViewController {
     
     func setHierarchy() {
         view.addSubviews(navigationBar,
-                         nicknameLabel, challengeDayLabel, leftLine, rightLine, levelBadge, levelBar, challengeDayCheckCollectionView)
+                         nicknameLabel, leftSeperateLine, rightSeperateLine, levelBadge, challengeDayLabel, lottieImageView, challengeDayCheckCollectionView)
         levelBadge.addSubview(challengelevelLabel)
     }
     
@@ -115,57 +187,56 @@ private extension ChallengeViewController {
     }
     
     func setLayout() {
-        
         navigationBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
         }
         nicknameLabel.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom).offset(16)
-            make.bottom.equalTo(challengeDayLabel.snp.top)
             make.centerX.equalToSuperview()
         }
         challengeDayLabel.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(5)
             make.centerX.equalToSuperview()
         }
-        leftLine.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(12)
+        leftSeperateLine.snp.makeConstraints { make in
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(15)
             make.trailing.equalTo(challengeDayLabel.snp.leading).offset(-8)
+            make.height.equalTo(1)
+            make.width.equalTo(36)
         }
-        rightLine.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(12)
+        rightSeperateLine.snp.makeConstraints { make in
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(15)
             make.leading.equalTo(challengeDayLabel.snp.trailing).offset(8)
+            make.height.equalTo(1)
+            make.width.equalTo(36)
         }
         levelBadge.snp.makeConstraints { make in
             make.top.equalTo(challengeDayLabel.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
         }
         challengelevelLabel.snp.makeConstraints { make in
-            make.top.equalTo(levelBadge.snp.top).inset(16)
+            make.top.equalToSuperview().inset(16)
             make.centerX.equalToSuperview()
         }
-        levelBar.snp.makeConstraints { make in
+        lottieImageView.snp.makeConstraints { make in
             make.top.equalTo(levelBadge.snp.bottom).offset(24)
-//            make.leading.trailing.equalToSuperview().inset(20)
-            make.centerX.equalToSuperview()
+            make.leading.equalTo(challengeDayCheckCollectionView.snp.leading)
+            make.trailing.equalTo(challengeDayCheckCollectionView.snp.trailing)
             make.height.equalTo(24)
-            make.width.equalTo(335)
         }
         challengeDayCheckCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(levelBar.snp.bottom).offset(28)
+            make.top.equalTo(lottieImageView.snp.bottom).offset(28)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview().inset(145)
+            make.height.equalTo(ScreenUtils.getHeight(300))
         }
     }
     
-    func setAddTarget() {
-        
-    }
     func setDelegate() {
         challengeDayCheckCollectionView.delegate = self
         challengeDayCheckCollectionView.dataSource = self
     }
+    
     func setNavigation() {
         navigationBar.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -177,25 +248,39 @@ private extension ChallengeViewController {
 extension ChallengeViewController:
     UICollectionViewDelegateFlowLayout {
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 5
         let height = collectionView.frame.height / 5
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 
 extension ChallengeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
+        return 20
     }
-
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ChallengeDayCheckCollectionViewCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-        cell.backgroundColor = .designSystem(.gray1000)
-        cell.inputString = "\(indexPath.section + indexPath.row + 1)"
+        
+        if indexPath.item < tags.count {
+            cell.inputString = tags[indexPath.item]
+            cell.backgroundColor = .designSystem(.background)
+            cell.textColorBool = true
+        } else {
+            cell.inputString = "\(indexPath.section + indexPath.row + 1)"
+            cell.backgroundColor = .designSystem(.gray1000)
+            cell.textColorBool = false
+        }
         return cell
     }
 }

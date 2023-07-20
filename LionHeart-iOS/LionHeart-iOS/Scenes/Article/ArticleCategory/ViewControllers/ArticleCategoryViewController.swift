@@ -130,6 +130,11 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let ArticleListByCategoryVC = ArticleListByCategoryViewController()
+        ArticleListByCategoryVC.categoryString = dummyCase[indexPath.item].categoryString
+        self.navigationController?.pushViewController(ArticleListByCategoryVC, animated: true)
+    }
 }
 
 extension ArticleCategoryViewController: UICollectionViewDelegateFlowLayout {

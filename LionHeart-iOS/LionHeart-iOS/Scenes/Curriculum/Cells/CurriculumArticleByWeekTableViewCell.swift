@@ -99,8 +99,8 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
             
             // VC로 넘기기 노티피케이션
             NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
-                                            object: self.isBookmarkedIndexPath?.row)
-            
+                                            object: nil, userInfo: ["bookmarkCellIndexPath": self.isBookmarkedIndexPath?.row ?? 0,
+                                                                    "bookmarkButtonSelected": !button.isSelected])
             button.isSelected.toggle()
         }
         return button

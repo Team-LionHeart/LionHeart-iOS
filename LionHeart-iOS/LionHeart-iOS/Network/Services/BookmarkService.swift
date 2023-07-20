@@ -29,7 +29,7 @@ final class BookmarkService: Serviceable {
         let param = model.toDictionary()
         let body = try JSONSerialization.data(withJSONObject: param)
         
-        let urlRequest = try NetworkRequest(path: "/v1/article/bookmarks", httpMethod: .post, body: body).makeURLRequest(isLogined: true)
+        let urlRequest = try NetworkRequest(path: "/v1/article/bookmark", httpMethod: .post, body: body).makeURLRequest(isLogined: true)
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         try dataDecodeAndhandleErrorCode(data: data, decodeType: String.self)

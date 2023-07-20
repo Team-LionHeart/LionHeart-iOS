@@ -131,6 +131,21 @@ private extension CurriculumListByWeekViewController {
         
     }
     
+    @objc func bookmarkButtonTapped(notification: NSNotification) {
+        Task {
+            do {
+                guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
+                guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
+                
+                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: listByWeekDatas[indexPath].articleId,
+                                                                              bookmarkStatus: buttonSelected))
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
+    }
+    
     @objc
     func leftButtonTapped(notification: NSNotification) {
         let nextPage: Int = max(0,currentPage - 1)
@@ -141,17 +156,6 @@ private extension CurriculumListByWeekViewController {
     func rightButtonTapped(notification: NSNotification) {
         let nextPage = min(listByWeekDatas.count - 1, currentPage + 1)
         self.currentPage = nextPage
-        
-    }
-    
-    @objc
-    func bookmarkButtonTapped(notification: NSNotification) {
-//        guard let isBookmarkedRow = notification.object as? Int else { return }
-        let isBookmarkedPage = currentPage
-        
-        listByWeekDatas[isBookmarkedPage].isArticleBookmarked.toggle()
-        
-        //        listByWeekDatas[isBookmarkedPage].articleData[isBookmarkedRow].isArticleBookmarked.toggle()
         
     }
     
