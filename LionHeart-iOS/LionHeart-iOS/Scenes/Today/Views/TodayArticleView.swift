@@ -26,7 +26,7 @@ final class TodayArticleView: UIView {
         return view
     }()
     
-    private var mainArticlImageView: UIImageView = {
+    var mainArticlImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 4
@@ -78,7 +78,6 @@ final class TodayArticleView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
         mainArticlImageView.setGradient(firstColor: .designSystem(.black)!.withAlphaComponent(0.2), secondColor: .designSystem(.gray1000)!, axis: .vertical)
         
         weekInfomationView.addSubview(weekInfomationLabel)
@@ -113,9 +112,6 @@ final class TodayArticleView: UIView {
             make.leading.equalToSuperview().inset(20)
             make.trailing.equalToSuperview().inset(16)
         }
-        
-        articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
-        descriptionLabel.setTextWithLineHeight(lineHeight: 24)
     }
     
     @available(*, unavailable)
@@ -143,16 +139,12 @@ private extension TodayArticleView {
     
     func configureView(data: TodayArticle?) {
         guard let data else { return }
-        Task {
-            do {
-                let image = try await LHKingFisherService.fetchImage(with: data.mainImageURL)
-                mainArticlImageView.image = image
-                weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
-                articleTitleLabel.text = data.articleTitle
-                descriptionLabel.text = data.articleDescription
-            } catch {
-                print(error)
-            }
-        }
+        weekInfomationLabel.text = data.currentWeek.description + "주 " + data.currentDay.description + "일차"
+        articleTitleLabel.text = data.articleTitle
+        descriptionLabel.text = data.articleDescription
+        articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
+        descriptionLabel.setTextWithLineHeight(lineHeight: 24)
+        /// 얘도 text가 있을때 적용되는 녀석
+        descriptionLabel.lineBreakMode = .byTruncatingTail
     }
 }

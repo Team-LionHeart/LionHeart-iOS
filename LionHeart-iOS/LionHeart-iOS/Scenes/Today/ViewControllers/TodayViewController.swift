@@ -19,6 +19,7 @@ final class TodayViewController: UIViewController {
     private var todayArticleID: Int?
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
+    private let loadingIndicatorView = LHLoadingView()
     
     private let seperateLine: UIView = {
         let view = UIView()
@@ -27,7 +28,14 @@ final class TodayViewController: UIViewController {
     }()
     
     private var titleLabel = LHTodayArticleTitle()
+    private var subTitleLable = LHTodayArticleTitle(initalizeString: "오늘의 아티클이에요")
     private var mainArticleView = TodayArticleView()
+    
+    private var pointImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "TodayArticle_PointImage"))
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +49,10 @@ final class TodayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getInquireTodayArticle()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        mainArticleView.mainArticlImageView.removeGradient()
     }
 }
 
@@ -69,15 +81,21 @@ extension TodayViewController: ViewControllerServiceable {
 extension TodayViewController {
     func getInquireTodayArticle() {
         Task {
+            view.addSubview(loadingIndicatorView)
+            loadingIndicatorView.startAnimating()
             do {
                 let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
-                titleLabel.title = responseArticle.articleTitle
+                let image = try await LHKingFisherService.fetchImage(with: responseArticle.mainImageURL)
+                mainArticleView.mainArticlImageView.image = image
+                titleLabel.userNickName = responseArticle.fetalNickname
                 mainArticleView.data = responseArticle
                 todayArticleID = responseArticle.aticleID
+                loadingIndicatorView.stopAnimating()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
             }
+
         }
     }
 }
@@ -94,7 +112,7 @@ private extension TodayViewController {
     
     func setHierarchy() {
         view.addSubviews(todayNavigationBar, seperateLine)
-        view.addSubviews(titleLabel, mainArticleView)
+        view.addSubviews(titleLabel, subTitleLable, pointImage, mainArticleView)
         
     }
     
@@ -115,8 +133,19 @@ private extension TodayViewController {
             make.leading.equalToSuperview().inset(20)
         }
         
+        subTitleLable.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom)
+            make.leading.equalTo(titleLabel.snp.leading)
+        }
+        
+        pointImage.snp.makeConstraints { make in
+            make.top.equalTo(subTitleLable.snp.top)
+            make.leading.equalTo(subTitleLable.snp.trailing).offset(4)
+            make.size.equalTo(10)
+        }
+        
         mainArticleView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(28)
+            make.top.equalTo(subTitleLable.snp.bottom).offset(28)
             make.width.equalTo(ScreenUtils.getWidth(335))
             make.centerX.equalToSuperview()
             make.height.equalTo(mainArticleView.snp.width).multipliedBy(TodayArticleImage.ratio)
@@ -139,7 +168,6 @@ private extension TodayViewController {
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
-    
     
     @objc func articleTapped(_ sender: UIButton) {
         let articleDetailViewController = ArticleDetailViewController()

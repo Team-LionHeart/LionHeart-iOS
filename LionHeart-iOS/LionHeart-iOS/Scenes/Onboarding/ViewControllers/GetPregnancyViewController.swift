@@ -119,7 +119,7 @@ extension GetPregnancyViewController: UITextFieldDelegate {
         guard let textNumber = Int(text) else { return }
         if textNumber == 0 {
             textFieldSettingWhenInputNumberZero()
-        } else if 1 <= textNumber && textNumber <= 40 {
+        } else if 4 <= textNumber && textNumber <= 40 {
             textFieldSettingWhenInputNumberValid()
         } else {
             textFieldSettingWhenInpubNumberOver()

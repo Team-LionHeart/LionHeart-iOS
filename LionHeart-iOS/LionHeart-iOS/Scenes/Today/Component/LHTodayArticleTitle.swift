@@ -9,9 +9,10 @@ import UIKit
 
 final class LHTodayArticleTitle: UILabel {
     
-    var title: String? {
+    var userNickName: String? {
         didSet {
-            self.text = title
+            guard let userNickName else { return }
+            self.text = userNickName + "님,"
         }
     }
     
@@ -19,8 +20,17 @@ final class LHTodayArticleTitle: UILabel {
         super.init(frame: .zero)
         self.font = .pretendard(.head1)
         self.textColor = .designSystem(.white)
-        self.numberOfLines = 2
+        self.numberOfLines = 1
     }
+    
+    init(initalizeString: String) {
+        super.init(frame: .zero)
+        self.font = .pretendard(.head1)
+        self.textColor = .designSystem(.white)
+        self.text = initalizeString
+        self.numberOfLines = 1
+    }
+    
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
