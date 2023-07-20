@@ -173,7 +173,7 @@ private extension OnboardingViewController {
             loadingIndicatorView.startAnimating()
             do {
                 try await AuthService.shared.signUp(type: .kakao, onboardingModel: passingData)
-                
+                self.loadingIndicatorView.stopAnimating()
                 self.navigationController?.pushViewController(completeViewController, animated: true)
 
             } catch {

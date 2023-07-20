@@ -19,6 +19,7 @@ final class TodayViewController: UIViewController {
     private var todayArticleID: Int?
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
+    private let loadingIndicatorView = LHLoadingView()
     
     private let seperateLine: UIView = {
         let view = UIView()
@@ -63,19 +64,21 @@ extension TodayViewController: ViewControllerServiceable {
         case .serverError:
             LHToast.show(message: "승준이어딧니 내목소리들리니", isTabBar: true)
         }
-        LoadingIndicator.hideLoading()
+        loadingIndicatorView.stopAnimating()
     }
 }
 
 extension TodayViewController {
     func getInquireTodayArticle() {
         Task {
-            LoadingIndicator.showLoading()
+            view.addSubview(loadingIndicatorView)
+            loadingIndicatorView.startAnimating()
             do {
                 let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
                 titleLabel.title = responseArticle.articleTitle
                 mainArticleView.data = responseArticle
                 todayArticleID = responseArticle.aticleID
+                loadingIndicatorView.stopAnimating()
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
