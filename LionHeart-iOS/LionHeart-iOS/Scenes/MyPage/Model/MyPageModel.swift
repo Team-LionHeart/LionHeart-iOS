@@ -9,16 +9,16 @@ import Foundation
 
 // MARK: DummyData
 
-struct myPageDummyDatya: AppData {
-    let badgeImage: String?
-    let nickname: String?
-    let isAlarm: Bool?
+struct MyPageAppData: AppData {
+    let badgeImage: String
+    let nickname: String
+    let isAlarm: String
 }
 
 // MARK: LocalData
 
 struct MyPageLocalData: AppData {
-    var titleLabel: String
+    let titleLabel: String
 }
 
 extension MyPageLocalData {

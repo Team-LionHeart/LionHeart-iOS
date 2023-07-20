@@ -16,6 +16,12 @@ final class MyPageViewController: UIViewController {
     private let myPageSectionLabelList = MyPageLocalData.myPageSectionLabelList
     private let myPageAppSettingLabelList = MyPageAppSettinLocalgData.myPageAppSettingDataList
     
+    private var myPageAppData: MyPageAppData? {
+        didSet {
+            myPageCollectionView.reloadData()
+        }
+    }
+    
     private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
 
     private let myPageCollectionView = {
@@ -27,8 +33,6 @@ final class MyPageViewController: UIViewController {
     
     private let resignButton: UIButton = {
         let button = UIButton()
-//        button.setTitle("회원탈퇴 버튼", for: .normal)
-//        button.backgroundColor = .designSystem(.black)
         button.alpha = 0.1
         return button
     }()
@@ -44,6 +48,20 @@ final class MyPageViewController: UIViewController {
         registerCell()
         hiddenNavigationBar()
         setTabbar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Task {
+            do {
+                let data = try await MyPageService.shared.getMyPage()
+                myPageAppData = data
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -116,6 +134,28 @@ private extension MyPageViewController {
     }
 }
 
+extension MyPageViewController: ViewControllerServiceable {
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .urlEncodingError:
+            LHToast.show(message: "URL Error")
+        case .jsonDecodingError:
+            LHToast.show(message: "Decoding Error")
+        case .badCasting:
+            LHToast.show(message: "Bad Casting")
+        case .fetchImageError:
+            LHToast.show(message: "Image Error")
+        case .unAuthorizedError:
+            guard let window = self.view.window else { return }
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+        case .clientError(_, _):
+            print("뜨면 위험함")
+        case .serverError:
+            LHToast.show(message: "승준이 빠따")
+        }
+    }
+}
+
 extension MyPageViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
@@ -134,6 +174,7 @@ extension MyPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = MyPageProfileCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
+            cell.inputData = myPageAppData
             return cell
         } else if indexPath.section == 1 {
             let cell = MyPageCustomerServiceCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
