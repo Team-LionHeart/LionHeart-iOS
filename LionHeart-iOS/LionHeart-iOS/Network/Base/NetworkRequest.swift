@@ -10,14 +10,14 @@ import Foundation
 struct NetworkRequest {
     let path: String
     let httpMethod: HttpMethod
-    let parameter: Request?
+    let query: Request?
     let body: Data?
     let header: [String: String]?
 
-    init(path: String, httpMethod: HttpMethod, parameter: Request? = nil, body: Data? = nil, header: [String : String]? = nil) {
+    init(path: String, httpMethod: HttpMethod, query: Request? = nil, body: Data? = nil, header: [String : String]? = nil) {
         self.path = path
         self.httpMethod = httpMethod
-        self.parameter = parameter
+        self.query = query
         self.body = body
         self.header = header
     }
@@ -25,7 +25,7 @@ struct NetworkRequest {
     func makeURLRequest(isLogined: Bool) throws -> URLRequest {
         var urlComponents = URLComponents(string: Config.baseURL)
 
-        if let query = self.parameter {
+        if let query = self.query {
             let queries = query.toDictionary()
             let queryItemArray = queries.map {
                 return URLQueryItem(name: $0.key, value: "\($0.value)")
