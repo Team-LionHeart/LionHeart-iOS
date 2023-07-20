@@ -127,6 +127,11 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ArticleCategoryCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
         cell.inputData = dummyCase[indexPath.item]
+        
+        let ArticleListByCategoryVC = ArticleListByCategoryViewController()
+        ArticleListByCategoryVC.categoryString = dummyCase[indexPath.item].categoryString
+        self.navigationController?.pushViewController(ArticleListByCategoryVC, animated: true)
+        
         return cell
     }
     

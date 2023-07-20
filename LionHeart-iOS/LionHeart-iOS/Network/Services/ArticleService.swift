@@ -33,16 +33,19 @@ final class ArticleService: Serviceable {
         return model.toAppData()
     }
     
-    func getArticleListByCategory(categoryString: String) async throws -> ArticleListByCategoryAppData {
-        let urlRequest = try NetworkRequest(path: "/v1/article/\(categoryString)", httpMethod: .get).makeURLRequest(isLogined: true)
+    func getArticleListByCategory(categoryString: String) async throws -> [ArticleListByCategoryAppData] {
+        let urlRequest = try NetworkRequest(path: "/v1/article?category=\(categoryString)", httpMethod: .get).makeURLRequest(isLogined: true)
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
-        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: ArticleListByCategoryResponse.self)
         
-        return ArticleListByCategoryAppData(articleID: model?.articleId,
-                                            title: model?.title,
-                                            mainImageURL: model?.mainImageUrl,
-                                            articleDetailText: model?.firstBodyContent,
-                                            requiredTime: model?.requiredTime, isMarked: model?.isMarked, tags: model?.tags)
+        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CategoryArticle.self)
+        
+        var listData = [ArticleListByCategoryAppData]()
+        
+        model?.categoryArticles?.forEach {
+            listData.append(ArticleListByCategoryAppData(articleID: $0.articleId, title: $0.title, mainImageURL: $0.mainImageUrl, articleDetailText: $0.firstBodyContent, requiredTime: $0.requiredTime, isMarked: $0.isMarked, tags: $0.tags))
+        }
+        
+        return listData
     }
 }

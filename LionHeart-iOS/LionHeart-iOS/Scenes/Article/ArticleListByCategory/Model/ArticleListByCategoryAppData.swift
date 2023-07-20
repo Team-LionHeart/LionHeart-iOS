@@ -8,11 +8,11 @@
 import Foundation
 
 struct ArticleListByCategoryAppData: AppData {
-    let articleID: Int?
-    let title: String?
-    let mainImageURL: String?
-    let articleDetailText: String?
-    let requiredTime: Int?
-    let isMarked: Bool?
-    let tags: [String]?
+    let articleID: Int
+    let title: String
+    let mainImageURL: String
+    let articleDetailText: String
+    let requiredTime: Int
+    let isMarked: Bool
+    let tags: [String]
 }
