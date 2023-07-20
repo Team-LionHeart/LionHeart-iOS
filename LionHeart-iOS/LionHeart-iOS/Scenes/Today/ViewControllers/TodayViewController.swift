@@ -85,7 +85,9 @@ extension TodayViewController {
                 titleLabel.userNickName = responseArticle.fetalNickname
                 mainArticleView.data = responseArticle
                 todayArticleID = responseArticle.aticleID
-                loadingIndicatorView.stopAnimating()
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.4) {
+                    self.loadingIndicatorView.stopAnimating()
+                }
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
