@@ -24,7 +24,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
                 return
             }
             articleReadTimeLabel.text = "\(inputData.articleReadTime)분 분량"
-            articleTitle.text = inputData.articleTitle
+            articleTitleLabel.text = inputData.articleTitle
             Task {
                 let image = try await LHKingFisherService.fetchImage(with: inputData.articleImage)
                 articleImageView.image = image
@@ -43,7 +43,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
 
     }
     
-    private let articleTitle: UILabel = {
+    private let articleTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.head3)
         label.textColor = .designSystem(.white)
@@ -135,7 +135,7 @@ private extension CurriculumArticleByWeekTableViewCell {
     func setHierarchy() {
         
         articleImageView.addSubviews(readTimeAndBookmarkView)
-        tableViewCellWholeView.addSubviews(articleImageView, articleTagLabel, articleTitle, articleContentLabel, articleReadTimeLabel, bookMarkButton)
+        tableViewCellWholeView.addSubviews(articleImageView, articleTagLabel, articleTitleLabel, articleContentLabel, articleReadTimeLabel, bookMarkButton)
         
         contentView.addSubviews(tableViewCellWholeView)
     }
@@ -175,13 +175,13 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.leading.equalToSuperview()
         }
         
-        articleTitle.snp.makeConstraints{
+        articleTitleLabel.snp.makeConstraints{
             $0.top.equalTo(articleTagLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
         }
         
         articleContentLabel.snp.makeConstraints{
-            $0.top.equalTo(articleTitle.snp.bottom).offset(8)
+            $0.top.equalTo(articleTitleLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
         }

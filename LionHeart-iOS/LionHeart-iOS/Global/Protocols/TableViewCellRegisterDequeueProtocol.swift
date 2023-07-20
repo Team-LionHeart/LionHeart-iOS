@@ -8,11 +8,9 @@
 import UIKit
 
 protocol TableViewCellRegisterDequeueProtocol where Self: UITableViewCell {
-//    associatedtype T: AppData
     static func register(to tableView: UITableView)
     static func dequeueReusableCell(to tableView: UITableView) -> Self
     static var reuseIdentifier: String { get }
-//    var inputData: T? { get set }
 }
 
 extension TableViewCellRegisterDequeueProtocol {

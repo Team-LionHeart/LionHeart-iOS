@@ -37,8 +37,6 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     private lazy var curriculumUserInfoView: CurriculumUserInfoView = {
         let view = CurriculumUserInfoView()
         view.backgroundColor = .designSystem(.background)
-        
-        view.userInfo = userInfoData
         return view
     }()
     

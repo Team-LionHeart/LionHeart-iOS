@@ -5,7 +5,7 @@
 //  Created by 곽성준 on 2023/07/19.
 //
 
-import UIKit
+import Foundation
 
 struct CurriculumResponse: DTO, Response {
     let week: Int
