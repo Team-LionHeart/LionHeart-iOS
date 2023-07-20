@@ -13,7 +13,7 @@ import Lottie
 
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
-    private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
+    private lazy var navigationBar = LHNavigationBarView(type: .curriculumMain, viewController: self)
     
     private var userInfoData: UserInfoData? {
         didSet {
