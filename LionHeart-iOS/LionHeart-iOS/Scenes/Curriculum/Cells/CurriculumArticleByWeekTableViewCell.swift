@@ -93,9 +93,9 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         button.setImage(ImageLiterals.BookMark.activeBookmarkSmall, for: .selected)
         button.addButtonAction { _ in
             
-            let indexPath = self.getIndexPath()
+            guard var indexPath = self.getIndexPath() else { return }
             NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
-                                            object: nil, userInfo: ["bookmarkCellIndexPath": indexPath?.row ?? 0,
+                                            object: nil, userInfo: ["bookmarkCellIndexPath": indexPath.row-1,
                                                                     "bookmarkButtonSelected": !button.isSelected])
             button.isSelected.toggle()
         }

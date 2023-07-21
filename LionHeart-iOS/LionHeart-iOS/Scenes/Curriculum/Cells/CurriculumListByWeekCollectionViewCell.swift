@@ -110,7 +110,7 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
         if indexPath.row == 0 {
 
             let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
-            guard let weekCount else { return CurriculumTableViewCell() }
+//            guard let weekCount else { return CurriculumTableViewCell() } 
             cell.inputData = inputData?.week
             return cell
         } else {
@@ -129,7 +129,7 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
         } else {
             guard let inputData else { return }
             NotificationCenter.default.post(name: NSNotification.Name("didSelectTableViewCell"),
-                                            object: inputData.articleData[indexPath.row - 1].articleId)
+                                            object: inputData.articleData[indexPath.row-1].articleId)
             
         }
     }
