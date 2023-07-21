@@ -11,7 +11,7 @@ import Foundation
 struct UserDefaultToken: AppData, Codable {
     var refreshToken: String?
     var accessToken: String?
-    let fcmToken: String
+    let fcmToken: String?
     
     var isExistJWT: Bool {
         return !(self.refreshToken == nil)

@@ -40,7 +40,7 @@ final class AuthService: Serviceable {
     func login(type: LoginType, kakaoToken: String) async throws {
         // 1. UserDefault에서 토큰 가져오기
         guard let fcmToken = UserDefaultsManager.tokenKey?.fcmToken else {
-            throw NetworkError.clientError(code: "", message: "fcmToken이 없는데 왜 없죠")
+            throw NetworkError.clientError(code: "", message: "\(UserDefaultsManager.tokenKey)")
         }
         let loginRequest = LoginRequest(socialType: type.raw, token: kakaoToken, fcmToken: fcmToken)
         

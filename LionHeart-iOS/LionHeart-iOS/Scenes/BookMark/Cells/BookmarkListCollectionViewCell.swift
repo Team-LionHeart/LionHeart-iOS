@@ -35,7 +35,6 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
     
     private let articleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .yellow
         return imageView
     }()
     

@@ -17,7 +17,10 @@ final class LoginViewController: UIViewController {
     
     private var kakaoAccessToken: String? {
         didSet {
-            guard let kakaoToken = self.kakaoAccessToken else { return }
+            guard let kakaoToken = self.kakaoAccessToken else {
+                LHToast.show(message: "카카오토큰 언래핑 실패 21")
+                return
+            }
             self.loginAPI(kakaoToken: kakaoToken)
         }
     }
@@ -67,10 +70,12 @@ final class LoginViewController: UIViewController {
 
 extension LoginViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
+        LHToast.show(message: error.description)
         switch error {
         case .clientError(let code, let message):
             print(code, message)
             if code == NetworkErrorCode.unfoundUserErrorCode {
+                LHToast.show(message: "코드 잘돌아감")
                 self.moveUserToOnboardingViewController()
             }
         default:
@@ -84,11 +89,15 @@ extension LoginViewController {
         Task {
             do {
                 try await AuthService.shared.login(type: .kakao, kakaoToken: kakaoToken)
-                guard let window = self.view.window else { return }
+                guard let window = self.view.window else {
+                    LHToast.show(message: "로그인api에서 window guard let 88")
+                    return
+                }
                 let mainTabbarViewController = TabBarViewController()
                 ViewControllerUtil.setRootViewController(window: window, viewController: mainTabbarViewController, withAnimation: false)
             } catch {
                 guard let error = error as? NetworkError else {
+                    LHToast.show(message: "넷웤에러 95")
                     return
                 }
                 handleError(error)
@@ -144,9 +153,17 @@ private extension LoginViewController {
     
     private func loginKakaoWithApp() {
         UserApi.shared.loginWithKakaoTalk { oAuthToken, error in
-            guard error == nil else { return }
+            guard error == nil else {
+                LHToast.show(message: "카카오api에러 151")
+                return
+                
+            }
             print("Login with KAKAO App Success !!")
-            guard let oAuthToken = oAuthToken else { return }
+            guard let oAuthToken = oAuthToken else {
+                LHToast.show(message: "카카오api에러 157")
+                return
+                
+            }
             print(oAuthToken.accessToken)
             self.kakaoAccessToken = oAuthToken.accessToken
         }
@@ -154,9 +171,17 @@ private extension LoginViewController {
 
     private func loginKakaoWithWeb() {
         UserApi.shared.loginWithKakaoAccount { oAuthToken, error in
-            guard error == nil else { return }
+            guard error == nil else {
+                LHToast.show(message: "카카오api에러 164")
+                return
+                
+            }
             print("Login with KAKAO Web Success !!")
-            guard let oAuthToken = oAuthToken else { return }
+            guard let oAuthToken = oAuthToken else {
+                LHToast.show(message: "카카오api에러 175")
+                return
+                
+            }
             print(oAuthToken.accessToken)
             self.kakaoAccessToken = oAuthToken.accessToken
         }
