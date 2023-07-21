@@ -98,6 +98,7 @@
 		B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */; };
 		B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
+		B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */; };
 		C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B62A5FFE0E0043EB36 /* UILabel+.swift */; };
 		C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
@@ -305,6 +306,7 @@
 		B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTitleTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyRightTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
+		B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumWeekBackgroundDummy.swift; sourceTree = "<group>"; };
 		C00780B62A5FFE0E0043EB36 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHTodayArticleTitle.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 			children = (
 				F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */,
 				F4DB30AF2A611C9700413EB9 /* CurriculumListByWeekData.swift */,
+				B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1589,6 +1592,7 @@
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
 				4AE19A172A65864F00C1DB7E /* BookmarkService.swift in Sources */,
 				4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */,
+				B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */,
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
 				C0DF035F2A5A9C330037F740 /* ArticleListByWeekViewController.swift in Sources */,
 				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekRowZeroTableViewCell.swift in Sources */,
