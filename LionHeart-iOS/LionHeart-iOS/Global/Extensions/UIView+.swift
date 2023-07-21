@@ -35,7 +35,7 @@ extension UIView{
         case horizontal
     }
     
-    func setGradient(firstColor: UIColor, secondColor: UIColor, axis: GradientAxis){
+    func setGradient(firstColor: UIColor, secondColor: UIColor, axis: GradientAxis) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.colors = [firstColor.cgColor, secondColor.cgColor]
         if axis == .horizontal {

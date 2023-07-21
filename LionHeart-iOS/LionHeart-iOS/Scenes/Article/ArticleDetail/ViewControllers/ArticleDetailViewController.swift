@@ -78,10 +78,7 @@ extension ArticleDetailViewController {
     private func getArticleDetail() {
         Task {
             do {
-                guard let articleId else {
-                    return
-
-                }
+                guard let articleId else { return }
                 self.articleDatas = try await ArticleService.shared.getArticleDetail(articleId: articleId)
             } catch {
                 guard let error = error as? NetworkError else { return }
