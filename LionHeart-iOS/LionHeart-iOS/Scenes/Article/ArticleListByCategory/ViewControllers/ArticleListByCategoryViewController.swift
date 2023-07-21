@@ -144,10 +144,6 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
 
 extension ArticleListByCategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let articleDetailViewController = ArticleDetailViewController()
-        articleDetailViewController.setArticleId(id: articleListData[indexPath.row].articleId)
-        articleDetailViewController.isModalInPresentation = true
-        articleDetailViewController.modalPresentationStyle = .overFullScreen
-        self.present(articleDetailViewController, animated: true)
+        self.presentArticleDetailFullScreen(articleID: articleListData[indexPath.row].articleId)
     }
 }

@@ -169,10 +169,7 @@ private extension TodayViewController {
     }
     
     @objc func articleTapped(_ sender: UIButton) {
-        let articleDetailViewController = ArticleDetailViewController()
-        articleDetailViewController.setArticleId(id: self.todayArticleID)
-        articleDetailViewController.isModalInPresentation = true
-        articleDetailViewController.modalPresentationStyle = .overFullScreen
-        self.present(articleDetailViewController, animated: true)
+        guard let todayArticleID else { return }
+        self.presentArticleDetailFullScreen(articleID: todayArticleID)
     }
 }
