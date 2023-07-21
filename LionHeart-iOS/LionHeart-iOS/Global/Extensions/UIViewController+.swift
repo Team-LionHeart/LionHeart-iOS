@@ -92,7 +92,7 @@ extension UIViewController {
         let articleDetailViewController = ArticleDetailViewController()
         articleDetailViewController.setArticleId(id: articleID)
         articleDetailViewController.isModalInPresentation = true
-        articleDetailViewController.modalPresentationStyle = .overFullScreen
+        articleDetailViewController.modalPresentationStyle = .fullScreen
         self.present(articleDetailViewController, animated: true)
     }
 }
