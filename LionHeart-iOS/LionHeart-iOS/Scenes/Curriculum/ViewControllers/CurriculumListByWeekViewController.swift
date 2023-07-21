@@ -154,8 +154,9 @@ private extension CurriculumListByWeekViewController {
                 guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
                 guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
                 guard let listByWeekDatas else { return }
-                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath-1].articleId,
-                                                                              bookmarkStatus: buttonSelected))
+                try await BookmarkService.shared.postBookmark(
+                    BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
+                                    bookmarkStatus: buttonSelected))
                 hideLoading()
                 buttonSelected ? LHToast.show(message: "북마크가 추가되었습니다") : LHToast.show(message: "북마크가 해제되었습니다")
             } catch {
@@ -182,7 +183,7 @@ private extension CurriculumListByWeekViewController {
         : currentPage + 1
 
         guard let listByWeekDatas else { return }
-        let nextPage = min(listByWeekDatas.articleData.count - 1, nextIndexPathItem)
+        let nextPage = min(pregnancy - 1, nextIndexPathItem)
         self.currentPage = nextPage
     }
     
