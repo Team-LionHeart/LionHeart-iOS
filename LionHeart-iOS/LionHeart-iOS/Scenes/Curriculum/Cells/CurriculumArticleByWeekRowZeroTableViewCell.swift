@@ -31,6 +31,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         let imageView = UIImageView()
         imageView.backgroundColor = .designSystem(.gray500)
         imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
