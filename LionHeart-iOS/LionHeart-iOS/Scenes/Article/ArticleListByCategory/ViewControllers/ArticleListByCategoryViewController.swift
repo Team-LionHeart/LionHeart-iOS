@@ -109,6 +109,7 @@ private extension ArticleListByCategoryViewController {
                 
                 try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: articleListData[indexPath].articleId,
                                                                               bookmarkStatus: buttonSelected))
+                buttonSelected ? LHToast.show(message: "북마크에 추가되었습니다") : LHToast.show(message: "북마크에 해제되었습니다")
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
