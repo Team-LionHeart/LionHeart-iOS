@@ -21,7 +21,7 @@ class ArticleDetailTableView: UITableView {
     }
 
     private func setUI() {
-        self.backgroundColor = .designSystem(.black)
+        self.backgroundColor = .designSystem(.background)
     }
 
     private func setTableView() {

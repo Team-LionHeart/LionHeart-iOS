@@ -52,6 +52,7 @@ final class ArticleDetailViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         setHierarchy()
         setLayout()
         setTableView()
@@ -121,6 +122,10 @@ extension ArticleDetailViewController: ViewControllerServiceable {
 
 private extension ArticleDetailViewController {
     
+    func setUI() {
+        view.backgroundColor = .designSystem(.background)
+    }
+    
     func setHierarchy() {
         view.addSubviews(navigationBar, articleTableView, progressBar, scrollToTopButton)
     }
@@ -138,7 +143,7 @@ private extension ArticleDetailViewController {
         articleTableView.snp.makeConstraints { make in
             make.top.equalTo(progressBar.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
         }
 
         scrollToTopButton.snp.makeConstraints { make in
