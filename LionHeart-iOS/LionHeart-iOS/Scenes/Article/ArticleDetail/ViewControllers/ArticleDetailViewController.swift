@@ -18,8 +18,6 @@ final class ArticleDetailViewController: UIViewController {
     private var progressBar = LHProgressView()
 
     private let articleTableView = ArticleDetailTableView()
-    
-    private let loadingIndicatorView = LHLoadingView()
 
     private lazy var scrollToTopButton: UIButton = {
         let button = UIButton()
@@ -52,6 +50,7 @@ final class ArticleDetailViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        setStyle()
         setHierarchy()
         setLayout()
         setTableView()
@@ -120,6 +119,10 @@ extension ArticleDetailViewController: ViewControllerServiceable {
 // MARK: - UI & Layout
 
 private extension ArticleDetailViewController {
+
+    func setStyle() {
+        self.view.backgroundColor = .designSystem(.background)
+    }
     
     func setHierarchy() {
         view.addSubviews(navigationBar, articleTableView, progressBar, scrollToTopButton)
