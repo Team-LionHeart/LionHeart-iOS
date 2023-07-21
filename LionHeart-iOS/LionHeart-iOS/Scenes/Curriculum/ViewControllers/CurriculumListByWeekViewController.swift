@@ -154,9 +154,10 @@ private extension CurriculumListByWeekViewController {
                 guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
                 guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
                 guard let listByWeekDatas else { return }
-                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
+                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath-1].articleId,
                                                                               bookmarkStatus: buttonSelected))
                 hideLoading()
+                buttonSelected ? LHToast.show(message: "북마크가 추가되었습니다") : LHToast.show(message: "북마크가 해제되었습니다")
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -188,11 +189,7 @@ private extension CurriculumListByWeekViewController {
     @objc
     func didSelectTableVIewCell(notification: NSNotification) {
         guard let articleId = notification.object as? Int else { return }
-        
-        let articleDetailVC = ArticleDetailViewController()
-        articleDetailVC.setArticleId(id: articleId)
-        articleDetailVC.modalPresentationStyle = .overFullScreen
-        self.present(articleDetailVC, animated: true)
+        presentArticleDetailFullScreen(articleID: articleId)
         
     }
     

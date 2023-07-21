@@ -13,7 +13,11 @@ import SnapKit
 final class ArticleListByCategoryViewController: UIViewController {
     
     var categoryString = String()
-    var articleListData = [ArticleDataByWeek]()
+    var articleListData: [ArticleDataByWeek] = [] {
+        didSet {
+            articleListTableView.reloadData()
+        }
+    }
     
     private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
     
@@ -34,15 +38,9 @@ final class ArticleListByCategoryViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        
         setHierarchy()
-        
         setLayout()
-        
-        setAddTarget()
-        
         setDelegate()
-        
         setTableView()
         setNotificationCenter()
     }
@@ -85,12 +83,9 @@ private extension ArticleListByCategoryViewController {
         }
     }
     
-    func setAddTarget() {
-        
-    }
-    
     func setDelegate() {
         articleListTableView.dataSource = self
+        articleListTableView.delegate = self
     }
     
     func setTableView() {
@@ -109,6 +104,7 @@ private extension ArticleListByCategoryViewController {
                 
                 try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: articleListData[indexPath].articleId,
                                                                               bookmarkStatus: buttonSelected))
+                buttonSelected ? LHToast.show(message: "북마크에 추가되었습니다") : LHToast.show(message: "북마크에 해제되었습니다")
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -146,7 +142,13 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: articleListTableView)
-        cell.inputData = articleListData[indexPath.item]
+        cell.inputData = articleListData[indexPath.row]
         return cell
+    }
+}
+
+extension ArticleListByCategoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presentArticleDetailFullScreen(articleID: articleListData[indexPath.row].articleId)
     }
 }

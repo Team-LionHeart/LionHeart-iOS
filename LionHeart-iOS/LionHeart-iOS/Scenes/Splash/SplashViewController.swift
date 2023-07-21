@@ -118,10 +118,10 @@ private extension SplashViewController {
                 guard let token = UserDefaultsManager.tokenKey else { return }
                 await logout(token: token)
                 // LoginVC로 이동하기
-                let loginVC = LoginViewController()
+                let loginVC = UINavigationController(rootViewController: LoginViewController())
                 setRootViewController(to: loginVC, animation: true)
             } else if code == NetworkErrorCode.unfoundUserErrorCode {
-                let loginVC = LoginViewController()
+                let loginVC = UINavigationController(rootViewController: LoginViewController())
                 setRootViewController(to: loginVC, animation: true)
             }
         default:

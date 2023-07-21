@@ -119,7 +119,6 @@ extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
             cell.inputData = inputData?.articleData[indexPath.row - 1]
             cell.selectionStyle = .none
             cell.backgroundColor = .designSystem(.background)
-            cell.isBookmarkedIndexPath = indexPath
             return cell
         }
     }
