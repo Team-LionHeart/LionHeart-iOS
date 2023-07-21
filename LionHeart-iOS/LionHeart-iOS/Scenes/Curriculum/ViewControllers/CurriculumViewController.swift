@@ -277,10 +277,10 @@ extension CurriculumViewController: UITableViewDataSource {
 }
 
 extension CurriculumViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let curriculumListByWeekViewController = CurriculumListByWeekViewController()
 //        self.navigationController?.pushViewController(curriculumListByWeekViewController, animated: true)
-    }
+//    }
 }
 
 extension CurriculumViewController: ViewControllerServiceable {
