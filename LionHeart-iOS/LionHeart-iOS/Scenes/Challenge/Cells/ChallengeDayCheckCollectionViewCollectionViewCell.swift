@@ -12,23 +12,11 @@ import SnapKit
 
 final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
-    var textColorBool = false
-    
-    var inputData: DummyModel? {
-        didSet {
-            
-        }
-    }
+    var inputData: DummyModel?
     
     var inputString: String? {
         didSet {
             countLabel.text = inputString
-            
-            if textColorBool {
-                countLabel.textColor = .designSystem(.white)
-            } else {
-                countLabel.textColor = .designSystem(.gray600)
-            }
         }
     }
     
@@ -48,20 +36,9 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
     }
     
     @available(*, unavailable)
@@ -89,13 +66,5 @@ private extension ChallengeDayCheckCollectionViewCollectionViewCell {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
     }
 }

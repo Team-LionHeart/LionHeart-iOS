@@ -189,11 +189,7 @@ private extension CurriculumListByWeekViewController {
     @objc
     func didSelectTableVIewCell(notification: NSNotification) {
         guard let articleId = notification.object as? Int else { return }
-        
-        let articleDetailVC = ArticleDetailViewController()
-        articleDetailVC.setArticleId(id: articleId)
-        articleDetailVC.modalPresentationStyle = .overFullScreen
-        self.present(articleDetailVC, animated: true)
+        presentArticleDetailFullScreen(articleID: articleId)
         
     }
     

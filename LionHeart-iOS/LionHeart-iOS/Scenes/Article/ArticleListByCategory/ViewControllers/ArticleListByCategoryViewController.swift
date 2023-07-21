@@ -38,15 +38,9 @@ final class ArticleListByCategoryViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        
         setHierarchy()
-        
         setLayout()
-        
-        setAddTarget()
-        
         setDelegate()
-        
         setTableView()
         setNotificationCenter()
     }
@@ -89,12 +83,9 @@ private extension ArticleListByCategoryViewController {
         }
     }
     
-    func setAddTarget() {
-        
-    }
-    
     func setDelegate() {
         articleListTableView.dataSource = self
+        articleListTableView.delegate = self
     }
     
     func setTableView() {
@@ -158,6 +149,6 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
 
 extension ArticleListByCategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // MARK: cell 클릭시 아티클 상세뷰로 이동
+        self.presentArticleDetailFullScreen(articleID: articleListData[indexPath.row].articleId)
     }
 }
