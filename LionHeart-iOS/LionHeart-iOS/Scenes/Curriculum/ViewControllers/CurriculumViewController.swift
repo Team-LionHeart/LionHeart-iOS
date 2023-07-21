@@ -256,15 +256,7 @@ extension CurriculumViewController: UITableViewDataSource {
         }
         
         let listByWeekVC = CurriculumListByWeekViewController()
-        
-        
-        if indexPath.section == curriculumViewDatas.count - 1 {
-            listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row + 1
-            
-        } else {
-            listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row
-        }
-        
+        listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row
         self.navigationController?.pushViewController(listByWeekVC, animated: true)
         
     }

@@ -154,8 +154,9 @@ private extension CurriculumListByWeekViewController {
                 guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
                 guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
                 guard let listByWeekDatas else { return }
-                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
-                                                                              bookmarkStatus: buttonSelected))
+                try await BookmarkService.shared.postBookmark(
+                    BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
+                                    bookmarkStatus: buttonSelected))
                 hideLoading()
             } catch {
                 guard let error = error as? NetworkError else { return }
