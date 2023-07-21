@@ -34,15 +34,9 @@ final class ArticleListByCategoryViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        
         setHierarchy()
-        
         setLayout()
-        
-        setAddTarget()
-        
         setDelegate()
-        
         setTableView()
         setNotificationCenter()
     }
@@ -85,12 +79,9 @@ private extension ArticleListByCategoryViewController {
         }
     }
     
-    func setAddTarget() {
-        
-    }
-    
     func setDelegate() {
         articleListTableView.dataSource = self
+        articleListTableView.delegate = self
     }
     
     func setTableView() {
@@ -148,5 +139,11 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
         let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: articleListTableView)
         cell.inputData = articleListData[indexPath.item]
         return cell
+    }
+}
+
+extension ArticleListByCategoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presentArticleDetailFullScreen(articleID: articleListData[indexPath.row].articleId)
     }
 }
