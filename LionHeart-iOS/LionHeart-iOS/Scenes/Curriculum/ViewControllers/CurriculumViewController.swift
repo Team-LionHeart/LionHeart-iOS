@@ -185,14 +185,26 @@ private extension CurriculumViewController {
         guard let userInfoData else { return }
         
         let userWeek = userInfoData.userWeekInfo
-        let weekPerMonth = 4
-        let desireSection = (userWeek / weekPerMonth) - 1
-        let desireRow = (userWeek % weekPerMonth)
-        let indexPath = IndexPath(row: desireRow, section: desireSection)
         
-        curriculumViewDatas[desireSection].weekDatas[desireRow].isExpanded = true
-        self.curriculumTableView.reloadData()
-        self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+        if userWeek == 40 {
+            let weekPerMonth = 4
+            let desireSection = (userWeek / weekPerMonth) - 2
+            let desireRow = (userWeek % weekPerMonth)
+            let indexPath = IndexPath(row: desireRow, section: desireSection)
+            
+            curriculumViewDatas[desireSection].weekDatas[desireRow+4].isExpanded = true
+            self.curriculumTableView.reloadData()
+            self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+        } else {
+            let weekPerMonth = 4
+            let desireSection = (userWeek / weekPerMonth) - 1
+            let desireRow = (userWeek % weekPerMonth)
+            let indexPath = IndexPath(row: desireRow, section: desireSection)
+            
+            curriculumViewDatas[desireSection].weekDatas[desireRow].isExpanded = true
+            self.curriculumTableView.reloadData()
+            self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+        }
     }
     
     func configureUserInfoData() {
