@@ -16,7 +16,7 @@ protocol CurriculumTableViewToggleButtonTappedProtocol: AnyObject {
 }
 
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
-    
+
     weak var delegate: CurriculumTableViewToggleButtonTappedProtocol?
     
     var cellIndexPath: IndexPath?
@@ -78,9 +78,10 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         return line
     }()
     
-    private lazy var curriculumToggleDirectionButton: UIButton = {
+    lazy var curriculumToggleDirectionButton: UIButton = {
         var button = UIButton()
         button.setImage(ImageLiterals.Curriculum.arrowDownSmall, for: .normal)
+        button.setImage(ImageLiterals.Curriculum.arrowUpSmall, for: .selected)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addButtonAction { _ in
             self.delegate?.toggleButtonTapped(indexPath: self.cellIndexPath)

@@ -59,12 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-//        guard let fcmToken else { return }
+        guard let fcmToken else { return }
         print("✅✅✅✅✅✅✅✅✅✅✅✅✅fcmToken받아오기 성공✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         print("fcmToken: ", fcmToken)
         
-        var refeshToken = UserDefaultsManager.tokenKey?.refreshToken
-        var accessToken = UserDefaultsManager.tokenKey?.accessToken
+        let refeshToken = UserDefaultsManager.tokenKey?.refreshToken
+        let accessToken = UserDefaultsManager.tokenKey?.accessToken
         UserDefaultsManager.tokenKey = UserDefaultToken(refreshToken: refeshToken, accessToken: accessToken, fcmToken: fcmToken)
     }
 }
