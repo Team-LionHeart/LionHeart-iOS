@@ -123,10 +123,16 @@ private extension ThumnailTableViewCell {
 }
 
 extension ThumnailTableViewCell {
+    func setThumbnailImageView() {
+        bookMarkButton.isHidden = false
+        gradientImageView.isHidden = false
+    }
+
     func setImageTypeCell() {
         imageCaptionLabel.snp.updateConstraints { make in
             make.bottom.equalToSuperview().inset(72)
         }
+        gradientImageView.isHidden = true
         bookMarkButton.isHidden = true
     }
 }

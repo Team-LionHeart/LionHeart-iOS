@@ -33,16 +33,14 @@ final class ArticleDetailViewController: UIViewController {
 
     // MARK: - Properties
 
+    private var isBookMarked: Bool?
+
     private var articleDatas: [BlockTypeAppData]? {
         didSet {
             self.articleTableView.reloadData()
             hideLoading()
         }
     }
-
-//    private var articleDatas: [BlockTypeAppData] = ArticleDetail.dummy().toAppData()
-
-    private var isArticleMarked: Bool?
 
     private var articleId: Int?
 
@@ -91,6 +89,7 @@ extension ArticleDetailViewController {
             do {
                 let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkStatus: isSelected)
                 try await BookmarkService.shared.postBookmark(bookmarkRequest)
+                isBookMarked = isSelected
             } catch {
                 guard let error = error as? NetworkError else { return }
                 self.handleError(error)
@@ -191,19 +190,24 @@ extension ArticleDetailViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let articleDatas else { return UITableViewCell() }
+
         switch articleDatas[indexPath.row] {
         case .thumbnail(let isMarked, let thumbnailModel):
             let cell = ThumnailTableViewCell.dequeueReusableCell(to: articleTableView)
-            self.isArticleMarked = isMarked
-            cell.isMarked = self.isArticleMarked
             cell.inputData = thumbnailModel
-            
             cell.selectionStyle = .none
             cell.bookmarkButtonDidTap = { isSelected in
                 guard let articleId = self.articleId else { return }
-                
+
                 self.articleBookMark(articleId: articleId, isSelected: isSelected)
             }
+
+            if let isBookMarked {
+                cell.isMarked = isBookMarked
+            } else {
+                cell.isMarked = isMarked
+            }
+            cell.setThumbnailImageView()
             return cell
         case .articleTitle(let titleModel):
             let cell = TitleTableViewCell.dequeueReusableCell(to: articleTableView)
