@@ -141,15 +141,17 @@ final class ChallengeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         Task {
-            do{
+            do {
+                self.showLoading()
                 let model = try await ChallengeService.shared.inquireChallengeInfo()
                 self.inputData = model
                 self.tags = model.daddyAttendances
                 self.challengeDayCheckCollectionView.reloadData()
+                self.hideLoading()
             } catch {
-                 print(error)
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
             }
         }
     }
@@ -288,12 +290,31 @@ extension ChallengeViewController: UICollectionViewDataSource {
         if indexPath.item < tags.count {
             cell.inputString = tags[indexPath.item]
             cell.backgroundColor = .designSystem(.background)
-            cell.textColorBool = true
         } else {
             cell.inputString = "\(indexPath.section + indexPath.row + 1)"
             cell.backgroundColor = .designSystem(.gray1000)
-            cell.textColorBool = false
         }
         return cell
+    }
+}
+
+extension ChallengeViewController: ViewControllerServiceable {
+    func handleError(_ error: NetworkError) {
+        switch error {
+        case .urlEncodingError:
+            LHToast.show(message: "url인코딩에러")
+        case .jsonDecodingError:
+            LHToast.show(message: "챌린지Decode에러")
+        case .badCasting:
+            LHToast.show(message: "배드캐스팅")
+        case .fetchImageError:
+            LHToast.show(message: "챌린지 이미지 패치 에러")
+        case .unAuthorizedError:
+            LHToast.show(message: "챌린지 Auth 에러")
+        case .clientError(_, let message):
+            LHToast.show(message: message)
+        case .serverError:
+            LHToast.show(message: "서버문제!")
+        }
     }
 }
