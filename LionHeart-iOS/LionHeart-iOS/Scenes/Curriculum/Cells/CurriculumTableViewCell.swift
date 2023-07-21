@@ -80,6 +80,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     
     lazy var curriculumToggleDirectionButton: UIButton = {
         var button = UIButton()
+        button.marginImageWithText(margin: 19)
         button.setImage(ImageLiterals.Curriculum.arrowDownSmall, for: .normal)
         button.setImage(ImageLiterals.Curriculum.arrowUpSmall, for: .selected)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -166,7 +167,7 @@ private extension CurriculumTableViewCell {
         curriculumToggleDirectionButton.snp.makeConstraints{
             $0.leading.greaterThanOrEqualTo(weekTitleLabel.snp.trailing).offset(8)
             $0.centerY.equalTo(weekLabel)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(12)
         }
         
         curriculumWholeStackView.snp.makeConstraints{

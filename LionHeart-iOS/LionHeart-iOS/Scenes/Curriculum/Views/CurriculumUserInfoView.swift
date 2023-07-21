@@ -47,6 +47,7 @@ final class CurriculumUserInfoView: UIView {
         let label = UILabel()
         label.font = .pretendard(.head3)
         label.textColor = .designSystem(.gray100)
+        label.textAlignment = .center
         return label
     }()
     
@@ -67,13 +68,8 @@ final class CurriculumUserInfoView: UIView {
     }
     
     override func layoutSubviews() {
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
     }
     
@@ -91,6 +87,7 @@ extension CurriculumUserInfoView {
     
     func setHierarchy() {
         self.addSubviews(userWeekDayInfoView, weekImageView, userWeekLabel, weekLabel, dayImageView, userDayLabel, dayLabel)
+        dayImageView.addSubview(userDayLabel)
     }
     
     func setLayout() {
@@ -116,8 +113,7 @@ extension CurriculumUserInfoView {
         }
         
         userDayLabel.snp.makeConstraints{
-            $0.leading.equalTo(dayImageView.snp.leading).offset(4)
-            $0.centerY.equalTo(dayImageView)
+            $0.center.equalToSuperview()
         }
         
         dayLabel.snp.makeConstraints{
