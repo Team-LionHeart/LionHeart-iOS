@@ -28,7 +28,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
             articleContentLabel.text = inputData.articleContent
             articleContentLabel.lineBreakStrategy = .pushOut
             articleContentLabel.lineBreakMode = .byTruncatingTail
-            
+            bookMarkButton.isSelected = inputData.isArticleBookmarked
         }
     }
     

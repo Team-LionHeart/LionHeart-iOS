@@ -13,7 +13,11 @@ import SnapKit
 final class ArticleListByCategoryViewController: UIViewController {
     
     var categoryString = String()
-    var articleListData = [ArticleDataByWeek]()
+    var articleListData: [ArticleDataByWeek] = [] {
+        didSet {
+            articleListTableView.reloadData()
+        }
+    }
     
     private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
     
@@ -147,7 +151,7 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: articleListTableView)
-        cell.inputData = articleListData[indexPath.item]
+        cell.inputData = articleListData[indexPath.row]
         return cell
     }
 }
