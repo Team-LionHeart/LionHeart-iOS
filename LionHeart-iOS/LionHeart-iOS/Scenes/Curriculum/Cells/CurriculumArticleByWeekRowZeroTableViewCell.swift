@@ -11,20 +11,22 @@ import UIKit
 import SnapKit
 
 final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
-        
+
     var inputData: Int? {
         didSet {
             guard let inputData else { return }
             //inputData는 row가 0부터인데 주차정보는 4주차부터 시작이므로 +4를 해줌
+
             weekLabel.text = "\(inputData)주차"
-            
+            weekBackGroundImageView.image = WeekBackgroundImage.dummy()[inputData-4].weekBackgroundImage
+
         }
     }
     
     private enum Size {
         static let weekBackGroundImageSize: CGFloat = 200 / 375
     }
-        
+
     private let weekBackGroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .designSystem(.gray500)
@@ -37,7 +39,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         button.setImage(ImageLiterals.Curriculum.arrowLeftWeek, for: .normal)
         button.addButtonAction { _ in
 
-        NotificationCenter.default.post(name: NSNotification.Name("leftButton"),
+            NotificationCenter.default.post(name: NSNotification.Name("leftButton"),
                                             object: nil)
         }
         return button
@@ -72,7 +74,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
     }()
     
     private let curriculumAndWeekStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.spacing = 2
         stackView.distribution = .fill
         stackView.axis = .vertical

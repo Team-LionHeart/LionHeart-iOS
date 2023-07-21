@@ -63,8 +63,8 @@ extension AppDelegate: MessagingDelegate {
         print("✅✅✅✅✅✅✅✅✅✅✅✅✅fcmToken받아오기 성공✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         print("fcmToken: ", fcmToken)
         
-        var refeshToken = UserDefaultsManager.tokenKey?.refreshToken
-        var accessToken = UserDefaultsManager.tokenKey?.accessToken
+        let refeshToken = UserDefaultsManager.tokenKey?.refreshToken
+        let accessToken = UserDefaultsManager.tokenKey?.accessToken
         UserDefaultsManager.tokenKey = UserDefaultToken(refreshToken: refeshToken, accessToken: accessToken, fcmToken: fcmToken)
     }
 }
