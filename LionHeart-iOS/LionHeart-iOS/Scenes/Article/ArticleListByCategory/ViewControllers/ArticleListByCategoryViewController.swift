@@ -102,9 +102,9 @@ private extension ArticleListByCategoryViewController {
                 guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
                 guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
                 
-                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: articleListData[indexPath].articleId,
+                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: articleListData[indexPath+1].articleId,
                                                                               bookmarkStatus: buttonSelected))
-                buttonSelected ? LHToast.show(message: "북마크에 추가되었습니다") : LHToast.show(message: "북마크에 해제되었습니다")
+                buttonSelected ? LHToast.show(message: "북마크에 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크에 해제되었습니다", isTabBar: true)
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
