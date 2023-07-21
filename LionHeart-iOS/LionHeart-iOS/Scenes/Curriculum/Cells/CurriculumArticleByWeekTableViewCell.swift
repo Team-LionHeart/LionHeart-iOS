@@ -13,8 +13,6 @@ import SnapKit
 
 final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
-    var isBookmarkedIndexPath: IndexPath?
-    
     var inputData: ArticleDataByWeek? {
         didSet {
             guard let inputData else {
@@ -95,9 +93,9 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         button.setImage(ImageLiterals.BookMark.activeBookmarkSmall, for: .selected)
         button.addButtonAction { _ in
             
-            // VC로 넘기기 노티피케이션
+            let indexPath = self.getIndexPath()
             NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
-                                            object: nil, userInfo: ["bookmarkCellIndexPath": self.isBookmarkedIndexPath?.row ?? 0,
+                                            object: nil, userInfo: ["bookmarkCellIndexPath": indexPath?.row ?? 0,
                                                                     "bookmarkButtonSelected": !button.isSelected])
             button.isSelected.toggle()
         }
@@ -181,5 +179,10 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(10)
         }
+    }
+    
+    func getIndexPath() -> IndexPath? {
+        guard let superView = self.superview as? UITableView else { return nil }
+        return superView.indexPath(for: self)
     }
 }
