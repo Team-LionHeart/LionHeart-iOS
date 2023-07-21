@@ -44,7 +44,7 @@ final class ArticleService: Serviceable {
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
-        guard let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CurriculumListByWeekResponse.self) else {
+        guard let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: CategoryList.self) else {
             return .init(articleData: [], week: nil)
         }
         

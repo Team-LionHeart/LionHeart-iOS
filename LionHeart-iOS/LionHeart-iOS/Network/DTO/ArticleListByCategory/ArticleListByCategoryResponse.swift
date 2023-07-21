@@ -8,7 +8,7 @@
 import Foundation
 
 struct CategoryList: DTO, Response {
-    let categoryArticles: [ArticleListByCategoryResponse]
+    let articleSummaries: [ArticleListByCategoryResponse]
 }
 
 struct ArticleListByCategoryResponse: DTO, Response {
@@ -24,7 +24,7 @@ struct ArticleListByCategoryResponse: DTO, Response {
 extension CategoryList {
     func toAppData() -> CurriculumWeekData {
 
-        let articles = self.categoryArticles.map { response in
+        let articles = self.articleSummaries.map { response in
             return ArticleDataByWeek(articleId: response.articleId,
                                      articleTitle: response.title,
                                      articleImage: response.mainImageUrl,
