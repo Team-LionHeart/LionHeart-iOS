@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-//        guard let fcmToken else { return }
+        guard let fcmToken else { return }
         print("✅✅✅✅✅✅✅✅✅✅✅✅✅fcmToken받아오기 성공✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         print("fcmToken: ", fcmToken)
         
