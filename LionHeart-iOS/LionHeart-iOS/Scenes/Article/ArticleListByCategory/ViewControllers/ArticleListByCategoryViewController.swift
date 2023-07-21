@@ -150,3 +150,9 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension ArticleListByCategoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // MARK: cell 클릭시 아티클 상세뷰로 이동
+    }
+}
