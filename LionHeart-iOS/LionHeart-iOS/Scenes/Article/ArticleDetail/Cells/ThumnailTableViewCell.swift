@@ -25,6 +25,12 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
         return imageView
     }()
 
+    let gradientImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Curriculum.gradient
+        return imageView
+    }()
+
     private let imageCaptionLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body4)
@@ -77,6 +83,7 @@ private extension ThumnailTableViewCell {
     
     func setHierarchy() {
         contentView.addSubviews(thumbnailImageView, imageCaptionLabel, bookMarkButton)
+        thumbnailImageView.addSubview(gradientImageView)
     }
     
     func setLayout() {
@@ -84,6 +91,11 @@ private extension ThumnailTableViewCell {
             make.top.leading.trailing.equalToSuperview()
             make.width.equalTo(Constant.Screen.width)
             make.height.equalTo(thumbnailImageView.snp.width).multipliedBy(Size.thumbnailWidthHeightRatio)
+        }
+
+        gradientImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
 
         imageCaptionLabel.snp.makeConstraints { make in
