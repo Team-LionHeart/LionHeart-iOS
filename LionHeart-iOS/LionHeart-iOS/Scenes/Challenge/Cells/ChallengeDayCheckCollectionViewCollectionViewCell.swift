@@ -20,6 +20,12 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
         }
     }
     
+    var whiteTextColor: UIColor? {
+        didSet {
+            countLabel.textColor = whiteTextColor
+        }
+    }
+    
     private let countLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center

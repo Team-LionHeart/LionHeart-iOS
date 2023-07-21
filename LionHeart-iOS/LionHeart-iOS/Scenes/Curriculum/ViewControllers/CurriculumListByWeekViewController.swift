@@ -151,14 +151,19 @@ private extension CurriculumListByWeekViewController {
     @objc func bookmarkButtonTapped(notification: NSNotification) {
         Task {
             do {
+                
                 guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
                 guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
                 guard let listByWeekDatas else { return }
+                
+                
+                print(indexPath)
+                print(buttonSelected)
                 try await BookmarkService.shared.postBookmark(
                     BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
                                     bookmarkStatus: buttonSelected))
                 hideLoading()
-                buttonSelected ? LHToast.show(message: "북마크가 추가되었습니다") : LHToast.show(message: "북마크가 해제되었습니다")
+                buttonSelected ? LHToast.show(message: "북마크가 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크가 해제되었습니다", isTabBar: true)
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -182,7 +187,7 @@ private extension CurriculumListByWeekViewController {
         ? weekToIndexPathItem + 1
         : currentPage + 1
 
-        guard let listByWeekDatas else { return }
+//        guard let listByWeekDatas else { return }
         let nextPage = min(pregnancy - 1, nextIndexPathItem)
         self.currentPage = nextPage
     }

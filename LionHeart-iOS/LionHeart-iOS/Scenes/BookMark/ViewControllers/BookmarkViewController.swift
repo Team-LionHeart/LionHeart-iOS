@@ -137,6 +137,7 @@ extension BookmarkViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = BookmarkDetailCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
+            cell.inputData = bookmarkAppData
             return cell
         } else {
             let cell = BookmarkListCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
@@ -176,5 +177,11 @@ extension BookmarkViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         section == 1 ? 20 : CGFloat()
+    }
+}
+
+extension BookmarkViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.presentArticleDetailFullScreen(articleID: bookmarkList[indexPath.item].articleID)
     }
 }

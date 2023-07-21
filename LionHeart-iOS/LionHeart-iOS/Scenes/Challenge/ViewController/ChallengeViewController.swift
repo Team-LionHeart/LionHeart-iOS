@@ -57,7 +57,7 @@ final class ChallengeViewController: UIViewController {
             self.nicknameLabel.text = "\(babyNickname)아빠 님,"
             
             if let howLongDay = inputData?.howLongDay {
-                            self.challengeDayLabel.text = "\(howLongDay)일째 도전 중"
+                self.challengeDayLabel.text = "\(howLongDay)일째 도전 중"
             }
     
             self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
@@ -290,6 +290,7 @@ extension ChallengeViewController: UICollectionViewDataSource {
         if indexPath.item < tags.count {
             cell.inputString = tags[indexPath.item]
             cell.backgroundColor = .designSystem(.background)
+            cell.whiteTextColor = .designSystem(.white)
         } else {
             cell.inputString = "\(indexPath.section + indexPath.row + 1)"
             cell.backgroundColor = .designSystem(.gray1000)

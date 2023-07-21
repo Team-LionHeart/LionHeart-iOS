@@ -24,9 +24,10 @@ final class BookmarkDetailCollectionViewCell: UICollectionViewCell, CollectionVi
         return label
     }()
     
-    var inputData: DummyModel? {
+    var inputData: BookmarkAppData? {
         didSet {
-            /// action
+            guard let inputData else { return }
+            bookmarkDetailLabel.text = inputData.nickName +  " 아빠님이\n보관한 아티클이에요"
         }
     }
 

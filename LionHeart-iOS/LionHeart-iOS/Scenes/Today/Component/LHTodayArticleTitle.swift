@@ -12,7 +12,7 @@ final class LHTodayArticleTitle: UILabel {
     var userNickName: String? {
         didSet {
             guard let userNickName else { return }
-            self.text = userNickName + "님,"
+            self.text = userNickName + " 아빠님,"
         }
     }
     
