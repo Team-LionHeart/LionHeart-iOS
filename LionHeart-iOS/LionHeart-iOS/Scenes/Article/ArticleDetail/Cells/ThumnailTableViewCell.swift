@@ -67,6 +67,10 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func prepareForReuse() {
+        self.thumbnailImageView.image = nil
+    }
 }
 
 private extension ThumnailTableViewCell {
