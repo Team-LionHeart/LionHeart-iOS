@@ -89,6 +89,7 @@ extension ArticleDetailViewController {
             do {
                 let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkStatus: isSelected)
                 try await BookmarkService.shared.postBookmark(bookmarkRequest)
+                LHToast.show(message: "북마크가 추가되었습니다")
                 isBookMarked = isSelected
             } catch {
                 guard let error = error as? NetworkError else { return }

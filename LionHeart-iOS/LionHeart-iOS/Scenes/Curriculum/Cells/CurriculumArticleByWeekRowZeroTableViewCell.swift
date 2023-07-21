@@ -34,6 +34,12 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+
+    private let blurblackView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .designSystem(.black)?.withAlphaComponent(0.4)
+        return view
+    }()
     
     private lazy var leftWeekButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -84,15 +90,9 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
     }
 
     
@@ -109,9 +109,9 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
     func setHierarchy() {
         
         curriculumAndWeekStackView.addArrangedSubviews(curriculumLabel, weekLabel)
-        weekBackGroundImageView.addSubviews(curriculumAndWeekStackView)
+        weekBackGroundImageView.addSubviews(blurblackView, curriculumAndWeekStackView)
         contentView.addSubviews(weekBackGroundImageView, leftWeekButton, rightWeekButton)
-
+        
     }
     
     func setLayout() {
@@ -119,6 +119,10 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
         weekBackGroundImageView.snp.makeConstraints{
             $0.edges.equalToSuperview()
             $0.height.equalTo(weekBackGroundImageView.snp.width).multipliedBy(Size.weekBackGroundImageSize)
+        }
+
+        blurblackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         leftWeekButton.snp.makeConstraints{

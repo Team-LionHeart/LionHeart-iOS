@@ -20,12 +20,6 @@ final class TodayViewController: UIViewController {
 
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
     
-    private let seperateLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray800)
-        return view
-    }()
-    
     private var titleLabel = LHTodayArticleTitle()
     private var subTitleLable = LHTodayArticleTitle(initalizeString: "오늘의 아티클이에요")
     private var mainArticleView = TodayArticleView()
@@ -90,7 +84,7 @@ private extension TodayViewController {
     }
     
     func setHierarchy() {
-        view.addSubviews(todayNavigationBar, seperateLine)
+        view.addSubviews(todayNavigationBar)
         view.addSubviews(titleLabel, subTitleLable, pointImage, mainArticleView)
     }
     
@@ -100,14 +94,8 @@ private extension TodayViewController {
             make.leading.trailing.equalToSuperview()
         }
         
-        seperateLine.snp.makeConstraints { make in
-            make.top.equalTo(todayNavigationBar.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
-        }
-        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(seperateLine.snp.bottom).offset(53)
+            make.top.equalTo(todayNavigationBar.snp.bottom).offset(53)
             make.leading.equalToSuperview().inset(20)
         }
         

@@ -21,6 +21,7 @@ final class LHNavigationBarView: UIView {
     private let leftBarItem: UIButton = {
         let button = UIButton()
         button.tintColor = .designSystem(.white)
+        button.marginImageWithText(margin: 14)
         return button
     }()
 
@@ -28,6 +29,7 @@ final class LHNavigationBarView: UIView {
         let button = UIButton()
         button.setImage(ImageLiterals.NavigationBar.bookMark, for: .normal)
         button.tintColor = .designSystem(.white)
+        button.marginImageWithText(margin: 14)
         return button
     }()
 
@@ -35,6 +37,7 @@ final class LHNavigationBarView: UIView {
         let button = UIButton()
         button.setImage(ImageLiterals.NavigationBar.profile, for: .normal)
         button.tintColor = .designSystem(.white)
+        button.marginImageWithText(margin: 14)
         return button
     }()
 
@@ -49,7 +52,6 @@ final class LHNavigationBarView: UIView {
             rightFirstBarItem, rightSecondBarItem
         ])
         stackView.axis = .horizontal
-        stackView.spacing = 8
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.isHidden = true
@@ -110,7 +112,7 @@ final class LHNavigationBarView: UIView {
 
         rightBarItemsStackView.snp.makeConstraints { make in
             make.centerY.equalTo(leftBarItem)
-            make.trailing.equalToSuperview().inset(24)
+            make.trailing.equalToSuperview().inset(16)
         }
 
         graySepartorLine.snp.makeConstraints { make in

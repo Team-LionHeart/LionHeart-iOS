@@ -26,6 +26,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
             }
             articleTagLabel.text = inputData.articleTags.joined(separator: " · ")
             articleContentLabel.text = inputData.articleContent
+            articleContentLabel.setTextWithLineHeight(lineHeight: 22)
             articleContentLabel.lineBreakStrategy = .pushOut
             articleContentLabel.lineBreakMode = .byTruncatingTail
             bookMarkButton.isSelected = inputData.isArticleBookmarked

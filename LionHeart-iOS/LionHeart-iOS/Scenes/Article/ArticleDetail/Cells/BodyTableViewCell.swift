@@ -74,6 +74,7 @@ private extension BodyTableViewCell {
         guard let model else { return }
         if let caption = model.caption {
             captionLabel.text = caption
+            captionLabel.setTextWithLineHeight(lineHeight: 22)
             captionLabel.snp.makeConstraints { make in
                 make.top.equalTo(bodyLabel.snp.bottom).offset(8)
                 make.leading.trailing.equalTo(bodyLabel)

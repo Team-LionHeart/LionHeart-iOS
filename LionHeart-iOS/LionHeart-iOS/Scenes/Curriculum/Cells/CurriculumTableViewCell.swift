@@ -80,6 +80,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     
     lazy var curriculumToggleDirectionButton: UIButton = {
         var button = UIButton()
+        button.marginImageWithText(margin: 19)
         button.setImage(ImageLiterals.Curriculum.arrowDownSmall, for: .normal)
         button.setImage(ImageLiterals.Curriculum.arrowUpSmall, for: .selected)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -105,6 +106,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
             self.weekTitleLabel.text = inputData.curriculumWeekTitle
             self.contentImageView.image = inputData.curriculumImage
             self.contentTextLabel.text = inputData.curriculumText
+            self.contentTextLabel.setTextWithLineHeight(lineHeight: 22)
             self.curriculumContentStackView.isHidden = !inputData.isExpanded // false -> true -> 안보이게됨
             self.weekLabel.textColor = inputData.isExpanded
             ? .designSystem(.componentLionRed)
@@ -165,7 +167,7 @@ private extension CurriculumTableViewCell {
         curriculumToggleDirectionButton.snp.makeConstraints{
             $0.leading.greaterThanOrEqualTo(weekTitleLabel.snp.trailing).offset(8)
             $0.centerY.equalTo(weekLabel)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(12)
         }
         
         curriculumWholeStackView.snp.makeConstraints{
