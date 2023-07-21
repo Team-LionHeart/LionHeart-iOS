@@ -13,7 +13,7 @@
 
 ## 💻 Development Environment
 
-<img src ="https://img.shields.io/badge/Swift-5.8-orange?logo=swift" height="30"> <img src ="https://img.shields.io/badge/Xcode-14.3-blue?logo=xcode" height="30"> <img src ="https://img.shields.io/badge/iOS-15.0-white.svg" height="30">
+<img src ="https://img.shields.io/badge/Xcode-14.3-blue?logo=xcode" height="30"> <img src ="https://img.shields.io/badge/iOS-15.0-white.svg" height="30">
 
 <br>
 
@@ -23,8 +23,8 @@
 | --- | --- | --- |
 | **SnapKit** | Layout | SPM |
 | **Lottie** | Splash, Animation | SPM |
-| **FireBase** | PushAlarm | SPM 
-| **KaKaoOpenSDK** | SocialLogin | SPM |
+| **FireBase** | 푸시알림 | SPM 
+| **KaKaoOpenSDK** | 소셜로그인 | SPM |
 
 <br>
 
