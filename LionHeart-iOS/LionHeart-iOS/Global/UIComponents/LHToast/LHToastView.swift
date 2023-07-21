@@ -33,7 +33,7 @@ extension LHToastView {
 
         self.addSubview(messageLabel)
         self.snp.makeConstraints { make in
-            make.height.equalTo(50)
+            make.height.equalTo(700)
         }
         self.messageLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
