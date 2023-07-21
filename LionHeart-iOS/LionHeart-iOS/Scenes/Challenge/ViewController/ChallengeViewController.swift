@@ -161,6 +161,7 @@ final class ChallengeViewController: UIViewController {
         setLayout()
         setNavigationBar()
         setDelegate()
+        setAddTarget()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -241,6 +242,18 @@ private extension ChallengeViewController {
         navigationBar.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
+        }
+    }
+    
+    func setAddTarget() {
+        navigationBar.rightFirstBarItemAction {
+            let bookmarkViewController = BookmarkViewController()
+            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
+        }
+        
+        navigationBar.rightSecondBarItemAction {
+            let myPageViewController = MyPageViewController()
+            self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
 }
