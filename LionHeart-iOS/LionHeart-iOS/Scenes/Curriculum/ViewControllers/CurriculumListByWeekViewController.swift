@@ -181,7 +181,7 @@ private extension CurriculumListByWeekViewController {
         : currentPage + 1
 
         guard let listByWeekDatas else { return }
-        let nextPage = min(listByWeekDatas.articleData.count - 1, nextIndexPathItem)
+        let nextPage = min(pregnancy - 1, nextIndexPathItem)
         self.currentPage = nextPage
     }
     
