@@ -213,10 +213,13 @@ extension CurriculumViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
-        cell.inputData = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
+        let data = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
+        cell.inputData = data
         cell.selectionStyle = .none
         cell.delegate = self
         cell.cellIndexPath = indexPath
+
+        cell.curriculumToggleDirectionButton.isSelected = data.isExpanded
         return cell
     }
     
