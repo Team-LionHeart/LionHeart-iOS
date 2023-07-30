@@ -51,6 +51,11 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        countLabel.font = .pretendard(.body2M)
+        countLabel.textColor = .designSystem(.gray700)
+    }
 }
 
 private extension ChallengeDayCheckCollectionViewCollectionViewCell {
