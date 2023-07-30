@@ -33,7 +33,12 @@ final class ArticleDetailViewController: UIViewController {
 
     // MARK: - Properties
 
-    private var isBookMarked: Bool?
+    private var isBookMarked: Bool? {
+        didSet {
+            guard let isBookMarked else { return }
+            LHToast.show(message: isBookMarked ? "북마크가 추가되었습니다" : "북마크가 해제되었습니다")
+        }
+    }
 
     private var articleDatas: [BlockTypeAppData]? {
         didSet {
@@ -89,7 +94,7 @@ extension ArticleDetailViewController {
             do {
                 let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkStatus: isSelected)
                 try await BookmarkService.shared.postBookmark(bookmarkRequest)
-                LHToast.show(message: "북마크가 추가되었습니다")
+
                 isBookMarked = isSelected
             } catch {
                 guard let error = error as? NetworkError else { return }

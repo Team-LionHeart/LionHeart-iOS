@@ -86,7 +86,7 @@ final class CurriculumListByWeekViewController: UIViewController {
         
         // MARK: - notificationCenter 설정
         setNotificationCenter()
-        
+
         //api 연결할 때 구현
 //        setDataBind()
     }
@@ -102,6 +102,9 @@ final class CurriculumListByWeekViewController: UIViewController {
         super.viewDidAppear(animated)
         let indexPath = IndexPath(item: self.weekToIndexPathItem, section: 0)
         self.curriculumListByWeekCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+    }
+    deinit {
+        removeNotificationCenter()
     }
 }
 
@@ -147,6 +150,10 @@ private extension CurriculumListByWeekViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectTableVIewCell), name: NSNotification.Name("didSelectTableViewCell"), object: nil)
         
     }
+
+    func removeNotificationCenter() {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @objc func bookmarkButtonTapped(notification: NSNotification) {
         Task {
@@ -155,7 +162,7 @@ private extension CurriculumListByWeekViewController {
                 guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
                 guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
                 guard let listByWeekDatas else { return }
-                
+                self.listByWeekDatas?.articleData[indexPath].isArticleBookmarked.toggle()
                 
                 print(indexPath)
                 print(buttonSelected)

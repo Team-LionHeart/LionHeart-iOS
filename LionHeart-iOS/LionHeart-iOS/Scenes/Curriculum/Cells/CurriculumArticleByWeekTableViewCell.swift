@@ -32,6 +32,8 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
             bookMarkButton.isSelected = inputData.isArticleBookmarked
         }
     }
+
+    var bookMarkButtonTapped: ((Bool, IndexPath) -> Void)?
     
     private let tableViewCellWholeView = UIView()
     
@@ -92,13 +94,17 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         var button = UIButton()
         button.setImage(ImageLiterals.BookMark.inactiveBookmarkSmall, for: .normal)
         button.setImage(ImageLiterals.BookMark.activeBookmarkSmall, for: .selected)
-        button.addButtonAction { _ in
+        button.addButtonAction { [weak self] _ in
+            guard let self else { return }
             
             guard var indexPath = self.getIndexPath() else { return }
-            NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
-                                            object: nil, userInfo: ["bookmarkCellIndexPath": indexPath.row-1,
-                                                                    "bookmarkButtonSelected": !button.isSelected])
             button.isSelected.toggle()
+            self.bookMarkButtonTapped?(button.isSelected, indexPath)
+            
+            NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
+                                            object: nil, userInfo: ["bookmarkCellIndexPath": max(0, indexPath.row - 1),
+                                                                    "bookmarkButtonSelected": button.isSelected])
+
         }
         return button
     }()
