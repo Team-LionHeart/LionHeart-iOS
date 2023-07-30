@@ -92,7 +92,7 @@ extension ArticleDetailViewController {
     private func articleBookMark(articleId: Int, isSelected: Bool) {
         Task {
             do {
-                let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkStatus: isSelected)
+                let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkRequestStatus: isSelected)
                 try await BookmarkService.shared.postBookmark(bookmarkRequest)
 
                 isBookMarked = isSelected

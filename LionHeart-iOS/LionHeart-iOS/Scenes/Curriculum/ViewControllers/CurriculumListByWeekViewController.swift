@@ -168,7 +168,7 @@ private extension CurriculumListByWeekViewController {
                 print(buttonSelected)
                 try await BookmarkService.shared.postBookmark(
                     BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
-                                    bookmarkStatus: buttonSelected))
+                                    bookmarkRequestStatus: buttonSelected))
                 hideLoading()
                 buttonSelected ? LHToast.show(message: "북마크가 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크가 해제되었습니다", isTabBar: true)
             } catch {

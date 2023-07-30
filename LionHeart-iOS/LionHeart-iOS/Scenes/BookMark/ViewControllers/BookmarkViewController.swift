@@ -147,7 +147,7 @@ extension BookmarkViewController: UICollectionViewDataSource {
                 Task {
                     do {
                         try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: self.bookmarkList[indexPath.item].articleID,
-                                                                                      bookmarkStatus: !self.bookmarkList[indexPath.item].bookmarked))
+                                                                                      bookmarkRequestStatus: !self.bookmarkList[indexPath.item].bookmarked))
                         self.bookmarkList.remove(at: indexPath.item)
                         collectionView.deleteItems(at: [indexPath])
                         LHToast.show(message: "북마크가 해제되었습니다")

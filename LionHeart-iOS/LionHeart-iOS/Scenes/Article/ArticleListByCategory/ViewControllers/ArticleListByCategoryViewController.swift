@@ -150,7 +150,7 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
             Task {
                 do {
                     try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: self.articleListData[indexPath.row].articleId,
-                                                                                  bookmarkStatus: isSelected))
+                                                                                  bookmarkRequestStatus: isSelected))
                     print(self.articleListData[indexPath.row].articleId)
                     isSelected ? LHToast.show(message: "북마크에 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크에 해제되었습니다", isTabBar: true)
                 } catch {

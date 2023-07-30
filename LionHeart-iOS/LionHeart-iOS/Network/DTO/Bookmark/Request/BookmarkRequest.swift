@@ -9,5 +9,5 @@ import Foundation
 
 struct BookmarkRequest: DTO, Request {
     let articleId: Int
-    let bookmarkStatus: Bool
+    let bookmarkRequestStatus: Bool
 }
