@@ -55,6 +55,7 @@
 		B57BEB6C2A6149AD00D1727C /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB6B2A6149AD00D1727C /* NetworkRequest.swift */; };
 		B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB6D2A6275D600D1727C /* Serviceable.swift */; };
 		B57BEB702A6275F500D1727C /* ViewControllerServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB6F2A6275F500D1727C /* ViewControllerServiceable.swift */; };
+		B57FEE2C2AA904D800ED6299 /* AuthServiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57FEE2B2AA904D800ED6299 /* AuthServiceWrapper.swift */; };
 		B598926F2A56C21800CE1FEB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B598926E2A56C21800CE1FEB /* FirebaseAnalytics */; };
 		B59892712A56C21800CE1FEB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B59892702A56C21800CE1FEB /* FirebaseAnalyticsSwift */; };
 		B59892732A56C21800CE1FEB /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B59892722A56C21800CE1FEB /* FirebaseCrashlytics */; };
@@ -281,6 +282,7 @@
 		B57BEB6B2A6149AD00D1727C /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		B57BEB6D2A6275D600D1727C /* Serviceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serviceable.swift; sourceTree = "<group>"; };
 		B57BEB6F2A6275F500D1727C /* ViewControllerServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerServiceable.swift; sourceTree = "<group>"; };
+		B57FEE2B2AA904D800ED6299 /* AuthServiceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceWrapper.swift; sourceTree = "<group>"; };
 		B58E8CBD2A6AE0F200FF5202 /* LionHeart-iOSRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSRelease.entitlements"; sourceTree = "<group>"; };
 		B59892802A56C3F900CE1FEB /* LionHeart-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LionHeart-iOSDebug.entitlements"; sourceTree = "<group>"; };
 		B59892822A56C93400CE1FEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1134,6 +1136,7 @@
 				4AE19A162A65864F00C1DB7E /* BookmarkService.swift */,
 				C06E38292A662E3700B00600 /* ArticleService.swift */,
 				4AD216412A69ACBC00C9F2F2 /* MyPageService.swift */,
+				B57FEE2B2AA904D800ED6299 /* AuthServiceWrapper.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1578,6 +1581,7 @@
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
 				4AE19A1F2A66F2E200C1DB7E /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */,
+				B57FEE2C2AA904D800ED6299 /* AuthServiceWrapper.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
 				B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */,
 				D342807A2A67F12200DA1499 /* ChallengeDataResponse.swift in Sources */,
