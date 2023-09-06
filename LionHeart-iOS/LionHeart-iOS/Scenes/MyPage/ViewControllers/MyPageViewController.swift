@@ -11,6 +11,8 @@ import UIKit
 import SnapKit
 
 final class MyPageViewController: UIViewController {
+
+    // MARK: - Properties
     
     private let myPageServiceLabelList = MyPageLocalData.myPageServiceLabelList
     private let myPageSectionLabelList = MyPageLocalData.myPageSectionLabelList
@@ -21,6 +23,10 @@ final class MyPageViewController: UIViewController {
             myPageCollectionView.reloadData()
         }
     }
+
+    private let service: AuthMyPageServiceWrapperProtocol
+
+    // MARK: - UI Components
     
     private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
 
@@ -36,7 +42,16 @@ final class MyPageViewController: UIViewController {
         button.alpha = 0.1
         return button
     }()
-    
+
+    init(service: AuthMyPageServiceWrapperProtocol) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     public override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,7 +70,7 @@ final class MyPageViewController: UIViewController {
         
         Task {
             do {
-                let data = try await MyPageService.shared.getMyPage()
+                let data = try await service.getMyPage()
                 myPageAppData = data
             } catch {
                 guard let error = error as? NetworkError else { return }
@@ -104,8 +119,9 @@ private extension MyPageViewController {
                 do {
                     guard let window = self.view.window else { return }
                     self.resignButton.isUserInteractionEnabled = false
-                    try await AuthService.shared.resignUser()
-                    ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+                    try await self.service.resignUser()
+//                    try await AuthService.shared.resignUser()
+                    ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthService()), withAnimation: false)
                 } catch {
                     print(error)
                 }
@@ -147,7 +163,7 @@ extension MyPageViewController: ViewControllerServiceable {
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthService()), withAnimation: false)
         case .clientError(_, _):
             print("뜨면 위험함")
         case .serverError:

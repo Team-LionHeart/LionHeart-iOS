@@ -24,6 +24,8 @@ final class LoginViewController: UIViewController {
             self.loginAPI(kakaoToken: kakaoToken)
         }
     }
+
+    private let authService: AuthServiceProtocol
     
     private let loginMainImageView: UIImageView = {
         let imageView = UIImageView(image: ImageLiterals.Login.loginBackgroundImage)
@@ -58,6 +60,15 @@ final class LoginViewController: UIViewController {
         return button
     }()
 
+    init(authService: AuthServiceProtocol) {
+        self.authService = authService
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         setHierarchy()
@@ -88,7 +99,7 @@ extension LoginViewController {
     private func loginAPI(kakaoToken: String) {
         Task {
             do {
-                try await AuthService.shared.login(type: .kakao, kakaoToken: kakaoToken)
+                try await authService.login(type: .kakao, kakaoToken: kakaoToken)
                 guard let window = self.view.window else {
                     LHToast.show(message: "로그인api에서 window guard let 88")
                     return
@@ -106,7 +117,7 @@ extension LoginViewController {
     }
 
     func moveUserToOnboardingViewController() {
-        let onboardingViewController = OnboardingViewController()
+        let onboardingViewController = OnboardingViewController(authService: AuthService())
         onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
         self.navigationController?.pushViewController(onboardingViewController, animated: true)
     }
