@@ -171,7 +171,8 @@ private extension CurriculumViewController {
         }
         
         navigationBar.rightSecondBarItemAction {
-            let myPageViewController = MyPageViewController()
+            let wrapper = AuthMyPageServiceWrapper(myPageService: MyPageService(), authService: AuthService())
+            let myPageViewController = MyPageViewController(service: wrapper)
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
@@ -289,7 +290,7 @@ extension CurriculumViewController: ViewControllerServiceable {
         switch error {
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthService()), withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: "\(message)")
         default:

@@ -78,7 +78,7 @@ class ViewController: UIViewController {
 
         LHToast.show(message: "토스트메세지입니다")
 
-        let nextVC = OnboardingViewController()
+        let nextVC = OnboardingViewController(authService: AuthService())
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
