@@ -7,9 +7,13 @@
 
 import UIKit
 
-final class MyPageService: Serviceable {
-    static let shared = MyPageService()
-    private init() { }
+protocol MyPageServiceProtocol: AnyObject {
+    func getMyPage() async throws -> MyPageAppData
+}
+
+final class MyPageService: Serviceable, MyPageServiceProtocol {
+//    static let shared = MyPageService()
+//    init() { }
     
     func getMyPage() async throws -> MyPageAppData {
         let urlRequest = try NetworkRequest(path: "/v1/member/profile", httpMethod: .get).makeURLRequest(isLogined: true)
