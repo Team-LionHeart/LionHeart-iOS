@@ -7,10 +7,18 @@
 
 import UIKit
 
-final class AuthService: Serviceable {
+protocol AuthServiceProtocol: AnyObject {
+    func reissueToken(token: Token) async throws -> Token?
+    func logout(token: UserDefaultToken) async throws
+    func login(type: LoginType, kakaoToken: String) async throws
+    func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
+    func resignUser() async throws
+}
 
-    static let shared = AuthService()
-    private init() {}
+final class AuthService: Serviceable, AuthServiceProtocol {
+
+//    static let shared = AuthService()
+//    private init() {}
 
     func reissueToken(token: Token) async throws -> Token? {
 
