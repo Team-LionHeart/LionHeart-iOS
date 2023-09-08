@@ -104,7 +104,7 @@ private extension ArticleCategoryViewController {
         }
         
         navigationBar.rightSecondBarItemAction {
-            let wrapper = AuthMyPageServiceWrapper()
+            let wrapper = AuthMyPageServiceWrapper(authAPI: AuthAPI(apiService: APIService()))
             let myPageViewController = MyPageViewController(service: wrapper)
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
