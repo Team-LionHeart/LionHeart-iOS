@@ -130,7 +130,7 @@ private extension TodayViewController {
         }
         
         todayNavigationBar.rightSecondBarItemAction {
-            let wrapperClass = AuthMyPageServiceWrapper(myPageService: MyPageService(), authService: AuthService())
+            let wrapperClass = AuthMyPageServiceWrapper()
             let myPageViewController = MyPageViewController(service: wrapperClass)
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }

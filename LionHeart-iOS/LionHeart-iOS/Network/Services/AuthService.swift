@@ -7,18 +7,20 @@
 
 import UIKit
 
-protocol AuthServiceProtocol: AnyObject {
+protocol UserInProtocol {
     func reissueToken(token: Token) async throws -> Token?
-    func logout(token: UserDefaultToken) async throws
     func login(type: LoginType, kakaoToken: String) async throws
     func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
-    func resignUser() async throws
 }
 
-final class AuthService: Serviceable, AuthServiceProtocol {
+protocol UserOutProtocol {
+    func resignUser() async throws
+    func logout(token: UserDefaultToken) async throws
+}
 
-//    static let shared = AuthService()
-//    private init() {}
+protocol AuthServiceProtocol: UserInProtocol, UserOutProtocol {}
+
+final class AuthService: AuthServiceProtocol {
 
     func reissueToken(token: Token) async throws -> Token? {
 
@@ -100,3 +102,5 @@ final class AuthService: Serviceable, AuthServiceProtocol {
         UserDefaultsManager.tokenKey?.refreshToken = nil
     }
 }
+
+extension AuthService: Serviceable {}

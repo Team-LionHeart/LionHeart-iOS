@@ -24,7 +24,7 @@ final class MyPageViewController: UIViewController {
         }
     }
 
-    private let service: AuthMyPageServiceWrapperProtocol
+    private let service: MyPageServiceProtocol
 
     // MARK: - UI Components
     
@@ -43,7 +43,7 @@ final class MyPageViewController: UIViewController {
         return button
     }()
 
-    init(service: AuthMyPageServiceWrapperProtocol) {
+    init(service: MyPageServiceProtocol) {
         self.service = service
         super.init(nibName: nil, bundle: nil)
     }
