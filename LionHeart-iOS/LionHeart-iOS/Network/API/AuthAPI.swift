@@ -15,7 +15,7 @@ protocol AuthProtocol {
     func resignUser() async throws
 }
 
-class AuthAPI: AuthProtocol {
+struct AuthAPI: AuthProtocol {
     
     private let apiService: Requestable
     
@@ -26,9 +26,11 @@ class AuthAPI: AuthProtocol {
     func reissueToken(token: Token) async throws -> Token? {
         let params = token.toDictionary()
         let body = try JSONSerialization.data(withJSONObject: params, options: [])
+
         let urlRequest = try NetworkRequest(path: "/v1/auth/reissue", httpMethod: .post, body: body)
             .makeURLRequest(isLogined: false)
-        return try await apiService.request(urlRequest)
+        let token: Token? = try await apiService.request(urlRequest)
+        return token
     }
     
     func login(type: LoginType, kakaoToken: String) async throws -> Token? {
@@ -36,8 +38,12 @@ class AuthAPI: AuthProtocol {
             throw NetworkError.clientError(code: "", message: "\(UserDefaultsManager.tokenKey)")
         }
         let loginRequest = LoginRequest(socialType: type.raw, token: kakaoToken, fcmToken: fcmToken)
+        
+        // 2. 로그인 에 필요한 body 만들기
         let param = loginRequest.toDictionary()
         let body = try JSONSerialization.data(withJSONObject: param)
+        
+        // 3. URLRequest 만들기
         let urlRequest = try NetworkRequest(path: "/v1/auth/login", httpMethod: .post, body: body).makeURLRequest(isLogined: false)
         
         return try await apiService.request(urlRequest)

@@ -110,7 +110,7 @@ extension ArticleDetailViewController: ViewControllerServiceable {
         switch error {
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPI: AuthAPI(apiService: APIService()))), withAnimation: false)
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthService(api: AuthAPI(apiService: APIService()))), withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: "\(message)")
         default:
