@@ -110,6 +110,8 @@
 		C06E382A2A662E3700B00600 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E38292A662E3700B00600 /* ArticleService.swift */; };
 		C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07CB8192A62C54D000198CC /* TodayModel.swift */; };
 		C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07CB81D2A62C5B1000198CC /* TodayArticleView.swift */; };
+		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
+		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
 		C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */; };
 		C09217732A61895A00231C66 /* UIWindow+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217722A61895A00231C66 /* UIWindow+.swift */; };
@@ -320,6 +322,8 @@
 		C06E38292A662E3700B00600 /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
 		C07CB8192A62C54D000198CC /* TodayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayModel.swift; sourceTree = "<group>"; };
 		C07CB81D2A62C5B1000198CC /* TodayArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayArticleView.swift; sourceTree = "<group>"; };
+		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
 		C09217672A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPregnancyTextFieldResultType.swift; sourceTree = "<group>"; };
 		C09217722A61895A00231C66 /* UIWindow+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+.swift"; sourceTree = "<group>"; };
@@ -597,6 +601,7 @@
 		B532E8612A55260C00F0DB19 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C0903D002AAAD8600014786F /* API */,
 				B5C6A2C32A5EF4AC0021BE5E /* DTO */,
 				B59893172A5D41E300CE1FEB /* Services */,
 				B532E8662A5529F700F0DB19 /* Base */,
@@ -613,6 +618,7 @@
 				B51220632A6039AA006CBE2D /* HttpMethod.swift */,
 				B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */,
 				B57BEB6B2A6149AD00D1727C /* NetworkRequest.swift */,
+				C0903CFE2AAAD7E00014786F /* APIService.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1247,6 +1253,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C0903D002AAAD8600014786F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C0903D012AAAD86A0014786F /* AuthAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		C09217652A605DEE00231C66 /* OnboardingTextFieldResultType */ = {
 			isa = PBXGroup;
 			children = (
@@ -1610,6 +1624,7 @@
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
 				B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */,
 				C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */,
+				C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */,
 				C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
 				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
@@ -1638,6 +1653,7 @@
 				B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */,
+				C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */,
 				F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */,
 				4A2050152A5DCD1900C7AF3C /* UICollectionView+.swift in Sources */,
 				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,

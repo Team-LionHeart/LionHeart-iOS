@@ -117,7 +117,7 @@ extension LoginViewController {
     }
 
     func moveUserToOnboardingViewController() {
-        let onboardingViewController = OnboardingViewController(authService: AuthService())
+        let onboardingViewController = OnboardingViewController(authService: AuthService(api: AuthAPI(apiService: APIService())))
         onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
         self.navigationController?.pushViewController(onboardingViewController, animated: true)
     }
