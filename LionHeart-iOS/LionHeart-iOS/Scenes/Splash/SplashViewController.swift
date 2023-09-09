@@ -99,7 +99,6 @@ private extension SplashViewController {
     func reissueToken(refreshToken: String, accessToken: String) async throws {
         do {
             let dtoToken = try await authService.reissueToken(token: Token(accessToken: accessToken, refreshToken: refreshToken))
-        
             UserDefaultsManager.tokenKey?.accessToken = dtoToken?.accessToken
             UserDefaultsManager.tokenKey?.refreshToken = dtoToken?.refreshToken
             

@@ -9,6 +9,8 @@ import Foundation
 
 final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol {
     
+    let authAPIService: AuthProtocol = AuthAPI(apiService: APIService())
+    
     func getMyPage() async throws -> MyPageAppData {
         let urlRequest = try NetworkRequest(path: "/v1/member/profile", httpMethod: .get).makeURLRequest(isLogined: true)
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
@@ -28,9 +30,10 @@ final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol
             .makeURLRequest(isLogined: false)
 
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
-
         let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: Token.self)
-
+        
+//        let model = try await authAPIService.reissueToken(token: token)
+        
         return model
     }
     
@@ -84,9 +87,10 @@ final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol
     }
     
     func resignUser() async throws {
-        let urlRequest = try NetworkRequest(path: "/v1/member", httpMethod: .delete).makeURLRequest(isLogined: true)
-        _ = try await URLSession.shared.data(for: urlRequest)
-        UserDefaultsManager.tokenKey?.refreshToken = nil
+//        let urlRequest = try NetworkRequest(path: "/v1/member", httpMethod: .delete).makeURLRequest(isLogined: true)
+//        _ = try await URLSession.shared.data(for: urlRequest)
+//        UserDefaultsManager.tokenKey?.refreshToken = nil
+        try await authAPIService.resignUser()
     }
     
     func logout(token: UserDefaultToken) async throws {

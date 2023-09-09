@@ -15,7 +15,7 @@ protocol AuthProtocol {
     func resignUser() async throws
 }
 
-struct AuthAPI: AuthProtocol {
+class AuthAPI: AuthProtocol {
     
     private let apiService: Requestable
     
@@ -29,8 +29,7 @@ struct AuthAPI: AuthProtocol {
 
         let urlRequest = try NetworkRequest(path: "/v1/auth/reissue", httpMethod: .post, body: body)
             .makeURLRequest(isLogined: false)
-        let token: Token? = try await apiService.request(urlRequest)
-        return token
+        return try await apiService.request(urlRequest)
     }
     
     func login(type: LoginType, kakaoToken: String) async throws -> Token? {
@@ -76,7 +75,6 @@ struct AuthAPI: AuthProtocol {
         let urlRequest = try NetworkRequest(path: "/v1/member", httpMethod: .delete).makeURLRequest(isLogined: true)
         _ = try await URLSession.shared.data(for: urlRequest)
         UserDefaultsManager.tokenKey?.refreshToken = nil
+        
     }
-    
-    
 }

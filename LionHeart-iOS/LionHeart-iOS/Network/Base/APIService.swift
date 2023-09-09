@@ -15,7 +15,11 @@ class APIService: Requestable {
     func request<T: Decodable>(_ request: URLRequest) async throws -> T? {
         let (data, _) = try await URLSession.shared.data(for: request)
         let decoder = JSONDecoder()
-        let decodedData = try decoder.decode(T.self, from: data)
-        return decodedData
+        guard let decodedData = try? decoder.decode(BaseResponse<T>.self, from: data) else {
+            throw NetworkError.jsonDecodingError
+        }
+        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅APIService성공✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+        print(decodedData.data)
+        return decodedData.data
     }
 }
