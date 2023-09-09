@@ -26,7 +26,6 @@ class AuthAPI: AuthProtocol {
     func reissueToken(token: Token) async throws -> Token? {
         let params = token.toDictionary()
         let body = try JSONSerialization.data(withJSONObject: params, options: [])
-
         let urlRequest = try NetworkRequest(path: "/v1/auth/reissue", httpMethod: .post, body: body)
             .makeURLRequest(isLogined: false)
         return try await apiService.request(urlRequest)
@@ -37,14 +36,9 @@ class AuthAPI: AuthProtocol {
             throw NetworkError.clientError(code: "", message: "\(UserDefaultsManager.tokenKey)")
         }
         let loginRequest = LoginRequest(socialType: type.raw, token: kakaoToken, fcmToken: fcmToken)
-        
-        // 2. 로그인 에 필요한 body 만들기
         let param = loginRequest.toDictionary()
         let body = try JSONSerialization.data(withJSONObject: param)
-        
-        // 3. URLRequest 만들기
         let urlRequest = try NetworkRequest(path: "/v1/auth/login", httpMethod: .post, body: body).makeURLRequest(isLogined: false)
-        
         return try await apiService.request(urlRequest)
     }
     
@@ -53,21 +47,17 @@ class AuthAPI: AuthProtocol {
               let kakaoToken = onboardingModel.kakaoAccessToken,
               let pregnantWeeks = onboardingModel.pregnacny,
               let babyNickname = onboardingModel.fetalNickname  else { throw NetworkError.badCasting }
-        
         let requestModel = SignUpRequest(socialType: type.raw, token: kakaoToken, fcmToken: fcmToken, pregnantWeeks: pregnantWeeks, babyNickname: babyNickname)
-        
         let param = requestModel.toDictionary()
         let body = try JSONSerialization.data(withJSONObject: param)
-        
         let urlRequest = try NetworkRequest(path: "/v1/auth/signup", httpMethod: .post, body: body).makeURLRequest(isLogined: false)
-        
         return try await apiService.request(urlRequest)
     }
     
+    @discardableResult
     func logout(token: UserDefaultToken) async throws -> String? {
         let urlRequest = try NetworkRequest(path: "/v1/auth/logout", httpMethod: .post)
             .makeURLRequest(isLogined: true)
-        
         return try await apiService.request(urlRequest)
     }
     
@@ -75,6 +65,5 @@ class AuthAPI: AuthProtocol {
         let urlRequest = try NetworkRequest(path: "/v1/member", httpMethod: .delete).makeURLRequest(isLogined: true)
         _ = try await URLSession.shared.data(for: urlRequest)
         UserDefaultsManager.tokenKey?.refreshToken = nil
-        
     }
 }

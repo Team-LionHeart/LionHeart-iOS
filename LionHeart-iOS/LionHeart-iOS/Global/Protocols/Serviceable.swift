@@ -36,6 +36,8 @@ extension Serviceable {
         guard !NetworkErrorCode.serverErrorCode.contains(statusCode) else {
             throw NetworkError.serverError
         }
+        print("✅✅✅✅✅✅✅✅✅✅✅✅✅원래 API호출성공✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+        print(model.data)
         return model.data
     }
 }
