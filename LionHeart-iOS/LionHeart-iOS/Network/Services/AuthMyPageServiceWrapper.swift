@@ -1,5 +1,5 @@
 //
-//  AuthServiceWrapper.swift
+//  AuthMyPageServiceWrapper.swift
 //  LionHeart-iOS
 //
 //  Created by 김민재 on 2023/09/07.
