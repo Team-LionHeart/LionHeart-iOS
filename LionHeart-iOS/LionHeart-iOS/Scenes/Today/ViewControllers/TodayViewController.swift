@@ -160,7 +160,7 @@ extension TodayViewController: ViewControllerServiceable {
         case .clientError(_, let message):
             LHToast.show(message: message, isTabBar: true)
         case .serverError:
-            LHToast.show(message: "승준이어딧니 내목소리들리니", isTabBar: true)
+            LHToast.show(message: error.description, isTabBar: true)
         }
     }
 }

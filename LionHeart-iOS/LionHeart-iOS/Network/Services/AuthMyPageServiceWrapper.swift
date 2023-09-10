@@ -45,5 +45,3 @@ final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol
     }
     
 }
-
-extension AuthMyPageServiceWrapper: Serviceable {}

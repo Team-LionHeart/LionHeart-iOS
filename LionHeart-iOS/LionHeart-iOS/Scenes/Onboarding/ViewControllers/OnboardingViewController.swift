@@ -252,7 +252,7 @@ extension OnboardingViewController: ViewControllerServiceable {
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
-            LHToast.show(message: "서버놈들")
+            LHToast.show(message: error.description)
         }
     }
 }

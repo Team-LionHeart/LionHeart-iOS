@@ -126,7 +126,6 @@ private extension MyPageViewController {
                     guard let window = self.view.window else { return }
                     self.resignButton.isUserInteractionEnabled = false
                     try await self.service.resignUser()
-//                    try await AuthService.shared.resignUser()
                     ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
                 } catch {
                     print(error)
@@ -170,10 +169,10 @@ extension MyPageViewController: ViewControllerServiceable {
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
             ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
-        case .clientError(_, _):
-            print("뜨면 위험함")
+        case .clientError(_, let message):
+            LHToast.show(message: message)
         case .serverError:
-            LHToast.show(message: "승준이 빠따")
+            LHToast.show(message: error.description)
         }
     }
 }
