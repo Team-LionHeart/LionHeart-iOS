@@ -19,7 +19,6 @@ class APIService: Requestable {
             throw NetworkError.jsonDecodingError
         }
         print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅APIService성공✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-        print(decodedData.data)
         return decodedData.data
     }
 }

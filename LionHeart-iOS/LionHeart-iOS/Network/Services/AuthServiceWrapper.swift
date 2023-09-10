@@ -19,7 +19,7 @@ final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol
     
     func getMyPage() async throws -> MyPageAppData {
         let model = try await mypageAPIService.getMyPage()
-        guard let model else { return .init(badgeImage: "", nickname: "", isAlarm: "") }
+        guard let model else { return MyPageAppData.empty }
         return MyPageAppData(badgeImage: model.level, nickname: model.babyNickname, isAlarm: model.notificationStatus)
     }
     
@@ -29,17 +29,11 @@ final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol
     }
     
     func login(type: LoginType, kakaoToken: String) async throws {
-        let model = try await authAPIService.login(type: type, kakaoToken: kakaoToken)
-        UserDefaultsManager.tokenKey?.accessToken = model?.accessToken
-        UserDefaultsManager.tokenKey?.refreshToken = model?.refreshToken
-        return
+        try await authAPIService.login(type: type, kakaoToken: kakaoToken)
     }
     
     func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws {
-        let model = try await authAPIService.signUp(type: type, onboardingModel: onboardingModel)
-        UserDefaultsManager.tokenKey?.accessToken = model?.accessToken
-        UserDefaultsManager.tokenKey?.refreshToken = model?.refreshToken
-        return
+        try await authAPIService.signUp(type: type, onboardingModel: onboardingModel)
     }
     
     func resignUser() async throws {

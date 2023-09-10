@@ -15,6 +15,10 @@ struct MyPageAppData: AppData {
     let isAlarm: String
 }
 
+extension MyPageAppData {
+    static let empty: Self = .init(badgeImage: "", nickname: "", isAlarm: "")
+}
+
 // MARK: LocalData
 
 struct MyPageLocalData: AppData {
