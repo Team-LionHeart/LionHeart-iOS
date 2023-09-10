@@ -18,6 +18,16 @@ class APIService: Requestable {
         guard let decodedData = try? decoder.decode(BaseResponse<T>.self, from: data) else {
             throw NetworkError.jsonDecodingError
         }
+        
+        let statusCode = decodedData.code
+        guard !NetworkErrorCode.clientErrorCode.contains(statusCode) else {
+            throw NetworkError.clientError(code: decodedData.code, message: decodedData.message)
+        }
+
+        guard !NetworkErrorCode.serverErrorCode.contains(statusCode) else {
+            throw NetworkError.serverError
+        }
+        
         print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅APIService성공✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         return decodedData.data
     }
