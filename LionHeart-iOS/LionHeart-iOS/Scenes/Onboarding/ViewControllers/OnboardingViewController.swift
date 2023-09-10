@@ -248,7 +248,7 @@ extension OnboardingViewController: ViewControllerServiceable {
             LHToast.show(message: "이미지패치에러")
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()))), withAnimation: false)
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

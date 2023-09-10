@@ -126,7 +126,7 @@ extension ArticleListByCategoryViewController: ViewControllerServiceable {
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()))), withAnimation: false)
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
         case .clientError(_, _):
             print("뜨면 위험함")
         case .serverError:
