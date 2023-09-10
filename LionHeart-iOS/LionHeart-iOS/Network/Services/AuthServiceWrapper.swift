@@ -9,17 +9,18 @@ import Foundation
 
 final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol {
     
-    let authAPIService: AuthProtocol = AuthAPI(apiService: APIService())
+    private let authAPIService: AuthProtocol
+    private let mypageAPIService: MyPageProtocol
+    
+    init(authAPIService: AuthProtocol, mypageAPIService: MyPageProtocol) {
+        self.authAPIService = authAPIService
+        self.mypageAPIService = mypageAPIService
+    }
     
     func getMyPage() async throws -> MyPageAppData {
-        let urlRequest = try NetworkRequest(path: "/v1/member/profile", httpMethod: .get).makeURLRequest(isLogined: true)
-        let (data, _) = try await URLSession.shared.data(for: urlRequest)
-        
-        let model = try dataDecodeAndhandleErrorCode(data: data, decodeType: MyPageResponse.self)
+        let model = try await mypageAPIService.getMyPage()
         guard let model else { return .init(badgeImage: "", nickname: "", isAlarm: "") }
-        return MyPageAppData(badgeImage: model.level,
-                             nickname: model.babyNickname,
-                             isAlarm: model.notificationStatus)
+        return MyPageAppData(badgeImage: model.level, nickname: model.babyNickname, isAlarm: model.notificationStatus)
     }
     
     func reissueToken(token: Token) async throws -> Token? {
