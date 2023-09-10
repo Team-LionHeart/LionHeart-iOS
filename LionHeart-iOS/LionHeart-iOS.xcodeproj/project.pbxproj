@@ -36,7 +36,6 @@
 		B520EA6E2A670C010027356E /* progressbar_5m.json in Resources */ = {isa = PBXBuildFile; fileRef = B520EA652A670C010027356E /* progressbar_5m.json */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
-		B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8352A5525C600F0DB19 /* ViewController.swift */; };
 		B532E83B2A5525C700F0DB19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B532E83A2A5525C700F0DB19 /* Assets.xcassets */; };
 		B532E83E2A5525C700F0DB19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B532E83C2A5525C700F0DB19 /* LaunchScreen.storyboard */; };
 		B532E8492A5525C800F0DB19 /* LionHeart_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8482A5525C800F0DB19 /* LionHeart_iOSTests.swift */; };
@@ -260,7 +259,6 @@
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B532E8332A5525C600F0DB19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B532E8352A5525C600F0DB19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B532E83A2A5525C700F0DB19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B532E83D2A5525C700F0DB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B532E83F2A5525C700F0DB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -573,7 +571,6 @@
 				B59891F52A56B10D00CE1FEB /* Global */,
 				B532E8672A552B0600F0DB19 /* Settings */,
 				B532E8612A55260C00F0DB19 /* Network */,
-				B532E8352A5525C600F0DB19 /* ViewController.swift */,
 				B59892822A56C93400CE1FEB /* GoogleService-Info.plist */,
 			);
 			path = "LionHeart-iOS";
@@ -1623,7 +1620,6 @@
 				C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */,
 				C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
-				B532E8362A5525C600F0DB19 /* ViewController.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
