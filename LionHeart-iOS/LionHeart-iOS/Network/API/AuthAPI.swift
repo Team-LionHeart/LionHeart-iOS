@@ -11,12 +11,11 @@ protocol AuthAPIProtocol {
     func reissueToken(token: Token) async throws -> Token?
     func login(type: LoginType, kakaoToken: String) async throws
     func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
-    @discardableResult
-    func logout(token: UserDefaultToken) async throws -> String?
+    @discardableResult func logout(token: UserDefaultToken) async throws -> String?
     func resignUser() async throws
 }
 
-class AuthAPI: AuthAPIProtocol {
+final class AuthAPI: AuthAPIProtocol {
     
     private let apiService: Requestable
     

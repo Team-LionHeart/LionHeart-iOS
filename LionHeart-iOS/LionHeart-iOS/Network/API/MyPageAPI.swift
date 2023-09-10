@@ -11,7 +11,7 @@ protocol MyPageAPIProtocol {
     func getMyPage() async throws -> MyPageResponse?
 }
 
-class MyPageAPI: MyPageAPIProtocol {
+final class MyPageAPI: MyPageAPIProtocol {
     
     private let apiService: Requestable
     

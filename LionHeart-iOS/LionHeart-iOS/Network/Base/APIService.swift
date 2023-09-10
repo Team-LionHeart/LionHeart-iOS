@@ -11,7 +11,7 @@ protocol Requestable {
     func request<T: Decodable>(_ request: URLRequest) async throws -> T?
 }
 
-class APIService: Requestable {
+final class APIService: Requestable {
     func request<T: Decodable>(_ request: URLRequest) async throws -> T? {
         let (data, _) = try await URLSession.shared.data(for: request)
         let decoder = JSONDecoder()
