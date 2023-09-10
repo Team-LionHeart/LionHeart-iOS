@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AuthProtocol {
+protocol AuthAPIProtocol {
     func reissueToken(token: Token) async throws -> Token?
     func login(type: LoginType, kakaoToken: String) async throws -> Token?
     func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws -> Token?
@@ -15,7 +15,7 @@ protocol AuthProtocol {
     func resignUser() async throws
 }
 
-class AuthAPI: AuthProtocol {
+class AuthAPI: AuthAPIProtocol {
     
     private let apiService: Requestable
     

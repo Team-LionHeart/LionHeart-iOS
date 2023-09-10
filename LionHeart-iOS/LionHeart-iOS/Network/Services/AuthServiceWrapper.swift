@@ -9,10 +9,10 @@ import Foundation
 
 final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol {
     
-    private let authAPIService: AuthProtocol
-    private let mypageAPIService: MyPageProtocol
+    private let authAPIService: AuthAPIProtocol
+    private let mypageAPIService: MyPageAPIProtocol
     
-    init(authAPIService: AuthProtocol, mypageAPIService: MyPageProtocol) {
+    init(authAPIService: AuthAPIProtocol, mypageAPIService: MyPageAPIProtocol) {
         self.authAPIService = authAPIService
         self.mypageAPIService = mypageAPIService
     }

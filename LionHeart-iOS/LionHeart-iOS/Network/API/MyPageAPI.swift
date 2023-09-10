@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol MyPageProtocol {
+protocol MyPageAPIProtocol {
     func getMyPage() async throws -> MyPageResponse?
 }
 
-class MyPageAPI: MyPageProtocol {
+class MyPageAPI: MyPageAPIProtocol {
     
     private let apiService: Requestable
     

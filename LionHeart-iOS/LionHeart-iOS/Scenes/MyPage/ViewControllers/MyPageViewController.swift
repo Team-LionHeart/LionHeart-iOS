@@ -10,6 +10,12 @@ import UIKit
 
 import SnapKit
 
+protocol MyPageServiceProtocol: AnyObject {
+    func getMyPage() async throws -> MyPageAppData
+    func resignUser() async throws
+    func logout(token: UserDefaultToken) async throws
+}
+
 final class MyPageViewController: UIViewController {
 
     // MARK: - Properties
