@@ -18,14 +18,14 @@ final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol
     }
     
     func getMyPage() async throws -> MyPageAppData {
-        let model = try await mypageAPIService.getMyPage()
-        guard let model else { return MyPageAppData.empty }
+        guard let model = try await mypageAPIService.getMyPage()
+        else { return MyPageAppData.empty }
         return MyPageAppData(badgeImage: model.level, nickname: model.babyNickname, isAlarm: model.notificationStatus)
     }
     
     func reissueToken(token: Token) async throws -> Token? {
         let model = try await authAPIService.reissueToken(token: token)
-        return model
+        return try await authAPIService.reissueToken(token: token)
     }
     
     func login(type: LoginType, kakaoToken: String) async throws {
