@@ -13,6 +13,8 @@ import SnapKit
 final class OnboardingViewController: UIViewController {
     
     typealias OnboardingViews = [UIViewController]
+
+    private let authService: AuthServiceProtocol
     
     /// passing data property
     private var fetalNickName: String?
@@ -47,7 +49,16 @@ final class OnboardingViewController: UIViewController {
             fillProgressView(from: onboardingCompletePercentage)
         }
     }
-    
+
+    init(authService: AuthServiceProtocol) {
+        self.authService = authService
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -170,7 +181,7 @@ private extension OnboardingViewController {
         Task {
             showLoading()
             do {
-                try await AuthService.shared.signUp(type: .kakao, onboardingModel: passingData)
+                try await authService.signUp(type: .kakao, onboardingModel: passingData)
                 hideLoading()
                 self.navigationController?.pushViewController(completeViewController, animated: true)
 
@@ -237,11 +248,11 @@ extension OnboardingViewController: ViewControllerServiceable {
             LHToast.show(message: "이미지패치에러")
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
-            LHToast.show(message: "서버놈들")
+            LHToast.show(message: error.description)
         }
     }
 }

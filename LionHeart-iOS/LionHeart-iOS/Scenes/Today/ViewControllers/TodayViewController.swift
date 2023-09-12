@@ -130,7 +130,8 @@ private extension TodayViewController {
         }
         
         todayNavigationBar.rightSecondBarItemAction {
-            let myPageViewController = MyPageViewController()
+            let wrapperClass = AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))
+            let myPageViewController = MyPageViewController(service: wrapperClass)
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
@@ -155,11 +156,11 @@ extension TodayViewController: ViewControllerServiceable {
             LHToast.show(message: "이미지패치실패", isTabBar: true)
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: message, isTabBar: true)
         case .serverError:
-            LHToast.show(message: "승준이어딧니 내목소리들리니", isTabBar: true)
+            LHToast.show(message: error.description, isTabBar: true)
         }
     }
 }

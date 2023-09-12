@@ -126,11 +126,11 @@ extension ArticleListByCategoryViewController: ViewControllerServiceable {
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(), withAnimation: false)
-        case .clientError(_, _):
-            print("뜨면 위험함")
+            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
+        case .clientError(_, let message):
+            LHToast.show(message: message)
         case .serverError:
-            LHToast.show(message: "승준이 빠따")
+            LHToast.show(message: error.description)
         }
     }
 }

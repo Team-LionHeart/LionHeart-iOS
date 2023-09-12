@@ -11,6 +11,19 @@ import UIKit
 import SnapKit
 import Lottie
 
+protocol UserInProtocol {
+    func reissueToken(token: Token) async throws -> Token?
+    func login(type: LoginType, kakaoToken: String) async throws
+    func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
+}
+
+protocol UserOutProtocol {
+    func resignUser() async throws
+    func logout(token: UserDefaultToken) async throws
+}
+
+protocol AuthServiceProtocol: UserInProtocol, UserOutProtocol {}
+
 final class SplashViewController: UIViewController {
 
     // MARK: - UI Components
@@ -23,12 +36,20 @@ final class SplashViewController: UIViewController {
 
     // MARK: - Properties
 
-    private let authManager = AuthService.shared
+    private let authService: AuthServiceProtocol
 
     // MARK: - Life Cycle
 
-    override func viewDidLoad() {
+    init(authService: AuthServiceProtocol) {
+        self.authService = authService
+        super.init(nibName: nil, bundle: nil)
+    }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setHierarchy()
@@ -38,7 +59,7 @@ final class SplashViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         lottieImageView.play { _ in
             guard let accessToken = UserDefaultsManager.tokenKey?.accessToken, let refreshToken = UserDefaultsManager.tokenKey?.refreshToken else {
-                let loginViewController = UINavigationController(rootViewController: LoginViewController())
+                let loginViewController = UINavigationController(rootViewController: LoginViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))))
                 guard let window = self.view.window else { return }
                 ViewControllerUtil.setRootViewController(window: window, viewController: loginViewController, withAnimation: true)
                 return
@@ -90,8 +111,7 @@ private extension SplashViewController {
 
     func reissueToken(refreshToken: String, accessToken: String) async throws {
         do {
-            let dtoToken = try await authManager.reissueToken(token: Token(accessToken: accessToken, refreshToken: refreshToken))
-        
+            let dtoToken = try await authService.reissueToken(token: Token(accessToken: accessToken, refreshToken: refreshToken))
             UserDefaultsManager.tokenKey?.accessToken = dtoToken?.accessToken
             UserDefaultsManager.tokenKey?.refreshToken = dtoToken?.refreshToken
             
@@ -105,7 +125,7 @@ private extension SplashViewController {
 
     func logout(token: UserDefaultToken) async {
         do {
-            try await authManager.logout(token: token)
+            try await authService.logout(token: token)
         } catch {
             print(error)
         }
@@ -118,10 +138,10 @@ private extension SplashViewController {
                 guard let token = UserDefaultsManager.tokenKey else { return }
                 await logout(token: token)
                 // LoginVC로 이동하기
-                let loginVC = UINavigationController(rootViewController: LoginViewController())
+                let loginVC = UINavigationController(rootViewController: LoginViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))))
                 setRootViewController(to: loginVC, animation: true)
             } else if code == NetworkErrorCode.unfoundUserErrorCode {
-                let loginVC = UINavigationController(rootViewController: LoginViewController())
+                let loginVC = UINavigationController(rootViewController: LoginViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))))
                 setRootViewController(to: loginVC, animation: true)
             }
         default:

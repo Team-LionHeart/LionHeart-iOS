@@ -254,7 +254,8 @@ private extension ChallengeViewController {
         }
         
         navigationBar.rightSecondBarItemAction {
-            let myPageViewController = MyPageViewController()
+            let wrapper = AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))
+            let myPageViewController = MyPageViewController(service: wrapper)
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
@@ -315,7 +316,7 @@ extension ChallengeViewController: ViewControllerServiceable {
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
-            LHToast.show(message: "서버문제!")
+            LHToast.show(message: error.description)
         }
     }
 }
