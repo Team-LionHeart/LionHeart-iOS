@@ -19,3 +19,15 @@ struct ArticleSummaryDTO: DTO, Response {
     let isMarked: Bool
     let tags: [String]
 }
+
+extension BookmarkResponse {
+    func toAppData() -> BookmarkAppData {
+        return BookmarkAppData(nickName: self.babyNickname,
+                               articleSummaries: self.articleSummaries.map { ArticleSummaries(title: $0.title,
+                                                                                              articleID: $0.articleId,
+                                                                                              articleImage: $0.mainImageUrl,
+                                                                                              bookmarked: $0.isMarked,
+                                                                                              tags: $0.tags)
+        })
+    }
+}
