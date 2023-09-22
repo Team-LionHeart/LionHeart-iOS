@@ -42,7 +42,6 @@ extension BookmarkAPI {
         let param = model.toDictionary()
         let body = try JSONSerialization.data(withJSONObject: param)
         
-        let request = try NetworkRequest(path: "/v1/article/bookmark", httpMethod: .post, body: body).makeURLRequest(isLogined: true)
         return try NetworkRequest(path: "/v1/article/bookmark", httpMethod: .post, body: body).makeURLRequest(isLogined: true)
     }
 }

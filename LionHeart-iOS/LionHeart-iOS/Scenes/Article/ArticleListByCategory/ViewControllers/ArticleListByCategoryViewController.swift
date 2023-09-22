@@ -9,8 +9,9 @@
 import UIKit
 
 import SnapKit
-
 final class ArticleListByCategoryViewController: UIViewController {
+    
+    private let serviceProcotol: BookmarkOutProtocol
     
     var categoryString = String()
     var articleListData: [ArticleDataByWeek] = [] {
@@ -34,6 +35,16 @@ final class ArticleListByCategoryViewController: UIViewController {
         tableView.tableFooterView = footerView
         return tableView
     }()
+    
+    init(serviceProcotol: BookmarkOutProtocol) {
+        self.serviceProcotol = serviceProcotol
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,7 +160,7 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
 
             Task {
                 do {
-                    try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: self.articleListData[indexPath.row].articleId,
+                    try await self.serviceProcotol.postBookmark(model: BookmarkRequest(articleId: self.articleListData[indexPath.row].articleId,
                                                                                   bookmarkRequestStatus: isSelected))
                     print(self.articleListData[indexPath.row].articleId)
                     isSelected ? LHToast.show(message: "북마크에 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크에 해제되었습니다", isTabBar: true)

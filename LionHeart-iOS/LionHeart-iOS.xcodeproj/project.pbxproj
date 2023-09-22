@@ -18,7 +18,6 @@
 		4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */; };
 		4AD216402A69AC1E00C9F2F2 /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD2163F2A69AC1E00C9F2F2 /* MyPageResponse.swift */; };
 		4AD6A34C2AB1AB6700977224 /* BookmarkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD6A34B2AB1AB6700977224 /* BookmarkAPI.swift */; };
-		4AD6A34E2AB1F92B00977224 /* BookmarkServiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD6A34D2AB1F92B00977224 /* BookmarkServiceWrapper.swift */; };
 		4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD6AE192A68436B00A3D745 /* ArticleListByCategoryResponse.swift */; };
 		4AE19A172A65864F00C1DB7E /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE19A162A65864F00C1DB7E /* BookmarkService.swift */; };
 		4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE19A192A65886100C1DB7E /* BookmarkReponse.swift */; };
@@ -234,7 +233,6 @@
 		4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAppSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AD2163F2A69AC1E00C9F2F2 /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
 		4AD6A34B2AB1AB6700977224 /* BookmarkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAPI.swift; sourceTree = "<group>"; };
-		4AD6A34D2AB1F92B00977224 /* BookmarkServiceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkServiceWrapper.swift; sourceTree = "<group>"; };
 		4AD6AE032A66F83E00A3D745 /* progressbar_2m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_2m.json; sourceTree = "<group>"; };
 		4AD6AE052A66F84300A3D745 /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
 		4AD6AE072A66F84C00A3D745 /* progressbar_4m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_4m.json; sourceTree = "<group>"; };
@@ -1140,7 +1138,6 @@
 				4AE19A162A65864F00C1DB7E /* BookmarkService.swift */,
 				C06E38292A662E3700B00600 /* ArticleService.swift */,
 				B57FEE2B2AA904D800ED6299 /* AuthMyPageServiceWrapper.swift */,
-				4AD6A34D2AB1F92B00977224 /* BookmarkServiceWrapper.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1651,7 +1648,6 @@
 				C06E38232A65353F00B00600 /* LoginType.swift in Sources */,
 				B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
-				4AD6A34E2AB1F92B00977224 /* BookmarkServiceWrapper.swift in Sources */,
 				4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */,
 				C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */,
 				F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */,
