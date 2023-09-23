@@ -49,31 +49,30 @@ enum BadgeLevel: String {
     }
 }
 
+protocol ChallengeServiceProtocol {
+    func inquireChallengeInfo() async throws -> ChallengeData
+}
+
 final class ChallengeViewController: UIViewController {
+    
+    private var challengeService: ChallengeServiceProtocol
     
     var inputData: ChallengeData? {
         didSet {
             guard let babyNickname = inputData?.babyDaddyName else { return }
-            self.nicknameLabel.text = "\(babyNickname)아빠 님,"
-            
-            if let howLongDay = inputData?.howLongDay {
-                self.challengeDayLabel.text = "\(howLongDay)일째 도전 중"
-            }
-    
-            self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
-            
-            self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
-            self.lottieImageView.play()
-            
-            let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
-            
-            let attributtedString = NSMutableAttributedString(string: fullText)
-            attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
-            
-            self.challengelevelLabel.attributedText = attributtedString
+            configureData(babyNickname)
+
         }
     }
     
+    init(challengeService: ChallengeServiceProtocol) {
+        self.challengeService = challengeService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     private enum Size {
         static let cellOffset: CGFloat = 40
         static let numberOfCellsinRow: CGFloat = 0
@@ -144,7 +143,7 @@ final class ChallengeViewController: UIViewController {
         Task {
             do {
                 self.showLoading()
-                let model = try await ChallengeService.shared.inquireChallengeInfo()
+                let model = try await challengeService.inquireChallengeInfo()
                 self.inputData = model
                 self.tags = model.daddyAttendances
                 self.challengeDayCheckCollectionView.reloadData()
@@ -258,6 +257,26 @@ private extension ChallengeViewController {
             let myPageViewController = MyPageViewController(service: wrapper)
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
+    }
+    
+    func configureData(_ babyNickname: String) {
+        self.nicknameLabel.text = "\(babyNickname)아빠 님,"
+        
+        if let howLongDay = inputData?.howLongDay {
+            self.challengeDayLabel.text = "\(howLongDay)일째 도전 중"
+        }
+
+        self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
+        
+        self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
+        self.lottieImageView.play()
+        
+        let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
+        
+        let attributtedString = NSMutableAttributedString(string: fullText)
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
+        
+        self.challengelevelLabel.attributedText = attributtedString
     }
 }
 
