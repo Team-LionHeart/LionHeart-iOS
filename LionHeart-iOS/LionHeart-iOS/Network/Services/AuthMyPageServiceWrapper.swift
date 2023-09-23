@@ -24,7 +24,6 @@ final class AuthMyPageServiceWrapper: AuthServiceProtocol, MyPageServiceProtocol
     }
     
     func reissueToken(token: Token) async throws -> Token? {
-        let model = try await authAPIService.reissueToken(token: token)
         return try await authAPIService.reissueToken(token: token)
     }
     
