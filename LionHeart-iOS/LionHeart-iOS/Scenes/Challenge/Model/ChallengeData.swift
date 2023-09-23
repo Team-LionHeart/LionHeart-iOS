@@ -13,3 +13,9 @@ struct ChallengeData: AppData {
     let daddyLevel: String
     let daddyAttendances: [String]
 }
+
+extension ChallengeData {
+    static var empty: Self {
+        return .init(babyDaddyName: "", howLongDay: 0, daddyLevel: "", daddyAttendances: [])
+    }
+}
