@@ -6,8 +6,6 @@
 //  Copyright (c) 2023 ArticleCategory. All rights reserved.
 //
 
-
-
 import UIKit
 
 import SnapKit
@@ -99,7 +97,7 @@ private extension ArticleCategoryViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController()
+            let bookmarkViewController = BookmarkViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
             self.navigationController?.pushViewController(bookmarkViewController, animated: true)
         }
         
@@ -136,7 +134,7 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let ArticleListByCategoryVC = ArticleListByCategoryViewController()
+        let ArticleListByCategoryVC = ArticleListByCategoryViewController(serviceProcotol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
         ArticleListByCategoryVC.categoryString = dummyCase[indexPath.item].categoryString
         self.navigationController?.pushViewController(ArticleListByCategoryVC, animated: true)
     }

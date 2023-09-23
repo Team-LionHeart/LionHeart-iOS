@@ -12,6 +12,8 @@ import SnapKit
 
 final class BookmarkViewController: UIViewController {
     
+    private let serviceProtocol: BookmarkInOutServiceProtocol
+    
     private var bookmarkAppData = BookmarkAppData(nickName: "", articleSummaries: [ArticleSummaries]())
     private var bookmarkList = [ArticleSummaries]()
     
@@ -23,7 +25,17 @@ final class BookmarkViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
+    
+    init(serviceProtocol: BookmarkInOutServiceProtocol) {
+        self.serviceProtocol = serviceProtocol
 
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -39,7 +51,7 @@ final class BookmarkViewController: UIViewController {
         showLoading()
         Task {
             do {
-                self.bookmarkAppData = try await BookmarkService.shared.getBookmark()
+                self.bookmarkAppData = try await serviceProtocol.getBookmark()
                 self.bookmarkList = bookmarkAppData.articleSummaries
                 hideLoading()
                 bookmarkCollectionView.reloadData()
@@ -146,11 +158,12 @@ extension BookmarkViewController: UICollectionViewDataSource {
             cell.bookmarkButtonClosure = { indexPath in
                 Task {
                     do {
-                        try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: self.bookmarkList[indexPath.item].articleID,
-                                                                                      bookmarkRequestStatus: !self.bookmarkList[indexPath.item].bookmarked))
+                        try await self.serviceProtocol.postBookmark(model: BookmarkRequest(articleId: self.bookmarkList[indexPath.item].articleID,
+                                                                                            bookmarkRequestStatus: !self.bookmarkList[indexPath.item].bookmarked))
                         self.bookmarkList.remove(at: indexPath.item)
                         collectionView.deleteItems(at: [indexPath])
                         LHToast.show(message: "북마크가 해제되었습니다")
+                        
                     } catch {
                         guard let error = error as? NetworkError else { return }
                         self.handleError(error)

@@ -11,6 +11,18 @@ import UIKit
 import SnapKit
 
 final class CurriculumListByWeekViewController: UIViewController {
+    
+    private let serviceProtocol: BookmarkOutProtocol
+    
+    init(serviceProtocol: BookmarkOutProtocol) {
+        self.serviceProtocol = serviceProtocol
+        /// 이 코드는 왜 있어야 하지?
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private let pregnancy = 37
     
@@ -166,9 +178,10 @@ private extension CurriculumListByWeekViewController {
                 
                 print(indexPath)
                 print(buttonSelected)
-                try await BookmarkService.shared.postBookmark(
-                    BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
-                                    bookmarkRequestStatus: buttonSelected))
+                
+                try await
+                serviceProtocol.postBookmark(model: BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
+                                                                    bookmarkRequestStatus: buttonSelected))
                 hideLoading()
                 buttonSelected ? LHToast.show(message: "북마크가 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크가 해제되었습니다", isTabBar: true)
             } catch {

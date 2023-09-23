@@ -13,6 +13,9 @@ import SnapKit
 final class ArticleDetailViewController: UIViewController {
 
     // MARK: - UI Components
+    
+    private let serviceProtocol: BookmarkOutProtocol
+    
     private lazy var navigationBar = LHNavigationBarView(type: .articleMain, viewController: self)
     
     private var progressBar = LHProgressView()
@@ -30,7 +33,17 @@ final class ArticleDetailViewController: UIViewController {
         button.isHidden = true
         return button
     }()
-
+    
+    init(serviceProtocol: BookmarkOutProtocol) {
+        self.serviceProtocol = serviceProtocol
+        /// 이 코드는 왜 있어야 하지?
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Properties
 
     private var isBookMarked: Bool? {
@@ -93,7 +106,7 @@ extension ArticleDetailViewController {
         Task {
             do {
                 let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkRequestStatus: isSelected)
-                try await BookmarkService.shared.postBookmark(bookmarkRequest)
+                try await serviceProtocol.postBookmark(model: bookmarkRequest)
 
                 isBookMarked = isSelected
             } catch {

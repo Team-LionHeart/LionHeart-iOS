@@ -166,7 +166,7 @@ private extension CurriculumViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController()
+            let bookmarkViewController = BookmarkViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
             self.navigationController?.pushViewController(bookmarkViewController, animated: true)
         }
         
@@ -268,7 +268,7 @@ extension CurriculumViewController: UITableViewDataSource {
             
         }
         
-        let listByWeekVC = CurriculumListByWeekViewController()
+        let listByWeekVC = CurriculumListByWeekViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
         listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row
         self.navigationController?.pushViewController(listByWeekVC, animated: true)
         
