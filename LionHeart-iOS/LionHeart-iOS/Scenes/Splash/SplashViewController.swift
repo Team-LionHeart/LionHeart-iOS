@@ -51,7 +51,7 @@ final class SplashViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         lottieImageView.play { _ in
             guard let accessToken = UserDefaultsManager.tokenKey?.accessToken, let refreshToken = UserDefaultsManager.tokenKey?.refreshToken else {
-                let loginViewController = UINavigationController(rootViewController: LoginViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))))
+                let loginViewController = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
                 guard let window = self.view.window else { return }
                 ViewControllerUtil.setRootViewController(window: window, viewController: loginViewController, withAnimation: true)
                 return
@@ -130,10 +130,10 @@ private extension SplashViewController {
                 guard let token = UserDefaultsManager.tokenKey else { return }
                 await logout(token: token)
                 // LoginVC로 이동하기
-                let loginVC = UINavigationController(rootViewController: LoginViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))))
+                let loginVC = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
                 setRootViewController(to: loginVC, animation: true)
             } else if code == NetworkErrorCode.unfoundUserErrorCode {
-                let loginVC = UINavigationController(rootViewController: LoginViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))))
+                let loginVC = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
                 setRootViewController(to: loginVC, animation: true)
             }
         default:

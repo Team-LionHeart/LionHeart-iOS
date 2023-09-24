@@ -127,6 +127,7 @@
 		C0856B832ABFCFBE0026D9F8 /* CurriculumServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B822ABFCFBE0026D9F8 /* CurriculumServiceImpl.swift */; };
 		C0856B852ABFD0F50026D9F8 /* CurriculumManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B842ABFD0F50026D9F8 /* CurriculumManagerImpl.swift */; };
 		C0856B872ABFD24E0026D9F8 /* CurriculumListManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B862ABFD24E0026D9F8 /* CurriculumListManagerImpl.swift */; };
+		C0856B892ABFDA240026D9F8 /* Bedge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B882ABFDA240026D9F8 /* Bedge.swift */; };
 		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
 		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
@@ -353,6 +354,7 @@
 		C0856B822ABFCFBE0026D9F8 /* CurriculumServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumServiceImpl.swift; sourceTree = "<group>"; };
 		C0856B842ABFD0F50026D9F8 /* CurriculumManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumManagerImpl.swift; sourceTree = "<group>"; };
 		C0856B862ABFD24E0026D9F8 /* CurriculumListManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListManagerImpl.swift; sourceTree = "<group>"; };
+		C0856B882ABFDA240026D9F8 /* Bedge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bedge.swift; sourceTree = "<group>"; };
 		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
@@ -1110,6 +1112,7 @@
 			children = (
 				B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */,
 				C06E38222A65353F00B00600 /* LoginType.swift */,
+				C0856B882ABFDA240026D9F8 /* Bedge.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1625,6 +1628,7 @@
 				B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */,
 				D342807A2A67F12200DA1499 /* ChallengeDataResponse.swift in Sources */,
 				B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */,
+				C0856B892ABFDA240026D9F8 /* Bedge.swift in Sources */,
 				B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */,
 				C0856B7B2ABFC9640026D9F8 /* SplashManagerImpl.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,

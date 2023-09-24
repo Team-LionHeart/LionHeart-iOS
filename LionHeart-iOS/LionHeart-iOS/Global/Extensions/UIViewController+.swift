@@ -89,7 +89,7 @@ extension UIViewController {
 
 extension UIViewController {
     func presentArticleDetailFullScreen(articleID: Int) {
-        let articleDetailViewController = ArticleDetailViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
+        let articleDetailViewController = ArticleDetailViewController(manager: ArticleDetailManagerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
         articleDetailViewController.setArticleId(id: articleID)
         articleDetailViewController.isModalInPresentation = true
         articleDetailViewController.modalPresentationStyle = .fullScreen

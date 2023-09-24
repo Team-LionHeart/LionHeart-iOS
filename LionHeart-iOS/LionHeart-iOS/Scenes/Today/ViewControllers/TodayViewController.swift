@@ -140,13 +140,12 @@ private extension TodayViewController {
 
     func setButtonAction() {
         todayNavigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
+            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(bookmarkViewController, animated: true)
         }
         
         todayNavigationBar.rightSecondBarItemAction {
-            let wrapperClass = AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))
-            let myPageViewController = MyPageViewController(service: wrapperClass)
+            let myPageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
@@ -171,7 +170,8 @@ extension TodayViewController: ViewControllerServiceable {
             LHToast.show(message: "이미지패치실패", isTabBar: true)
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
+            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: message, isTabBar: true)
         case .serverError:

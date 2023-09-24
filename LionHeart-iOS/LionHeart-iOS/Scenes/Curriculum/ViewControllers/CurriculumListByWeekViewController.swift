@@ -265,7 +265,8 @@ extension CurriculumListByWeekViewController: ViewControllerServiceable {
         switch error {
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
+            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
         case .clientError(code: _, message: let message):
             LHToast.show(message: "\(message)")
         default:
@@ -278,8 +279,7 @@ extension CurriculumListByWeekViewController {
     func getListByWeekData() {
         Task {
             do {
-                let responseListByWeek = try await CurriculumService.shared.getArticleListByWeekInfo(week: weekToIndexPathItem + 4)
-                
+                let responseListByWeek = try await manager.getArticleListByWeekInfo(week: weekToIndexPathItem + 4)
                 listByWeekDatas = responseListByWeek
                 hideLoading()
             } catch {

@@ -14,16 +14,16 @@ final class TabBarViewController: UITabBarController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        let todayViewController = UINavigationController(rootViewController: TodayViewController())
+        let todayViewController = UINavigationController(rootViewController: TodayViewController(manager: TodayManagerImpl(articleService: ArticleServiceImpl(apiService: APIService()))))
         todayViewController.tabBarItem = UITabBarItem(title: "투데이", image: .assetImage(.home), tag: 0)
         
         let articleCategoryViewController = UINavigationController(rootViewController: ArticleCategoryViewController())
         articleCategoryViewController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         
-        let curriculumViewController = UINavigationController(rootViewController: CurriculumViewController())
+        let curriculumViewController = UINavigationController(rootViewController: CurriculumViewController(manager: CurriculumManagerImpl(curriculumService: CurriculumServiceImpl(apiService: APIService()))))
         curriculumViewController.tabBarItem = UITabBarItem(title: "커리큘럼", image: .assetImage(.curriculum), tag: 2)
         
-        let challengeViewController = UINavigationController(rootViewController: ChallengeViewController(challengeService: ChallengeService(challengeAPIService: ChallengeAPI(apiService: APIService()))))
+        let challengeViewController = UINavigationController(rootViewController: ChallengeViewController(manager: ChallengeManagerImpl(challengeService: ChallengeServiceImpl(apiService: APIService()))))
         challengeViewController.tabBarItem = UITabBarItem(title: "챌린지", image: .assetImage(.challenge), tag: 3)
         
         self.viewControllers = [todayViewController, articleCategoryViewController, curriculumViewController, challengeViewController]
