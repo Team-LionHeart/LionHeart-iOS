@@ -10,11 +10,15 @@ import UIKit
 
 import SnapKit
 
+protocol ArticleDetailManager {
+    func getArticleDetail(articleId: Int) async throws -> [BlockTypeAppData]
+    func postBookmark(model: BookmarkRequest) async throws
+}
+
 final class ArticleDetailViewController: UIViewController {
 
     // MARK: - UI Components
-    
-    private let serviceProtocol: BookmarkOutProtocol
+    private let manager: ArticleDetailManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .articleMain, viewController: self)
     
@@ -33,17 +37,7 @@ final class ArticleDetailViewController: UIViewController {
         button.isHidden = true
         return button
     }()
-    
-    init(serviceProtocol: BookmarkOutProtocol) {
-        self.serviceProtocol = serviceProtocol
-        /// 이 코드는 왜 있어야 하지?
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     // MARK: - Properties
 
     private var isBookMarked: Bool? {
@@ -63,6 +57,15 @@ final class ArticleDetailViewController: UIViewController {
     private var articleId: Int?
 
     private var contentOffsetY: CGFloat = 0
+    
+    init(manager: ArticleDetailManager) {
+        self.manager = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +97,7 @@ extension ArticleDetailViewController {
         Task {
             do {
                 guard let articleId else { return }
-                self.articleDatas = try await ArticleService.shared.getArticleDetail(articleId: articleId)
+                self.articleDatas = try await manager.getArticleDetail(articleId: articleId)
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -106,7 +109,7 @@ extension ArticleDetailViewController {
         Task {
             do {
                 let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkRequestStatus: isSelected)
-                try await serviceProtocol.postBookmark(model: bookmarkRequest)
+                try await manager.postBookmark(model: bookmarkRequest)
 
                 isBookMarked = isSelected
             } catch {

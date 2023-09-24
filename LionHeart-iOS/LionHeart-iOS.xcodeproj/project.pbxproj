@@ -113,6 +113,7 @@
 		C0856B652ABFB8640026D9F8 /* TodayManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B642ABFB8640026D9F8 /* TodayManagerImpl.swift */; };
 		C0856B692ABFB9140026D9F8 /* ArticleServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */; };
 		C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */; };
+		C0856B6D2ABFBD840026D9F8 /* BookmarkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */; };
 		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
 		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
@@ -328,6 +329,7 @@
 		C0856B642ABFB8640026D9F8 /* TodayManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManagerImpl.swift; sourceTree = "<group>"; };
 		C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleServiceImpl.swift; sourceTree = "<group>"; };
 		C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailManagerImpl.swift; sourceTree = "<group>"; };
+		C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkServiceImpl.swift; sourceTree = "<group>"; };
 		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
@@ -1271,6 +1273,7 @@
 			isa = PBXGroup;
 			children = (
 				C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */,
+				C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1666,6 +1669,7 @@
 				4AD6A34C2AB1AB6700977224 /* BookmarkAPI.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
 				B59893192A5D41F600CE1FEB /* KingfisherService.swift in Sources */,
+				C0856B6D2ABFBD840026D9F8 /* BookmarkServiceImpl.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
