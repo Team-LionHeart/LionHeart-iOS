@@ -117,6 +117,9 @@
 		C0856B6F2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6E2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift */; };
 		C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */; };
 		C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B722ABFC3070026D9F8 /* BookmarkMangerImpl.swift */; };
+		C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B742ABFC4CB0026D9F8 /* MyPageManagerImpl.swift */; };
+		C0856B772ABFC4EA0026D9F8 /* MyPageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B762ABFC4EA0026D9F8 /* MyPageServiceImpl.swift */; };
+		C0856B792ABFC56E0026D9F8 /* AuthServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B782ABFC56E0026D9F8 /* AuthServiceImpl.swift */; };
 		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
 		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
@@ -336,6 +339,9 @@
 		C0856B6E2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeServiceImpl.swift; sourceTree = "<group>"; };
 		C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManagerImpl.swift; sourceTree = "<group>"; };
 		C0856B722ABFC3070026D9F8 /* BookmarkMangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkMangerImpl.swift; sourceTree = "<group>"; };
+		C0856B742ABFC4CB0026D9F8 /* MyPageManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageManagerImpl.swift; sourceTree = "<group>"; };
+		C0856B762ABFC4EA0026D9F8 /* MyPageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageServiceImpl.swift; sourceTree = "<group>"; };
+		C0856B782ABFC56E0026D9F8 /* AuthServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceImpl.swift; sourceTree = "<group>"; };
 		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
@@ -1273,6 +1279,7 @@
 				C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */,
 				C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */,
 				C0856B722ABFC3070026D9F8 /* BookmarkMangerImpl.swift */,
+				C0856B742ABFC4CB0026D9F8 /* MyPageManagerImpl.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1283,6 +1290,8 @@
 				C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */,
 				C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */,
 				C0856B6E2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift */,
+				C0856B762ABFC4EA0026D9F8 /* MyPageServiceImpl.swift */,
+				C0856B782ABFC56E0026D9F8 /* AuthServiceImpl.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1707,6 +1716,7 @@
 				C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift in Sources */,
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
 				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
+				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
@@ -1731,9 +1741,11 @@
 				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
 				B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
+				C0856B772ABFC4EA0026D9F8 /* MyPageServiceImpl.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0F029E02A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
+				C0856B792ABFC56E0026D9F8 /* AuthServiceImpl.swift in Sources */,
 				C09217732A61895A00231C66 /* UIWindow+.swift in Sources */,
 				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
