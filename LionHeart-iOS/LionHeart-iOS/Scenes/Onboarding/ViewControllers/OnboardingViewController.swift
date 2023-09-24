@@ -10,11 +10,15 @@ import UIKit
 
 import SnapKit
 
+protocol OnboardingManager {
+    func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
+}
+
 final class OnboardingViewController: UIViewController {
     
     typealias OnboardingViews = [UIViewController]
 
-    private let authService: AuthServiceProtocol
+    private let manager: OnboardingManager
     
     /// passing data property
     private var fetalNickName: String?
@@ -50,8 +54,8 @@ final class OnboardingViewController: UIViewController {
         }
     }
 
-    init(authService: AuthServiceProtocol) {
-        self.authService = authService
+    init(manager: OnboardingManager) {
+        self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -181,7 +185,7 @@ private extension OnboardingViewController {
         Task {
             showLoading()
             do {
-                try await authService.signUp(type: .kakao, onboardingModel: passingData)
+                try await manager.signUp(type: .kakao, onboardingModel: passingData)
                 hideLoading()
                 self.navigationController?.pushViewController(completeViewController, animated: true)
 
