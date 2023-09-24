@@ -77,7 +77,6 @@ final class CurriculumListByWeekViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.isPagingEnabled = false
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .designSystem(.background)
         return collectionView

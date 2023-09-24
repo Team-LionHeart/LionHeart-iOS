@@ -35,23 +35,11 @@ final class ChallengeViewController: UIViewController {
     private let rightSeperateLine = LHUnderLine(lineColor: .designSystem(.background))
     private var tags: [String] = []
     private lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
-    
     private let nicknameLabel = LHLabel(type: .body2R, color: .gray200)
     private let challengeDayLabel = LHLabel(type: .head3, color: .white)
-    
-    private let levelBadge: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageLiterals.ChallengeBadge.level05
-        return imageView
-        }()
-    
+    private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05)
     private let challengelevelLabel = LHLabel(type: .body4, color: .gray500)
-    
-    private lazy var lottieImageView: LottieAnimationView = {
-        let view = LottieAnimationView()
-        view.contentMode = .scaleToFill
-        return view
-    }()
+    private lazy var lottieImageView = LHLottie()
     
     private let challengeDayCheckCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

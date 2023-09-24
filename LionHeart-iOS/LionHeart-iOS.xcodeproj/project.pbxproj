@@ -130,6 +130,9 @@
 		C09A33242A630A6400B40770 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */; };
 		C0B15E132AC010CD0058D56B /* LHKingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E122AC010CD0058D56B /* LHKingfisherService.swift */; };
 		C0B15E152AC011840058D56B /* LHLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E142AC011840058D56B /* LHLabel.swift */; };
+		C0B15E172AC015360058D56B /* LHImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E162AC015360058D56B /* LHImageView.swift */; };
+		C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E182AC015FE0058D56B /* LHLottie.swift */; };
+		C0B15E1B2AC0169D0058D56B /* LHCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E1A2AC0169D0058D56B /* LHCollectionView.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -348,6 +351,9 @@
 		C09A33212A62D46300B40770 /* LHToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHToastView.swift; sourceTree = "<group>"; };
 		C0B15E122AC010CD0058D56B /* LHKingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHKingfisherService.swift; sourceTree = "<group>"; };
 		C0B15E142AC011840058D56B /* LHLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHLabel.swift; sourceTree = "<group>"; };
+		C0B15E162AC015360058D56B /* LHImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHImageView.swift; sourceTree = "<group>"; };
+		C0B15E182AC015FE0058D56B /* LHLottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHLottie.swift; sourceTree = "<group>"; };
+		C0B15E1A2AC0169D0058D56B /* LHCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCollectionView.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -739,6 +745,9 @@
 				B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */,
 				C0F029E32A5FB08700E0D185 /* LHUnderLine.swift */,
 				C0B15E142AC011840058D56B /* LHLabel.swift */,
+				C0B15E162AC015360058D56B /* LHImageView.swift */,
+				C0B15E182AC015FE0058D56B /* LHLottie.swift */,
+				C0B15E1A2AC0169D0058D56B /* LHCollectionView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -1567,6 +1576,7 @@
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
+				C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
 				B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */,
@@ -1594,6 +1604,7 @@
 				F4DB30B82A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
 				C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */,
+				C0B15E1B2AC0169D0058D56B /* LHCollectionView.swift in Sources */,
 				F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */,
 				F4DB30AE2A611C7C00413EB9 /* CurriculumListByWeekViewController.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
@@ -1687,6 +1698,7 @@
 				C0F029E02A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift in Sources */,
 				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				C0856B792ABFC56E0026D9F8 /* AuthServiceImpl.swift in Sources */,
+				C0B15E172AC015360058D56B /* LHImageView.swift in Sources */,
 				C09217732A61895A00231C66 /* UIWindow+.swift in Sources */,
 				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,

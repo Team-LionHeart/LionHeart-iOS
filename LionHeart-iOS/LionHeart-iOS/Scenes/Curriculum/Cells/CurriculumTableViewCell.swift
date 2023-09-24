@@ -63,6 +63,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
+    
     private let contentTextLabel: UILabel = {
         let label = UILabel()
         label.font = .pretendard(.body3R)
