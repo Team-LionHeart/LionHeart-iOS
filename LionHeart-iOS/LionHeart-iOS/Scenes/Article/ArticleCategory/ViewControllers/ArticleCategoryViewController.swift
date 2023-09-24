@@ -97,14 +97,13 @@ private extension ArticleCategoryViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
+            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(bookmarkViewController, animated: true)
         }
         
         navigationBar.rightSecondBarItemAction {
-            let wrapper = AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))
-            let myPageViewController = MyPageViewController(service: wrapper)
-            self.navigationController?.pushViewController(myPageViewController, animated: true)
+            let mypageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
+            self.navigationController?.pushViewController(mypageViewController, animated: true)
         }
     }
     
@@ -134,9 +133,9 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let ArticleListByCategoryVC = ArticleListByCategoryViewController(serviceProcotol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
-        ArticleListByCategoryVC.categoryString = dummyCase[indexPath.item].categoryString
-        self.navigationController?.pushViewController(ArticleListByCategoryVC, animated: true)
+        let articleListbyCategoryViewController = ArticleListByCategoryViewController(manager: ArticleListByCategoryMangerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
+        articleListbyCategoryViewController.categoryString = dummyCase[indexPath.item].categoryString
+        self.navigationController?.pushViewController(articleListbyCategoryViewController, animated: true)
     }
 }
 
