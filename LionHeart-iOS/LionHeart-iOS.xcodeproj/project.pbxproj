@@ -110,6 +110,9 @@
 		C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07CB8192A62C54D000198CC /* TodayModel.swift */; };
 		C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07CB81D2A62C5B1000198CC /* TodayArticleView.swift */; };
 		C0856B602ABE840A0026D9F8 /* ChallengeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B5F2ABE840A0026D9F8 /* ChallengeAPI.swift */; };
+		C0856B652ABFB8640026D9F8 /* TodayManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B642ABFB8640026D9F8 /* TodayManagerImpl.swift */; };
+		C0856B692ABFB9140026D9F8 /* ArticleServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */; };
+		C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */; };
 		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
 		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
@@ -322,6 +325,9 @@
 		C07CB8192A62C54D000198CC /* TodayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayModel.swift; sourceTree = "<group>"; };
 		C07CB81D2A62C5B1000198CC /* TodayArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayArticleView.swift; sourceTree = "<group>"; };
 		C0856B5F2ABE840A0026D9F8 /* ChallengeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAPI.swift; sourceTree = "<group>"; };
+		C0856B642ABFB8640026D9F8 /* TodayManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManagerImpl.swift; sourceTree = "<group>"; };
+		C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleServiceImpl.swift; sourceTree = "<group>"; };
+		C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailManagerImpl.swift; sourceTree = "<group>"; };
 		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
@@ -600,6 +606,8 @@
 		B532E8612A55260C00F0DB19 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C0856B662ABFB8DB0026D9F8 /* Service */,
+				C0856B632ABFB84E0026D9F8 /* Manager */,
 				C0903D002AAAD8600014786F /* API */,
 				B5C6A2C32A5EF4AC0021BE5E /* DTO */,
 				B59893172A5D41E300CE1FEB /* Services */,
@@ -1250,6 +1258,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C0856B632ABFB84E0026D9F8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C0856B642ABFB8640026D9F8 /* TodayManagerImpl.swift */,
+				C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		C0856B662ABFB8DB0026D9F8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		C0903D002AAAD8600014786F /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -1611,6 +1636,7 @@
 				F4DB30AE2A611C7C00413EB9 /* CurriculumListByWeekViewController.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
 				4AE19A172A65864F00C1DB7E /* BookmarkService.swift in Sources */,
+				C0856B652ABFB8640026D9F8 /* TodayManagerImpl.swift in Sources */,
 				4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */,
 				B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */,
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
@@ -1650,6 +1676,7 @@
 				4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */,
 				4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */,
 				C06E38232A65353F00B00600 /* LoginType.swift in Sources */,
+				C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */,
 				B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */,
@@ -1673,6 +1700,7 @@
 				B57BEB6C2A6149AD00D1727C /* NetworkRequest.swift in Sources */,
 				C0DF03552A5A9BD60037F740 /* ArticleListByCategoryView.swift in Sources */,
 				F4DB30B42A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift in Sources */,
+				C0856B692ABFB9140026D9F8 /* ArticleServiceImpl.swift in Sources */,
 				F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */,
 				4A8980CA2A614F8700746C58 /* MyPageModel.swift in Sources */,
 				C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */,

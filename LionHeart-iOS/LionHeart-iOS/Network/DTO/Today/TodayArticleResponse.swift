@@ -16,3 +16,9 @@ struct TodayArticleResponse: DTO, Response {
     let day: Int
     let articleId: Int
 }
+
+extension TodayArticleResponse {
+    func toAppData() -> TodayArticle {
+        return .init(fetalNickname: self.babyNickname, articleTitle: self.title, articleDescription: self.editorNoteContent, currentWeek: self.week, currentDay: self.day, mainImageURL: self.mainImageUrl, aticleID: self.articleId)
+    }
+}

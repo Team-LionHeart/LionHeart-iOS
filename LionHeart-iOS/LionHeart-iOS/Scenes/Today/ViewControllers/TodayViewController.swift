@@ -10,7 +10,22 @@ import UIKit
 
 import SnapKit
 
+protocol TodayManager {
+    func inquiryTodayArticle() async throws -> TodayArticle
+}
+
 final class TodayViewController: UIViewController {
+    
+    private let manager: TodayManager
+    
+    init(manager: TodayManager) {
+        self.manager = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     enum TodayArticleImage {
         static let ratio: CGFloat = 400/335
@@ -54,7 +69,7 @@ extension TodayViewController {
     func getInquireTodayArticle() {
         Task {
             do {
-                let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
+                let responseArticle = try await manager.inquiryTodayArticle()
                 let image = try await LHKingFisherService.fetchImage(with: responseArticle.mainImageURL)
                 mainArticleView.mainArticlImageView.image = image
                 titleLabel.userNickName = responseArticle.fetalNickname
