@@ -10,13 +10,17 @@ import UIKit
 
 import SnapKit
 
+protocol CurriculumListManager {
+    func postBookmark(model: BookmarkRequest) async throws
+    func getArticleListByWeekInfo(week: Int) async throws -> CurriculumWeekData
+}
+
 final class CurriculumListByWeekViewController: UIViewController {
     
-    private let serviceProtocol: BookmarkOutProtocol
+    private let manager: CurriculumListManager
     
-    init(serviceProtocol: BookmarkOutProtocol) {
-        self.serviceProtocol = serviceProtocol
-        /// 이 코드는 왜 있어야 하지?
+    init(manager: CurriculumListManager) {
+        self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -52,7 +56,7 @@ final class CurriculumListByWeekViewController: UIViewController {
             if oldValue == currentPage { return }
             Task {
                 showLoading()
-                let articlesByWeek = try await CurriculumService.shared.getArticleListByWeekInfo(week: week)
+                let articlesByWeek = try await manager.getArticleListByWeekInfo(week: week)
                 print("✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨")
                 print(currentPage + 4)
                 self.listByWeekDatas = articlesByWeek
@@ -180,7 +184,7 @@ private extension CurriculumListByWeekViewController {
                 print(buttonSelected)
                 
                 try await
-                serviceProtocol.postBookmark(model: BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
+                manager.postBookmark(model: BookmarkRequest(articleId: listByWeekDatas.articleData[indexPath].articleId,
                                                                     bookmarkRequestStatus: buttonSelected))
                 hideLoading()
                 buttonSelected ? LHToast.show(message: "북마크가 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크가 해제되었습니다", isTabBar: true)
