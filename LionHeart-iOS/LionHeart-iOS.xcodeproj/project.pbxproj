@@ -120,6 +120,7 @@
 		C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B742ABFC4CB0026D9F8 /* MyPageManagerImpl.swift */; };
 		C0856B772ABFC4EA0026D9F8 /* MyPageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B762ABFC4EA0026D9F8 /* MyPageServiceImpl.swift */; };
 		C0856B792ABFC56E0026D9F8 /* AuthServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B782ABFC56E0026D9F8 /* AuthServiceImpl.swift */; };
+		C0856B7B2ABFC9640026D9F8 /* SplashManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B7A2ABFC9640026D9F8 /* SplashManagerImpl.swift */; };
 		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
 		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
@@ -342,6 +343,7 @@
 		C0856B742ABFC4CB0026D9F8 /* MyPageManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageManagerImpl.swift; sourceTree = "<group>"; };
 		C0856B762ABFC4EA0026D9F8 /* MyPageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageServiceImpl.swift; sourceTree = "<group>"; };
 		C0856B782ABFC56E0026D9F8 /* AuthServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceImpl.swift; sourceTree = "<group>"; };
+		C0856B7A2ABFC9640026D9F8 /* SplashManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashManagerImpl.swift; sourceTree = "<group>"; };
 		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
@@ -1280,6 +1282,7 @@
 				C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */,
 				C0856B722ABFC3070026D9F8 /* BookmarkMangerImpl.swift */,
 				C0856B742ABFC4CB0026D9F8 /* MyPageManagerImpl.swift */,
+				C0856B7A2ABFC9640026D9F8 /* SplashManagerImpl.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1646,6 +1649,7 @@
 				D342807A2A67F12200DA1499 /* ChallengeDataResponse.swift in Sources */,
 				B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */,
 				B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */,
+				C0856B7B2ABFC9640026D9F8 /* SplashManagerImpl.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
 				C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
