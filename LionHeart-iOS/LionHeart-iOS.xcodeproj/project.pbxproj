@@ -128,6 +128,8 @@
 		C09A33222A62D46300B40770 /* LHToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A33202A62D46300B40770 /* LHToast.swift */; };
 		C09A33232A62D46300B40770 /* LHToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A33212A62D46300B40770 /* LHToastView.swift */; };
 		C09A33242A630A6400B40770 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */; };
+		C0B15E132AC010CD0058D56B /* LHKingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E122AC010CD0058D56B /* LHKingfisherService.swift */; };
+		C0B15E152AC011840058D56B /* LHLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E142AC011840058D56B /* LHLabel.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -178,7 +180,7 @@
 		C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift */; };
 		C0F029E02A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift */; };
 		C0F029E22A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E12A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift */; };
-		C0F029E42A5FB08700E0D185 /* NHUnderLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */; };
+		C0F029E42A5FB08700E0D185 /* LHUnderLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E32A5FB08700E0D185 /* LHUnderLine.swift */; };
 		C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */; };
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
 		C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */; };
@@ -344,6 +346,8 @@
 		C09217722A61895A00231C66 /* UIWindow+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+.swift"; sourceTree = "<group>"; };
 		C09A33202A62D46300B40770 /* LHToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHToast.swift; sourceTree = "<group>"; };
 		C09A33212A62D46300B40770 /* LHToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHToastView.swift; sourceTree = "<group>"; };
+		C0B15E122AC010CD0058D56B /* LHKingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHKingfisherService.swift; sourceTree = "<group>"; };
+		C0B15E142AC011840058D56B /* LHLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHLabel.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -395,7 +399,7 @@
 		C0F029DD2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingTitleLabel.swift; sourceTree = "<group>"; };
 		C0F029DF2A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingDescriptionLabel.swift; sourceTree = "<group>"; };
 		C0F029E12A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHOnboardingErrorLabel.swift; sourceTree = "<group>"; };
-		C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHUnderLine.swift; sourceTree = "<group>"; };
+		C0F029E32A5FB08700E0D185 /* LHUnderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHUnderLine.swift; sourceTree = "<group>"; };
 		C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundContainerView.swift; sourceTree = "<group>"; };
 		C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHRoundButton.swift; sourceTree = "<group>"; };
@@ -733,7 +737,8 @@
 			children = (
 				C09A331F2A62D46300B40770 /* LHToast */,
 				B59892E02A5AF39300CE1FEB /* LHNavigationBarView.swift */,
-				C0F029E32A5FB08700E0D185 /* NHUnderLine.swift */,
+				C0F029E32A5FB08700E0D185 /* LHUnderLine.swift */,
+				C0B15E142AC011840058D56B /* LHLabel.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -1240,6 +1245,7 @@
 				C0856B762ABFC4EA0026D9F8 /* MyPageServiceImpl.swift */,
 				C0856B782ABFC56E0026D9F8 /* AuthServiceImpl.swift */,
 				C0856B822ABFCFBE0026D9F8 /* CurriculumServiceImpl.swift */,
+				C0B15E122AC010CD0058D56B /* LHKingfisherService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1556,7 +1562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F47329E12A66F5D0001605D4 /* CurriculumResponse.swift in Sources */,
-				C0F029E42A5FB08700E0D185 /* NHUnderLine.swift in Sources */,
+				C0F029E42A5FB08700E0D185 /* LHUnderLine.swift in Sources */,
 				C06E38282A662D8700B00600 /* TodayArticleResponse.swift in Sources */,
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */,
@@ -1664,6 +1670,7 @@
 				4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
+				C0B15E152AC011840058D56B /* LHLabel.swift in Sources */,
 				F4DB30B02A611C9700413EB9 /* CurriculumListByWeekData.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
@@ -1702,6 +1709,7 @@
 				C0F029C92A5EFC1F00E0D185 /* LHOnboardingPageViewController.swift in Sources */,
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
 				C0F62FE72A691FC40003ADFA /* LHLoadingView.swift in Sources */,
+				C0B15E132AC010CD0058D56B /* LHKingfisherService.swift in Sources */,
 				4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */,
 				4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */,
 				B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */,

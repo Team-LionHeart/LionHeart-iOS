@@ -1,5 +1,5 @@
 //
-//  NHUnderLine.swift
+//  LHUnderLine.swift
 //  LionHeart-iOS
 //
 //  Created by uiskim on 2023/07/13.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NHUnderLine: UIView {
+final class LHUnderLine: UIView {
     
     private let lineColor: UIColor?
     

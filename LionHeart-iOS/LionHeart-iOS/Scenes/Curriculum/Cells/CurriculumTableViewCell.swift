@@ -60,7 +60,6 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     
     private let contentImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .designSystem(.lionRed)
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
