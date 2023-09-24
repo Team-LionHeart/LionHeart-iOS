@@ -11,6 +11,10 @@ import UIKit
 import SnapKit
 import Lottie
 
+protocol CurriculumManager {
+    func getCurriculumServiceInfo() async throws -> UserInfoData
+}
+
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumMain, viewController: self)
@@ -19,6 +23,17 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         didSet {
             configureUserInfoData()
         }
+    }
+    
+    private let manager: CurriculumManager
+    
+    init(manager: CurriculumManager) {
+        self.manager = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private let progressBar = LottieAnimationView()
@@ -305,7 +320,7 @@ extension CurriculumViewController {
     func getCurriculumData() {
         Task {
             do {
-                let responseCurriculum = try await CurriculumService.shared.getCurriculumServiceInfo()
+                let responseCurriculum = try await manager.getCurriculumServiceInfo()
                 
                 userInfoData = responseCurriculum
                 hideLoading()
