@@ -9,11 +9,12 @@ import UIKit
 
 final class LHLabel: UILabel {
     
-    init(type: Font.PretendardType, color: Palette, alignment: NSTextAlignment = .center) {
+    init(type: Font.PretendardType, color: Palette, alignment: NSTextAlignment = .left, basicText: String? = nil) {
         super.init(frame: .zero)
         self.font = .pretendard(type)
         self.textColor = .designSystem(color)
         self.textAlignment = alignment
+        self.text = basicText
     }
     
     required init?(coder: NSCoder) {

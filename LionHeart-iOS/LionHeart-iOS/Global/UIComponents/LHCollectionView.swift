@@ -9,9 +9,9 @@ import UIKit
 
 final class LHCollectionView: UICollectionView {
     
-    init(color: UIColor? = .designSystem(.background), scroll: Bool = true) {
+    init(color: Palette? = .background, scroll: Bool = true) {
         super.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        self.backgroundColor = color
+        self.backgroundColor = .designSystem(color!)
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         self.isScrollEnabled = scroll

@@ -12,30 +12,12 @@ import SnapKit
 
 final class CurriculumTableViewHeaderView: UITableViewHeaderFooterView {
     
-    var headerNameLabel: UILabel = {
-        let header = UILabel()
-        header.font = .pretendard(.head2)
-        header.textColor = .designSystem(.white)
-        return header
-    }()
+    private var headerNameLabel = LHLabel(type: .head2, color: .white)
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        
-        // MARK: - 컴포넌트 설정
-        setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-
-        // MARK: - delegate설정
-        setDelegate()
     }
     
     @available(*, unavailable)
@@ -49,8 +31,6 @@ final class CurriculumTableViewHeaderView: UITableViewHeaderFooterView {
 }
 
 private extension CurriculumTableViewHeaderView {
-    func setUI() {
-    }
     
     func setHierarchy() {
         contentView.addSubview(headerNameLabel)
@@ -62,14 +42,4 @@ private extension CurriculumTableViewHeaderView {
             $0.top.equalToSuperview()
         }
     }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-    
-    
 }

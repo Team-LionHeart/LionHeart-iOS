@@ -133,6 +133,7 @@
 		C0B15E172AC015360058D56B /* LHImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E162AC015360058D56B /* LHImageView.swift */; };
 		C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E182AC015FE0058D56B /* LHLottie.swift */; };
 		C0B15E1B2AC0169D0058D56B /* LHCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E1A2AC0169D0058D56B /* LHCollectionView.swift */; };
+		C0B15E1F2AC024F20058D56B /* CurriculumTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E1E2AC024F20058D56B /* CurriculumTableView.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -354,6 +355,7 @@
 		C0B15E162AC015360058D56B /* LHImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHImageView.swift; sourceTree = "<group>"; };
 		C0B15E182AC015FE0058D56B /* LHLottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHLottie.swift; sourceTree = "<group>"; };
 		C0B15E1A2AC0169D0058D56B /* LHCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCollectionView.swift; sourceTree = "<group>"; };
+		C0B15E1E2AC024F20058D56B /* CurriculumTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableView.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -1068,6 +1070,7 @@
 			children = (
 				F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */,
 				F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */,
+				C0B15E1E2AC024F20058D56B /* CurriculumTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1716,6 +1719,7 @@
 				C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */,
+				C0B15E1F2AC024F20058D56B /* CurriculumTableView.swift in Sources */,
 				C0DF03AB2A5D73C80037F740 /* NHOnboardingTextfield.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
 				C0F029C92A5EFC1F00E0D185 /* LHOnboardingPageViewController.swift in Sources */,

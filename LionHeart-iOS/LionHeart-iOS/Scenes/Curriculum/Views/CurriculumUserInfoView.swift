@@ -18,53 +18,16 @@ final class CurriculumUserInfoView: UIView {
         }
     }
     
-    private let weekImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
-    
-    private let userWeekLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.gray100)
-        return label
-    }()
-    
-    private let weekLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.white)
-        label.text = "주"
-        return label
-    }()
-    
-    private let dayImageView: UIImageView = {
-        let imageView = UIImageView(image: ImageLiterals.Curriculum.dayBackground)
-        return imageView
-    }()
-    
-    private let userDayLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.gray100)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private let dayLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.white)
-        label.text = "일차"
-        return label
-    }()
-    
-    private let userWeekDayInfoView = UIView()
+    private let weekImageView = LHImageView()
+    private let userWeekLabel = LHLabel(type: .head3, color: .gray100)
+    private let weekLabel = LHLabel(type: .head3, color: .white, basicText: "주")
+    private let dayImageView = LHImageView(in: ImageLiterals.Curriculum.dayBackground)
+    private let userDayLabel = LHLabel(type: .head3, color: .gray100, alignment: .center)
+    private let dayLabel = LHLabel(type: .head3, color: .white, basicText: "일차")
+    private let userWeekDayInfoView = LHImageView()
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        
+        super.init(frame: .zero)
     }
     
     override func layoutSubviews() {
@@ -78,11 +41,19 @@ final class CurriculumUserInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureUserInfo(data: UserInfoData?) {
+        guard let data else { return }
+        self.userWeekLabel.text = "\(data.userWeekInfo)"
+        self.userDayLabel.text = "\(data.userDayInfo)"
+        weekImageView.image = data.userWeekInfo.description.count >= 2 ? ImageLiterals.Curriculum.weekBackground : ImageLiterals.Curriculum.dayBackground
+    }
+    
 }
 
 extension CurriculumUserInfoView {
+    
     func setUI() {
-        
+        self.backgroundColor = .designSystem(.background)
     }
     
     func setHierarchy() {
@@ -122,17 +93,4 @@ extension CurriculumUserInfoView {
         }
         
     }
-    
-    func configureUserInfo(data: UserInfoData?) {
-        guard let data else { return }
-        self.userWeekLabel.text = "\(data.userWeekInfo)"
-        self.userDayLabel.text = "\(data.userDayInfo)"
-        if data.userWeekInfo.description.count >= 2 {
-            weekImageView.image = ImageLiterals.Curriculum.weekBackground
-        } else {
-            weekImageView.image = ImageLiterals.Curriculum.dayBackground
-        }
-        
-    }
-    
 }
