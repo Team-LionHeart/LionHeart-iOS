@@ -49,13 +49,18 @@ enum BadgeLevel: String {
     }
 }
 
-protocol ChallengeServiceProtocol {
+protocol ChallengeManager {
     func inquireChallengeInfo() async throws -> ChallengeData
 }
 
 final class ChallengeViewController: UIViewController {
     
-    private var challengeService: ChallengeServiceProtocol
+    private enum Size {
+        static let cellOffset: CGFloat = 40
+        static let numberOfCellsinRow: CGFloat = 0
+    }
+    
+    private var manager: ChallengeManager
     
     var inputData: ChallengeData? {
         didSet {
@@ -65,19 +70,15 @@ final class ChallengeViewController: UIViewController {
         }
     }
     
-    init(challengeService: ChallengeServiceProtocol) {
-        self.challengeService = challengeService
+    init(manager: ChallengeManager) {
+        self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    private enum Size {
-        static let cellOffset: CGFloat = 40
-        static let numberOfCellsinRow: CGFloat = 0
-    }
-    
+
     private let leftSeperateLine: UIView = {
         let view = UIView()
         view.backgroundColor = .designSystem(.background)
@@ -143,7 +144,7 @@ final class ChallengeViewController: UIViewController {
         Task {
             do {
                 self.showLoading()
-                let model = try await challengeService.inquireChallengeInfo()
+                let model = try await manager.inquireChallengeInfo()
                 self.inputData = model
                 self.tags = model.daddyAttendances
                 self.challengeDayCheckCollectionView.reloadData()

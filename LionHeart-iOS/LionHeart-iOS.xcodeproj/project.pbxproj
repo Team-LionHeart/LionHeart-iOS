@@ -114,6 +114,8 @@
 		C0856B692ABFB9140026D9F8 /* ArticleServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */; };
 		C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */; };
 		C0856B6D2ABFBD840026D9F8 /* BookmarkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */; };
+		C0856B6F2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6E2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift */; };
+		C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */; };
 		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
 		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
@@ -330,6 +332,8 @@
 		C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleServiceImpl.swift; sourceTree = "<group>"; };
 		C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailManagerImpl.swift; sourceTree = "<group>"; };
 		C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkServiceImpl.swift; sourceTree = "<group>"; };
+		C0856B6E2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeServiceImpl.swift; sourceTree = "<group>"; };
+		C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManagerImpl.swift; sourceTree = "<group>"; };
 		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
@@ -1265,6 +1269,7 @@
 			children = (
 				C0856B642ABFB8640026D9F8 /* TodayManagerImpl.swift */,
 				C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */,
+				C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1274,6 +1279,7 @@
 			children = (
 				C0856B682ABFB9140026D9F8 /* ArticleServiceImpl.swift */,
 				C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */,
+				C0856B6E2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1717,6 +1723,7 @@
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
 				B53BA2022A68717B006F9BFB /* LoadingIndicator.swift in Sources */,
 				C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */,
+				C0856B6F2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift in Sources */,
 				B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */,
 				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
 				B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */,
@@ -1754,6 +1761,7 @@
 				B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */,
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
+				C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
 				4AE19A1E2A6597E700C1DB7E /* BookmarkRequest.swift in Sources */,
 			);
