@@ -71,12 +71,12 @@ private extension ChallengeViewController {
     func configureData(_ input: ChallengeData) {
         self.nicknameLabel.text = "\(input.babyDaddyName)아빠 님,"
         self.challengeDayLabel.text = "\(input.howLongDay)일째 도전 중"
-        self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
-        self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
+        self.levelBadge.image = BadgeLevel(rawValue: input.daddyLevel)!.badgeImage
+        self.lottieImageView.animation = .named(BadgeLevel(rawValue: input.daddyLevel)!.progreddbarLottie)
         self.lottieImageView.play()
-        let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
+        let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)
         let attributtedString = NSMutableAttributedString(string: fullText)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white)!, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)))
         self.challengelevelLabel.attributedText = attributtedString
     }
     
