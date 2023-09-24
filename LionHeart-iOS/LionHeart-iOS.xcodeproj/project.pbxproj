@@ -116,6 +116,7 @@
 		C0856B6D2ABFBD840026D9F8 /* BookmarkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */; };
 		C0856B6F2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B6E2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift */; };
 		C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */; };
+		C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B722ABFC3070026D9F8 /* BookmarkMangerImpl.swift */; };
 		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
 		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
@@ -334,6 +335,7 @@
 		C0856B6C2ABFBD840026D9F8 /* BookmarkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkServiceImpl.swift; sourceTree = "<group>"; };
 		C0856B6E2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeServiceImpl.swift; sourceTree = "<group>"; };
 		C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManagerImpl.swift; sourceTree = "<group>"; };
+		C0856B722ABFC3070026D9F8 /* BookmarkMangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkMangerImpl.swift; sourceTree = "<group>"; };
 		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
@@ -1270,6 +1272,7 @@
 				C0856B642ABFB8640026D9F8 /* TodayManagerImpl.swift */,
 				C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */,
 				C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */,
+				C0856B722ABFC3070026D9F8 /* BookmarkMangerImpl.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1735,6 +1738,7 @@
 				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
+				C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */,
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */,

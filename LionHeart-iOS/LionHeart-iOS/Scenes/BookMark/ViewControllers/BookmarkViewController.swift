@@ -10,9 +10,14 @@ import UIKit
 
 import SnapKit
 
+protocol BookmarkManger {
+    func getBookmark() async throws -> BookmarkAppData
+    func postBookmark(model: BookmarkRequest) async throws
+}
+
 final class BookmarkViewController: UIViewController {
     
-    private let serviceProtocol: BookmarkInOutServiceProtocol
+    private let manager: BookmarkManger
     
     private var bookmarkAppData = BookmarkAppData(nickName: "", articleSummaries: [ArticleSummaries]())
     private var bookmarkList = [ArticleSummaries]()
@@ -26,12 +31,11 @@ final class BookmarkViewController: UIViewController {
         return collectionView
     }()
     
-    init(serviceProtocol: BookmarkInOutServiceProtocol) {
-        self.serviceProtocol = serviceProtocol
-
+    init(manager: BookmarkManger) {
+        self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -51,7 +55,7 @@ final class BookmarkViewController: UIViewController {
         showLoading()
         Task {
             do {
-                self.bookmarkAppData = try await serviceProtocol.getBookmark()
+                self.bookmarkAppData = try await manager.getBookmark()
                 self.bookmarkList = bookmarkAppData.articleSummaries
                 hideLoading()
                 bookmarkCollectionView.reloadData()
@@ -158,7 +162,7 @@ extension BookmarkViewController: UICollectionViewDataSource {
             cell.bookmarkButtonClosure = { indexPath in
                 Task {
                     do {
-                        try await self.serviceProtocol.postBookmark(model: BookmarkRequest(articleId: self.bookmarkList[indexPath.item].articleID,
+                        try await self.manager.postBookmark(model: BookmarkRequest(articleId: self.bookmarkList[indexPath.item].articleID,
                                                                                             bookmarkRequestStatus: !self.bookmarkList[indexPath.item].bookmarked))
                         self.bookmarkList.remove(at: indexPath.item)
                         collectionView.deleteItems(at: [indexPath])
