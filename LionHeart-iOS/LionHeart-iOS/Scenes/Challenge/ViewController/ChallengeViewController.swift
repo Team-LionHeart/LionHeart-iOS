@@ -28,64 +28,24 @@ final class ChallengeViewController: UIViewController {
         didSet {
             guard let babyNickname = inputData?.babyDaddyName else { return }
             configureData(babyNickname)
-
         }
     }
     
-    init(manager: ChallengeManager) {
-        self.manager = manager
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private let leftSeperateLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.background)
-        return view
-    }()
-    
-    private let rightSeperateLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.background)
-        return view
-    }()
-    
+    private let leftSeperateLine = LHUnderLine(lineColor: .designSystem(.background))
+    private let rightSeperateLine = LHUnderLine(lineColor: .designSystem(.background))
     private var tags: [String] = []
-    
     private lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
     
-    private let nicknameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2R)
-        label.textColor = .designSystem(.gray200)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private let challengeDayLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.white)
-        label.textAlignment = .center
-        return label
-    }()
+    private let nicknameLabel = LHLabel(type: .body2R, color: .gray200)
+    private let challengeDayLabel = LHLabel(type: .head3, color: .white)
     
     private let levelBadge: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.ChallengeBadge.level05
         return imageView
         }()
-
-    private let challengelevelLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.gray500)
-        label.textAlignment = .center
-        return label
-    }()
+    
+    private let challengelevelLabel = LHLabel(type: .body4, color: .gray500)
     
     private lazy var lottieImageView: LottieAnimationView = {
         let view = LottieAnimationView()
@@ -100,6 +60,15 @@ final class ChallengeViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
+    
+    init(manager: ChallengeManager) {
+        self.manager = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

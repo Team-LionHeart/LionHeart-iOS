@@ -15,17 +15,15 @@ protocol OnboardingManager {
 }
 
 final class OnboardingViewController: UIViewController {
-    
+
     typealias OnboardingViews = [UIViewController]
 
     private let manager: OnboardingManager
     
-    /// passing data property
     private var fetalNickName: String?
     private var pregnancy: Int?
     private var kakaoAccessToken: String?
     
-    /// component property
     private let nextButton = LHOnboardingButton()
     private let onboardingProgressView = LHProgressView()
     private let onboardingViewController = LHOnboardingPageViewController()
