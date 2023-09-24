@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LHCollection: UICollectionView {
+final class LHCollectionView: UICollectionView {
     
     init(color: UIColor? = .designSystem(.background), scroll: Bool = true) {
         super.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())

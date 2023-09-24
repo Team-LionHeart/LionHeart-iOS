@@ -2,7 +2,7 @@
 //  ChallengeViewController.swift
 //  LionHeart-iOS
 //
-//  Created by 김동현 on 2023/07/13.
+//  Created by 김의성 on 2023/09/24.
 //  Copyright (c) 2023 Challenge. All rights reserved.
 //
 
@@ -17,37 +17,24 @@ protocol ChallengeManager {
 
 final class ChallengeViewController: UIViewController {
     
-    private enum Size {
-        static let cellOffset: CGFloat = 40
-        static let numberOfCellsinRow: CGFloat = 0
-    }
-    
     private var manager: ChallengeManager
     
-    var inputData: ChallengeData? {
+    private var inputData: ChallengeData? {
         didSet {
-            guard let babyNickname = inputData?.babyDaddyName else { return }
-            configureData(babyNickname)
+            guard let inputData else { return }
+            configureData(inputData)
         }
     }
     
     private let leftSeperateLine = LHUnderLine(lineColor: .designSystem(.background))
     private let rightSeperateLine = LHUnderLine(lineColor: .designSystem(.background))
-    private var tags: [String] = []
     private lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
     private let nicknameLabel = LHLabel(type: .body2R, color: .gray200)
     private let challengeDayLabel = LHLabel(type: .head3, color: .white)
-    private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05)
     private let challengelevelLabel = LHLabel(type: .body4, color: .gray500)
+    private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05)
     private lazy var lottieImageView = LHLottie()
-    
-    private let challengeDayCheckCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .designSystem(.background)
-        collectionView.showsVerticalScrollIndicator = false
-        return collectionView
-    }()
+    private let challengeDayCheckCollectionView = LHCollectionView()
     
     init(manager: ChallengeManager) {
         self.manager = manager
@@ -60,19 +47,7 @@ final class ChallengeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Task {
-            do {
-                self.showLoading()
-                let model = try await manager.inquireChallengeInfo()
-                self.inputData = model
-                self.tags = model.daddyAttendances
-                self.challengeDayCheckCollectionView.reloadData()
-                self.hideLoading()
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
-            }
-        }
+        setUIFromNetworking()
     }
     
     override func viewDidLoad() {
@@ -93,14 +68,47 @@ final class ChallengeViewController: UIViewController {
 }
 
 private extension ChallengeViewController {
+    func configureData(_ input: ChallengeData) {
+        self.nicknameLabel.text = "\(input.babyDaddyName)아빠 님,"
+        self.challengeDayLabel.text = "\(input.howLongDay)일째 도전 중"
+        self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
+        self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
+        self.lottieImageView.play()
+        let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
+        let attributtedString = NSMutableAttributedString(string: fullText)
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
+        self.challengelevelLabel.attributedText = attributtedString
+    }
+    
+    func setUIFromNetworking() {
+        Task {
+            do {
+                self.showLoading()
+                self.inputData = try await manager.inquireChallengeInfo()
+                self.challengeDayCheckCollectionView.reloadData()
+                self.hideLoading()
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
+    }
+}
+
+private extension ChallengeViewController {
+    
+    enum Size {
+        static let cellOffset: CGFloat = 40
+        static let numberOfCellsinRow: CGFloat = 0
+    }
+    
     func setUI() {
         view.backgroundColor = .designSystem(.background)
         ChallengeDayCheckCollectionViewCollectionViewCell.register(to: challengeDayCheckCollectionView)
     }
     
     func setHierarchy() {
-        view.addSubviews(navigationBar,
-                         nicknameLabel, leftSeperateLine, rightSeperateLine, levelBadge, challengeDayLabel, lottieImageView, challengeDayCheckCollectionView)
+        view.addSubviews(navigationBar, nicknameLabel, leftSeperateLine, rightSeperateLine, levelBadge, challengeDayLabel, lottieImageView, challengeDayCheckCollectionView)
         levelBadge.addSubview(challengelevelLabel)
     }
     
@@ -177,30 +185,9 @@ private extension ChallengeViewController {
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
-    
-    func configureData(_ babyNickname: String) {
-        self.nicknameLabel.text = "\(babyNickname)아빠 님,"
-        
-        if let howLongDay = inputData?.howLongDay {
-            self.challengeDayLabel.text = "\(howLongDay)일째 도전 중"
-        }
-
-        self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
-        
-        self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
-        self.lottieImageView.play()
-        
-        let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
-        
-        let attributtedString = NSMutableAttributedString(string: fullText)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
-        
-        self.challengelevelLabel.attributedText = attributtedString
-    }
 }
 
-extension ChallengeViewController:
-    UICollectionViewDelegateFlowLayout {
+extension ChallengeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 5
@@ -225,9 +212,9 @@ extension ChallengeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ChallengeDayCheckCollectionViewCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-        
-        if indexPath.item < tags.count {
-            cell.inputString = tags[indexPath.item]
+        guard let inputData else { return cell }
+        if indexPath.item < inputData.daddyAttendances.count {
+            cell.inputString = inputData.daddyAttendances[indexPath.item]
             cell.backgroundColor = .designSystem(.background)
             cell.whiteTextColor = .designSystem(.white)
         } else {
