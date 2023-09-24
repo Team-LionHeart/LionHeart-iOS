@@ -122,6 +122,7 @@
 		C0856B792ABFC56E0026D9F8 /* AuthServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B782ABFC56E0026D9F8 /* AuthServiceImpl.swift */; };
 		C0856B7B2ABFC9640026D9F8 /* SplashManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B7A2ABFC9640026D9F8 /* SplashManagerImpl.swift */; };
 		C0856B7D2ABFCA330026D9F8 /* LoginMangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B7C2ABFCA330026D9F8 /* LoginMangerImpl.swift */; };
+		C0856B7F2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856B7E2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift */; };
 		C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903CFE2AAAD7E00014786F /* APIService.swift */; };
 		C0903D022AAAD86A0014786F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0903D012AAAD86A0014786F /* AuthAPI.swift */; };
 		C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */; };
@@ -346,6 +347,7 @@
 		C0856B782ABFC56E0026D9F8 /* AuthServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceImpl.swift; sourceTree = "<group>"; };
 		C0856B7A2ABFC9640026D9F8 /* SplashManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashManagerImpl.swift; sourceTree = "<group>"; };
 		C0856B7C2ABFCA330026D9F8 /* LoginMangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMangerImpl.swift; sourceTree = "<group>"; };
+		C0856B7E2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryMangerImpl.swift; sourceTree = "<group>"; };
 		C0903CFE2AAAD7E00014786F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C0903D012AAAD86A0014786F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C09217662A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFetalNicknameTextFieldResultType.swift; sourceTree = "<group>"; };
@@ -1286,6 +1288,7 @@
 				C0856B742ABFC4CB0026D9F8 /* MyPageManagerImpl.swift */,
 				C0856B7A2ABFC9640026D9F8 /* SplashManagerImpl.swift */,
 				C0856B7C2ABFCA330026D9F8 /* LoginMangerImpl.swift */,
+				C0856B7E2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1743,6 +1746,7 @@
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
 				B53BA2022A68717B006F9BFB /* LoadingIndicator.swift in Sources */,
+				C0856B7F2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift in Sources */,
 				C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */,
 				C0856B6F2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift in Sources */,
 				B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */,
