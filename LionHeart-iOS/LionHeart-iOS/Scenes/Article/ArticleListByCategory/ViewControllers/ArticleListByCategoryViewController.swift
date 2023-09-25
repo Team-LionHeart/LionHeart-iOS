@@ -19,6 +19,7 @@ protocol ArticleListByCategoryManager {
 final class ArticleListByCategoryViewController: UIViewController {
     
     private let manager: ArticleListByCategoryManager
+    
     private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
     private let articleListTableView = ArticleListTableView()
     

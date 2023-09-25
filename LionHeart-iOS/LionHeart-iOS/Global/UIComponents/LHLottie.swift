@@ -11,7 +11,7 @@ import Lottie
 final class LHLottie: LottieAnimationView {
     init() {
         super.init(frame: .zero)
-        self.contentMode = .scaleToFill
+        self.contentMode = .scaleAspectFill
     }
     
     required init?(coder aDecoder: NSCoder) {
