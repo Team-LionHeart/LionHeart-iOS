@@ -18,6 +18,7 @@ protocol CurriculumListManager {
 final class CurriculumListByWeekViewController: UIViewController {
     
     private let manager: CurriculumListManager
+    
     private let curriculumListByWeekCollectionView = LHCollectionView(color: .background, scroll: false)
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
     

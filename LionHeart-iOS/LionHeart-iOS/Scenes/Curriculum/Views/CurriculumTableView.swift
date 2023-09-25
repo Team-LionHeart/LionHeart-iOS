@@ -17,6 +17,8 @@ final class CurriculumTableView: UITableView {
         self.sectionFooterHeight = 40
         self.separatorStyle = .none
         self.showsVerticalScrollIndicator = false
+        CurriculumTableViewCell.register(to: self)
+        self.register(CurriculumTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: CurriculumTableViewHeaderView.className)
     }
     
     required init?(coder: NSCoder) {

@@ -12,12 +12,6 @@ import SnapKit
 
 final class CurriculumUserInfoView: UIView {
     
-    var userInfo: UserInfoData? {
-        didSet {
-            configureUserInfo(data: userInfo)
-        }
-    }
-    
     private let weekImageView = LHImageView()
     private let userWeekLabel = LHLabel(type: .head3, color: .gray100)
     private let weekLabel = LHLabel(type: .head3, color: .white, basicText: "주")
@@ -25,6 +19,12 @@ final class CurriculumUserInfoView: UIView {
     private let userDayLabel = LHLabel(type: .head3, color: .gray100, alignment: .center)
     private let dayLabel = LHLabel(type: .head3, color: .white, basicText: "일차")
     private let userWeekDayInfoView = LHImageView()
+    
+    var userInfo: UserInfoData? {
+        didSet {
+            configureUserInfo(data: userInfo)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)

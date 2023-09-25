@@ -9,10 +9,11 @@ import UIKit
 
 final class LHStackView: UIStackView {
     
-    init(axis: NSLayoutConstraint.Axis, spacing: CGFloat) {
+    init(axis: NSLayoutConstraint.Axis, spacing: CGFloat, distribution: UIStackView.Distribution = .fill) {
         super.init(frame: .zero)
         self.axis = axis
         self.spacing = spacing
+        self.distribution = distribution
     }
     
     required init(coder: NSCoder) {

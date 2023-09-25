@@ -134,6 +134,11 @@
 		C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E182AC015FE0058D56B /* LHLottie.swift */; };
 		C0B15E1B2AC0169D0058D56B /* LHCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E1A2AC0169D0058D56B /* LHCollectionView.swift */; };
 		C0B15E1F2AC024F20058D56B /* CurriculumTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E1E2AC024F20058D56B /* CurriculumTableView.swift */; };
+		C0B15E212AC0450E0058D56B /* ArticleListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E202AC0450E0058D56B /* ArticleListTableView.swift */; };
+		C0B15E232AC100690058D56B /* LHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E222AC100690058D56B /* LHStackView.swift */; };
+		C0B15E252AC103A50058D56B /* LHToggleImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E242AC103A50058D56B /* LHToggleImageButton.swift */; };
+		C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E262AC104D50058D56B /* LHImageButton.swift */; };
+		C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -153,7 +158,6 @@
 		C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */; };
 		C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */; };
 		C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */; };
-		C0DF03552A5A9BD60037F740 /* ArticleListByCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */; };
 		C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */; };
 		C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */; };
 		C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */; };
@@ -356,6 +360,11 @@
 		C0B15E182AC015FE0058D56B /* LHLottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHLottie.swift; sourceTree = "<group>"; };
 		C0B15E1A2AC0169D0058D56B /* LHCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCollectionView.swift; sourceTree = "<group>"; };
 		C0B15E1E2AC024F20058D56B /* CurriculumTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableView.swift; sourceTree = "<group>"; };
+		C0B15E202AC0450E0058D56B /* ArticleListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListTableView.swift; sourceTree = "<group>"; };
+		C0B15E222AC100690058D56B /* LHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHStackView.swift; sourceTree = "<group>"; };
+		C0B15E242AC103A50058D56B /* LHToggleImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHToggleImageButton.swift; sourceTree = "<group>"; };
+		C0B15E262AC104D50058D56B /* LHImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHImageButton.swift; sourceTree = "<group>"; };
+		C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByCategoryTableView.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -374,7 +383,6 @@
 		C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewController.swift; sourceTree = "<group>"; };
-		C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryView.swift; sourceTree = "<group>"; };
 		C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewController.swift; sourceTree = "<group>"; };
 		C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryView.swift; sourceTree = "<group>"; };
 		C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
@@ -750,6 +758,9 @@
 				C0B15E162AC015360058D56B /* LHImageView.swift */,
 				C0B15E182AC015FE0058D56B /* LHLottie.swift */,
 				C0B15E1A2AC0169D0058D56B /* LHCollectionView.swift */,
+				C0B15E222AC100690058D56B /* LHStackView.swift */,
+				C0B15E242AC103A50058D56B /* LHToggleImageButton.swift */,
+				C0B15E262AC104D50058D56B /* LHImageButton.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -917,8 +928,8 @@
 		B59892112A56B52B00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C0DF03542A5A9BD60037F740 /* ArticleListByCategoryView.swift */,
 				D3AB54B52A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift */,
+				C0B15E202AC0450E0058D56B /* ArticleListTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1071,6 +1082,7 @@
 				F41A97A02A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift */,
 				F435E04B2A5DA6A40098E691 /* CurriculumUserInfoView.swift */,
 				C0B15E1E2AC024F20058D56B /* CurriculumTableView.swift */,
+				C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1582,6 +1594,7 @@
 				C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
+				C0B15E212AC0450E0058D56B /* ArticleListTableView.swift in Sources */,
 				B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */,
 				C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */,
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
@@ -1647,9 +1660,12 @@
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */,
+				C0B15E252AC103A50058D56B /* LHToggleImageButton.swift in Sources */,
 				4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */,
+				C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */,
 				C06E38232A65353F00B00600 /* LoginType.swift in Sources */,
 				C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */,
+				C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */,
 				B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */,
@@ -1674,7 +1690,6 @@
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
 				C0856B812ABFCD830026D9F8 /* OnboardingManagerImpl.swift in Sources */,
 				B57BEB6C2A6149AD00D1727C /* NetworkRequest.swift in Sources */,
-				C0DF03552A5A9BD60037F740 /* ArticleListByCategoryView.swift in Sources */,
 				F4DB30B42A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift in Sources */,
 				C0856B692ABFB9140026D9F8 /* ArticleServiceImpl.swift in Sources */,
 				F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */,
@@ -1706,6 +1721,7 @@
 				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
+				C0B15E232AC100690058D56B /* LHStackView.swift in Sources */,
 				C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */,
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,

@@ -18,13 +18,7 @@ protocol CurriculumManager {
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
     private let manager: CurriculumManager
-    private var curriculumViewDatas = CurriculumMonthData.dummy()
-    private var userInfoData: UserInfoData? {
-        didSet {
-            configureUserInfoData()
-        }
-    }
-    
+
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumMain, viewController: self)
     private let progressBar = LHLottie()
     private let dDayLabel = LHLabel(type: .body3R, color: .gray400)
@@ -33,8 +27,13 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     private let gradientImage = LHImageView(in: ImageLiterals.Curriculum.gradient)
     private let curriculumTableView = CurriculumTableView()
     
-    private let headerHeight: CGFloat = 40.0
     private var isFirstPresented: Bool = true
+    private var curriculumViewDatas = CurriculumMonthData.dummy()
+    private var userInfoData: UserInfoData? {
+        didSet {
+            configureUserInfoData()
+        }
+    }
     
     init(manager: CurriculumManager) {
         self.manager = manager
@@ -51,7 +50,6 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         setHierarchy()
         setLayout()
         setDelegate()
-        setTableView()
         setAddTarget()
     }
     
@@ -93,7 +91,6 @@ private extension CurriculumViewController {
             $0.size.equalTo(100)
             $0.leading.equalToSuperview().inset(48)
             $0.centerY.equalTo(progressBar)
-            
         }
         
         dDayLabel.snp.makeConstraints{
@@ -105,7 +102,6 @@ private extension CurriculumViewController {
             $0.leading.trailing.equalToSuperview()
             $0.width.equalTo(Constant.Screen.width)
             $0.height.equalTo(curriculumUserInfoView.snp.width).multipliedBy(Size.userInfoView)
-            
         }
         
         progressBar.snp.makeConstraints{
@@ -128,11 +124,6 @@ private extension CurriculumViewController {
     
     func setDelegate() {
         curriculumTableView.dataSource = self
-    }
-    
-    func setTableView(){
-        CurriculumTableViewCell.register(to: curriculumTableView)
-        curriculumTableView.register(CurriculumTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: CurriculumTableViewHeaderView.className)
     }
     
     func setAddTarget() {
@@ -189,17 +180,6 @@ extension CurriculumViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return curriculumViewDatas.count
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = CurriculumTableViewHeaderView(reuseIdentifier: CurriculumTableViewHeaderView.className)
-        let month = curriculumViewDatas[section].month
-        headerView.configureHeaderView(month: month)
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return headerHeight
     }
     
     func toggleButtonTapped(indexPath: IndexPath?) {

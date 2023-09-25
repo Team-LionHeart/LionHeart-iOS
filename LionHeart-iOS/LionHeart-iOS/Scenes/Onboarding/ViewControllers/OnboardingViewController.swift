@@ -41,7 +41,6 @@ final class OnboardingViewController: UIViewController {
                 presentOnboardingView(oldValue: onboardingFlow)
             case .toCompleteOnboarding:
                 presentCompleteOnboardingView()
-
             }
         }
     }
@@ -133,7 +132,7 @@ private extension OnboardingViewController {
             }
             self.nextOnboaringProcess(nickName: fetalNickName, minCount: 1, maxCount: 10)
         }
-        
+    
         onboardingNavigationbar.backButtonAction {
             self.backOnboardingProcess()
         }
@@ -175,7 +174,6 @@ private extension OnboardingViewController {
     
     func presentCompleteOnboardingView() {
         self.view.endEditing(true)
-
         self.nextButton.isUserInteractionEnabled = false
         let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)

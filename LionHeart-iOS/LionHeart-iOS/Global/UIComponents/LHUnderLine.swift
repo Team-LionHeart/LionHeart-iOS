@@ -9,12 +9,9 @@ import UIKit
 
 final class LHUnderLine: UIView {
     
-    private let lineColor: UIColor?
-    
-    init(lineColor: UIColor?) {
-        self.lineColor = lineColor
+    init(lineColor: Palette) {
         super.init(frame: .zero)
-        self.backgroundColor = self.lineColor
+        self.backgroundColor = .designSystem(lineColor)
     }
     
     @available(*, unavailable)
