@@ -17,21 +17,10 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
     private let curriculumLabel = LHLabel(type: .body2R, color: .lionRed, alignment: .center, basicText: "Curriculum")
     private let weekLabel = LHLabel(type: .head1, color: .white, alignment: .center)
     private let curriculumAndWeekStackView = LHStackView(axis: .vertical, spacing: 2)
+    private let weekBackGroundImageView = LHImageView(contentMode: .scaleAspectFill)
 
-    private let weekBackGroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .designSystem(.gray500)
-        imageView.isUserInteractionEnabled = true
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
+    private let blurblackView = LHView(color: .designSystem(.black)?.withAlphaComponent(0.4))
 
-    private let blurblackView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.black)?.withAlphaComponent(0.4)
-        return view
-    }()
-    
     var inputData: Int? {
         didSet {
             guard let inputData else { return }
@@ -42,6 +31,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setUI()
         setHierarchy()
         setLayout()
         setAddTarget()
@@ -57,6 +47,11 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
     
     enum Size {
         static let weekBackGroundImageSize: CGFloat = 200 / 375
+    }
+    
+    func setUI() {
+        weekBackGroundImageView.backgroundColor = .designSystem(.gray500)
+        weekBackGroundImageView.isUserInteractionEnabled = true
     }
 
     func setHierarchy() {

@@ -12,33 +12,15 @@ import SnapKit
 
 final class TitleTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head1)
-        label.textColor = .designSystem(.gray900)
-        label.numberOfLines = 2
-        return label
-    }()
-
-    private let authorLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray700)
-        return label
-    }()
-
-    private let seperatorLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray100)
-        return view
-    }()
+    private let titleLabel = LHLabel(type: .head1, color: .gray900, lines: 2)
+    private let authorLabel = LHLabel(type: .body3R, color: .gray700)
+    private let seperatorLineView = LHUnderLine(lineColor: .gray100)
 
     var inputData: ArticleBlockData? {
         didSet {
             configureCell(inputData)
         }
     }
-    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

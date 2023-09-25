@@ -19,13 +19,6 @@ final class ChallengeViewController: UIViewController {
     
     private var manager: ChallengeManager
     
-    private var inputData: ChallengeData? {
-        didSet {
-            guard let inputData else { return }
-            configureData(inputData)
-        }
-    }
-    
     private let leftSeperateLine = LHUnderLine(lineColor: .background)
     private let rightSeperateLine = LHUnderLine(lineColor: .background)
     private lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
@@ -35,6 +28,13 @@ final class ChallengeViewController: UIViewController {
     private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05, contentMode: .scaleToFill)
     private lazy var lottieImageView = LHLottie()
     private let challengeDayCheckCollectionView = LHCollectionView()
+    
+    private var inputData: ChallengeData? {
+        didSet {
+            guard let inputData else { return }
+            configureData(inputData)
+        }
+    }
     
     init(manager: ChallengeManager) {
         self.manager = manager

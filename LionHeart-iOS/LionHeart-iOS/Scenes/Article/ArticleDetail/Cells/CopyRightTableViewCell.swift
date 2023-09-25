@@ -11,27 +11,12 @@ import UIKit
 import SnapKit
 
 final class CopyRightTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
-
-    private enum Size {
-        static let backgroundViewWidthHeightRatio: CGFloat = 118 / 375
-    }
-
+    
+    private let copyrightBackgroundView = LHView(color: .designSystem(.background))
+    private let copyrightLabel = LHLabel(type: .body4, color: .gray600, basicText: "모든 콘텐츠는 제공자와 라이온하트에 저작권이 있습니다.\n저작권법에 의거 무단 전재 및 재배포를 금지합니다.")
+    
     //TODO: - inputData가 없는 경우..
     var inputData: DummyModel?
-
-    private let copyrightBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.background)
-        return view
-    }()
-
-    private let copyrightLabel: UILabel = {
-        let label = UILabel()
-        label.text = "모든 콘텐츠는 제공자와 라이온하트에 저작권이 있습니다.\n저작권법에 의거 무단 전재 및 재배포를 금지합니다."
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.gray600)
-        return label
-    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,6 +31,10 @@ final class CopyRightTableViewCell: UITableViewCell, TableViewCellRegisterDequeu
 }
 
 private extension CopyRightTableViewCell {
+    
+    enum Size {
+        static let backgroundViewWidthHeightRatio: CGFloat = 118 / 375
+    }
     
     func setHierarchy() {
         contentView.addSubview(copyrightBackgroundView)

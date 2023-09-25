@@ -12,63 +12,19 @@ import SnapKit
 
 final class TodayArticleView: UIView {
     
+    private let backgroundView = LHView(color: .designSystem(.black)?.withAlphaComponent(0.2)).makeRound(4)
+    private var weekInfomationLabel = LHLabel(type: .body2R, color: .componentLionRed)
+    private var articleTitleLabel = LHLabel(type: .head2, color: .white, lines: 0)
+    private var descriptionLabel = LHLabel(type: .body2R, color: .gray400, lines: 3)
+    private var weekInfomationView = LHImageView(in: UIImage(named: "today_test_label"), contentMode: .scaleAspectFill)
+    var mainArticlImageView = LHImageView(contentMode: .scaleAspectFill).makeRound(4)
+    private var seperateLine = LHImageView(in: UIImage(named: "MainArticleSeperateLine"), contentMode: .scaleAspectFill)
+    
     var data: TodayArticle? {
         didSet {
             configureView(data: data)
         }
     }
-    
-    private let backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.black)?.withAlphaComponent(0.2)
-        view.layer.cornerRadius = 4
-        view.clipsToBounds = true
-        return view
-    }()
-    
-    var mainArticlImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 4
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    private var weekInfomationView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "today_test_label"))
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
-    private var weekInfomationLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2R)
-        label.textColor = .designSystem(.componentLionRed)
-        return label
-    }()
-    
-    private var articleTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .designSystem(.white)
-        label.font = .pretendard(.head2)
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    private var seperateLine: UIImageView = {
-        let imageview = UIImageView(image: UIImage(named: "MainArticleSeperateLine"))
-        imageview.contentMode = .scaleAspectFill
-        return imageview
-    }()
-    
-    private var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2R)
-        label.textColor = .designSystem(.gray400)
-        label.numberOfLines = 3
-        return label
-    }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,11 +35,9 @@ final class TodayArticleView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         mainArticlImageView.setGradient(firstColor: .designSystem(.black)!.withAlphaComponent(0.2), secondColor: .designSystem(.gray1000)!, axis: .vertical)
-        
         weekInfomationView.addSubview(weekInfomationLabel)
-        
         mainArticlImageView.addSubviews(descriptionLabel, seperateLine, articleTitleLabel, weekInfomationView)
-        
+
         descriptionLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(36)
             make.leading.trailing.equalToSuperview().inset(20)
@@ -128,7 +82,6 @@ private extension TodayArticleView {
     }
     
     func setLayout() {
-        
         mainArticlImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -144,7 +97,6 @@ private extension TodayArticleView {
         descriptionLabel.text = data.articleDescription
         articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
         descriptionLabel.setTextWithLineHeight(lineHeight: 24)
-        /// 얘도 text가 있을때 적용되는 녀석
         descriptionLabel.lineBreakMode = .byTruncatingTail
     }
 }

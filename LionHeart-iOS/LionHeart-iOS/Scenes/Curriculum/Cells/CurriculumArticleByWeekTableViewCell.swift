@@ -30,16 +30,9 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
     private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkSmall,
                                                           select: ImageLiterals.BookMark.activeBookmarkSmall)
     private let articleImageView = LHImageView(contentMode: .scaleToFill).makeRound(4).opacity(0.4)
-    
-    private let readTimeAndBookmarkView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 4
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.layer.masksToBounds = true
-        view.backgroundColor = .designSystem(.black)
-        view.layer.opacity = 0.6
-        return view
-    }()
+    private let readTimeAndBookmarkView = LHView(color: .designSystem(.black)).makeRound(4).opacity(0.6)
+        .maskedCorners(corners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

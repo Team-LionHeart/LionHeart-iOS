@@ -139,6 +139,7 @@
 		C0B15E252AC103A50058D56B /* LHToggleImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E242AC103A50058D56B /* LHToggleImageButton.swift */; };
 		C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E262AC104D50058D56B /* LHImageButton.swift */; };
 		C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */; };
+		C0B15E2B2AC115F90058D56B /* LHView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E2A2AC115F90058D56B /* LHView.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -158,9 +159,7 @@
 		C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */; };
 		C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */; };
 		C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */; };
-		C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */; };
 		C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */; };
-		C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036A2A5A9C930037F740 /* BookMarkView.swift */; };
 		C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03722A5A9CB50037F740 /* TodayViewController.swift */; };
 		C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03742A5A9CD00037F740 /* TabBarViewController.swift */; };
 		C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */; };
@@ -363,6 +362,7 @@
 		C0B15E242AC103A50058D56B /* LHToggleImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHToggleImageButton.swift; sourceTree = "<group>"; };
 		C0B15E262AC104D50058D56B /* LHImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHImageButton.swift; sourceTree = "<group>"; };
 		C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByCategoryTableView.swift; sourceTree = "<group>"; };
+		C0B15E2A2AC115F90058D56B /* LHView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHView.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -381,9 +381,7 @@
 		C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewController.swift; sourceTree = "<group>"; };
 		C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewController.swift; sourceTree = "<group>"; };
-		C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryView.swift; sourceTree = "<group>"; };
 		C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
-		C0DF036A2A5A9C930037F740 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
 		C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		C0DF036E2A5A9CA90037F740 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF03722A5A9CB50037F740 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -757,6 +755,7 @@
 				C0B15E222AC100690058D56B /* LHStackView.swift */,
 				C0B15E242AC103A50058D56B /* LHToggleImageButton.swift */,
 				C0B15E262AC104D50058D56B /* LHImageButton.swift */,
+				C0B15E2A2AC115F90058D56B /* LHView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -851,7 +850,6 @@
 			children = (
 				4A860AD22A626591002BA428 /* Model */,
 				B598922F2A56B6ED00CE1FEB /* Cells */,
-				B598922E2A56B6E700CE1FEB /* Views */,
 				B598922D2A56B6E300CE1FEB /* ViewControllers */,
 			);
 			path = BookMark;
@@ -915,7 +913,6 @@
 				D3BA0B722A5CFA6400B6361F /* Model */,
 				B598922C2A56B6CA00CE1FEB /* Cells */,
 				B59892252A56B6A000CE1FEB /* ViewControllers */,
-				B59892242A56B69D00CE1FEB /* Views */,
 			);
 			path = ArticleCategory;
 			sourceTree = "<group>";
@@ -935,14 +932,6 @@
 				C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		B59892242A56B69D00CE1FEB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		B59892252A56B6A000CE1FEB /* ViewControllers */ = {
@@ -997,14 +986,6 @@
 				C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		B598922E2A56B6E700CE1FEB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C0DF036A2A5A9C930037F740 /* BookMarkView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		B598922F2A56B6ED00CE1FEB /* Cells */ = {
@@ -1601,6 +1582,7 @@
 				B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */,
 				C0856B7B2ABFC9640026D9F8 /* SplashManagerImpl.swift in Sources */,
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
+				C0B15E2B2AC115F90058D56B /* LHView.swift in Sources */,
 				C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				F4DB30B82A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift in Sources */,
@@ -1660,7 +1642,6 @@
 				4A2050152A5DCD1900C7AF3C /* UICollectionView+.swift in Sources */,
 				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,
 				C0F029D12A5FA87900E0D185 /* Float+.swift in Sources */,
-				C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				B51220642A6039AA006CBE2D /* HttpMethod.swift in Sources */,
@@ -1672,7 +1653,6 @@
 				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
-				C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
 				C0856B812ABFCD830026D9F8 /* OnboardingManagerImpl.swift in Sources */,
 				B57BEB6C2A6149AD00D1727C /* NetworkRequest.swift in Sources */,
