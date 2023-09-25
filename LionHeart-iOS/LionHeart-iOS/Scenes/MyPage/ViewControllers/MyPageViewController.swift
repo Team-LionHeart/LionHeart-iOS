@@ -17,32 +17,22 @@ protocol MyPageManager {
 }
 
 final class MyPageViewController: UIViewController {
-
-    // MARK: - Properties
+    
+    private let manager: MyPageManager
+    
+    private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
+    private let myPageCollectionView = LHCollectionView(color: .background)
     
     private let myPageServiceLabelList = MyPageLocalData.myPageServiceLabelList
     private let myPageSectionLabelList = MyPageLocalData.myPageSectionLabelList
     private let myPageAppSettingLabelList = MyPageAppSettinLocalgData.myPageAppSettingDataList
-    
     private var myPageAppData: MyPageAppData? {
         didSet {
             myPageCollectionView.reloadData()
         }
     }
-
-    private let manager: MyPageManager
-
-    // MARK: - UI Components
     
-    private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
-
-    private let myPageCollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
-        return collectionView
-    }()
-    
+    // MARK: - 회원탈퇴를 위한 임시 버튼
     private let resignButton: UIButton = {
         let button = UIButton()
         button.alpha = 0.1
@@ -60,7 +50,6 @@ final class MyPageViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-
         setUI()
         setHierarchy()
         setLayout()
@@ -73,16 +62,7 @@ final class MyPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        Task {
-            do {
-                let data = try await manager.getMyPage()
-                myPageAppData = data
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
-            }
-        }
+        setUIFromNetworking()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -153,6 +133,18 @@ private extension MyPageViewController {
     
     func setTabbar() {
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func setUIFromNetworking() {
+        Task {
+            do {
+                let data = try await manager.getMyPage()
+                myPageAppData = data
+            } catch {
+                guard let error = error as? NetworkError else { return }
+                handleError(error)
+            }
+        }
     }
 }
 
