@@ -24,7 +24,7 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
     private let dDayLabel = LHLabel(type: .body3R, color: .gray400)
     private let dDayView = UIView()
     private lazy var curriculumUserInfoView = CurriculumUserInfoView()
-    private let gradientImage = LHImageView(in: ImageLiterals.Curriculum.gradient)
+    private let gradientImage = LHImageView(in: ImageLiterals.Curriculum.gradient, contentMode: .scaleToFill)
     private let curriculumTableView = CurriculumTableView()
     
     private var isFirstPresented: Bool = true

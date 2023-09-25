@@ -32,7 +32,7 @@ final class ChallengeViewController: UIViewController {
     private let nicknameLabel = LHLabel(type: .body2R, color: .gray200)
     private let challengeDayLabel = LHLabel(type: .head3, color: .white)
     private let challengelevelLabel = LHLabel(type: .body4, color: .gray500)
-    private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05)
+    private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05, contentMode: .scaleToFill)
     private lazy var lottieImageView = LHLottie()
     private let challengeDayCheckCollectionView = LHCollectionView()
     

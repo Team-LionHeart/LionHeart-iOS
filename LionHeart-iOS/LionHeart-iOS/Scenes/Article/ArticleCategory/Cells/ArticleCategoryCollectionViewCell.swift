@@ -11,9 +11,11 @@ import UIKit
 import SnapKit
 
 final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
+
+    private let categoryImageView = LHImageView(contentMode: .scaleToFill).makeRound(10)
+    private let categoryInfoLabel = LHLabel(type: .title1, color: .white)
     
     var categorayClosure: ((String) -> Void)?
-    
     var inputData: CategoryImage? {
         didSet {
             guard let data = inputData else { return }
@@ -21,39 +23,12 @@ final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionV
             categoryInfoLabel.text = data.infoDdescription
         }
     }
-    
-    private let categoryImageView: UIImageView = {
-        let imageview = UIImageView()
-        imageview.contentMode = .scaleToFill
-        imageview.clipsToBounds = true
-        imageview.layer.cornerRadius = 10
-        return imageview
-    }()
-    
-    private let categoryInfoLabel: UILabel = {
-        let label = UILabel()
-        label.textColor =  .designSystem(.white)
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        return label
-    }()
-    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
     }
     
     @available(*, unavailable)
@@ -64,6 +39,7 @@ final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionV
 
 private extension ArticleCategoryCollectionViewCell {
     func setUI() {
+        categoryInfoLabel.backgroundColor = .designSystem(.clear)
         backgroundColor = .designSystem(.background)
     }
     
@@ -79,13 +55,5 @@ private extension ArticleCategoryCollectionViewCell {
         categoryInfoLabel.snp.makeConstraints { make in
             make.bottom.leading.equalToSuperview().inset(8)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
     }
 }

@@ -23,21 +23,13 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
     var bookMarkButtonTapped: ((Bool, IndexPath) -> Void)?
     
     private let tableViewCellWholeView = UIView()
-
     private let articleTitleLabel = LHLabel(type: .head3, color: .white)
     private let articleTagLabel = LHLabel(type: .body4, color: .gray400)
     private let articleReadTimeLabel = LHLabel(type: .body4, color: .gray500)
     private let articleContentLabel = LHLabel(type: .body3R, color: .gray300, lines: 2)
     private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkSmall,
                                                           select: ImageLiterals.BookMark.activeBookmarkSmall)
-    
-    private let articleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.opacity = 0.4
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 4
-        return imageView
-    }()
+    private let articleImageView = LHImageView(contentMode: .scaleToFill).makeRound(4).opacity(0.4)
     
     private let readTimeAndBookmarkView: UIView = {
         let view = UIView()

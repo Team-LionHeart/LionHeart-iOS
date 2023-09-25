@@ -9,9 +9,21 @@ import UIKit
 
 final class LHImageView: UIImageView {
     
-    init(in image: UIImage? = nil) {
+    init(in image: UIImage? = nil, contentMode: UIView.ContentMode) {
         super.init(frame: .zero)
         self.image = image
+        self.contentMode = contentMode
+    }
+    
+    func makeRound(_ ratio: CGFloat) -> Self {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = ratio
+        return self
+    }
+    
+    func opacity(_ ratio: Float) -> Self {
+        self.layer.opacity = ratio
+        return self
     }
     
     required init?(coder: NSCoder) {

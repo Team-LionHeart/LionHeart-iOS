@@ -12,13 +12,13 @@ import SnapKit
 
 final class CurriculumUserInfoView: UIView {
     
-    private let weekImageView = LHImageView()
+    private let weekImageView = LHImageView(contentMode: .scaleToFill)
     private let userWeekLabel = LHLabel(type: .head3, color: .gray100)
     private let weekLabel = LHLabel(type: .head3, color: .white, basicText: "주")
-    private let dayImageView = LHImageView(in: ImageLiterals.Curriculum.dayBackground)
+    private let dayImageView = LHImageView(in: ImageLiterals.Curriculum.dayBackground, contentMode: .scaleToFill)
     private let userDayLabel = LHLabel(type: .head3, color: .gray100, alignment: .center)
     private let dayLabel = LHLabel(type: .head3, color: .white, basicText: "일차")
-    private let userWeekDayInfoView = LHImageView()
+    private let userWeekDayInfoView = LHImageView(contentMode: .scaleToFill)
     
     var userInfo: UserInfoData? {
         didSet {

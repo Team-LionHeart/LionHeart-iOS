@@ -156,11 +156,9 @@
 		C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */; };
 		C0DF034D2A5A9B8D0037F740 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */; };
-		C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */; };
 		C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */; };
 		C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */; };
 		C0DF035B2A5A9C040037F740 /* ArticleCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */; };
-		C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */; };
 		C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */; };
 		C0DF036B2A5A9C930037F740 /* BookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036A2A5A9C930037F740 /* BookMarkView.swift */; };
 		C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03722A5A9CB50037F740 /* TodayViewController.swift */; };
@@ -381,11 +379,9 @@
 		C0DF03482A5A9ACB0037F740 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewController.swift; sourceTree = "<group>"; };
 		C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
-		C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewController.swift; sourceTree = "<group>"; };
 		C0DF03582A5A9BF80037F740 /* ArticleCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewController.swift; sourceTree = "<group>"; };
 		C0DF035A2A5A9C040037F740 /* ArticleCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryView.swift; sourceTree = "<group>"; };
-		C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		C0DF03662A5A9C680037F740 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		C0DF036A2A5A9C930037F740 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
 		C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -885,7 +881,6 @@
 		B598920C2A56B3B700CE1FEB /* ArticleListByCategory */ = {
 			isa = PBXGroup;
 			children = (
-				B59892132A56B53B00CE1FEB /* Cells */,
 				B59892122A56B52F00CE1FEB /* ViewControllers */,
 				B59892112A56B52B00CE1FEB /* Views */,
 			);
@@ -942,14 +937,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		B59892132A56B53B00CE1FEB /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				C0DF03502A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		B59892242A56B69D00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -977,7 +964,6 @@
 		B598922A2A56B6BE00CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C0DF03642A5A9C610037F740 /* ArticleDetailView.swift */,
 				B5C6A2B12A5DB0B10021BE5E /* ArticleDetailTableView.swift */,
 			);
 			path = Views;
@@ -1694,8 +1680,6 @@
 				C0856B692ABFB9140026D9F8 /* ArticleServiceImpl.swift in Sources */,
 				F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */,
 				4A8980CA2A614F8700746C58 /* MyPageModel.swift in Sources */,
-				C0DF03512A5A9BBE0037F740 /* ArticleListByCategoryTableViewCell.swift in Sources */,
-				C0DF03652A5A9C610037F740 /* ArticleDetailView.swift in Sources */,
 				4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,

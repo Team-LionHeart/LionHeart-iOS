@@ -27,7 +27,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     private let weekLabel = LHLabel(type: .body2M, color: .gray500, backgroundColor: .background)
     private let weekTitleLabel = LHLabel(type: .body2R, color: .gray100, alignment: .left)
     private let contentTextLabel = LHLabel(type: .body3R, color: .gray500, lines: 0)
-    private let contentImageView = LHImageView()
+    private let contentImageView = LHImageView(contentMode: .scaleToFill)
     private let divider = LHUnderLine(lineColor: .gray800)
     lazy var curriculumToggleDirectionButton = LHToggleImageButton(normal: ImageLiterals.Curriculum.arrowDownSmall,
                                                                            select: ImageLiterals.Curriculum.arrowUpSmall)
