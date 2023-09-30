@@ -19,17 +19,11 @@ final class BookmarkViewController: UIViewController {
     
     private let manager: BookmarkManger
     
+    private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
+    private lazy var bookmarkCollectionView = LHCollectionView()
+    
     private var bookmarkAppData = BookmarkAppData(nickName: "", articleSummaries: [ArticleSummaries]())
     private var bookmarkList = [ArticleSummaries]()
-    
-    private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
-    
-    private lazy var bookmarkCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = .designSystem(.background)
-        collectionView.showsVerticalScrollIndicator = false
-        return collectionView
-    }()
     
     init(manager: BookmarkManger) {
         self.manager = manager
@@ -53,6 +47,7 @@ final class BookmarkViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showLoading()
+        
         Task {
             do {
                 self.bookmarkAppData = try await manager.getBookmark()
