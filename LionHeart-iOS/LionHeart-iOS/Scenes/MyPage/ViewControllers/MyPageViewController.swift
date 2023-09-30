@@ -10,7 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol MyPageServiceProtocol: AnyObject {
+protocol MyPageManager {
     func getMyPage() async throws -> MyPageAppData
     func resignUser() async throws
     func logout(token: UserDefaultToken) async throws
@@ -30,7 +30,7 @@ final class MyPageViewController: UIViewController {
         }
     }
 
-    private let service: MyPageServiceProtocol
+    private let manager: MyPageManager
 
     // MARK: - UI Components
     
@@ -49,11 +49,11 @@ final class MyPageViewController: UIViewController {
         return button
     }()
 
-    init(service: MyPageServiceProtocol) {
-        self.service = service
+    init(manager: MyPageManager) {
+        self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -76,7 +76,7 @@ final class MyPageViewController: UIViewController {
         
         Task {
             do {
-                let data = try await service.getMyPage()
+                let data = try await manager.getMyPage()
                 myPageAppData = data
             } catch {
                 guard let error = error as? NetworkError else { return }
@@ -125,8 +125,9 @@ private extension MyPageViewController {
                 do {
                     guard let window = self.view.window else { return }
                     self.resignButton.isUserInteractionEnabled = false
-                    try await self.service.resignUser()
-                    ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
+                    try await self.manager.resignUser()
+                    let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+                    ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
                 } catch {
                     print(error)
                 }
@@ -168,7 +169,8 @@ extension MyPageViewController: ViewControllerServiceable {
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
+            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

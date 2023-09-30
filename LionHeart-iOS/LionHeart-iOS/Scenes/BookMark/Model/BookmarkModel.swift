@@ -12,6 +12,12 @@ struct BookmarkAppData: AppData {
     let articleSummaries: [ArticleSummaries]
 }
 
+extension BookmarkAppData {
+    static var empty: Self {
+        return .init(nickName: "", articleSummaries: [])
+    }
+}
+
 struct ArticleSummaries: AppData {
     let title: String
     let articleID: Int

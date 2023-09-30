@@ -9,9 +9,16 @@
 import UIKit
 
 import SnapKit
+
+protocol ArticleListByCategoryManager {
+    func getArticleListByCategory(categoryString: String) async throws -> CurriculumWeekData
+    func postBookmark(model: BookmarkRequest) async throws
+}
+
+
 final class ArticleListByCategoryViewController: UIViewController {
     
-    private let serviceProcotol: BookmarkOutProtocol
+    private let manager: ArticleListByCategoryManager
     
     var categoryString = String()
     var articleListData: [ArticleDataByWeek] = [] {
@@ -36,9 +43,8 @@ final class ArticleListByCategoryViewController: UIViewController {
         return tableView
     }()
     
-    init(serviceProcotol: BookmarkOutProtocol) {
-        self.serviceProcotol = serviceProcotol
-        
+    init(manager: ArticleListByCategoryManager) {
+        self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -53,7 +59,6 @@ final class ArticleListByCategoryViewController: UIViewController {
         setLayout()
         setDelegate()
         setTableView()
-        setNotificationCenter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +66,7 @@ final class ArticleListByCategoryViewController: UIViewController {
         showLoading()
         Task {
             do {
-                self.articleListData = try await ArticleService.shared.getArticleListByCategory(categoryString: categoryString).articleData
+                self.articleListData = try await manager.getArticleListByCategory(categoryString: categoryString).articleData
                 self.articleListTableView.reloadData()
                 hideLoading()
             } catch {
@@ -102,26 +107,6 @@ private extension ArticleListByCategoryViewController {
     func setTableView() {
         CurriculumArticleByWeekTableViewCell.register(to: articleListTableView)
     }
-    
-    func setNotificationCenter() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(bookmarkButtonTapped), name: NSNotification.Name("isArticleBookmarked"), object: nil)
-    }
-    
-//    @objc func bookmarkButtonTapped(notification: NSNotification) {
-//        Task {
-//            do {
-//                guard let indexPath = notification.userInfo?["bookmarkCellIndexPath"] as? Int else { return }
-//                guard let buttonSelected = notification.userInfo?["bookmarkButtonSelected"] as? Bool else { return }
-//
-//                try await BookmarkService.shared.postBookmark(BookmarkRequest(articleId: articleListData[indexPath+1].articleId,
-//                                                                              bookmarkStatus: buttonSelected))
-//                buttonSelected ? LHToast.show(message: "북마크에 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크에 해제되었습니다", isTabBar: true)
-//            } catch {
-//                guard let error = error as? NetworkError else { return }
-//                handleError(error)
-//            }
-//        }
-//    }
 }
 
 extension ArticleListByCategoryViewController: ViewControllerServiceable {
@@ -137,7 +122,8 @@ extension ArticleListByCategoryViewController: ViewControllerServiceable {
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
+            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
@@ -160,7 +146,7 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
 
             Task {
                 do {
-                    try await self.serviceProcotol.postBookmark(model: BookmarkRequest(articleId: self.articleListData[indexPath.row].articleId,
+                    try await self.manager.postBookmark(model: BookmarkRequest(articleId: self.articleListData[indexPath.row].articleId,
                                                                                   bookmarkRequestStatus: isSelected))
                     print(self.articleListData[indexPath.row].articleId)
                     isSelected ? LHToast.show(message: "북마크에 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크에 해제되었습니다", isTabBar: true)

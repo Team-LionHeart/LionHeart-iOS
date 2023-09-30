@@ -1,18 +1,24 @@
 //
-//  BookmarkAPI.swift
+//  BookmarkServiceImpl.swift
 //  LionHeart-iOS
 //
-//  Created by 황찬미 on 2023/09/13.
+//  Created by uiskim on 2023/09/24.
 //
 
 import Foundation
 
-protocol BookmarkAPIProtocol {
+protocol BookmarkInOutService {
     func getBookmark() async throws -> BookmarkResponse?
     func postBookmark(model: BookmarkRequest) async throws -> BookmarkResponse?
 }
 
-final class BookmarkAPI: BookmarkAPIProtocol {
+protocol BookmarkOutService {
+    func postBookmark(model: BookmarkRequest) async throws -> BookmarkResponse?
+}
+
+typealias BookmarkService = BookmarkInOutService & BookmarkOutService
+
+final class BookmarkServiceImpl: BookmarkService {
     
     private let apiService: Requestable
     
@@ -31,9 +37,7 @@ final class BookmarkAPI: BookmarkAPIProtocol {
     }
 }
 
-
-/// url request method
-extension BookmarkAPI {
+extension BookmarkServiceImpl {
     func makeGetBookmarkUrlRequest() throws -> URLRequest {
         return try NetworkRequest(path: "/v1/article/bookmarks", httpMethod: .get).makeURLRequest(isLogined: true)
     }
@@ -41,7 +45,6 @@ extension BookmarkAPI {
     func makePostBookmakrUrlRequest(model: BookmarkRequest) throws -> URLRequest {
         let param = model.toDictionary()
         let body = try JSONSerialization.data(withJSONObject: param)
-        
         return try NetworkRequest(path: "/v1/article/bookmark", httpMethod: .post, body: body).makeURLRequest(isLogined: true)
     }
 }

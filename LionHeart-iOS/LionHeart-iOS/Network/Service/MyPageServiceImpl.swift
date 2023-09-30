@@ -1,17 +1,17 @@
 //
-//  MyPageAPI.swift
+//  MyPageServiceImpl.swift
 //  LionHeart-iOS
 //
-//  Created by uiskim on 2023/09/10.
+//  Created by uiskim on 2023/09/24.
 //
 
 import Foundation
 
-protocol MyPageAPIProtocol {
+protocol MypageService {
     func getMyPage() async throws -> MyPageResponse?
 }
 
-final class MyPageAPI: MyPageAPIProtocol {
+final class MyPageServiceImpl: MypageService {
     
     private let apiService: Requestable
     

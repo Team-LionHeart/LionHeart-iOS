@@ -11,74 +11,36 @@ import UIKit
 import SnapKit
 import Lottie
 
-enum BadgeLevel: String {
-    case level01 = "LEVEL_ONE"
-    case level02 = "LEVEL_TWO"
-    case level03 = "LEVEL_THREE"
-    case level04 = "LEVEL_FOUR"
-    case level05 = "LEVEL_FIVE"
-    
-    var badgeLevel: Int {
-        switch self {
-        case .level01: return 1
-        case .level02: return 2
-        case .level03: return 3
-        case .level04: return 4
-        case .level05: return 5
-        }
-    }
-    
-    var badgeImage: UIImage {
-        switch self {
-        case .level01: return ImageLiterals.ChallengeBadge.level01
-        case .level02: return ImageLiterals.ChallengeBadge.level02
-        case .level03: return ImageLiterals.ChallengeBadge.level03
-        case .level04: return ImageLiterals.ChallengeBadge.level04
-        case .level05: return ImageLiterals.ChallengeBadge.level05
-        }
-    }
-    
-    var progreddbarLottie: String {
-        switch self {
-        case .level01: return "Level1"
-        case .level02: return "Level2"
-        case .level03: return "Level3"
-        case .level04: return "Level4"
-        case .level05: return "Level5"
-        }
-    }
+protocol ChallengeManager {
+    func inquireChallengeInfo() async throws -> ChallengeData
 }
 
 final class ChallengeViewController: UIViewController {
-    
-    var inputData: ChallengeData? {
-        didSet {
-            guard let babyNickname = inputData?.babyDaddyName else { return }
-            self.nicknameLabel.text = "\(babyNickname)아빠 님,"
-            
-            if let howLongDay = inputData?.howLongDay {
-                self.challengeDayLabel.text = "\(howLongDay)일째 도전 중"
-            }
-    
-            self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
-            
-            self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
-            self.lottieImageView.play()
-            
-            let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
-            
-            let attributtedString = NSMutableAttributedString(string: fullText)
-            attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
-            
-            self.challengelevelLabel.attributedText = attributtedString
-        }
-    }
     
     private enum Size {
         static let cellOffset: CGFloat = 40
         static let numberOfCellsinRow: CGFloat = 0
     }
     
+    private var manager: ChallengeManager
+    
+    var inputData: ChallengeData? {
+        didSet {
+            guard let babyNickname = inputData?.babyDaddyName else { return }
+            configureData(babyNickname)
+
+        }
+    }
+    
+    init(manager: ChallengeManager) {
+        self.manager = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private let leftSeperateLine: UIView = {
         let view = UIView()
         view.backgroundColor = .designSystem(.background)
@@ -144,7 +106,7 @@ final class ChallengeViewController: UIViewController {
         Task {
             do {
                 self.showLoading()
-                let model = try await ChallengeService.shared.inquireChallengeInfo()
+                let model = try await manager.inquireChallengeInfo()
                 self.inputData = model
                 self.tags = model.daddyAttendances
                 self.challengeDayCheckCollectionView.reloadData()
@@ -249,15 +211,34 @@ private extension ChallengeViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
+            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(bookmarkViewController, animated: true)
         }
         
         navigationBar.rightSecondBarItemAction {
-            let wrapper = AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))
-            let myPageViewController = MyPageViewController(service: wrapper)
+            let myPageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
+    }
+    
+    func configureData(_ babyNickname: String) {
+        self.nicknameLabel.text = "\(babyNickname)아빠 님,"
+        
+        if let howLongDay = inputData?.howLongDay {
+            self.challengeDayLabel.text = "\(howLongDay)일째 도전 중"
+        }
+
+        self.levelBadge.image = BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeImage
+        
+        self.lottieImageView.animation = .named(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.progreddbarLottie ?? "")
+        self.lottieImageView.play()
+        
+        let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)
+        
+        let attributtedString = NSMutableAttributedString(string: fullText)
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white) ?? .white, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: inputData?.daddyLevel ?? "")?.badgeLevel ?? 1)))
+        
+        self.challengelevelLabel.attributedText = attributtedString
     }
 }
 

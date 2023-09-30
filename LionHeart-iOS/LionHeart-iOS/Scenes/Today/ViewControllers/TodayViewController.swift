@@ -10,7 +10,22 @@ import UIKit
 
 import SnapKit
 
+protocol TodayManager {
+    func inquiryTodayArticle() async throws -> TodayArticle
+}
+
 final class TodayViewController: UIViewController {
+    
+    private let manager: TodayManager
+    
+    init(manager: TodayManager) {
+        self.manager = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     enum TodayArticleImage {
         static let ratio: CGFloat = 400/335
@@ -54,7 +69,7 @@ extension TodayViewController {
     func getInquireTodayArticle() {
         Task {
             do {
-                let responseArticle = try await ArticleService.shared.inquiryTodayArticle()
+                let responseArticle = try await manager.inquiryTodayArticle()
                 let image = try await LHKingFisherService.fetchImage(with: responseArticle.mainImageURL)
                 mainArticleView.mainArticlImageView.image = image
                 titleLabel.userNickName = responseArticle.fetalNickname
@@ -125,13 +140,12 @@ private extension TodayViewController {
 
     func setButtonAction() {
         todayNavigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
+            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(bookmarkViewController, animated: true)
         }
         
         todayNavigationBar.rightSecondBarItemAction {
-            let wrapperClass = AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))
-            let myPageViewController = MyPageViewController(service: wrapperClass)
+            let myPageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
@@ -156,7 +170,8 @@ extension TodayViewController: ViewControllerServiceable {
             LHToast.show(message: "이미지패치실패", isTabBar: true)
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
+            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: message, isTabBar: true)
         case .serverError:

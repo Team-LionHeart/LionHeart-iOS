@@ -11,6 +11,10 @@ import UIKit
 import SnapKit
 import Lottie
 
+protocol CurriculumManager {
+    func getCurriculumServiceInfo() async throws -> UserInfoData
+}
+
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumMain, viewController: self)
@@ -19,6 +23,17 @@ final class CurriculumViewController: UIViewController, CurriculumTableViewToggl
         didSet {
             configureUserInfoData()
         }
+    }
+    
+    private let manager: CurriculumManager
+    
+    init(manager: CurriculumManager) {
+        self.manager = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private let progressBar = LottieAnimationView()
@@ -166,13 +181,12 @@ private extension CurriculumViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
+            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(bookmarkViewController, animated: true)
         }
         
         navigationBar.rightSecondBarItemAction {
-            let wrapper = AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))
-            let myPageViewController = MyPageViewController(service: wrapper)
+            let myPageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
             self.navigationController?.pushViewController(myPageViewController, animated: true)
         }
     }
@@ -268,7 +282,7 @@ extension CurriculumViewController: UITableViewDataSource {
             
         }
         
-        let listByWeekVC = CurriculumListByWeekViewController(serviceProtocol: BookmarkService(bookmarkAPIProtocol: BookmarkAPI(apiService: APIService())))
+        let listByWeekVC = CurriculumListByWeekViewController(manager: CurriculumListManagerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService()), curriculumService: CurriculumServiceImpl(apiService: APIService())))
         listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row
         self.navigationController?.pushViewController(listByWeekVC, animated: true)
         
@@ -277,12 +291,7 @@ extension CurriculumViewController: UITableViewDataSource {
     
 }
 
-extension CurriculumViewController: UITableViewDelegate{
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let curriculumListByWeekViewController = CurriculumListByWeekViewController()
-//        self.navigationController?.pushViewController(curriculumListByWeekViewController, animated: true)
-//    }
-}
+extension CurriculumViewController: UITableViewDelegate{}
 
 extension CurriculumViewController: ViewControllerServiceable {
     
@@ -290,7 +299,8 @@ extension CurriculumViewController: ViewControllerServiceable {
         switch error {
         case .unAuthorizedError:
             guard let window = self.view.window else { return }
-            ViewControllerUtil.setRootViewController(window: window, viewController: SplashViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService()))), withAnimation: false)
+            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
         case .clientError(_, let message):
             LHToast.show(message: "\(message)")
         default:
@@ -305,7 +315,7 @@ extension CurriculumViewController {
     func getCurriculumData() {
         Task {
             do {
-                let responseCurriculum = try await CurriculumService.shared.getCurriculumServiceInfo()
+                let responseCurriculum = try await manager.getCurriculumServiceInfo()
                 
                 userInfoData = responseCurriculum
                 hideLoading()

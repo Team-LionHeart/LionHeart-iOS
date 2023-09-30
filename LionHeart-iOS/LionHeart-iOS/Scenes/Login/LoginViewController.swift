@@ -13,6 +13,10 @@ import SnapKit
 import KakaoSDKAuth
 import KakaoSDKUser
 
+protocol LoginManager {
+    func login(type: LoginType, kakaoToken: String) async throws
+}
+
 final class LoginViewController: UIViewController {
     
     private var kakaoAccessToken: String? {
@@ -25,7 +29,7 @@ final class LoginViewController: UIViewController {
         }
     }
 
-    private let authService: AuthServiceProtocol
+    private let manager: LoginManager
     
     private let loginMainImageView: UIImageView = {
         let imageView = UIImageView(image: ImageLiterals.Login.loginBackgroundImage)
@@ -60,8 +64,8 @@ final class LoginViewController: UIViewController {
         return button
     }()
 
-    init(authService: AuthServiceProtocol) {
-        self.authService = authService
+    init(manager: LoginManager) {
+        self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -99,7 +103,7 @@ extension LoginViewController {
     private func loginAPI(kakaoToken: String) {
         Task {
             do {
-                try await authService.login(type: .kakao, kakaoToken: kakaoToken)
+                try await manager.login(type: .kakao, kakaoToken: kakaoToken)
                 guard let window = self.view.window else {
                     LHToast.show(message: "로그인api에서 window guard let 88")
                     return
@@ -117,7 +121,7 @@ extension LoginViewController {
     }
 
     func moveUserToOnboardingViewController() {
-        let onboardingViewController = OnboardingViewController(authService: AuthMyPageServiceWrapper(authAPIService: AuthAPI(apiService: APIService()), mypageAPIService: MyPageAPI(apiService: APIService())))
+        let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
         onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
         self.navigationController?.pushViewController(onboardingViewController, animated: true)
     }

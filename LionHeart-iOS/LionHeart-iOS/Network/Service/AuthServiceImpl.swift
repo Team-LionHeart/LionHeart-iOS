@@ -1,21 +1,28 @@
 //
-//  AuthAPI.swift
+//  AuthServiceImpl.swift
 //  LionHeart-iOS
 //
-//  Created by uiskim on 2023/09/08.
+//  Created by uiskim on 2023/09/24.
 //
 
 import Foundation
 
-protocol AuthAPIProtocol {
+import Foundation
+
+protocol AuthUserInService {
     func reissueToken(token: Token) async throws -> Token?
     func login(type: LoginType, kakaoToken: String) async throws
     func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
+}
+
+protocol AuthUserOutService {
     @discardableResult func logout(token: UserDefaultToken) async throws -> String?
     func resignUser() async throws
 }
 
-final class AuthAPI: AuthAPIProtocol {
+typealias AuthService = AuthUserInService & AuthUserOutService
+
+final class AuthServiceImpl: AuthService {
     
     private let apiService: Requestable
     
@@ -50,14 +57,14 @@ final class AuthAPI: AuthAPIProtocol {
     }
 }
 
-extension AuthAPI {
+extension AuthServiceImpl {
     private func userdefaultsSettingWhenUserIn(model: Token?) {
         UserDefaultsManager.tokenKey?.accessToken = model?.accessToken
         UserDefaultsManager.tokenKey?.refreshToken = model?.refreshToken
     }
 }
 
-extension AuthAPI {
+extension AuthServiceImpl {
     func makeResignUserUrlRequest() throws -> URLRequest {
         return try NetworkRequest(path: "/v1/member", httpMethod: .delete).makeURLRequest(isLogined: true)
     }

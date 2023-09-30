@@ -13,3 +13,9 @@ struct ChallengeDataResponse: DTO, Response {
     let level: String
     let attendances: [String]
 }
+
+extension ChallengeDataResponse {
+    func toAppData() -> ChallengeData {
+        return .init(babyDaddyName: self.babyNickname, howLongDay: self.day, daddyLevel: self.level, daddyAttendances: self.attendances)
+    }
+}
