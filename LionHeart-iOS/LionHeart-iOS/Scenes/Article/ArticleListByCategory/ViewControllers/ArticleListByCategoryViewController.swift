@@ -20,28 +20,15 @@ final class ArticleListByCategoryViewController: UIViewController {
     
     private let manager: ArticleListByCategoryManager
     
-    var categoryString = String()
+    private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
+    private let articleListTableView = ArticleListTableView()
+    
+    var categoryString: String?
     var articleListData: [ArticleDataByWeek] = [] {
         didSet {
             articleListTableView.reloadData()
         }
     }
-    
-    private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
-    
-    private let articleListTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .designSystem(.background)
-        let view = ArticleListByCategoryHeaderView()
-        view.frame = CGRect(x: 0, y: 0, width: Constant.Screen.width, height: ScreenUtils.getHeight(136))
-        tableView.separatorStyle = .none
-        tableView.tableHeaderView = view
-        tableView.estimatedRowHeight = 326
-        let footerView = UIView()
-        footerView.frame = .init(x: 0, y: 0, width: Constant.Screen.width, height: 100)
-        tableView.tableFooterView = footerView
-        return tableView
-    }()
     
     init(manager: ArticleListByCategoryManager) {
         self.manager = manager
@@ -66,6 +53,7 @@ final class ArticleListByCategoryViewController: UIViewController {
         showLoading()
         Task {
             do {
+                guard let categoryString else { return }
                 self.articleListData = try await manager.getArticleListByCategory(categoryString: categoryString).articleData
                 self.articleListTableView.reloadData()
                 hideLoading()
@@ -140,24 +128,19 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: articleListTableView)
         cell.inputData = articleListData[indexPath.row]
-
+        cell.selectionStyle = .none
         cell.bookMarkButtonTapped = { isSelected, indexPath in
-
-
             Task {
                 do {
                     try await self.manager.postBookmark(model: BookmarkRequest(articleId: self.articleListData[indexPath.row].articleId,
                                                                                   bookmarkRequestStatus: isSelected))
-                    print(self.articleListData[indexPath.row].articleId)
                     isSelected ? LHToast.show(message: "북마크에 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크에 해제되었습니다", isTabBar: true)
                 } catch {
                     guard let error = error as? NetworkError else { return }
                     self.handleError(error)
                 }
             }
-
         }
-
         return cell
     }
 }

@@ -12,33 +12,11 @@ import SnapKit
 
 final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
-    var inputData: DummyModel?
+    private let countLabel = LHLabel(type: .body2M, color: .gray700, alignment: .center)
+    private let lineView = LHUnderLine(lineColor: .gray900)
     
-    var inputString: String? {
-        didSet {
-            countLabel.text = inputString
-        }
-    }
-    
-    var whiteTextColor: UIColor? {
-        didSet {
-            countLabel.textColor = whiteTextColor
-        }
-    }
-    
-    private let countLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .pretendard(.body2M)
-        label.textColor = .designSystem(.gray700)
-        return label
-    }()
-
-    private let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray900)
-        return view
-    }()
+    var inputString: String?
+    var whiteTextColor: UIColor?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -11,45 +11,13 @@ import UIKit
 import SnapKit
 
 final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
-
-    private enum Size {
-        static let thumbnailWidthHeightRatio: CGFloat = 224 / 375
-    }
+    
+    private let gradientImageView = LHImageView(in: ImageLiterals.Curriculum.gradient, contentMode: .scaleAspectFill)
+    private let thumbnailImageView = LHImageView(contentMode: .scaleAspectFill)
+    private let imageCaptionLabel = LHLabel(type: .body4, color: .gray500)
+    private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkBig, select: ImageLiterals.BookMark.activeBookmarkBig)
 
     var bookmarkButtonDidTap: ((Bool) -> Void)?
-
-    private let thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-
-    let gradientImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageLiterals.Curriculum.gradient
-        return imageView
-    }()
-
-    private let imageCaptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.gray500)
-        return label
-    }()
-
-    private lazy var bookMarkButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageLiterals.BookMark.inactiveBookmarkBig, for: .normal)
-        button.setImage(ImageLiterals.BookMark.activeBookmarkBig, for: .selected)
-        button.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            button.isSelected.toggle()
-            self.bookmarkButtonDidTap?(button.isSelected)
-        }
-        return button
-    }()
-
     var inputData: ArticleBlockData? {
         didSet {
             configureCell(inputData)
@@ -67,6 +35,7 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setHierarchy()
         setLayout()
+        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -80,6 +49,10 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
 }
 
 private extension ThumnailTableViewCell {
+    
+    enum Size {
+        static let thumbnailWidthHeightRatio: CGFloat = 224 / 375
+    }
     
     func setHierarchy() {
         contentView.addSubviews(thumbnailImageView, imageCaptionLabel, bookMarkButton)
@@ -119,6 +92,14 @@ private extension ThumnailTableViewCell {
             thumbnailImageView.image = image
         }
         imageCaptionLabel.text = model.caption
+    }
+    
+    func setAddTarget() {
+        bookMarkButton.addButtonAction { [weak self] _ in
+            guard let self else { return }
+            self.isSelected.toggle()
+            self.bookmarkButtonDidTap?(self.isSelected)
+        }
     }
 }
 

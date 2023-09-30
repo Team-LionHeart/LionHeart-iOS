@@ -22,7 +22,7 @@ final class GetFetalNicknameViewController: UIViewController {
     private let descriptionLabel = LHOnboardingDescriptionLabel("아직이라면, 닉네임을 적어주세요.")
     private let fetalNickNameErrorLabel = LHOnboardingErrorLabel()
     private let fetalNickNameTextfield = NHOnboardingTextfield(textFieldType: .fetalNickname)
-    private let textFieldUnderLine = NHUnderLine(lineColor: .designSystem(.lionRed))
+    private let textFieldUnderLine = LHUnderLine(lineColor: .lionRed)
     
 
     public override func viewDidLoad() {

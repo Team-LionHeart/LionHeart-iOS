@@ -12,28 +12,9 @@ import SnapKit
 
 final class MyPageCustomerServiceCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
-    private let listNameLabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2M)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
-    
-    private lazy var nextButton = {
-        var configuration = UIButton.Configuration.plain()
-        configuration.image = ImageLiterals.Curriculum.arrowRightSmall
-        let button = UIButton(configuration: configuration)
-        button.addButtonAction { _ in
-            print("눌리냐")
-        }
-        return button
-    }()
-    
-    private let bottomView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray800)
-        return view
-    }()
+    private let listNameLabel = LHLabel(type: .body2M, color: .white)
+    private lazy var nextButton = LHImageButton(setImage: ImageLiterals.Curriculum.arrowRightSmall)
+    private let bottomView = LHView(color: .designSystem(.gray800))
     
     var inputData: MyPageLocalData? {
         didSet {
@@ -43,11 +24,9 @@ final class MyPageCustomerServiceCollectionViewCell: UICollectionViewCell, Colle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setHierarchy()
         setLayout()
         setAddTarget()
-        setDelegate()
     }
     
     @available(*, unavailable)
@@ -80,11 +59,9 @@ private extension MyPageCustomerServiceCollectionViewCell {
     }
     
     func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
+        nextButton.addButtonAction { _ in
+            print("눌리냐")
+        }
     }
     
     func configureData(_ model: MyPageLocalData?) {

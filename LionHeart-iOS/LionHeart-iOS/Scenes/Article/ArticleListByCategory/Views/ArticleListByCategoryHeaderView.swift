@@ -13,54 +13,24 @@ import SnapKit
 final class ArticleListByCategoryHeaderView: UIView {
     
     private let categoryTagLabel: UILabelPadding = {
-        let label = UILabelPadding()
+        let label = UILabelPadding(padding: .init(top: 4, left: 8, bottom: 4, right: 8))
         label.text = "출산 직전"
         label.font = .pretendard(.body4)
         label.textColor = .designSystem(.componentLionRed)
         label.layer.borderColor = .designSystem(.componentLionRed)
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 3
-        label.topPadding = 4
-        label.bottomPadding = 4
-        label.leftPadding = 8
-        label.rightPadding = 8
         return label
     }()
     
-    private let categorytitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "출산 준비,\n불필요한 지출은 그만!"
-        label.numberOfLines = 3
-        label.font = .pretendard(.head2)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
-    
-    private let categorysubtitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "라이온하트가 전하는 예산 절약 노하우 대공개"
-        label.numberOfLines = 2
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray400)
-        return label
-    }()
+    private let categorytitleLabel = LHLabel(type: .head2, color: .white, lines: 3, basicText: "출산 준비,\n불필요한 지출은 그만!")
+    private let categorysubtitleLabel = LHLabel(type: .body3R, color: .gray400, lines: 2, basicText: "라이온하트가 전하는 예산 절약 노하우 대공개")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        // MARK: - button의 addtarget설정
-        setAddTarget()
-        
-        // MARK: - delegate설정
-        setDelegate()
     }
     
     @available(*, unavailable)
@@ -92,13 +62,5 @@ private extension ArticleListByCategoryHeaderView {
             make.top.equalTo(categorytitleLabel.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(20)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
     }
 }

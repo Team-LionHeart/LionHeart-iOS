@@ -28,7 +28,8 @@ final class APIService: Requestable {
             throw NetworkError.serverError
         }
         
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅API호출성공✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+        print("✨✨✨✨✨✨✨✨✨✨✨✨✨API호출성공✨✨✨✨✨✨✨✨✨✨✨✨✨")
+        print(decodedData)
         return decodedData.data
     }
 }

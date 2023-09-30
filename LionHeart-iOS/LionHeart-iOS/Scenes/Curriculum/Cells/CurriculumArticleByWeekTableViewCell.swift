@@ -15,113 +15,31 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
     
     var inputData: ArticleDataByWeek? {
         didSet {
-            guard let inputData else {
-                return
-            }
-            articleReadTimeLabel.text = "\(inputData.articleReadTime)분 분량"
-            articleTitleLabel.text = inputData.articleTitle
-            Task {
-                let image = try await LHKingFisherService.fetchImage(with: inputData.articleImage)
-                articleImageView.image = image
-            }
-            articleTagLabel.text = inputData.articleTags.joined(separator: " · ")
-            articleContentLabel.text = inputData.articleContent
-            articleContentLabel.setTextWithLineHeight(lineHeight: 22)
-            articleContentLabel.lineBreakStrategy = .pushOut
-            articleContentLabel.lineBreakMode = .byTruncatingTail
-            bookMarkButton.isSelected = inputData.isArticleBookmarked
+            guard let inputData else { return }
+            configureData(inputData)
         }
     }
 
     var bookMarkButtonTapped: ((Bool, IndexPath) -> Void)?
     
     private let tableViewCellWholeView = UIView()
-    
-    private enum Size {
-        static let readTimeAndBookmarkViewSize: CGFloat = 44 / 335
-        static let articleImageSize: CGFloat = 200 / 335
-        
-    }
-    
-    private let articleTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
-    
-    private let articleTagLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.gray400)
-        return label
-    }()
-    
-    private let articleReadTimeLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.gray500)
-        return label
-    }()
-    
-    private let articleContentLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray300)
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    private let articleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.opacity = 0.4
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 4
-        return imageView
-    }()
-    
-    private let readTimeAndBookmarkView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 4
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.layer.masksToBounds = true
-        view.backgroundColor = .designSystem(.black)
-        view.layer.opacity = 0.6
-        return view
-    }()
-    
-    private lazy var bookMarkButton: UIButton = {
-        var button = UIButton()
-        button.setImage(ImageLiterals.BookMark.inactiveBookmarkSmall, for: .normal)
-        button.setImage(ImageLiterals.BookMark.activeBookmarkSmall, for: .selected)
-        button.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            
-            guard var indexPath = self.getIndexPath() else { return }
-            button.isSelected.toggle()
-            self.bookMarkButtonTapped?(button.isSelected, indexPath)
-            
-            NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
-                                            object: nil, userInfo: ["bookmarkCellIndexPath": max(0, indexPath.row - 1),
-                                                                    "bookmarkButtonSelected": button.isSelected])
+    private let articleTitleLabel = LHLabel(type: .head3, color: .white)
+    private let articleTagLabel = LHLabel(type: .body4, color: .gray400)
+    private let articleReadTimeLabel = LHLabel(type: .body4, color: .gray500)
+    private let articleContentLabel = LHLabel(type: .body3R, color: .gray300, lines: 2)
+    private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkSmall,
+                                                          select: ImageLiterals.BookMark.activeBookmarkSmall)
+    private let articleImageView = LHImageView(contentMode: .scaleToFill).makeRound(4).opacity(0.4)
+    private let readTimeAndBookmarkView = LHView(color: .designSystem(.black)).makeRound(4).opacity(0.6)
+        .maskedCorners(corners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
 
-        }
-        return button
-    }()
-    
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        // MARK: - 컴포넌트 설정
         setUI()
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
-        
-        
+        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -131,8 +49,14 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
 }
 
 private extension CurriculumArticleByWeekTableViewCell {
+    
+    enum Size {
+        static let readTimeAndBookmarkViewSize: CGFloat = 44 / 335
+        static let articleImageSize: CGFloat = 200 / 335
+    }
+    
     func setUI() {
-        contentView.backgroundColor = .designSystem(.background)
+        backgroundColor = .designSystem(.background)
     }
     
     func setHierarchy() {
@@ -188,8 +112,36 @@ private extension CurriculumArticleByWeekTableViewCell {
         }
     }
     
+    func setAddTarget() {
+        bookMarkButton.addButtonAction { [weak self] _ in
+            guard let self else { return }
+            guard var indexPath = self.getIndexPath() else { return }
+            self.isSelected.toggle()
+            self.bookMarkButtonTapped?(self.isSelected, indexPath)
+            NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
+                                            object: nil, userInfo: ["bookmarkCellIndexPath": max(0, indexPath.row - 1),
+                                                                    "bookmarkButtonSelected": self.isSelected])
+        }
+    }
+    
     func getIndexPath() -> IndexPath? {
         guard let superView = self.superview as? UITableView else { return nil }
         return superView.indexPath(for: self)
+    }
+    
+    func configureData(_ inputData: ArticleDataByWeek) {
+        Task {
+            let image = try await LHKingFisherService.fetchImage(with: inputData.articleImage)
+            articleImageView.image = image
+        }
+        articleReadTimeLabel.text = "\(inputData.articleReadTime)분 분량"
+        articleTitleLabel.text = inputData.articleTitle
+        articleTagLabel.text = inputData.articleTags.joined(separator: " · ")
+        articleContentLabel.text = inputData.articleContent
+        articleContentLabel.setTextWithLineHeight(lineHeight: 22)
+        articleContentLabel.lineBreakStrategy = .pushOut
+        articleContentLabel.lineBreakMode = .byTruncatingTail
+        bookMarkButton.isSelected = inputData.isArticleBookmarked
+
     }
 }

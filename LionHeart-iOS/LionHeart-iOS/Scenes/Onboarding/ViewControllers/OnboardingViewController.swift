@@ -15,17 +15,15 @@ protocol OnboardingManager {
 }
 
 final class OnboardingViewController: UIViewController {
-    
+
     typealias OnboardingViews = [UIViewController]
 
     private let manager: OnboardingManager
     
-    /// passing data property
     private var fetalNickName: String?
     private var pregnancy: Int?
     private var kakaoAccessToken: String?
     
-    /// component property
     private let nextButton = LHOnboardingButton()
     private let onboardingProgressView = LHProgressView()
     private let onboardingViewController = LHOnboardingPageViewController()
@@ -43,7 +41,6 @@ final class OnboardingViewController: UIViewController {
                 presentOnboardingView(oldValue: onboardingFlow)
             case .toCompleteOnboarding:
                 presentCompleteOnboardingView()
-
             }
         }
     }
@@ -135,7 +132,7 @@ private extension OnboardingViewController {
             }
             self.nextOnboaringProcess(nickName: fetalNickName, minCount: 1, maxCount: 10)
         }
-        
+    
         onboardingNavigationbar.backButtonAction {
             self.backOnboardingProcess()
         }
@@ -177,7 +174,6 @@ private extension OnboardingViewController {
     
     func presentCompleteOnboardingView() {
         self.view.endEditing(true)
-
         self.nextButton.isUserInteractionEnabled = false
         let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)

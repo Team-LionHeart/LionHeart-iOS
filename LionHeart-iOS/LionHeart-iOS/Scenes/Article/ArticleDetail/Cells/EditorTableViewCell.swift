@@ -11,36 +11,16 @@ import UIKit
 import SnapKit
 
 final class EditorTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
-
+    
+    private let editorBackgroundView = LHView(color: .designSystem(.gray100)).makeRound(4)
+    private let titleLabel = LHLabel(type: .body2M, color: .gray900)
+    private let commentLabel = LHLabel(type: .body2R, color: .gray900, lines: 0)
+    
     var inputData: ArticleBlockData? {
         didSet {
             configureCell(inputData)
         }
     }
-
-    private let editorBackgroundView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 4
-        view.clipsToBounds = true
-        view.backgroundColor = .designSystem(.gray100)
-        return view
-    }()
-
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2M)
-        label.textColor = .designSystem(.gray900)
-        return label
-    }()
-
-    private let commentLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2R)
-        label.textColor = .designSystem(.gray900)
-        label.numberOfLines = 0
-        return label
-    }()
-    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -79,7 +59,6 @@ private extension EditorTableViewCell {
             make.trailing.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().inset(20)
         }
-        
     }
     
     func configureCell(_ model: ArticleBlockData?) {

@@ -10,13 +10,8 @@ import UIKit
 final class LHNavigationBarView: UIView {
 
     // MARK: - UI Components
-
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(.head4)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
+    private let titleLabel = LHLabel(type: .head4, color: .white)
+    
 
     private let leftBarItem: UIButton = {
         let button = UIButton()
@@ -40,12 +35,8 @@ final class LHNavigationBarView: UIView {
         button.marginImageWithText(margin: 14)
         return button
     }()
-
-    private let graySepartorLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray800)
-        return view
-    }()
+    
+    private let graySepartorLine = LHUnderLine(lineColor: .gray800)
 
     private lazy var rightBarItemsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [

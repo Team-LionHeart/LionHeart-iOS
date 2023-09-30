@@ -18,6 +18,14 @@ final class TodayViewController: UIViewController {
     
     private let manager: TodayManager
     
+    private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
+    private var titleLabel = LHTodayArticleTitle()
+    private var subTitleLable = LHTodayArticleTitle(initalizeString: "오늘의 아티클이에요")
+    private var mainArticleView = TodayArticleView()
+    private var pointImage = LHImageView(in: UIImage(named: "TodayArticle_PointImage"), contentMode: .scaleAspectFit)
+    
+    private var todayArticleID: Int?
+    
     init(manager: TodayManager) {
         self.manager = manager
         super.init(nibName: nil, bundle: nil)
@@ -27,24 +35,6 @@ final class TodayViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    enum TodayArticleImage {
-        static let ratio: CGFloat = 400/335
-    }
-    
-    private var todayArticleID: Int?
-
-    private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
-    
-    private var titleLabel = LHTodayArticleTitle()
-    private var subTitleLable = LHTodayArticleTitle(initalizeString: "오늘의 아티클이에요")
-    private var mainArticleView = TodayArticleView()
-    
-    private var pointImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "TodayArticle_PointImage"))
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -75,7 +65,6 @@ extension TodayViewController {
                 titleLabel.userNickName = responseArticle.fetalNickname
                 mainArticleView.data = responseArticle
                 todayArticleID = responseArticle.aticleID
-                // MARK: - 추후에 디팀에서 그라데이션있는 이미지로 받아오기로함
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self.hideLoading()
                 }
@@ -83,13 +72,15 @@ extension TodayViewController {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
             }
-
         }
     }
 }
 
-// MARK: - layout
 private extension TodayViewController {
+    enum TodayArticleImage {
+        static let ratio: CGFloat = 400/335
+    }
+    
     func setUI() {
         view.backgroundColor = .designSystem(.black)
     }
@@ -156,7 +147,6 @@ private extension TodayViewController {
     }
 }
 
-// MARK: - 네트워킹
 extension TodayViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
