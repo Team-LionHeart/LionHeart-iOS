@@ -42,7 +42,7 @@ final class MyPageHeaderView: UICollectionReusableView, CollectionSectionViewReg
 private extension MyPageHeaderView {
     
     func setUI() {
-        backgroundColor = .clear
+        backgroundColor = .designSystem(.background)
     }
     func setHierarchy() {
         addSubview(sectionTitleLabel)
