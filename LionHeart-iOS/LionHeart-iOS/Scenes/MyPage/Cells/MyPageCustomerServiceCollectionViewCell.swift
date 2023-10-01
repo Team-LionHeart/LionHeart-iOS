@@ -16,9 +16,9 @@ final class MyPageCustomerServiceCollectionViewCell: UICollectionViewCell, Colle
     private lazy var nextButton = LHImageButton(setImage: ImageLiterals.Curriculum.arrowRightSmall)
     private let bottomView = LHView(color: .designSystem(.gray800))
     
-    var inputData: MyPageLocalData? {
+    var inputData: String? {
         didSet {
-            configureData(inputData)
+            listNameLabel.text = inputData
         }
     }
 
@@ -62,10 +62,5 @@ private extension MyPageCustomerServiceCollectionViewCell {
         nextButton.addButtonAction { _ in
             print("눌리냐")
         }
-    }
-    
-    func configureData(_ model: MyPageLocalData?) {
-        guard let model = model else { return }
-        listNameLabel.text =  model.titleLabel
     }
 }

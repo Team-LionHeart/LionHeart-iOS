@@ -18,9 +18,9 @@ final class MyPageHeaderView: UICollectionReusableView, CollectionSectionViewReg
         return label
     }()
     
-    var inputData: MyPageLocalData? {
+    var inputData: String? {
         didSet {
-            configureData(inputData)
+            sectionTitleLabel.text = inputData
         }
     }
     
@@ -52,10 +52,5 @@ private extension MyPageHeaderView {
         sectionTitleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
         }
-    }
-    
-    func configureData(_ model: MyPageLocalData?) {
-        guard let model = model else { return }
-        sectionTitleLabel.text = model.titleLabel
     }
 }

@@ -8,13 +8,13 @@
 import UIKit
 
 protocol CollectionSectionViewRegisterDequeueProtocol where Self: UICollectionReusableView {
-    associatedtype T: AppData
+//    associatedtype T: AppData
     static func registerHeaderView(to collectionView: UICollectionView)
     static func registerFooterView(to collectionView: UICollectionView)
     static func dequeueReusableheaderView(to collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, indexPath: IndexPath) -> Self
     static func dequeueReusablefooterView(to collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, indexPath: IndexPath) -> Self
     static var reuseIdentifier: String { get }
-    var inputData: T? { get set }
+//    var inputData: T? { get set }
 }
 
 extension CollectionSectionViewRegisterDequeueProtocol {

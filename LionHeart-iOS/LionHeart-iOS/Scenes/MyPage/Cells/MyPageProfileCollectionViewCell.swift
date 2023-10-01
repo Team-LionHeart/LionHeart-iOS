@@ -48,7 +48,7 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell, CollectionVie
         return button
     }()
     
-    var inputData: MyPageAppData? {
+    var inputData: BadgeProfileAppData? {
         didSet {
             guard let inputData else { return }
             

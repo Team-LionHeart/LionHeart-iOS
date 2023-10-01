@@ -17,9 +17,9 @@ final class MyPageManagerImpl: MyPageManager {
         self.authService = authService
     }
     
-    func getMyPage() async throws -> MyPageAppData {
+    func getMyPage() async throws -> BadgeProfileAppData {
         guard let model = try await mypageService.getMyPage() else { throw NetworkError.badCasting }
-        return MyPageAppData(badgeImage: model.level, nickname: model.babyNickname, isAlarm: model.notificationStatus)
+        return BadgeProfileAppData(badgeImage: model.level, nickname: model.babyNickname, isAlarm: model.notificationStatus)
     }
     
     func resignUser() async throws {

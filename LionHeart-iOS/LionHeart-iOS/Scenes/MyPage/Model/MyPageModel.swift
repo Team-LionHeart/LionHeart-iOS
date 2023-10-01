@@ -9,29 +9,39 @@ import Foundation
 
 // MARK: DummyData
 
-struct MyPageAppData: AppData {
+enum MyPageSection {
+    case badgeSection(section: MyPageSectionModel)
+    case customerServiceSetion(section: MyPageSectionModel)
+    case appSettingSection(section: MyPageSectionModel)
+    
+    static let sectionArray: [MyPageSection] = [.badgeSection(section: MyPageSectionModel(sectionTitle: "",
+                                                                                         cellTitle: [""])),
+                                               .customerServiceSetion(section: MyPageSectionModel(sectionTitle: "고객센터",
+                                                                                                  cellTitle: ["공지사항","FAQ", "1:1 문의", "서비스 피드백", "이용약관", "개인보호 정책"])),
+                                               .appSettingSection(section: MyPageSectionModel(sectionTitle: "앱 설정",
+                                                                                              cellTitle: ["알림 설정", "앱 버전"]))]
+}
+
+struct badgeProfileSection { }
+
+struct MyPageSectionModel {
+    let sectionTitle: String
+    let cellTitle: [String]
+}
+
+// MARK: BadgeProfileAppData
+
+struct BadgeProfileAppData: AppData {
     let badgeImage: String
     let nickname: String
     let isAlarm: String
 }
 
-extension MyPageAppData {
+extension BadgeProfileAppData {
     static let empty: Self = .init(badgeImage: "", nickname: "", isAlarm: "")
 }
 
 // MARK: LocalData
-
-struct MyPageLocalData: AppData {
-    let titleLabel: String
-}
-
-extension MyPageLocalData {
-    static let myPageServiceLabelList = [MyPageLocalData(titleLabel: "공지사항"), MyPageLocalData(titleLabel: "FAQ"),
-                                         MyPageLocalData(titleLabel: "1:1 문의"), MyPageLocalData(titleLabel: "서비스 피드백"),
-                                         MyPageLocalData(titleLabel: "이용약관"), MyPageLocalData(titleLabel: "개인보호 정책")]
-    
-    static let myPageSectionLabelList = [MyPageLocalData(titleLabel: "고객센터"), MyPageLocalData(titleLabel: "앱 설정")]
-}
 
 struct MyPageAppSettinLocalgData: AppData {
     var appSettingtext: String

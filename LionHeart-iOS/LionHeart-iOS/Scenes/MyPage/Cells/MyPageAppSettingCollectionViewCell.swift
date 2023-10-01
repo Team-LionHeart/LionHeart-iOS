@@ -6,6 +6,11 @@
 //  Copyright (c) 2023 MyPageAppSetting. All rights reserved.
 //
 
+enum CellType: String {
+    case alaram = "알림 설정"
+    case version = "앱 버전"
+}
+
 import UIKit
 
 import SnapKit
@@ -39,9 +44,16 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
         return view
     }()
     
-    var inputData: MyPageAppSettinLocalgData? {
+    var inputData: String? {
         didSet {
-            configureData(inputData)
+            guard let inputData = inputData else { return }
+            settingLabel.text = inputData
+            
+            if CellType.alaram == CellType(rawValue: inputData) {
+                versionLabel.isHidden = true
+            } else {
+                alarmSwtich.isHidden = true
+            }
         }
     }
 
@@ -50,8 +62,6 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
         
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setDelegate()
     }
     
     @available(*, unavailable)
@@ -85,20 +95,5 @@ private extension MyPageAppSettingCollectionViewCell {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(1)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-    
-    func configureData(_ model: MyPageAppSettinLocalgData?) {
-        guard let model = model else { return }
-        settingLabel.text = model.appSettingtext
-        alarmSwtich.isHidden = !model.showSwitch
-        versionLabel.isHidden = model.showSwitch
     }
 }

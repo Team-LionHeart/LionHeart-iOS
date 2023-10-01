@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 
 protocol MyPageManager {
-    func getMyPage() async throws -> MyPageAppData
+    func getMyPage() async throws -> BadgeProfileAppData
     func resignUser() async throws
     func logout(token: UserDefaultToken) async throws
 }
@@ -23,10 +23,8 @@ final class MyPageViewController: UIViewController {
     private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
     private let myPageCollectionView = LHCollectionView(color: .background)
     
-    private let myPageServiceLabelList = MyPageLocalData.myPageServiceLabelList
-    private let myPageSectionLabelList = MyPageLocalData.myPageSectionLabelList
-    private let myPageAppSettingLabelList = MyPageAppSettinLocalgData.myPageAppSettingDataList
-    private var myPageAppData: MyPageAppData? {
+    private var sections = MyPageSection.sectionArray
+    private var badgeProfileAppData = BadgeProfileAppData.empty {
         didSet {
             myPageCollectionView.reloadData()
         }
@@ -41,6 +39,7 @@ final class MyPageViewController: UIViewController {
 
     init(manager: MyPageManager) {
         self.manager = manager
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,6 +57,23 @@ final class MyPageViewController: UIViewController {
         registerCell()
         hiddenNavigationBar()
         setTabbar()
+        
+//        for section in sections {
+//            switch section {
+//            case .badgeSection(let section):
+//                sections.append(.badgeSection(section: section))
+//            case .customerServiceSetion(let section):
+//                sections.append(.customerServiceSetion(section: section))
+//            case .appSettingSection(let section):
+//                sections.append(.appSettingSection(section: section))
+//            }
+//        }
+        
+        
+        
+//        sections.append(.badgeSection(section: MyPageSectionModel(sectionTitle: "", cellTitle: [""])))
+//        sections.append(.customerServiceSetion(section: MyPageSectionModel(sectionTitle: "고객센터", cellTitle: ["공지사항", "FAQ", "1:1 문의", "서비스 피드백", "이용약관", "개인보호 정책"])))
+//        sections.append(.appSettingSection(section: MyPageSectionModel(sectionTitle: "앱 설정", cellTitle: ["알림 설정", "앱 버전"])))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,7 +155,7 @@ private extension MyPageViewController {
         Task {
             do {
                 let data = try await manager.getMyPage()
-                myPageAppData = data
+                badgeProfileAppData = data
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -173,61 +189,80 @@ extension MyPageViewController: ViewControllerServiceable {
 
 extension MyPageViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+        switch sections[section] {
+        case .badgeSection:
             return 1
-        } else if section == 1 {
-            return myPageServiceLabelList.count
-        } else {
-            return myPageAppSettingLabelList.count
+        case .customerServiceSetion(let sectionArray):
+            return sectionArray.cellTitle.count
+        case .appSettingSection(let sectionArray):
+            return sectionArray.cellTitle.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
+        switch sections[indexPath.section] {
+        case .badgeSection:
             let cell = MyPageProfileCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-            cell.inputData = myPageAppData
+            cell.inputData = badgeProfileAppData
             return cell
-        } else if indexPath.section == 1 {
+        case .customerServiceSetion(let section):
             let cell = MyPageCustomerServiceCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-            cell.inputData = myPageServiceLabelList[indexPath.item]
+            cell.inputData = section.cellTitle[indexPath.item]
             return cell
-        } else {
+        case .appSettingSection(let section):
             let cell = MyPageAppSettingCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-            cell.inputData = myPageAppSettingLabelList[indexPath.item]
+            cell.inputData = section.cellTitle[indexPath.item]
             return cell
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if indexPath.section == 0 {
+        switch sections[indexPath.section] {
+        case .badgeSection:
             return UICollectionReusableView()
+        case .customerServiceSetion(let section):
+            let headerView = MyPageHeaderView.dequeueReusableheaderView(to: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath)
+            headerView.inputData = section.sectionTitle
+            return headerView
+        case .appSettingSection(let section):
+            let headerView = MyPageHeaderView.dequeueReusableheaderView(to: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath)
+            headerView.inputData = section.sectionTitle
+            return headerView
         }
-        let headerView = MyPageHeaderView.dequeueReusableheaderView(to: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath)
-        headerView.inputData = myPageSectionLabelList[indexPath.section-1]
-        return headerView
     }
 }
 
 extension MyPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
+        switch sections[indexPath.section] {
+        case .badgeSection:
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(224/360))
-        } else if indexPath.section == 1 {
+        case .customerServiceSetion:
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(52/360))
-        } else {
+        case .appSettingSection:
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(62/360))
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        section == 2 ? UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0) : UIEdgeInsets(top: 0, left: 0, bottom: 36, right: 0)
+        switch sections[section] {
+        case .badgeSection, .customerServiceSetion:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 36, right: 0)
+        case .appSettingSection:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        section == 0 ? CGSize() : CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(36/360))
+        switch sections[section] {
+        case .badgeSection:
+            return CGSize()
+        case .customerServiceSetion, .appSettingSection:
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(36/360))
+        }
     }
 }
