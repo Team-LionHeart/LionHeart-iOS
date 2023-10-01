@@ -22,8 +22,6 @@ enum MyPageSection {
                                                                                               cellTitle: ["알림 설정", "앱 버전"]))]
 }
 
-struct badgeProfileSection { }
-
 struct MyPageSectionModel {
     let sectionTitle: String
     let cellTitle: [String]
@@ -39,15 +37,4 @@ struct BadgeProfileAppData: AppData {
 
 extension BadgeProfileAppData {
     static let empty: Self = .init(badgeImage: "", nickname: "", isAlarm: "")
-}
-
-// MARK: LocalData
-
-struct MyPageAppSettinLocalgData: AppData {
-    var appSettingtext: String
-    var showSwitch: Bool
-}
-
-extension MyPageAppSettinLocalgData {
-    static let myPageAppSettingDataList = [MyPageAppSettinLocalgData(appSettingtext: "알림 설정", showSwitch: true), MyPageAppSettinLocalgData(appSettingtext: "앱 버전", showSwitch: false)]
 }
