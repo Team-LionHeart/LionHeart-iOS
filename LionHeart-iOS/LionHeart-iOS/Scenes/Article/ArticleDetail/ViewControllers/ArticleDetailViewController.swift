@@ -26,17 +26,7 @@ final class ArticleDetailViewController: UIViewController {
 
     private let articleTableView = ArticleDetailTableView()
 
-    private lazy var scrollToTopButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageLiterals.Article.icFab, for: .normal)
-        button.addButtonAction { _ in
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.articleTableView.scrollToRow(at: indexPath, at: .top, animated: true)
-            button.isHidden = true
-        }
-        button.isHidden = true
-        return button
-    }()
+    private let scrollToTopButton = LHImageButton(setImage: ImageLiterals.Article.icFab)
 
     // MARK: - Properties
 
@@ -73,6 +63,7 @@ final class ArticleDetailViewController: UIViewController {
         setUI()
         setHierarchy()
         setLayout()
+        setAddTarget()
         setTableView()
         setNavigationBar()
         setTabbar()
@@ -146,6 +137,7 @@ private extension ArticleDetailViewController {
     
     func setUI() {
         view.backgroundColor = .designSystem(.background)
+        scrollToTopButton.isHidden = true
     }
     
     func setHierarchy() {
@@ -185,6 +177,14 @@ private extension ArticleDetailViewController {
     
     func setTabbar() {
         self.tabBarController?.tabBar.isHidden = true
+    }
+
+    func setAddTarget() {
+        scrollToTopButton.addButtonAction { _ in
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.articleTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            self.scrollToTopButton.isHidden = true
+        }
     }
 }
 

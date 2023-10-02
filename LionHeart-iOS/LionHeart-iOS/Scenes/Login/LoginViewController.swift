@@ -30,39 +30,18 @@ final class LoginViewController: UIViewController {
     }
 
     private let manager: LoginManager
-    
-    private let loginMainImageView: UIImageView = {
-        let imageView = UIImageView(image: ImageLiterals.Login.loginBackgroundImage)
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
-    private let mainLogoImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "temporary_splash_image"))
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    private let mainLabel: UILabel = {
-        let label = UILabel()
-        label.text = "하루 10분, 좋은 아빠가 되는 방법"
-        label.font = .pretendard(.title2)
-        label.textColor = .designSystem(.gray400)
-        return label
-    }()
-    
-    private let kakakoLoginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("카카오로 로그인하기", for: .normal)
-        button.titleLabel?.font = .pretendard(.subHead2)
-        button.setTitleColor(.designSystem(.black), for: .normal)
-        button.setImage(ImageLiterals.Login.kakaoLogo, for: .normal)
-        button.backgroundColor = .designSystem(.kakao)
-        button.marginImageWithText(margin: 8)
-        button.layer.cornerRadius = 4
-        button.clipsToBounds = true
-        return button
-    }()
+
+    private let loginMainImageView = LHImageView(in: ImageLiterals.Login.loginBackgroundImage, contentMode: .scaleAspectFill)
+
+    private let mainLogoImageView = LHImageView(in: UIImage(named: "temporary_splash_image"), contentMode: .scaleAspectFit)
+
+    private let mainLabel = LHLabel(type: .title2, color: .gray400, basicText: "하루 10분, 좋은 아빠가 되는 방법")
+
+    private let kakakoLoginButton = LHImageButton(setImage: ImageLiterals.Login.kakaoLogo)
+        .setTitle(font: .subHead2, text: "카카오로 로그인하기", color: .black)
+        .setCornerRadius(for: 4)
+        .setMarginImageWithText(for: 8)
+        .setBackgroundColor(color: .kakao)
 
     init(manager: LoginManager) {
         self.manager = manager
