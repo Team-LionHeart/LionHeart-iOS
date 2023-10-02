@@ -9,9 +9,13 @@ import Foundation
 import Lottie
 
 final class LHLottie: LottieAnimationView {
-    init() {
+    init(name: String? = nil) {
         super.init(frame: .zero)
         self.contentMode = .scaleAspectFill
+        if let name {
+//            guard let lottie = LottieAnimation.named(name) else { return }
+            self.animation = .named(name)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
