@@ -92,9 +92,4 @@ private extension BookmarkListCollectionViewCell {
             self.bookmarkButtonClosure?(indexPath)
         }
     }
-    
-    func getIndexPath() -> IndexPath? {
-        guard let superView = self.superview as? UICollectionView else { return nil }
-        return superView.indexPath(for: self)
-    }
 }
