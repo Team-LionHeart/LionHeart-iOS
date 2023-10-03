@@ -10,12 +10,11 @@ import Foundation
 // MARK: DummyData
 
 enum MyPageSection {
-    case badgeSection(section: MyPageSectionModel)
+    case badgeSection
     case customerServiceSetion(section: MyPageSectionModel)
     case appSettingSection(section: MyPageSectionModel)
     
-    static let sectionArray: [MyPageSection] = [.badgeSection(section: MyPageSectionModel(sectionTitle: "",
-                                                                                         cellTitle: [""])),
+    static let sectionArray: [MyPageSection] = [.badgeSection,
                                                .customerServiceSetion(section: MyPageSectionModel(sectionTitle: "고객센터",
                                                                                                   cellTitle: ["공지사항","FAQ", "1:1 문의", "서비스 피드백", "이용약관", "개인보호 정책"])),
                                                .appSettingSection(section: MyPageSectionModel(sectionTitle: "앱 설정",
