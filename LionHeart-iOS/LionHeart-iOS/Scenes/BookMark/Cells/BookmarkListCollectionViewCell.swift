@@ -10,12 +10,17 @@ import UIKit
 
 import SnapKit
 
+private enum Size {
+    static let widthHeightRatio: CGFloat = 80/125
+}
+
 final class BookmarkListCollectionViewCell: UICollectionViewCell,
                                         CollectionViewCellRegisterDequeueProtocol {
-    
-    private enum Size {
-        static let widthHeightRatio: CGFloat = 80/125
-    }
+    private let articleImageView = LHImageView(contentMode: .scaleToFill)
+    private let articleTitleLabel = LHLabel(type: .title2, color: .white, lines: 2).priorty(.defaultLow, .horizontal)
+    private let tagLabel = LHLabel(type: .body4, color: .gray400).priorty(.defaultLow, .horizontal)
+    private lazy var bookmarkButton = LHImageButton(setImage: .assetImage(.bookmarkActiveSmall)).priorty(.defaultHigh, .horizontal)
+    private let bottomLineView = LHUnderLine(lineColor: .gray800)
     
     var bookmarkButtonClosure: ((IndexPath) -> Void)?
     
@@ -32,55 +37,13 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
             tagLabel.text =  inputData.tags.joined(separator: " · ")
         }
     }
-    
-    private let articleImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
-    
-    private let articleTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "제목입니다 출산카드 신청하기 A to Z"
-        label.numberOfLines = 2
-        label.lineBreakMode = .byWordWrapping
-        label.font = .pretendard(.title2)
-        label.textColor = .designSystem(.white)
-        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        return label
-    }()
-    
-    private let tagLabel: UILabel = {
-        let label = UILabel()
-        label.text = "신체 변화 ⋅ 건강 ⋅ 아무튼 태그"
-        label.font = .pretendard(.body4)
-        label.textColor = .designSystem(.gray400)
-        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        return label
-    }()
-    
-    private lazy var bookmarkButton: UIButton = {
-        let button = UIButton()
-        button.setImage(.assetImage(.bookmarkActiveSmall), for: .normal)
-        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        button.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            guard let indexPath = getIndexPath() else { return }
-            self.bookmarkButtonClosure?(indexPath)
-        }
-        return button
-    }()
-    
-    private let bottomLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray800)
-        return view
-    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setHierarchy()
         setLayout()
+        setButtonAction()
     }
     
     @available(*, unavailable)
@@ -120,6 +83,13 @@ private extension BookmarkListCollectionViewCell {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.height.equalTo(1)
+        }
+    }
+    
+    func setButtonAction() {
+        bookmarkButton.addButtonAction { _ in
+            guard let indexPath = self.getIndexPath() else { return }
+            self.bookmarkButtonClosure?(indexPath)
         }
     }
     

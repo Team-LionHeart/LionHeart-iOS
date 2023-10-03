@@ -24,6 +24,11 @@ final class LHLabel: UILabel {
         self.numberOfLines = lines
     }
     
+    func priorty(_ priority: UILayoutPriority, _ axis: NSLayoutConstraint.Axis) -> Self {
+        self.setContentHuggingPriority(priority, for: axis)
+        return self
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

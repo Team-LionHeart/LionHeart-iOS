@@ -13,6 +13,11 @@ final class LHImageButton: UIButton {
         self.setImage(setImage, for: .normal)
     }
     
+    func priorty(_ priority: UILayoutPriority, _ axis: NSLayoutConstraint.Axis) -> Self {
+        self.setContentHuggingPriority(priority, for: axis)
+        return self
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -16,19 +16,8 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell, CollectionVie
         static let buttonMutipleSize: CGFloat = 40/320
     }
     
-    private let badgeImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    private let profileLabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
+    private let badgeImageView = LHImageView(contentMode: .scaleAspectFit)
+    private let profileLabel = LHLabel(type: .head3, color: .white, lines: 0)
     
     private lazy var profileEditButton = {
         var titleAttr = AttributedString.init("정보 수정")

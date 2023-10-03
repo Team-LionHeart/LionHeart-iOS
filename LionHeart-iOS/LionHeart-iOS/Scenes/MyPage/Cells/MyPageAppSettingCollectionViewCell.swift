@@ -17,32 +17,9 @@ import SnapKit
 
 final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
-    private let settingLabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2M)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
-    
-    private let alarmSwtich = {
-        let switchButton = UISwitch()
-        switchButton.isOn = false
-        return switchButton
-    }()
-    
-    private let versionLabel = {
-        let label = UILabel()
-        label.text = "1.0.0"
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray500)
-        return label
-    }()
-    
-    private let bottomView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray800)
-        return view
-    }()
+    private let settingLabel = LHLabel(type: .body2M, color: .white)
+    private let versionLabel = LHLabel(type: .body3R, color: .gray500)
+    private let bottomView = LHUnderLine(lineColor: .gray800)
     
     var inputData: String? {
         didSet {
@@ -51,8 +28,6 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
             
             if CellType.alaram == CellType(rawValue: inputData) {
                 versionLabel.isHidden = true
-            } else {
-                alarmSwtich.isHidden = true
             }
         }
     }
@@ -72,17 +47,12 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
 
 private extension MyPageAppSettingCollectionViewCell {
     func setHierarchy() {
-        addSubviews(settingLabel, alarmSwtich, versionLabel, bottomView)
+        addSubviews(settingLabel, versionLabel, bottomView)
     }
     
     func setLayout() {
         settingLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
-        }
-        
-        alarmSwtich.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
         
