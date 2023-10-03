@@ -57,23 +57,6 @@ final class MyPageViewController: UIViewController {
         registerCell()
         hiddenNavigationBar()
         setTabbar()
-        
-//        for section in sections {
-//            switch section {
-//            case .badgeSection(let section):
-//                sections.append(.badgeSection(section: section))
-//            case .customerServiceSetion(let section):
-//                sections.append(.customerServiceSetion(section: section))
-//            case .appSettingSection(let section):
-//                sections.append(.appSettingSection(section: section))
-//            }
-//        }
-        
-        
-        
-//        sections.append(.badgeSection(section: MyPageSectionModel(sectionTitle: "", cellTitle: [""])))
-//        sections.append(.customerServiceSetion(section: MyPageSectionModel(sectionTitle: "고객센터", cellTitle: ["공지사항", "FAQ", "1:1 문의", "서비스 피드백", "이용약관", "개인보호 정책"])))
-//        sections.append(.appSettingSection(section: MyPageSectionModel(sectionTitle: "앱 설정", cellTitle: ["알림 설정", "앱 버전"])))
     }
     
     override func viewWillAppear(_ animated: Bool) {
