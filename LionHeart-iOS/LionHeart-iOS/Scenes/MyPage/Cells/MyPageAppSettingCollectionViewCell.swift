@@ -6,42 +6,29 @@
 //  Copyright (c) 2023 MyPageAppSetting. All rights reserved.
 //
 
+enum CellType: String {
+    case alaram = "알림 설정"
+    case version = "앱 버전"
+}
+
 import UIKit
 
 import SnapKit
 
 final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
-    private let settingLabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body2M)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
+    private let settingLabel = LHLabel(type: .body2M, color: .white)
+    private let versionLabel = LHLabel(type: .body3R, color: .gray500)
+    private let bottomView = LHUnderLine(lineColor: .gray800)
     
-    private let alarmSwtich = {
-        let switchButton = UISwitch()
-        switchButton.isOn = false
-        return switchButton
-    }()
-    
-    private let versionLabel = {
-        let label = UILabel()
-        label.text = "1.0.0"
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray500)
-        return label
-    }()
-    
-    private let bottomView = {
-        let view = UIView()
-        view.backgroundColor = .designSystem(.gray800)
-        return view
-    }()
-    
-    var inputData: MyPageAppSettinLocalgData? {
+    var inputData: String? {
         didSet {
-            configureData(inputData)
+            guard let inputData = inputData else { return }
+            settingLabel.text = inputData
+            
+            if CellType.alaram == CellType(rawValue: inputData) {
+                versionLabel.isHidden = true
+            }
         }
     }
 
@@ -50,8 +37,6 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
         
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setDelegate()
     }
     
     @available(*, unavailable)
@@ -62,17 +47,12 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
 
 private extension MyPageAppSettingCollectionViewCell {
     func setHierarchy() {
-        addSubviews(settingLabel, alarmSwtich, versionLabel, bottomView)
+        addSubviews(settingLabel, versionLabel, bottomView)
     }
     
     func setLayout() {
         settingLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
-        }
-        
-        alarmSwtich.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
         
@@ -85,20 +65,5 @@ private extension MyPageAppSettingCollectionViewCell {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(1)
         }
-    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-    
-    func configureData(_ model: MyPageAppSettinLocalgData?) {
-        guard let model = model else { return }
-        settingLabel.text = model.appSettingtext
-        alarmSwtich.isHidden = !model.showSwitch
-        versionLabel.isHidden = model.showSwitch
     }
 }

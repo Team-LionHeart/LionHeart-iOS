@@ -12,17 +12,7 @@ import SnapKit
 
 final class BookmarkDetailCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
-    private let bookmarkDetailLabel: UILabel = {
-        let label = UILabel()
-        label.text = """
-                     사랑이 아빠님이
-                     보관한 아티클이에요
-                     """
-        label.numberOfLines = 2
-        label.font = .pretendard(.head3)
-        label.textColor = .designSystem(.white)
-        return label
-    }()
+    private let bookmarkDetailLabel = LHLabel(type: .head3, color: .white, lines: 2)
     
     var inputData: BookmarkAppData? {
         didSet {

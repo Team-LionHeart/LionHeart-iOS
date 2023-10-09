@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A2050152A5DCD1900C7AF3C /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */; };
 		4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D72862A5D405C00A36189 /* BookmarkListCollectionViewCell.swift */; };
+		4A81C2912ACC7DC80056E815 /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81C2902ACC7DC80056E815 /* UICollectionViewCell+.swift */; };
 		4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A860AD52A6265B2002BA428 /* BookmarkModel.swift */; };
 		4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */; };
 		4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */; };
@@ -236,6 +237,7 @@
 /* Begin PBXFileReference section */
 		4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		4A3D72862A5D405C00A36189 /* BookmarkListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A81C2902ACC7DC80056E815 /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		4A860AD52A6265B2002BA428 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -724,6 +726,7 @@
 				C00780B62A5FFE0E0043EB36 /* UILabel+.swift */,
 				4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */,
 				D34280762A66B90C00DA1499 /* UILabelPadding.swift */,
+				4A81C2902ACC7DC80056E815 /* UICollectionViewCell+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1675,6 +1678,7 @@
 				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
 				B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
+				4A81C2912ACC7DC80056E815 /* UICollectionViewCell+.swift in Sources */,
 				C0856B772ABFC4EA0026D9F8 /* MyPageServiceImpl.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0F029E02A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift in Sources */,

@@ -11,16 +11,11 @@ import SnapKit
 
 final class MyPageHeaderView: UICollectionReusableView, CollectionSectionViewRegisterDequeueProtocol {
     
-    private let sectionTitleLabel = {
-        let label = UILabel()
-        label.font = .pretendard(.body3R)
-        label.textColor = .designSystem(.gray500)
-        return label
-    }()
+    private let sectionTitleLabel = LHLabel(type: .body3R, color: .gray500)
     
-    var inputData: MyPageLocalData? {
+    var inputData: String? {
         didSet {
-            configureData(inputData)
+            sectionTitleLabel.text = inputData
         }
     }
     
@@ -42,7 +37,7 @@ final class MyPageHeaderView: UICollectionReusableView, CollectionSectionViewReg
 private extension MyPageHeaderView {
     
     func setUI() {
-        backgroundColor = .clear
+        backgroundColor = .designSystem(.background)
     }
     func setHierarchy() {
         addSubview(sectionTitleLabel)
@@ -52,10 +47,5 @@ private extension MyPageHeaderView {
         sectionTitleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
         }
-    }
-    
-    func configureData(_ model: MyPageLocalData?) {
-        guard let model = model else { return }
-        sectionTitleLabel.text = model.titleLabel
     }
 }

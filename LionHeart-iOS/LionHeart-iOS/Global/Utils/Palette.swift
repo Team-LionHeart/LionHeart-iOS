@@ -22,7 +22,7 @@ enum Palette: String {
     case gray1000 = "Gray1000"
     case lionRed = "LionRed"
     case componentLionRed = "ComponentLionRed"
-    case background = "background"
+    case background = "Background"
     case kakao = "KakaoYellow"
     case clear = "clear"
 }
