@@ -9,7 +9,7 @@
 import UIKit
 
 import SnapKit
-import Lottie
+
 
 protocol SplashManager {
     func reissueToken(token: Token) async throws -> Token?
@@ -20,11 +20,7 @@ final class SplashViewController: UIViewController {
 
     // MARK: - UI Components
 
-    private let lottieImageView: LottieAnimationView = {
-        let view = LottieAnimationView(name: "motion_logo_final")
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
+    private let lottieImageView = LHLottie(name: "motion_logo_final")
 
     // MARK: - Properties
 
