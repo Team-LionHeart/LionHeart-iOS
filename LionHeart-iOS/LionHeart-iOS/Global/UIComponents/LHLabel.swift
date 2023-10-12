@@ -11,7 +11,7 @@ final class LHLabel: UILabel {
     
     init(type: Font.PretendardType,
          color: Palette,
-         backgroundColor: Palette? = nil,
+         backgroundColor: Palette = .clear,
          alignment: NSTextAlignment = .left,
          lines: Int = 1,
          basicText: String? = nil) {
@@ -20,7 +20,7 @@ final class LHLabel: UILabel {
         self.textColor = .designSystem(color)
         self.textAlignment = alignment
         self.text = basicText
-        self.backgroundColor = .designSystem(.background)
+        self.backgroundColor = .designSystem(backgroundColor)
         self.numberOfLines = lines
     }
     

@@ -15,7 +15,12 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
     private let countLabel = LHLabel(type: .body2M, color: .gray700, alignment: .center)
     private let lineView = LHUnderLine(lineColor: .gray900)
     
-    var inputString: String?
+    var inputString: String? {
+        didSet {
+            countLabel.text = inputString
+        }
+    }
+    
     var whiteTextColor: UIColor?
     
     override init(frame: CGRect) {
