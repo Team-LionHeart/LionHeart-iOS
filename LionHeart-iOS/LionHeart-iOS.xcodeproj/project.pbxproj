@@ -154,7 +154,6 @@
 		C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF033E2A5A959A0037F740 /* UIButton+.swift */; };
 		C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03402A5A95E40037F740 /* UIImage+.swift */; };
 		C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */; };
-		C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03482A5A9ACB0037F740 /* DummyModel.swift */; };
 		C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */; };
 		C0DF034D2A5A9B8D0037F740 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */; };
@@ -378,7 +377,6 @@
 		C0DF033E2A5A959A0037F740 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		C0DF03402A5A95E40037F740 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewCell.swift; sourceTree = "<group>"; };
-		C0DF03482A5A9ACB0037F740 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewController.swift; sourceTree = "<group>"; };
 		C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewController.swift; sourceTree = "<group>"; };
@@ -776,7 +774,6 @@
 			isa = PBXGroup;
 			children = (
 				C0DF032E2A5A92170037F740 /* NameSpace.swift */,
-				C0DF03482A5A9ACB0037F740 /* DummyModel.swift */,
 				C0DF03802A5AF51C0037F740 /* Constant.swift */,
 				B51220592A5FAA47006CBE2D /* ImageLiterals.swift */,
 				F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */,
@@ -1682,7 +1679,6 @@
 				C0856B772ABFC4EA0026D9F8 /* MyPageServiceImpl.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0F029E02A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift in Sources */,
-				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				C0856B792ABFC56E0026D9F8 /* AuthServiceImpl.swift in Sources */,
 				C0B15E172AC015360058D56B /* LHImageView.swift in Sources */,
 				C09217732A61895A00231C66 /* UIWindow+.swift in Sources */,
