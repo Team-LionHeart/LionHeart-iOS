@@ -13,6 +13,15 @@ import SnapKit
 import KakaoSDKAuth
 import KakaoSDKUser
 
+enum UserState {
+    case verified
+    case nonVerified
+}
+
+protocol LoginNavigation: AnyObject {
+    func checkUserIsVerified(userState: UserState)
+}
+
 protocol LoginManager {
     func login(type: LoginType, kakaoToken: String) async throws
 }
@@ -28,6 +37,8 @@ final class LoginViewController: UIViewController {
             self.loginAPI(kakaoToken: kakaoToken)
         }
     }
+    
+    weak var coordinator: LoginNavigation?
 
     private let manager: LoginManager
 
@@ -70,7 +81,8 @@ extension LoginViewController: ViewControllerServiceable {
             print(code, message)
             if code == NetworkErrorCode.unfoundUserErrorCode {
                 LHToast.show(message: "코드 잘돌아감")
-                self.moveUserToOnboardingViewController()
+//                self.moveUserToOnboardingViewController()
+                self.coordinator?.checkUserIsVerified(userState: .nonVerified)
             }
         default:
             LHToast.show(message: error.description)
@@ -87,8 +99,9 @@ extension LoginViewController {
                     LHToast.show(message: "로그인api에서 window guard let 88")
                     return
                 }
-                let mainTabbarViewController = TabBarViewController()
-                ViewControllerUtil.setRootViewController(window: window, viewController: mainTabbarViewController, withAnimation: false)
+//                let mainTabbarViewController = TabBarViewController()
+//                ViewControllerUtil.setRootViewController(window: window, viewController: mainTabbarViewController, withAnimation: false)
+                self.coordinator?.checkUserIsVerified(userState: .verified)
             } catch {
                 guard let error = error as? NetworkError else {
                     LHToast.show(message: "넷웤에러 95")
@@ -99,11 +112,11 @@ extension LoginViewController {
         }
     }
 
-    func moveUserToOnboardingViewController() {
-        let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-        onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
-        self.navigationController?.pushViewController(onboardingViewController, animated: true)
-    }
+//    func moveUserToOnboardingViewController() {
+//        let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+//        onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
+//        self.navigationController?.pushViewController(onboardingViewController, animated: true)
+//    }
 }
 
 private extension LoginViewController {

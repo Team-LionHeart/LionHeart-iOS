@@ -10,12 +10,18 @@ import UIKit
 
 import SnapKit
 
+protocol CurriculumListByWeekNavigation: ExpireNavigation {
+    func curriculumArticleListCellTapped(articleId: Int)
+}
+
 protocol CurriculumListManager {
     func postBookmark(model: BookmarkRequest) async throws
     func getArticleListByWeekInfo(week: Int) async throws -> CurriculumWeekData
 }
 
 final class CurriculumListByWeekViewController: UIViewController {
+    
+    weak var coordinator: CurriculumListByWeekNavigation?
     
     private let manager: CurriculumListManager
     
@@ -154,7 +160,8 @@ private extension CurriculumListByWeekViewController {
     
     @objc func didSelectTableVIewCell(notification: NSNotification) {
         guard let articleId = notification.object as? Int else { return }
-        presentArticleDetailFullScreen(articleID: articleId)
+//        presentArticleDetailFullScreen(articleID: articleId)
+        self.coordinator?.curriculumArticleListCellTapped(articleId: articleId)
     }
     
     func setDelegate() {
@@ -208,9 +215,10 @@ extension CurriculumListByWeekViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+//            guard let window = self.view.window else { return }
+//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            self.coordinator?.checkTokenIsExpired()
         case .clientError(code: _, message: let message):
             LHToast.show(message: "\(message)")
         default:

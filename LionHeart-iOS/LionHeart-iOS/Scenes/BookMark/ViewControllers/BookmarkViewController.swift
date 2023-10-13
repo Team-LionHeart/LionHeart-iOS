@@ -10,6 +10,10 @@ import UIKit
 
 import SnapKit
 
+protocol BookmarkNavigation: ExpireNavigation, BarNavigation {
+    func bookmarkCellTapped(articleID: Int)
+}
+
 protocol BookmarkManger {
     func getBookmark() async throws -> BookmarkAppData
     func postBookmark(model: BookmarkRequest) async throws
@@ -17,6 +21,7 @@ protocol BookmarkManger {
 
 final class BookmarkViewController: UIViewController {
     
+    weak var coordinator: BookmarkNavigation?
     private let manager: BookmarkManger
     
     private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
@@ -116,9 +121,10 @@ extension BookmarkViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+//            guard let window = self.view.window else { return }
+//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            self.coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
@@ -195,6 +201,7 @@ extension BookmarkViewController: UICollectionViewDelegateFlowLayout {
 
 extension BookmarkViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.presentArticleDetailFullScreen(articleID: bookmarkList[indexPath.item].articleID)
+//        self.presentArticleDetailFullScreen(articleID: )
+        self.coordinator?.bookmarkCellTapped(articleID: bookmarkList[indexPath.item].articleID)
     }
 }

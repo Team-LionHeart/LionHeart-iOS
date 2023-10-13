@@ -134,10 +134,10 @@ final class LHNavigationBarView: UIView {
             }
             return
         }
-        self.leftBarItem.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            self.viewController?.navigationController?.popViewController(animated: true)
-        }
+//        self.leftBarItem.addButtonAction { [weak self] _ in
+//            guard let self else { return }
+//            self.viewController?.navigationController?.popViewController(animated: true)
+//        }
     }
 
     private func setButtonWithRightBarItems() {
@@ -163,10 +163,10 @@ final class LHNavigationBarView: UIView {
     private func setCloseButtonWithTitle() {
         self.titleLabel.text = type.title
         self.leftBarItem.setImage(UIImage(systemName: "xmark"), for: .normal)
-        self.leftBarItem.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            self.viewController?.dismiss(animated: true)
-        }
+//        self.leftBarItem.addButtonAction { [weak self] _ in
+//            guard let self else { return }
+//            self.viewController?.dismiss(animated: true)
+//        }
     }
 
 }

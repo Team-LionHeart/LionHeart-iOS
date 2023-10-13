@@ -10,6 +10,10 @@ import UIKit
 
 import SnapKit
 
+protocol CompleteOnbardingNavigation: ExpireNavigation {
+    func startButtonTapped()
+}
+
 final class CompleteOnbardingViewController: UIViewController {
     
     private enum SizeInspector {
@@ -22,6 +26,8 @@ final class CompleteOnbardingViewController: UIViewController {
             self.titleLabel.text = "\(fetalNickName)님\n반가워요!"
         }
     }
+    
+    weak var coordinator: CompleteOnbardingNavigation?
     
     private let titleLabel = LHOnboardingTitleLabel(nil, align: .center)
     private let descriptionLabel = LHOnboardingDescriptionLabel("아티클 맞춤 환경이 준비되었어요.")
@@ -79,8 +85,9 @@ private extension CompleteOnbardingViewController {
     
     func setButtonAction() {
         startButton.addButtonAction { sender in
-            let mainTabbarViewController = TabBarViewController()
-            self.navigationController?.pushViewController(mainTabbarViewController, animated: true)
+//            let mainTabbarViewController = TabBarViewController()
+//            self.navigationController?.pushViewController(mainTabbarViewController, animated: true)
+            self.coordinator?.startButtonTapped()
         }
     }
 }

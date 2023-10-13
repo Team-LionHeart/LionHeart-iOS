@@ -10,7 +10,13 @@ import UIKit
 
 import SnapKit
 
+protocol ArticleCategoryNavigation: ExpireNavigation, BarNavigation {
+    func articleListCellTapped(categoryName: String)
+}
+
 final class ArticleCategoryViewController: UIViewController {
+    
+    weak var coordinator: ArticleCategoryNavigation?
 
     private lazy var navigationBar = LHNavigationBarView(type: .explore, viewController: self)
     private lazy var titleLabel = LHLabel(type: .head2, color: .white, lines: 2, basicText: "카테고리별\n아티클 모아보기")
@@ -66,14 +72,20 @@ private extension ArticleCategoryViewController {
     }
     
     func setAddTarget() {
+        navigationBar.backButtonAction {
+            self.coordinator?.backButtonTapped()
+        }
+        
         navigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
+//            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
+//            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
+            self.coordinator?.navigationLeftButtonTapped()
         }
         
         navigationBar.rightSecondBarItemAction {
-            let mypageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
-            self.navigationController?.pushViewController(mypageViewController, animated: true)
+//            let mypageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
+//            self.navigationController?.pushViewController(mypageViewController, animated: true)
+            self.coordinator?.navigationRightButtonTapped()
         }
     }
     
@@ -108,9 +120,10 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let articleListbyCategoryViewController = ArticleListByCategoryViewController(manager: ArticleListByCategoryMangerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-        articleListbyCategoryViewController.categoryString = dummyCase[indexPath.item].categoryString
-        self.navigationController?.pushViewController(articleListbyCategoryViewController, animated: true)
+//        let articleListbyCategoryViewController = ArticleListByCategoryViewController(manager: ArticleListByCategoryMangerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
+//        articleListbyCategoryViewController.categoryString = dummyCase[indexPath.item].categoryString
+//        self.navigationController?.pushViewController(articleListbyCategoryViewController, animated: true)
+        coordinator?.articleListCellTapped(categoryName: dummyCase[indexPath.item].categoryString)
     }
 }
 

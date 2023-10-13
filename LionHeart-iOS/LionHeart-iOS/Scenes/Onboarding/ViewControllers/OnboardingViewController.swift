@@ -10,6 +10,10 @@ import UIKit
 
 import SnapKit
 
+protocol OnboardingNavigation: ExpireNavigation, BarNavigation {
+    func completeButtonTapped()
+}
+
 protocol OnboardingManager {
     func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
 }
@@ -17,7 +21,8 @@ protocol OnboardingManager {
 final class OnboardingViewController: UIViewController {
 
     typealias OnboardingViews = [UIViewController]
-
+    
+    weak var coordinator: OnboardingNavigation?
     private let manager: OnboardingManager
     
     private var fetalNickName: String?
@@ -161,6 +166,7 @@ private extension OnboardingViewController {
     
     func presentLoginView() {
         self.navigationController?.popViewController(animated: true)
+        self.coordinator?.backButtonTapped()
     }
     
     func presentOnboardingView(oldValue: OnbardingFlowType) {
@@ -183,7 +189,8 @@ private extension OnboardingViewController {
             do {
                 try await manager.signUp(type: .kakao, onboardingModel: passingData)
                 hideLoading()
-                self.navigationController?.pushViewController(completeViewController, animated: true)
+//                self.navigationController?.pushViewController(completeViewController, animated: true)
+                self.coordinator?.completeButtonTapped()
 
             } catch {
                 guard let error = error as? NetworkError else { return }
@@ -247,9 +254,10 @@ extension OnboardingViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "이미지패치에러")
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+//            guard let window = self.view.window else { return }
+//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

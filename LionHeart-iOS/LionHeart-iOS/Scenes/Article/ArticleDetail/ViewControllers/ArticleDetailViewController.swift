@@ -10,6 +10,8 @@ import UIKit
 
 import SnapKit
 
+protocol ArticleDetailModalNavigation: BarNavigation, ExpireNavigation {}
+
 protocol ArticleDetailManager {
     func getArticleDetail(articleId: Int) async throws -> [BlockTypeAppData]
     func postBookmark(model: BookmarkRequest) async throws
@@ -18,6 +20,7 @@ protocol ArticleDetailManager {
 final class ArticleDetailViewController: UIViewController {
 
     // MARK: - UI Components
+    weak var coordinator: ArticleDetailModalNavigation?
     private let manager: ArticleDetailManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .articleMain, viewController: self)
@@ -116,9 +119,10 @@ extension ArticleDetailViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+//            guard let window = self.view.window else { return }
+//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: "\(message)")
         default:
@@ -180,6 +184,9 @@ private extension ArticleDetailViewController {
     }
 
     func setAddTarget() {
+        navigationBar.backButtonAction {
+            self.coordinator?.closeButtonTapped()
+        }
         scrollToTopButton.addButtonAction { _ in
             let indexPath = IndexPath(row: 0, section: 0)
             self.articleTableView.scrollToRow(at: indexPath, at: .top, animated: true)

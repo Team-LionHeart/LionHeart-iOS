@@ -11,9 +11,18 @@ import UIKit
 import SnapKit
 
 
+enum TokenState {
+    case valid
+    case expired
+}
+
 protocol SplashManager {
     func reissueToken(token: Token) async throws -> Token?
     func logout(token: UserDefaultToken) async throws
+}
+
+protocol SplashNavigation: AnyObject {
+    func checkToken(state: TokenState)
 }
 
 final class SplashViewController: UIViewController {
@@ -23,7 +32,8 @@ final class SplashViewController: UIViewController {
     private let lottieImageView = LHLottie(name: "motion_logo_final")
 
     // MARK: - Properties
-
+    
+    weak var coordinator: SplashNavigation?
     private let manager: SplashManager
 
     // MARK: - Life Cycle
@@ -47,9 +57,10 @@ final class SplashViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         lottieImageView.play { _ in
             guard let accessToken = UserDefaultsManager.tokenKey?.accessToken, let refreshToken = UserDefaultsManager.tokenKey?.refreshToken else {
-                let loginViewController = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
-                guard let window = self.view.window else { return }
-                ViewControllerUtil.setRootViewController(window: window, viewController: loginViewController, withAnimation: true)
+//                let loginViewController = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
+//                guard let window = self.view.window else { return }
+//                ViewControllerUtil.setRootViewController(window: window, viewController: loginViewController, withAnimation: true)
+                self.coordinator?.checkToken(state: .expired)
                 return
             }
             /// nil이 아니면 == refresh토큰이 어떤상태인지는 모르겠으나 있긴하다
@@ -87,10 +98,10 @@ private extension SplashViewController {
         }
     }
 
-    func setRootViewController(to viewController: UIViewController, animation: Bool) {
-        guard let window = self.view.window else { return }
-        ViewControllerUtil.setRootViewController(window: window, viewController: viewController, withAnimation: animation)
-    }
+//    func setRootViewController(to viewController: UIViewController, animation: Bool) {
+//        guard let window = self.view.window else { return }
+//        ViewControllerUtil.setRootViewController(window: window, viewController: viewController, withAnimation: animation)
+//    }
 }
 
 // MARK: - Network
@@ -102,9 +113,11 @@ private extension SplashViewController {
             let dtoToken = try await manager.reissueToken(token: Token(accessToken: accessToken, refreshToken: refreshToken))
             UserDefaultsManager.tokenKey?.accessToken = dtoToken?.accessToken
             UserDefaultsManager.tokenKey?.refreshToken = dtoToken?.refreshToken
+//
+//            let tabBar = TabBarViewController()
+//            setRootViewController(to: tabBar, animation: true)
             
-            let tabBar = TabBarViewController()
-            setRootViewController(to: tabBar, animation: true)
+            self.coordinator?.checkToken(state: .valid)
         } catch {
             guard let errorModel = error as? NetworkError else { return }
             await handleError(errorModel)
@@ -126,11 +139,15 @@ private extension SplashViewController {
                 guard let token = UserDefaultsManager.tokenKey else { return }
                 await logout(token: token)
                 // LoginVC로 이동하기
-                let loginVC = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
-                setRootViewController(to: loginVC, animation: true)
+//                let loginVC = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
+//                setRootViewController(to: loginVC, animation: true)
+                
+                self.coordinator?.checkToken(state: .expired)
             } else if code == NetworkErrorCode.unfoundUserErrorCode {
-                let loginVC = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
-                setRootViewController(to: loginVC, animation: true)
+//                let loginVC = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
+//                setRootViewController(to: loginVC, animation: true)
+                
+                self.coordinator?.checkToken(state: .expired)
             }
         default:
             print(error)

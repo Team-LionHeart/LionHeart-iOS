@@ -10,6 +10,8 @@ import UIKit
 
 import SnapKit
 
+protocol MyPageNavigation: ExpireNavigation { }
+
 protocol MyPageManager {
     func getMyPage() async throws -> BadgeProfileAppData
     func resignUser() async throws
@@ -17,6 +19,8 @@ protocol MyPageManager {
 }
 
 final class MyPageViewController: UIViewController {
+    
+    weak var coordinator: MyPageNavigation?
     
     private let manager: MyPageManager
     
@@ -99,14 +103,19 @@ private extension MyPageViewController {
     }
     
     func setAddTarget() {
+        navigtaionBar.backButtonAction {
+            self.coordinator?.backButtonTapped()
+        }
+        
         resignButton.addButtonAction { sender in
             Task {
                 do {
-                    guard let window = self.view.window else { return }
+//                    guard let window = self.view.window else { return }
                     self.resignButton.isUserInteractionEnabled = false
                     try await self.manager.resignUser()
-                    let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-                    ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+//                    let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+//                    ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+                    self.coordinator?.checkTokenIsExpired()
                 } catch {
                     print(error)
                 }
