@@ -8,7 +8,7 @@
 import UIKit
 
 final class ChallengeCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
     
@@ -20,7 +20,6 @@ final class ChallengeCoordinator: Coordinator {
     
     func start() {
         showChallengeViewController()
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
     
     func showChallengeViewController() {
@@ -28,8 +27,6 @@ final class ChallengeCoordinator: Coordinator {
         challengeViewController.coordinator = self
         navigationController.pushViewController(challengeViewController, animated: true)
     }
-    
-    
 }
 
 extension ChallengeCoordinator: ChallengeNavigation {
@@ -37,15 +34,11 @@ extension ChallengeCoordinator: ChallengeNavigation {
         let mypageCoordinator = MypageCoordinator(navigationController: navigationController)
         mypageCoordinator.start()
         children.append(mypageCoordinator)
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
     
     func navigationLeftButtonTapped() {
         let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
-    
-    
 }

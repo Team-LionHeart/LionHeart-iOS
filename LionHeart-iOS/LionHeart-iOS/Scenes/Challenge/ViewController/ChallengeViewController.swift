@@ -179,14 +179,10 @@ private extension ChallengeViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-//            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-//            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
             self.coordinator?.navigationLeftButtonTapped()
         }
         
         navigationBar.rightSecondBarItemAction {
-//            let myPageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
-//            self.navigationController?.pushViewController(myPageViewController, animated: true)
             self.coordinator?.navigationRightButtonTapped()
         }
     }

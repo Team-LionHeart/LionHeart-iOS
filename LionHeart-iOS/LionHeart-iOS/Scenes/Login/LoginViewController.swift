@@ -85,7 +85,6 @@ extension LoginViewController: ViewControllerServiceable {
             print(code, message)
             if code == NetworkErrorCode.unfoundUserErrorCode {
                 LHToast.show(message: "코드 잘돌아감")
-//                self.moveUserToOnboardingViewController()
                 self.coordinator?.checkUserIsVerified(userState: .nonVerified, kakaoToken: kakaoAccessToken)
             }
         default:
@@ -99,9 +98,6 @@ extension LoginViewController {
         Task {
             do {
                 try await manager.login(type: .kakao, kakaoToken: kakaoToken)
-
-//                let mainTabbarViewController = TabBarViewController()
-//                ViewControllerUtil.setRootViewController(window: window, viewController: mainTabbarViewController, withAnimation: false)
                 self.coordinator?.checkUserIsVerified(userState: .verified, kakaoToken: kakaoToken)
             } catch {
                 guard let error = error as? NetworkError else {
@@ -112,12 +108,6 @@ extension LoginViewController {
             }
         }
     }
-
-//    func moveUserToOnboardingViewController() {
-//        let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-//        onboardingViewController.setKakaoAccessToken(kakaoAccessToken)
-//        self.navigationController?.pushViewController(onboardingViewController, animated: true)
-//    }
 }
 
 private extension LoginViewController {

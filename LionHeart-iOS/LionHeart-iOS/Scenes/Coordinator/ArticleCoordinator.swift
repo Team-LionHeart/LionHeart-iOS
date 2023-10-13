@@ -9,9 +9,9 @@ import UIKit
 
 final class ArticleCoordinator: Coordinator {
     
-    var articleId: Int
+    weak var parentCoordinator: Coordinator?
     
-    var parentCoordinator: Coordinator?
+    var articleId: Int
     
     var children: [Coordinator] = []
     
@@ -23,7 +23,6 @@ final class ArticleCoordinator: Coordinator {
     }
     
     func start() {
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         showArticleDetailViewController()
     }
     
@@ -33,7 +32,6 @@ final class ArticleCoordinator: Coordinator {
         articleDetailViewController.setArticleId(id: articleId)
         articleDetailViewController.isModalInPresentation = true
         articleDetailViewController.modalPresentationStyle = .fullScreen
-        
         navigationController.present(articleDetailViewController, animated: true)
     }
 }

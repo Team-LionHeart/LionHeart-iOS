@@ -8,7 +8,7 @@
 import UIKit
 
 final class ArticleCategoryCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
     
@@ -20,7 +20,6 @@ final class ArticleCategoryCoordinator: Coordinator {
     
     func start() {
         showArticleCategoryViewController()
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
     
     func showArticleCategoryViewController() {
@@ -61,13 +60,11 @@ extension ArticleCategoryCoordinator: ArticleCategoryNavigation, ArticleListByCa
         let mypageCoordinator = MypageCoordinator(navigationController: navigationController)
         mypageCoordinator.start()
         children.append(mypageCoordinator)
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
     
     func navigationLeftButtonTapped() {
         let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
 }

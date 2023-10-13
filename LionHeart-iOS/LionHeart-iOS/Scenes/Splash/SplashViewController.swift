@@ -10,7 +10,6 @@ import UIKit
 
 import SnapKit
 
-
 enum TokenState {
     case valid
     case expired
@@ -27,16 +26,10 @@ protocol SplashNavigation: AnyObject {
 
 final class SplashViewController: UIViewController {
 
-    // MARK: - UI Components
-
-    private let lottieImageView = LHLottie(name: "motion_logo_final")
-
-    // MARK: - Properties
-    
     weak var coordinator: SplashNavigation?
     private let manager: SplashManager
-
-    // MARK: - Life Cycle
+    
+    private let lottieImageView = LHLottie(name: "motion_logo_final")
 
     init(manager: SplashManager) {
         self.manager = manager
@@ -57,15 +50,10 @@ final class SplashViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         lottieImageView.play { _ in
             guard let accessToken = UserDefaultsManager.tokenKey?.accessToken, let refreshToken = UserDefaultsManager.tokenKey?.refreshToken else {
-//                let loginViewController = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
-//                guard let window = self.view.window else { return }
-//                ViewControllerUtil.setRootViewController(window: window, viewController: loginViewController, withAnimation: true)
                 self.coordinator?.checkToken(state: .expired)
                 return
             }
-            /// nil이 아니면 == refresh토큰이 어떤상태인지는 모르겠으나 있긴하다
             Task {
-                // 토큰을 refresh합니다.
                 try? await self.reissueToken(refreshToken: refreshToken, accessToken: accessToken)
             }
         }
@@ -75,10 +63,7 @@ final class SplashViewController: UIViewController {
     private func checkIsRefreshTokenExist() -> String? {
         return UserDefaultsManager.tokenKey?.refreshToken
     }
-
 }
-
-// MARK: - UI
 
 private extension SplashViewController {
 
@@ -97,14 +82,7 @@ private extension SplashViewController {
             make.size.equalTo(220)
         }
     }
-
-//    func setRootViewController(to viewController: UIViewController, animation: Bool) {
-//        guard let window = self.view.window else { return }
-//        ViewControllerUtil.setRootViewController(window: window, viewController: viewController, withAnimation: animation)
-//    }
 }
-
-// MARK: - Network
 
 private extension SplashViewController {
 
@@ -113,10 +91,6 @@ private extension SplashViewController {
             let dtoToken = try await manager.reissueToken(token: Token(accessToken: accessToken, refreshToken: refreshToken))
             UserDefaultsManager.tokenKey?.accessToken = dtoToken?.accessToken
             UserDefaultsManager.tokenKey?.refreshToken = dtoToken?.refreshToken
-//
-//            let tabBar = TabBarViewController()
-//            setRootViewController(to: tabBar, animation: true)
-            
             self.coordinator?.checkToken(state: .valid)
         } catch {
             guard let errorModel = error as? NetworkError else { return }
@@ -138,15 +112,8 @@ private extension SplashViewController {
             if code == NetworkErrorCode.unauthorizedErrorCode {
                 guard let token = UserDefaultsManager.tokenKey else { return }
                 await logout(token: token)
-                // LoginVC로 이동하기
-//                let loginVC = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
-//                setRootViewController(to: loginVC, animation: true)
-                
                 self.coordinator?.checkToken(state: .expired)
             } else if code == NetworkErrorCode.unfoundUserErrorCode {
-//                let loginVC = UINavigationController(rootViewController: LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
-//                setRootViewController(to: loginVC, animation: true)
-                
                 self.coordinator?.checkToken(state: .expired)
             }
         default:

@@ -72,19 +72,11 @@ private extension ArticleCategoryViewController {
     }
     
     func setAddTarget() {
-//        navigationBar.backButtonAction {
-//            self.coordinator?.backButtonTapped()
-//        }
-        
         navigationBar.rightFirstBarItemAction {
-//            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-//            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
             self.coordinator?.navigationLeftButtonTapped()
         }
         
         navigationBar.rightSecondBarItemAction {
-//            let mypageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
-//            self.navigationController?.pushViewController(mypageViewController, animated: true)
             self.coordinator?.navigationRightButtonTapped()
         }
     }

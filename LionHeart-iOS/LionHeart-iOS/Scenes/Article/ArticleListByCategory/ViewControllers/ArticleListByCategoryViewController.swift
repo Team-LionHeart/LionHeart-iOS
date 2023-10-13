@@ -121,10 +121,6 @@ extension ArticleListByCategoryViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-//            guard let window = self.view.window else { return }
-//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
-            
             coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
@@ -161,7 +157,6 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
 
 extension ArticleListByCategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.presentArticleDetailFullScreen(articleID: articleListData[indexPath.row].articleId)
         self.coordinator?.articleListByCategoryCellTapped(articleID: articleListData[indexPath.row].articleId)
     }
 }

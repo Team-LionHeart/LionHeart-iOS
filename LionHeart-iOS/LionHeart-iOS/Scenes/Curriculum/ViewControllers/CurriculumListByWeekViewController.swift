@@ -220,9 +220,6 @@ extension CurriculumListByWeekViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-//            guard let window = self.view.window else { return }
-//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
             self.coordinator?.checkTokenIsExpired()
         case .clientError(code: _, message: let message):
             LHToast.show(message: "\(message)")

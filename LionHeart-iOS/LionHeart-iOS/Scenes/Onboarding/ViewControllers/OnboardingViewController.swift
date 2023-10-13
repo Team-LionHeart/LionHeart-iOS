@@ -45,7 +45,6 @@ final class OnboardingViewController: UIViewController {
             case .toGetPregnacny, .toFetalNickname:
                 presentOnboardingView(oldValue: onboardingFlow)
             case .toCompleteOnboarding:
-//                self.coordinator?.completeButtonTapped()
                 presentCompleteOnboardingView()
             }
         }
@@ -182,18 +181,13 @@ private extension OnboardingViewController {
     func presentCompleteOnboardingView() {
         self.view.endEditing(true)
         self.nextButton.isUserInteractionEnabled = false
-//        let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
-//        completeViewController.userData = passingData
         Task {
             showLoading()
             do {
                 try await manager.signUp(type: .kakao, onboardingModel: passingData)
                 hideLoading()
                 self.coordinator?.onboardingCompleted(data: passingData)
-//                self.navigationController?.pushViewController(completeViewController, animated: true)
-//                self.coordinator?.completeButtonTapped()
-
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -256,9 +250,6 @@ extension OnboardingViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "이미지패치에러")
         case .unAuthorizedError:
-//            guard let window = self.view.window else { return }
-//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
             coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)

@@ -128,9 +128,6 @@ extension BookmarkViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-//            guard let window = self.view.window else { return }
-//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
             self.coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
@@ -208,7 +205,6 @@ extension BookmarkViewController: UICollectionViewDelegateFlowLayout {
 
 extension BookmarkViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.presentArticleDetailFullScreen(articleID: )
         self.coordinator?.bookmarkCellTapped(articleID: bookmarkList[indexPath.item].articleID)
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 final class CurriculumCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
     
@@ -19,7 +19,6 @@ final class CurriculumCoordinator: Coordinator {
     }
     
     func start() {
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         showCurriculumViewController()
     }
     
@@ -68,6 +67,4 @@ extension CurriculumCoordinator: CurriculumNavigation, CurriculumListByWeekNavig
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
     }
-    
-    
 }

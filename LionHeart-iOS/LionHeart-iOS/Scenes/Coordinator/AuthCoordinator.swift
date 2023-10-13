@@ -8,7 +8,7 @@
 import UIKit
 
 final class AuthCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
     
@@ -19,7 +19,6 @@ final class AuthCoordinator: Coordinator {
     }
     
     func start() {
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         showLogin()
     }
     
@@ -28,8 +27,6 @@ final class AuthCoordinator: Coordinator {
         loginViewController.coordinator = self
         self.navigationController.pushViewController(loginViewController, animated: true)
     }
-    
-    
 }
 
 extension AuthCoordinator: LoginNavigation, OnboardingNavigation, CompleteOnbardingNavigation {
@@ -59,10 +56,8 @@ extension AuthCoordinator: LoginNavigation, OnboardingNavigation, CompleteOnbard
         let splashCoorinator = parentCoordinator as? SplashCoordinator
         switch userState {
         case .verified:
-            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
             splashCoorinator?.showTabbar()
         case .nonVerified:
-            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
             let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
             onboardingViewController.setKakaoAccessToken(kakaoToken)
             onboardingViewController.coordinator = self

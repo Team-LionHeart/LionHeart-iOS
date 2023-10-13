@@ -8,7 +8,7 @@
 import UIKit
 
 final class MypageCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
     
@@ -20,7 +20,6 @@ final class MypageCoordinator: Coordinator {
     
     func start() {
         showMypageViewController()
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
     
     func showMypageViewController() {

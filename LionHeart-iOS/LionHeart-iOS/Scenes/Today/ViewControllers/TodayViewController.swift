@@ -136,21 +136,16 @@ private extension TodayViewController {
 
     func setButtonAction() {
         todayNavigationBar.rightFirstBarItemAction {
-//            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-//            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
             self.coordinator?.navigationLeftButtonTapped()
         }
         
         todayNavigationBar.rightSecondBarItemAction {
-//            let myPageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
-//            self.navigationController?.pushViewController(myPageViewController, animated: true)
             self.coordinator?.navigationRightButtonTapped()
         }
     }
     
     @objc func articleTapped(_ sender: UIButton) {
         guard let todayArticleID else { return }
-//        self.presentArticleDetailFullScreen(articleID: todayArticleID)
         self.coordinator?.todayArticleTapped(articleID: todayArticleID)
     }
 }
@@ -167,9 +162,6 @@ extension TodayViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "이미지패치실패", isTabBar: true)
         case .unAuthorizedError:
-//            guard let window = self.view.window else { return }
-//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
             self.coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message, isTabBar: true)

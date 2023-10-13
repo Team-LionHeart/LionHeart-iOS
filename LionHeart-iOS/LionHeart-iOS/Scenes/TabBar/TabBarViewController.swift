@@ -14,8 +14,6 @@ final class TabBarViewController: UITabBarController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.backgroundColor = .black
         let tabBarItemAppearance = UITabBarItemAppearance()

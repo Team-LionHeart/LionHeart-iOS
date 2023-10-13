@@ -8,7 +8,7 @@
 import UIKit
 
 final class TodayCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
     
@@ -20,7 +20,6 @@ final class TodayCoordinator: Coordinator {
     
     func start() {
         showTodayViewController()
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
     
     func showTodayViewController() {
@@ -51,13 +50,11 @@ extension TodayCoordinator: TodayNavigation {
         let mypageCoordinator = MypageCoordinator(navigationController: navigationController)
         mypageCoordinator.start()
         children.append(mypageCoordinator)
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
     
     func navigationLeftButtonTapped() {
         let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
     }
 }

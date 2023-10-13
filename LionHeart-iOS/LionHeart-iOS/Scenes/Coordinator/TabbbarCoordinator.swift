@@ -8,7 +8,7 @@
 import UIKit
 
 final class TabbarCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
     
@@ -19,20 +19,16 @@ final class TabbarCoordinator: Coordinator {
     }
     
     func start() {
-        print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
         showTabbar()
     }
     
     func showTabbar() {
         let tabbarController = TabBarViewController()
         
-//        let todayViewController = UINavigationController(rootViewController: TodayViewController(manager: TodayManagerImpl(articleService: ArticleServiceImpl(apiService: APIService()))))
-        
         let todayNavigationController = UINavigationController()
         let todayCoordinator = TodayCoordinator(navigationController: todayNavigationController)
         todayCoordinator.parentCoordinator = parentCoordinator
         todayNavigationController.tabBarItem = UITabBarItem(title: "투데이", image: .assetImage(.home), tag: 0)
-        
         
         let articleCategoryNavigationController = UINavigationController()
         let articleCategoryCoordinator = ArticleCategoryCoordinator(navigationController: articleCategoryNavigationController)
@@ -41,16 +37,12 @@ final class TabbarCoordinator: Coordinator {
         
         let curriculumNavigationController = UINavigationController()
         let curriculumCoordinator = CurriculumCoordinator(navigationController: curriculumNavigationController)
-        
-//        let curriculumViewController = UINavigationController(rootViewController: CurriculumViewController(manager: CurriculumManagerImpl(curriculumService: CurriculumServiceImpl(apiService: APIService()))))
         curriculumNavigationController.tabBarItem = UITabBarItem(title: "커리큘럼", image: .assetImage(.curriculum), tag: 2)
         curriculumCoordinator.parentCoordinator = parentCoordinator
         
         let challengeNavigationController = UINavigationController()
         let challengeCoordinator = ChallengeCoordinator(navigationController: challengeNavigationController)
         challengeCoordinator.parentCoordinator = parentCoordinator
-        
-//        let challengeViewController = UINavigationController(rootViewController: ChallengeViewController(manager: ChallengeManagerImpl(challengeService: ChallengeServiceImpl(apiService: APIService()))))
         challengeNavigationController.tabBarItem = UITabBarItem(title: "챌린지", image: .assetImage(.challenge), tag: 3)
         
         tabbarController.viewControllers = [todayNavigationController, articleCategoryNavigationController, curriculumNavigationController, challengeNavigationController]

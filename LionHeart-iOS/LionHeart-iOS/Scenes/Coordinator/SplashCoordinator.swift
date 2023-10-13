@@ -8,7 +8,7 @@
 import UIKit
 
 final class SplashCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
     

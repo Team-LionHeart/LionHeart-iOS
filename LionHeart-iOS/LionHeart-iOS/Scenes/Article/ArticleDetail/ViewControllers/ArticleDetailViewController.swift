@@ -119,9 +119,6 @@ extension ArticleDetailViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-//            guard let window = self.view.window else { return }
-//            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-//            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
             coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: "\(message)")
@@ -185,9 +182,9 @@ private extension ArticleDetailViewController {
 
     func setAddTarget() {
         navigationBar.backButtonAction {
-            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
             self.coordinator?.closeButtonTapped()
         }
+        
         scrollToTopButton.addButtonAction { _ in
             let indexPath = IndexPath(row: 0, section: 0)
             self.articleTableView.scrollToRow(at: indexPath, at: .top, animated: true)

@@ -111,11 +111,8 @@ private extension MyPageViewController {
         resignButton.addButtonAction { sender in
             Task {
                 do {
-//                    guard let window = self.view.window else { return }
                     self.resignButton.isUserInteractionEnabled = false
                     try await self.manager.resignUser()
-//                    let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-//                    ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
                     self.coordinator?.checkTokenIsExpired()
                 } catch {
                     print(error)

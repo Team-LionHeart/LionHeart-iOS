@@ -7,8 +7,6 @@
 
 import Foundation
 
-/// navigationBar가 존재하는 view에서 사용하는 navigation
-
 protocol BarNavigation: AnyObject {
     func navigationRightButtonTapped()
     func navigationLeftButtonTapped()

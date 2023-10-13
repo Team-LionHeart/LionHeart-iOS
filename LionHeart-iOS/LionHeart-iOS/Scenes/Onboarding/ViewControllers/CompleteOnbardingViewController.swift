@@ -85,8 +85,6 @@ private extension CompleteOnbardingViewController {
     
     func setButtonAction() {
         startButton.addButtonAction { sender in
-//            let mainTabbarViewController = TabBarViewController()
-//            self.navigationController?.pushViewController(mainTabbarViewController, animated: true)
             self.coordinator?.startButtonTapped()
         }
     }
