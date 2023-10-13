@@ -11,8 +11,6 @@ import UIKit
 import SnapKit
 import Lottie
 
-
-
 protocol CurriculumNavigation: BarNavigation, ExpireNavigation {
     func articleListCellTapped(itemIndex: Int)
 }

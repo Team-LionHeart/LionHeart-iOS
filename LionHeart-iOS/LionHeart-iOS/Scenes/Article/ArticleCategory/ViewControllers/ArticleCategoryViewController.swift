@@ -72,9 +72,9 @@ private extension ArticleCategoryViewController {
     }
     
     func setAddTarget() {
-        navigationBar.backButtonAction {
-            self.coordinator?.backButtonTapped()
-        }
+//        navigationBar.backButtonAction {
+//            self.coordinator?.backButtonTapped()
+//        }
         
         navigationBar.rightFirstBarItemAction {
 //            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
@@ -120,9 +120,6 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let articleListbyCategoryViewController = ArticleListByCategoryViewController(manager: ArticleListByCategoryMangerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-//        articleListbyCategoryViewController.categoryString = dummyCase[indexPath.item].categoryString
-//        self.navigationController?.pushViewController(articleListbyCategoryViewController, animated: true)
         coordinator?.articleListCellTapped(categoryName: dummyCase[indexPath.item].categoryString)
     }
 }

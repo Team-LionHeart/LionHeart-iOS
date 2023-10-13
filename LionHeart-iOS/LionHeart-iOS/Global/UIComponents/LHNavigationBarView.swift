@@ -128,12 +128,15 @@ final class LHNavigationBarView: UIView {
     private func setBackButtonWithTitle() {
         self.titleLabel.text = type.title
         self.leftBarItem.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        if type == .onboarding {
-            self.leftBarItem.addButtonAction { _ in
-                self.backButtonActionHandler?()
-            }
-            return
+        self.leftBarItem.addButtonAction { _ in
+            self.backButtonActionHandler?()
         }
+//        if type == .onboarding {
+//            self.leftBarItem.addButtonAction { _ in
+//                self.backButtonActionHandler?()
+//            }
+//            return
+//        }
 //        self.leftBarItem.addButtonAction { [weak self] _ in
 //            guard let self else { return }
 //            self.viewController?.navigationController?.popViewController(animated: true)
@@ -163,10 +166,11 @@ final class LHNavigationBarView: UIView {
     private func setCloseButtonWithTitle() {
         self.titleLabel.text = type.title
         self.leftBarItem.setImage(UIImage(systemName: "xmark"), for: .normal)
-//        self.leftBarItem.addButtonAction { [weak self] _ in
-//            guard let self else { return }
+        self.leftBarItem.addButtonAction { [weak self] _ in
+            guard let self else { return }
+            self.backButtonActionHandler?()
 //            self.viewController?.dismiss(animated: true)
-//        }
+        }
     }
 
 }

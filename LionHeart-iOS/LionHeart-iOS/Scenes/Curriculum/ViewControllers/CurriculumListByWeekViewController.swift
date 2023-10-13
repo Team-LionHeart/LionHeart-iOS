@@ -10,7 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol CurriculumListByWeekNavigation: ExpireNavigation {
+protocol CurriculumListByWeekNavigation: ExpireNavigation, PopNavigation {
     func curriculumArticleListCellTapped(articleId: Int)
 }
 
@@ -59,6 +59,7 @@ final class CurriculumListByWeekViewController: UIViewController {
         setDelegate()
         setCollectionView()
         setNotificationCenter()
+        setAddTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,6 +107,11 @@ private extension CurriculumListByWeekViewController {
         }
     }
     
+    func setAddTarget() {
+        self.navigationBar.backButtonAction {
+            self.coordinator?.backButtonTapped()
+        }
+    }
     
     func setNotificationCenter() {
         NotificationCenter.default.addObserver(self,
@@ -160,7 +166,6 @@ private extension CurriculumListByWeekViewController {
     
     @objc func didSelectTableVIewCell(notification: NSNotification) {
         guard let articleId = notification.object as? Int else { return }
-//        presentArticleDetailFullScreen(articleID: articleId)
         self.coordinator?.curriculumArticleListCellTapped(articleId: articleId)
     }
     

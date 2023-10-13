@@ -13,6 +13,7 @@ import KakaoSDKAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url {
@@ -31,8 +32,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         /// 폰트등록
         Font.registerFonts()
-        let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-        let navigationController = UINavigationController(rootViewController: splashViewController)
+        
+        let navigationController = UINavigationController()
+        appCoordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator?.start()
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }

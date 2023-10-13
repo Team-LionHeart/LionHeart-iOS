@@ -10,7 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol BookmarkNavigation: ExpireNavigation, BarNavigation {
+protocol BookmarkNavigation: ExpireNavigation, PopNavigation {
     func bookmarkCellTapped(articleID: Int)
 }
 
@@ -47,6 +47,7 @@ final class BookmarkViewController: UIViewController {
         setDelegate()
         registerCell()
         setTabbar()
+        setAddTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,6 +107,12 @@ private extension BookmarkViewController {
     
     func setTabbar() {
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func setAddTarget() {
+        self.navigationBar.backButtonAction {
+            self.coordinator?.backButtonTapped()
+        }
     }
 }
 

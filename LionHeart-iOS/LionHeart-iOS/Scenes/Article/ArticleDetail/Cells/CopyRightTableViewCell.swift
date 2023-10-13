@@ -16,7 +16,7 @@ final class CopyRightTableViewCell: UITableViewCell, TableViewCellRegisterDequeu
     private let copyrightLabel = LHLabel(type: .body4, color: .gray600, basicText: "모든 콘텐츠는 제공자와 라이온하트에 저작권이 있습니다.\n저작권법에 의거 무단 전재 및 재배포를 금지합니다.")
     
     //TODO: - inputData가 없는 경우..
-    var inputData: DummyModel?
+//    var inputData: DummyModel?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

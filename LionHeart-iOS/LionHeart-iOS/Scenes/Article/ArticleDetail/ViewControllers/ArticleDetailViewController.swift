@@ -10,7 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol ArticleDetailModalNavigation: BarNavigation, ExpireNavigation {}
+protocol ArticleDetailModalNavigation: ExpireNavigation, DismissNavigation {}
 
 protocol ArticleDetailManager {
     func getArticleDetail(articleId: Int) async throws -> [BlockTypeAppData]
@@ -185,6 +185,7 @@ private extension ArticleDetailViewController {
 
     func setAddTarget() {
         navigationBar.backButtonAction {
+            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
             self.coordinator?.closeButtonTapped()
         }
         scrollToTopButton.addButtonAction { _ in

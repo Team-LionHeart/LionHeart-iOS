@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 
 
-protocol ArticleListByCategoryNavigation: ExpireNavigation, BarNavigation {
+protocol ArticleListByCategoryNavigation: ExpireNavigation, PopNavigation {
     func articleListByCategoryCellTapped(articleID: Int)
 }
 
@@ -51,6 +51,7 @@ final class ArticleListByCategoryViewController: UIViewController {
         setLayout()
         setDelegate()
         setTableView()
+        setAddTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {

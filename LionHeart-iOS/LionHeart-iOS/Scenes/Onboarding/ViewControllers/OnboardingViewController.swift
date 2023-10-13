@@ -10,8 +10,8 @@ import UIKit
 
 import SnapKit
 
-protocol OnboardingNavigation: ExpireNavigation, BarNavigation {
-    func completeButtonTapped()
+protocol OnboardingNavigation: ExpireNavigation, PopNavigation {
+    func onboardingCompleted(data: UserOnboardingModel)
 }
 
 protocol OnboardingManager {
@@ -45,6 +45,7 @@ final class OnboardingViewController: UIViewController {
             case .toGetPregnacny, .toFetalNickname:
                 presentOnboardingView(oldValue: onboardingFlow)
             case .toCompleteOnboarding:
+//                self.coordinator?.completeButtonTapped()
                 presentCompleteOnboardingView()
             }
         }
@@ -139,7 +140,7 @@ private extension OnboardingViewController {
         }
     
         onboardingNavigationbar.backButtonAction {
-            self.backOnboardingProcess()
+            self.coordinator?.backButtonTapped()
         }
     }
     
@@ -181,16 +182,17 @@ private extension OnboardingViewController {
     func presentCompleteOnboardingView() {
         self.view.endEditing(true)
         self.nextButton.isUserInteractionEnabled = false
-        let completeViewController = CompleteOnbardingViewController()
+//        let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
-        completeViewController.userData = passingData
+//        completeViewController.userData = passingData
         Task {
             showLoading()
             do {
                 try await manager.signUp(type: .kakao, onboardingModel: passingData)
                 hideLoading()
+                self.coordinator?.onboardingCompleted(data: passingData)
 //                self.navigationController?.pushViewController(completeViewController, animated: true)
-                self.coordinator?.completeButtonTapped()
+//                self.coordinator?.completeButtonTapped()
 
             } catch {
                 guard let error = error as? NetworkError else { return }

@@ -10,7 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol MyPageNavigation: ExpireNavigation { }
+protocol MyPageNavigation: ExpireNavigation, PopNavigation {}
 
 protocol MyPageManager {
     func getMyPage() async throws -> BadgeProfileAppData
@@ -84,6 +84,7 @@ private extension MyPageViewController {
     }
     
     func setLayout() {
+        resignButton.backgroundColor = .designSystem(.lionRed)
         navigtaionBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()

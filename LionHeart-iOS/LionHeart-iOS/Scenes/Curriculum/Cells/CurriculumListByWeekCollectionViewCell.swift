@@ -58,10 +58,11 @@ private extension CurriculumListByWeekCollectionViewCell {
     
     func setDelegate() {
         curriculumListByWeekTableView.dataSource = self
+        curriculumListByWeekTableView.delegate = self
     }
 }
 
-extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource{
+extension CurriculumListByWeekCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let inputData else { return 0 }
