@@ -43,11 +43,6 @@ extension AuthCoordinator: LoginNavigation, OnboardingNavigation, CompleteOnbard
         self.navigationController.pushViewController(completeViewController, animated: true)
     }
     
-    func checkTokenIsExpired() {
-        let splashCoordinator = parentCoordinator as? SplashCoordinator
-        splashCoordinator?.start()
-    }
-    
     func backButtonTapped() {
         self.navigationController.popViewController(animated: true)
     }

@@ -36,11 +36,6 @@ extension BookmarkCoordinator: BookmarkNavigation {
         children.append(articleCoordinator)
     }
     
-    func checkTokenIsExpired() {
-        let splashCoordinator = parentCoordinator as? SplashCoordinator
-        splashCoordinator?.start()
-    }
-    
     func backButtonTapped() {
         self.navigationController.popViewController(animated: true)
         self.parentCoordinator?.childDidFinish(self)

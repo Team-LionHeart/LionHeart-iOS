@@ -38,11 +38,6 @@ final class ArticleCoordinator: Coordinator {
 
 extension ArticleCoordinator: ArticleDetailModalNavigation {
     
-    func checkTokenIsExpired() {
-        let splashCoordinator = parentCoordinator as? SplashCoordinator
-        splashCoordinator?.start()
-    }
-    
     func closeButtonTapped() {
         self.navigationController.dismiss(animated: true)
         parentCoordinator?.childDidFinish(self)

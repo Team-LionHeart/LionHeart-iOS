@@ -43,7 +43,6 @@ final class MyPageViewController: UIViewController {
 
     init(manager: MyPageManager) {
         self.manager = manager
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -108,7 +107,7 @@ private extension MyPageViewController {
             self.coordinator?.backButtonTapped()
         }
         
-        resignButton.addButtonAction { sender in
+        resignButton.addButtonAction { _ in
             Task {
                 do {
                     self.resignButton.isUserInteractionEnabled = false
@@ -166,9 +165,7 @@ extension MyPageViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

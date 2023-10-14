@@ -109,6 +109,8 @@
 		C003CC312AD918AB00AFFAAC /* ArticleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */; };
 		C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC342AD923AF00AFFAAC /* BarNavigation.swift */; };
 		C003CC372AD923D100AFFAAC /* ExpireNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC362AD923D100AFFAAC /* ExpireNavigation.swift */; };
+		C003CC392ADA4D9600AFFAAC /* PopNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC382ADA4D9600AFFAAC /* PopNavigation.swift */; };
+		C003CC3B2ADA4DA100AFFAAC /* DismissNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC3A2ADA4DA100AFFAAC /* DismissNavigation.swift */; };
 		C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B62A5FFE0E0043EB36 /* UILabel+.swift */; };
 		C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
@@ -347,6 +349,8 @@
 		C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCoordinator.swift; sourceTree = "<group>"; };
 		C003CC342AD923AF00AFFAAC /* BarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarNavigation.swift; sourceTree = "<group>"; };
 		C003CC362AD923D100AFFAAC /* ExpireNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpireNavigation.swift; sourceTree = "<group>"; };
+		C003CC382ADA4D9600AFFAAC /* PopNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNavigation.swift; sourceTree = "<group>"; };
+		C003CC3A2ADA4DA100AFFAAC /* DismissNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissNavigation.swift; sourceTree = "<group>"; };
 		C00780B62A5FFE0E0043EB36 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHTodayArticleTitle.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
@@ -1204,6 +1208,8 @@
 			children = (
 				C003CC342AD923AF00AFFAAC /* BarNavigation.swift */,
 				C003CC362AD923D100AFFAAC /* ExpireNavigation.swift */,
+				C003CC382ADA4D9600AFFAAC /* PopNavigation.swift */,
+				C003CC3A2ADA4DA100AFFAAC /* DismissNavigation.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1744,6 +1750,7 @@
 				C0B15E152AC011840058D56B /* LHLabel.swift in Sources */,
 				F4DB30B02A611C9700413EB9 /* CurriculumListByWeekData.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
+				C003CC3B2ADA4DA100AFFAAC /* DismissNavigation.swift in Sources */,
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
 				B53BA2022A68717B006F9BFB /* LoadingIndicator.swift in Sources */,
 				C0856B7F2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift in Sources */,
@@ -1795,6 +1802,7 @@
 				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
 				C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
+				C003CC392ADA4D9600AFFAAC /* PopNavigation.swift in Sources */,
 				4AE19A1E2A6597E700C1DB7E /* BookmarkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

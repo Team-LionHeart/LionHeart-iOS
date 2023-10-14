@@ -51,11 +51,6 @@ extension ArticleCategoryCoordinator: ArticleCategoryNavigation, ArticleListByCa
         self.navigationController.pushViewController(articleListbyCategoryViewController, animated: true)
     }
     
-    func checkTokenIsExpired() {
-        let splashCoordinator = parentCoordinator as? SplashCoordinator
-        splashCoordinator?.start()
-    }
-    
     func navigationRightButtonTapped() {
         let mypageCoordinator = MypageCoordinator(navigationController: navigationController)
         mypageCoordinator.start()

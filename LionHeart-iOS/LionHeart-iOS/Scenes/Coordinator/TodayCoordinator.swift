@@ -41,11 +41,6 @@ extension TodayCoordinator: TodayNavigation {
         articleCoordinator.start()
     }
     
-    func checkTokenIsExpired() {
-        let splashCoordinator = parentCoordinator as? SplashCoordinator
-        splashCoordinator?.start()
-    }
-    
     func navigationRightButtonTapped() {
         let mypageCoordinator = MypageCoordinator(navigationController: navigationController)
         mypageCoordinator.start()
