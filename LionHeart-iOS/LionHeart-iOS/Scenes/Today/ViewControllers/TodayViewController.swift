@@ -10,12 +10,6 @@ import UIKit
 
 import SnapKit
 
-
-
-protocol TodayManager {
-    func inquiryTodayArticle() async throws -> TodayArticle
-}
-
 final class TodayViewController: UIViewController {
     
     weak var coordinator: TodayNavigation?

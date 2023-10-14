@@ -10,17 +10,10 @@ import UIKit
 
 import SnapKit
 
-
-
-protocol BookmarkManger {
-    func getBookmark() async throws -> BookmarkAppData
-    func postBookmark(model: BookmarkRequest) async throws
-}
-
 final class BookmarkViewController: UIViewController {
     
     weak var coordinator: BookmarkNavigation?
-    private let manager: BookmarkManger
+    private let manager: BookmarkManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
     private lazy var bookmarkCollectionView = LHCollectionView()
@@ -28,7 +21,7 @@ final class BookmarkViewController: UIViewController {
     private var bookmarkAppData = BookmarkAppData(nickName: "", articleSummaries: [ArticleSummaries]())
     private var bookmarkList = [ArticleSummaries]()
     
-    init(manager: BookmarkManger) {
+    init(manager: BookmarkManager) {
         self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
@@ -166,8 +159,9 @@ extension BookmarkViewController: UICollectionViewDataSource {
             cell.bookmarkButtonClosure = { indexPath in
                 Task {
                     do {
-                        try await self.manager.postBookmark(model: BookmarkRequest(articleId: self.bookmarkList[indexPath.item].articleID,
-                                                                                            bookmarkRequestStatus: !self.bookmarkList[indexPath.item].bookmarked))
+                        let selectedItem = self.bookmarkList[indexPath.item]
+                        try await self.manager.postBookmark(model: .init(articleId: selectedItem.articleID,
+                                                                                            bookmarkRequestStatus: !selectedItem.bookmarked))
                         self.bookmarkList.remove(at: indexPath.item)
                         collectionView.deleteItems(at: [indexPath])
                         LHToast.show(message: "북마크가 해제되었습니다")

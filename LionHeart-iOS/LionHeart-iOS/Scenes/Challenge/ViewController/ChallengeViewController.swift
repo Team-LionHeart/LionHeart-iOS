@@ -11,12 +11,6 @@ import UIKit
 import SnapKit
 import Lottie
 
-
-
-protocol ChallengeManager {
-    func inquireChallengeInfo() async throws -> ChallengeData
-}
-
 final class ChallengeViewController: UIViewController {
     
     weak var coordinator: ChallengeNavigation?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class BookmarkMangerImpl: BookmarkManger {
+final class BookmarkMangerImpl: BookmarkManager {
     
     private let bookmarkService: BookmarkService
     

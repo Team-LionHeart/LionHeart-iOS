@@ -11,12 +11,6 @@ import UIKit
 import SnapKit
 import Lottie
 
-
-
-protocol CurriculumManager {
-    func getCurriculumServiceInfo() async throws -> UserInfoData
-}
-
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
     weak var coordinator: CurriculumNavigation?

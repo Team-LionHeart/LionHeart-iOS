@@ -10,11 +10,6 @@ import UIKit
 
 import SnapKit
 
-protocol SplashManager {
-    func reissueToken(token: Token) async throws -> Token?
-    func logout(token: UserDefaultToken) async throws
-}
-
 final class SplashViewController: UIViewController {
 
     weak var coordinator: SplashNavigation?

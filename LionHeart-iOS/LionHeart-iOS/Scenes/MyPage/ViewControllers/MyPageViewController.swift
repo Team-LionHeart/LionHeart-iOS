@@ -10,12 +10,6 @@ import UIKit
 
 import SnapKit
 
-protocol MyPageManager {
-    func getMyPage() async throws -> BadgeProfileAppData
-    func resignUser() async throws
-    func logout(token: UserDefaultToken) async throws
-}
-
 final class MyPageViewController: UIViewController {
     
     weak var coordinator: MyPageNavigation?

@@ -13,10 +13,6 @@ import SnapKit
 import KakaoSDKAuth
 import KakaoSDKUser
 
-protocol LoginManager {
-    func login(type: LoginType, kakaoToken: String) async throws
-}
-
 final class LoginViewController: UIViewController {
     
     private var kakaoAccessToken: String? {

@@ -10,13 +10,6 @@ import UIKit
 
 import SnapKit
 
-
-
-protocol CurriculumListManager {
-    func postBookmark(model: BookmarkRequest) async throws
-    func getArticleListByWeekInfo(week: Int) async throws -> CurriculumWeekData
-}
-
 final class CurriculumListByWeekViewController: UIViewController {
     
     weak var coordinator: CurriculumListByWeekNavigation?

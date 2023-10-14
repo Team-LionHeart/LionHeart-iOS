@@ -12,10 +12,7 @@ import SnapKit
 
 
 
-protocol ArticleDetailManager {
-    func getArticleDetail(articleId: Int) async throws -> [BlockTypeAppData]
-    func postBookmark(model: BookmarkRequest) async throws
-}
+
 
 final class ArticleDetailViewController: UIViewController {
 

@@ -12,9 +12,7 @@ import SnapKit
 
 
 
-protocol OnboardingManager {
-    func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
-}
+
 
 final class OnboardingViewController: UIViewController {
 
