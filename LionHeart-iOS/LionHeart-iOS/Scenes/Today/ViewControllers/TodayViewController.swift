@@ -10,9 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol TodayNavigation: ExpireNavigation, BarNavigation {
-    func todayArticleTapped(articleID: Int)
-}
+
 
 protocol TodayManager {
     func inquiryTodayArticle() async throws -> TodayArticle

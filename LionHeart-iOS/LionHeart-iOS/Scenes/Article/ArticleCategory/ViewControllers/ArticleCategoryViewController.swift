@@ -10,9 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol ArticleCategoryNavigation: ExpireNavigation, BarNavigation {
-    func articleListCellTapped(categoryName: String)
-}
+
 
 final class ArticleCategoryViewController: UIViewController {
     

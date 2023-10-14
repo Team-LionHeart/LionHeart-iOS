@@ -10,7 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol ArticleDetailModalNavigation: ExpireNavigation, DismissNavigation {}
+
 
 protocol ArticleDetailManager {
     func getArticleDetail(articleId: Int) async throws -> [BlockTypeAppData]

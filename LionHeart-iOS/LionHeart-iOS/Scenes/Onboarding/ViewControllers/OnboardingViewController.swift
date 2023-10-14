@@ -10,9 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol OnboardingNavigation: ExpireNavigation, PopNavigation {
-    func onboardingCompleted(data: UserOnboardingModel)
-}
+
 
 protocol OnboardingManager {
     func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws

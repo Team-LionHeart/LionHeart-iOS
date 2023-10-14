@@ -10,10 +10,6 @@ import UIKit
 
 import SnapKit
 
-protocol CompleteOnbardingNavigation: ExpireNavigation {
-    func startButtonTapped()
-}
-
 final class CompleteOnbardingViewController: UIViewController {
     
     private enum SizeInspector {

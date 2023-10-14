@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import Lottie
 
-protocol ChallengeNavigation: BarNavigation {}
+
 
 protocol ChallengeManager {
     func inquireChallengeInfo() async throws -> ChallengeData

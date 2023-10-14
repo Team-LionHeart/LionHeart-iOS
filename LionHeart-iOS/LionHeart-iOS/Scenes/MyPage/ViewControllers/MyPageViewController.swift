@@ -10,8 +10,6 @@ import UIKit
 
 import SnapKit
 
-protocol MyPageNavigation: ExpireNavigation, PopNavigation {}
-
 protocol MyPageManager {
     func getMyPage() async throws -> BadgeProfileAppData
     func resignUser() async throws

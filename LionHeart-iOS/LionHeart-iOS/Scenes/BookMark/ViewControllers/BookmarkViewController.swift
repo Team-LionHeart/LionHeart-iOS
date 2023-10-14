@@ -10,9 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol BookmarkNavigation: ExpireNavigation, PopNavigation {
-    func bookmarkCellTapped(articleID: Int)
-}
+
 
 protocol BookmarkManger {
     func getBookmark() async throws -> BookmarkAppData

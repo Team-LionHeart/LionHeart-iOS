@@ -10,9 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol CurriculumListByWeekNavigation: ExpireNavigation, PopNavigation {
-    func curriculumArticleListCellTapped(articleId: Int)
-}
+
 
 protocol CurriculumListManager {
     func postBookmark(model: BookmarkRequest) async throws

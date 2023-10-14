@@ -10,18 +10,9 @@ import UIKit
 
 import SnapKit
 
-enum TokenState {
-    case valid
-    case expired
-}
-
 protocol SplashManager {
     func reissueToken(token: Token) async throws -> Token?
     func logout(token: UserDefaultToken) async throws
-}
-
-protocol SplashNavigation: AnyObject {
-    func checkToken(state: TokenState)
 }
 
 final class SplashViewController: UIViewController {

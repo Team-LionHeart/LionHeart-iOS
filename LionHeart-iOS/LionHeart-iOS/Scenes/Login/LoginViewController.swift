@@ -13,15 +13,6 @@ import SnapKit
 import KakaoSDKAuth
 import KakaoSDKUser
 
-enum UserState {
-    case verified
-    case nonVerified
-}
-
-protocol LoginNavigation: AnyObject {
-    func checkUserIsVerified(userState: UserState, kakaoToken: String?)
-}
-
 protocol LoginManager {
     func login(type: LoginType, kakaoToken: String) async throws
 }
