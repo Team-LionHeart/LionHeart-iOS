@@ -27,8 +27,6 @@ final class TodayCoordinator: Coordinator {
         todayViewController.coordinator = self
         self.navigationController.pushViewController(todayViewController, animated: true)
     }
-    
-    
 }
 extension TodayCoordinator: TodayNavigation {
     func todayArticleTapped(articleID: Int) {
