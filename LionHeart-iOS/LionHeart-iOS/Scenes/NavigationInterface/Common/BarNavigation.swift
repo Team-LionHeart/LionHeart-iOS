@@ -11,11 +11,3 @@ protocol BarNavigation: AnyObject {
     func navigationRightButtonTapped()
     func navigationLeftButtonTapped()
 }
-
-protocol PopNavigation {
-    func backButtonTapped()
-}
-
-protocol DismissNavigation {
-    func closeButtonTapped()
-}
