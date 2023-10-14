@@ -94,5 +94,6 @@ extension UIViewController {
         articleDetailViewController.isModalInPresentation = true
         articleDetailViewController.modalPresentationStyle = .fullScreen
         self.present(articleDetailViewController, animated: true)
+        
     }
 }

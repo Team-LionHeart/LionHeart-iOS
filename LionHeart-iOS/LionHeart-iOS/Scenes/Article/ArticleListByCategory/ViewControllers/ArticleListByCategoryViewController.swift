@@ -10,14 +10,9 @@ import UIKit
 
 import SnapKit
 
-protocol ArticleListByCategoryManager {
-    func getArticleListByCategory(categoryString: String) async throws -> CurriculumWeekData
-    func postBookmark(model: BookmarkRequest) async throws
-}
-
-
 final class ArticleListByCategoryViewController: UIViewController {
     
+    weak var coordinator: ArticleListByCategoryNavigation?
     private let manager: ArticleListByCategoryManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
@@ -46,6 +41,7 @@ final class ArticleListByCategoryViewController: UIViewController {
         setLayout()
         setDelegate()
         setTableView()
+        setAddTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +91,12 @@ private extension ArticleListByCategoryViewController {
     func setTableView() {
         CurriculumArticleByWeekTableViewCell.register(to: articleListTableView)
     }
+    
+    func setAddTarget() {
+        navigationBar.backButtonAction {
+            self.coordinator?.backButtonTapped()
+        }
+    }
 }
 
 extension ArticleListByCategoryViewController: ViewControllerServiceable {
@@ -109,9 +111,7 @@ extension ArticleListByCategoryViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
@@ -147,6 +147,6 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
 
 extension ArticleListByCategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.presentArticleDetailFullScreen(articleID: articleListData[indexPath.row].articleId)
+        self.coordinator?.articleListByCategoryCellTapped(articleID: articleListData[indexPath.row].articleId)
     }
 }

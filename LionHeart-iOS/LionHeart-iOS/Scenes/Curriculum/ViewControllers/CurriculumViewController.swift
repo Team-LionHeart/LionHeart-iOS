@@ -11,12 +11,9 @@ import UIKit
 import SnapKit
 import Lottie
 
-protocol CurriculumManager {
-    func getCurriculumServiceInfo() async throws -> UserInfoData
-}
-
 final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
     
+    weak var coordinator: CurriculumNavigation?
     private let manager: CurriculumManager
 
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumMain, viewController: self)
@@ -128,13 +125,11 @@ private extension CurriculumViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-            self.navigationController?.pushViewController(bookmarkViewController, animated: true)
+            self.coordinator?.navigationLeftButtonTapped()
         }
         
         navigationBar.rightSecondBarItemAction {
-            let myPageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
-            self.navigationController?.pushViewController(myPageViewController, animated: true)
+            self.coordinator?.navigationRightButtonTapped()
         }
     }
     
@@ -192,9 +187,7 @@ extension CurriculumViewController: UITableViewDataSource {
     
     func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
         guard let indexPath else { return }
-        let listByWeekVC = CurriculumListByWeekViewController(manager: CurriculumListManagerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService()), curriculumService: CurriculumServiceImpl(apiService: APIService())))
-        listByWeekVC.weekToIndexPathItem = (indexPath.section * 4) + indexPath.row
-        self.navigationController?.pushViewController(listByWeekVC, animated: true)
+        coordinator?.articleListCellTapped(itemIndex: indexPath.section * 4 + indexPath.row)
     }
 }
 
@@ -202,9 +195,7 @@ extension CurriculumViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            self.coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: "\(message)")
         default:

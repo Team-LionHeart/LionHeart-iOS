@@ -95,6 +95,48 @@
 		B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
 		B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */; };
+		C003CC1B2AD9176B00AFFAAC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */; };
+		C003CC1D2AD917CF00AFFAAC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */; };
+		C003CC1F2AD917F900AFFAAC /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1E2AD917F900AFFAAC /* SplashCoordinator.swift */; };
+		C003CC212AD9181600AFFAAC /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */; };
+		C003CC232AD9183600AFFAAC /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC222AD9183600AFFAAC /* AuthCoordinator.swift */; };
+		C003CC252AD9184700AFFAAC /* TabbbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */; };
+		C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */; };
+		C003CC292AD9186B00AFFAAC /* CurriculumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */; };
+		C003CC2B2AD9187B00AFFAAC /* ChallengeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */; };
+		C003CC2D2AD9189100AFFAAC /* BookmarkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */; };
+		C003CC2F2AD9189F00AFFAAC /* MypageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC2E2AD9189F00AFFAAC /* MypageCoordinator.swift */; };
+		C003CC312AD918AB00AFFAAC /* ArticleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */; };
+		C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC342AD923AF00AFFAAC /* BarNavigation.swift */; };
+		C003CC372AD923D100AFFAAC /* ExpireNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC362AD923D100AFFAAC /* ExpireNavigation.swift */; };
+		C003CC392ADA4D9600AFFAAC /* PopNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC382ADA4D9600AFFAAC /* PopNavigation.swift */; };
+		C003CC3B2ADA4DA100AFFAAC /* DismissNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC3A2ADA4DA100AFFAAC /* DismissNavigation.swift */; };
+		C003CC3D2ADA4EB300AFFAAC /* ChallengeNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC3C2ADA4EB300AFFAAC /* ChallengeNavigation.swift */; };
+		C003CC3F2ADA4EC300AFFAAC /* CurriculumNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC3E2ADA4EC300AFFAAC /* CurriculumNavigation.swift */; };
+		C003CC412ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC402ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift */; };
+		C003CC432ADA4EFF00AFFAAC /* MyPageNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC422ADA4EFF00AFFAAC /* MyPageNavigation.swift */; };
+		C003CC452ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC442ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift */; };
+		C003CC472ADA4F3400AFFAAC /* ArticleCategoryNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC462ADA4F3400AFFAAC /* ArticleCategoryNavigation.swift */; };
+		C003CC492ADA4F4600AFFAAC /* ArticleDetailModalNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC482ADA4F4600AFFAAC /* ArticleDetailModalNavigation.swift */; };
+		C003CC4B2ADA4F6300AFFAAC /* BookmarkNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC4A2ADA4F6300AFFAAC /* BookmarkNavigation.swift */; };
+		C003CC4D2ADA4F7600AFFAAC /* TodayNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC4C2ADA4F7600AFFAAC /* TodayNavigation.swift */; };
+		C003CC4F2ADA4F8D00AFFAAC /* OnboardingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC4E2ADA4F8D00AFFAAC /* OnboardingNavigation.swift */; };
+		C003CC512ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC502ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift */; };
+		C003CC532ADA4FC100AFFAAC /* LoginNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC522ADA4FC100AFFAAC /* LoginNavigation.swift */; };
+		C003CC552ADA4FD500AFFAAC /* SplashNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC542ADA4FD500AFFAAC /* SplashNavigation.swift */; };
+		C003CC572ADA4FEB00AFFAAC /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC562ADA4FEB00AFFAAC /* UserState.swift */; };
+		C003CC592ADA4FFF00AFFAAC /* TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC582ADA4FFF00AFFAAC /* TokenState.swift */; };
+		C003CC5C2ADA506800AFFAAC /* SplashManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC5B2ADA506800AFFAAC /* SplashManager.swift */; };
+		C003CC5E2ADA508A00AFFAAC /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC5D2ADA508A00AFFAAC /* LoginManager.swift */; };
+		C003CC602ADA50AA00AFFAAC /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC5F2ADA50AA00AFFAAC /* OnboardingManager.swift */; };
+		C003CC622ADA50C000AFFAAC /* TodayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC612ADA50C000AFFAAC /* TodayManager.swift */; };
+		C003CC642ADA50ED00AFFAAC /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC632ADA50ED00AFFAAC /* BookmarkManager.swift */; };
+		C003CC662ADA518E00AFFAAC /* ArticleDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC652ADA518E00AFFAAC /* ArticleDetailManager.swift */; };
+		C003CC682ADA51A700AFFAAC /* ArticleListByCategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC672ADA51A700AFFAAC /* ArticleListByCategoryManager.swift */; };
+		C003CC6A2ADA51C000AFFAAC /* MyPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC692ADA51C000AFFAAC /* MyPageManager.swift */; };
+		C003CC6C2ADA51D100AFFAAC /* CurriculumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC6B2ADA51D100AFFAAC /* CurriculumManager.swift */; };
+		C003CC6E2ADA51E200AFFAAC /* CurriculumListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC6D2ADA51E200AFFAAC /* CurriculumListManager.swift */; };
+		C003CC702ADA51F300AFFAAC /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC6F2ADA51F300AFFAAC /* ChallengeManager.swift */; };
 		C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B62A5FFE0E0043EB36 /* UILabel+.swift */; };
 		C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
@@ -154,7 +196,6 @@
 		C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF033E2A5A959A0037F740 /* UIButton+.swift */; };
 		C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03402A5A95E40037F740 /* UIImage+.swift */; };
 		C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */; };
-		C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03482A5A9ACB0037F740 /* DummyModel.swift */; };
 		C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */; };
 		C0DF034D2A5A9B8D0037F740 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */; };
@@ -320,6 +361,48 @@
 		B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyRightTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumWeekBackgroundDummy.swift; sourceTree = "<group>"; };
+		C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		C003CC1E2AD917F900AFFAAC /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
+		C003CC222AD9183600AFFAAC /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbbarCoordinator.swift; sourceTree = "<group>"; };
+		C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCoordinator.swift; sourceTree = "<group>"; };
+		C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumCoordinator.swift; sourceTree = "<group>"; };
+		C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCoordinator.swift; sourceTree = "<group>"; };
+		C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCoordinator.swift; sourceTree = "<group>"; };
+		C003CC2E2AD9189F00AFFAAC /* MypageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageCoordinator.swift; sourceTree = "<group>"; };
+		C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCoordinator.swift; sourceTree = "<group>"; };
+		C003CC342AD923AF00AFFAAC /* BarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarNavigation.swift; sourceTree = "<group>"; };
+		C003CC362AD923D100AFFAAC /* ExpireNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpireNavigation.swift; sourceTree = "<group>"; };
+		C003CC382ADA4D9600AFFAAC /* PopNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNavigation.swift; sourceTree = "<group>"; };
+		C003CC3A2ADA4DA100AFFAAC /* DismissNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissNavigation.swift; sourceTree = "<group>"; };
+		C003CC3C2ADA4EB300AFFAAC /* ChallengeNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeNavigation.swift; sourceTree = "<group>"; };
+		C003CC3E2ADA4EC300AFFAAC /* CurriculumNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumNavigation.swift; sourceTree = "<group>"; };
+		C003CC402ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByWeekNavigation.swift; sourceTree = "<group>"; };
+		C003CC422ADA4EFF00AFFAAC /* MyPageNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNavigation.swift; sourceTree = "<group>"; };
+		C003CC442ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryNavigation.swift; sourceTree = "<group>"; };
+		C003CC462ADA4F3400AFFAAC /* ArticleCategoryNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryNavigation.swift; sourceTree = "<group>"; };
+		C003CC482ADA4F4600AFFAAC /* ArticleDetailModalNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailModalNavigation.swift; sourceTree = "<group>"; };
+		C003CC4A2ADA4F6300AFFAAC /* BookmarkNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkNavigation.swift; sourceTree = "<group>"; };
+		C003CC4C2ADA4F7600AFFAAC /* TodayNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayNavigation.swift; sourceTree = "<group>"; };
+		C003CC4E2ADA4F8D00AFFAAC /* OnboardingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNavigation.swift; sourceTree = "<group>"; };
+		C003CC502ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingNavigation.swift; sourceTree = "<group>"; };
+		C003CC522ADA4FC100AFFAAC /* LoginNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigation.swift; sourceTree = "<group>"; };
+		C003CC542ADA4FD500AFFAAC /* SplashNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashNavigation.swift; sourceTree = "<group>"; };
+		C003CC562ADA4FEB00AFFAAC /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
+		C003CC582ADA4FFF00AFFAAC /* TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenState.swift; sourceTree = "<group>"; };
+		C003CC5B2ADA506800AFFAAC /* SplashManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashManager.swift; sourceTree = "<group>"; };
+		C003CC5D2ADA508A00AFFAAC /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		C003CC5F2ADA50AA00AFFAAC /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
+		C003CC612ADA50C000AFFAAC /* TodayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayManager.swift; sourceTree = "<group>"; };
+		C003CC632ADA50ED00AFFAAC /* BookmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
+		C003CC652ADA518E00AFFAAC /* ArticleDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailManager.swift; sourceTree = "<group>"; };
+		C003CC672ADA51A700AFFAAC /* ArticleListByCategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryManager.swift; sourceTree = "<group>"; };
+		C003CC692ADA51C000AFFAAC /* MyPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageManager.swift; sourceTree = "<group>"; };
+		C003CC6B2ADA51D100AFFAAC /* CurriculumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumManager.swift; sourceTree = "<group>"; };
+		C003CC6D2ADA51E200AFFAAC /* CurriculumListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListManager.swift; sourceTree = "<group>"; };
+		C003CC6F2ADA51F300AFFAAC /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		C00780B62A5FFE0E0043EB36 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHTodayArticleTitle.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
@@ -378,7 +461,6 @@
 		C0DF033E2A5A959A0037F740 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		C0DF03402A5A95E40037F740 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewCell.swift; sourceTree = "<group>"; };
-		C0DF03482A5A9ACB0037F740 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewController.swift; sourceTree = "<group>"; };
 		C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		C0DF03522A5A9BC80037F740 /* ArticleListByCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewController.swift; sourceTree = "<group>"; };
@@ -776,7 +858,6 @@
 			isa = PBXGroup;
 			children = (
 				C0DF032E2A5A92170037F740 /* NameSpace.swift */,
-				C0DF03482A5A9ACB0037F740 /* DummyModel.swift */,
 				C0DF03802A5AF51C0037F740 /* Constant.swift */,
 				B51220592A5FAA47006CBE2D /* ImageLiterals.swift */,
 				F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */,
@@ -787,6 +868,8 @@
 		B59892022A56B29B00CE1FEB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C003CC322AD9237F00AFFAAC /* NavigationInterface */,
+				C003CC192AD9175700AFFAAC /* Coordinator */,
 				C0DF03822A5AF7A20037F740 /* Challenge */,
 				B598920F2A56B44200CE1FEB /* Curriculum */,
 				B598920E2A56B41500CE1FEB /* MyPage */,
@@ -1090,6 +1173,8 @@
 				B59892E72A5B14FE00CE1FEB /* NavigationBarType.swift */,
 				C06E38222A65353F00B00600 /* LoginType.swift */,
 				C0856B882ABFDA240026D9F8 /* Badge.swift */,
+				C003CC562ADA4FEB00AFFAAC /* UserState.swift */,
+				C003CC582ADA4FFF00AFFAAC /* TokenState.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1144,6 +1229,74 @@
 				B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C003CC192AD9175700AFFAAC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */,
+				C003CC1E2AD917F900AFFAAC /* SplashCoordinator.swift */,
+				C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */,
+				C003CC222AD9183600AFFAAC /* AuthCoordinator.swift */,
+				C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */,
+				C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */,
+				C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */,
+				C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */,
+				C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */,
+				C003CC2E2AD9189F00AFFAAC /* MypageCoordinator.swift */,
+				C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C003CC322AD9237F00AFFAAC /* NavigationInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C003CC332AD923A100AFFAAC /* Common */,
+				C003CC3C2ADA4EB300AFFAAC /* ChallengeNavigation.swift */,
+				C003CC3E2ADA4EC300AFFAAC /* CurriculumNavigation.swift */,
+				C003CC402ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift */,
+				C003CC422ADA4EFF00AFFAAC /* MyPageNavigation.swift */,
+				C003CC442ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift */,
+				C003CC462ADA4F3400AFFAAC /* ArticleCategoryNavigation.swift */,
+				C003CC482ADA4F4600AFFAAC /* ArticleDetailModalNavigation.swift */,
+				C003CC4A2ADA4F6300AFFAAC /* BookmarkNavigation.swift */,
+				C003CC4C2ADA4F7600AFFAAC /* TodayNavigation.swift */,
+				C003CC4E2ADA4F8D00AFFAAC /* OnboardingNavigation.swift */,
+				C003CC502ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift */,
+				C003CC522ADA4FC100AFFAAC /* LoginNavigation.swift */,
+				C003CC542ADA4FD500AFFAAC /* SplashNavigation.swift */,
+			);
+			path = NavigationInterface;
+			sourceTree = "<group>";
+		};
+		C003CC332AD923A100AFFAAC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C003CC342AD923AF00AFFAAC /* BarNavigation.swift */,
+				C003CC362AD923D100AFFAAC /* ExpireNavigation.swift */,
+				C003CC382ADA4D9600AFFAAC /* PopNavigation.swift */,
+				C003CC3A2ADA4DA100AFFAAC /* DismissNavigation.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C003CC5A2ADA505A00AFFAAC /* MangerInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C003CC5B2ADA506800AFFAAC /* SplashManager.swift */,
+				C003CC5D2ADA508A00AFFAAC /* LoginManager.swift */,
+				C003CC5F2ADA50AA00AFFAAC /* OnboardingManager.swift */,
+				C003CC612ADA50C000AFFAAC /* TodayManager.swift */,
+				C003CC632ADA50ED00AFFAAC /* BookmarkManager.swift */,
+				C003CC652ADA518E00AFFAAC /* ArticleDetailManager.swift */,
+				C003CC672ADA51A700AFFAAC /* ArticleListByCategoryManager.swift */,
+				C003CC692ADA51C000AFFAAC /* MyPageManager.swift */,
+				C003CC6B2ADA51D100AFFAAC /* CurriculumManager.swift */,
+				C003CC6D2ADA51E200AFFAAC /* CurriculumListManager.swift */,
+				C003CC6F2ADA51F300AFFAAC /* ChallengeManager.swift */,
+			);
+			path = MangerInterface;
 			sourceTree = "<group>";
 		};
 		C00780B82A6014870043EB36 /* Component */ = {
@@ -1215,6 +1368,7 @@
 		C0856B632ABFB84E0026D9F8 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				C003CC5A2ADA505A00AFFAAC /* MangerInterface */,
 				C0856B642ABFB8640026D9F8 /* TodayManagerImpl.swift */,
 				C0856B6A2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift */,
 				C0856B702ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift */,
@@ -1271,6 +1425,7 @@
 				4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */,
 				B57BEB6D2A6275D600D1727C /* Serviceable.swift */,
 				B57BEB6F2A6275F500D1727C /* ViewControllerServiceable.swift */,
+				C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1558,21 +1713,28 @@
 				F47329E12A66F5D0001605D4 /* CurriculumResponse.swift in Sources */,
 				C0F029E42A5FB08700E0D185 /* LHUnderLine.swift in Sources */,
 				C06E38282A662D8700B00600 /* TodayArticleResponse.swift in Sources */,
+				C003CC552ADA4FD500AFFAAC /* SplashNavigation.swift in Sources */,
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */,
+				C003CC602ADA50AA00AFFAAC /* OnboardingManager.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
 				C0B15E212AC0450E0058D56B /* ArticleListTableView.swift in Sources */,
 				B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */,
+				C003CC312AD918AB00AFFAAC /* ArticleCoordinator.swift in Sources */,
+				C003CC472ADA4F3400AFFAAC /* ArticleCategoryNavigation.swift in Sources */,
 				C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */,
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				B5C6A2BC2A5DE2A50021BE5E /* BodyTableViewCell.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */,
+				C003CC412ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift in Sources */,
+				C003CC1B2AD9176B00AFFAAC /* Coordinator.swift in Sources */,
 				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
+				C003CC372AD923D100AFFAAC /* ExpireNavigation.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
 				4AE19A1F2A66F2E200C1DB7E /* BookmarkDetailCollectionViewCell.swift in Sources */,
@@ -1581,6 +1743,7 @@
 				B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */,
 				D342807A2A67F12200DA1499 /* ChallengeDataResponse.swift in Sources */,
 				B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */,
+				C003CC232AD9183600AFFAAC /* AuthCoordinator.swift in Sources */,
 				C0856B892ABFDA240026D9F8 /* Badge.swift in Sources */,
 				B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */,
 				C0856B7B2ABFC9640026D9F8 /* SplashManagerImpl.swift in Sources */,
@@ -1601,14 +1764,20 @@
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
 				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekRowZeroTableViewCell.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
+				C003CC662ADA518E00AFFAAC /* ArticleDetailManager.swift in Sources */,
 				4AD216402A69AC1E00C9F2F2 /* MyPageResponse.swift in Sources */,
+				C003CC1F2AD917F900AFFAAC /* SplashCoordinator.swift in Sources */,
+				C003CC6E2ADA51E200AFFAAC /* CurriculumListManager.swift in Sources */,
 				D35272D12A681E13002D7FCB /* ChallengeData.swift in Sources */,
 				B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
+				C003CC532ADA4FC100AFFAAC /* LoginNavigation.swift in Sources */,
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
 				B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */,
 				C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */,
 				C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */,
+				C003CC432ADA4EFF00AFFAAC /* MyPageNavigation.swift in Sources */,
+				C003CC512ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */,
@@ -1617,6 +1786,7 @@
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
 				C09A33242A630A6400B40770 /* BookmarkViewController.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
+				C003CC592ADA4FFF00AFFAAC /* TokenState.swift in Sources */,
 				C0F029E22A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift in Sources */,
 				B57BEB702A6275F500D1727C /* ViewControllerServiceable.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
@@ -1634,25 +1804,39 @@
 				C0B15E252AC103A50058D56B /* LHToggleImageButton.swift in Sources */,
 				4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */,
 				C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */,
+				C003CC2F2AD9189F00AFFAAC /* MypageCoordinator.swift in Sources */,
+				C003CC5E2ADA508A00AFFAAC /* LoginManager.swift in Sources */,
 				C06E38232A65353F00B00600 /* LoginType.swift in Sources */,
 				C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */,
 				C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */,
 				B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */,
+				C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
+				C003CC682ADA51A700AFFAAC /* ArticleListByCategoryManager.swift in Sources */,
+				C003CC6A2ADA51C000AFFAAC /* MyPageManager.swift in Sources */,
 				4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */,
+				C003CC622ADA50C000AFFAAC /* TodayManager.swift in Sources */,
 				C0903CFF2AAAD7E00014786F /* APIService.swift in Sources */,
 				F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */,
 				4A2050152A5DCD1900C7AF3C /* UICollectionView+.swift in Sources */,
 				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,
+				C003CC292AD9186B00AFFAAC /* CurriculumCoordinator.swift in Sources */,
 				C0F029D12A5FA87900E0D185 /* Float+.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
+				C003CC492ADA4F4600AFFAAC /* ArticleDetailModalNavigation.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
+				C003CC5C2ADA506800AFFAAC /* SplashManager.swift in Sources */,
 				B51220642A6039AA006CBE2D /* HttpMethod.swift in Sources */,
+				C003CC1D2AD917CF00AFFAAC /* AppCoordinator.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
 				C0856B872ABFD24E0026D9F8 /* CurriculumListManagerImpl.swift in Sources */,
+				C003CC2B2AD9187B00AFFAAC /* ChallengeCoordinator.swift in Sources */,
 				C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift in Sources */,
 				C0856B7D2ABFCA330026D9F8 /* LoginMangerImpl.swift in Sources */,
+				C003CC252AD9184700AFFAAC /* TabbbarCoordinator.swift in Sources */,
+				C003CC3F2ADA4EC300AFFAAC /* CurriculumNavigation.swift in Sources */,
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
+				C003CC452ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift in Sources */,
 				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
@@ -1662,6 +1846,8 @@
 				F4DB30B42A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift in Sources */,
 				C0856B692ABFB9140026D9F8 /* ArticleServiceImpl.swift in Sources */,
 				F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */,
+				C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */,
+				C003CC6C2ADA51D100AFFAAC /* CurriculumManager.swift in Sources */,
 				4A8980CA2A614F8700746C58 /* MyPageModel.swift in Sources */,
 				4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
@@ -1669,7 +1855,10 @@
 				C0B15E152AC011840058D56B /* LHLabel.swift in Sources */,
 				F4DB30B02A611C9700413EB9 /* CurriculumListByWeekData.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
+				C003CC3B2ADA4DA100AFFAAC /* DismissNavigation.swift in Sources */,
+				C003CC4B2ADA4F6300AFFAAC /* BookmarkNavigation.swift in Sources */,
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
+				C003CC572ADA4FEB00AFFAAC /* UserState.swift in Sources */,
 				B53BA2022A68717B006F9BFB /* LoadingIndicator.swift in Sources */,
 				C0856B7F2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift in Sources */,
 				C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */,
@@ -1679,16 +1868,18 @@
 				B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
 				4A81C2912ACC7DC80056E815 /* UICollectionViewCell+.swift in Sources */,
+				C003CC2D2AD9189100AFFAAC /* BookmarkCoordinator.swift in Sources */,
 				C0856B772ABFC4EA0026D9F8 /* MyPageServiceImpl.swift in Sources */,
 				C0DF03982A5B90790037F740 /* UIColor+.swift in Sources */,
 				C0F029E02A5FAD1200E0D185 /* LHOnboardingDescriptionLabel.swift in Sources */,
-				C0DF03492A5A9ACB0037F740 /* DummyModel.swift in Sources */,
 				C0856B792ABFC56E0026D9F8 /* AuthServiceImpl.swift in Sources */,
 				C0B15E172AC015360058D56B /* LHImageView.swift in Sources */,
 				C09217732A61895A00231C66 /* UIWindow+.swift in Sources */,
 				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
+				C003CC212AD9181600AFFAAC /* TodayCoordinator.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
+				C003CC3D2ADA4EB300AFFAAC /* ChallengeNavigation.swift in Sources */,
 				C0B15E232AC100690058D56B /* LHStackView.swift in Sources */,
 				C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */,
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
@@ -1698,9 +1889,11 @@
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
 				B51220602A60111C006CBE2D /* Token.swift in Sources */,
+				C003CC702ADA51F300AFFAAC /* ChallengeManager.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */,
+				C003CC642ADA50ED00AFFAAC /* BookmarkManager.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */,
 				C0B15E1F2AC024F20058D56B /* CurriculumTableView.swift in Sources */,
@@ -1715,10 +1908,13 @@
 				B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */,
 				D3AB54C12A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */,
 				B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */,
+				C003CC4F2ADA4F8D00AFFAAC /* OnboardingNavigation.swift in Sources */,
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
 				C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
+				C003CC392ADA4D9600AFFAAC /* PopNavigation.swift in Sources */,
+				C003CC4D2ADA4F7600AFFAAC /* TodayNavigation.swift in Sources */,
 				4AE19A1E2A6597E700C1DB7E /* BookmarkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

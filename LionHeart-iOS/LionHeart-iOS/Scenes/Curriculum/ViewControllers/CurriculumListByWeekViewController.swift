@@ -10,12 +10,9 @@ import UIKit
 
 import SnapKit
 
-protocol CurriculumListManager {
-    func postBookmark(model: BookmarkRequest) async throws
-    func getArticleListByWeekInfo(week: Int) async throws -> CurriculumWeekData
-}
-
 final class CurriculumListByWeekViewController: UIViewController {
+    
+    weak var coordinator: CurriculumListByWeekNavigation?
     
     private let manager: CurriculumListManager
     
@@ -53,6 +50,7 @@ final class CurriculumListByWeekViewController: UIViewController {
         setDelegate()
         setCollectionView()
         setNotificationCenter()
+        setAddTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +98,11 @@ private extension CurriculumListByWeekViewController {
         }
     }
     
+    func setAddTarget() {
+        self.navigationBar.backButtonAction {
+            self.coordinator?.backButtonTapped()
+        }
+    }
     
     func setNotificationCenter() {
         NotificationCenter.default.addObserver(self,
@@ -154,7 +157,7 @@ private extension CurriculumListByWeekViewController {
     
     @objc func didSelectTableVIewCell(notification: NSNotification) {
         guard let articleId = notification.object as? Int else { return }
-        presentArticleDetailFullScreen(articleID: articleId)
+        self.coordinator?.curriculumArticleListCellTapped(articleId: articleId)
     }
     
     func setDelegate() {
@@ -208,9 +211,7 @@ extension CurriculumListByWeekViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            self.coordinator?.checkTokenIsExpired()
         case .clientError(code: _, message: let message):
             LHToast.show(message: "\(message)")
         default:

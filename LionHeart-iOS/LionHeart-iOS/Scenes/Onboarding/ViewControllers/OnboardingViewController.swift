@@ -10,14 +10,15 @@ import UIKit
 
 import SnapKit
 
-protocol OnboardingManager {
-    func signUp(type: LoginType, onboardingModel: UserOnboardingModel) async throws
-}
+
+
+
 
 final class OnboardingViewController: UIViewController {
 
     typealias OnboardingViews = [UIViewController]
-
+    
+    weak var coordinator: OnboardingNavigation?
     private let manager: OnboardingManager
     
     private var fetalNickName: String?
@@ -134,7 +135,7 @@ private extension OnboardingViewController {
         }
     
         onboardingNavigationbar.backButtonAction {
-            self.backOnboardingProcess()
+            self.coordinator?.backButtonTapped()
         }
     }
     
@@ -161,6 +162,7 @@ private extension OnboardingViewController {
     
     func presentLoginView() {
         self.navigationController?.popViewController(animated: true)
+        self.coordinator?.backButtonTapped()
     }
     
     func presentOnboardingView(oldValue: OnbardingFlowType) {
@@ -175,16 +177,13 @@ private extension OnboardingViewController {
     func presentCompleteOnboardingView() {
         self.view.endEditing(true)
         self.nextButton.isUserInteractionEnabled = false
-        let completeViewController = CompleteOnbardingViewController()
         let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
-        completeViewController.userData = passingData
         Task {
             showLoading()
             do {
                 try await manager.signUp(type: .kakao, onboardingModel: passingData)
                 hideLoading()
-                self.navigationController?.pushViewController(completeViewController, animated: true)
-
+                self.coordinator?.onboardingCompleted(data: passingData)
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -247,9 +246,7 @@ extension OnboardingViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "이미지패치에러")
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

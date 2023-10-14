@@ -10,13 +10,9 @@ import UIKit
 
 import SnapKit
 
-protocol MyPageManager {
-    func getMyPage() async throws -> BadgeProfileAppData
-    func resignUser() async throws
-    func logout(token: UserDefaultToken) async throws
-}
-
 final class MyPageViewController: UIViewController {
+    
+    weak var coordinator: MyPageNavigation?
     
     private let manager: MyPageManager
     
@@ -39,7 +35,6 @@ final class MyPageViewController: UIViewController {
 
     init(manager: MyPageManager) {
         self.manager = manager
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -80,6 +75,7 @@ private extension MyPageViewController {
     }
     
     func setLayout() {
+        resignButton.backgroundColor = .designSystem(.lionRed)
         navigtaionBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
@@ -99,14 +95,16 @@ private extension MyPageViewController {
     }
     
     func setAddTarget() {
-        resignButton.addButtonAction { sender in
+        navigtaionBar.backButtonAction {
+            self.coordinator?.backButtonTapped()
+        }
+        
+        resignButton.addButtonAction { _ in
             Task {
                 do {
-                    guard let window = self.view.window else { return }
                     self.resignButton.isUserInteractionEnabled = false
                     try await self.manager.resignUser()
-                    let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-                    ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+                    self.coordinator?.checkTokenIsExpired()
                 } catch {
                     print(error)
                 }
@@ -159,9 +157,7 @@ extension MyPageViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

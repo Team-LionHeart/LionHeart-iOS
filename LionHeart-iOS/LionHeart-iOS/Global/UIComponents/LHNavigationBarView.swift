@@ -9,10 +9,8 @@ import UIKit
 
 final class LHNavigationBarView: UIView {
 
-    // MARK: - UI Components
     private let titleLabel = LHLabel(type: .head4, color: .white)
     
-
     private let leftBarItem: UIButton = {
         let button = UIButton()
         button.tintColor = .designSystem(.white)
@@ -49,8 +47,6 @@ final class LHNavigationBarView: UIView {
         return stackView
     }()
 
-    // MARK: - Properties
-
     private let type: LHNavigationType
 
     private weak var viewController: UIViewController?
@@ -77,7 +73,6 @@ final class LHNavigationBarView: UIView {
         self.backgroundColor = type.backgroundColor
     }
 
-    // MARK: - addsubView
     private func setHierarchy() {
         self.addSubviews(leftBarItem,
                          titleLabel,
@@ -85,7 +80,6 @@ final class LHNavigationBarView: UIView {
                          graySepartorLine)
     }
 
-    // MARK: - autolayout설정
     private func setLayout() {
         self.snp.makeConstraints { make in
             make.height.equalTo(ScreenUtils.getHeight(60))
@@ -123,20 +117,11 @@ final class LHNavigationBarView: UIView {
         }
     }
 
-    // MARK: - Helpers
-
     private func setBackButtonWithTitle() {
         self.titleLabel.text = type.title
         self.leftBarItem.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        if type == .onboarding {
-            self.leftBarItem.addButtonAction { _ in
-                self.backButtonActionHandler?()
-            }
-            return
-        }
-        self.leftBarItem.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            self.viewController?.navigationController?.popViewController(animated: true)
+        self.leftBarItem.addButtonAction { _ in
+            self.backButtonActionHandler?()
         }
     }
 
@@ -165,10 +150,9 @@ final class LHNavigationBarView: UIView {
         self.leftBarItem.setImage(UIImage(systemName: "xmark"), for: .normal)
         self.leftBarItem.addButtonAction { [weak self] _ in
             guard let self else { return }
-            self.viewController?.dismiss(animated: true)
+            self.backButtonActionHandler?()
         }
     }
-
 }
 
 extension LHNavigationBarView {

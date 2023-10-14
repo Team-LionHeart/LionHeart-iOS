@@ -10,14 +10,10 @@ import UIKit
 
 import SnapKit
 
-protocol BookmarkManger {
-    func getBookmark() async throws -> BookmarkAppData
-    func postBookmark(model: BookmarkRequest) async throws
-}
-
 final class BookmarkViewController: UIViewController {
     
-    private let manager: BookmarkManger
+    weak var coordinator: BookmarkNavigation?
+    private let manager: BookmarkManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
     private lazy var bookmarkCollectionView = LHCollectionView()
@@ -25,7 +21,7 @@ final class BookmarkViewController: UIViewController {
     private var bookmarkAppData = BookmarkAppData(nickName: "", articleSummaries: [ArticleSummaries]())
     private var bookmarkList = [ArticleSummaries]()
     
-    init(manager: BookmarkManger) {
+    init(manager: BookmarkManager) {
         self.manager = manager
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,6 +38,7 @@ final class BookmarkViewController: UIViewController {
         setDelegate()
         registerCell()
         setTabbar()
+        setAddTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +99,12 @@ private extension BookmarkViewController {
     func setTabbar() {
         self.tabBarController?.tabBar.isHidden = true
     }
+    
+    func setAddTarget() {
+        self.navigationBar.backButtonAction {
+            self.coordinator?.backButtonTapped()
+        }
+    }
 }
 
 extension BookmarkViewController: ViewControllerServiceable {
@@ -116,9 +119,7 @@ extension BookmarkViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-            guard let window = self.view.window else { return }
-            let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
-            ViewControllerUtil.setRootViewController(window: window, viewController: splashViewController, withAnimation: false)
+            self.coordinator?.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
@@ -158,8 +159,9 @@ extension BookmarkViewController: UICollectionViewDataSource {
             cell.bookmarkButtonClosure = { indexPath in
                 Task {
                     do {
-                        try await self.manager.postBookmark(model: BookmarkRequest(articleId: self.bookmarkList[indexPath.item].articleID,
-                                                                                            bookmarkRequestStatus: !self.bookmarkList[indexPath.item].bookmarked))
+                        let selectedItem = self.bookmarkList[indexPath.item]
+                        try await self.manager.postBookmark(model: .init(articleId: selectedItem.articleID,
+                                                                                            bookmarkRequestStatus: !selectedItem.bookmarked))
                         self.bookmarkList.remove(at: indexPath.item)
                         collectionView.deleteItems(at: [indexPath])
                         LHToast.show(message: "북마크가 해제되었습니다")
@@ -195,6 +197,6 @@ extension BookmarkViewController: UICollectionViewDelegateFlowLayout {
 
 extension BookmarkViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.presentArticleDetailFullScreen(articleID: bookmarkList[indexPath.item].articleID)
+        self.coordinator?.bookmarkCellTapped(articleID: bookmarkList[indexPath.item].articleID)
     }
 }
