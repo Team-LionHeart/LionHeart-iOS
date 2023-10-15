@@ -55,8 +55,6 @@ final class SplashViewController: UIViewController, SplashViewControllerable {
     }
 }
 
-extension SplashViewController: ViewControllerable { }
-
 private extension SplashViewController {
 
     func setUI() {
