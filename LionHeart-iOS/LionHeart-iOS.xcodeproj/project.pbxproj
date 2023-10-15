@@ -92,7 +92,6 @@
 		B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */; };
 		B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893122A5D3A4D00CE1FEB /* NetworkError.swift */; };
 		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
-		B59BFD332ADBB621005D2D81 /* ViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD322ADBB621005D2D81 /* ViewControllerable.swift */; };
 		B59BFD352ADBBAE6005D2D81 /* CurriculumControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD342ADBBAE6005D2D81 /* CurriculumControllerable.swift */; };
 		B59BFD3D2ADBBEF8005D2D81 /* ArticleControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD3C2ADBBEF8005D2D81 /* ArticleControllerable.swift */; };
 		B59BFD3F2ADBBF2B005D2D81 /* CurriculumFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD3E2ADBBF2B005D2D81 /* CurriculumFactory.swift */; };
@@ -381,7 +380,6 @@
 		B598930A2A5BED0E00CE1FEB /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBlockType.swift; sourceTree = "<group>"; };
 		B59893122A5D3A4D00CE1FEB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		B59BFD322ADBB621005D2D81 /* ViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerable.swift; sourceTree = "<group>"; };
 		B59BFD342ADBBAE6005D2D81 /* CurriculumControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumControllerable.swift; sourceTree = "<group>"; };
 		B59BFD3C2ADBBEF8005D2D81 /* ArticleControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleControllerable.swift; sourceTree = "<group>"; };
 		B59BFD3E2ADBBF2B005D2D81 /* CurriculumFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumFactory.swift; sourceTree = "<group>"; };
@@ -1241,7 +1239,6 @@
 		B59BFD312ADBB611005D2D81 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				B59BFD322ADBB621005D2D81 /* ViewControllerable.swift */,
 				B59BFD342ADBBAE6005D2D81 /* CurriculumControllerable.swift */,
 				B59BFD3C2ADBBEF8005D2D81 /* ArticleControllerable.swift */,
 				B53F4EE82ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift */,
@@ -2015,7 +2012,6 @@
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */,
 				C003CC642ADA50ED00AFFAAC /* BookmarkManager.swift in Sources */,
-				B59BFD332ADBB621005D2D81 /* ViewControllerable.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
 				4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */,
 				C0B15E1F2AC024F20058D56B /* CurriculumTableView.swift in Sources */,
