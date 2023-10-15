@@ -10,7 +10,12 @@ import UIKit
 
 import SnapKit
 
-final class ArticleListByCategoryViewController: UIViewController {
+protocol ArticleListByCategoryViewControllerable where Self: UIViewController {
+    var coordinator: ArticleListByCategoryNavigation? { get set }
+    var categoryString: String? { get set }
+}
+
+final class ArticleListByCategoryViewController: UIViewController, ArticleListByCategoryViewControllerable {
     
     weak var coordinator: ArticleListByCategoryNavigation?
     private let manager: ArticleListByCategoryManager

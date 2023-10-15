@@ -140,6 +140,15 @@
 		C003CC702ADA51F300AFFAAC /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC6F2ADA51F300AFFAAC /* ChallengeManager.swift */; };
 		C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B62A5FFE0E0043EB36 /* UILabel+.swift */; };
 		C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */; };
+		C009E9EE2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */; };
+		C009E9F02ADBC08A00112F18 /* ArticleCategortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */; };
+		C009E9F22ADBC23B00112F18 /* ChallengeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F12ADBC23B00112F18 /* ChallengeFactory.swift */; };
+		C009E9F42ADBC24A00112F18 /* ChallengeFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F32ADBC24A00112F18 /* ChallengeFactoryImpl.swift */; };
+		C009E9F62ADBC41D00112F18 /* BookmarkFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F52ADBC41D00112F18 /* BookmarkFactory.swift */; };
+		C009E9F82ADBC43300112F18 /* BookmarkFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F72ADBC43300112F18 /* BookmarkFactoryImpl.swift */; };
+		C009E9FA2ADBC4DE00112F18 /* BookmarkViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */; };
+		C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */; };
+		C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
 		C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381C2A65348A00B00600 /* LoginRequest.swift */; };
 		C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E38202A65351600B00600 /* SignUpRequest.swift */; };
@@ -407,6 +416,15 @@
 		C003CC6F2ADA51F300AFFAAC /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		C00780B62A5FFE0E0043EB36 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHTodayArticleTitle.swift; sourceTree = "<group>"; };
+		C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategortFactoryImpl.swift; sourceTree = "<group>"; };
+		C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategortFactory.swift; sourceTree = "<group>"; };
+		C009E9F12ADBC23B00112F18 /* ChallengeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFactory.swift; sourceTree = "<group>"; };
+		C009E9F32ADBC24A00112F18 /* ChallengeFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFactoryImpl.swift; sourceTree = "<group>"; };
+		C009E9F52ADBC41D00112F18 /* BookmarkFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFactory.swift; sourceTree = "<group>"; };
+		C009E9F72ADBC43300112F18 /* BookmarkFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFactoryImpl.swift; sourceTree = "<group>"; };
+		C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewControllerable.swift; sourceTree = "<group>"; };
+		C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewControllerable.swift; sourceTree = "<group>"; };
+		C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewControllerable.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
 		C06E381C2A65348A00B00600 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		C06E38202A65351600B00600 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
@@ -871,6 +889,7 @@
 			isa = PBXGroup;
 			children = (
 				C003CC322AD9237F00AFFAAC /* NavigationInterface */,
+				C009E9EA2ADBBB7B00112F18 /* Factory */,
 				C003CC192AD9175700AFFAAC /* Coordinator */,
 				C0DF03822A5AF7A20037F740 /* Challenge */,
 				B598920F2A56B44200CE1FEB /* Curriculum */,
@@ -1197,6 +1216,9 @@
 			isa = PBXGroup;
 			children = (
 				B59BFD322ADBB621005D2D81 /* ViewControllerable.swift */,
+				C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */,
+				C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */,
+				C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1316,6 +1338,35 @@
 				C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		C009E9EA2ADBBB7B00112F18 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				C009E9EC2ADBBBA900112F18 /* FactoryImpl */,
+				C009E9EB2ADBBB9800112F18 /* FactoryInterface */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		C009E9EB2ADBBB9800112F18 /* FactoryInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */,
+				C009E9F12ADBC23B00112F18 /* ChallengeFactory.swift */,
+				C009E9F52ADBC41D00112F18 /* BookmarkFactory.swift */,
+			);
+			path = FactoryInterface;
+			sourceTree = "<group>";
+		};
+		C009E9EC2ADBBBA900112F18 /* FactoryImpl */ = {
+			isa = PBXGroup;
+			children = (
+				C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */,
+				C009E9F32ADBC24A00112F18 /* ChallengeFactoryImpl.swift */,
+				C009E9F72ADBC43300112F18 /* BookmarkFactoryImpl.swift */,
+			);
+			path = FactoryImpl;
 			sourceTree = "<group>";
 		};
 		C06E381E2A6534E100B00600 /* UserDefault */ = {
@@ -1739,14 +1790,17 @@
 				C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */,
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
+				C009E9F82ADBC43300112F18 /* BookmarkFactoryImpl.swift in Sources */,
 				B5C6A2BC2A5DE2A50021BE5E /* BodyTableViewCell.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
 				C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */,
 				C003CC412ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift in Sources */,
+				C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */,
 				C003CC1B2AD9176B00AFFAAC /* Coordinator.swift in Sources */,
 				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
 				C003CC372AD923D100AFFAAC /* ExpireNavigation.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
+				C009E9F42ADBC24A00112F18 /* ChallengeFactoryImpl.swift in Sources */,
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
 				4AE19A1F2A66F2E200C1DB7E /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */,
@@ -1774,6 +1828,7 @@
 				B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */,
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
 				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekRowZeroTableViewCell.swift in Sources */,
+				C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
 				C003CC662ADA518E00AFFAAC /* ArticleDetailManager.swift in Sources */,
 				4AD216402A69AC1E00C9F2F2 /* MyPageResponse.swift in Sources */,
@@ -1838,6 +1893,7 @@
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				C003CC5C2ADA506800AFFAAC /* SplashManager.swift in Sources */,
 				B51220642A6039AA006CBE2D /* HttpMethod.swift in Sources */,
+				C009E9F02ADBC08A00112F18 /* ArticleCategortFactory.swift in Sources */,
 				C003CC1D2AD917CF00AFFAAC /* AppCoordinator.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
 				C0856B872ABFD24E0026D9F8 /* CurriculumListManagerImpl.swift in Sources */,
@@ -1846,6 +1902,7 @@
 				C0856B7D2ABFCA330026D9F8 /* LoginMangerImpl.swift in Sources */,
 				C003CC252AD9184700AFFAAC /* TabbbarCoordinator.swift in Sources */,
 				C003CC3F2ADA4EC300AFFAAC /* CurriculumNavigation.swift in Sources */,
+				C009E9FA2ADBC4DE00112F18 /* BookmarkViewControllerable.swift in Sources */,
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
 				C003CC452ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift in Sources */,
 				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
@@ -1860,6 +1917,7 @@
 				C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */,
 				C003CC6C2ADA51D100AFFAAC /* CurriculumManager.swift in Sources */,
 				4A8980CA2A614F8700746C58 /* MyPageModel.swift in Sources */,
+				C009E9F22ADBC23B00112F18 /* ChallengeFactory.swift in Sources */,
 				4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
@@ -1901,6 +1959,7 @@
 				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
 				B51220602A60111C006CBE2D /* Token.swift in Sources */,
 				C003CC702ADA51F300AFFAAC /* ChallengeManager.swift in Sources */,
+				C009E9EE2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */,
@@ -1915,6 +1974,7 @@
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
 				C0F62FE72A691FC40003ADFA /* LHLoadingView.swift in Sources */,
 				C0B15E132AC010CD0058D56B /* LHKingfisherService.swift in Sources */,
+				C009E9F62ADBC41D00112F18 /* BookmarkFactory.swift in Sources */,
 				4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */,
 				4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */,
 				B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */,

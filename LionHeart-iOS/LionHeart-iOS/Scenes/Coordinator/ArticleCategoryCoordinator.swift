@@ -10,12 +10,15 @@ import UIKit
 final class ArticleCategoryCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
     
+    private let factory: ArticleCategortFactory
+    
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: ArticleCategortFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
@@ -23,7 +26,7 @@ final class ArticleCategoryCoordinator: Coordinator {
     }
     
     func showArticleCategoryViewController() {
-        let articleCategoryViewController = ArticleCategoryViewController()
+        let articleCategoryViewController = factory.makeArticleCategoryViewController()
         articleCategoryViewController.coordinator = self
         self.navigationController.pushViewController(articleCategoryViewController, animated: true)
     }
@@ -45,7 +48,7 @@ extension ArticleCategoryCoordinator: ArticleCategoryNavigation, ArticleListByCa
     }
     
     func articleListCellTapped(categoryName: String) {
-        let articleListbyCategoryViewController = ArticleListByCategoryViewController(manager: ArticleListByCategoryMangerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
+        let articleListbyCategoryViewController = factory.makeArticleListByCategoryViewController()
         articleListbyCategoryViewController.categoryString = categoryName
         articleListbyCategoryViewController.coordinator = self
         self.navigationController.pushViewController(articleListbyCategoryViewController, animated: true)
@@ -58,7 +61,8 @@ extension ArticleCategoryCoordinator: ArticleCategoryNavigation, ArticleListByCa
     }
     
     func navigationLeftButtonTapped() {
-        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController)
+        let bookmarkFactory = BookmarkFactoryImpl()
+        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController, factory: bookmarkFactory)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
     }
