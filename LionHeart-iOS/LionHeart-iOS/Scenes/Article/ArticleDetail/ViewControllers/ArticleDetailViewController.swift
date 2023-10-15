@@ -10,12 +10,8 @@ import UIKit
 
 import SnapKit
 
-
-
-
-
-final class ArticleDetailViewController: UIViewController {
-
+final class ArticleDetailViewController: UIViewController, ArticleControllerable {
+    
     // MARK: - UI Components
     weak var coordinator: ArticleDetailModalNavigation?
     private let manager: ArticleDetailManager

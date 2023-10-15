@@ -10,12 +10,15 @@ import UIKit
 final class CurriculumCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
     
+    let factory: CurriculumFactory
+    
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: CurriculumFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
@@ -32,7 +35,8 @@ final class CurriculumCoordinator: Coordinator {
 extension CurriculumCoordinator: CurriculumNavigation, CurriculumListByWeekNavigation {
     func curriculumArticleListCellTapped(articleId: Int) {
         let articleCoordinator = ArticleCoordinator(
-            navigationController: navigationController,
+            navigationController: navigationController, 
+            factory: ArticleFactoryImpl(),
             articleId: articleId
         )
         articleCoordinator.parentCoordinator = self
@@ -45,14 +49,17 @@ extension CurriculumCoordinator: CurriculumNavigation, CurriculumListByWeekNavig
     }
     
     func articleListCellTapped(itemIndex: Int) {
-        let curriculumViewController = CurriculumListByWeekViewController(manager: CurriculumListManagerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService()), curriculumService: CurriculumServiceImpl(apiService: APIService())))
+        let curriculumViewController = factory.makeCurriculumListViewController()
         curriculumViewController.coordinator = self
-        curriculumViewController.weekToIndexPathItem = itemIndex
+        curriculumViewController.setWeekIndexPath(week: itemIndex)
         navigationController.pushViewController(curriculumViewController, animated: true)
     }
     
     func navigationRightButtonTapped() {
-        let mypageCoordinator = MypageCoordinator(navigationController: navigationController)
+        let mypageCoordinator = MypageCoordinator(
+            navigationController: navigationController,
+            factory: MyPageFactoryImpl()
+        )
         mypageCoordinator.start()
         children.append(mypageCoordinator)
     }

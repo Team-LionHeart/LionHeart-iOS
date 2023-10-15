@@ -10,7 +10,7 @@ import UIKit
 
 import SnapKit
 
-final class MyPageViewController: UIViewController {
+final class MyPageViewController: UIViewController, MyPageControllerable {
     
     weak var coordinator: MyPageNavigation?
     

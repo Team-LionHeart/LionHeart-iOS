@@ -33,7 +33,8 @@ final class TodayCoordinator: Coordinator {
 extension TodayCoordinator: TodayNavigation {
     func todayArticleTapped(articleID: Int) {
         let articleCoordinator = ArticleCoordinator(
-            navigationController: navigationController,
+            navigationController: navigationController, 
+            factory: ArticleFactoryImpl(),
             articleId: articleID
         )
         articleCoordinator.parentCoordinator = self
@@ -42,7 +43,8 @@ extension TodayCoordinator: TodayNavigation {
     }
     
     func navigationRightButtonTapped() {
-        let mypageCoordinator = MypageCoordinator(navigationController: navigationController)
+        let mypageCoordinator = MypageCoordinator(navigationController: navigationController,
+                                                  factory: MyPageFactoryImpl())
         mypageCoordinator.start()
         children.append(mypageCoordinator)
     }

@@ -10,8 +10,8 @@ import UIKit
 
 import SnapKit
 
-final class CurriculumListByWeekViewController: UIViewController {
-    
+final class CurriculumListByWeekViewController: UIViewController, CurriculumArticleByWeekControllerable {
+
     weak var coordinator: CurriculumListByWeekNavigation?
     
     private let manager: CurriculumListManager
@@ -19,7 +19,7 @@ final class CurriculumListByWeekViewController: UIViewController {
     private let curriculumListByWeekCollectionView = LHCollectionView(color: .background, scroll: false)
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
     
-    var weekToIndexPathItem: Int = 0
+    private var weekToIndexPathItem: Int = 0
     var listByWeekDatas: CurriculumWeekData? {
         didSet {
             self.curriculumListByWeekCollectionView.reloadData()
@@ -68,6 +68,10 @@ final class CurriculumListByWeekViewController: UIViewController {
     
     deinit {
         removeNotificationCenter()
+    }
+    
+    func setWeekIndexPath(week: Int) {
+        self.weekToIndexPathItem = week
     }
 }
 

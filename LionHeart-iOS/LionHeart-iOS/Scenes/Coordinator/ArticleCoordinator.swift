@@ -13,12 +13,15 @@ final class ArticleCoordinator: Coordinator {
     
     var articleId: Int
     
+    var factory: ArticleFactory
+    
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController, articleId: Int) {
+    init(navigationController: UINavigationController, factory: ArticleFactory, articleId: Int) {
         self.navigationController = navigationController
+        self.factory = factory
         self.articleId = articleId
     }
     
@@ -27,9 +30,9 @@ final class ArticleCoordinator: Coordinator {
     }
     
     func showArticleDetailViewController() {
-        let articleDetailViewController = ArticleDetailViewController(manager: ArticleDetailManagerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-        articleDetailViewController.coordinator = self
+        let articleDetailViewController = factory.makeArticleDetailViewController()
         articleDetailViewController.setArticleId(id: articleId)
+        articleDetailViewController.coordinator = self
         articleDetailViewController.isModalInPresentation = true
         articleDetailViewController.modalPresentationStyle = .fullScreen
         navigationController.present(articleDetailViewController, animated: true)

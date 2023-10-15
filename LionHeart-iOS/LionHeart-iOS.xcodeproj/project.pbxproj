@@ -49,6 +49,10 @@
 		B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E86B2A5564DD00F0DB19 /* Encodable+.swift */; };
 		B53881B62A6649D6002D166E /* motion_logo_final.json in Resources */ = {isa = PBXBuildFile; fileRef = B53881B52A6649D6002D166E /* motion_logo_final.json */; };
 		B53BA2022A68717B006F9BFB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA2012A68717B006F9BFB /* LoadingIndicator.swift */; };
+		B53F4EE32ADBC1A3001C5752 /* ArticleFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EE22ADBC1A3001C5752 /* ArticleFactoryImpl.swift */; };
+		B53F4EE52ADBC23F001C5752 /* MyPageFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EE42ADBC23F001C5752 /* MyPageFactoryImpl.swift */; };
+		B53F4EE72ADBC29F001C5752 /* CurriculumFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EE62ADBC29F001C5752 /* CurriculumFactoryImpl.swift */; };
+		B53F4EE92ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EE82ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift */; };
 		B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */; };
 		B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */; };
 		B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB642A6134B800D1727C /* setRootViewController.swift */; };
@@ -89,6 +93,12 @@
 		B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59893122A5D3A4D00CE1FEB /* NetworkError.swift */; };
 		B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B59893152A5D40FC00CE1FEB /* Kingfisher */; };
 		B59BFD332ADBB621005D2D81 /* ViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD322ADBB621005D2D81 /* ViewControllerable.swift */; };
+		B59BFD352ADBBAE6005D2D81 /* CurriculumControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD342ADBBAE6005D2D81 /* CurriculumControllerable.swift */; };
+		B59BFD3D2ADBBEF8005D2D81 /* ArticleControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD3C2ADBBEF8005D2D81 /* ArticleControllerable.swift */; };
+		B59BFD3F2ADBBF2B005D2D81 /* CurriculumFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD3E2ADBBF2B005D2D81 /* CurriculumFactory.swift */; };
+		B59BFD412ADBBFB2005D2D81 /* MyPageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD402ADBBFB2005D2D81 /* MyPageFactory.swift */; };
+		B59BFD432ADBBFF5005D2D81 /* ArticleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD422ADBBFF5005D2D81 /* ArticleFactory.swift */; };
+		B59BFD452ADBC08D005D2D81 /* MyPageControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD442ADBC08D005D2D81 /* MyPageControllerable.swift */; };
 		B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B12A5DB0B10021BE5E /* ArticleDetailTableView.swift */; };
 		B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */; };
 		B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B52A5DD5FE0021BE5E /* TitleTableViewCell.swift */; };
@@ -345,6 +355,10 @@
 		B532E86B2A5564DD00F0DB19 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		B53881B52A6649D6002D166E /* motion_logo_final.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = motion_logo_final.json; sourceTree = "<group>"; };
 		B53BA2012A68717B006F9BFB /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		B53F4EE22ADBC1A3001C5752 /* ArticleFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFactoryImpl.swift; sourceTree = "<group>"; };
+		B53F4EE42ADBC23F001C5752 /* MyPageFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFactoryImpl.swift; sourceTree = "<group>"; };
+		B53F4EE62ADBC29F001C5752 /* CurriculumFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumFactoryImpl.swift; sourceTree = "<group>"; };
+		B53F4EE82ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumArticleByWeekControllerable.swift; sourceTree = "<group>"; };
 		B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorCode.swift; sourceTree = "<group>"; };
 		B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B57BEB642A6134B800D1727C /* setRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setRootViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +382,12 @@
 		B59893102A5D039B00CE1FEB /* ArticleBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBlockType.swift; sourceTree = "<group>"; };
 		B59893122A5D3A4D00CE1FEB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B59BFD322ADBB621005D2D81 /* ViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerable.swift; sourceTree = "<group>"; };
+		B59BFD342ADBBAE6005D2D81 /* CurriculumControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumControllerable.swift; sourceTree = "<group>"; };
+		B59BFD3C2ADBBEF8005D2D81 /* ArticleControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleControllerable.swift; sourceTree = "<group>"; };
+		B59BFD3E2ADBBF2B005D2D81 /* CurriculumFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumFactory.swift; sourceTree = "<group>"; };
+		B59BFD402ADBBFB2005D2D81 /* MyPageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFactory.swift; sourceTree = "<group>"; };
+		B59BFD422ADBBFF5005D2D81 /* ArticleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFactory.swift; sourceTree = "<group>"; };
+		B59BFD442ADBC08D005D2D81 /* MyPageControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageControllerable.swift; sourceTree = "<group>"; };
 		B5C6A2B12A5DB0B10021BE5E /* ArticleDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailTableView.swift; sourceTree = "<group>"; };
 		B5C6A2B32A5DB11A0021BE5E /* ThumnailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumnailTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2B52A5DD5FE0021BE5E /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -1222,6 +1242,9 @@
 			isa = PBXGroup;
 			children = (
 				B59BFD322ADBB621005D2D81 /* ViewControllerable.swift */,
+				B59BFD342ADBBAE6005D2D81 /* CurriculumControllerable.swift */,
+				B59BFD3C2ADBBEF8005D2D81 /* ArticleControllerable.swift */,
+				B53F4EE82ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift */,
 				C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */,
 				C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */,
 				C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */,
@@ -1284,6 +1307,13 @@
 				C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */,
 				C003CC2E2AD9189F00AFFAAC /* MypageCoordinator.swift */,
 				C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */,
+				B59BFD3E2ADBBF2B005D2D81 /* CurriculumFactory.swift */,
+				B59BFD402ADBBFB2005D2D81 /* MyPageFactory.swift */,
+				B59BFD422ADBBFF5005D2D81 /* ArticleFactory.swift */,
+				B59BFD442ADBC08D005D2D81 /* MyPageControllerable.swift */,
+				B53F4EE22ADBC1A3001C5752 /* ArticleFactoryImpl.swift */,
+				B53F4EE42ADBC23F001C5752 /* MyPageFactoryImpl.swift */,
+				B53F4EE62ADBC29F001C5752 /* CurriculumFactoryImpl.swift */,
 				4A52DD9E2ADBC0E500858230 /* AuthFactory.swift */,
 				4A52DD9A2ADBBF2C00858230 /* SpalshFactory.swift */,
 				4A52DD9C2ADBBF4C00858230 /* TodayFactory.swift */,
@@ -1794,6 +1824,7 @@
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
 				C0B15E212AC0450E0058D56B /* ArticleListTableView.swift in Sources */,
 				B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */,
+				B59BFD412ADBBFB2005D2D81 /* MyPageFactory.swift in Sources */,
 				C003CC312AD918AB00AFFAAC /* ArticleCoordinator.swift in Sources */,
 				C003CC472ADA4F3400AFFAAC /* ArticleCategoryNavigation.swift in Sources */,
 				C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */,
@@ -1824,6 +1855,7 @@
 				B59892E52A5B109900CE1FEB /* ScreenUtils.swift in Sources */,
 				C0B15E2B2AC115F90058D56B /* LHView.swift in Sources */,
 				C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */,
+				B59BFD3F2ADBBF2B005D2D81 /* CurriculumFactory.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				F4DB30B82A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
@@ -1848,6 +1880,7 @@
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
 				C003CC532ADA4FC100AFFAAC /* LoginNavigation.swift in Sources */,
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
+				B53F4EE52ADBC23F001C5752 /* MyPageFactoryImpl.swift in Sources */,
 				B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */,
 				C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */,
 				C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */,
@@ -1873,6 +1906,7 @@
 				C0DF03A12A5CAC220037F740 /* GetFetalNicknameViewController.swift in Sources */,
 				C0856B852ABFD0F50026D9F8 /* CurriculumManagerImpl.swift in Sources */,
 				C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */,
+				B59BFD3D2ADBBEF8005D2D81 /* ArticleControllerable.swift in Sources */,
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */,
@@ -1932,11 +1966,13 @@
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
 				C0B15E152AC011840058D56B /* LHLabel.swift in Sources */,
 				F4DB30B02A611C9700413EB9 /* CurriculumListByWeekData.swift in Sources */,
+				B53F4EE92ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
 				C003CC3B2ADA4DA100AFFAAC /* DismissNavigation.swift in Sources */,
 				C003CC4B2ADA4F6300AFFAAC /* BookmarkNavigation.swift in Sources */,
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
 				C003CC572ADA4FEB00AFFAAC /* UserState.swift in Sources */,
+				B59BFD352ADBBAE6005D2D81 /* CurriculumControllerable.swift in Sources */,
 				B53BA2022A68717B006F9BFB /* LoadingIndicator.swift in Sources */,
 				C0856B7F2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift in Sources */,
 				C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */,
@@ -1962,14 +1998,17 @@
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
 				C003CC3D2ADA4EB300AFFAAC /* ChallengeNavigation.swift in Sources */,
 				C0B15E232AC100690058D56B /* LHStackView.swift in Sources */,
+				B59BFD432ADBBFF5005D2D81 /* ArticleFactory.swift in Sources */,
 				C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */,
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */,
+				B59BFD452ADBC08D005D2D81 /* MyPageControllerable.swift in Sources */,
 				C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
 				B51220602A60111C006CBE2D /* Token.swift in Sources */,
+				B53F4EE32ADBC1A3001C5752 /* ArticleFactoryImpl.swift in Sources */,
 				C003CC702ADA51F300AFFAAC /* ChallengeManager.swift in Sources */,
 				C009E9EE2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
@@ -1996,6 +2035,7 @@
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
 				C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */,
+				B53F4EE72ADBC29F001C5752 /* CurriculumFactoryImpl.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
 				C003CC392ADA4D9600AFFAAC /* PopNavigation.swift in Sources */,
 				C003CC4D2ADA4F7600AFFAAC /* TodayNavigation.swift in Sources */,

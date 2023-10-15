@@ -10,12 +10,15 @@ import UIKit
 final class MypageCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
     
+    let factory: MyPageFactory
+    
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: MyPageFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
@@ -23,7 +26,7 @@ final class MypageCoordinator: Coordinator {
     }
     
     func showMypageViewController() {
-        let myPageViewController = MyPageViewController(manager: MyPageManagerImpl(mypageService: MyPageServiceImpl(apiService: APIService()), authService: AuthServiceImpl(apiService: APIService())))
+        let myPageViewController = factory.makeMyPageViewController()
         myPageViewController.coordinator = self
         self.navigationController.pushViewController(myPageViewController, animated: true)
     }

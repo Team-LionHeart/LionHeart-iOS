@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import Lottie
 
-final class CurriculumViewController: UIViewController, CurriculumTableViewToggleButtonTappedProtocol{
+final class CurriculumViewController: UIViewController, CurriculumControllerable  {
     
     weak var coordinator: CurriculumNavigation?
     private let manager: CurriculumManager
@@ -176,7 +176,9 @@ extension CurriculumViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return curriculumViewDatas.count
     }
-    
+}
+
+extension CurriculumViewController: CurriculumTableViewToggleButtonTappedProtocol {
     func toggleButtonTapped(indexPath: IndexPath?) {
         self.isFirstPresented = false
         guard let indexPath  else { return }
