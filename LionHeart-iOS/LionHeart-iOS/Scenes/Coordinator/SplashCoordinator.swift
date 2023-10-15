@@ -8,14 +8,17 @@
 import UIKit
 
 final class SplashCoordinator: Coordinator {
+    
     weak var parentCoordinator: Coordinator?
+    private let factory: SplashFactory
     
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: SplashFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
@@ -23,7 +26,7 @@ final class SplashCoordinator: Coordinator {
     }
     
     func showSplashViewController() {
-        let splashViewController = SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+        let splashViewController = factory.makeSplashFactory()
         splashViewController.coordinator = self
         self.navigationController.pushViewController(splashViewController, animated: false)
     }
@@ -36,7 +39,7 @@ final class SplashCoordinator: Coordinator {
     }
     
     func showLogin() {
-        let authCoordinator = AuthCoordinator(navigationController: navigationController)
+        let authCoordinator = AuthCoordinator(navigationController: navigationController, factory: AuthFactoryImpl())
         children.removeAll()
         authCoordinator.parentCoordinator = self
         children.append(authCoordinator)
