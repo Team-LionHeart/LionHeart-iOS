@@ -25,7 +25,7 @@ final class TodayCoordinator: Coordinator {
     }
     
     func showTodayViewController() {
-        let todayViewController = factory.makeTodayFactory()
+        let todayViewController = factory.makeTodayViewController()
         todayViewController.coordinator = self
         self.navigationController.pushViewController(todayViewController, animated: true)
     }

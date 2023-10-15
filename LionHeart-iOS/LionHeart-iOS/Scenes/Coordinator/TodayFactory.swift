@@ -8,11 +8,11 @@
 import UIKit
 
 protocol TodayFactory {
-    func makeTodayFactory() -> TodayViewControllerable
+    func makeTodayViewController() -> TodayViewControllerable
 }
 
 struct TodayFactoryImpl: TodayFactory {
-    func makeTodayFactory() -> TodayViewControllerable {
+    func makeTodayViewController() -> TodayViewControllerable {
         return TodayViewController(manager: TodayManagerImpl(articleService: ArticleServiceImpl(apiService: APIService())))
     }
 }

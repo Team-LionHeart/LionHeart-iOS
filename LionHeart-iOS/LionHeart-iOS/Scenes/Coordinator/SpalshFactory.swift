@@ -8,11 +8,11 @@
 import UIKit
 
 protocol SplashFactory {
-    func makeSplashFactory() -> SplashViewControllerable
+    func makeSplashViewController() -> SplashViewControllerable
 }
 
 struct SplashFactoryImpl: SplashFactory {
-    func makeSplashFactory() -> SplashViewControllerable {
+    func makeSplashViewController() -> SplashViewControllerable {
         return SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
     }
 }
