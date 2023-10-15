@@ -5,10 +5,11 @@
 //  Created by 김민재 on 10/15/23.
 //
 
-import Foundation
+import UIKit
 
 
-protocol CurriculumControllerable: ViewControllerable {
-    var articleId: Int { get set }
-    var itemIndex: Int { get set }
+protocol CurriculumControllerable where Self: UIViewController {
+    var coordinator: CurriculumNavigation? { get set }
 }
+
+
