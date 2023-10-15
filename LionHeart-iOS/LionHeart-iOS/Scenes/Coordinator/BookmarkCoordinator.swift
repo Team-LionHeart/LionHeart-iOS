@@ -31,7 +31,10 @@ final class BookmarkCoordinator: Coordinator {
 
 extension BookmarkCoordinator: BookmarkNavigation {
     func bookmarkCellTapped(articleID: Int) {
-        let articleCoordinator = ArticleCoordinator(navigationController: navigationController, articleId: articleID)
+        let articleCoordinator = ArticleCoordinator(
+            navigationController: navigationController,
+            factory: ArticleFactoryImpl(),
+            articleId: articleID)
         articleCoordinator.start()
         children.append(articleCoordinator)
     }

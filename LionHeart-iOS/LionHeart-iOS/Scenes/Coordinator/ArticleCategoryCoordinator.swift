@@ -32,7 +32,8 @@ final class ArticleCategoryCoordinator: Coordinator {
 extension ArticleCategoryCoordinator: ArticleCategoryNavigation, ArticleListByCategoryNavigation {
     func articleListByCategoryCellTapped(articleID: Int) {
         let articleCoordinator = ArticleCoordinator(
-            navigationController: navigationController,
+            navigationController: navigationController, 
+            factory: ArticleFactoryImpl(),
             articleId: articleID
         )
         articleCoordinator.parentCoordinator = self
@@ -52,7 +53,10 @@ extension ArticleCategoryCoordinator: ArticleCategoryNavigation, ArticleListByCa
     }
     
     func navigationRightButtonTapped() {
-        let mypageCoordinator = MypageCoordinator(navigationController: navigationController)
+        let mypageCoordinator = MypageCoordinator(
+            navigationController: navigationController,
+            factory: MyPageFactoryImpl()
+        )
         mypageCoordinator.start()
         children.append(mypageCoordinator)
     }

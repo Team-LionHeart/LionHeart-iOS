@@ -36,7 +36,10 @@ final class TabbarCoordinator: Coordinator {
         articleCategoryNavigationController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         
         let curriculumNavigationController = UINavigationController()
-        let curriculumCoordinator = CurriculumCoordinator(navigationController: curriculumNavigationController)
+        let curriculumCoordinator = CurriculumCoordinator(
+            navigationController: curriculumNavigationController,
+            factory: CurriculumFactoryImpl()
+        )
         curriculumNavigationController.tabBarItem = UITabBarItem(title: "커리큘럼", image: .assetImage(.curriculum), tag: 2)
         curriculumCoordinator.parentCoordinator = parentCoordinator
         
