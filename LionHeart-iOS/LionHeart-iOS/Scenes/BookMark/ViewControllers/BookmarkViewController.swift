@@ -10,7 +10,11 @@ import UIKit
 
 import SnapKit
 
-final class BookmarkViewController: UIViewController {
+protocol BookmarkViewControllerable where Self: UIViewController {
+    var coordinator: BookmarkNavigation? { get set }
+}
+
+final class BookmarkViewController: UIViewController, BookmarkViewControllerable {
     
     weak var coordinator: BookmarkNavigation?
     private let manager: BookmarkManager

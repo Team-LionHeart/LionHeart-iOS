@@ -38,7 +38,8 @@ extension ChallengeCoordinator: ChallengeNavigation {
     }
     
     func navigationLeftButtonTapped() {
-        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController)
+        let bookmakrFactory = BookmarkFactoryImpl()
+        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController, factory: bookmakrFactory)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
     }

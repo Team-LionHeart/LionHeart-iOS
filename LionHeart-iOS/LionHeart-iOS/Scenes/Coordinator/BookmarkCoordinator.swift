@@ -9,13 +9,15 @@ import UIKit
 
 final class BookmarkCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
+    private let factory: BookmarkFactory
     
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: BookmarkFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
@@ -23,7 +25,7 @@ final class BookmarkCoordinator: Coordinator {
     }
     
     func showBookmarkViewController() {
-        let bookmarkViewController = BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
+        let bookmarkViewController = factory.makeBookmarkViewController()
         bookmarkViewController.coordinator = self
         self.navigationController.pushViewController(bookmarkViewController, animated: true)
     }
