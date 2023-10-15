@@ -140,6 +140,8 @@
 		C003CC702ADA51F300AFFAAC /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC6F2ADA51F300AFFAAC /* ChallengeManager.swift */; };
 		C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B62A5FFE0E0043EB36 /* UILabel+.swift */; };
 		C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */; };
+		C009E9EE2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */; };
+		C009E9F02ADBC08A00112F18 /* ArticleCategortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
 		C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381C2A65348A00B00600 /* LoginRequest.swift */; };
 		C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E38202A65351600B00600 /* SignUpRequest.swift */; };
@@ -407,6 +409,8 @@
 		C003CC6F2ADA51F300AFFAAC /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		C00780B62A5FFE0E0043EB36 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHTodayArticleTitle.swift; sourceTree = "<group>"; };
+		C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategortFactoryImpl.swift; sourceTree = "<group>"; };
+		C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategortFactory.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
 		C06E381C2A65348A00B00600 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		C06E38202A65351600B00600 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
@@ -871,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				C003CC322AD9237F00AFFAAC /* NavigationInterface */,
+				C009E9EA2ADBBB7B00112F18 /* Factory */,
 				C003CC192AD9175700AFFAAC /* Coordinator */,
 				C0DF03822A5AF7A20037F740 /* Challenge */,
 				B598920F2A56B44200CE1FEB /* Curriculum */,
@@ -1316,6 +1321,31 @@
 				C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		C009E9EA2ADBBB7B00112F18 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				C009E9EC2ADBBBA900112F18 /* FactoryImpl */,
+				C009E9EB2ADBBB9800112F18 /* FactoryInterface */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		C009E9EB2ADBBB9800112F18 /* FactoryInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */,
+			);
+			path = FactoryInterface;
+			sourceTree = "<group>";
+		};
+		C009E9EC2ADBBBA900112F18 /* FactoryImpl */ = {
+			isa = PBXGroup;
+			children = (
+				C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */,
+			);
+			path = FactoryImpl;
 			sourceTree = "<group>";
 		};
 		C06E381E2A6534E100B00600 /* UserDefault */ = {
@@ -1838,6 +1868,7 @@
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				C003CC5C2ADA506800AFFAAC /* SplashManager.swift in Sources */,
 				B51220642A6039AA006CBE2D /* HttpMethod.swift in Sources */,
+				C009E9F02ADBC08A00112F18 /* ArticleCategortFactory.swift in Sources */,
 				C003CC1D2AD917CF00AFFAAC /* AppCoordinator.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
 				C0856B872ABFD24E0026D9F8 /* CurriculumListManagerImpl.swift in Sources */,
@@ -1901,6 +1932,7 @@
 				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
 				B51220602A60111C006CBE2D /* Token.swift in Sources */,
 				C003CC702ADA51F300AFFAAC /* ChallengeManager.swift in Sources */,
+				C009E9EE2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
 				C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */,

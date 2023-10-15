@@ -31,7 +31,7 @@ final class TabbarCoordinator: Coordinator {
         todayNavigationController.tabBarItem = UITabBarItem(title: "투데이", image: .assetImage(.home), tag: 0)
         
         let articleCategoryNavigationController = UINavigationController()
-        let articleCategoryCoordinator = ArticleCategoryCoordinator(navigationController: articleCategoryNavigationController)
+        let articleCategoryCoordinator = ArticleCategoryCoordinator(navigationController: articleCategoryNavigationController, factory: ArticleCategortFactoryImpl())
         articleCategoryCoordinator.parentCoordinator = parentCoordinator
         articleCategoryNavigationController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         

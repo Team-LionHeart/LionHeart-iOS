@@ -10,9 +10,11 @@ import UIKit
 
 import SnapKit
 
+protocol ArticleCategoryViewControllerable where Self: UIViewController {
+    var coordinator: ArticleCategoryNavigation? {get set}
+}
 
-
-final class ArticleCategoryViewController: UIViewController {
+final class ArticleCategoryViewController: UIViewController, ArticleCategoryViewControllerable {
     
     weak var coordinator: ArticleCategoryNavigation?
 

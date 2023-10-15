@@ -8,7 +8,6 @@
 import UIKit
 
 
-protocol ViewControllerable where Self: UIViewController {
-    var coordinator: Coordinator { get set }
-}
+protocol ViewControllerable {}
+extension UIViewController: ViewControllerable {}
 
