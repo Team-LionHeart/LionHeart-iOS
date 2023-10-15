@@ -8,4 +8,6 @@
 import UIKit
 
 
-protocol MyPageControllerable where Self: UIViewController {}
+protocol MyPageControllerable where Self: UIViewController {
+    var coordinator: MyPageNavigation? { get set }
+}

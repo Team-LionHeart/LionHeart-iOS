@@ -10,4 +10,4 @@ import UIKit
 
 protocol ViewControllerable {}
 
-extension UIViewController: ViewControllerable
+extension UIViewController: ViewControllerable {}
