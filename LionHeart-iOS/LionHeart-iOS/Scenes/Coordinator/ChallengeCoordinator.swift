@@ -9,13 +9,14 @@ import UIKit
 
 final class ChallengeCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
-    
+    private let factory: ChallengeFactory
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: ChallengeFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
@@ -23,7 +24,7 @@ final class ChallengeCoordinator: Coordinator {
     }
     
     func showChallengeViewController() {
-        let challengeViewController = ChallengeViewController(manager: ChallengeManagerImpl(challengeService: ChallengeServiceImpl(apiService: APIService())))
+        let challengeViewController = factory.makeChallengeViewController()
         challengeViewController.coordinator = self
         navigationController.pushViewController(challengeViewController, animated: true)
     }

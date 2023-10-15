@@ -142,6 +142,8 @@
 		C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */; };
 		C009E9EE2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */; };
 		C009E9F02ADBC08A00112F18 /* ArticleCategortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */; };
+		C009E9F22ADBC23B00112F18 /* ChallengeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F12ADBC23B00112F18 /* ChallengeFactory.swift */; };
+		C009E9F42ADBC24A00112F18 /* ChallengeFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F32ADBC24A00112F18 /* ChallengeFactoryImpl.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
 		C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381C2A65348A00B00600 /* LoginRequest.swift */; };
 		C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E38202A65351600B00600 /* SignUpRequest.swift */; };
@@ -411,6 +413,8 @@
 		C00780B92A60149D0043EB36 /* LHTodayArticleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHTodayArticleTitle.swift; sourceTree = "<group>"; };
 		C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategortFactoryImpl.swift; sourceTree = "<group>"; };
 		C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategortFactory.swift; sourceTree = "<group>"; };
+		C009E9F12ADBC23B00112F18 /* ChallengeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFactory.swift; sourceTree = "<group>"; };
+		C009E9F32ADBC24A00112F18 /* ChallengeFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFactoryImpl.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
 		C06E381C2A65348A00B00600 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		C06E38202A65351600B00600 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
@@ -1336,6 +1340,7 @@
 			isa = PBXGroup;
 			children = (
 				C009E9EF2ADBC08A00112F18 /* ArticleCategortFactory.swift */,
+				C009E9F12ADBC23B00112F18 /* ChallengeFactory.swift */,
 			);
 			path = FactoryInterface;
 			sourceTree = "<group>";
@@ -1344,6 +1349,7 @@
 			isa = PBXGroup;
 			children = (
 				C009E9ED2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift */,
+				C009E9F32ADBC24A00112F18 /* ChallengeFactoryImpl.swift */,
 			);
 			path = FactoryImpl;
 			sourceTree = "<group>";
@@ -1777,6 +1783,7 @@
 				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
 				C003CC372AD923D100AFFAAC /* ExpireNavigation.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
+				C009E9F42ADBC24A00112F18 /* ChallengeFactoryImpl.swift in Sources */,
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
 				4AE19A1F2A66F2E200C1DB7E /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */,
@@ -1891,6 +1898,7 @@
 				C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */,
 				C003CC6C2ADA51D100AFFAAC /* CurriculumManager.swift in Sources */,
 				4A8980CA2A614F8700746C58 /* MyPageModel.swift in Sources */,
+				C009E9F22ADBC23B00112F18 /* ChallengeFactory.swift in Sources */,
 				4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,

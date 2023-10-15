@@ -11,7 +11,11 @@ import UIKit
 import SnapKit
 import Lottie
 
-final class ChallengeViewController: UIViewController {
+protocol ChallengeViewControllerable where Self: UIViewController {
+    var coordinator: ChallengeNavigation? { get set }
+}
+
+final class ChallengeViewController: UIViewController, ChallengeViewControllerable {
     
     weak var coordinator: ChallengeNavigation?
     private var manager: ChallengeManager
