@@ -10,10 +10,6 @@ import UIKit
 
 import SnapKit
 
-protocol SplashViewControllerable where Self: UIViewController {
-    var coordinator: SplashNavigation? { get set }
-}
-
 final class SplashViewController: UIViewController, SplashViewControllerable {
 
     weak var coordinator: SplashNavigation?

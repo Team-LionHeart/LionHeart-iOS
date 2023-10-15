@@ -2,16 +2,10 @@
 //  AuthFactoryImpl.swift
 //  LionHeart-iOS
 //
-//  Created by 황찬미 on 2023/10/15.
+//  Created by uiskim on 2023/10/15.
 //
 
-import Foundation
-
-protocol AuthFactory {
-    func makeLoginViewController() -> LoginViewControllerable
-    func makeCompleteOnbardingViewController() -> CompleteOnbardingViewControllerable
-    func makeOnboardingViewController() -> OnboardingViewControllerable
-}
+import UIKit
 
 struct AuthFactoryImpl: AuthFactory {
     func makeLoginViewController() -> LoginViewControllerable {
