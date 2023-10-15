@@ -26,12 +26,12 @@ final class TabbarCoordinator: Coordinator {
         let tabbarController = TabBarViewController()
         
         let todayNavigationController = UINavigationController()
-        let todayCoordinator = TodayCoordinator(navigationController: todayNavigationController)
+        let todayCoordinator = TodayCoordinator(navigationController: todayNavigationController, factory: TodayFactoryImpl())
         todayCoordinator.parentCoordinator = parentCoordinator
         todayNavigationController.tabBarItem = UITabBarItem(title: "투데이", image: .assetImage(.home), tag: 0)
         
         let articleCategoryNavigationController = UINavigationController()
-        let articleCategoryCoordinator = ArticleCategoryCoordinator(navigationController: articleCategoryNavigationController)
+        let articleCategoryCoordinator = ArticleCategoryCoordinator(navigationController: articleCategoryNavigationController, factory: ArticleCategortFactoryImpl())
         articleCategoryCoordinator.parentCoordinator = parentCoordinator
         articleCategoryNavigationController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         
@@ -44,7 +44,7 @@ final class TabbarCoordinator: Coordinator {
         curriculumCoordinator.parentCoordinator = parentCoordinator
         
         let challengeNavigationController = UINavigationController()
-        let challengeCoordinator = ChallengeCoordinator(navigationController: challengeNavigationController)
+        let challengeCoordinator = ChallengeCoordinator(navigationController: challengeNavigationController, factory: ChallengeFactoryImpl())
         challengeCoordinator.parentCoordinator = parentCoordinator
         challengeNavigationController.tabBarItem = UITabBarItem(title: "챌린지", image: .assetImage(.challenge), tag: 3)
         

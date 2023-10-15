@@ -10,7 +10,12 @@ import UIKit
 
 import SnapKit
 
-final class CompleteOnbardingViewController: UIViewController {
+protocol CompleteOnbardingViewControllerable where Self: UIViewController {
+    var coordinator: CompleteOnbardingNavigation? { get set }
+    var userData: UserOnboardingModel? { get set }
+}
+
+final class CompleteOnbardingViewController: UIViewController, CompleteOnbardingViewControllerable {
     
     private enum SizeInspector {
         static let sideOffset: CGFloat = 58

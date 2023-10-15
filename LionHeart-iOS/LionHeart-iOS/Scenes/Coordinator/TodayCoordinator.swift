@@ -9,13 +9,15 @@ import UIKit
 
 final class TodayCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
+    private let factory: TodayFactory
     
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: TodayFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
@@ -23,7 +25,7 @@ final class TodayCoordinator: Coordinator {
     }
     
     func showTodayViewController() {
-        let todayViewController = TodayViewController(manager: TodayManagerImpl(articleService: ArticleServiceImpl(apiService: APIService())))
+        let todayViewController = factory.makeTodayViewController()
         todayViewController.coordinator = self
         self.navigationController.pushViewController(todayViewController, animated: true)
     }
@@ -48,7 +50,8 @@ extension TodayCoordinator: TodayNavigation {
     }
     
     func navigationLeftButtonTapped() {
-        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController)
+        let bookmarkFactory = BookmarkFactoryImpl()
+        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController, factory: bookmarkFactory)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
     }

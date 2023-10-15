@@ -65,7 +65,8 @@ extension CurriculumCoordinator: CurriculumNavigation, CurriculumListByWeekNavig
     }
     
     func navigationLeftButtonTapped() {
-        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController)
+        let bookmarkFactory = BookmarkFactoryImpl()
+        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController, factory: bookmarkFactory)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
     }

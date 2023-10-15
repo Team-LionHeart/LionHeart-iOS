@@ -10,9 +10,7 @@ import UIKit
 
 import SnapKit
 
-
-
-final class ArticleCategoryViewController: UIViewController {
+final class ArticleCategoryViewController: UIViewController, ArticleCategoryViewControllerable {
     
     weak var coordinator: ArticleCategoryNavigation?
 
