@@ -10,7 +10,11 @@ import UIKit
 
 import SnapKit
 
-final class TodayViewController: UIViewController {
+protocol TodayViewControllerable where Self: UIViewController {
+    var coordinator: TodayNavigation? { get set }
+}
+
+final class TodayViewController: UIViewController, TodayViewControllerable {
     
     weak var coordinator: TodayNavigation?
     private let manager: TodayManager
