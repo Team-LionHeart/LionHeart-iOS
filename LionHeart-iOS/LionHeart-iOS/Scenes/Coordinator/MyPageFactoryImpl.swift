@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+
+struct MyPageFactoryImpl: MyPageFactory {
+    func makeMyPageViewController() -> MyPageControllerable {
+        let apiService = APIService()
+        let authService = AuthServiceImpl(apiService: apiService)
+        let myPageService = MyPageServiceImpl(apiService: apiService)
+        let manager = MyPageManagerImpl(mypageService: myPageService, authService: authService)
+        let myPageViewController = MyPageViewController(manager: manager)
+        return myPageViewController
+    }
+    
+    
+}
