@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+
+protocol MyPageFactory {
+    func makeMyPageViewController() -> MyPageControllerable
+}

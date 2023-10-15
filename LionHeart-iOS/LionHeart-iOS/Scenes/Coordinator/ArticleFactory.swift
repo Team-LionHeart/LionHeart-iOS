@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+
+protocol ArticleFactory {
+    func makeArticleDetailViewController() -> ArticleControllerable
+}
