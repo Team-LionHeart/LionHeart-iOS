@@ -26,7 +26,7 @@ final class TabbarCoordinator: Coordinator {
         let tabbarController = TabBarViewController()
         
         let todayNavigationController = UINavigationController()
-        let todayCoordinator = TodayCoordinator(navigationController: todayNavigationController)
+        let todayCoordinator = TodayCoordinator(navigationController: todayNavigationController, factory: TodayFactoryImpl())
         todayCoordinator.parentCoordinator = parentCoordinator
         todayNavigationController.tabBarItem = UITabBarItem(title: "투데이", image: .assetImage(.home), tag: 0)
         

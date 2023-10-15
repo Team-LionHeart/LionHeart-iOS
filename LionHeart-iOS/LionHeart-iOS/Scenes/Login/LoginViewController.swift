@@ -13,7 +13,12 @@ import SnapKit
 import KakaoSDKAuth
 import KakaoSDKUser
 
-final class LoginViewController: UIViewController {
+protocol LoginViewControllerable where Self: UIViewController {
+    var coordinator: LoginNavigation? { get set }
+}
+
+final class LoginViewController: UIViewController, LoginViewControllerable {
+    var userData: UserOnboardingModel?
     
     private var kakaoAccessToken: String? {
         didSet {
