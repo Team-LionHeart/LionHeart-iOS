@@ -9,13 +9,15 @@ import UIKit
 
 final class AuthCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
+    private let factory: AuthFactory
     
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: AuthFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
@@ -23,7 +25,7 @@ final class AuthCoordinator: Coordinator {
     }
     
     func showLogin() {
-        let loginViewController = LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService())))
+        let loginViewController = factory.makeLoginViewController()
         loginViewController.coordinator = self
         self.navigationController.pushViewController(loginViewController, animated: true)
     }
@@ -37,7 +39,7 @@ extension AuthCoordinator: LoginNavigation, OnboardingNavigation, CompleteOnbard
     }
     
     func onboardingCompleted(data: UserOnboardingModel) {
-        let completeViewController = CompleteOnbardingViewController()
+        let completeViewController = factory.makeCompleteOnbardingViewController()
         completeViewController.coordinator = self
         completeViewController.userData = data
         self.navigationController.pushViewController(completeViewController, animated: true)
@@ -53,7 +55,7 @@ extension AuthCoordinator: LoginNavigation, OnboardingNavigation, CompleteOnbard
         case .verified:
             splashCoorinator?.showTabbar()
         case .nonVerified:
-            let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+            let onboardingViewController = factory.makeOnboardingViewController()
             onboardingViewController.setKakaoAccessToken(kakaoToken)
             onboardingViewController.coordinator = self
             self.navigationController.pushViewController(onboardingViewController, animated: true)
