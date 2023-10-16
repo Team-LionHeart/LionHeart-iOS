@@ -10,10 +10,6 @@ import UIKit
 
 import SnapKit
 
-protocol SplashViewControllerable where Self: UIViewController {
-    var coordinator: SplashNavigation? { get set }
-}
-
 final class SplashViewController: UIViewController, SplashViewControllerable {
 
     weak var coordinator: SplashNavigation?
@@ -54,8 +50,6 @@ final class SplashViewController: UIViewController, SplashViewControllerable {
         return UserDefaultsManager.tokenKey?.refreshToken
     }
 }
-
-extension SplashViewController: ViewControllerable { }
 
 private extension SplashViewController {
 

@@ -10,10 +10,7 @@ import UIKit
 
 import SnapKit
 
-protocol OnboardingViewControllerable where Self: UIViewController {
-    var coordinator: OnboardingNavigation? { get set }
-    func setKakaoAccessToken(_ token: String?)
-}
+
 
 final class OnboardingViewController: UIViewController, OnboardingViewControllerable  {
     typealias OnboardingViews = [UIViewController]

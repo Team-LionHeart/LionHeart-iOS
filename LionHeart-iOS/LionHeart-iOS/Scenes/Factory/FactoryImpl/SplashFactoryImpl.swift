@@ -1,15 +1,11 @@
 //
-//  SpalshFactory.swift
+//  SplashFactoryImpl.swift
 //  LionHeart-iOS
 //
-//  Created by 황찬미 on 2023/10/15.
+//  Created by uiskim on 2023/10/15.
 //
 
 import UIKit
-
-protocol SplashFactory {
-    func makeSplashViewController() -> SplashViewControllerable
-}
 
 struct SplashFactoryImpl: SplashFactory {
     func makeSplashViewController() -> SplashViewControllerable {
