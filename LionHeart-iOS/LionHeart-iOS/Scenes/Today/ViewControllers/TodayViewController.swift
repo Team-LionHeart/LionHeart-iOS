@@ -12,7 +12,7 @@ import SnapKit
 
 final class TodayViewController: UIViewController, TodayViewControllerable {
     
-    weak var coordinator: TodayNavigation?
+    var adaptor: TodayNavigation
     private let manager: TodayManager
     
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
@@ -23,8 +23,9 @@ final class TodayViewController: UIViewController, TodayViewControllerable {
     
     private var todayArticleID: Int?
     
-    init(manager: TodayManager) {
+    init(manager: TodayManager, adaptor: TodayNavigation) {
         self.manager = manager
+        self.adaptor = adaptor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -128,17 +129,17 @@ private extension TodayViewController {
 
     func setButtonAction() {
         todayNavigationBar.rightFirstBarItemAction {
-            self.coordinator?.navigationLeftButtonTapped()
+            self.adaptor.navigationLeftButtonTapped()
         }
         
         todayNavigationBar.rightSecondBarItemAction {
-            self.coordinator?.navigationRightButtonTapped()
+            self.adaptor.navigationRightButtonTapped()
         }
     }
     
     @objc func articleTapped(_ sender: UIButton) {
         guard let todayArticleID else { return }
-        self.coordinator?.todayArticleTapped(articleID: todayArticleID)
+        self.adaptor.todayArticleTapped(articleID: todayArticleID)
     }
 }
 
@@ -154,7 +155,7 @@ extension TodayViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "이미지패치실패", isTabBar: true)
         case .unAuthorizedError:
-            self.coordinator?.checkTokenIsExpired()
+            self.adaptor.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message, isTabBar: true)
         case .serverError:

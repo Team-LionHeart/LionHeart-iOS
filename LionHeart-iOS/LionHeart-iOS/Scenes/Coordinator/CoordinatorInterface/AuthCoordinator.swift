@@ -32,6 +32,12 @@ final class AuthCoordinator: Coordinator {
 }
 
 extension AuthCoordinator: LoginNavigation, OnboardingNavigation, CompleteOnbardingNavigation {
+    func checkTokenIsExpired() {
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            exit(0)
+        }
+    }
     
     func startButtonTapped() {
         let splashCoorinator = parentCoordinator as? SplashCoordinator

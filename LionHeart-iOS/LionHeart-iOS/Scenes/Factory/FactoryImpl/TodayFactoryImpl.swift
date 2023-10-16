@@ -8,7 +8,7 @@
 import UIKit
 
 struct TodayFactoryImpl: TodayFactory {
-    func makeTodayViewController() -> TodayViewControllerable {
-        return TodayViewController(manager: TodayManagerImpl(articleService: ArticleServiceImpl(apiService: APIService())))
+    func makeTodayViewController(adaptor: TodayNavigation) -> TodayViewControllerable {
+        return TodayViewController(manager: TodayManagerImpl(articleService: ArticleServiceImpl(apiService: APIService())), adaptor: adaptor)
     }
 }

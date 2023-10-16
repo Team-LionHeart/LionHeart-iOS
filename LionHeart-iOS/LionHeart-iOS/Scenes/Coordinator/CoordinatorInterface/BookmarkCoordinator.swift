@@ -32,6 +32,13 @@ final class BookmarkCoordinator: Coordinator {
 }
 
 extension BookmarkCoordinator: BookmarkNavigation {
+    func checkTokenIsExpired() {
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            exit(0)
+        }
+    }
+    
     func bookmarkCellTapped(articleID: Int) {
         let articleCoordinator = ArticleCoordinator(
             navigationController: navigationController,

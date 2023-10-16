@@ -1,13 +1,13 @@
 //
-//  TodayCoordinator.swift
+//  TodayCoordinatorImpl.swift
 //  LionHeart-iOS
 //
-//  Created by uiskim on 2023/10/13.
+//  Created by uiskim on 2023/10/16.
 //
 
 import UIKit
 
-final class TodayCoordinator: Coordinator {
+final class TodayCoordinatorImpl: TodayCoordinator {
     weak var parentCoordinator: Coordinator?
     private let factory: TodayFactory
     
@@ -25,15 +25,14 @@ final class TodayCoordinator: Coordinator {
     }
     
     func showTodayViewController() {
-        let todayViewController = factory.makeTodayViewController()
-        todayViewController.coordinator = self
-        self.navigationController.pushViewController(todayViewController, animated: true)
+        let todayAdaptor = TodayAdaptor(coordinator: self)
+        let todayVC = factory.makeTodayViewController(adaptor: todayAdaptor)
+        self.navigationController.pushViewController(todayVC, animated: true)
     }
-}
-extension TodayCoordinator: TodayNavigation {
-    func todayArticleTapped(articleID: Int) {
+    
+    func showArticleDetaileViewController(articleID: Int) {
         let articleCoordinator = ArticleCoordinator(
-            navigationController: navigationController, 
+            navigationController: navigationController,
             factory: ArticleFactoryImpl(),
             articleId: articleID
         )
@@ -42,17 +41,24 @@ extension TodayCoordinator: TodayNavigation {
         articleCoordinator.start()
     }
     
-    func navigationRightButtonTapped() {
+    func showMypageViewController() {
         let mypageCoordinator = MypageCoordinator(navigationController: navigationController,
                                                   factory: MyPageFactoryImpl())
         mypageCoordinator.start()
         children.append(mypageCoordinator)
     }
     
-    func navigationLeftButtonTapped() {
+    func showBookmarkViewController() {
         let bookmarkFactory = BookmarkFactoryImpl()
         let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController, factory: bookmarkFactory)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
+    }
+    
+    func exitApplication() {
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            exit(0)
+        }
     }
 }

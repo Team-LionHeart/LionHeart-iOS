@@ -33,6 +33,13 @@ final class CurriculumCoordinator: Coordinator {
 }
 
 extension CurriculumCoordinator: CurriculumNavigation, CurriculumListByWeekNavigation {
+    func checkTokenIsExpired() {
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            exit(0)
+        }
+    }
+    
     func curriculumArticleListCellTapped(articleId: Int) {
         let articleCoordinator = ArticleCoordinator(
             navigationController: navigationController, 
