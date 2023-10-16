@@ -40,6 +40,13 @@ final class ArticleCoordinator: Coordinator {
 }
 
 extension ArticleCoordinator: ArticleDetailModalNavigation {
+    func checkTokenIsExpired() {
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            exit(0)
+        }
+    }
+    
     
     func closeButtonTapped() {
         self.navigationController.dismiss(animated: true)

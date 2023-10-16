@@ -161,6 +161,8 @@
 		C009E9FA2ADBC4DE00112F18 /* BookmarkViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */; };
 		C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */; };
 		C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */; };
+		C04BE3AD2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */; };
+		C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */; };
 		C065F0032ADBD2270094912C /* AuthFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */; };
 		C065F0052ADBD23E0094912C /* SplashFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0042ADBD23E0094912C /* SplashFactoryImpl.swift */; };
 		C065F0072ADBD24B0094912C /* TodayFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0062ADBD24B0094912C /* TodayFactoryImpl.swift */; };
@@ -457,6 +459,8 @@
 		C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewControllerable.swift; sourceTree = "<group>"; };
 		C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewControllerable.swift; sourceTree = "<group>"; };
 		C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewControllerable.swift; sourceTree = "<group>"; };
+		C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinatorImpl.swift; sourceTree = "<group>"; };
+		C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdaptor.swift; sourceTree = "<group>"; };
 		C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFactoryImpl.swift; sourceTree = "<group>"; };
 		C065F0042ADBD23E0094912C /* SplashFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFactoryImpl.swift; sourceTree = "<group>"; };
 		C065F0062ADBD24B0094912C /* TodayFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayFactoryImpl.swift; sourceTree = "<group>"; };
@@ -928,6 +932,7 @@
 		B59892022A56B29B00CE1FEB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C04BE3A92ADD4E86001967B5 /* Adaptor */,
 				C003CC322AD9237F00AFFAAC /* NavigationInterface */,
 				C009E9EA2ADBBB7B00112F18 /* Factory */,
 				C003CC192AD9175700AFFAAC /* Coordinator */,
@@ -1314,18 +1319,9 @@
 		C003CC192AD9175700AFFAAC /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				C04BE3AB2ADD4F34001967B5 /* CoordinatorImpl */,
+				C04BE3AA2ADD4F26001967B5 /* CoordinatorInterface */,
 				B59BFD312ADBB611005D2D81 /* ControllerableInterface */,
-				C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */,
-				C003CC1E2AD917F900AFFAAC /* SplashCoordinator.swift */,
-				C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */,
-				C003CC222AD9183600AFFAAC /* AuthCoordinator.swift */,
-				C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */,
-				C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */,
-				C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */,
-				C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */,
-				C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */,
-				C003CC2E2AD9189F00AFFAAC /* MypageCoordinator.swift */,
-				C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1427,6 +1423,40 @@
 				C065F0062ADBD24B0094912C /* TodayFactoryImpl.swift */,
 			);
 			path = FactoryImpl;
+			sourceTree = "<group>";
+		};
+		C04BE3A92ADD4E86001967B5 /* Adaptor */ = {
+			isa = PBXGroup;
+			children = (
+				C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */,
+			);
+			path = Adaptor;
+			sourceTree = "<group>";
+		};
+		C04BE3AA2ADD4F26001967B5 /* CoordinatorInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */,
+				C003CC1E2AD917F900AFFAAC /* SplashCoordinator.swift */,
+				C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */,
+				C003CC222AD9183600AFFAAC /* AuthCoordinator.swift */,
+				C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */,
+				C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */,
+				C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */,
+				C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */,
+				C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */,
+				C003CC2E2AD9189F00AFFAAC /* MypageCoordinator.swift */,
+				C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */,
+			);
+			path = CoordinatorInterface;
+			sourceTree = "<group>";
+		};
+		C04BE3AB2ADD4F34001967B5 /* CoordinatorImpl */ = {
+			isa = PBXGroup;
+			children = (
+				C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */,
+			);
+			path = CoordinatorImpl;
 			sourceTree = "<group>";
 		};
 		C06E381E2A6534E100B00600 /* UserDefault */ = {
@@ -1918,6 +1948,7 @@
 				C0DF037D2A5A9CFD0037F740 /* LoginViewController.swift in Sources */,
 				C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */,
 				C09A33242A630A6400B40770 /* BookmarkViewController.swift in Sources */,
+				C04BE3AD2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift in Sources */,
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
 				C003CC592ADA4FFF00AFFAAC /* TokenState.swift in Sources */,
 				C0F029E22A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift in Sources */,
@@ -1978,6 +2009,7 @@
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
+				C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */,
 				C0856B812ABFCD830026D9F8 /* OnboardingManagerImpl.swift in Sources */,
 				B57BEB6C2A6149AD00D1727C /* NetworkRequest.swift in Sources */,
 				F4DB30B42A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift in Sources */,
