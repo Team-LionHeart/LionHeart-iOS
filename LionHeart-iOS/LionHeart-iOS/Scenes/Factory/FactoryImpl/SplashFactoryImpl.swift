@@ -8,7 +8,7 @@
 import UIKit
 
 struct SplashFactoryImpl: SplashFactory {
-    func makeSplashViewController() -> SplashViewControllerable {
-        return SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+    func makeSplashViewController(adaptor: SplashNavigation) -> SplashViewControllerable {
+        return SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())), adaptor: adaptor)
     }
 }

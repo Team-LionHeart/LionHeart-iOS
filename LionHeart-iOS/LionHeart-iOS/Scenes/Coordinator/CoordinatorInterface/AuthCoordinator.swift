@@ -40,8 +40,8 @@ extension AuthCoordinator: LoginNavigation, OnboardingNavigation, CompleteOnbard
     }
     
     func startButtonTapped() {
-        let splashCoorinator = parentCoordinator as? SplashCoordinator
-        splashCoorinator?.showTabbar()
+        let splashCoorinator = parentCoordinator as? SplashCoordinatorImpl
+        splashCoorinator?.showTabbarViewContoller()
     }
     
     func onboardingCompleted(data: UserOnboardingModel) {
@@ -56,10 +56,10 @@ extension AuthCoordinator: LoginNavigation, OnboardingNavigation, CompleteOnbard
     }
     
     func checkUserIsVerified(userState: UserState, kakaoToken: String?) {
-        let splashCoorinator = parentCoordinator as? SplashCoordinator
+        let splashCoorinator = parentCoordinator as? SplashCoordinatorImpl
         switch userState {
         case .verified:
-            splashCoorinator?.showTabbar()
+            splashCoorinator?.showTabbarViewContoller()
         case .nonVerified:
             let onboardingViewController = factory.makeOnboardingViewController()
             onboardingViewController.setKakaoAccessToken(kakaoToken)
