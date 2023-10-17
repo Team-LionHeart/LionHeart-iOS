@@ -8,7 +8,12 @@
 import Foundation
 
 struct BookmarkFactoryImpl: BookmarkFactory {
-    func makeBookmarkViewController() -> BookmarkViewControllerable {
-        return BookmarkViewController(manager: BookmarkMangerImpl(bookmarkService: BookmarkServiceImpl(apiService: APIService())))
+    func makeBookmarkViewController(adaptor: BookmarkAdaptor) -> BookmarkViewControllerable {
+        let apiService = APIService()
+        let bookmarkService = BookmarkServiceImpl(apiService: apiService)
+        let manager = BookmarkMangerImpl(bookmarkService: bookmarkService)
+        let bookmarkViewController = BookmarkViewController(manager: manager, navigator: adaptor)
+        
+        return bookmarkViewController
     }
 }

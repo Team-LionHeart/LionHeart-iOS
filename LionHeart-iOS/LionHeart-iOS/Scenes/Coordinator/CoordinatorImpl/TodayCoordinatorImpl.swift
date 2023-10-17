@@ -50,7 +50,7 @@ final class TodayCoordinatorImpl: TodayCoordinator {
     
     func showBookmarkViewController() {
         let bookmarkFactory = BookmarkFactoryImpl()
-        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController, factory: bookmarkFactory)
+        let bookmarkCoordinator = BookmarkCoordinatorImpl(navigationController: navigationController, factory: bookmarkFactory)
         bookmarkCoordinator.start()
         children.append(bookmarkCoordinator)
     }
