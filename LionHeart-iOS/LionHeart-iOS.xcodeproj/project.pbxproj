@@ -60,6 +60,7 @@
 		B53F4EF62ADE2DEB001C5752 /* ChallengeAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF52ADE2DEB001C5752 /* ChallengeAdaptor.swift */; };
 		B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */; };
 		B53F4EFA2ADE3151001C5752 /* BookmarkAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */; };
+		B53F4EFC2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */; };
 		B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */; };
 		B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */; };
 		B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB642A6134B800D1727C /* setRootViewController.swift */; };
@@ -382,6 +383,7 @@
 		B53F4EF52ADE2DEB001C5752 /* ChallengeAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAdaptor.swift; sourceTree = "<group>"; };
 		B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCoordinatorImpl.swift; sourceTree = "<group>"; };
 		B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdaptor.swift; sourceTree = "<group>"; };
+		B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCoordinatorImpl.swift; sourceTree = "<group>"; };
 		B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorCode.swift; sourceTree = "<group>"; };
 		B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B57BEB642A6134B800D1727C /* setRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setRootViewController.swift; sourceTree = "<group>"; };
@@ -1476,6 +1478,7 @@
 				C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */,
 				B53F4EF12ADE2687001C5752 /* CurriculumCoordinatorImpl.swift */,
 				B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */,
+				B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */,
 			);
 			path = CoordinatorImpl;
 			sourceTree = "<group>";
@@ -1979,6 +1982,7 @@
 				C0F029E22A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift in Sources */,
 				B57BEB702A6275F500D1727C /* ViewControllerServiceable.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
+				B53F4EFC2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift in Sources */,
 				C0856B6D2ABFBD840026D9F8 /* BookmarkServiceImpl.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
