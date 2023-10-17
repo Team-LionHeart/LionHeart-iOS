@@ -163,6 +163,8 @@
 		C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */; };
 		C034EDD62ADE21BD00AD6FF3 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD52ADE21BD00AD6FF3 /* SplashCoordinator.swift */; };
 		C034EDD82ADE21D200AD6FF3 /* SplashAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */; };
+		C034EDDA2ADE2A0E00AD6FF3 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD92ADE2A0E00AD6FF3 /* AuthCoordinator.swift */; };
+		C034EDDC2ADE2A2C00AD6FF3 /* AuthAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDDB2ADE2A2C00AD6FF3 /* AuthAdaptor.swift */; };
 		C04BE3AD2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */; };
 		C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */; };
 		C065F0032ADBD2270094912C /* AuthFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */; };
@@ -463,6 +465,8 @@
 		C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewControllerable.swift; sourceTree = "<group>"; };
 		C034EDD52ADE21BD00AD6FF3 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAdaptor.swift; sourceTree = "<group>"; };
+		C034EDD92ADE2A0E00AD6FF3 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		C034EDDB2ADE2A2C00AD6FF3 /* AuthAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAdaptor.swift; sourceTree = "<group>"; };
 		C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdaptor.swift; sourceTree = "<group>"; };
 		C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFactoryImpl.swift; sourceTree = "<group>"; };
@@ -1434,6 +1438,7 @@
 			children = (
 				C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */,
 				C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */,
+				C034EDDB2ADE2A2C00AD6FF3 /* AuthAdaptor.swift */,
 			);
 			path = Adaptor;
 			sourceTree = "<group>";
@@ -1443,7 +1448,6 @@
 			children = (
 				C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */,
 				C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */,
-				C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */,
 				C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */,
 				C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */,
 				C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */,
@@ -1452,6 +1456,7 @@
 				C003CC2E2AD9189F00AFFAAC /* MypageCoordinator.swift */,
 				C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */,
 				C034EDD52ADE21BD00AD6FF3 /* SplashCoordinator.swift */,
+				C034EDD92ADE2A0E00AD6FF3 /* AuthCoordinator.swift */,
 			);
 			path = CoordinatorInterface;
 			sourceTree = "<group>";
@@ -1459,6 +1464,7 @@
 		C04BE3AB2ADD4F34001967B5 /* CoordinatorImpl */ = {
 			isa = PBXGroup;
 			children = (
+				C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */,
 				C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */,
 				C003CC1E2AD917F900AFFAAC /* SplashCoordinatorImpl.swift */,
 			);
@@ -1880,6 +1886,7 @@
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
 				C0B15E212AC0450E0058D56B /* ArticleListTableView.swift in Sources */,
+				C034EDDA2ADE2A0E00AD6FF3 /* AuthCoordinator.swift in Sources */,
 				C065F0092ADBD2640094912C /* TodayViewControllerable.swift in Sources */,
 				B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */,
 				B59BFD412ADBBFB2005D2D81 /* MyPageFactory.swift in Sources */,
@@ -1958,6 +1965,7 @@
 				C0DF03352A5A93530037F740 /* UIControl+.swift in Sources */,
 				C003CC592ADA4FFF00AFFAAC /* TokenState.swift in Sources */,
 				C0F029E22A5FAE2700E0D185 /* LHOnboardingErrorLabel.swift in Sources */,
+				C034EDDC2ADE2A2C00AD6FF3 /* AuthAdaptor.swift in Sources */,
 				B57BEB702A6275F500D1727C /* ViewControllerServiceable.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
 				C0856B6D2ABFBD840026D9F8 /* BookmarkServiceImpl.swift in Sources */,
