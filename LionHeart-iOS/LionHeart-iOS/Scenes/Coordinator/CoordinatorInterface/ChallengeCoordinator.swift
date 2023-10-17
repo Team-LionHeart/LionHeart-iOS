@@ -7,41 +7,10 @@
 
 import UIKit
 
-final class ChallengeCoordinator: Coordinator {
-    weak var parentCoordinator: Coordinator?
-    private let factory: ChallengeFactory
-    var children: [Coordinator] = []
-    
-    var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController, factory: ChallengeFactory) {
-        self.navigationController = navigationController
-        self.factory = factory
-    }
-    
-    func start() {
-        showChallengeViewController()
-    }
-    
-    func showChallengeViewController() {
-        let challengeViewController = factory.makeChallengeViewController()
-        challengeViewController.coordinator = self
-        navigationController.pushViewController(challengeViewController, animated: true)
-    }
-}
 
-extension ChallengeCoordinator: ChallengeNavigation {
-    func navigationRightButtonTapped() {
-        let mypageCoordinator = MypageCoordinator(navigationController: navigationController,
-                                                  factory: MyPageFactoryImpl())
-        mypageCoordinator.start()
-        children.append(mypageCoordinator)
-    }
-    
-    func navigationLeftButtonTapped() {
-        let bookmakrFactory = BookmarkFactoryImpl()
-        let bookmarkCoordinator = BookmarkCoordinator(navigationController: navigationController, factory: bookmakrFactory)
-        bookmarkCoordinator.start()
-        children.append(bookmarkCoordinator)
-    }
+protocol ChallengeCoordinator: Coordinator {
+    func showChallengeViewController()
+    func showMypageViewController()
+    func showBookmarkViewController()
+    func exitApplication()
 }

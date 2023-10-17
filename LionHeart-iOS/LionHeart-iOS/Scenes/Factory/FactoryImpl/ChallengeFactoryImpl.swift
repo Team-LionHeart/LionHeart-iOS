@@ -8,7 +8,7 @@
 import Foundation
 
 struct ChallengeFactoryImpl: ChallengeFactory {
-    func makeChallengeViewController() -> ChallengeViewControllerable {
-        return ChallengeViewController(manager: ChallengeManagerImpl(challengeService: ChallengeServiceImpl(apiService: APIService())))
+    func makeChallengeViewController(adaptor: ChallengeAdaptor) -> ChallengeViewControllerable {
+        return ChallengeViewController(manager: ChallengeManagerImpl(challengeService: ChallengeServiceImpl(apiService: APIService())), navigator: adaptor)
     }
 }

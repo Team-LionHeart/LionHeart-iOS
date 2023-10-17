@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ChallengeFactory {
-    func makeChallengeViewController() -> ChallengeViewControllerable
+    func makeChallengeViewController(adaptor: ChallengeAdaptor) -> ChallengeViewControllerable
 }
