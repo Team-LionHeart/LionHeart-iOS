@@ -8,18 +8,21 @@
 import UIKit
 
 struct AuthFactoryImpl: AuthFactory {
-    func makeLoginViewController() -> LoginViewControllerable {
-        let loginViewController = LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService())))
+    
+    func makeLoginViewController(navigator: LoginNavigation) -> LoginViewControllerable {
+        let loginViewController = LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService())), navigator: navigator)
         return loginViewController
     }
     
-    func makeCompleteOnbardingViewController() -> CompleteOnbardingViewControllerable {
-        let completeViewController = CompleteOnbardingViewController()
+    func makeCompleteOnbardingViewController(navigator: CompleteOnbardingNavigation) -> CompleteOnbardingViewControllerable {
+        let completeViewController = CompleteOnbardingViewController(navigator: navigator)
         return completeViewController
     }
     
-    func makeOnboardingViewController() -> OnboardingViewControllerable {
-        let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())))
+    func makeOnboardingViewController(navigator: OnboardingNavigation) -> OnboardingViewControllerable {
+        let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())), navigator: navigator)
         return onboardingViewController
     }
+    
+
 }

@@ -8,5 +8,5 @@
 import UIKit
 
 protocol LoginViewControllerable where Self: UIViewController {
-    var coordinator: LoginNavigation? { get set }
+    var navigator: LoginNavigation { get set }
 }

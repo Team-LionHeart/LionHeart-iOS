@@ -112,7 +112,7 @@
 		C003CC1D2AD917CF00AFFAAC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */; };
 		C003CC1F2AD917F900AFFAAC /* SplashCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1E2AD917F900AFFAAC /* SplashCoordinatorImpl.swift */; };
 		C003CC212AD9181600AFFAAC /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */; };
-		C003CC232AD9183600AFFAAC /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC222AD9183600AFFAAC /* AuthCoordinator.swift */; };
+		C003CC232AD9183600AFFAAC /* AuthCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */; };
 		C003CC252AD9184700AFFAAC /* TabbbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */; };
 		C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */; };
 		C003CC292AD9186B00AFFAAC /* CurriculumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */; };
@@ -412,7 +412,7 @@
 		C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C003CC1E2AD917F900AFFAAC /* SplashCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
-		C003CC222AD9183600AFFAAC /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbbarCoordinator.swift; sourceTree = "<group>"; };
 		C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCoordinator.swift; sourceTree = "<group>"; };
 		C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumCoordinator.swift; sourceTree = "<group>"; };
@@ -1443,7 +1443,7 @@
 			children = (
 				C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */,
 				C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */,
-				C003CC222AD9183600AFFAAC /* AuthCoordinator.swift */,
+				C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */,
 				C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */,
 				C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */,
 				C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */,
@@ -1907,7 +1907,7 @@
 				B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */,
 				D342807A2A67F12200DA1499 /* ChallengeDataResponse.swift in Sources */,
 				B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */,
-				C003CC232AD9183600AFFAAC /* AuthCoordinator.swift in Sources */,
+				C003CC232AD9183600AFFAAC /* AuthCoordinatorImpl.swift in Sources */,
 				C0856B892ABFDA240026D9F8 /* Badge.swift in Sources */,
 				B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */,
 				C0856B7B2ABFC9640026D9F8 /* SplashManagerImpl.swift in Sources */,

@@ -39,7 +39,7 @@ final class SplashCoordinatorImpl: SplashCoordinator {
     }
     
     func showLoginViewController() {
-        let authCoordinator = AuthCoordinator(navigationController: navigationController, factory: AuthFactoryImpl())
+        let authCoordinator = AuthCoordinatorImpl(navigationController: navigationController, factory: AuthFactoryImpl())
         children.removeAll()
         authCoordinator.parentCoordinator = self
         children.append(authCoordinator)
