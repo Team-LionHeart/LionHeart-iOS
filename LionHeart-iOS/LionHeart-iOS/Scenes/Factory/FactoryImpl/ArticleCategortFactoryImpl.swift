@@ -8,12 +8,12 @@
 import Foundation
 
 struct ArticleCategortFactoryImpl: ArticleCategortFactory {
-    func makeArticleCategoryViewController() -> ArticleCategoryViewControllerable {
-        return ArticleCategoryViewController()
+    func makeArticleListByCategoryViewController(navigator: ArticleListByCategoryNavigation) -> ArticleListByCategoryViewControllerable {
+        return ArticleListByCategoryViewController(manager: ArticleListByCategoryMangerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())), navigator: navigator)
     }
     
-    func makeArticleListByCategoryViewController() -> ArticleListByCategoryViewControllerable {
-        let articleListbyCategoryViewController = ArticleListByCategoryViewController(manager: ArticleListByCategoryMangerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-        return articleListbyCategoryViewController
+    func makeArticleCategoryViewController(navigator: ArticleCategoryNavigation) -> ArticleCategoryViewControllerable {
+        return ArticleCategoryViewController(navigator: navigator)
     }
+
 }

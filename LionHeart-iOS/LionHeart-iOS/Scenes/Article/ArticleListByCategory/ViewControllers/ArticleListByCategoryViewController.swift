@@ -10,14 +10,9 @@ import UIKit
 
 import SnapKit
 
-protocol ArticleListByCategoryViewControllerable where Self: UIViewController {
-    var coordinator: ArticleListByCategoryNavigation? { get set }
-    var categoryString: String? { get set }
-}
-
 final class ArticleListByCategoryViewController: UIViewController, ArticleListByCategoryViewControllerable {
     
-    weak var coordinator: ArticleListByCategoryNavigation?
+    var navigator: ArticleListByCategoryNavigation
     private let manager: ArticleListByCategoryManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .exploreEachCategory, viewController: self)
@@ -30,8 +25,9 @@ final class ArticleListByCategoryViewController: UIViewController, ArticleListBy
         }
     }
     
-    init(manager: ArticleListByCategoryManager) {
+    init(manager: ArticleListByCategoryManager, navigator: ArticleListByCategoryNavigation) {
         self.manager = manager
+        self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -99,7 +95,7 @@ private extension ArticleListByCategoryViewController {
     
     func setAddTarget() {
         navigationBar.backButtonAction {
-            self.coordinator?.backButtonTapped()
+            self.navigator.backButtonTapped()
         }
     }
 }
@@ -116,7 +112,7 @@ extension ArticleListByCategoryViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-            coordinator?.checkTokenIsExpired()
+            navigator.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
@@ -152,6 +148,6 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
 
 extension ArticleListByCategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.coordinator?.articleListByCategoryCellTapped(articleID: articleListData[indexPath.row].articleId)
+        self.navigator.articleListByCategoryCellTapped(articleID: articleListData[indexPath.row].articleId)
     }
 }

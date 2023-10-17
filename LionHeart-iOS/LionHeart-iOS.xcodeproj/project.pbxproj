@@ -41,7 +41,6 @@
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
 		B532E83B2A5525C700F0DB19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B532E83A2A5525C700F0DB19 /* Assets.xcassets */; };
 		B532E83E2A5525C700F0DB19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B532E83C2A5525C700F0DB19 /* LaunchScreen.storyboard */; };
-		B532E8492A5525C800F0DB19 /* LionHeart_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8482A5525C800F0DB19 /* LionHeart_iOSTests.swift */; };
 		B532E8532A5525C800F0DB19 /* LionHeart_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8522A5525C800F0DB19 /* LionHeart_iOSUITests.swift */; };
 		B532E8552A5525C800F0DB19 /* LionHeart_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8542A5525C800F0DB19 /* LionHeart_iOSUITestsLaunchTests.swift */; };
 		B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8622A5529B000F0DB19 /* HTTPHeaderField.swift */; };
@@ -114,7 +113,7 @@
 		C003CC212AD9181600AFFAAC /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */; };
 		C003CC232AD9183600AFFAAC /* AuthCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */; };
 		C003CC252AD9184700AFFAAC /* TabbbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */; };
-		C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */; };
+		C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift */; };
 		C003CC292AD9186B00AFFAAC /* CurriculumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */; };
 		C003CC2B2AD9187B00AFFAAC /* ChallengeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */; };
 		C003CC2D2AD9189100AFFAAC /* BookmarkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */; };
@@ -165,6 +164,10 @@
 		C034EDD82ADE21D200AD6FF3 /* SplashAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */; };
 		C034EDDA2ADE2A0E00AD6FF3 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD92ADE2A0E00AD6FF3 /* AuthCoordinator.swift */; };
 		C034EDDC2ADE2A2C00AD6FF3 /* AuthAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDDB2ADE2A2C00AD6FF3 /* AuthAdaptor.swift */; };
+		C034EDDE2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDDD2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift */; };
+		C034EDE02ADE3A4A00AD6FF3 /* LionHeart_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8482A5525C800F0DB19 /* LionHeart_iOSTests.swift */; };
+		C034EE1E2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EE1D2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift */; };
+		C034EE202ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EE1F2ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift */; };
 		C04BE3AD2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */; };
 		C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */; };
 		C065F0032ADBD2270094912C /* AuthFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */; };
@@ -416,7 +419,7 @@
 		C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
 		C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbbarCoordinator.swift; sourceTree = "<group>"; };
-		C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCoordinator.swift; sourceTree = "<group>"; };
+		C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumCoordinator.swift; sourceTree = "<group>"; };
 		C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCoordinator.swift; sourceTree = "<group>"; };
 		C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCoordinator.swift; sourceTree = "<group>"; };
@@ -467,6 +470,9 @@
 		C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAdaptor.swift; sourceTree = "<group>"; };
 		C034EDD92ADE2A0E00AD6FF3 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		C034EDDB2ADE2A2C00AD6FF3 /* AuthAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAdaptor.swift; sourceTree = "<group>"; };
+		C034EDDD2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewControllerable.swift; sourceTree = "<group>"; };
+		C034EE1D2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryAdaptor.swift; sourceTree = "<group>"; };
+		C034EE1F2ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCoordinator.swift; sourceTree = "<group>"; };
 		C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdaptor.swift; sourceTree = "<group>"; };
 		C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFactoryImpl.swift; sourceTree = "<group>"; };
@@ -1280,6 +1286,7 @@
 				C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */,
 				C065F00E2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift */,
 				C065F0102ADBD2C40094912C /* SplashViewControllerable.swift */,
+				C034EDDD2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift */,
 			);
 			path = ControllerableInterface;
 			sourceTree = "<group>";
@@ -1439,6 +1446,7 @@
 				C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */,
 				C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */,
 				C034EDDB2ADE2A2C00AD6FF3 /* AuthAdaptor.swift */,
+				C034EE1D2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift */,
 			);
 			path = Adaptor;
 			sourceTree = "<group>";
@@ -1449,7 +1457,6 @@
 				C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */,
 				C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */,
 				C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */,
-				C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift */,
 				C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */,
 				C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */,
 				C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */,
@@ -1457,6 +1464,7 @@
 				C003CC302AD918AB00AFFAAC /* ArticleCoordinator.swift */,
 				C034EDD52ADE21BD00AD6FF3 /* SplashCoordinator.swift */,
 				C034EDD92ADE2A0E00AD6FF3 /* AuthCoordinator.swift */,
+				C034EE1F2ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift */,
 			);
 			path = CoordinatorInterface;
 			sourceTree = "<group>";
@@ -1467,6 +1475,7 @@
 				C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */,
 				C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */,
 				C003CC1E2AD917F900AFFAAC /* SplashCoordinatorImpl.swift */,
+				C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift */,
 			);
 			path = CoordinatorImpl;
 			sourceTree = "<group>";
@@ -1938,6 +1947,7 @@
 				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekRowZeroTableViewCell.swift in Sources */,
 				C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
+				C034EE1E2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift in Sources */,
 				C003CC662ADA518E00AFFAAC /* ArticleDetailManager.swift in Sources */,
 				4AD216402A69AC1E00C9F2F2 /* MyPageResponse.swift in Sources */,
 				C003CC1F2AD917F900AFFAAC /* SplashCoordinatorImpl.swift in Sources */,
@@ -1990,7 +2000,7 @@
 				C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */,
 				C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */,
 				B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */,
-				C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinator.swift in Sources */,
+				C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				C003CC682ADA51A700AFFAAC /* ArticleListByCategoryManager.swift in Sources */,
 				C003CC6A2ADA51C000AFFAAC /* MyPageManager.swift in Sources */,
@@ -2018,6 +2028,7 @@
 				C003CC3F2ADA4EC300AFFAAC /* CurriculumNavigation.swift in Sources */,
 				C009E9FA2ADBC4DE00112F18 /* BookmarkViewControllerable.swift in Sources */,
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
+				C034EDDE2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift in Sources */,
 				C003CC452ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift in Sources */,
 				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
@@ -2108,6 +2119,7 @@
 				D3AB54C12A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */,
 				B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */,
 				C003CC4F2ADA4F8D00AFFAAC /* OnboardingNavigation.swift in Sources */,
+				C034EE202ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift in Sources */,
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
 				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
 				C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */,
@@ -2123,7 +2135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B532E8492A5525C800F0DB19 /* LionHeart_iOSTests.swift in Sources */,
+				C034EDE02ADE3A4A00AD6FF3 /* LionHeart_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
