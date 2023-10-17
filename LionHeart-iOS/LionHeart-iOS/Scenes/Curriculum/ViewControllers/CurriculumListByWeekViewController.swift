@@ -11,10 +11,10 @@ import UIKit
 import SnapKit
 
 final class CurriculumListByWeekViewController: UIViewController, CurriculumArticleByWeekControllerable {
-
-    weak var coordinator: CurriculumListByWeekNavigation?
     
     private let manager: CurriculumListManager
+    
+    var navigator: CurriculumListByWeekNavigation
     
     private let curriculumListByWeekCollectionView = LHCollectionView(color: .background, scroll: false)
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
@@ -32,8 +32,10 @@ final class CurriculumListByWeekViewController: UIViewController, CurriculumArti
         }
     }
     
-    init(manager: CurriculumListManager) {
+    init(manager: CurriculumListManager, navigator: CurriculumListByWeekNavigation) {
+        self.navigator = navigator
         self.manager = manager
+        
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -104,7 +106,7 @@ private extension CurriculumListByWeekViewController {
     
     func setAddTarget() {
         self.navigationBar.backButtonAction {
-            self.coordinator?.backButtonTapped()
+            self.navigator.backButtonTapped()
         }
     }
     
@@ -161,7 +163,7 @@ private extension CurriculumListByWeekViewController {
     
     @objc func didSelectTableVIewCell(notification: NSNotification) {
         guard let articleId = notification.object as? Int else { return }
-        self.coordinator?.curriculumArticleListCellTapped(articleId: articleId)
+        self.navigator.curriculumArticleListCellTapped(articleId: articleId)
     }
     
     func setDelegate() {
@@ -215,7 +217,7 @@ extension CurriculumListByWeekViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-            self.coordinator?.checkTokenIsExpired()
+            self.navigator.checkTokenIsExpired()
         case .clientError(code: _, message: let message):
             LHToast.show(message: "\(message)")
         default:

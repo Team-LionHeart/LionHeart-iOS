@@ -9,20 +9,20 @@ import Foundation
 
 
 struct CurriculumFactoryImpl: CurriculumFactory {
-    func makeCurriculumListViewController() -> CurriculumArticleByWeekControllerable {
+    func makeCurriculumListViewController(adaptor: CurriculumListByWeekNavigation) -> CurriculumArticleByWeekControllerable {
         let apiService = APIService()
         let curriculumService = CurriculumServiceImpl(apiService: apiService)
         let bookmarkService = BookmarkServiceImpl(apiService: apiService)
         let curriculumListManager = CurriculumListManagerImpl(bookmarkService: bookmarkService, curriculumService: curriculumService)
-        let curriculumListViewController = CurriculumListByWeekViewController(manager: curriculumListManager)
+        let curriculumListViewController = CurriculumListByWeekViewController(manager: curriculumListManager, navigator: adaptor)
         return curriculumListViewController
     }
     
-    func makeCurriculumViewController() -> CurriculumControllerable {
+    func makeCurriculumViewController(adaptor: CurriculumNavigation) -> CurriculumControllerable {
         let apiService = APIService()
         let curriculumService = CurriculumServiceImpl(apiService: apiService)
         let manager = CurriculumManagerImpl(curriculumService: curriculumService)
-        let curriculumViewController = CurriculumViewController(manager: manager)
+        let curriculumViewController = CurriculumViewController(manager: manager, adaptor: adaptor)
         return curriculumViewController
     }
     

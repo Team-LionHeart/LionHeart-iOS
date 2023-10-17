@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+
+protocol CurriculumListCoordinator: Coordinator {
+    func showArticleDetailViewController(articleId: Int)
+    func popDismiss()
+    func exitApplication()
+}

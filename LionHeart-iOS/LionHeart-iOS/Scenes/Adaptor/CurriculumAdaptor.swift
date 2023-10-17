@@ -6,3 +6,31 @@
 //
 
 import Foundation
+
+
+final class CurriculumAdaptor: CurriculumNavigation {
+    
+    let coordinator: CurriculumCoordinator
+    
+    init(coordinator: CurriculumCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    func articleListCellTapped(itemIndex: Int) {
+        self.coordinator.showCurriculumListViewController(itemIndex: itemIndex)
+    }
+    
+    func navigationRightButtonTapped() {
+        self.coordinator.showMypageViewController()
+    }
+    
+    func navigationLeftButtonTapped() {
+        self.coordinator.showBookmarkViewController()
+    }
+    
+    func checkTokenIsExpired() {
+        self.coordinator.exitApplication()
+    }
+    
+    
+}

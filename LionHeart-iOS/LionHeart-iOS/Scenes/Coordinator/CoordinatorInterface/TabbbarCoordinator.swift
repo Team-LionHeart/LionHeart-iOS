@@ -36,7 +36,7 @@ final class TabbarCoordinator: Coordinator {
         articleCategoryNavigationController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         
         let curriculumNavigationController = UINavigationController()
-        let curriculumCoordinator = CurriculumCoordinator(
+        let curriculumCoordinator = CurriculumCoordinatorImpl(
             navigationController: curriculumNavigationController,
             factory: CurriculumFactoryImpl()
         )
