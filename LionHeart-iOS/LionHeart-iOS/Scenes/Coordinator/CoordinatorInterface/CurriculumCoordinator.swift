@@ -13,6 +13,6 @@ protocol CurriculumCoordinator: Coordinator {
     func showCurriculumListViewController(itemIndex: Int)
     func showMypageViewController()
     func showBookmarkViewController()
-    func popDismiss()
+    func pop()
     func exitApplication()
 }

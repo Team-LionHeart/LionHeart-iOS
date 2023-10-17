@@ -25,6 +25,6 @@ final class BookmarkAdaptor: BookmarkNavigation {
     }
     
     func backButtonTapped() {
-        coordinator.popDismiss()
+        coordinator.pop()
     }
 }

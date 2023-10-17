@@ -11,6 +11,6 @@ import UIKit
 protocol BookmarkCoordinator: Coordinator {
     func showArticleDetailViewController(articleId: Int)
     func showBookmarkViewController()
-    func popDismiss()
+    func pop()
     func exitApplication()
 }

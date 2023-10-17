@@ -21,7 +21,7 @@ final class CurriculumListAdaptor: CurriculumListByWeekNavigation {
     }
     
     func backButtonTapped() {
-        self.coordinator.popDismiss()
+        self.coordinator.pop()
     }
     
     func checkTokenIsExpired() {

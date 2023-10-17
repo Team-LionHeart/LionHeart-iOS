@@ -62,7 +62,7 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator, CurriculumListCoor
         children.append(bookmarkCoordinator)
     }
     
-    func popDismiss() {
+    func pop() {
         self.navigationController.popViewController(animated: true)
     }
     

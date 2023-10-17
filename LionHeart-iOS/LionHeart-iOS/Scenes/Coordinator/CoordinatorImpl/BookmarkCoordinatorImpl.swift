@@ -40,7 +40,7 @@ final class BookmarkCoordinatorImpl: BookmarkCoordinator {
         children.append(articleCoordinator)
     }
     
-    func popDismiss() {
+    func pop() {
         self.navigationController.popViewController(animated: true)
         self.parentCoordinator?.childDidFinish(self)
     }
