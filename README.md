@@ -11,7 +11,7 @@
 ## 프로젝트 기간
 - **2023.10 ~ 2차 리팩터링 (진행 중 🚧) (MVC-C -> MVVM-C(+Combine))** <br>
 - **[2023.08 ~ 2023.10 1차 리팩터링(MVC -> MVC-C)](#1차-리팩터링)** <br>
-- **2023.06 ~ 2023.07 UI 설계 및 구현(1차 프로젝트)** <br>
+- **[2023.06 ~ 2023.07 UI 설계 및 구현(1차 프로젝트)](#UI-설계-및-구현)** <br>
 
 <br>
 
@@ -19,7 +19,7 @@
 
 <br>
 
-## 1차 리팩터링
+# 1차 리팩터링
 기존 MVC 패턴에서 ViewController의 책임을 분리하기 위한 여러가지 디자인패턴 및 구조 적용
 
 <br>
@@ -34,7 +34,9 @@
 ### 1. 기존 네트워크 레이어를 singleton에서 의존성주입방식(Dependency Injectcion)으로 변경
 추후에 Unit Test 도입을 고려하여 응집도는 높고 결합도는 낮은 객체 설계를 목표로 설계에 임했습니다. 기존의 싱글톤 방식은 SRP 원칙과 OCP 원칙에 위반되고 특정 값에 대한 테스트를 진행하는데 어려움이 있으며 Data race의 위험성 또한 존재할 수 있습니다. 따라서 기존 싱글톤에서 Dependency Injection을 통한 의존성 주입 방식을 도입 및 적용했습니다.
 
-![a6841387500351e2](https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/9b82b692-94ca-4029-bed1-d00232caac8f)
+<p align="center">
+<img src="https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/9b82b692-94ca-4029-bed1-d00232caac8f" width="800"/>
+</p>
 
 - [[REFACTOR] API 레이어 분리 (#127)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/128)
 - [[REFACTOR] 북마크 네트워크 레이어 분리(#129)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/130)
@@ -52,7 +54,9 @@
 ### 3. ViewController의 화면 전환 책임을 담당해 줄 Coordinator Pattern 도입
 ViewController는 UI 관련 객체이기 때문에, 사용자 흐름을 처리하는것은 역할 범위(scope)를 벗어난다고 생각했습니다. 또한, MVC의 단점인 ViewController의 역할이 비대해지는 문제를 해결하기 위해 화면전환 책임 전담을 위한 Coordintor Pattern을 도입 및 적용했습니다.
 
-![Coordinator](https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/ecf3a0e3-231c-4820-94f1-c8ff09126041)
+<p align="center">
+<img src=https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/ecf3a0e3-231c-4820-94f1-c8ff09126041" width="800"/>
+</p>
 
 - [[REFACTOR] Coordinator Pattern 적용 (#139)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/140)
 
@@ -61,7 +65,9 @@ ViewController는 UI 관련 객체이기 때문에, 사용자 흐름을 처리�
 ### 4. Coodinator 객체 내에서 ViewController 객체 생성 책임 분리를 위한 Factory Pattern 도입
 DI로인해 ViewController 객체 생성시 외부 객체 생성 및 주입의 불편함이 발생했습니다. 이를 해결하기 위해 Custom DI Container, Swinject, Factory Pattern 같은 여러 방법론을 통한 문제 해결을 고민했습니다. 결론적으로 Factory Pattern이 라이온하트 프로젝트 규모와 구조를 고려했을 때, 가장 적합하다고 생각해 도입 및 적용했습니다.
 
-![FactoryPattern](https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/0bfe7475-5f0b-469a-87b5-48601341fdce)
+<p align="center">
+<img src=https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/0bfe7475-5f0b-469a-87b5-48601341fdce" width="800"/>
+</p>
 
 - [[REFACTOR] Factory Pattern도입(#149)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/150)
 - [[REFACTOR] ArticleCategory, Challenge, Bookmark Factory Pattern 적용(#143](https://github.com/Team-LionHeart/LionHeart-iOS/pull/146)
@@ -73,14 +79,24 @@ DI로인해 ViewController 객체 생성시 외부 객체 생성 및 주입의 �
 ### 5. ViewController와 Coordinator간의 완전한 관심사 분리 및 캡슐화를 위한 Adaptor Pattern 도입
 Delegate 패턴으로인해 Coordinator가 ViewController에서의 User Action을 추론할 수 있게 되었고 따라서 완전한 관심사 분리가 불가능하게 되었습니다. Coordinator는 flow에 대한 책임만을 가지고 있어야 한다고 생각했고, Coordinator와 ViewController의 완전한 관심사 분리를 위해 두 가지 Interface를 연결해 주는 Adaptor Pattern을 도입 및 적용했습니다.
 
-![adapter](https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/9800ebc9-0c2a-4385-91ee-a35f7dc5a5d5)
-
+<p align="center">
+<img src=https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/9800ebc9-0c2a-4385-91ee-a35f7dc5a5d5" width="800"/>
+</p>
 
 - [[REFACTOR] Adaptor Pattern 도입 (#153)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/161)
 - [[REFACTOR] today coordinator에 adaptor pattern 적용 (#152)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/154)
 - [[REFACTOR] Splash, Auth, ArticleCategory Coordinator에 Adaptor Pattern적용(#156)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/157)
 - [[REFACTOR] Curriculum, Challenge, Bookmark Adaptor Pattern 적용 (#155)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/158)
 - [[REFACTOR] My Page, Article Detail Coordinator에 Adaptor Pattern 적용 (#159)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/160)
+
+<br>
+
+-----
+
+# UI 설계 및 구현
+
+<details>
+<summary>토글 접기/펼치기</summary>
 
 <br><br>
 ##  🍎 LionHeart-iOS Developers
@@ -198,3 +214,5 @@ LionHeart-iOS
 [곽성준 트러블 슈팅 🦦](https://www.notion.so/maketheworldabetterplace0/Trouble-Shooting-60f925f9f3ca447f86a4cdeafad1392b?pvs=4) <br>
 [김동현 트러클 슈팅 🐙](https://www.notion.so/maketheworldabetterplace0/Troble-Shooting-f6442d53132c4d929fcd245daeaf132e?pvs=4) <br>
 [황찬미 트러블 슈팅 🐧](https://www.notion.so/maketheworldabetterplace0/Trouble-Shooting-a5753e05b0c04bddb13d87a4f8274dbf?pvs=4)
+
+</details>
