@@ -20,6 +20,8 @@
 		4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */; };
 		4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */; };
 		4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */; };
+		4A918E772AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */; };
+		4A918E792AE10BC2003CB8F9 /* MyPageAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */; };
 		4AD216402A69AC1E00C9F2F2 /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD2163F2A69AC1E00C9F2F2 /* MyPageResponse.swift */; };
 		4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD6AE192A68436B00A3D745 /* ArticleListByCategoryResponse.swift */; };
 		4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE19A192A65886100C1DB7E /* BookmarkReponse.swift */; };
@@ -322,6 +324,8 @@
 		4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
 		4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderViewRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAppSettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinatorImpl.swift; sourceTree = "<group>"; };
+		4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAdaptor.swift; sourceTree = "<group>"; };
 		4AD2163F2A69AC1E00C9F2F2 /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
 		4AD6AE032A66F83E00A3D745 /* progressbar_2m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_2m.json; sourceTree = "<group>"; };
 		4AD6AE052A66F84300A3D745 /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
@@ -1429,6 +1433,7 @@
 			isa = PBXGroup;
 			children = (
 				C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */,
+				4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */,
 			);
 			path = Adaptor;
 			sourceTree = "<group>";
@@ -1455,6 +1460,7 @@
 			isa = PBXGroup;
 			children = (
 				C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */,
+				4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */,
 			);
 			path = CoordinatorImpl;
 			sourceTree = "<group>";
@@ -1933,6 +1939,7 @@
 				C065F00D2ADBD29A0094912C /* OnboardingViewControllerable.swift in Sources */,
 				B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
+				4A918E772AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift in Sources */,
 				C003CC532ADA4FC100AFFAAC /* LoginNavigation.swift in Sources */,
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
 				B53F4EE52ADBC23F001C5752 /* MyPageFactoryImpl.swift in Sources */,
@@ -1968,6 +1975,7 @@
 				4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */,
 				C0B15E252AC103A50058D56B /* LHToggleImageButton.swift in Sources */,
 				4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */,
+				4A918E792AE10BC2003CB8F9 /* MyPageAdaptor.swift in Sources */,
 				C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */,
 				C003CC2F2AD9189F00AFFAAC /* MypageCoordinator.swift in Sources */,
 				C003CC5E2ADA508A00AFFAAC /* LoginManager.swift in Sources */,

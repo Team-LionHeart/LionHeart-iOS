@@ -63,7 +63,7 @@ extension CurriculumCoordinator: CurriculumNavigation, CurriculumListByWeekNavig
     }
     
     func navigationRightButtonTapped() {
-        let mypageCoordinator = MypageCoordinator(
+        let mypageCoordinator = MyPageCoordinatorImpl(
             navigationController: navigationController,
             factory: MyPageFactoryImpl()
         )

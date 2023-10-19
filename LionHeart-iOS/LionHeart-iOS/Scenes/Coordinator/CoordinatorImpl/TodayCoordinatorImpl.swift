@@ -42,7 +42,7 @@ final class TodayCoordinatorImpl: TodayCoordinator {
     }
     
     func showMypageViewController() {
-        let mypageCoordinator = MypageCoordinator(navigationController: navigationController,
+        let mypageCoordinator = MyPageCoordinatorImpl(navigationController: navigationController,
                                                   factory: MyPageFactoryImpl())
         mypageCoordinator.start()
         children.append(mypageCoordinator)

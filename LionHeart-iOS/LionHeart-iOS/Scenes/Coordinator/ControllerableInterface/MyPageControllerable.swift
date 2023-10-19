@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 protocol MyPageControllerable where Self: UIViewController {
-    var coordinator: MyPageNavigation? { get set }
+    var adaptor: MyPageNavigation { get set }
 }

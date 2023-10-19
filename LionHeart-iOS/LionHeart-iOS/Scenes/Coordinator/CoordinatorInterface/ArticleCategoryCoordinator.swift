@@ -63,7 +63,7 @@ extension ArticleCategoryCoordinator: ArticleCategoryNavigation, ArticleListByCa
     }
     
     func navigationRightButtonTapped() {
-        let mypageCoordinator = MypageCoordinator(
+        let mypageCoordinator = MyPageCoordinatorImpl(
             navigationController: navigationController,
             factory: MyPageFactoryImpl()
         )

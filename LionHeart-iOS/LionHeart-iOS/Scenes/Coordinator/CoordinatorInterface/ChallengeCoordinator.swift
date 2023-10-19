@@ -32,7 +32,7 @@ final class ChallengeCoordinator: Coordinator {
 
 extension ChallengeCoordinator: ChallengeNavigation {
     func navigationRightButtonTapped() {
-        let mypageCoordinator = MypageCoordinator(navigationController: navigationController,
+        let mypageCoordinator = MyPageCoordinatorImpl(navigationController: navigationController,
                                                   factory: MyPageFactoryImpl())
         mypageCoordinator.start()
         children.append(mypageCoordinator)
