@@ -33,7 +33,7 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
     }
     
     func showArticleDetailViewController(articleID: Int) {
-        let articleCoordinator = ArticleCoordinator(
+        let articleCoordinator = ArticleCoordinatorImpl(
             navigationController: navigationController,
             factory: ArticleFactoryImpl(),
             articleId: articleID
@@ -57,7 +57,7 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
     }
     
     func showMypageViewController() {
-        let mypageCoordinator = MypageCoordinator(
+        let mypageCoordinator = MyPageCoordinatorImpl(
             navigationController: navigationController,
             factory: MyPageFactoryImpl()
         )
