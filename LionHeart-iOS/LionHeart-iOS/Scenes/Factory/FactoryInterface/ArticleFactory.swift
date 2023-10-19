@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol ArticleFactory {
-    func makeArticleDetailViewController() -> ArticleControllerable
+    func makeArticleDetailViewController(adaptor: ArticleDetailModalNavigation) -> ArticleControllerable
 }

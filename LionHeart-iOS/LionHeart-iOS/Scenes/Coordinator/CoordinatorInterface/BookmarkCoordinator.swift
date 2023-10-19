@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 protocol BookmarkCoordinator: Coordinator {
     func showArticleDetailViewController(articleId: Int)
     func showBookmarkViewController()

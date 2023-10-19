@@ -76,24 +76,3 @@ extension UIViewController {
         return str
     }
 }
-
-/**
-
-  - Description:
-    ArticleDetailViewController로 fullscreen으로 present해주는 메서드입니다
-
-  - parameters:
-    articleID를 넘겨줍니다
- 
-*/
-
-extension UIViewController {
-    func presentArticleDetailFullScreen(articleID: Int) {
-        let articleDetailViewController = ArticleDetailViewController(manager: ArticleDetailManagerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())))
-        articleDetailViewController.setArticleId(id: articleID)
-        articleDetailViewController.isModalInPresentation = true
-        articleDetailViewController.modalPresentationStyle = .fullScreen
-        self.present(articleDetailViewController, animated: true)
-        
-    }
-}

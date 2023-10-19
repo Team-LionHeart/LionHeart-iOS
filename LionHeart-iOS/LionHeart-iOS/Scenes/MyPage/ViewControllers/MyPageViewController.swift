@@ -11,9 +11,8 @@ import UIKit
 import SnapKit
 
 final class MyPageViewController: UIViewController, MyPageControllerable {
-    
-    weak var coordinator: MyPageNavigation?
-    
+
+    var adaptor: MyPageNavigation
     private let manager: MyPageManager
     
     private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
@@ -33,8 +32,9 @@ final class MyPageViewController: UIViewController, MyPageControllerable {
         return button
     }()
 
-    init(manager: MyPageManager) {
+    init(manager: MyPageManager, adaptor: MyPageNavigation) {
         self.manager = manager
+        self.adaptor = adaptor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -96,7 +96,7 @@ private extension MyPageViewController {
     
     func setAddTarget() {
         navigtaionBar.backButtonAction {
-            self.coordinator?.backButtonTapped()
+            self.adaptor.backButtonTapped()
         }
         
         resignButton.addButtonAction { _ in
@@ -104,7 +104,7 @@ private extension MyPageViewController {
                 do {
                     self.resignButton.isUserInteractionEnabled = false
                     try await self.manager.resignUser()
-                    self.coordinator?.checkTokenIsExpired()
+                    self.adaptor.checkTokenIsExpired()
                 } catch {
                     print(error)
                 }
@@ -157,7 +157,7 @@ extension MyPageViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-            coordinator?.checkTokenIsExpired()
+            adaptor.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

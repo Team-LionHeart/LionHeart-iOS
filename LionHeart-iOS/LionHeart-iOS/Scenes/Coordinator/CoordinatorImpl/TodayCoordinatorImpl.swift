@@ -30,7 +30,7 @@ final class TodayCoordinatorImpl: TodayCoordinator {
     }
     
     func showArticleDetaileViewController(articleID: Int) {
-        let articleCoordinator = ArticleCoordinator(
+        let articleCoordinator = ArticleCoordinatorImpl(
             navigationController: navigationController,
             factory: ArticleFactoryImpl(),
             articleId: articleID
@@ -41,7 +41,7 @@ final class TodayCoordinatorImpl: TodayCoordinator {
     }
     
     func showMypageViewController() {
-        let mypageCoordinator = MypageCoordinator(navigationController: navigationController,
+        let mypageCoordinator = MyPageCoordinatorImpl(navigationController: navigationController,
                                                   factory: MyPageFactoryImpl())
         mypageCoordinator.start()
         children.append(mypageCoordinator)

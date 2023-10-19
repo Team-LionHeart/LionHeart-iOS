@@ -29,7 +29,7 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator {
     
     /// CurriculumListByWeekVC -> ArticleDetailVC
     func showArticleDetailViewController(articleId: Int) {
-        let articleCoordinator = ArticleCoordinator(
+        let articleCoordinator = ArticleCoordinatorImpl(
             navigationController: navigationController,
             factory: ArticleFactoryImpl(),
             articleId: articleId
@@ -46,7 +46,7 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator {
     }
 
     func showMypageViewController() {
-        let mypageCoordinator = MypageCoordinator(
+        let mypageCoordinator = MyPageCoordinatorImpl(
             navigationController: navigationController,
             factory: MyPageFactoryImpl()
         )

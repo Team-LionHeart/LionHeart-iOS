@@ -31,7 +31,7 @@ final class BookmarkCoordinatorImpl: BookmarkCoordinator {
     }
     
     func showArticleDetailViewController(articleId: Int) {
-        let articleCoordinator = ArticleCoordinator(
+        let articleCoordinator = ArticleCoordinatorImpl(
             navigationController: navigationController,
             factory: ArticleFactoryImpl(),
             articleId: articleId)

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 protocol ChallengeCoordinator: Coordinator {
     func showChallengeViewController()
     func showMypageViewController()

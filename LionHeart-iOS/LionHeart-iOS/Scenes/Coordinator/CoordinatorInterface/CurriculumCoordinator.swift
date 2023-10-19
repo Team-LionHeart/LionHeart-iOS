@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 protocol CurriculumCoordinator: Coordinator {
     func showCurriculumViewController()
     func showCurriculumListViewController(itemIndex: Int)
