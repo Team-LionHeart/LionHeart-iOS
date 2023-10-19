@@ -15,7 +15,7 @@ import SnapKit
 final class OnboardingViewController: UIViewController, OnboardingViewControllerable  {
     typealias OnboardingViews = [UIViewController]
     
-    weak var coordinator: OnboardingNavigation?
+    var navigator: OnboardingNavigation
     private let manager: OnboardingManager
     
     private var fetalNickName: String?
@@ -49,8 +49,9 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
         }
     }
 
-    init(manager: OnboardingManager) {
+    init(manager: OnboardingManager, navigator: OnboardingNavigation) {
         self.manager = manager
+        self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -132,7 +133,7 @@ private extension OnboardingViewController {
         }
     
         onboardingNavigationbar.backButtonAction {
-            self.coordinator?.backButtonTapped()
+            self.navigator.backButtonTapped()
         }
     }
     
@@ -159,7 +160,7 @@ private extension OnboardingViewController {
     
     func presentLoginView() {
         self.navigationController?.popViewController(animated: true)
-        self.coordinator?.backButtonTapped()
+        self.navigator.backButtonTapped()
     }
     
     func presentOnboardingView(oldValue: OnbardingFlowType) {
@@ -180,7 +181,7 @@ private extension OnboardingViewController {
             do {
                 try await manager.signUp(type: .kakao, onboardingModel: passingData)
                 hideLoading()
-                self.coordinator?.onboardingCompleted(data: passingData)
+                self.navigator.onboardingCompleted(data: passingData)
             } catch {
                 guard let error = error as? NetworkError else { return }
                 handleError(error)
@@ -243,7 +244,7 @@ extension OnboardingViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "이미지패치에러")
         case .unAuthorizedError:
-            coordinator?.checkTokenIsExpired()
+            navigator.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

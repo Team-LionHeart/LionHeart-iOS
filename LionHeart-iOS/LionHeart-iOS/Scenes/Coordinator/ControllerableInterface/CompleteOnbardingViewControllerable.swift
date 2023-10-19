@@ -8,6 +8,6 @@
 import UIKit
 
 protocol CompleteOnbardingViewControllerable where Self: UIViewController {
-    var coordinator: CompleteOnbardingNavigation? { get set }
+    var navigator: CompleteOnbardingNavigation { get set }
     var userData: UserOnboardingModel? { get set }
 }

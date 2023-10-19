@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ArticleCategoryViewControllerable where Self: UIViewController {
-    var coordinator: ArticleCategoryNavigation? {get set}
+    var navigator: ArticleCategoryNavigation {get set}
 }

@@ -19,10 +19,10 @@ final class TabbarCoordinator: Coordinator {
     }
     
     func start() {
-        showTabbar()
+        showTabbarController()
     }
     
-    func showTabbar() {
+    func showTabbarController() {
         let tabbarController = TabBarViewController()
         
         let todayNavigationController = UINavigationController()
@@ -31,7 +31,7 @@ final class TabbarCoordinator: Coordinator {
         todayNavigationController.tabBarItem = UITabBarItem(title: "투데이", image: .assetImage(.home), tag: 0)
         
         let articleCategoryNavigationController = UINavigationController()
-        let articleCategoryCoordinator = ArticleCategoryCoordinator(navigationController: articleCategoryNavigationController, factory: ArticleCategortFactoryImpl())
+        let articleCategoryCoordinator = ArticleCategoryCoordinatorImpl(navigationController: articleCategoryNavigationController, factory: ArticleCategortFactoryImpl())
         articleCategoryCoordinator.parentCoordinator = parentCoordinator
         articleCategoryNavigationController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         
@@ -60,7 +60,4 @@ final class TabbarCoordinator: Coordinator {
         curriculumCoordinator.start()
         challengeCoordinator.start()
     }
-    
-    
-    
 }
