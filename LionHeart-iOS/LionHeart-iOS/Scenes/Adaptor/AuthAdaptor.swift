@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias AuthNaviation = LoginNavigation & OnboardingNavigation & CompleteOnbardingNavigation
+typealias EntireAuthNaviation = LoginNavigation & OnboardingNavigation & CompleteOnbardingNavigation
 
-final class AuthAdaptor: AuthNaviation {
+final class AuthAdaptor: EntireAuthNaviation {
     
     let coordinator: AuthCoordinator
     init(coordinator: AuthCoordinator) {

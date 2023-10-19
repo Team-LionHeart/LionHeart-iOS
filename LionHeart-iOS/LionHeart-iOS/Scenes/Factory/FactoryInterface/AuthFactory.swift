@@ -8,9 +8,10 @@
 import Foundation
 
 protocol AuthFactory {
-    func makeLoginViewController(navigator: LoginNavigation) -> LoginViewControllerable
-    func makeCompleteOnbardingViewController(navigator: CompleteOnbardingNavigation) -> CompleteOnbardingViewControllerable
-    func makeOnboardingViewController(navigator: OnboardingNavigation) -> OnboardingViewControllerable
+    func makeAuthAdaptor(coordinator: AuthCoordinator) -> EntireAuthNaviation
+    func makeLoginViewController(coordinator: AuthCoordinator) -> LoginViewControllerable
+    func makeCompleteOnbardingViewController(coordinator: AuthCoordinator) -> CompleteOnbardingViewControllerable
+    func makeOnboardingViewController(coordinator: AuthCoordinator) -> OnboardingViewControllerable
 }
 
 
