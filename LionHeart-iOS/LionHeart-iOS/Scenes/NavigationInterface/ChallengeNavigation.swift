@@ -7,4 +7,4 @@
 
 import Foundation
 
-protocol ChallengeNavigation: BarNavigation {}
+protocol ChallengeNavigation: BarNavigation, ExpireNavigation {}

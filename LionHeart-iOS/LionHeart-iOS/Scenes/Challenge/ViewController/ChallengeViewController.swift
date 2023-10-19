@@ -13,7 +13,8 @@ import Lottie
 
 final class ChallengeViewController: UIViewController, ChallengeViewControllerable {
     
-    weak var coordinator: ChallengeNavigation?
+    
+    var navigator: ChallengeNavigation
     private var manager: ChallengeManager
     
     private let leftSeperateLine = LHUnderLine(lineColor: .background)
@@ -33,8 +34,9 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
         }
     }
     
-    init(manager: ChallengeManager) {
+    init(manager: ChallengeManager, navigator: ChallengeNavigation) {
         self.manager = manager
+        self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -173,11 +175,11 @@ private extension ChallengeViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            self.coordinator?.navigationLeftButtonTapped()
+            self.navigator.navigationLeftButtonTapped()
         }
         
         navigationBar.rightSecondBarItemAction {
-            self.coordinator?.navigationRightButtonTapped()
+            self.navigator.navigationRightButtonTapped()
         }
     }
 }
@@ -232,7 +234,7 @@ extension ChallengeViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "챌린지 이미지 패치 에러")
         case .unAuthorizedError:
-            LHToast.show(message: "챌린지 Auth 에러")
+            self.navigator.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:

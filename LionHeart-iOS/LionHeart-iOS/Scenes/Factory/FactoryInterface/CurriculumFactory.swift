@@ -9,6 +9,7 @@ import Foundation
 
 
 protocol CurriculumFactory {
-    func makeCurriculumViewController() -> CurriculumControllerable
-    func makeCurriculumListViewController() -> CurriculumArticleByWeekControllerable
+    func makeAdaptor(coordinator: CurriculumCoordinator) -> CurriculumAdaptor
+    func makeCurriculumViewController(coordinator: CurriculumCoordinator) -> CurriculumControllerable
+    func makeCurriculumListViewController(coordinator: CurriculumCoordinator) -> CurriculumArticleByWeekControllerable
 }

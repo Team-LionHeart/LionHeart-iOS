@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol CurriculumControllerable where Self: UIViewController {
-    var coordinator: CurriculumNavigation? { get set }
+    var navigator: CurriculumNavigation { get set }
 }
 
 

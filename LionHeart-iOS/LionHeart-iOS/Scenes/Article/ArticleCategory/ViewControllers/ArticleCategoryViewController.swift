@@ -12,7 +12,7 @@ import SnapKit
 
 final class ArticleCategoryViewController: UIViewController, ArticleCategoryViewControllerable {
     
-    weak var coordinator: ArticleCategoryNavigation?
+    var navigator: ArticleCategoryNavigation
 
     private lazy var navigationBar = LHNavigationBarView(type: .explore, viewController: self)
     private lazy var titleLabel = LHLabel(type: .head2, color: .white, lines: 2, basicText: "카테고리별\n아티클 모아보기")
@@ -30,6 +30,15 @@ final class ArticleCategoryViewController: UIViewController, ArticleCategoryView
         setAddTarget()
         setDelegate()
         setCollectionView()
+    }
+    
+    init(navigator: ArticleCategoryNavigation) {
+        self.navigator = navigator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -69,11 +78,11 @@ private extension ArticleCategoryViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            self.coordinator?.navigationLeftButtonTapped()
+            self.navigator.navigationLeftButtonTapped()
         }
         
         navigationBar.rightSecondBarItemAction {
-            self.coordinator?.navigationRightButtonTapped()
+            self.navigator.navigationRightButtonTapped()
         }
     }
     
@@ -108,7 +117,7 @@ extension ArticleCategoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.articleListCellTapped(categoryName: dummyCase[indexPath.item].categoryString)
+        navigator.articleListCellTapped(categoryName: dummyCase[indexPath.item].categoryString)
     }
 }
 

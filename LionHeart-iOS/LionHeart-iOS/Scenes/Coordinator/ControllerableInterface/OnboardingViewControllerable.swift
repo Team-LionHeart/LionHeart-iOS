@@ -8,6 +8,6 @@
 import UIKit
 
 protocol OnboardingViewControllerable where Self: UIViewController {
-    var coordinator: OnboardingNavigation? { get set }
+    var navigator: OnboardingNavigation { get set }
     func setKakaoAccessToken(_ token: String?)
 }

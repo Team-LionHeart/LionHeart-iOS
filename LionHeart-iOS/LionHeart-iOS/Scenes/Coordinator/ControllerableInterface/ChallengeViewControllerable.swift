@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ChallengeViewControllerable where Self: UIViewController {
-    var coordinator: ChallengeNavigation? { get set }
+    var navigator: ChallengeNavigation { get set }
 }

@@ -12,3 +12,4 @@ protocol MyPageCoordinator: Coordinator {
     func exitApplication()
     func pop()
 }
+

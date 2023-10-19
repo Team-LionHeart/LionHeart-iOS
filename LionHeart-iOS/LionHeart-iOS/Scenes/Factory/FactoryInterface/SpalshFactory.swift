@@ -8,7 +8,8 @@
 import UIKit
 
 protocol SplashFactory {
-    func makeSplashViewController() -> SplashViewControllerable
+    func makeSplashAdaptor(coordinator: SplashCoordinator) -> EntireSplashNavigation
+    func makeSplashViewController(coordinator: SplashCoordinator) -> SplashViewControllerable
 }
 
 
