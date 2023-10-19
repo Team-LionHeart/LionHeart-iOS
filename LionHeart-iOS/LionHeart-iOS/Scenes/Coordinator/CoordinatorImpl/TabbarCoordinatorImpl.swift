@@ -1,5 +1,5 @@
 //
-//  TabbbarCoordinator.swift
+//  TabbarCoordinatorImpl.swift
 //  LionHeart-iOS
 //
 //  Created by uiskim on 2023/10/13.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TabbarCoordinator: Coordinator {
+final class TabbarCoordinatorImpl: Coordinator {
     weak var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
@@ -55,9 +55,9 @@ final class TabbarCoordinator: Coordinator {
         navigationController.isNavigationBarHidden = true
         parentCoordinator?.children = [todayCoordinator, articleCategoryCoordinator, curriculumCoordinator, challengeCoordinator]
         
-        todayCoordinator.start()
-        articleCategoryCoordinator.start()
-        curriculumCoordinator.start()
-        challengeCoordinator.start()
+        todayCoordinator.showTodayViewController()
+        articleCategoryCoordinator.showArticleCategoryViewController()
+        curriculumCoordinator.showCurriculumViewController()
+        challengeCoordinator.showChallengeViewController()
     }
 }

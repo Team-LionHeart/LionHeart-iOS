@@ -33,14 +33,14 @@ final class ChallengeCoordinatorImpl: ChallengeCoordinator {
     func showMypageViewController() {
         let mypageCoordinator = MyPageCoordinatorImpl(navigationController: navigationController,
                                                   factory: MyPageFactoryImpl())
-        mypageCoordinator.start()
+        mypageCoordinator.showMyPageViewController()
         children.append(mypageCoordinator)
     }
     
     func showBookmarkViewController() {
         let bookmakrFactory = BookmarkFactoryImpl()
         let bookmarkCoordinator = BookmarkCoordinatorImpl(navigationController: navigationController, factory: bookmakrFactory)
-        bookmarkCoordinator.start()
+        bookmarkCoordinator.showBookmarkViewController()
         children.append(bookmarkCoordinator)
     }
     

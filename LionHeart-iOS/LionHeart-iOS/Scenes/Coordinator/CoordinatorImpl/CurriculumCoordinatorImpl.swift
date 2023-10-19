@@ -36,7 +36,7 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator {
         )
         articleCoordinator.parentCoordinator = self
         children.append(articleCoordinator)
-        articleCoordinator.start()
+        articleCoordinator.showArticleDetailViewController()
     }
     
     func showCurriculumListViewController(itemIndex: Int) {
@@ -50,14 +50,14 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator {
             navigationController: navigationController,
             factory: MyPageFactoryImpl()
         )
-        mypageCoordinator.start()
+        mypageCoordinator.showMyPageViewController()
         children.append(mypageCoordinator)
     }
     
     func showBookmarkViewController() {
         let bookmarkFactory = BookmarkFactoryImpl()
         let bookmarkCoordinator = BookmarkCoordinatorImpl(navigationController: navigationController, factory: bookmarkFactory)
-        bookmarkCoordinator.start()
+        bookmarkCoordinator.showBookmarkViewController()
         children.append(bookmarkCoordinator)
     }
     

@@ -35,7 +35,7 @@ final class BookmarkCoordinatorImpl: BookmarkCoordinator {
             navigationController: navigationController,
             factory: ArticleFactoryImpl(),
             articleId: articleId)
-        articleCoordinator.start()
+        articleCoordinator.showArticleDetailViewController()
         children.append(articleCoordinator)
     }
     

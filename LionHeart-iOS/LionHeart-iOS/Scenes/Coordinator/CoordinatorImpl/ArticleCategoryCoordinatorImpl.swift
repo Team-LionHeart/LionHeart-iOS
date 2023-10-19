@@ -40,7 +40,7 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
         )
         articleCoordinator.parentCoordinator = self
         children.append(articleCoordinator)
-        articleCoordinator.start()
+        articleCoordinator.showArticleDetailViewController()
     }
     
     func showArticleListbyCategoryViewController(categoryName: String) {
@@ -52,7 +52,7 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
     func showBookmarkViewController() {
         let bookmarkFactory = BookmarkFactoryImpl()
         let bookmarkCoordinator = BookmarkCoordinatorImpl(navigationController: navigationController, factory: bookmarkFactory)
-        bookmarkCoordinator.start()
+        bookmarkCoordinator.showBookmarkViewController()
         children.append(bookmarkCoordinator)
     }
     
@@ -61,7 +61,7 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
             navigationController: navigationController,
             factory: MyPageFactoryImpl()
         )
-        mypageCoordinator.start()
+        mypageCoordinator.showMyPageViewController()
         children.append(mypageCoordinator)
     }
     
