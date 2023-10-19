@@ -31,10 +31,10 @@ final class SplashCoordinatorImpl: SplashCoordinator {
     }
     
     func showTabbarViewContoller() {
-        let tabbarCoordinator = TabbarCoordinator(navigationController: navigationController)
+        let tabbarCoordinator = TabbarCoordinatorImpl(navigationController: navigationController)
         children.removeAll()
         tabbarCoordinator.parentCoordinator = self
-        tabbarCoordinator.start()
+        tabbarCoordinator.showTabbarController()
     }
     
     func showLoginViewController() {
@@ -42,6 +42,6 @@ final class SplashCoordinatorImpl: SplashCoordinator {
         children.removeAll()
         authCoordinator.parentCoordinator = self
         children.append(authCoordinator)
-        authCoordinator.start()
+        authCoordinator.showLoginViewController()
     }
 }
