@@ -7,8 +7,9 @@
 
 import Foundation
 
+typealias EntireChallengeNavigation = ChallengeNavigation
 
-final class ChallengeAdaptor: ChallengeNavigation {
+final class ChallengeAdaptor: EntireChallengeNavigation {
     
     let coordinator: ChallengeCoordinator
     
