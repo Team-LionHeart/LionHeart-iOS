@@ -26,7 +26,7 @@ final class LoginViewController: UIViewController, LoginViewControllerable {
         }
     }
     
-    weak var coordinator: LoginNavigation?
+    var navigator: LoginNavigation
 
     private let manager: LoginManager
 
@@ -42,8 +42,9 @@ final class LoginViewController: UIViewController, LoginViewControllerable {
         .setMarginImageWithText(for: 8)
         .setBackgroundColor(color: .kakao)
 
-    init(manager: LoginManager) {
+    init(manager: LoginManager, navigator: LoginNavigation) {
         self.manager = manager
+        self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -73,7 +74,7 @@ extension LoginViewController: ViewControllerServiceable {
             print(code, message)
             if code == NetworkErrorCode.unfoundUserErrorCode {
                 LHToast.show(message: "코드 잘돌아감")
-                self.coordinator?.checkUserIsVerified(userState: .nonVerified, kakaoToken: kakaoAccessToken)
+                self.navigator.checkUserIsVerified(userState: .nonVerified, kakaoToken: kakaoAccessToken)
             }
         default:
             LHToast.show(message: error.description)
@@ -86,7 +87,7 @@ extension LoginViewController {
         Task {
             do {
                 try await manager.login(type: .kakao, kakaoToken: kakaoToken)
-                self.coordinator?.checkUserIsVerified(userState: .verified, kakaoToken: kakaoToken)
+                self.navigator.checkUserIsVerified(userState: .verified, kakaoToken: kakaoToken)
             } catch {
                 guard let error = error as? NetworkError else {
                     LHToast.show(message: "넷웤에러 95")

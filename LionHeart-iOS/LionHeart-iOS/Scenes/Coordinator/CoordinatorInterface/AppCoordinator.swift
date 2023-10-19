@@ -23,7 +23,7 @@ final class AppCoordinator: Coordinator {
     }
     
     func startSplashCoordinator() {
-        let splashCoordinator = SplashCoordinator(navigationController: navigationController, factory: SplashFactoryImpl())
+        let splashCoordinator = SplashCoordinatorImpl(navigationController: navigationController, factory: SplashFactoryImpl())
         children.removeAll()
         splashCoordinator.parentCoordinator = self
         children.append(splashCoordinator)

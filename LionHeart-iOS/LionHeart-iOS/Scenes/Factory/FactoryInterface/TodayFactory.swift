@@ -8,7 +8,8 @@
 import UIKit
 
 protocol TodayFactory {
-    func makeTodayViewController(adaptor: TodayNavigation) -> TodayViewControllerable
+    func makeAuthAdaptor(coordinator: TodayCoordinator) -> EntireTodayNavigation
+    func makeTodayViewController(coordinator: TodayCoordinator) -> TodayViewControllerable
 }
 
 

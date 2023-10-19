@@ -23,7 +23,7 @@ final class CompleteOnbardingViewController: UIViewController, CompleteOnbarding
         }
     }
     
-    weak var coordinator: CompleteOnbardingNavigation?
+    var navigator: CompleteOnbardingNavigation
     
     private let titleLabel = LHOnboardingTitleLabel(nil, align: .center)
     private let descriptionLabel = LHOnboardingDescriptionLabel("아티클 맞춤 환경이 준비되었어요.")
@@ -36,6 +36,16 @@ final class CompleteOnbardingViewController: UIViewController, CompleteOnbarding
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    init(navigator: CompleteOnbardingNavigation) {
+        self.navigator = navigator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +91,7 @@ private extension CompleteOnbardingViewController {
     
     func setButtonAction() {
         startButton.addButtonAction { sender in
-            self.coordinator?.startButtonTapped()
+            self.navigator.startButtonTapped()
         }
     }
 }

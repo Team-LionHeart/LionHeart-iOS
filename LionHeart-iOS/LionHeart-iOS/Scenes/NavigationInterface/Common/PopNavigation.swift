@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol PopNavigation {
+protocol PopNavigation: AnyObject {
     func backButtonTapped()
 }

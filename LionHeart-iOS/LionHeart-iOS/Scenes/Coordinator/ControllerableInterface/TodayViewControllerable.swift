@@ -8,5 +8,5 @@
 import UIKit
 
 protocol TodayViewControllerable where Self: UIViewController {
-    var adaptor: TodayNavigation { get set }
+    var navigator: TodayNavigation { get set }
 }

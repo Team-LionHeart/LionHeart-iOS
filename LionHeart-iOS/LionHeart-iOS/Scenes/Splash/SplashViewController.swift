@@ -12,13 +12,14 @@ import SnapKit
 
 final class SplashViewController: UIViewController, SplashViewControllerable {
 
-    weak var coordinator: SplashNavigation?
+    var navigator: SplashNavigation
     private let manager: SplashManager
     
     private let lottieImageView = LHLottie(name: "motion_logo_final")
 
-    init(manager: SplashManager) {
+    init(manager: SplashManager, adaptor: SplashNavigation) {
         self.manager = manager
+        self.navigator = adaptor
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -36,7 +37,7 @@ final class SplashViewController: UIViewController, SplashViewControllerable {
     override func viewWillAppear(_ animated: Bool) {
         lottieImageView.play { _ in
             guard let accessToken = UserDefaultsManager.tokenKey?.accessToken, let refreshToken = UserDefaultsManager.tokenKey?.refreshToken else {
-                self.coordinator?.checkToken(state: .expired)
+                self.navigator.checkToken(state: .expired)
                 return
             }
             Task {
@@ -77,7 +78,7 @@ private extension SplashViewController {
             let dtoToken = try await manager.reissueToken(token: Token(accessToken: accessToken, refreshToken: refreshToken))
             UserDefaultsManager.tokenKey?.accessToken = dtoToken?.accessToken
             UserDefaultsManager.tokenKey?.refreshToken = dtoToken?.refreshToken
-            self.coordinator?.checkToken(state: .valid)
+            self.navigator.checkToken(state: .valid)
         } catch {
             guard let errorModel = error as? NetworkError else { return }
             await handleError(errorModel)
@@ -98,9 +99,9 @@ private extension SplashViewController {
             if code == NetworkErrorCode.unauthorizedErrorCode {
                 guard let token = UserDefaultsManager.tokenKey else { return }
                 await logout(token: token)
-                self.coordinator?.checkToken(state: .expired)
+                self.navigator.checkToken(state: .expired)
             } else if code == NetworkErrorCode.unfoundUserErrorCode {
-                self.coordinator?.checkToken(state: .expired)
+                self.navigator.checkToken(state: .expired)
             }
         default:
             print(error)

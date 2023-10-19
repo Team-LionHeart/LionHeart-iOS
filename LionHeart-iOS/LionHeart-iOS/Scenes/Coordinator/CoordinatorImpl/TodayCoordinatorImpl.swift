@@ -25,9 +25,8 @@ final class TodayCoordinatorImpl: TodayCoordinator {
     }
     
     func showTodayViewController() {
-        let todayAdaptor = TodayAdaptor(coordinator: self)
-        let todayVC = factory.makeTodayViewController(adaptor: todayAdaptor)
-        self.navigationController.pushViewController(todayVC, animated: true)
+        let todayViweController = factory.makeTodayViewController(coordinator: self)
+        self.navigationController.pushViewController(todayViweController, animated: true)
     }
     
     func showArticleDetaileViewController(articleID: Int) {

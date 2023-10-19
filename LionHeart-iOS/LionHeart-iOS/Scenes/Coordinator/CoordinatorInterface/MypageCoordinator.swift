@@ -30,6 +30,13 @@ final class MypageCoordinator: Coordinator {
         myPageViewController.coordinator = self
         self.navigationController.pushViewController(myPageViewController, animated: true)
     }
+    func dismiss() {
+        
+    }
+    
+    func pop() {
+        
+    }
 }
 
 extension MypageCoordinator: MyPageNavigation {

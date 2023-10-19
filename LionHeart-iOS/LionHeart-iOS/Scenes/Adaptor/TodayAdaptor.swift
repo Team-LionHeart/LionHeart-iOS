@@ -5,9 +5,11 @@
 //  Created by uiskim on 2023/10/16.
 //
 
-import UIKit
+import Foundation
 
-final class TodayAdaptor: TodayNavigation {
+typealias EntireTodayNavigation = TodayNavigation
+
+final class TodayAdaptor: EntireTodayNavigation {
 
     let coordinator: TodayCoordinator
     init(coordinator: TodayCoordinator) {
