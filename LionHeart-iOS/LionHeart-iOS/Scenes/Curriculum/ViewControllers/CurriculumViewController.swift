@@ -13,7 +13,7 @@ import Lottie
 
 final class CurriculumViewController: UIViewController, CurriculumControllerable  {
     
-    weak var coordinator: CurriculumNavigation?
+    var navigator: CurriculumNavigation
     private let manager: CurriculumManager
 
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumMain, viewController: self)
@@ -32,8 +32,9 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
         }
     }
     
-    init(manager: CurriculumManager) {
+    init(manager: CurriculumManager, adaptor: CurriculumNavigation) {
         self.manager = manager
+        self.navigator = adaptor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -125,11 +126,11 @@ private extension CurriculumViewController {
     
     func setAddTarget() {
         navigationBar.rightFirstBarItemAction {
-            self.coordinator?.navigationLeftButtonTapped()
+            self.navigator.navigationLeftButtonTapped()
         }
         
         navigationBar.rightSecondBarItemAction {
-            self.coordinator?.navigationRightButtonTapped()
+            self.navigator.navigationRightButtonTapped()
         }
     }
     
@@ -189,7 +190,8 @@ extension CurriculumViewController: CurriculumTableViewToggleButtonTappedProtoco
     
     func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
         guard let indexPath else { return }
-        coordinator?.articleListCellTapped(itemIndex: indexPath.section * 4 + indexPath.row)
+        let itemIndex = indexPath.section * 4 + indexPath.row
+        self.navigator.articleListCellTapped(itemIndex: itemIndex)
     }
 }
 
@@ -197,7 +199,7 @@ extension CurriculumViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-            self.coordinator?.checkTokenIsExpired()
+            self.navigator.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: "\(message)")
         default:

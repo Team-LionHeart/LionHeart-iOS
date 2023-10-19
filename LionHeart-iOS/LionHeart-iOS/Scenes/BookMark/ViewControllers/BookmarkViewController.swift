@@ -12,7 +12,7 @@ import SnapKit
 
 final class BookmarkViewController: UIViewController, BookmarkViewControllerable {
     
-    weak var coordinator: BookmarkNavigation?
+    var navigator: BookmarkNavigation
     private let manager: BookmarkManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .bookmark, viewController: self)
@@ -21,8 +21,9 @@ final class BookmarkViewController: UIViewController, BookmarkViewControllerable
     private var bookmarkAppData = BookmarkAppData(nickName: "", articleSummaries: [ArticleSummaries]())
     private var bookmarkList = [ArticleSummaries]()
     
-    init(manager: BookmarkManager) {
+    init(manager: BookmarkManager, navigator: BookmarkNavigation) {
         self.manager = manager
+        self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -102,7 +103,7 @@ private extension BookmarkViewController {
     
     func setAddTarget() {
         self.navigationBar.backButtonAction {
-            self.coordinator?.backButtonTapped()
+            self.navigator.backButtonTapped()
         }
     }
 }
@@ -119,7 +120,7 @@ extension BookmarkViewController: ViewControllerServiceable {
         case .fetchImageError:
             LHToast.show(message: "Image Error")
         case .unAuthorizedError:
-            self.coordinator?.checkTokenIsExpired()
+            self.navigator.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: message)
         case .serverError:
@@ -196,6 +197,7 @@ extension BookmarkViewController: UICollectionViewDelegateFlowLayout {
 
 extension BookmarkViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.coordinator?.bookmarkCellTapped(articleID: bookmarkList[indexPath.item].articleID)
+        let articleID = bookmarkList[indexPath.item].articleID
+        self.navigator.bookmarkCellTapped(articleID: articleID)
     }
 }

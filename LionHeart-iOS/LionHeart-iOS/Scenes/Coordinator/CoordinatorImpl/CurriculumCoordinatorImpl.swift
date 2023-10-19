@@ -1,48 +1,55 @@
 //
-//  TodayCoordinatorImpl.swift
+//  CurriculumCoordinatorImpl.swift
 //  LionHeart-iOS
 //
-//  Created by uiskim on 2023/10/16.
+//  Created by 김민재 on 10/17/23.
 //
 
 import UIKit
 
-final class TodayCoordinatorImpl: TodayCoordinator {
+
+final class CurriculumCoordinatorImpl: CurriculumCoordinator {
+    
     weak var parentCoordinator: Coordinator?
-    private let factory: TodayFactory
+    
+    let factory: CurriculumFactory
     
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController, factory: TodayFactory) {
+    init(navigationController: UINavigationController, factory: CurriculumFactory) {
         self.navigationController = navigationController
         self.factory = factory
     }
     
     func start() {
-        showTodayViewController()
+        showCurriculumViewController()
     }
     
-    func showTodayViewController() {
-        let todayViweController = factory.makeTodayViewController(coordinator: self)
-        self.navigationController.pushViewController(todayViweController, animated: true)
-    }
-    
-    func showArticleDetaileViewController(articleID: Int) {
+    /// CurriculumListByWeekVC -> ArticleDetailVC
+    func showArticleDetailViewController(articleId: Int) {
         let articleCoordinator = ArticleCoordinator(
             navigationController: navigationController,
             factory: ArticleFactoryImpl(),
-            articleId: articleID
+            articleId: articleId
         )
         articleCoordinator.parentCoordinator = self
         children.append(articleCoordinator)
         articleCoordinator.start()
     }
     
+    func showCurriculumListViewController(itemIndex: Int) {
+        let curriculumListViewController = factory.makeCurriculumListViewController(coordinator: self) // After
+        curriculumListViewController.setWeekIndexPath(week: itemIndex)
+        navigationController.pushViewController(curriculumListViewController, animated: true)
+    }
+
     func showMypageViewController() {
-        let mypageCoordinator = MypageCoordinator(navigationController: navigationController,
-                                                  factory: MyPageFactoryImpl())
+        let mypageCoordinator = MypageCoordinator(
+            navigationController: navigationController,
+            factory: MyPageFactoryImpl()
+        )
         mypageCoordinator.start()
         children.append(mypageCoordinator)
     }
@@ -54,10 +61,19 @@ final class TodayCoordinatorImpl: TodayCoordinator {
         children.append(bookmarkCoordinator)
     }
     
+    func pop() {
+        self.navigationController.popViewController(animated: true)
+    }
+    
     func exitApplication() {
         UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             exit(0)
         }
+    }
+    
+    func showCurriculumViewController() {
+        let curriculumVC = factory.makeCurriculumViewController(coordinator: self)
+        navigationController.pushViewController(curriculumVC, animated: true)
     }
 }

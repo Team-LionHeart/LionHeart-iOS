@@ -36,7 +36,7 @@ final class TabbarCoordinator: Coordinator {
         articleCategoryNavigationController.tabBarItem = UITabBarItem(title: "탐색", image: .assetImage(.search), tag: 1)
         
         let curriculumNavigationController = UINavigationController()
-        let curriculumCoordinator = CurriculumCoordinator(
+        let curriculumCoordinator = CurriculumCoordinatorImpl(
             navigationController: curriculumNavigationController,
             factory: CurriculumFactoryImpl()
         )
@@ -44,7 +44,7 @@ final class TabbarCoordinator: Coordinator {
         curriculumCoordinator.parentCoordinator = parentCoordinator
         
         let challengeNavigationController = UINavigationController()
-        let challengeCoordinator = ChallengeCoordinator(navigationController: challengeNavigationController, factory: ChallengeFactoryImpl())
+        let challengeCoordinator = ChallengeCoordinatorImpl(navigationController: challengeNavigationController, factory: ChallengeFactoryImpl())
         challengeCoordinator.parentCoordinator = parentCoordinator
         challengeNavigationController.tabBarItem = UITabBarItem(title: "챌린지", image: .assetImage(.challenge), tag: 3)
         

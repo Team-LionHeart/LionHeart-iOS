@@ -10,5 +10,5 @@ import UIKit
 
 protocol CurriculumArticleByWeekControllerable where Self: UIViewController {
     func setWeekIndexPath(week: Int)
-    var coordinator: CurriculumListByWeekNavigation? { get set }
+    var navigator: CurriculumListByWeekNavigation { get set }
 }

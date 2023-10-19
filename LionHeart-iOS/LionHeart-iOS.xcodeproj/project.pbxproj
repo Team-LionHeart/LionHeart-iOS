@@ -52,6 +52,12 @@
 		B53F4EE52ADBC23F001C5752 /* MyPageFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EE42ADBC23F001C5752 /* MyPageFactoryImpl.swift */; };
 		B53F4EE72ADBC29F001C5752 /* CurriculumFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EE62ADBC29F001C5752 /* CurriculumFactoryImpl.swift */; };
 		B53F4EE92ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EE82ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift */; };
+		B53F4EEE2ADE245B001C5752 /* CurriculumAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EED2ADE245B001C5752 /* CurriculumAdaptor.swift */; };
+		B53F4EF22ADE2687001C5752 /* CurriculumCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF12ADE2687001C5752 /* CurriculumCoordinatorImpl.swift */; };
+		B53F4EF62ADE2DEB001C5752 /* ChallengeAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF52ADE2DEB001C5752 /* ChallengeAdaptor.swift */; };
+		B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */; };
+		B53F4EFA2ADE3151001C5752 /* BookmarkAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */; };
+		B53F4EFC2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */; };
 		B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */; };
 		B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */; };
 		B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB642A6134B800D1727C /* setRootViewController.swift */; };
@@ -375,6 +381,12 @@
 		B53F4EE42ADBC23F001C5752 /* MyPageFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFactoryImpl.swift; sourceTree = "<group>"; };
 		B53F4EE62ADBC29F001C5752 /* CurriculumFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumFactoryImpl.swift; sourceTree = "<group>"; };
 		B53F4EE82ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumArticleByWeekControllerable.swift; sourceTree = "<group>"; };
+		B53F4EED2ADE245B001C5752 /* CurriculumAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumAdaptor.swift; sourceTree = "<group>"; };
+		B53F4EF12ADE2687001C5752 /* CurriculumCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumCoordinatorImpl.swift; sourceTree = "<group>"; };
+		B53F4EF52ADE2DEB001C5752 /* ChallengeAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAdaptor.swift; sourceTree = "<group>"; };
+		B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCoordinatorImpl.swift; sourceTree = "<group>"; };
+		B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdaptor.swift; sourceTree = "<group>"; };
+		B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCoordinatorImpl.swift; sourceTree = "<group>"; };
 		B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorCode.swift; sourceTree = "<group>"; };
 		B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B57BEB642A6134B800D1727C /* setRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setRootViewController.swift; sourceTree = "<group>"; };
@@ -1444,6 +1456,9 @@
 			isa = PBXGroup;
 			children = (
 				C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */,
+				B53F4EED2ADE245B001C5752 /* CurriculumAdaptor.swift */,
+				B53F4EF52ADE2DEB001C5752 /* ChallengeAdaptor.swift */,
+				B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */,
 				C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */,
 				C034EDDB2ADE2A2C00AD6FF3 /* AuthAdaptor.swift */,
 				C034EE1D2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift */,
@@ -1474,6 +1489,9 @@
 			children = (
 				C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */,
 				C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */,
+				B53F4EF12ADE2687001C5752 /* CurriculumCoordinatorImpl.swift */,
+				B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */,
+				B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */,
 				C003CC1E2AD917F900AFFAAC /* SplashCoordinatorImpl.swift */,
 				C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift */,
 			);
@@ -1886,6 +1904,7 @@
 				F47329E12A66F5D0001605D4 /* CurriculumResponse.swift in Sources */,
 				C0F029E42A5FB08700E0D185 /* LHUnderLine.swift in Sources */,
 				C06E38282A662D8700B00600 /* TodayArticleResponse.swift in Sources */,
+				B53F4EF22ADE2687001C5752 /* CurriculumCoordinatorImpl.swift in Sources */,
 				C003CC552ADA4FD500AFFAAC /* SplashNavigation.swift in Sources */,
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */,
@@ -1949,9 +1968,11 @@
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
 				C034EE1E2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift in Sources */,
 				C003CC662ADA518E00AFFAAC /* ArticleDetailManager.swift in Sources */,
+				B53F4EF62ADE2DEB001C5752 /* ChallengeAdaptor.swift in Sources */,
 				4AD216402A69AC1E00C9F2F2 /* MyPageResponse.swift in Sources */,
 				C003CC1F2AD917F900AFFAAC /* SplashCoordinatorImpl.swift in Sources */,
 				C003CC6E2ADA51E200AFFAAC /* CurriculumListManager.swift in Sources */,
+				B53F4EFA2ADE3151001C5752 /* BookmarkAdaptor.swift in Sources */,
 				D35272D12A681E13002D7FCB /* ChallengeData.swift in Sources */,
 				C065F00D2ADBD29A0094912C /* OnboardingViewControllerable.swift in Sources */,
 				B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */,
@@ -1965,6 +1986,7 @@
 				C003CC432ADA4EFF00AFFAAC /* MyPageNavigation.swift in Sources */,
 				C003CC512ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
+				B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,
@@ -1978,6 +2000,7 @@
 				C034EDDC2ADE2A2C00AD6FF3 /* AuthAdaptor.swift in Sources */,
 				B57BEB702A6275F500D1727C /* ViewControllerServiceable.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
+				B53F4EFC2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift in Sources */,
 				C0856B6D2ABFBD840026D9F8 /* BookmarkServiceImpl.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
 				C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */,
@@ -2084,6 +2107,7 @@
 				C003CC3D2ADA4EB300AFFAAC /* ChallengeNavigation.swift in Sources */,
 				C0B15E232AC100690058D56B /* LHStackView.swift in Sources */,
 				B59BFD432ADBBFF5005D2D81 /* ArticleFactory.swift in Sources */,
+				B53F4EEE2ADE245B001C5752 /* CurriculumAdaptor.swift in Sources */,
 				C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */,
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,

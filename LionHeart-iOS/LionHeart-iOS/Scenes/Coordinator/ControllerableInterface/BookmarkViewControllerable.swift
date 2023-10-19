@@ -8,5 +8,5 @@
 import UIKit
 
 protocol BookmarkViewControllerable where Self: UIViewController {
-    var coordinator: BookmarkNavigation? { get set }
+    var navigator: BookmarkNavigation { get set }
 }
