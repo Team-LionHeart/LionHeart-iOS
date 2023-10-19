@@ -10,5 +10,5 @@ import UIKit
 
 protocol ArticleControllerable where Self: UIViewController {
     func setArticleId(id: Int?)
-    var coordinator: ArticleDetailModalNavigation? { get set }
+    var adaptor: ArticleDetailModalNavigation { get set }
 }

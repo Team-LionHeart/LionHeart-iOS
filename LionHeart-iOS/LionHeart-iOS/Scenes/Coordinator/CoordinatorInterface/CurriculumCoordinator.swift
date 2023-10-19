@@ -41,7 +41,7 @@ extension CurriculumCoordinator: CurriculumNavigation, CurriculumListByWeekNavig
     }
     
     func curriculumArticleListCellTapped(articleId: Int) {
-        let articleCoordinator = ArticleCoordinator(
+        let articleCoordinator = ArticleCoordinatorImpl(
             navigationController: navigationController, 
             factory: ArticleFactoryImpl(),
             articleId: articleId

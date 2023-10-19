@@ -13,7 +13,7 @@ import SnapKit
 final class ArticleDetailViewController: UIViewController, ArticleControllerable {
     
     // MARK: - UI Components
-    weak var coordinator: ArticleDetailModalNavigation?
+    var adaptor: ArticleDetailModalNavigation
     private let manager: ArticleDetailManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .articleMain, viewController: self)
@@ -44,8 +44,9 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
 
     private var contentOffsetY: CGFloat = 0
     
-    init(manager: ArticleDetailManager) {
+    init(manager: ArticleDetailManager, adaptor: ArticleDetailModalNavigation) {
         self.manager = manager
+        self.adaptor = adaptor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -112,7 +113,7 @@ extension ArticleDetailViewController: ViewControllerServiceable {
     func handleError(_ error: NetworkError) {
         switch error {
         case .unAuthorizedError:
-            coordinator?.checkTokenIsExpired()
+            adaptor.checkTokenIsExpired()
         case .clientError(_, let message):
             LHToast.show(message: "\(message)")
         default:
@@ -175,7 +176,7 @@ private extension ArticleDetailViewController {
 
     func setAddTarget() {
         navigationBar.backButtonAction {
-            self.coordinator?.closeButtonTapped()
+            self.adaptor.closeButtonTapped()
         }
         
         scrollToTopButton.addButtonAction { _ in

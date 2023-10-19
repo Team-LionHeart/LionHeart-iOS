@@ -40,7 +40,7 @@ extension BookmarkCoordinator: BookmarkNavigation {
     }
     
     func bookmarkCellTapped(articleID: Int) {
-        let articleCoordinator = ArticleCoordinator(
+        let articleCoordinator = ArticleCoordinatorImpl(
             navigationController: navigationController,
             factory: ArticleFactoryImpl(),
             articleId: articleID)

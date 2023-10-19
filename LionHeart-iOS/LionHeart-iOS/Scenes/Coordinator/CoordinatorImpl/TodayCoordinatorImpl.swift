@@ -31,7 +31,7 @@ final class TodayCoordinatorImpl: TodayCoordinator {
     }
     
     func showArticleDetaileViewController(articleID: Int) {
-        let articleCoordinator = ArticleCoordinator(
+        let articleCoordinator = ArticleCoordinatorImpl(
             navigationController: navigationController,
             factory: ArticleFactoryImpl(),
             articleId: articleID

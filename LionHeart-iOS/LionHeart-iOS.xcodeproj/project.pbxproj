@@ -22,6 +22,8 @@
 		4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */; };
 		4A918E772AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */; };
 		4A918E792AE10BC2003CB8F9 /* MyPageAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */; };
+		4A918E7B2AE11839003CB8F9 /* ArticleAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E7A2AE11839003CB8F9 /* ArticleAdaptor.swift */; };
+		4A918E7D2AE11936003CB8F9 /* ArticleCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E7C2AE11936003CB8F9 /* ArticleCoordinatorImpl.swift */; };
 		4AD216402A69AC1E00C9F2F2 /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD2163F2A69AC1E00C9F2F2 /* MyPageResponse.swift */; };
 		4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD6AE192A68436B00A3D745 /* ArticleListByCategoryResponse.swift */; };
 		4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE19A192A65886100C1DB7E /* BookmarkReponse.swift */; };
@@ -326,6 +328,8 @@
 		4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAppSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinatorImpl.swift; sourceTree = "<group>"; };
 		4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAdaptor.swift; sourceTree = "<group>"; };
+		4A918E7A2AE11839003CB8F9 /* ArticleAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleAdaptor.swift; sourceTree = "<group>"; };
+		4A918E7C2AE11936003CB8F9 /* ArticleCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCoordinatorImpl.swift; sourceTree = "<group>"; };
 		4AD2163F2A69AC1E00C9F2F2 /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
 		4AD6AE032A66F83E00A3D745 /* progressbar_2m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_2m.json; sourceTree = "<group>"; };
 		4AD6AE052A66F84300A3D745 /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
@@ -1434,6 +1438,7 @@
 			children = (
 				C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */,
 				4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */,
+				4A918E7A2AE11839003CB8F9 /* ArticleAdaptor.swift */,
 			);
 			path = Adaptor;
 			sourceTree = "<group>";
@@ -1461,6 +1466,7 @@
 			children = (
 				C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */,
 				4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */,
+				4A918E7C2AE11936003CB8F9 /* ArticleCoordinatorImpl.swift */,
 			);
 			path = CoordinatorImpl;
 			sourceTree = "<group>";
@@ -1919,6 +1925,7 @@
 				F4DB30B82A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
 				C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */,
+				4A918E7D2AE11936003CB8F9 /* ArticleCoordinatorImpl.swift in Sources */,
 				C0B15E1B2AC0169D0058D56B /* LHCollectionView.swift in Sources */,
 				F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */,
 				F4DB30AE2A611C7C00413EB9 /* CurriculumListByWeekViewController.swift in Sources */,
@@ -2094,6 +2101,7 @@
 				C0F62FE72A691FC40003ADFA /* LHLoadingView.swift in Sources */,
 				C0B15E132AC010CD0058D56B /* LHKingfisherService.swift in Sources */,
 				C009E9F62ADBC41D00112F18 /* BookmarkFactory.swift in Sources */,
+				4A918E7B2AE11839003CB8F9 /* ArticleAdaptor.swift in Sources */,
 				4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */,
 				4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */,
 				B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */,
