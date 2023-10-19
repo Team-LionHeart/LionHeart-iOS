@@ -7,7 +7,9 @@
 
 import Foundation
 
-final class SplashAdaptor: SplashNavigation {
+typealias EntireSplashNavigation = SplashNavigation
+
+final class SplashAdaptor: EntireSplashNavigation {
     
     let coordinator: SplashCoordinator
     init(coordinator: SplashCoordinator) {
