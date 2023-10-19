@@ -44,8 +44,7 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
     }
     
     func showArticleListbyCategoryViewController(categoryName: String) {
-        let articleListbyCategoryAdaptor = ArticleCategoryAdaptor(coordinator: self)
-        let articleListbyCategoryViewController = factory.makeArticleListByCategoryViewController(navigator: articleListbyCategoryAdaptor)
+        let articleListbyCategoryViewController = factory.makeArticleListByCategoryViewController(coordinator: self)
         articleListbyCategoryViewController.categoryString = categoryName
         self.navigationController.pushViewController(articleListbyCategoryViewController, animated: true)
     }

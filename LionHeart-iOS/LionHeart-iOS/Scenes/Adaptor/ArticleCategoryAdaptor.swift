@@ -7,7 +7,9 @@
 
 import Foundation
 
-final class ArticleCategoryAdaptor: ArticleCategoryNavigation, ArticleListByCategoryNavigation {
+typealias EntireArticleCategoryNavigation = ArticleCategoryNavigation & ArticleListByCategoryNavigation
+
+final class ArticleCategoryAdaptor: EntireArticleCategoryNavigation {
     
     let coordinator: ArticleCategoryCoordinator
     init(coordinator: ArticleCategoryCoordinator) {
