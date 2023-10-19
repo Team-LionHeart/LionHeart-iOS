@@ -1,15 +1,35 @@
-# 🦁 LionHeart-iOS
+# 🦁 하루 10분, 좋은 아빠가 되는 방법
+![LionHeart_MainImage](https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/6825a86c-2f81-4084-88cd-aa0b46a721fa)
 
-> 하루 10분, 좋은 아빠가 되는 방법
+> 라이온하트는 ‘**사자의 용기**’를 의미합니다. <br>
+태어나 처음으로 아빠가 된 어른들이 강하고 똑똑한 부모가 될 수 있도록, <br>
+세상에서 가장 쉬운 방법을 제공합니다. <br>
+
+
+<br>
+
+## 프로젝트 기간
+- **2023.10 ~ 2차 리팩터링 (진행 중 🚧) (MVC-C -> MVVM-C(+Combine))** <br>
+- **[2023.08 ~ 2023.10 1차 리팩터링(MVC -> MVC-C)](#1차-리팩)** <br>
+- **2023.06 ~ 2023.07 UI 설계 및 구현(1차 프로젝트)** <br>
+
+<br>
+
+![LionHeart_Flow](https://github.com/Team-LionHeart/LionHeart-iOS/assets/86944161/4006340f-a1af-4ce2-841e-6780ee683b4f)
+
+<br>
+
+## 1차 리팩
+
 
 
 <br><br>
 ##  🍎 LionHeart-iOS Developers
-<img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/61596b76-5a50-4b29-9d0b-b62bb6a86b8f" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/2bfbb1fe-2c2a-42b2-a589-cdd01b113e30" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/57f07e0c-ce1e-406f-b9cd-b49edc8d7485" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/4d70bfae-0ef8-4388-8d5b-a734a0a10184" width="165"> |<img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/1423bb08-4f33-41b9-8caa-56432794ecca" width="165"> |
+<img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/61596b76-5a50-4b29-9d0b-b62bb6a86b8f" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/2bfbb1fe-2c2a-42b2-a589-cdd01b113e30" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/57f07e0c-ce1e-406f-b9cd-b49edc8d7485" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/4d70bfae-0ef8-4388-8d5b-a734a0a10184" width="165"> |<img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/1423bb08-4f33-41b9-8caa-56432794ecca" width="165">|
 :---------:|:----------:|:---------:|:---------:|:---------:|
 김민재 | 김의성 | 김동현 | 곽성준 | 황찬미 |
 [ffalswo2](https://github.com/ffalswo2) | [kimscastle](https://github.com/kimscastle) | [BrickSky](https://github.com/BrickSky) | [sjk4618](https://github.com/sjk4618) |[cchanmi](https://github.com/cchanmi) |
-| **프로젝트 설계** <br> **로그인 유저 플로우** <br> **스플래시 뷰** <br> **아티클 상세뷰** | **프로젝트 설계** <br> **온보딩** <br> **메인 뷰** <br> **디자인시스템**|**탐색 뷰**<br> **챌린지 뷰**|**커리큘럼 뷰**<br> **주차별 리스트 뷰**| **북마크 뷰** <br> **마이페이지 뷰**|
+| **프로젝트 설계** <br> **로그인 유저 플로우** <br> **스플래시 뷰** <br> **아티클 상세뷰** | **프로젝트 설계** <br> **온보딩** <br> **메인 뷰** <br> **디자인시스템**|**탐색 뷰**<br> **챌린지 뷰** | **커리큘럼 뷰**<br> **주차별 리스트 뷰** | **북마크 뷰** <br> **마이페이지 뷰** |
 
 ## 💻 Development Environment
 
