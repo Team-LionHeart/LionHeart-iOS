@@ -7,9 +7,11 @@
 
 import Foundation
 
+typealias EntireCurriculumNavigation = CurriculumNavigation & CurriculumListByWeekNavigation
 
-final class CurriculumAdaptor: CurriculumNavigation {
-    
+
+final class CurriculumAdaptor: EntireCurriculumNavigation {
+
     let coordinator: CurriculumCoordinator
     
     init(coordinator: CurriculumCoordinator) {
@@ -32,5 +34,12 @@ final class CurriculumAdaptor: CurriculumNavigation {
         self.coordinator.exitApplication()
     }
     
+    func curriculumArticleListCellTapped(articleId: Int) {
+        self.coordinator.showArticleDetailViewController(articleId: articleId)
+    }
+    
+    func backButtonTapped() {
+        self.coordinator.pop()
+    }
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class CurriculumCoordinatorImpl: CurriculumCoordinator, CurriculumListCoordinator {
+final class CurriculumCoordinatorImpl: CurriculumCoordinator {
     
     weak var parentCoordinator: Coordinator?
     
@@ -40,12 +40,11 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator, CurriculumListCoor
     }
     
     func showCurriculumListViewController(itemIndex: Int) {
-        let adaptor = CurriculumListAdaptor(coordinator: self)
-        let curriculumListViewController = factory.makeCurriculumListViewController(adaptor: adaptor)
+        let curriculumListViewController = factory.makeCurriculumListViewController(coordinator: self) // After
         curriculumListViewController.setWeekIndexPath(week: itemIndex)
         navigationController.pushViewController(curriculumListViewController, animated: true)
     }
-    
+
     func showMypageViewController() {
         let mypageCoordinator = MypageCoordinator(
             navigationController: navigationController,
@@ -74,8 +73,7 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator, CurriculumListCoor
     }
     
     func showCurriculumViewController() {
-        let adaptor = CurriculumAdaptor(coordinator: self)
-        let curriculumVC = factory.makeCurriculumViewController(adaptor: adaptor)
+        let curriculumVC = factory.makeCurriculumViewController(coordinator: self)
         navigationController.pushViewController(curriculumVC, animated: true)
     }
 }

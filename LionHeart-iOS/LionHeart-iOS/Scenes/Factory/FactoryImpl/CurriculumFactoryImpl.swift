@@ -9,16 +9,13 @@ import Foundation
 
 
 struct CurriculumFactoryImpl: CurriculumFactory {
-    func makeCurriculumListViewController(adaptor: CurriculumListByWeekNavigation) -> CurriculumArticleByWeekControllerable {
-        let apiService = APIService()
-        let curriculumService = CurriculumServiceImpl(apiService: apiService)
-        let bookmarkService = BookmarkServiceImpl(apiService: apiService)
-        let curriculumListManager = CurriculumListManagerImpl(bookmarkService: bookmarkService, curriculumService: curriculumService)
-        let curriculumListViewController = CurriculumListByWeekViewController(manager: curriculumListManager, navigator: adaptor)
-        return curriculumListViewController
+    func makeAdaptor(coordinator: CurriculumCoordinator) -> CurriculumAdaptor {
+        let adaptor = CurriculumAdaptor(coordinator: coordinator)
+        return adaptor
     }
     
-    func makeCurriculumViewController(adaptor: CurriculumNavigation) -> CurriculumControllerable {
+    func makeCurriculumViewController(coordinator: CurriculumCoordinator) -> CurriculumControllerable {
+        let adaptor = self.makeAdaptor(coordinator: coordinator)
         let apiService = APIService()
         let curriculumService = CurriculumServiceImpl(apiService: apiService)
         let manager = CurriculumManagerImpl(curriculumService: curriculumService)
@@ -26,5 +23,13 @@ struct CurriculumFactoryImpl: CurriculumFactory {
         return curriculumViewController
     }
     
-    
+    func makeCurriculumListViewController(coordinator: CurriculumCoordinator) -> CurriculumArticleByWeekControllerable {
+        let adaptor = self.makeAdaptor(coordinator: coordinator)
+        let apiService = APIService()
+        let curriculumService = CurriculumServiceImpl(apiService: apiService)
+        let bookmarkService = BookmarkServiceImpl(apiService: apiService)
+        let curriculumListManager = CurriculumListManagerImpl(bookmarkService: bookmarkService, curriculumService: curriculumService)
+        let curriculumListViewController = CurriculumListByWeekViewController(manager: curriculumListManager, navigator: adaptor)
+        return curriculumListViewController
+    }
 }
