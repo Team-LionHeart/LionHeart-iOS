@@ -7,8 +7,9 @@
 
 import Foundation
 
+typealias EntireBookmarkNavigation = BookmarkNavigation
 
-final class BookmarkAdaptor: BookmarkNavigation {
+final class BookmarkAdaptor: EntireBookmarkNavigation {
     
     let coordinator: BookmarkCoordinator
     
