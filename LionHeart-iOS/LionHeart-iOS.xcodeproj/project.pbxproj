@@ -118,11 +118,11 @@
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
 		B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */; };
 		C003CC1B2AD9176B00AFFAAC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */; };
-		C003CC1D2AD917CF00AFFAAC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */; };
+		C003CC1D2AD917CF00AFFAAC /* AppCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1C2AD917CF00AFFAAC /* AppCoordinatorImpl.swift */; };
 		C003CC1F2AD917F900AFFAAC /* SplashCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1E2AD917F900AFFAAC /* SplashCoordinatorImpl.swift */; };
 		C003CC212AD9181600AFFAAC /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */; };
 		C003CC232AD9183600AFFAAC /* AuthCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */; };
-		C003CC252AD9184700AFFAAC /* TabbbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */; };
+		C003CC252AD9184700AFFAAC /* TabbarCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC242AD9184700AFFAAC /* TabbarCoordinatorImpl.swift */; };
 		C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift */; };
 		C003CC292AD9186B00AFFAAC /* CurriculumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */; };
 		C003CC2B2AD9187B00AFFAAC /* ChallengeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */; };
@@ -434,11 +434,11 @@
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumWeekBackgroundDummy.swift; sourceTree = "<group>"; };
 		C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		C003CC1C2AD917CF00AFFAAC /* AppCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C003CC1E2AD917F900AFFAAC /* SplashCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
 		C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorImpl.swift; sourceTree = "<group>"; };
-		C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbbarCoordinator.swift; sourceTree = "<group>"; };
+		C003CC242AD9184700AFFAAC /* TabbarCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C003CC262AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumCoordinator.swift; sourceTree = "<group>"; };
 		C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCoordinator.swift; sourceTree = "<group>"; };
@@ -1479,9 +1479,7 @@
 		C04BE3AA2ADD4F26001967B5 /* CoordinatorInterface */ = {
 			isa = PBXGroup;
 			children = (
-				C003CC1C2AD917CF00AFFAAC /* AppCoordinator.swift */,
 				C003CC202AD9181600AFFAAC /* TodayCoordinator.swift */,
-				C003CC242AD9184700AFFAAC /* TabbbarCoordinator.swift */,
 				C003CC282AD9186B00AFFAAC /* CurriculumCoordinator.swift */,
 				C003CC2A2AD9187B00AFFAAC /* ChallengeCoordinator.swift */,
 				C003CC2C2AD9189100AFFAAC /* BookmarkCoordinator.swift */,
@@ -1497,6 +1495,8 @@
 		C04BE3AB2ADD4F34001967B5 /* CoordinatorImpl */ = {
 			isa = PBXGroup;
 			children = (
+				C003CC1C2AD917CF00AFFAAC /* AppCoordinatorImpl.swift */,
+				C003CC242AD9184700AFFAAC /* TabbarCoordinatorImpl.swift */,
 				C003CC222AD9183600AFFAAC /* AuthCoordinatorImpl.swift */,
 				C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */,
 				4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */,
@@ -2056,13 +2056,13 @@
 				C003CC5C2ADA506800AFFAAC /* SplashManager.swift in Sources */,
 				B51220642A6039AA006CBE2D /* HttpMethod.swift in Sources */,
 				C009E9F02ADBC08A00112F18 /* ArticleCategortFactory.swift in Sources */,
-				C003CC1D2AD917CF00AFFAAC /* AppCoordinator.swift in Sources */,
+				C003CC1D2AD917CF00AFFAAC /* AppCoordinatorImpl.swift in Sources */,
 				B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */,
 				C0856B872ABFD24E0026D9F8 /* CurriculumListManagerImpl.swift in Sources */,
 				C003CC2B2AD9187B00AFFAAC /* ChallengeCoordinator.swift in Sources */,
 				C0F029DE2A5FAC6100E0D185 /* LHOnboardingTitleLabel.swift in Sources */,
 				C0856B7D2ABFCA330026D9F8 /* LoginMangerImpl.swift in Sources */,
-				C003CC252AD9184700AFFAAC /* TabbbarCoordinator.swift in Sources */,
+				C003CC252AD9184700AFFAAC /* TabbarCoordinatorImpl.swift in Sources */,
 				C003CC3F2ADA4EC300AFFAAC /* CurriculumNavigation.swift in Sources */,
 				C009E9FA2ADBC4DE00112F18 /* BookmarkViewControllerable.swift in Sources */,
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
