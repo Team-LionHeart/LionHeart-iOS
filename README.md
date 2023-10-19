@@ -96,7 +96,7 @@ Delegate 패턴으로인해 Coordinator가 ViewController에서의 User Action�
 # UI 설계 및 구현
 
 <details>
-<summary>토글 접기/펼치기</summary>
+<summary>UI 설계 및 구현(1차 프로젝트)</summary>
 
 <br><br>
 ##  🍎 LionHeart-iOS Developers
