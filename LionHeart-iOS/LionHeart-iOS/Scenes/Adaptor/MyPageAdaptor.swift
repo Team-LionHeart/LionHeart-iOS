@@ -7,7 +7,9 @@
 
 import Foundation
 
-final class MyPageAdaptor: MyPageNavigation {
+typealias EntireMyPageNavigation = MyPageNavigation
+
+final class MyPageAdaptor: EntireMyPageNavigation {
     
     private let coordindator: MyPageCoordinator
     

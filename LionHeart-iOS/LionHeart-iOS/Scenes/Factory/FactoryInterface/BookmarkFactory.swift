@@ -8,6 +8,6 @@
 import Foundation
 
 protocol BookmarkFactory {
-    func makeAdaptor(coordinator: BookmarkCoordinator) -> BookmarkAdaptor
+    func makeAdaptor(coordinator: BookmarkCoordinator) -> EntireBookmarkNavigation
     func makeBookmarkViewController(coordinator: BookmarkCoordinator) -> BookmarkViewControllerable
 }

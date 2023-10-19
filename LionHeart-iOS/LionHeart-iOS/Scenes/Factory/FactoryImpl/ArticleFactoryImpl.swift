@@ -8,7 +8,13 @@
 import Foundation
 
 struct ArticleFactoryImpl: ArticleFactory {
-    func makeArticleDetailViewController(adaptor: ArticleDetailModalNavigation) -> ArticleControllerable {
+    func makeAdaptor(coordinator: ArticleCoordinator) -> EntireArticleAdaptor {
+        let adaptor = ArticleAdaptor(coordinator: coordinator)
+        return adaptor
+    }
+    
+    func makeArticleDetailViewController(coordinator: ArticleCoordinator) -> ArticleControllerable {
+        let adaptor = self.makeAdaptor(coordinator: coordinator)
         let apiService = APIService()
         let bookmarkService = BookmarkServiceImpl(apiService: apiService)
         let articleService = ArticleServiceImpl(apiService: apiService)

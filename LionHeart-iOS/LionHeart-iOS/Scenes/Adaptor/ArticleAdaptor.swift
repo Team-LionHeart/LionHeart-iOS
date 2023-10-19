@@ -7,7 +7,9 @@
 
 import Foundation
 
-final class ArticleAdaptor: ArticleDetailModalNavigation {
+typealias EntireArticleAdaptor = ArticleDetailModalNavigation
+
+final class ArticleAdaptor: EntireArticleAdaptor {
     
     private let coordinator: ArticleCoordinator
     

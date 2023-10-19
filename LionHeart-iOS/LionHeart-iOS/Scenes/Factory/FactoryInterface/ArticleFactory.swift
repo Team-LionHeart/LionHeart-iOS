@@ -8,5 +8,6 @@
 import Foundation
 
 protocol ArticleFactory {
-    func makeArticleDetailViewController(adaptor: ArticleDetailModalNavigation) -> ArticleControllerable
+    func makeAdaptor(coordinator: ArticleCoordinator) -> EntireArticleAdaptor
+    func makeArticleDetailViewController(coordinator: ArticleCoordinator) -> ArticleControllerable
 }

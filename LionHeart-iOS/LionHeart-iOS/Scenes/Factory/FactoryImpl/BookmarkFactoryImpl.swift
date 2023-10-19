@@ -8,7 +8,7 @@
 import Foundation
 
 struct BookmarkFactoryImpl: BookmarkFactory {
-    func makeAdaptor(coordinator: BookmarkCoordinator) -> BookmarkAdaptor {
+    func makeAdaptor(coordinator: BookmarkCoordinator) -> EntireBookmarkNavigation {
         let adaptor = BookmarkAdaptor(coordinator: coordinator)
         return adaptor
     }

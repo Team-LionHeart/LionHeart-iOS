@@ -28,8 +28,7 @@ final class ArticleCoordinatorImpl: ArticleCoordinator {
     }
     
     func showArticleDetailViewController() {
-        let adaptor = ArticleAdaptor(coordinator: self)
-        let articleDetailViewController = factory.makeArticleDetailViewController(adaptor: adaptor)
+        let articleDetailViewController = factory.makeArticleDetailViewController(coordinator: self)
         articleDetailViewController.setArticleId(id: articleId)
         articleDetailViewController.isModalInPresentation = true
         articleDetailViewController.modalPresentationStyle = .fullScreen

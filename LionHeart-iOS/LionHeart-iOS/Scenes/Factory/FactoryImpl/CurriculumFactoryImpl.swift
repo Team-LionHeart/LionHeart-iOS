@@ -9,7 +9,7 @@ import Foundation
 
 
 struct CurriculumFactoryImpl: CurriculumFactory {
-    func makeAdaptor(coordinator: CurriculumCoordinator) -> CurriculumAdaptor {
+    func makeAdaptor(coordinator: CurriculumCoordinator) -> EntireCurriculumNavigation {
         let adaptor = CurriculumAdaptor(coordinator: coordinator)
         return adaptor
     }

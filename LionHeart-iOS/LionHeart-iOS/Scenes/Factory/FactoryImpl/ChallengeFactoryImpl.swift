@@ -8,7 +8,7 @@
 import Foundation
 
 struct ChallengeFactoryImpl: ChallengeFactory {
-    func makeAdaptor(coordinator: ChallengeCoordinator) -> ChallengeAdaptor {
+    func makeAdaptor(coordinator: ChallengeCoordinator) -> EntireChallengeNavigation {
         let adaptor = ChallengeAdaptor(coordinator: coordinator)
         return adaptor
     }
