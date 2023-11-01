@@ -10,8 +10,6 @@ import UIKit
 
 import SnapKit
 
-
-
 final class OnboardingViewController: UIViewController, OnboardingViewControllerable  {
     typealias OnboardingViews = [UIViewController]
     
@@ -28,13 +26,10 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
     private var pageDataSource: OnboardingViews = []
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
     
-    /// onboarding flow property
     private var currentPage: OnboardingPageType = .getPregnancy
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
         didSet {
             switch onboardingFlow {
-            case .toLogin:
-                presentLoginView()
             case .toGetPregnacny, .toFetalNickname:
                 presentOnboardingView(oldValue: onboardingFlow)
             case .toCompleteOnboarding:
@@ -133,7 +128,11 @@ private extension OnboardingViewController {
         }
     
         onboardingNavigationbar.backButtonAction {
-            self.navigator.backButtonTapped()
+            if self.currentPage == .getPregnancy {
+                self.navigator.backButtonTapped()
+            } else  {
+                self.backOnboardingProcess()
+            }
         }
     }
     
@@ -207,7 +206,7 @@ private extension OnboardingViewController {
     func backOnboardingProcess() {
         self.view.endEditing(true)
         self.nextButton.isHidden = false
-        self.onboardingFlow = self.currentPage.back
+        self.onboardingFlow = .toGetPregnacny
         self.onboardingCompletePercentage = self.currentPage.progressValue
     }
 }

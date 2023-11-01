@@ -15,7 +15,6 @@ enum OnboardingPageType: Int, CaseIterable {
 enum OnbardingFlowType: Int {
     case toGetPregnacny
     case toFetalNickname
-    case toLogin
     case toCompleteOnboarding
 }
 
@@ -36,15 +35,6 @@ extension OnboardingPageType {
             return .toFetalNickname
         case .getFetalNickname:
             return .toCompleteOnboarding
-        }
-    }
-    
-    var back: OnbardingFlowType {
-        switch self {
-        case .getPregnancy:
-            return .toLogin
-        case .getFetalNickname:
-            return .toGetPregnacny
         }
     }
 }
