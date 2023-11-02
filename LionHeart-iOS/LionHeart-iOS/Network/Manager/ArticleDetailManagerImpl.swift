@@ -10,9 +10,9 @@ import Foundation
 final class ArticleDetailManagerImpl: ArticleDetailManager {
     
     private let articleService: ArticleService
-    private let bookmarkService: BookmarkOutService
+    private let bookmarkService: BookmarkService
     
-    init(articleService: ArticleService, bookmarkService: BookmarkOutService) {
+    init(articleService: ArticleService, bookmarkService: BookmarkService) {
         self.articleService = articleService
         self.bookmarkService = bookmarkService
     }

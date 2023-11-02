@@ -22,6 +22,5 @@ final class BookmarkMangerImpl: BookmarkManager {
     
     func postBookmark(model: BookmarkRequest) async throws {
         guard let data = try await bookmarkService.postBookmark(model: model) else { throw NetworkError.badCasting }
-        print(data)
     }
 }

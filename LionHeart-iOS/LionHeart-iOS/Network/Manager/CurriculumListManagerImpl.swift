@@ -9,10 +9,10 @@ import Foundation
 
 final class CurriculumListManagerImpl: CurriculumListManager {
     
-    private let bookmarkService: BookmarkOutService
+    private let bookmarkService: BookmarkService
     private let curriculumService: CurriculumService
     
-    init(bookmarkService: BookmarkOutService, curriculumService: CurriculumService) {
+    init(bookmarkService: BookmarkService, curriculumService: CurriculumService) {
         self.bookmarkService = bookmarkService
         self.curriculumService = curriculumService
     }

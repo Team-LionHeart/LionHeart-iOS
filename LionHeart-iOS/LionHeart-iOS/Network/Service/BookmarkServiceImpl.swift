@@ -7,16 +7,10 @@
 
 import Foundation
 
-protocol BookmarkInOutService {
+protocol BookmarkService {
     func getBookmark() async throws -> BookmarkResponse?
     func postBookmark(model: BookmarkRequest) async throws -> BookmarkResponse?
 }
-
-protocol BookmarkOutService {
-    func postBookmark(model: BookmarkRequest) async throws -> BookmarkResponse?
-}
-
-typealias BookmarkService = BookmarkInOutService & BookmarkOutService
 
 final class BookmarkServiceImpl: BookmarkService {
     
