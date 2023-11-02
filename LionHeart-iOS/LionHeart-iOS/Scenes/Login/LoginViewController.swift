@@ -10,25 +10,30 @@ import UIKit
 
 import SnapKit
 
-import KakaoSDKAuth
-import KakaoSDKUser
 
-final class LoginViewController: UIViewController, LoginViewControllerable {
-    var userData: UserOnboardingModel?
-    
-    private var kakaoAccessToken: String? {
-        didSet {
-            guard let kakaoToken = self.kakaoAccessToken else {
-                LHToast.show(message: "카카오토큰 언래핑 실패 21")
-                return
-            }
-            self.loginAPI(kakaoToken: kakaoToken)
-        }
-    }
-    
-    var navigator: LoginNavigation
 
-    private let manager: LoginManager
+final class LoginViewController: UIViewController {
+//    var userData: UserOnboardingModel?
+    
+    //    var navigator: LoginNavigation
+    //
+    //    private let manager: LoginManager
+    
+//    private var kakaoAccessToken: String? {
+//        didSet {
+//            guard let kakaoToken = self.kakaoAccessToken else {
+//                LHToast.show(message: "카카오토큰 언래핑 실패 21")
+//                return
+//            }
+//            self.loginAPI(kakaoToken: kakaoToken)
+//        }
+//    }
+    
+    // MARK: - Properties
+    
+    private let viewModel: LoginViewModel
+    
+    // MARK: - UI Components
 
     private let loginMainImageView = LHImageView(in: ImageLiterals.Login.loginBackgroundImage, contentMode: .scaleAspectFill)
 
@@ -42,10 +47,12 @@ final class LoginViewController: UIViewController, LoginViewControllerable {
         .setMarginImageWithText(for: 8)
         .setBackgroundColor(color: .kakao)
 
-    init(manager: LoginManager, navigator: LoginNavigation) {
-        self.manager = manager
-        self.navigator = navigator
+    // MARK: - LifeCycle
+    
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
     }
 
     required init?(coder: NSCoder) {
@@ -57,6 +64,7 @@ final class LoginViewController: UIViewController, LoginViewControllerable {
         setHierarchy()
         setLayout()
         setAddTarget()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,40 +72,7 @@ final class LoginViewController: UIViewController, LoginViewControllerable {
     }
 }
 
-// MARK: - Network
 
-extension LoginViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        LHToast.show(message: error.description)
-        switch error {
-        case .clientError(let code, let message):
-            print(code, message)
-            if code == NetworkErrorCode.unfoundUserErrorCode {
-                LHToast.show(message: "코드 잘돌아감")
-                self.navigator.checkUserIsVerified(userState: .nonVerified, kakaoToken: kakaoAccessToken)
-            }
-        default:
-            LHToast.show(message: error.description)
-        }
-    }
-}
-
-extension LoginViewController {
-    private func loginAPI(kakaoToken: String) {
-        Task {
-            do {
-                try await manager.login(type: .kakao, kakaoToken: kakaoToken)
-                self.navigator.checkUserIsVerified(userState: .verified, kakaoToken: kakaoToken)
-            } catch {
-                guard let error = error as? NetworkError else {
-                    LHToast.show(message: "넷웤에러 95")
-                    return
-                }
-                handleError(error)
-            }
-        }
-    }
-}
 
 private extension LoginViewController {
     
@@ -135,42 +110,6 @@ private extension LoginViewController {
             } else {
                 self.loginKakaoWithWeb()
             }
-        }
-    }
-    
-    private func loginKakaoWithApp() {
-        UserApi.shared.loginWithKakaoTalk { oAuthToken, error in
-            guard error == nil else {
-                LHToast.show(message: "카카오api에러 151")
-                return
-                
-            }
-            print("Login with KAKAO App Success !!")
-            guard let oAuthToken = oAuthToken else {
-                LHToast.show(message: "카카오api에러 157")
-                return
-                
-            }
-            print(oAuthToken.accessToken)
-            self.kakaoAccessToken = oAuthToken.accessToken
-        }
-    }
-
-    private func loginKakaoWithWeb() {
-        UserApi.shared.loginWithKakaoAccount { oAuthToken, error in
-            guard error == nil else {
-                LHToast.show(message: "카카오api에러 164")
-                return
-                
-            }
-            print("Login with KAKAO Web Success !!")
-            guard let oAuthToken = oAuthToken else {
-                LHToast.show(message: "카카오api에러 175")
-                return
-                
-            }
-            print(oAuthToken.accessToken)
-            self.kakaoAccessToken = oAuthToken.accessToken
         }
     }
 }
