@@ -8,35 +8,23 @@
 import Foundation
 import KakaoSDKAuth
 import KakaoSDKUser
+import Combine
 
 /*
  1. LoginUseCase: ViewController가 ViewModel이 해줬으면 하는 작업들의 추상화
  2. LoginViewModelHandler: Factory가 ViewModel 객체를 만들 때, Factory를 가지고 있는 Coordinator가 리턴으로 실제 객체 타입을 바라보지 않게끔 하기 위한 추상화
  3. ViewModel: ViewModel 구조 자체에 대한 추상화
+ 4. LoginViewModel: Input output에 대한 추상화
  */
 
-typealias LoginViewModel = LoginUseCase & ViewModel
 
-final class LoginViewModelImpl: LoginViewModel, LoginViewModelHandler  {
+final class LoginViewModelImpl:  LoginViewModel, LoginUseCase, LoginViewModelHandler {
     
 //    private let articleId: Int
 //    
 //    func setAricleId(_ id: Int) {
 //        <#code#>
 //    }
-    
-    struct Input {
-        
-    }
-    
-    struct Output {
-        
-    }
-    
-    func transform(input: Input) -> Output {
-        return Output()
-    }
-    
     var navigator: LoginNavigation
 
     private let manager: LoginManager
@@ -44,7 +32,36 @@ final class LoginViewModelImpl: LoginViewModel, LoginViewModelHandler  {
     init(navigator: LoginNavigation, manager: LoginManager) {
         self.navigator = navigator
         self.manager = manager
+    }
+    
+    func transform(input: Input) -> Output {
+        let loginSuccess = input.kakakoLoginButtonTap
+            .flatMap { _ in
+                var future: Future<String, NetworkError>
+                if UserApi.isKakaoTalkLoginAvailable() {
+                    future = self.loginKakaoWithApp()
+                } else {
+                    future = self.loginKakaoWithWeb()
+                }
+                
+                future.catch { error in
+                    switch error {
+                    case .unAuthorizedError: break
+//                        coordinator 앱종료
+                    default:
+                        return Just(error.description)
+                    }
+                }
+//                return future
+            }
+            .task { kakaoToken in
+                
+                
+            }
+            .eraseToAnyPublisher()
         
+        
+        return Output(loginSuccess: loginSuccess)
     }
     
 //    var userData: UserOnboardingModel?
@@ -58,50 +75,67 @@ final class LoginViewModelImpl: LoginViewModel, LoginViewModelHandler  {
 //            self.loginAPI(kakaoToken: kakaoToken)
 //        }
 //    }
-//    
-//    private func loginKakaoWithApp() {
-//        UserApi.shared.loginWithKakaoTalk { oAuthToken, error in
-//            guard error == nil else {
-//                LHToast.show(message: "카카오api에러 151")
-//                return
-//                
-//            }
-//            print("Login with KAKAO App Success !!")
-//            guard let oAuthToken = oAuthToken else {
-//                LHToast.show(message: "카카오api에러 157")
-//                return
-//                
-//            }
-//            print(oAuthToken.accessToken)
-//            self.kakaoAccessToken = oAuthToken.accessToken
-//        }
-//    }
-//
-//    private func loginKakaoWithWeb() {
-//        UserApi.shared.loginWithKakaoAccount { oAuthToken, error in
-//            guard error == nil else {
-//                LHToast.show(message: "카카오api에러 164")
-//                return
-//                
-//            }
-//            print("Login with KAKAO Web Success !!")
-//            guard let oAuthToken = oAuthToken else {
-//                LHToast.show(message: "카카오api에러 175")
-//                return
-//                
-//            }
-//            print(oAuthToken.accessToken)
-//            self.kakaoAccessToken = oAuthToken.accessToken
-//        }
-//    }
+    
+    
+    
+    
+    private func loginKakaoWithApp() -> Future<String, NetworkError> {
+        return Future<String, NetworkError> { promise in
+            UserApi.shared.loginWithKakaoTalk { oAuthToken, error in
+                guard error == nil else {
+                    promise(.failure(.unAuthorizedError))
+                    return
+                }
+                
+                guard let oAuthToken = oAuthToken else {
+                    promise(.failure(.unAuthorizedError))
+                    return
+                }
+
+                promise(.success(oAuthToken.accessToken))
+            }
+        }
+        
+    }
+
+    private func loginKakaoWithWeb() -> Future<String, NetworkError> {
+        return Future<String, NetworkError> { promise in
+            UserApi.shared.loginWithKakaoAccount { oAuthToken, error in
+                guard error == nil else {
+                    promise(.failure(.unAuthorizedError))
+                    return
+                    
+                }
+                
+                guard let oAuthToken = oAuthToken else {
+                    promise(.failure(.unAuthorizedError))
+                    return
+                }
+                
+                promise(.success(oAuthToken.accessToken))
+            }
+        }
+        
+    }
 }
 
 
 // MARK: - Network
 
-extension LoginViewModelImpl: ViewControllerServiceable {
+//    func setAddTarget() {
+//        // input으로 넘기기
+//        kakakoLoginButton.addButtonAction { sender in
+//            if UserApi.isKakaoTalkLoginAvailable() {
+//                self.loginKakaoWithApp()
+//            } else {
+//                self.loginKakaoWithWeb()
+//            }
+//        }
+//    }
+
+extension LoginViewModelImpl {
     func handleError(_ error: NetworkError) {
-        LHToast.show(message: error.description)
+        LHToast.show(message: error.description) // ViewController로 이동해야할 코드 (ViewModel은 UIKit을 import할 필요가 없다)
         switch error {
         case .clientError(let code, let message):
             print(code, message)
@@ -115,7 +149,7 @@ extension LoginViewModelImpl: ViewControllerServiceable {
     }
 }
 
-extension LoginViewController {
+extension LoginViewModelImpl {
     private func loginAPI(kakaoToken: String) {
         Task {
             do {
@@ -131,3 +165,9 @@ extension LoginViewController {
         }
     }
 }
+
+
+// viewmodel <-> coordinator Input들어오면 그냥 보내주면 됨
+// viewmodel <-> manager Input들어오면 그냥 보내주면 근데 error handling 처리는 생각해야함
+// ViewController에서 처리하는 에러가 popup 밖에없어서 error message String만 보내주면 될듯
+// 나머지 인증에러는 coordinator로 요청보내면 ViewModel선에서 정리가능.

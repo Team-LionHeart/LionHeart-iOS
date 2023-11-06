@@ -7,9 +7,8 @@
 //
 
 import UIKit
-
 import SnapKit
-
+import Combine
 
 
 final class LoginViewController: UIViewController {
@@ -31,7 +30,14 @@ final class LoginViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let viewModel: LoginViewModel
+    // Protocol with associatedtype : 우리가 아는 프로토콜 타입이 아님.
+    // Protocol without associatedtype : 우리가 아는 프로토콜
+    
+    private let kakakoLoginButtonTap = PassthroughSubject<Void, Never>()
+    
+    private let viewModel: any LoginViewModel
+    
+    private var cancelBag = Set<AnyCancellable>()
     
     // MARK: - UI Components
 
@@ -48,8 +54,16 @@ final class LoginViewController: UIViewController {
         .setBackgroundColor(color: .kakao)
 
     // MARK: - LifeCycle
+    /*
+     some이나 any가 없다면...
+     init에 어떤 객체를 넣어주게 될텐데, 그 객체의 upper bound는 컴파일러 입장에서는 알수가 없다.
+     즉, LoginViewModel & LoginUseCase 프로토콜들을 채택하고 있는 객체인지 보장할 수가 없다는 뜻이다.
+     
+     some이나 any를 써주게 된다면
+     */
     
-    init(viewModel: LoginViewModel) {
+    // some이나 any를 associatedtype이 있는 protocol
+    init(viewModel: some LoginViewModel & LoginUseCase) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         
@@ -63,13 +77,36 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        
+//        setAddTarget()
+        bindInput()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
+    
+    private func bind() {
+        let input = LoginViewModelInput(
+            kakakoLoginButtonTap: kakakoLoginButtonTap)
+        let output = viewModel.transform(input: input)
+        
+        //TODO: - Output binding
+        output.loginSuccess
+            .sink { str in
+                print(str)
+            }
+            .store(in: &cancelBag)
+        
+    }
+    
+    private func bindInput() {
+        kakakoLoginButton.tapPublisher
+            .sink { [weak self] _ in
+                self?.kakakoLoginButtonTap.send(())
+            }
+            .store(in: &cancelBag)
+    }
+    
 }
 
 
@@ -103,13 +140,5 @@ private extension LoginViewController {
         }
     }
     
-    func setAddTarget() {
-        kakakoLoginButton.addButtonAction { sender in
-            if UserApi.isKakaoTalkLoginAvailable() {
-                self.loginKakaoWithApp()
-            } else {
-                self.loginKakaoWithWeb()
-            }
-        }
-    }
+
 }
