@@ -195,18 +195,18 @@ extension CurriculumViewController: CurriculumTableViewToggleButtonTappedProtoco
     }
 }
 
-extension CurriculumViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        switch error {
-        case .unAuthorizedError:
-            self.navigator.checkTokenIsExpired()
-        case .clientError(_, let message):
-            LHToast.show(message: "\(message)")
-        default:
-            LHToast.show(message: error.description)
-        }
-    }
-}
+//extension CurriculumViewController: ViewControllerServiceable {
+//    func handleError(_ error: NetworkError) {
+//        switch error {
+//        case .unAuthorizedError:
+//            self.navigator.checkTokenIsExpired()
+//        case .clientError(_, let message):
+//            LHToast.show(message: "\(message)")
+//        default:
+//            LHToast.show(message: error.description)
+//        }
+//    }
+//}
 
 extension CurriculumViewController {
     func getCurriculumData() {

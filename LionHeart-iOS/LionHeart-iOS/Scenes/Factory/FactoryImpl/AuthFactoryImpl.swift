@@ -12,9 +12,8 @@ struct AuthFactoryImpl: AuthFactory {
         return AuthAdaptor(coordinator: coordinator)
     }
     
-    func makeLoginViewController(coordinator: AuthCoordinator) -> LoginViewControllerable {
-        let loginViewController = LoginViewController(manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService())), navigator: self.makeAuthAdaptor(coordinator: coordinator))
-        return loginViewController
+    func makeLoginViewController(coordinator: AuthCoordinator) -> LoginViewController {
+        return LoginViewController(viewModel: LoginViewModelImpl(navigator: self.makeAuthAdaptor(coordinator: coordinator), manager: LoginMangerImpl(authService: AuthServiceImpl(apiService: APIService()))))
     }
     
     func makeCompleteOnbardingViewController(coordinator: AuthCoordinator) -> CompleteOnbardingViewControllerable {

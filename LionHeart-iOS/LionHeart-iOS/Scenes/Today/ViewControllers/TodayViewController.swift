@@ -143,23 +143,23 @@ private extension TodayViewController {
     }
 }
 
-extension TodayViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        switch error {
-        case .urlEncodingError:
-            LHToast.show(message: "URL인코딩오류입니다", isTabBar: true)
-        case .jsonDecodingError:
-            LHToast.show(message: "Json디코딩오류입니다", isTabBar: true)
-        case .badCasting:
-            LHToast.show(message: "배드퀘스트", isTabBar: true)
-        case .fetchImageError:
-            LHToast.show(message: "이미지패치실패", isTabBar: true)
-        case .unAuthorizedError:
-            self.navigator.checkTokenIsExpired()
-        case .clientError(_, let message):
-            LHToast.show(message: message, isTabBar: true)
-        case .serverError:
-            LHToast.show(message: error.description, isTabBar: true)
-        }
-    }
-}
+//extension TodayViewController: ViewControllerServiceable {
+//    func handleError(_ error: NetworkError) {
+//        switch error {
+//        case .urlEncodingError:
+//            LHToast.show(message: "URL인코딩오류입니다", isTabBar: true)
+//        case .jsonDecodingError:
+//            LHToast.show(message: "Json디코딩오류입니다", isTabBar: true)
+//        case .badCasting:
+//            LHToast.show(message: "배드퀘스트", isTabBar: true)
+//        case .fetchImageError:
+//            LHToast.show(message: "이미지패치실패", isTabBar: true)
+//        case .unAuthorizedError:
+//            self.navigator.checkTokenIsExpired()
+//        case .clientError(_, let message):
+//            LHToast.show(message: message, isTabBar: true)
+//        case .serverError:
+//            LHToast.show(message: error.description, isTabBar: true)
+//        }
+//    }
+//}

@@ -108,26 +108,26 @@ private extension BookmarkViewController {
     }
 }
 
-extension BookmarkViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        switch error {
-        case .urlEncodingError:
-            LHToast.show(message: "URL Error")
-        case .jsonDecodingError:
-            LHToast.show(message: "Decoding Error")
-        case .badCasting:
-            LHToast.show(message: "Bad Casting")
-        case .fetchImageError:
-            LHToast.show(message: "Image Error")
-        case .unAuthorizedError:
-            self.navigator.checkTokenIsExpired()
-        case .clientError(_, let message):
-            LHToast.show(message: message)
-        case .serverError:
-            LHToast.show(message: "server error")
-        }
-    }
-}
+//extension BookmarkViewController: ViewControllerServiceable {
+//    func handleError(_ error: NetworkError) {
+//        switch error {
+//        case .urlEncodingError:
+//            LHToast.show(message: "URL Error")
+//        case .jsonDecodingError:
+//            LHToast.show(message: "Decoding Error")
+//        case .badCasting:
+//            LHToast.show(message: "Bad Casting")
+//        case .fetchImageError:
+//            LHToast.show(message: "Image Error")
+//        case .unAuthorizedError:
+//            self.navigator.checkTokenIsExpired()
+//        case .clientError(_, let message):
+//            LHToast.show(message: message)
+//        case .serverError:
+//            LHToast.show(message: "server error")
+//        }
+//    }
+//}
 
 extension BookmarkViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -213,18 +213,18 @@ extension CurriculumListByWeekViewController: UICollectionViewDelegateFlowLayout
     }
 }
 
-extension CurriculumListByWeekViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        switch error {
-        case .unAuthorizedError:
-            self.navigator.checkTokenIsExpired()
-        case .clientError(code: _, message: let message):
-            LHToast.show(message: "\(message)")
-        default:
-            LHToast.show(message: error.description)
-        }
-    }
-}
+//extension CurriculumListByWeekViewController: ViewControllerServiceable {
+//    func handleError(_ error: NetworkError) {
+//        switch error {
+//        case .unAuthorizedError:
+//            self.navigator.checkTokenIsExpired()
+//        case .clientError(code: _, message: let message):
+//            LHToast.show(message: "\(message)")
+//        default:
+//            LHToast.show(message: error.description)
+//        }
+//    }
+//}
 
 extension CurriculumListByWeekViewController {
     func getListByWeekData() {

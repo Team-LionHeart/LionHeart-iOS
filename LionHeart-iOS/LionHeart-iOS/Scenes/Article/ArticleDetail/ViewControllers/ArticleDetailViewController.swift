@@ -109,18 +109,18 @@ extension ArticleDetailViewController {
     }
 }
 
-extension ArticleDetailViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        switch error {
-        case .unAuthorizedError:
-            adaptor.checkTokenIsExpired()
-        case .clientError(_, let message):
-            LHToast.show(message: "\(message)")
-        default:
-            LHToast.show(message: error.description)
-        }
-    }
-}
+//extension ArticleDetailViewController: ViewControllerServiceable {
+//    func handleError(_ error: NetworkError) {
+//        switch error {
+//        case .unAuthorizedError:
+//            adaptor.checkTokenIsExpired()
+//        case .clientError(_, let message):
+//            LHToast.show(message: "\(message)")
+//        default:
+//            LHToast.show(message: error.description)
+//        }
+//    }
+//}
 
 // MARK: - UI & Layout
 

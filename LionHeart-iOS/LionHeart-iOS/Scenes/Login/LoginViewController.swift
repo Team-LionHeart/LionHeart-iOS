@@ -77,7 +77,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         setHierarchy()
         setLayout()
-//        setAddTarget()
+        bind()
         bindInput()
     }
     
@@ -92,11 +92,16 @@ final class LoginViewController: UIViewController {
         
         //TODO: - Output binding
         output.loginSuccess
-            .sink { str in
-                print(str)
-            }
+            .receive(on: DispatchQueue.global())
+            .subscribe(on: DispatchQueue.main)
+            .sink { _ in }
             .store(in: &cancelBag)
         
+        output.errorStream
+            .sink { errorMessage in
+                print(errorMessage)
+            }
+            .store(in: &cancelBag)
     }
     
     private func bindInput() {
@@ -106,7 +111,6 @@ final class LoginViewController: UIViewController {
             }
             .store(in: &cancelBag)
     }
-    
 }
 
 

@@ -231,23 +231,29 @@ extension OnboardingViewController: PregnancyCheckDelegate {
     }
 }
 
-extension OnboardingViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        switch error {
-        case .urlEncodingError:
-            LHToast.show(message: "인코딩에러")
-        case .jsonDecodingError:
-            LHToast.show(message: "디코딩에러")
-        case .badCasting:
-            LHToast.show(message: "배드캐스트")
-        case .fetchImageError:
-            LHToast.show(message: "이미지패치에러")
-        case .unAuthorizedError:
-            navigator.checkTokenIsExpired()
-        case .clientError(_, let message):
-            LHToast.show(message: message)
-        case .serverError:
-            LHToast.show(message: error.description)
-        }
-    }
-}
+//extension OnboardingViewController: ViewControllerServiceable {
+//    func handleError(_ error: NetworkError) {
+//        switch error {
+//        case .urlEncodingError:
+//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+////            LHToast.show(message: "인코딩에러")
+//        case .jsonDecodingError:
+//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+////            LHToast.show(message: "디코딩에러")
+//        case .badCasting:
+//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+////            LHToast.show(message: "배드캐스트")
+//        case .fetchImageError:
+//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+////            LHToast.show(message: "이미지패치에러")
+//        case .unAuthorizedError:
+//            navigator.checkTokenIsExpired()
+//        case .clientError(_, let message):
+//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+////            LHToast.show(message: message)
+//        case .serverError:
+//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+////            LHToast.show(message: error.description)
+//        }
+//    }
+//}

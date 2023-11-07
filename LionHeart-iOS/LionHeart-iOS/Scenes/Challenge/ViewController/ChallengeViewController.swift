@@ -222,23 +222,23 @@ extension ChallengeViewController: UICollectionViewDataSource {
     }
 }
 
-extension ChallengeViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        switch error {
-        case .urlEncodingError:
-            LHToast.show(message: "url인코딩에러")
-        case .jsonDecodingError:
-            LHToast.show(message: "챌린지Decode에러")
-        case .badCasting:
-            LHToast.show(message: "배드캐스팅")
-        case .fetchImageError:
-            LHToast.show(message: "챌린지 이미지 패치 에러")
-        case .unAuthorizedError:
-            self.navigator.checkTokenIsExpired()
-        case .clientError(_, let message):
-            LHToast.show(message: message)
-        case .serverError:
-            LHToast.show(message: error.description)
-        }
-    }
-}
+//extension ChallengeViewController: ViewControllerServiceable {]
+//    func handleError(_ error: NetworkError) {
+//        switch error {
+//        case .urlEncodingError:
+//            LHToast.show(message: "url인코딩에러")
+//        case .jsonDecodingError:
+//            LHToast.show(message: "챌린지Decode에러")
+//        case .badCasting:
+//            LHToast.show(message: "배드캐스팅")
+//        case .fetchImageError:
+//            LHToast.show(message: "챌린지 이미지 패치 에러")
+//        case .unAuthorizedError:
+//            self.navigator.checkTokenIsExpired()
+//        case .clientError(_, let message):
+//            LHToast.show(message: message)
+//        case .serverError:
+//            LHToast.show(message: error.description)
+//        }
+//    }
+//}

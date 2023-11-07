@@ -19,76 +19,59 @@ import Combine
 
 
 final class LoginViewModelImpl:  LoginViewModel, LoginUseCase, LoginViewModelHandler {
-    
-//    private let articleId: Int
-//    
-//    func setAricleId(_ id: Int) {
-//        <#code#>
-//    }
     var navigator: LoginNavigation
-
+    private var token: String?
     private let manager: LoginManager
+    private let errorStream: PassthroughSubject<String, Never> = PassthroughSubject()
     
     init(navigator: LoginNavigation, manager: LoginManager) {
         self.navigator = navigator
         self.manager = manager
     }
     
+    
     func transform(input: Input) -> Output {
+        
         let loginSuccess = input.kakakoLoginButtonTap
-            .errorTask { _ in
-                do {
-                    if UserApi.isKakaoTalkLoginAvailable() {
-                        return try await self.loginKakaoWithApp()
-                    } else {
-                        return try await self.loginKakaoWithWeb()
+            .map { _ -> Future<String, NetworkError> in
+                return Future { promise in
+                    Task {
+                        do {
+                            if UserApi.isKakaoTalkLoginAvailable() {
+                                let token = try await self.loginKakaoWithApp()
+                                self.token = token
+                                try await self.loginAPI(kakaoToken: token)
+                                self.errorStream.send("로그인성공")
+                            } else {
+                                let token = try await self.loginKakaoWithWeb()
+                                self.token = token
+                                try await self.loginAPI(kakaoToken: token)
+                                self.errorStream.send("로그인성공")
+                            }
+                        } catch {
+                            let networkError = error as! NetworkError
+                            self.handleError(networkError)
+                            self.errorStream.send("가입되지않은사람이라 온보딩으로갑니다")
+                        }
                     }
-                } catch NetworkError.unAuthorizedError {
-                    // 앱 종료
-                    // coordinator
                 }
             }
-            .errorTask { str in
-                
-                
-                
-                
-                return try await self.loginAPI(kakaoToken: str)
-            }
             .eraseToAnyPublisher()
-        
-        
-        return Output(loginSuccess: loginSuccess)
+            return Output(loginSuccess: loginSuccess, errorStream: errorStream)
     }
-    
-//    var userData: UserOnboardingModel?
-    
-//    private var kakaoAccessToken: String? {
-//        didSet {
-//            guard let kakaoToken = self.kakaoAccessToken else {
-//                LHToast.show(message: "카카오토큰 언래핑 실패 21")
-//                return
-//            }
-//            self.loginAPI(kakaoToken: kakaoToken)
-//        }
-//    }
-    
-    
-    
     
     private func loginKakaoWithApp() async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in
             UserApi.shared.loginWithKakaoTalk { oAuthToken, error in
                 guard error == nil else {
-                    continuation.resume(throwing: NetworkError.unAuthorizedError)
+                    self.errorStream.send("카카오에러")
+                    return
+                }
+                guard let oAuthToken = oAuthToken else {
+                    self.errorStream.send("카카오에러")
                     return
                 }
                 
-                guard let oAuthToken = oAuthToken else {
-                    continuation.resume(throwing: NetworkError.unAuthorizedError)
-                    return
-                }
-
                 continuation.resume(returning: oAuthToken.accessToken)
             }
         }
@@ -97,51 +80,35 @@ final class LoginViewModelImpl:  LoginViewModel, LoginUseCase, LoginViewModelHan
     
     private func loginKakaoWithWeb() async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in
-            UserApi.shared.loginWithKakaoAccount { oAuthToken, error in
-                guard error == nil else {
-                    continuation.resume(throwing: NetworkError.unAuthorizedError)
-                    return
-                    
+            DispatchQueue.main.async {
+                UserApi.shared.loginWithKakaoAccount { oAuthToken, error in
+                    guard error == nil else {
+                        self.errorStream.send("카카오에러")
+                        return
+                    }
+                    guard let oAuthToken = oAuthToken else {
+                        self.errorStream.send("카카오에러")
+                        return
+                    }
+                    continuation.resume(returning: oAuthToken.accessToken)
                 }
-                
-                guard let oAuthToken = oAuthToken else {
-                    continuation.resume(throwing: NetworkError.unAuthorizedError)
-                    return
-                }
-                
-                continuation.resume(returning: oAuthToken.accessToken)
             }
         }
     }
-    
 }
-
-
-// MARK: - Network
-
-//    func setAddTarget() {
-//        // input으로 넘기기
-//        kakakoLoginButton.addButtonAction { sender in
-//            if UserApi.isKakaoTalkLoginAvailable() {
-//                self.loginKakaoWithApp()
-//            } else {
-//                self.loginKakaoWithWeb()
-//            }
-//        }
-//    }
 
 extension LoginViewModelImpl {
     func handleError(_ error: NetworkError) {
-        LHToast.show(message: error.description) // ViewController로 이동해야할 코드 (ViewModel은 UIKit을 import할 필요가 없다)
         switch error {
         case .clientError(let code, let message):
             print(code, message)
             if code == NetworkErrorCode.unfoundUserErrorCode {
-                LHToast.show(message: "코드 잘돌아감")
-//                self.navigator.checkUserIsVerified(userState: .nonVerified, kakaoToken: kakaoAccessToken)
+                DispatchQueue.main.async {
+                    self.navigator.checkUserIsVerified(userState: .nonVerified, kakaoToken: self.token)
+                }
             }
         default:
-            LHToast.show(message: error.description)
+            errorStream.send("알수없는에러")
         }
     }
 }
@@ -149,7 +116,9 @@ extension LoginViewModelImpl {
 extension LoginViewModelImpl {
     private func loginAPI(kakaoToken: String) async throws {
         try await manager.login(type: .kakao, kakaoToken: kakaoToken)
-//        self.navigator.checkUserIsVerified(userState: .verified, kakaoToken: kakaoToken)
+        DispatchQueue.main.async {
+            self.navigator.checkUserIsVerified(userState: .verified, kakaoToken: kakaoToken)
+        }
     }
 }
 
