@@ -113,7 +113,7 @@ extension Publisher {
     }
     
     func errorTask<T>(maxPublishers: Subscribers.Demand = .unlimited, _ transform: @escaping (Output) async throws -> T)
-    -> Publishers.FlatMap<Deferred<Future<T, NetworkError>>, Self> {
+    -> Publishers.FlatMap<Deferred<Future<T, Never>>, Self> {
         flatMap(maxPublishers: maxPublishers) { value in
             Deferred {
                 Future { promise in

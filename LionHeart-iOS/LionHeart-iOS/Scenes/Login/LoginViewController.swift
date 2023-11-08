@@ -86,22 +86,32 @@ final class LoginViewController: UIViewController {
     }
     
     private func bind() {
-        let input = LoginViewModelInput(
-            kakakoLoginButtonTap: kakakoLoginButtonTap)
+        let input = LoginViewModelInput(kakakoLoginButtonTap: kakakoLoginButtonTap)
         let output = viewModel.transform(input: input)
         
-        //TODO: - Output binding
         output.loginSuccess
-            .receive(on: DispatchQueue.global())
-            .subscribe(on: DispatchQueue.main)
-            .sink { _ in }
-            .store(in: &cancelBag)
+            .sink(receiveCompletion: { completion in
+                print(completion)
+            }, receiveValue: { value in
+                print(value)
+            })
+
         
-        output.errorStream
-            .sink { errorMessage in
-                print(errorMessage)
-            }
             .store(in: &cancelBag)
+
+        
+        //TODO: - Output binding
+//        output.loginSuccess
+////            .receive(on: DispatchQueue.global())
+////            .subscribe(on: DispatchQueue.main)
+//            .sink { _ in }
+//            .store(in: &cancelBag)
+//        
+//        output.errorStream
+//            .sink { errorMessage in
+//                print(errorMessage)
+//            }
+//            .store(in: &cancelBag)
     }
     
     private func bindInput() {
@@ -110,6 +120,15 @@ final class LoginViewController: UIViewController {
                 self?.kakakoLoginButtonTap.send(())
             }
             .store(in: &cancelBag)
+            
+        kakakoLoginButtonTap
+            .sink { a in
+                print(a)
+            } receiveValue: { _ in
+                print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
+            }
+            .store(in: &cancelBag)
+
     }
 }
 
