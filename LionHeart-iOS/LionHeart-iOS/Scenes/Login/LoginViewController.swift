@@ -12,21 +12,6 @@ import Combine
 
 
 final class LoginViewController: UIViewController {
-//    var userData: UserOnboardingModel?
-    
-    //    var navigator: LoginNavigation
-    //
-    //    private let manager: LoginManager
-    
-//    private var kakaoAccessToken: String? {
-//        didSet {
-//            guard let kakaoToken = self.kakaoAccessToken else {
-//                LHToast.show(message: "카카오토큰 언래핑 실패 21")
-//                return
-//            }
-//            self.loginAPI(kakaoToken: kakaoToken)
-//        }
-//    }
     
     // MARK: - Properties
     
@@ -35,7 +20,7 @@ final class LoginViewController: UIViewController {
     
     private let kakakoLoginButtonTap = PassthroughSubject<Void, Never>()
     
-    private let viewModel: any LoginViewModel & LoginViewModelPresentable
+    private let viewModel: any LoginViewModel
     
     private var cancelBag = Set<AnyCancellable>()
     
@@ -54,19 +39,10 @@ final class LoginViewController: UIViewController {
         .setBackgroundColor(color: .kakao)
 
     // MARK: - LifeCycle
-    /*
-     some이나 any가 없다면...
-     init에 어떤 객체를 넣어주게 될텐데, 그 객체의 upper bound는 컴파일러 입장에서는 알수가 없다.
-     즉, LoginViewModel & LoginUseCase 프로토콜들을 채택하고 있는 객체인지 보장할 수가 없다는 뜻이다.
-     
-     some이나 any를 써주게 된다면
-     */
     
-    // some이나 any를 associatedtype이 있는 protocol
-    init(viewModel: any LoginViewModel & LoginViewModelPresentable) {
+    init(viewModel: some LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
     }
 
     required init?(coder: NSCoder) {
@@ -90,26 +66,8 @@ final class LoginViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.loginSuccess
-            .sink(receiveCompletion: { completion in
-                print(completion)
-            }, receiveValue: { value in
-                print(value)
-            })
+            .sink(receiveValue: { _ in })
             .store(in: &cancelBag)
-
-        
-        //TODO: - Output binding
-//        output.loginSuccess
-////            .receive(on: DispatchQueue.global())
-////            .subscribe(on: DispatchQueue.main)
-//            .sink { _ in }
-//            .store(in: &cancelBag)
-//        
-//        output.errorStream
-//            .sink { errorMessage in
-//                print(errorMessage)
-//            }
-//            .store(in: &cancelBag)
     }
     
     private func bindInput() {
@@ -118,15 +76,6 @@ final class LoginViewController: UIViewController {
                 self?.kakakoLoginButtonTap.send(())
             }
             .store(in: &cancelBag)
-            
-        kakakoLoginButtonTap
-            .sink { a in
-                print(a)
-            } receiveValue: { _ in
-                print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-            }
-            .store(in: &cancelBag)
-
     }
 }
 

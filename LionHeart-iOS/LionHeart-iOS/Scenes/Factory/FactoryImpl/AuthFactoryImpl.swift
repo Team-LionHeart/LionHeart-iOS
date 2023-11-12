@@ -8,13 +8,14 @@
 import UIKit
 
 struct AuthFactoryImpl: AuthFactory {
-    func makeLoginViewModel(coordinator: AuthCoordinator) -> LoginViewModelPresentable {
+    
+    func makeLoginViewModel(coordinator: AuthCoordinator) -> any LoginViewModel & LoginViewModelPresentable {
         let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
         
         let apiService = APIService()
         let serviceImpl = AuthServiceImpl(apiService: apiService)
-        let manager = LoginMangerImpl(authService: serviceImpl)
-        return LoginViewModelImpl(navigator: adaptor, manager: manager)
+        let managerImpl = LoginMangerImpl(authService: serviceImpl)
+        return LoginViewModelImpl(navigator: adaptor, manager: managerImpl)
     }
     
     func makeAuthAdaptor(coordinator: AuthCoordinator) -> EntireAuthNaviation {
@@ -27,7 +28,8 @@ struct AuthFactoryImpl: AuthFactory {
     }
     
     func makeCompleteOnbardingViewController(coordinator: AuthCoordinator) -> CompleteOnbardingViewControllerable {
-        let completeViewController = CompleteOnbardingViewController(navigator: self.makeAuthAdaptor(coordinator: coordinator))
+        let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
+        let completeViewController = CompleteOnbardingViewController(navigator: adaptor)
         return completeViewController
     }
     
@@ -36,5 +38,5 @@ struct AuthFactoryImpl: AuthFactory {
         return onboardingViewController
     }
     
-
+    
 }

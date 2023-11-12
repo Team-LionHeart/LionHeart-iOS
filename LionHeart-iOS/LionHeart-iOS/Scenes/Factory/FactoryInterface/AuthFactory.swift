@@ -8,7 +8,8 @@
 import Foundation
 
 protocol AuthFactory {
-    func makeLoginViewModel(coordinator: AuthCoordinator) -> LoginViewModelPresentable
+    
+    func makeLoginViewModel(coordinator: AuthCoordinator) -> any LoginViewModel & LoginViewModelPresentable
     func makeAuthAdaptor(coordinator: AuthCoordinator) -> EntireAuthNaviation
     
     func makeLoginViewController(coordinator: AuthCoordinator) -> LoginViewController

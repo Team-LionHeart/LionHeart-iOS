@@ -7,10 +7,6 @@
 
 import UIKit
 
-//protocol LoginViewControllerable where Self: UIViewController {
-//    var navigator: LoginNavigation { get set }
-//}
-
 protocol ViewModel where Self: AnyObject {
     associatedtype Input
     associatedtype Output
@@ -18,8 +14,6 @@ protocol ViewModel where Self: AnyObject {
     func transform(input: Input) -> Output
 }
 
-protocol LoginViewModelPresentable { // ViewModel Property를 설정해준다.
+protocol LoginViewModelPresentable {
     var navigator: LoginNavigation { get set } // Coordinator
-    
-//    func setAricleId(_ id: Int) // Factory return type
 }
