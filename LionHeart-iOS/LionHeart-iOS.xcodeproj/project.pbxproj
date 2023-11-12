@@ -41,7 +41,6 @@
 		B520EA6C2A670C010027356E /* progressbar_2m.json in Resources */ = {isa = PBXBuildFile; fileRef = B520EA632A670C010027356E /* progressbar_2m.json */; };
 		B520EA6D2A670C010027356E /* progressbar_3m.json in Resources */ = {isa = PBXBuildFile; fileRef = B520EA642A670C010027356E /* progressbar_3m.json */; };
 		B520EA6E2A670C010027356E /* progressbar_5m.json in Resources */ = {isa = PBXBuildFile; fileRef = B520EA652A670C010027356E /* progressbar_5m.json */; };
-		B52C6BB02AF5D95B008E3B99 /* LoginViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C6BAF2AF5D95B008E3B99 /* LoginViewModelable.swift */; };
 		B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
@@ -372,7 +371,6 @@
 		B520EA632A670C010027356E /* progressbar_2m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_2m.json; sourceTree = "<group>"; };
 		B520EA642A670C010027356E /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
 		B520EA652A670C010027356E /* progressbar_5m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_5m.json; sourceTree = "<group>"; };
-		B52C6BAF2AF5D95B008E3B99 /* LoginViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelable.swift; sourceTree = "<group>"; };
 		B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1007,7 +1005,6 @@
 				C0DF037C2A5A9CFD0037F740 /* LoginViewController.swift */,
 				B58095012AF354C700FFCE1B /* LoginViewModel.swift */,
 				B58095032AF354EB00FFCE1B /* LoginViewModelImpl.swift */,
-				B52C6BAF2AF5D95B008E3B99 /* LoginViewModelable.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2081,7 +2078,6 @@
 				C034EDDE2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift in Sources */,
 				C003CC452ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift in Sources */,
 				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
-				B52C6BB02AF5D95B008E3B99 /* LoginViewModelable.swift in Sources */,
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,

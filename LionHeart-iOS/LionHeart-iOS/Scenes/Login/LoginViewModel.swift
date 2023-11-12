@@ -6,8 +6,14 @@
 //
 
 import Foundation
+import Combine
 
+protocol LoginViewModel: ViewModel where Input == LoginViewModelInput, Output == LoginViewModelOutput {}
 
-protocol LoginUseCase {
-    
+struct LoginViewModelInput {
+    let kakakoLoginButtonTap: PassthroughSubject<Void, Never>
+}
+
+struct LoginViewModelOutput {
+    let loginSuccess: AnyPublisher<String, Never>
 }
