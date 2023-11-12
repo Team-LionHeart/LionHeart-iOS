@@ -16,5 +16,5 @@ struct LoginViewModelInput {
 
 struct LoginViewModelOutput {
     let loginSuccess: AnyPublisher<String, Never>
-//    let errorStream: PassthroughSubject<String, NetworkError>
 }
+

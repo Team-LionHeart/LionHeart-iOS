@@ -35,7 +35,7 @@ final class LoginViewController: UIViewController {
     
     private let kakakoLoginButtonTap = PassthroughSubject<Void, Never>()
     
-    private let viewModel: any LoginViewModel
+    private let viewModel: any LoginViewModel & LoginViewModelPresentable
     
     private var cancelBag = Set<AnyCancellable>()
     
@@ -63,7 +63,7 @@ final class LoginViewController: UIViewController {
      */
     
     // some이나 any를 associatedtype이 있는 protocol
-    init(viewModel: some LoginViewModel & LoginUseCase) {
+    init(viewModel: any LoginViewModel & LoginViewModelPresentable) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         
@@ -95,8 +95,6 @@ final class LoginViewController: UIViewController {
             }, receiveValue: { value in
                 print(value)
             })
-
-        
             .store(in: &cancelBag)
 
         

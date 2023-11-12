@@ -18,7 +18,7 @@ protocol ViewModel where Self: AnyObject {
     func transform(input: Input) -> Output
 }
 
-protocol LoginViewModelHandler { // ViewModel Property를 설정해준다.
+protocol LoginViewModelPresentable { // ViewModel Property를 설정해준다.
     var navigator: LoginNavigation { get set } // Coordinator
     
 //    func setAricleId(_ id: Int) // Factory return type
