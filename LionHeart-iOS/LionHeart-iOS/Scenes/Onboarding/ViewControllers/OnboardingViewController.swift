@@ -10,6 +10,7 @@ import UIKit
 
 import SnapKit
 
+/// 전직퀘스트
 final class OnboardingViewController: UIViewController, OnboardingViewControllerable  {
     typealias OnboardingViews = [UIViewController]
     
@@ -137,7 +138,7 @@ private extension OnboardingViewController {
     }
     
     func setChildViewController() {
-        let pregnancyViewController = GetPregnancyViewController()
+        let pregnancyViewController = GetPregnancyViewController(viewModel: GetPregnancyViewModelImpl())
         pregnancyViewController.delegate = self
         pageDataSource.append(pregnancyViewController)
         let fetalNicknameViewController = GetFetalNicknameViewController()
