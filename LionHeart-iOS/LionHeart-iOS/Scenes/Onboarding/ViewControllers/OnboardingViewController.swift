@@ -27,6 +27,7 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
     private var pageDataSource: OnboardingViews = []
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
     
+    //TODO: ViewModel로
     private var currentPage: OnboardingPageType = .getPregnancy
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
         didSet {
@@ -75,7 +76,7 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
 private extension OnboardingViewController {
     func setUI() {
         view.backgroundColor = .designSystem(.background)
-        /// 임시
+        //TODO: 임시
         nextButton.isHidden = false
     }
     
@@ -142,8 +143,7 @@ private extension OnboardingViewController {
     func setChildViewController() {
         let pregnancyViewController = GetPregnancyViewController(viewModel: GetPregnancyViewModelImpl())
         pageDataSource.append(pregnancyViewController)
-        let fetalNicknameViewController = GetFetalNicknameViewController()
-        fetalNicknameViewController.delegate = self
+        let fetalNicknameViewController = GetFetalNicknameViewController(viewModel: GetFetalNicknameViewModelImpl())
         pageDataSource.append(fetalNicknameViewController)
     }
     
@@ -213,12 +213,12 @@ private extension OnboardingViewController {
     }
 }
 
-extension OnboardingViewController: FetalNicknameCheckDelegate {
-    func sendFetalNickname(nickName: String) {
-        self.fetalNickName = nickName
-    }
-    
-    func checkFetalNickname(resultType: OnboardingFetalNicknameTextFieldResultType) {
-        nextButton.isHidden = resultType.isHidden
-    }
-}
+//extension OnboardingViewController: FetalNicknameCheckDelegate {
+//    func sendFetalNickname(nickName: String) {
+//        self.fetalNickName = nickName
+//    }
+//    
+//    func checkFetalNickname(resultType: OnboardingFetalNicknameTextFieldResultType) {
+//        nextButton.isHidden = resultType.isHidden
+//    }
+//}

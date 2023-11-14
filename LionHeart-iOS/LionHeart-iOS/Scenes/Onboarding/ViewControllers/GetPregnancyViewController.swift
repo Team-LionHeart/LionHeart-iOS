@@ -14,8 +14,9 @@ import SnapKit
 
 final class GetPregnancyViewController: UIViewController {
     
-    private var cancelBag = Set<AnyCancellable>()
     var pregnancyIsValid = PassthroughSubject<Bool, Never>()
+    
+    private var cancelBag = Set<AnyCancellable>()
     private var pregancyTextfieldDidChanged = PassthroughSubject<String, Never>()
     private var viewModel: any GetPregnancyViewModel
     private let titleLabel = LHOnboardingTitleLabel("현재 임신 주수를\n알려주세요", align: .left)
@@ -123,7 +124,7 @@ private extension GetPregnancyViewController {
         let output = viewModel.transform(input: input)
         output.pregancyTextfieldValidationMessage
             .sink { [weak self] in
-                self?.pregnancyErrorLabel.text = $0.ValidationiMessage
+                self?.pregnancyErrorLabel.text = $0.validationMessage
                 self?.pregnancyIsValid.send($0.isHidden)
             }
             .store(in: &cancelBag)

@@ -15,6 +15,6 @@ struct GetPregnancyViewModelInput {
 }
 
 struct GetPregnancyViewModelOutput {
-    let pregancyTextfieldValidationMessage: AnyPublisher<(ValidationiMessage: String, isHidden: Bool), Never>
+    let pregancyTextfieldValidationMessage: AnyPublisher<(validationMessage: String, isHidden: Bool), Never>
 }
 

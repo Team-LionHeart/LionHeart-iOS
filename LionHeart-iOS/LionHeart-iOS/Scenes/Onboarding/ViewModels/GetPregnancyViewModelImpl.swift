@@ -19,25 +19,25 @@ final class GetPregnancyViewModelImpl: GetPregnancyViewModel {
     }
     
     
-    private func checkValidation(from text: String) -> (ValidationiMessage: String, isHidden: Bool) {
+    private func checkValidation(from text: String) -> (validationMessage: String, isHidden: Bool) {
         var isHidden = false
-        var ValidationiMessage = ""
+        var validationMessage = ""
         if text.count == 0 {
-            ValidationiMessage = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldEmpty.errorMessage
+            validationMessage = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldEmpty.errorMessage
             isHidden = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldEmpty.isHidden
         }
         if let textNumber = Int(text) {
             if textNumber == 0 {
-                ValidationiMessage = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
+                validationMessage = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
                 isHidden = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.isHidden
             } else if 4 <= textNumber && textNumber <= 40 {
-                ValidationiMessage = ""
+                validationMessage = ""
                 isHidden = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldValid.isHidden
             } else {
-                ValidationiMessage = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
+                validationMessage = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
                 isHidden = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.isHidden
             }
         }
-        return (ValidationiMessage: ValidationiMessage, isHidden: isHidden)
+        return (validationMessage: validationMessage, isHidden: isHidden)
     }
 }

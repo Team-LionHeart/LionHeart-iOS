@@ -119,6 +119,8 @@
 		B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */; };
 		B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */; };
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
+		B5E78E002B03302200EA67A2 /* GetFetalNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E78DFF2B03302200EA67A2 /* GetFetalNicknameViewModel.swift */; };
+		B5E78E022B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E78E012B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift */; };
 		B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */; };
 		C003CC1B2AD9176B00AFFAAC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */; };
 		C003CC1D2AD917CF00AFFAAC /* AppCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1C2AD917CF00AFFAAC /* AppCoordinatorImpl.swift */; };
@@ -440,6 +442,8 @@
 		B5C6A2BD2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTitleTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C12A5DEA1B0021BE5E /* CopyRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyRightTableViewCell.swift; sourceTree = "<group>"; };
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
+		B5E78DFF2B03302200EA67A2 /* GetFetalNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFetalNicknameViewModel.swift; sourceTree = "<group>"; };
+		B5E78E012B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFetalNicknameViewModelImpl.swift; sourceTree = "<group>"; };
 		B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumWeekBackgroundDummy.swift; sourceTree = "<group>"; };
 		C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C003CC1C2AD917CF00AFFAAC /* AppCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorImpl.swift; sourceTree = "<group>"; };
@@ -1638,6 +1642,8 @@
 			children = (
 				C09A564C2B030C070012A7FD /* GetPregnancyViewModel.swift */,
 				C09A564E2B030CB20012A7FD /* GetPregnancyViewModelImpl.swift */,
+				B5E78DFF2B03302200EA67A2 /* GetFetalNicknameViewModel.swift */,
+				B5E78E012B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2178,6 +2184,7 @@
 				C0B15E132AC010CD0058D56B /* LHKingfisherService.swift in Sources */,
 				C009E9F62ADBC41D00112F18 /* BookmarkFactory.swift in Sources */,
 				4A918E7B2AE11839003CB8F9 /* ArticleAdaptor.swift in Sources */,
+				B5E78E002B03302200EA67A2 /* GetFetalNicknameViewModel.swift in Sources */,
 				4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */,
 				4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */,
 				B5C6A2BE2A5DE6590021BE5E /* GeneralTitleTableViewCell.swift in Sources */,
@@ -2193,6 +2200,7 @@
 				B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */,
 				B53F4EE72ADBC29F001C5752 /* CurriculumFactoryImpl.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
+				B5E78E022B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift in Sources */,
 				C003CC392ADA4D9600AFFAAC /* PopNavigation.swift in Sources */,
 				C003CC4D2ADA4F7600AFFAAC /* TodayNavigation.swift in Sources */,
 				4AE19A1E2A6597E700C1DB7E /* BookmarkRequest.swift in Sources */,
