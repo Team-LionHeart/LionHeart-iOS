@@ -19,8 +19,7 @@ final class GetPregnancyViewModelImpl: GetPregnancyViewModel {
     }
     
     
-    private func checkValidation(from text: String) -> (ValidationiMessage: String, PlaceHolder: String, isHidden: Bool) {
-        let placeHolder = text.count == 0 ? "1~40" : ""
+    private func checkValidation(from text: String) -> (ValidationiMessage: String, isHidden: Bool) {
         var isHidden = false
         var ValidationiMessage = ""
         if text.count == 0 {
@@ -39,6 +38,6 @@ final class GetPregnancyViewModelImpl: GetPregnancyViewModel {
                 isHidden = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.isHidden
             }
         }
-        return (ValidationiMessage: ValidationiMessage, PlaceHolder: placeHolder, isHidden: isHidden)
+        return (ValidationiMessage: ValidationiMessage, isHidden: isHidden)
     }
 }

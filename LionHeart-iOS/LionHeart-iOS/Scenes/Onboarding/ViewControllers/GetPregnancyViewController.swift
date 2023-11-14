@@ -124,7 +124,6 @@ private extension GetPregnancyViewController {
         output.pregancyTextfieldValidationMessage
             .sink { [weak self] in
                 self?.pregnancyErrorLabel.text = $0.ValidationiMessage
-                self?.pregnancyTextfield.placeholder = $0.PlaceHolder
                 self?.pregnancyIsValid.send($0.isHidden)
             }
             .store(in: &cancelBag)

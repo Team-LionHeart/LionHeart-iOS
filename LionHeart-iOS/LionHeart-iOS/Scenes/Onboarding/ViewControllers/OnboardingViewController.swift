@@ -75,6 +75,8 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
 private extension OnboardingViewController {
     func setUI() {
         view.backgroundColor = .designSystem(.background)
+        /// 임시
+        nextButton.isHidden = false
     }
     
     func setNavigationBar() {
@@ -139,7 +141,6 @@ private extension OnboardingViewController {
     
     func setChildViewController() {
         let pregnancyViewController = GetPregnancyViewController(viewModel: GetPregnancyViewModelImpl())
-        pregnancyViewController.delegate = self
         pageDataSource.append(pregnancyViewController)
         let fetalNicknameViewController = GetFetalNicknameViewController()
         fetalNicknameViewController.delegate = self
@@ -221,40 +222,3 @@ extension OnboardingViewController: FetalNicknameCheckDelegate {
         nextButton.isHidden = resultType.isHidden
     }
 }
-
-extension OnboardingViewController: PregnancyCheckDelegate {
-    func sendPregnancyContent(pregnancy: Int) {
-        self.pregnancy = pregnancy
-    }
-    
-    func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType) {
-        nextButton.isHidden = resultType.isHidden
-    }
-}
-
-//extension OnboardingViewController: ViewControllerServiceable {
-//    func handleError(_ error: NetworkError) {
-//        switch error {
-//        case .urlEncodingError:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: "인코딩에러")
-//        case .jsonDecodingError:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: "디코딩에러")
-//        case .badCasting:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: "배드캐스트")
-//        case .fetchImageError:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: "이미지패치에러")
-//        case .unAuthorizedError:
-//            navigator.checkTokenIsExpired()
-//        case .clientError(_, let message):
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: message)
-//        case .serverError:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: error.description)
-//        }
-//    }
-//}
