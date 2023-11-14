@@ -100,26 +100,26 @@ private extension ArticleListByCategoryViewController {
     }
 }
 
-extension ArticleListByCategoryViewController: ViewControllerServiceable {
-    func handleError(_ error: NetworkError) {
-        switch error {
-        case .urlEncodingError:
-            LHToast.show(message: "URL Error")
-        case .jsonDecodingError:
-            LHToast.show(message: "Decoding Error")
-        case .badCasting:
-            LHToast.show(message: "Bad Casting")
-        case .fetchImageError:
-            LHToast.show(message: "Image Error")
-        case .unAuthorizedError:
-            navigator.checkTokenIsExpired()
-        case .clientError(_, let message):
-            LHToast.show(message: message)
-        case .serverError:
-            LHToast.show(message: error.description)
-        }
-    }
-}
+//extension ArticleListByCategoryViewController: ViewControllerServiceable {
+//    func handleError(_ error: NetworkError) {
+//        switch error {
+//        case .urlEncodingError:
+//            LHToast.show(message: "URL Error")
+//        case .jsonDecodingError:
+//            LHToast.show(message: "Decoding Error")
+//        case .badCasting:
+//            LHToast.show(message: "Bad Casting")
+//        case .fetchImageError:
+//            LHToast.show(message: "Image Error")
+//        case .unAuthorizedError:
+//            navigator.checkTokenIsExpired()
+//        case .clientError(_, let message):
+//            LHToast.show(message: message)
+//        case .serverError:
+//            LHToast.show(message: error.description)
+//        }
+//    }
+//}
 
 extension ArticleListByCategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

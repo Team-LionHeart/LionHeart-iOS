@@ -7,6 +7,13 @@
 
 import UIKit
 
-protocol LoginViewControllerable where Self: UIViewController {
-    var navigator: LoginNavigation { get set }
+protocol ViewModel where Self: AnyObject {
+    associatedtype Input
+    associatedtype Output
+    
+    func transform(input: Input) -> Output
+}
+
+protocol LoginViewModelPresentable {
+    var navigator: LoginNavigation { get set } // Coordinator
 }

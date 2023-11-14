@@ -48,7 +48,10 @@ final class AuthCoordinatorImpl: AuthCoordinator {
         case .nonVerified:
             let onboardingViewController = factory.makeOnboardingViewController(coordinator: self)
             onboardingViewController.setKakaoAccessToken(kakaoToken)
-            self.navigationController.pushViewController(onboardingViewController, animated: true)
+            DispatchQueue.main.async {
+                self.navigationController.pushViewController(onboardingViewController, animated: true)
+            }
+            
         }
     }
     
