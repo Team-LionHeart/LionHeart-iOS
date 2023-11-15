@@ -50,7 +50,6 @@ final class AuthCoordinatorImpl: AuthCoordinator {
             DispatchQueue.main.async {
                 self.navigationController.pushViewController(onboardingViewController, animated: true)
             }
-            
         }
     }
     

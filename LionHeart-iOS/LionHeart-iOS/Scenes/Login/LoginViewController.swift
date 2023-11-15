@@ -10,8 +10,9 @@ import UIKit
 import SnapKit
 import Combine
 
+protocol LoginViewControllerable where Self: UIViewController {}
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController, LoginViewControllerable {
     
     // MARK: - Properties
     

@@ -13,7 +13,3 @@ protocol ViewModel where Self: AnyObject {
     
     func transform(input: Input) -> Output
 }
-
-protocol LoginViewModelPresentable {
-    var navigator: LoginNavigation { get set } // Coordinator
-}

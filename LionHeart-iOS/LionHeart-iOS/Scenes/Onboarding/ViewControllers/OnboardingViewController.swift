@@ -11,8 +11,9 @@ import Combine
 
 import SnapKit
 
-/// 전직퀘스트
-final class OnboardingViewController: UIViewController  {
+protocol OnboardingViewControllerable where Self: UIViewController {}
+
+final class OnboardingViewController: UIViewController, OnboardingViewControllerable {
     typealias OnboardingViews = [UIViewController]
 
     private let pregenacy = CurrentValueSubject<(pregnancy: Int, isValid: Bool), Never>((pregnancy: 0, isValid: true))
@@ -49,7 +50,6 @@ final class OnboardingViewController: UIViewController  {
         bindInput()
         bind()
     }
-
     
     func bindInput() {
         nextButton.tapPublisher
@@ -75,13 +75,18 @@ final class OnboardingViewController: UIViewController  {
         
         output.onboardingFlow
             .sink { [weak self] in
-                if $0.newValue == .toCompleteOnboarding {
+                if $0 == .toCompleteOnboarding {
                     self?.nextButton.isUserInteractionEnabled = false
                 }
                 self?.nextButton.isHidden = true
-                let direction: UIPageViewController.NavigationDirection = $0.oldValue.rawValue > $0.newValue.rawValue ? .reverse : .forward
-                self?.presentOnboardingView(direction: direction, newValue: $0.newValue)
+                self?.presentOnboardingView()
                 self?.fillProgressView(from: 1)
+            }
+            .store(in: &cancelBag)
+        
+        output.signUpSubject
+            .sink { errorMessage in
+                print(errorMessage)
             }
             .store(in: &cancelBag)
     }
@@ -121,7 +126,6 @@ private extension OnboardingViewController {
             make.leading.trailing.equalToSuperview()
         }
         
-        
         nextButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
@@ -134,7 +138,6 @@ private extension OnboardingViewController {
         }
     }
 
-    
     func setChildViewController() {
         let pregnancyViewController = GetPregnancyViewController(viewModel: GetPregnancyViewModelImpl())
         pregnancyViewController.pregnancyIsValid
@@ -160,40 +163,7 @@ private extension OnboardingViewController {
         }
     }
     
-
-    
-    func presentOnboardingView(direction: UIPageViewController.NavigationDirection, newValue: OnbardingFlowType) {
-        onboardingViewController.setViewControllers([pageDataSource[newValue.rawValue]], direction: direction, animated: false)
+    func presentOnboardingView(newValue: OnbardingFlowType = .toFetalNickname) {
+        onboardingViewController.setViewControllers([pageDataSource[newValue.rawValue]], direction: .forward, animated: false)
     }
 }
-
-private extension OnboardingViewController {
-//    func nextOnboaringProcess(nickName: String, minCount: Int, maxCount: Int) {
-//        self.nextButton.isHidden = nickName.count >= minCount && nickName.count <= maxCount ? false : true
-//        self.onboardingFlow = self.currentPage.forward
-//        self.onboardingCompletePercentage = self.currentPage.progressValue
-//    }
-//    
-//    func nextOnboardingProcessWithNonActiveButtonState() {
-//        self.nextButton.isHidden = true
-//        self.onboardingFlow = self.currentPage.forward
-//        self.onboardingCompletePercentage = self.currentPage.progressValue
-//    }
-//    
-//    func backOnboardingProcess() {
-//        self.view.endEditing(true)
-//        self.nextButton.isHidden = false
-//        self.onboardingFlow = .toGetPregnacny
-//        self.onboardingCompletePercentage = self.currentPage.progressValue
-//    }
-}
-
-//extension OnboardingViewController: FetalNicknameCheckDelegate {
-//    func sendFetalNickname(nickName: String) {
-//        self.fetalNickName = nickName
-//    }
-//    
-//    func checkFetalNickname(resultType: OnboardingFetalNicknameTextFieldResultType) {
-//        nextButton.isHidden = resultType.isHidden
-//    }
-//}

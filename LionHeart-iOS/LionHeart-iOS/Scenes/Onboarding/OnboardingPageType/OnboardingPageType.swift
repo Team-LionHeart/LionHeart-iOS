@@ -17,24 +17,3 @@ enum OnbardingFlowType: Int {
     case toFetalNickname
     case toCompleteOnboarding
 }
-
-extension OnboardingPageType {
-    
-    var progressValue: Float {
-        switch self {
-        case .getPregnancy:
-            return .half
-        case .getFetalNickname:
-            return .full
-        }
-    }
-    
-    var forward: OnbardingFlowType {
-        switch self {
-        case .getPregnancy:
-            return .toFetalNickname
-        case .getFetalNickname:
-            return .toCompleteOnboarding
-        }
-    }
-}
