@@ -46,8 +46,7 @@ final class AuthCoordinatorImpl: AuthCoordinator {
         case .verified:
             splashCoorinator?.showTabbarViewContoller()
         case .nonVerified:
-            let onboardingViewController = factory.makeOnboardingViewController(coordinator: self)
-            onboardingViewController.setKakaoAccessToken(kakaoToken)
+            let onboardingViewController = factory.makeOnboardingViewController(token: kakaoToken, coordinator: self)
             DispatchQueue.main.async {
                 self.navigationController.pushViewController(onboardingViewController, animated: true)
             }

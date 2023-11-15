@@ -33,10 +33,13 @@ struct AuthFactoryImpl: AuthFactory {
         return completeViewController
     }
     
-    func makeOnboardingViewController(coordinator: AuthCoordinator) -> OnboardingViewControllerable {
-        let onboardingViewController = OnboardingViewController(manager: OnboardingManagerImpl(authService: AuthServiceImpl(apiService: APIService())), navigator: self.makeAuthAdaptor(coordinator: coordinator))
-        return onboardingViewController
+    func makeOnboardingViewController(token: String?, coordinator: AuthCoordinator) -> OnboardingViewController {
+        let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
+        let apiService = APIService()
+        let serviceImpl = AuthServiceImpl(apiService: apiService)
+        let managerImpl = OnboardingManagerImpl(authService: serviceImpl)
+        let viewModelImpl = OnboardingViewModelImpl(navigator: adaptor, manager: managerImpl)
+        viewModelImpl.setKakaoAccessToken(token)
+        return OnboardingViewController(viewModel: viewModelImpl)
     }
-    
-    
 }

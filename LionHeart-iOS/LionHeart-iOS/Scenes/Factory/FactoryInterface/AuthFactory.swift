@@ -15,7 +15,7 @@ protocol AuthFactory {
     func makeLoginViewController(coordinator: AuthCoordinator) -> LoginViewController
     
     func makeCompleteOnbardingViewController(coordinator: AuthCoordinator) -> CompleteOnbardingViewControllerable
-    func makeOnboardingViewController(coordinator: AuthCoordinator) -> OnboardingViewControllerable
+    func makeOnboardingViewController(token: String?, coordinator: AuthCoordinator) -> OnboardingViewController
 }
 
 

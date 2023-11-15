@@ -14,7 +14,7 @@ import SnapKit
 
 final class GetFetalNicknameViewController: UIViewController {
     
-    let fetalIsValid = PassthroughSubject<Bool, Never>()
+    let fetalIsValid = PassthroughSubject<(fetalNickname: String, isValid:Bool), Never>()
     
     private let viewModel: any GetFetalNicknameViewModel
     
@@ -66,7 +66,7 @@ final class GetFetalNicknameViewController: UIViewController {
         output.fetalTextfieldValidationMessage
             .sink { [weak self] in
                 self?.fetalNickNameErrorLabel.text = $0.validationMessage
-                self?.fetalIsValid.send($0.isHidden)
+                self?.fetalIsValid.send(($0.fetalNickName, $0.isHidden))
             }
             .store(in: &cancelBag)
         

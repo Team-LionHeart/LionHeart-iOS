@@ -16,15 +16,14 @@ final class GetFetalNicknameViewModelImpl: GetFetalNicknameViewModel {
                 var validationMessage = ""
                 if text.count == 0 {
                     validationMessage = OnboardingFetalNicknameTextFieldResultType.fetalNicknameTextFieldEmpty.errorMessage
-                    isHidden = false
-                } else if text.count <= 10 {
                     isHidden = true
+                } else if text.count <= 10 {
+                    isHidden = false
                 } else {
                     validationMessage = OnboardingFetalNicknameTextFieldResultType.fetalNicknameTextFieldOver.errorMessage
-                    isHidden = false
-                    
+                    isHidden = true
                 }
-                return (validationMessage: validationMessage, isHidden: isHidden)
+                return (fetalNickName: text, validationMessage: validationMessage, isHidden: isHidden)
             }
             .eraseToAnyPublisher()
         

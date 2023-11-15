@@ -15,5 +15,5 @@ struct GetFetalNicknameViewModelInput {
 }
 
 struct GetFetalNicknameViewModelOutput {
-    let fetalTextfieldValidationMessage: AnyPublisher<(validationMessage: String, isHidden: Bool), Never>
+    let fetalTextfieldValidationMessage: AnyPublisher<(fetalNickName: String, validationMessage: String, isHidden: Bool), Never>
 }
