@@ -2,7 +2,7 @@
 //  CompleteOnboardingViewModel.swift
 //  LionHeart-iOS
 //
-//  Created by 황찬미 on 2023/11/16.
+//  Created by uiskim on 2023/11/16.
 //
 
 import Foundation

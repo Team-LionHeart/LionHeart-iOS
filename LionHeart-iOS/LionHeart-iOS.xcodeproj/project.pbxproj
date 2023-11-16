@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4A2050152A5DCD1900C7AF3C /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */; };
 		4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D72862A5D405C00A36189 /* BookmarkListCollectionViewCell.swift */; };
-		4A3F0C2F2B05E726004BD076 /* CompleteOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3F0C2E2B05E726004BD076 /* CompleteOnboardingViewModel.swift */; };
 		4A3F0C312B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3F0C302B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift */; };
 		4A52DD9B2ADBBF2C00858230 /* SpalshFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52DD9A2ADBBF2C00858230 /* SpalshFactory.swift */; };
 		4A52DD9D2ADBBF4C00858230 /* TodayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52DD9C2ADBBF4C00858230 /* TodayFactory.swift */; };
@@ -179,6 +178,7 @@
 		C009E9FA2ADBC4DE00112F18 /* BookmarkViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */; };
 		C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */; };
 		C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */; };
+		C0138C282B05FAEE002BA766 /* CompleteOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0138C272B05FAEE002BA766 /* CompleteOnboardingViewModel.swift */; };
 		C034EDD62ADE21BD00AD6FF3 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD52ADE21BD00AD6FF3 /* SplashCoordinator.swift */; };
 		C034EDD82ADE21D200AD6FF3 /* SplashAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */; };
 		C034EDDA2ADE2A0E00AD6FF3 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD92ADE2A0E00AD6FF3 /* AuthCoordinator.swift */; };
@@ -338,7 +338,6 @@
 /* Begin PBXFileReference section */
 		4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		4A3D72862A5D405C00A36189 /* BookmarkListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListCollectionViewCell.swift; sourceTree = "<group>"; };
-		4A3F0C2E2B05E726004BD076 /* CompleteOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompleteOnboardingViewModel.swift; path = ../../../../../../../../Documents/CompleteOnboardingViewModel.swift; sourceTree = "<group>"; };
 		4A3F0C302B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnboardingViewModelImpl.swift; sourceTree = "<group>"; };
 		4A52DD9A2ADBBF2C00858230 /* SpalshFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalshFactory.swift; sourceTree = "<group>"; };
 		4A52DD9C2ADBBF4C00858230 /* TodayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayFactory.swift; sourceTree = "<group>"; };
@@ -506,6 +505,7 @@
 		C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewControllerable.swift; sourceTree = "<group>"; };
 		C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewControllerable.swift; sourceTree = "<group>"; };
 		C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewControllerable.swift; sourceTree = "<group>"; };
+		C0138C272B05FAEE002BA766 /* CompleteOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnboardingViewModel.swift; sourceTree = "<group>"; };
 		C034EDD52ADE21BD00AD6FF3 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		C034EDD72ADE21D200AD6FF3 /* SplashAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAdaptor.swift; sourceTree = "<group>"; };
 		C034EDD92ADE2A0E00AD6FF3 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -1654,8 +1654,8 @@
 				B5E78E012B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift */,
 				C06D23CF2B0481F00048AFDB /* OnboardingViewModel.swift */,
 				C06D23D12B04821B0048AFDB /* OnboardingViewModelImpl.swift */,
-				4A3F0C2E2B05E726004BD076 /* CompleteOnboardingViewModel.swift */,
 				4A3F0C302B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift */,
+				C0138C272B05FAEE002BA766 /* CompleteOnboardingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1996,6 +1996,7 @@
 				D342807A2A67F12200DA1499 /* ChallengeDataResponse.swift in Sources */,
 				B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */,
 				C003CC232AD9183600AFFAAC /* AuthCoordinatorImpl.swift in Sources */,
+				C0138C282B05FAEE002BA766 /* CompleteOnboardingViewModel.swift in Sources */,
 				C0856B892ABFDA240026D9F8 /* Badge.swift in Sources */,
 				B5C6A2C22A5DEA1B0021BE5E /* CopyRightTableViewCell.swift in Sources */,
 				C0856B7B2ABFC9640026D9F8 /* SplashManagerImpl.swift in Sources */,
@@ -2032,7 +2033,6 @@
 				C065F00D2ADBD29A0094912C /* OnboardingViewControllerable.swift in Sources */,
 				B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
-				4A3F0C2F2B05E726004BD076 /* CompleteOnboardingViewModel.swift in Sources */,
 				4A918E772AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift in Sources */,
 				C003CC532ADA4FC100AFFAAC /* LoginNavigation.swift in Sources */,
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
