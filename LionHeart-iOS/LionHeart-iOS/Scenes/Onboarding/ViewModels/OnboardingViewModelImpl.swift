@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class OnboardingViewModelImpl: OnboardingViewModel, OnboardingViewModelPresentable {
+final class OnboardingViewModelImpl: OnboardingViewModel {
     
     private var navigator: OnboardingNavigation
     private let manager: OnboardingManager
@@ -72,8 +72,9 @@ final class OnboardingViewModelImpl: OnboardingViewModel, OnboardingViewModelPre
         
         return OnboardingViewModelOutput(pregenacyButtonState: pregenacyButtonState, fetalButtonState: fetalButtonState, onboardingFlow: onboardingFlow, signUpSubject: signUpSubject)
     }
+}
 
-    
+extension OnboardingViewModelImpl: OnboardingViewModelPresentable {
     func setKakaoAccessToken(_ token: String?) {
         self.kakaoAccessToken = token
     }

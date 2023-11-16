@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class CompleteOnboardingViewModelImpl: CompleteOnboardingViewModel, CompleteOnboardingViewModelPresentable {
+final class CompleteOnboardingViewModelImpl: CompleteOnboardingViewModel {
     
     private var userData: UserOnboardingModel?
     private var navigator: CompleteOnboardingNavigation
@@ -42,7 +42,9 @@ final class CompleteOnboardingViewModelImpl: CompleteOnboardingViewModel, Comple
         
         return CompleteOnboardingViewModelOutput(fetalNickname: fetalNickname)
     }
-    
+}
+
+extension CompleteOnboardingViewModelImpl: CompleteOnboardingViewModelPresentable {
     func setUserData(_ userData: UserOnboardingModel) {
         self.userData = userData
     }

@@ -30,4 +30,3 @@ final class GetFetalNicknameViewModelImpl: GetFetalNicknameViewModel {
         return GetFetalNicknameViewModelOutput(fetalTextfieldValidationMessage: pregancyTextfieldValidationMessage)
     }
 }
-
