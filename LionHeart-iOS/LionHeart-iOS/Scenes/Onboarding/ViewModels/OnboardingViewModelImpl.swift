@@ -10,10 +10,16 @@ import Combine
 
 final class OnboardingViewModelImpl: OnboardingViewModel {
     
+    private enum FlowType {
+        case onboardingCompleted(UserOnboardingModel)
+        case backButtonTapped
+    }
+    
     private var navigator: OnboardingNavigation
     private let manager: OnboardingManager
     private var kakaoAccessToken: String?
     private let signUpSubject = PassthroughSubject<Void, Never>()
+    private var navigatorSubject = PassthroughSubject<FlowType, Never>()
     private var cancelBag = Set<AnyCancellable>()
     private var currentPage: OnboardingPageType = .getPregnancy
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny
@@ -24,6 +30,19 @@ final class OnboardingViewModelImpl: OnboardingViewModel {
     }
     
     func transform(input: OnboardingViewModelInput) -> OnboardingViewModelOutput {
+        
+        navigatorSubject
+            .receive(on: RunLoop.main)
+            .sink { type in
+                switch type {
+                case .backButtonTapped:
+                    self.navigator.backButtonTapped()
+                case .onboardingCompleted(let data):
+                    self.navigator.onboardingCompleted(data: data)
+                }
+            }
+            .store(in: &cancelBag)
+        
         let fetalButtonState = input.fetalNickname
             .map { $0.isValid }
             .eraseToAnyPublisher()
@@ -49,9 +68,7 @@ final class OnboardingViewModelImpl: OnboardingViewModel {
                         do {
                             let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: input.pregenacy.value.pregnancy, fetalNickname: input.fetalNickname.value.fetalNickname)
                             try await self.manager.signUp(type: .kakao, onboardingModel: passingData)
-                            DispatchQueue.main.async {
-                                self.navigator.onboardingCompleted(data: passingData)
-                            }
+                            self.navigatorSubject.send(.onboardingCompleted(passingData))
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }
@@ -66,7 +83,7 @@ final class OnboardingViewModelImpl: OnboardingViewModel {
         
         input.backButtonTapped
             .sink { [weak self] in
-                self?.navigator.backButtonTapped()
+                self?.navigatorSubject.send(.backButtonTapped)
             }
             .store(in: &cancelBag)
         
