@@ -8,7 +8,12 @@
 import UIKit
 
 struct AuthFactoryImpl: AuthFactory {
-
+    func makeCompleteOnboardingViewModel(coordinator: AuthCoordinator, data: UserOnboardingModel) -> any CompleteOnboardingViewModel & CompleteOnboardingViewModelPresentable {
+        let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
+        let viewModel = CompleteOnboardingViewModelImpl(navigator: adaptor)
+        viewModel.setUserData(data)
+        return viewModel
+    }
     
     func makeOnboardingViewModel(coordinator: AuthCoordinator) -> any OnboardingViewModel & OnboardingViewModelPresentable {
         let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
@@ -17,7 +22,6 @@ struct AuthFactoryImpl: AuthFactory {
         let managerImpl = OnboardingManagerImpl(authService: serviceImpl)
         return OnboardingViewModelImpl(navigator: adaptor, manager: managerImpl)
     }
-
 
     func makeLoginViewModel(coordinator: AuthCoordinator) -> any LoginViewModel & LoginViewModelPresentable {
         let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
@@ -36,10 +40,9 @@ struct AuthFactoryImpl: AuthFactory {
         return LoginViewController(viewModel: viewModel)
     }
     
-    func makeCompleteOnbardingViewController(coordinator: AuthCoordinator) -> CompleteOnbardingViewControllerable {
-        let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
-        let completeViewController = CompleteOnbardingViewController(navigator: adaptor)
-        return completeViewController
+    func makeCompleteOnboardingViewController(coordinator: AuthCoordinator, data: UserOnboardingModel) -> CompleteOnboardingViewControllerable {
+        let viewModel = self.makeCompleteOnboardingViewModel(coordinator: coordinator, data: data)
+        return CompleteOnboardingViewController(viewModel: viewModel)
     }
 
     func makeOnboardingViewController(token: String?, coordinator: AuthCoordinator) -> OnboardingViewControllerable {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4A2050152A5DCD1900C7AF3C /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */; };
 		4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D72862A5D405C00A36189 /* BookmarkListCollectionViewCell.swift */; };
+		4A3F0C2F2B05E726004BD076 /* CompleteOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3F0C2E2B05E726004BD076 /* CompleteOnboardingViewModel.swift */; };
+		4A3F0C312B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3F0C302B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift */; };
 		4A52DD9B2ADBBF2C00858230 /* SpalshFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52DD9A2ADBBF2C00858230 /* SpalshFactory.swift */; };
 		4A52DD9D2ADBBF4C00858230 /* TodayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52DD9C2ADBBF4C00858230 /* TodayFactory.swift */; };
 		4A52DD9F2ADBC0E500858230 /* AuthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52DD9E2ADBC0E500858230 /* AuthFactory.swift */; };
@@ -150,7 +152,7 @@
 		C003CC4B2ADA4F6300AFFAAC /* BookmarkNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC4A2ADA4F6300AFFAAC /* BookmarkNavigation.swift */; };
 		C003CC4D2ADA4F7600AFFAAC /* TodayNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC4C2ADA4F7600AFFAAC /* TodayNavigation.swift */; };
 		C003CC4F2ADA4F8D00AFFAAC /* OnboardingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC4E2ADA4F8D00AFFAAC /* OnboardingNavigation.swift */; };
-		C003CC512ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC502ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift */; };
+		C003CC512ADA4FA600AFFAAC /* CompleteOnboardingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC502ADA4FA600AFFAAC /* CompleteOnboardingNavigation.swift */; };
 		C003CC532ADA4FC100AFFAAC /* LoginNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC522ADA4FC100AFFAAC /* LoginNavigation.swift */; };
 		C003CC552ADA4FD500AFFAAC /* SplashNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC542ADA4FD500AFFAAC /* SplashNavigation.swift */; };
 		C003CC572ADA4FEB00AFFAAC /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC562ADA4FEB00AFFAAC /* UserState.swift */; };
@@ -193,7 +195,6 @@
 		C065F0092ADBD2640094912C /* TodayViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0082ADBD2640094912C /* TodayViewControllerable.swift */; };
 		C065F00B2ADBD2800094912C /* LoginViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */; };
 		C065F00D2ADBD29A0094912C /* OnboardingViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */; };
-		C065F00F2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F00E2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift */; };
 		C06D23D02B0481F00048AFDB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D23CF2B0481F00048AFDB /* OnboardingViewModel.swift */; };
 		C06D23D22B04821B0048AFDB /* OnboardingViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D23D12B04821B0048AFDB /* OnboardingViewModelImpl.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
@@ -275,7 +276,7 @@
 		C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */; };
 		C0DF03A12A5CAC220037F740 /* GetFetalNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A02A5CAC220037F740 /* GetFetalNicknameViewController.swift */; };
 		C0DF03A42A5CACF00037F740 /* OnboardingPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */; };
-		C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */; };
+		C0DF03A62A5CB8610037F740 /* CompleteOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A52A5CB8610037F740 /* CompleteOnboardingViewController.swift */; };
 		C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */; };
 		C0DF03AB2A5D73C80037F740 /* NHOnboardingTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF03AA2A5D73C80037F740 /* NHOnboardingTextfield.swift */; };
 		C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */; };
@@ -337,6 +338,8 @@
 /* Begin PBXFileReference section */
 		4A2050142A5DCD1900C7AF3C /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		4A3D72862A5D405C00A36189 /* BookmarkListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A3F0C2E2B05E726004BD076 /* CompleteOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompleteOnboardingViewModel.swift; path = ../../../../../../../../Documents/CompleteOnboardingViewModel.swift; sourceTree = "<group>"; };
+		4A3F0C302B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnboardingViewModelImpl.swift; sourceTree = "<group>"; };
 		4A52DD9A2ADBBF2C00858230 /* SpalshFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalshFactory.swift; sourceTree = "<group>"; };
 		4A52DD9C2ADBBF4C00858230 /* TodayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayFactory.swift; sourceTree = "<group>"; };
 		4A52DD9E2ADBC0E500858230 /* AuthFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFactory.swift; sourceTree = "<group>"; };
@@ -476,7 +479,7 @@
 		C003CC4A2ADA4F6300AFFAAC /* BookmarkNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkNavigation.swift; sourceTree = "<group>"; };
 		C003CC4C2ADA4F7600AFFAAC /* TodayNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayNavigation.swift; sourceTree = "<group>"; };
 		C003CC4E2ADA4F8D00AFFAAC /* OnboardingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNavigation.swift; sourceTree = "<group>"; };
-		C003CC502ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingNavigation.swift; sourceTree = "<group>"; };
+		C003CC502ADA4FA600AFFAAC /* CompleteOnboardingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnboardingNavigation.swift; sourceTree = "<group>"; };
 		C003CC522ADA4FC100AFFAAC /* LoginNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigation.swift; sourceTree = "<group>"; };
 		C003CC542ADA4FD500AFFAAC /* SplashNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashNavigation.swift; sourceTree = "<group>"; };
 		C003CC562ADA4FEB00AFFAAC /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
@@ -518,7 +521,6 @@
 		C065F0082ADBD2640094912C /* TodayViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewControllerable.swift; sourceTree = "<group>"; };
 		C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerable.swift; sourceTree = "<group>"; };
 		C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewControllerable.swift; sourceTree = "<group>"; };
-		C065F00E2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingViewControllerable.swift; sourceTree = "<group>"; };
 		C06D23CF2B0481F00048AFDB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		C06D23D12B04821B0048AFDB /* OnboardingViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelImpl.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
@@ -600,7 +602,7 @@
 		C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPregnancyViewController.swift; sourceTree = "<group>"; };
 		C0DF03A02A5CAC220037F740 /* GetFetalNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFetalNicknameViewController.swift; sourceTree = "<group>"; };
 		C0DF03A32A5CACF00037F740 /* OnboardingPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageType.swift; sourceTree = "<group>"; };
-		C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingViewController.swift; sourceTree = "<group>"; };
+		C0DF03A52A5CB8610037F740 /* CompleteOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnboardingViewController.swift; sourceTree = "<group>"; };
 		C0DF03A82A5CF0460037F740 /* UserOnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnboardingModel.swift; sourceTree = "<group>"; };
 		C0DF03AA2A5D73C80037F740 /* NHOnboardingTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHOnboardingTextfield.swift; sourceTree = "<group>"; };
 		C0F029C62A5EFB9D00E0D185 /* LHProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHProgressView.swift; sourceTree = "<group>"; };
@@ -1231,7 +1233,7 @@
 				C0DF037A2A5A9CF30037F740 /* OnboardingViewController.swift */,
 				C0DF039E2A5CABC10037F740 /* GetPregnancyViewController.swift */,
 				C0DF03A02A5CAC220037F740 /* GetFetalNicknameViewController.swift */,
-				C0DF03A52A5CB8610037F740 /* CompleteOnbardingViewController.swift */,
+				C0DF03A52A5CB8610037F740 /* CompleteOnboardingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1330,7 +1332,6 @@
 				C065F0082ADBD2640094912C /* TodayViewControllerable.swift */,
 				C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */,
 				C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */,
-				C065F00E2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift */,
 				C034EDDD2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift */,
 			);
 			path = ControllerableInterface;
@@ -1400,7 +1401,7 @@
 				C003CC4A2ADA4F6300AFFAAC /* BookmarkNavigation.swift */,
 				C003CC4C2ADA4F7600AFFAAC /* TodayNavigation.swift */,
 				C003CC4E2ADA4F8D00AFFAAC /* OnboardingNavigation.swift */,
-				C003CC502ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift */,
+				C003CC502ADA4FA600AFFAAC /* CompleteOnboardingNavigation.swift */,
 				C003CC522ADA4FC100AFFAAC /* LoginNavigation.swift */,
 				C003CC542ADA4FD500AFFAAC /* SplashNavigation.swift */,
 			);
@@ -1653,6 +1654,8 @@
 				B5E78E012B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift */,
 				C06D23CF2B0481F00048AFDB /* OnboardingViewModel.swift */,
 				C06D23D12B04821B0048AFDB /* OnboardingViewModelImpl.swift */,
+				4A3F0C2E2B05E726004BD076 /* CompleteOnboardingViewModel.swift */,
+				4A3F0C302B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1981,7 +1984,7 @@
 				C003CC412ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift in Sources */,
 				C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */,
 				C003CC1B2AD9176B00AFFAAC /* Coordinator.swift in Sources */,
-				C0DF03A62A5CB8610037F740 /* CompleteOnbardingViewController.swift in Sources */,
+				C0DF03A62A5CB8610037F740 /* CompleteOnboardingViewController.swift in Sources */,
 				C003CC372AD923D100AFFAAC /* ExpireNavigation.swift in Sources */,
 				C0DF034B2A5A9B6A0037F740 /* CurriculumViewController.swift in Sources */,
 				C009E9F42ADBC24A00112F18 /* ChallengeFactoryImpl.swift in Sources */,
@@ -2029,6 +2032,7 @@
 				C065F00D2ADBD29A0094912C /* OnboardingViewControllerable.swift in Sources */,
 				B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
+				4A3F0C2F2B05E726004BD076 /* CompleteOnboardingViewModel.swift in Sources */,
 				4A918E772AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift in Sources */,
 				C003CC532ADA4FC100AFFAAC /* LoginNavigation.swift in Sources */,
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
@@ -2037,7 +2041,7 @@
 				C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */,
 				C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */,
 				C003CC432ADA4EFF00AFFAAC /* MyPageNavigation.swift in Sources */,
-				C003CC512ADA4FA600AFFAAC /* CompleteOnbardingNavigation.swift in Sources */,
+				C003CC512ADA4FA600AFFAAC /* CompleteOnboardingNavigation.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
 				B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */,
 				C06D23D22B04821B0048AFDB /* OnboardingViewModelImpl.swift in Sources */,
@@ -2169,7 +2173,7 @@
 				C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */,
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
-				C065F00F2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift in Sources */,
+				4A3F0C312B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift in Sources */,
 				C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */,
 				B59BFD452ADBC08D005D2D81 /* MyPageControllerable.swift in Sources */,
 				C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */,

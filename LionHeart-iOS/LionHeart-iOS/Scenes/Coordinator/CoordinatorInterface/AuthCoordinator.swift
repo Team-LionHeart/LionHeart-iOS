@@ -10,7 +10,7 @@ import Foundation
 protocol AuthCoordinator: Coordinator {
     func showLoginViewController()
     func showTabbarController()
-    func showOnboardingCompleteViewController(data: UserOnboardingModel)
+    func showCompleteOnboardingViewController(data: UserOnboardingModel)
     func showTabbarOrOnboardingViewController(userState: UserState, kakaoToken: String?)
     func pop()
     func exitApplication()

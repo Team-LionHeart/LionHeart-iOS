@@ -11,11 +11,12 @@ protocol AuthFactory {
     
     func makeLoginViewModel(coordinator: AuthCoordinator) -> any LoginViewModel & LoginViewModelPresentable
     func makeOnboardingViewModel(coordinator: AuthCoordinator) -> any OnboardingViewModel & OnboardingViewModelPresentable
+    func makeCompleteOnboardingViewModel(coordinator: AuthCoordinator, data: UserOnboardingModel) -> any CompleteOnboardingViewModel & CompleteOnboardingViewModelPresentable
     func makeAuthAdaptor(coordinator: AuthCoordinator) -> EntireAuthNaviation
     
     func makeLoginViewController(coordinator: AuthCoordinator) -> LoginViewControllerable
     
-    func makeCompleteOnbardingViewController(coordinator: AuthCoordinator) -> CompleteOnbardingViewControllerable
+    func makeCompleteOnboardingViewController(coordinator: AuthCoordinator, data: UserOnboardingModel) -> CompleteOnboardingViewControllerable
     func makeOnboardingViewController(token: String?, coordinator: AuthCoordinator) -> OnboardingViewControllerable
 }
 

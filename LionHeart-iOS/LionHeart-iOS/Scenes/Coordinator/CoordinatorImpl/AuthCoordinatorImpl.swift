@@ -34,9 +34,8 @@ final class AuthCoordinatorImpl: AuthCoordinator {
         splashCoorinator?.showTabbarViewContoller()
     }
     
-    func showOnboardingCompleteViewController(data: UserOnboardingModel) {
-        let completeViewController = factory.makeCompleteOnbardingViewController(coordinator: self)
-        completeViewController.userData = data
+    func showCompleteOnboardingViewController(data: UserOnboardingModel) {
+        let completeViewController = factory.makeCompleteOnboardingViewController(coordinator: self, data: data)
         self.navigationController.pushViewController(completeViewController, animated: true)
     }
     
