@@ -116,7 +116,7 @@ private extension SplashViewModelImpl {
             if code == NetworkErrorCode.unauthorizedErrorCode {
                 logoutSubject.send(())
             } else if code == NetworkErrorCode.unfoundUserErrorCode {
-                self.navigator.checkToken(state: .expired)
+                self.navigationSubject.send(.expired)
             }
         default: break
         }
