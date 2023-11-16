@@ -121,6 +121,8 @@
 		B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */; };
 		B5E78E002B03302200EA67A2 /* GetFetalNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E78DFF2B03302200EA67A2 /* GetFetalNicknameViewModel.swift */; };
 		B5E78E022B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E78E012B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift */; };
+		B5E78E132B05D33B00EA67A2 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E78E122B05D33B00EA67A2 /* SplashViewModel.swift */; };
+		B5E78E152B05D38B00EA67A2 /* SplashViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E78E142B05D38B00EA67A2 /* SplashViewModelImpl.swift */; };
 		B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */; };
 		C003CC1B2AD9176B00AFFAAC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */; };
 		C003CC1D2AD917CF00AFFAAC /* AppCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003CC1C2AD917CF00AFFAAC /* AppCoordinatorImpl.swift */; };
@@ -192,7 +194,6 @@
 		C065F00B2ADBD2800094912C /* LoginViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */; };
 		C065F00D2ADBD29A0094912C /* OnboardingViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */; };
 		C065F00F2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F00E2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift */; };
-		C065F0112ADBD2C40094912C /* SplashViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0102ADBD2C40094912C /* SplashViewControllerable.swift */; };
 		C06D23D02B0481F00048AFDB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D23CF2B0481F00048AFDB /* OnboardingViewModel.swift */; };
 		C06D23D22B04821B0048AFDB /* OnboardingViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D23D12B04821B0048AFDB /* OnboardingViewModelImpl.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
@@ -446,6 +447,8 @@
 		B5C6A2C72A5EF4EB0021BE5E /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		B5E78DFF2B03302200EA67A2 /* GetFetalNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFetalNicknameViewModel.swift; sourceTree = "<group>"; };
 		B5E78E012B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFetalNicknameViewModelImpl.swift; sourceTree = "<group>"; };
+		B5E78E122B05D33B00EA67A2 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		B5E78E142B05D38B00EA67A2 /* SplashViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelImpl.swift; sourceTree = "<group>"; };
 		B5F323E82A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumWeekBackgroundDummy.swift; sourceTree = "<group>"; };
 		C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C003CC1C2AD917CF00AFFAAC /* AppCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorImpl.swift; sourceTree = "<group>"; };
@@ -516,7 +519,6 @@
 		C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerable.swift; sourceTree = "<group>"; };
 		C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewControllerable.swift; sourceTree = "<group>"; };
 		C065F00E2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnbardingViewControllerable.swift; sourceTree = "<group>"; };
-		C065F0102ADBD2C40094912C /* SplashViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewControllerable.swift; sourceTree = "<group>"; };
 		C06D23CF2B0481F00048AFDB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		C06D23D12B04821B0048AFDB /* OnboardingViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelImpl.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
@@ -1007,6 +1009,8 @@
 			isa = PBXGroup;
 			children = (
 				C0DF037E2A5A9D090037F740 /* SplashViewController.swift */,
+				B5E78E122B05D33B00EA67A2 /* SplashViewModel.swift */,
+				B5E78E142B05D38B00EA67A2 /* SplashViewModelImpl.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -1327,7 +1331,6 @@
 				C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */,
 				C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */,
 				C065F00E2ADBD2AD0094912C /* CompleteOnbardingViewControllerable.swift */,
-				C065F0102ADBD2C40094912C /* SplashViewControllerable.swift */,
 				C034EDDD2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift */,
 			);
 			path = ControllerableInterface;
@@ -1998,6 +2001,7 @@
 				C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */,
 				B59BFD3F2ADBBF2B005D2D81 /* CurriculumFactory.swift in Sources */,
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
+				B5E78E132B05D33B00EA67A2 /* SplashViewModel.swift in Sources */,
 				F4DB30B82A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
 				C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */,
@@ -2007,7 +2011,6 @@
 				F4DB30AE2A611C7C00413EB9 /* CurriculumListByWeekViewController.swift in Sources */,
 				C06D23D02B0481F00048AFDB /* OnboardingViewModel.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
-				C065F0112ADBD2C40094912C /* SplashViewControllerable.swift in Sources */,
 				C0856B652ABFB8640026D9F8 /* TodayManagerImpl.swift in Sources */,
 				4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */,
 				B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */,
@@ -2038,6 +2041,7 @@
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
 				B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */,
 				C06D23D22B04821B0048AFDB /* OnboardingViewModelImpl.swift in Sources */,
+				B5E78E152B05D38B00EA67A2 /* SplashViewModelImpl.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
 				D34280772A66B90C00DA1499 /* UILabelPadding.swift in Sources */,
 				B598930F2A5BED0F00CE1FEB /* Font.swift in Sources */,

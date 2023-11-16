@@ -8,11 +8,20 @@
 import UIKit
 
 struct SplashFactoryImpl: SplashFactory {
+    func makeSplashViewModel(coordinator: SplashCoordinator) -> any SplashViewModel & SplashViewModelPresentable {
+        let adaptor = self.makeSplashAdaptor(coordinator: coordinator)
+        let apiService = APIService()
+        let serviceImpl = AuthServiceImpl(apiService: apiService)
+        let managerImpl = SplashManagerImpl(authService: serviceImpl)
+        return SplashViewModelImpl(navigator: adaptor, manager: managerImpl)
+    }
+    
     func makeSplashAdaptor(coordinator: SplashCoordinator) -> EntireSplashNavigation {
         return SplashAdaptor(coordinator: coordinator)
     }
     
     func makeSplashViewController(coordinator: SplashCoordinator) -> SplashViewControllerable {
-        return SplashViewController(manager: SplashManagerImpl(authService: AuthServiceImpl(apiService: APIService())), adaptor: self.makeSplashAdaptor(coordinator: coordinator))
+        let viewModel = self.makeSplashViewModel(coordinator: coordinator)
+        return SplashViewController(viewModel: viewModel)
     }
 }
