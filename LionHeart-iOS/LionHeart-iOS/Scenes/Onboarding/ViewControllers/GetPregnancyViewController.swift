@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
-protocol PregnancyCheckDelegate: AnyObject {
-    func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType)
-    func sendPregnancyContent(pregnancy: Int)
-}
 
 final class GetPregnancyViewController: UIViewController {
     
-    weak var delegate: PregnancyCheckDelegate?
+    var pregnancyIsValid = PassthroughSubject<(pregnancy: Int, isValid: Bool), Never>()
+    
+    private var cancelBag = Set<AnyCancellable>()
+    private var pregancyTextfieldDidChanged = PassthroughSubject<String, Never>()
+    private var viewModel: any GetPregnancyViewModel
     private let titleLabel = LHOnboardingTitleLabel("현재 임신 주수를\n알려주세요", align: .left)
     private let descriptionLabel = LHOnboardingDescriptionLabel("시기별 맞춤 아티클을 전해드려요")
     private let pregnancyTextfield = NHOnboardingTextfield(textFieldType: .pregancy)
@@ -33,6 +34,17 @@ final class GetPregnancyViewController: UIViewController {
         setLayout()
         setDelegate()
         setTextField()
+        bindInput()
+        bind()
+    }
+    
+    init(viewModel: some GetPregnancyViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +58,6 @@ private extension GetPregnancyViewController {
     }
     
     func setHierarchy() {
-        
         userInputContainerView.addSubviews(pregnancyTextfield, fixedWeekLabel)
         roundRectView.addSubviews(userInputContainerView)
         view.addSubviews(titleLabel, descriptionLabel, roundRectView, pregnancyErrorLabel)
@@ -91,7 +102,6 @@ private extension GetPregnancyViewController {
             make.top.equalTo(roundRectView.snp.bottom).offset(8)
             make.leading.equalTo(roundRectView.snp.leading)
         }
-        
     }
     
     func setDelegate() {
@@ -103,32 +113,25 @@ private extension GetPregnancyViewController {
         pregnancyTextfield.keyboardType = .numberPad
     }
     
+    func bindInput() {
+        pregnancyTextfield.textPublisher
+            .sink { [weak self] in self?.pregancyTextfieldDidChanged.send($0) }
+            .store(in: &cancelBag)
+    }
+    
+    func bind() {
+        let input = GetPregnancyViewModelInput(pregancyTextfieldDidChanged: pregancyTextfieldDidChanged)
+        let output = viewModel.transform(input: input)
+        output.pregancyTextfieldValidationMessage
+            .sink { [weak self] in
+                self?.pregnancyErrorLabel.text = $0.validationMessage
+                self?.pregnancyIsValid.send(($0.pregnancy, $0.isHidden))
+            }
+            .store(in: &cancelBag)
+    }
 }
 
 extension GetPregnancyViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        
-        /// textField의 text의 갯수에 따른 로직
-        textField.placeholder = text.count == 0 ? "1~40" : ""
-        if text.count == 0 {
-            textFieldSettingWhenEmpty()
-        }
-        
-        /// textField의 text의 숫자에 따른 로직
-        guard let textNumber = Int(text) else { return }
-        if textNumber == 0 {
-            textFieldSettingWhenInputNumberZero()
-        } else if 4 <= textNumber && textNumber <= 40 {
-            textFieldSettingWhenInputNumberValid()
-        } else {
-            textFieldSettingWhenInpubNumberOver()
-        }
-        
-        /// 현재 textField에 text를 PageViewController로 보내주는 delegate
-        delegate?.sendPregnancyContent(pregnancy: textNumber)
-    }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
@@ -136,28 +139,5 @@ extension GetPregnancyViewController: UITextFieldDelegate {
         }
         guard let text = textField.text else { return false }
         return text.count >= 2 ? false : true
-    }
-
-}
-
-extension GetPregnancyViewController {
-    func textFieldSettingWhenEmpty() {
-        delegate?.checkPregnancy(resultType: .pregnancyTextFieldEmpty)
-        pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldEmpty.errorMessage
-    }
-    
-    func textFieldSettingWhenInputNumberZero() {
-        delegate?.checkPregnancy(resultType: .pregnancyTextFieldEmpty)
-        pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
-    }
-    
-    func textFieldSettingWhenInputNumberValid() {
-        delegate?.checkPregnancy(resultType: .pregnancyTextFieldValid)
-        pregnancyErrorLabel.text = ""
-    }
-    
-    func textFieldSettingWhenInpubNumberOver() {
-        delegate?.checkPregnancy(resultType: .pregnancyTextFieldOver)
-        pregnancyErrorLabel.text = OnboardingPregnancyTextFieldResultType.pregnancyTextFieldOver.errorMessage
     }
 }

@@ -34,9 +34,8 @@ final class AuthCoordinatorImpl: AuthCoordinator {
         splashCoorinator?.showTabbarViewContoller()
     }
     
-    func showOnboardingCompleteViewController(data: UserOnboardingModel) {
-        let completeViewController = factory.makeCompleteOnbardingViewController(coordinator: self)
-        completeViewController.userData = data
+    func showCompleteOnboardingViewController(data: UserOnboardingModel) {
+        let completeViewController = factory.makeCompleteOnboardingViewController(coordinator: self, data: data)
         self.navigationController.pushViewController(completeViewController, animated: true)
     }
     
@@ -46,12 +45,10 @@ final class AuthCoordinatorImpl: AuthCoordinator {
         case .verified:
             splashCoorinator?.showTabbarViewContoller()
         case .nonVerified:
-            let onboardingViewController = factory.makeOnboardingViewController(coordinator: self)
-            onboardingViewController.setKakaoAccessToken(kakaoToken)
+            let onboardingViewController = factory.makeOnboardingViewController(token: kakaoToken, coordinator: self)
             DispatchQueue.main.async {
                 self.navigationController.pushViewController(onboardingViewController, animated: true)
             }
-            
         }
     }
     

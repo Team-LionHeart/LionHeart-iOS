@@ -7,46 +7,30 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
-final class OnboardingViewController: UIViewController, OnboardingViewControllerable  {
+protocol OnboardingViewControllerable where Self: UIViewController {}
+
+final class OnboardingViewController: UIViewController, OnboardingViewControllerable {
     typealias OnboardingViews = [UIViewController]
-    
-    var navigator: OnboardingNavigation
-    private let manager: OnboardingManager
-    
-    private var fetalNickName: String?
-    private var pregnancy: Int?
-    private var kakaoAccessToken: String?
+
+    private let pregenacy = CurrentValueSubject<(pregnancy: Int, isValid: Bool), Never>((pregnancy: 0, isValid: true))
+    private let fetalNickname = CurrentValueSubject<(fetalNickname: String, isValid: Bool), Never>((fetalNickname: "", isValid: true))
+    private let backButtonTapped = PassthroughSubject<Void, Never>()
+    private let nextButtonTapped = PassthroughSubject<Void, Never>()
+    private var cancelBag = Set<AnyCancellable>()
     
     private let nextButton = LHOnboardingButton()
     private let onboardingProgressView = LHProgressView()
     private let onboardingViewController = LHOnboardingPageViewController()
     private var pageDataSource: OnboardingViews = []
     private lazy var onboardingNavigationbar = LHNavigationBarView(type: .onboarding, viewController: self)
-    
-    private var currentPage: OnboardingPageType = .getPregnancy
-    private var onboardingFlow: OnbardingFlowType = .toGetPregnacny {
-        didSet {
-            switch onboardingFlow {
-            case .toGetPregnacny, .toFetalNickname:
-                presentOnboardingView(oldValue: onboardingFlow)
-            case .toCompleteOnboarding:
-                presentCompleteOnboardingView()
-            }
-        }
-    }
-    
-    private var onboardingCompletePercentage: Float = 0 {
-        didSet {
-            fillProgressView(from: onboardingCompletePercentage)
-        }
-    }
+    private var viewModel: any OnboardingViewModel
 
-    init(manager: OnboardingManager, navigator: OnboardingNavigation) {
-        self.manager = manager
-        self.navigator = navigator
+    init(viewModel: some OnboardingViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -63,11 +47,48 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
         setProgressView()
         setHierarchy()
         setLayout()
-        setAddTarget()
+        bindInput()
+        bind()
     }
     
-    func setKakaoAccessToken(_ token: String?) {
-        self.kakaoAccessToken = token
+    func bindInput() {
+        nextButton.tapPublisher
+            .sink { [weak self] in self?.nextButtonTapped.send(()) }
+            .store(in: &cancelBag)
+        
+        onboardingNavigationbar.leftBarItem.tapPublisher
+            .sink { [weak self] in self?.backButtonTapped.send(()) }
+            .store(in: &cancelBag)
+    }
+    
+    func bind() {
+        let input = OnboardingViewModelInput(pregenacy: pregenacy, fetalNickname: fetalNickname, backButtonTapped: backButtonTapped, nextButtonTapped: nextButtonTapped)
+        let output = viewModel.transform(input: input)
+        
+        output.fetalButtonState
+            .sink { [ weak self ] in self?.nextButton.isHidden = $0 }
+            .store(in: &cancelBag)
+        
+        output.pregenacyButtonState
+            .sink { [ weak self ] in self?.nextButton.isHidden = $0 }
+            .store(in: &cancelBag)
+        
+        output.onboardingFlow
+            .sink { [weak self] in
+                if $0 == .toCompleteOnboarding {
+                    self?.nextButton.isUserInteractionEnabled = false
+                }
+                self?.nextButton.isHidden = true
+                self?.presentOnboardingView()
+                self?.fillProgressView(from: 1)
+            }
+            .store(in: &cancelBag)
+        
+        output.signUpSubject
+            .sink { errorMessage in
+                print(errorMessage)
+            }
+            .store(in: &cancelBag)
     }
 }
 
@@ -105,7 +126,6 @@ private extension OnboardingViewController {
             make.leading.trailing.equalToSuperview()
         }
         
-        
         nextButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
@@ -117,31 +137,17 @@ private extension OnboardingViewController {
             make.leading.trailing.equalToSuperview()
         }
     }
-    
-    func setAddTarget() {
-        nextButton.addButtonAction { _ in
-            guard let fetalNickName = self.fetalNickName else {
-                self.nextOnboardingProcessWithNonActiveButtonState()
-                return
-            }
-            self.nextOnboaringProcess(nickName: fetalNickName, minCount: 1, maxCount: 10)
-        }
-    
-        onboardingNavigationbar.backButtonAction {
-            if self.currentPage == .getPregnancy {
-                self.navigator.backButtonTapped()
-            } else  {
-                self.backOnboardingProcess()
-            }
-        }
-    }
-    
+
     func setChildViewController() {
-        let pregnancyViewController = GetPregnancyViewController()
-        pregnancyViewController.delegate = self
+        let pregnancyViewController = GetPregnancyViewController(viewModel: GetPregnancyViewModelImpl())
+        pregnancyViewController.pregnancyIsValid
+            .sink { [weak self] in self?.pregenacy.send($0) }
+            .store(in: &cancelBag)
         pageDataSource.append(pregnancyViewController)
-        let fetalNicknameViewController = GetFetalNicknameViewController()
-        fetalNicknameViewController.delegate = self
+        let fetalNicknameViewController = GetFetalNicknameViewController(viewModel: GetFetalNicknameViewModelImpl())
+        fetalNicknameViewController.fetalIsValid
+            .sink { [weak self] in self?.fetalNickname.send($0) }
+            .store(in: &cancelBag)
         pageDataSource.append(fetalNicknameViewController)
     }
     
@@ -157,103 +163,7 @@ private extension OnboardingViewController {
         }
     }
     
-    func presentLoginView() {
-        self.navigationController?.popViewController(animated: true)
-        self.navigator.backButtonTapped()
-    }
-    
-    func presentOnboardingView(oldValue: OnbardingFlowType) {
-        onboardingViewController.setViewControllers([pageDataSource[onboardingFlow.rawValue]],
-                                                    direction: oldValue.rawValue > onboardingFlow.rawValue ? .reverse : .forward,
-                                                    animated: false) { _ in
-            guard let currentPage = OnboardingPageType(rawValue: self.onboardingFlow.rawValue) else { return }
-            self.currentPage = currentPage
-        }
-    }
-    
-    func presentCompleteOnboardingView() {
-        self.view.endEditing(true)
-        self.nextButton.isUserInteractionEnabled = false
-        let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: self.pregnancy, fetalNickname: self.fetalNickName)
-        Task {
-            showLoading()
-            do {
-                try await manager.signUp(type: .kakao, onboardingModel: passingData)
-                hideLoading()
-                self.navigator.onboardingCompleted(data: passingData)
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
-            }
-
-        }
+    func presentOnboardingView(newValue: OnbardingFlowType = .toFetalNickname) {
+        onboardingViewController.setViewControllers([pageDataSource[newValue.rawValue]], direction: .forward, animated: false)
     }
 }
-
-private extension OnboardingViewController {
-    func nextOnboaringProcess(nickName: String, minCount: Int, maxCount: Int) {
-        self.nextButton.isHidden = nickName.count >= minCount && nickName.count <= maxCount ? false : true
-        self.onboardingFlow = self.currentPage.forward
-        self.onboardingCompletePercentage = self.currentPage.progressValue
-    }
-    
-    func nextOnboardingProcessWithNonActiveButtonState() {
-        self.nextButton.isHidden = true
-        self.onboardingFlow = self.currentPage.forward
-        self.onboardingCompletePercentage = self.currentPage.progressValue
-    }
-    
-    func backOnboardingProcess() {
-        self.view.endEditing(true)
-        self.nextButton.isHidden = false
-        self.onboardingFlow = .toGetPregnacny
-        self.onboardingCompletePercentage = self.currentPage.progressValue
-    }
-}
-
-extension OnboardingViewController: FetalNicknameCheckDelegate {
-    func sendFetalNickname(nickName: String) {
-        self.fetalNickName = nickName
-    }
-    
-    func checkFetalNickname(resultType: OnboardingFetalNicknameTextFieldResultType) {
-        nextButton.isHidden = resultType.isHidden
-    }
-}
-
-extension OnboardingViewController: PregnancyCheckDelegate {
-    func sendPregnancyContent(pregnancy: Int) {
-        self.pregnancy = pregnancy
-    }
-    
-    func checkPregnancy(resultType: OnboardingPregnancyTextFieldResultType) {
-        nextButton.isHidden = resultType.isHidden
-    }
-}
-
-//extension OnboardingViewController: ViewControllerServiceable {
-//    func handleError(_ error: NetworkError) {
-//        switch error {
-//        case .urlEncodingError:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: "인코딩에러")
-//        case .jsonDecodingError:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: "디코딩에러")
-//        case .badCasting:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: "배드캐스트")
-//        case .fetchImageError:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: "이미지패치에러")
-//        case .unAuthorizedError:
-//            navigator.checkTokenIsExpired()
-//        case .clientError(_, let message):
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: message)
-//        case .serverError:
-//            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-////            LHToast.show(message: error.description)
-//        }
-//    }
-//}

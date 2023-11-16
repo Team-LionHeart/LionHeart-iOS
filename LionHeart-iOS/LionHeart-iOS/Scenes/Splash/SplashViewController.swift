@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
-final class SplashViewController: UIViewController, SplashViewControllerable {
+protocol SplashViewControllerable where Self: UIViewController {}
 
-    var navigator: SplashNavigation
-    private let manager: SplashManager
+final class SplashViewController: UIViewController, SplashViewControllerable {
+    
+    private let lottiePlayFinished = PassthroughSubject<Void, Never>()
+
+    private let viewModel: any SplashViewModel
+    
+    private var cancelBag = Set<AnyCancellable>()
     
     private let lottieImageView = LHLottie(name: "motion_logo_final")
 
-    init(manager: SplashManager, adaptor: SplashNavigation) {
-        self.manager = manager
-        self.navigator = adaptor
+    init(viewModel: some SplashViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -32,23 +37,23 @@ final class SplashViewController: UIViewController, SplashViewControllerable {
         setUI()
         setHierarchy()
         setLayout()
+        bind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        lottieImageView.play { _ in
-            guard let accessToken = UserDefaultsManager.tokenKey?.accessToken, let refreshToken = UserDefaultsManager.tokenKey?.refreshToken else {
-                self.navigator.checkToken(state: .expired)
-                return
-            }
-            Task {
-                try? await self.reissueToken(refreshToken: refreshToken, accessToken: accessToken)
-            }
+        lottieImageView.play { [weak self] _ in
+            self?.lottiePlayFinished.send(())
         }
-
     }
     
-    private func checkIsRefreshTokenExist() -> String? {
-        return UserDefaultsManager.tokenKey?.refreshToken
+    private func bind() {
+        let input = SplashViewModelInput(lottiePlayFinished: lottiePlayFinished)
+        let output = viewModel.transform(input: input)
+        output.splashNetworkErrorMessage
+            .sink { errorMessage in
+                print(errorMessage)
+            }
+            .store(in: &cancelBag)
     }
 }
 
@@ -67,44 +72,6 @@ private extension SplashViewController {
             make.top.equalToSuperview().inset(200)
             make.centerX.equalToSuperview()
             make.size.equalTo(220)
-        }
-    }
-}
-
-private extension SplashViewController {
-
-    func reissueToken(refreshToken: String, accessToken: String) async throws {
-        do {
-            let dtoToken = try await manager.reissueToken(token: Token(accessToken: accessToken, refreshToken: refreshToken))
-            UserDefaultsManager.tokenKey?.accessToken = dtoToken?.accessToken
-            UserDefaultsManager.tokenKey?.refreshToken = dtoToken?.refreshToken
-            self.navigator.checkToken(state: .valid)
-        } catch {
-            guard let errorModel = error as? NetworkError else { return }
-            await handleError(errorModel)
-        }
-    }
-
-    func logout(token: UserDefaultToken) async {
-        do {
-            try await manager.logout(token: token)
-        } catch {
-            print(error)
-        }
-    }
-
-    func handleError(_ error: NetworkError) async {
-        switch error {
-        case .clientError(let code, _):
-            if code == NetworkErrorCode.unauthorizedErrorCode {
-                guard let token = UserDefaultsManager.tokenKey else { return }
-                await logout(token: token)
-                self.navigator.checkToken(state: .expired)
-            } else if code == NetworkErrorCode.unfoundUserErrorCode {
-                self.navigator.checkToken(state: .expired)
-            }
-        default:
-            print(error)
         }
     }
 }

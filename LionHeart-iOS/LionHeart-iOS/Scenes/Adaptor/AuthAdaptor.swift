@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias EntireAuthNaviation = LoginNavigation & OnboardingNavigation & CompleteOnbardingNavigation
+typealias EntireAuthNaviation = LoginNavigation & OnboardingNavigation & CompleteOnboardingNavigation
 
 final class AuthAdaptor: EntireAuthNaviation {
     
@@ -21,7 +21,7 @@ final class AuthAdaptor: EntireAuthNaviation {
     }
     
     func onboardingCompleted(data: UserOnboardingModel) {
-        self.coordinator.showOnboardingCompleteViewController(data: data)
+        self.coordinator.showCompleteOnboardingViewController(data: data)
     }
     
     func startButtonTapped() {

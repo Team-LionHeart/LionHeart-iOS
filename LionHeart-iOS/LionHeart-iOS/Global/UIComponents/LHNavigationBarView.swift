@@ -11,14 +11,14 @@ final class LHNavigationBarView: UIView {
 
     private let titleLabel = LHLabel(type: .head4, color: .white)
     
-    private let leftBarItem: UIButton = {
+    let leftBarItem: UIButton = {
         let button = UIButton()
         button.tintColor = .designSystem(.white)
         button.marginImageWithText(margin: 14)
         return button
     }()
 
-    private let rightFirstBarItem: UIButton = {
+    let rightFirstBarItem: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiterals.NavigationBar.bookMark, for: .normal)
         button.tintColor = .designSystem(.white)
@@ -26,7 +26,7 @@ final class LHNavigationBarView: UIView {
         return button
     }()
 
-    private let rightSecondBarItem: UIButton = {
+    let rightSecondBarItem: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiterals.NavigationBar.profile, for: .normal)
         button.tintColor = .designSystem(.white)

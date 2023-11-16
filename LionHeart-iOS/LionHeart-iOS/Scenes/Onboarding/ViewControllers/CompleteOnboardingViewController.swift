@@ -1,5 +1,5 @@
 //
-//  CompleteOnbardingViewController.swift
+//  CompleteOnboardingViewController.swift
 //  LionHeart-iOS
 //
 //  Created by uiskim on 2023/07/11.
@@ -7,23 +7,22 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
-final class CompleteOnbardingViewController: UIViewController, CompleteOnbardingViewControllerable {
+protocol CompleteOnboardingViewControllerable where Self: UIViewController { }
+
+final class CompleteOnboardingViewController: UIViewController, CompleteOnboardingViewControllerable {
     
     private enum SizeInspector {
         static let sideOffset: CGFloat = 58
     }
     
-    var userData: UserOnboardingModel? {
-        didSet {
-            guard let fetalNickName = userData?.fetalNickname else { return }
-            self.titleLabel.text = "\(fetalNickName)님\n반가워요!"
-        }
-    }
-    
-    var navigator: CompleteOnbardingNavigation
+    private var cancelBag = Set<AnyCancellable>()
+    private let viewModel: any CompleteOnboardingViewModel
+    private let startButtonTapped = PassthroughSubject<Void, Never>()
+    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
     
     private let titleLabel = LHOnboardingTitleLabel(nil, align: .center)
     private let descriptionLabel = LHOnboardingDescriptionLabel("아티클 맞춤 환경이 준비되었어요.")
@@ -37,8 +36,8 @@ final class CompleteOnbardingViewController: UIViewController, CompleteOnbarding
         return imageView
     }()
     
-    init(navigator: CompleteOnbardingNavigation) {
-        self.navigator = navigator
+    init(viewModel: some CompleteOnboardingViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,11 +51,37 @@ final class CompleteOnbardingViewController: UIViewController, CompleteOnbarding
         setUI()
         setHierarchy()
         setLayout()
-        setButtonAction()
+        bind()
+        bindInput()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewWillAppearSubject.send(())
+    }
+    
+    private func bind() {
+        let input = CompleteOnboardingViewModelInput(startButtonTapped: startButtonTapped,
+                                                     viewWillAppear: viewWillAppearSubject)
+        let output = viewModel.transform(input: input)
+        
+        output.fetalNickname
+            .sink { [weak self] fetalNickname in
+                guard let fetalNickname = fetalNickname else { return }
+                self?.titleLabel.text = "\(fetalNickname)님\n반가워요!"
+            }
+            .store(in: &cancelBag)
+    }
+    
+    private func bindInput() {
+        startButton.tapPublisher
+            .sink { [weak self] in
+                self?.startButtonTapped.send(())
+            }
+            .store(in: &cancelBag)
     }
 }
 
-private extension CompleteOnbardingViewController {
+private extension CompleteOnboardingViewController {
     func setUI() {
         view.backgroundColor = .designSystem(.background)
     }
@@ -86,12 +111,6 @@ private extension CompleteOnbardingViewController {
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().inset(60)
             make.height.equalTo(50)
-        }
-    }
-    
-    func setButtonAction() {
-        startButton.addButtonAction { sender in
-            self.navigator.startButtonTapped()
         }
     }
 }

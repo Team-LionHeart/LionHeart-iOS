@@ -7,34 +7,69 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
-protocol FetalNicknameCheckDelegate: AnyObject {
-    func checkFetalNickname(resultType: OnboardingFetalNicknameTextFieldResultType)
-    func sendFetalNickname(nickName: String)
-}
 
 final class GetFetalNicknameViewController: UIViewController {
     
-    weak var delegate: FetalNicknameCheckDelegate?
+    let fetalIsValid = PassthroughSubject<(fetalNickname: String, isValid:Bool), Never>()
+    
+    private let viewModel: any GetFetalNicknameViewModel
+    
+    private let fetalTextfieldDidChanged = PassthroughSubject<String, Never>()
+    
+    private var cancelBag = Set<AnyCancellable>()
+    
     private let titleLabel = LHOnboardingTitleLabel("태명을 정하셨나요?", align: .left)
     private let descriptionLabel = LHOnboardingDescriptionLabel("아직이라면, 닉네임을 적어주세요.")
     private let fetalNickNameErrorLabel = LHOnboardingErrorLabel()
     private let fetalNickNameTextfield = NHOnboardingTextfield(textFieldType: .fetalNickname)
     private let textFieldUnderLine = LHUnderLine(lineColor: .lionRed)
     
-
+    init(viewModel: some GetFetalNicknameViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setHierarchy()
         setLayout()
         setTextField()
+        bindInput()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetalNickNameTextfield.becomeFirstResponder()
+    }
+    
+    private func bindInput() {
+        fetalNickNameTextfield.textPublisher
+            .sink { [weak self] in
+                self?.fetalTextfieldDidChanged.send($0)
+            }
+            .store(in: &cancelBag)
+    }
+    
+    private func bind() {
+        let input = GetFetalNicknameViewModelInput(fetalTextfieldDidChanged: fetalTextfieldDidChanged)
+        let output = viewModel.transform(input: input)
+        
+        output.fetalTextfieldValidationMessage
+            .sink { [weak self] in
+                self?.fetalNickNameErrorLabel.text = $0.validationMessage
+                self?.fetalIsValid.send(($0.fetalNickName, $0.isHidden))
+            }
+            .store(in: &cancelBag)
+        
     }
 }
 
@@ -77,43 +112,9 @@ private extension GetFetalNicknameViewController {
     }
     
     func setTextField() {
-        fetalNickNameTextfield.delegate = self
         if let clearButton = fetalNickNameTextfield.value(forKeyPath: "_clearButton") as? UIButton {
             clearButton.setImage(.assetImage(.textFieldClear), for: .normal)
         }
         self.fetalNickNameTextfield.clearButtonMode = UITextField.ViewMode.whileEditing
-    }
-}
-
-extension GetFetalNicknameViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        if text.count == 0 {
-            textFieldSettingWhenEmpty()
-        } else if text.count <= 10 {
-            textFieldSettingWhenValid()
-        } else {
-            textFieldSettingWhenOver()
-        }
-        delegate?.sendFetalNickname(nickName: text)
-    }
-}
-
-private extension GetFetalNicknameViewController {
-    func textFieldSettingWhenEmpty() {
-        delegate?.checkFetalNickname(resultType: .fetalNicknameTextFieldEmpty)
-        fetalNickNameErrorLabel.text = OnboardingFetalNicknameTextFieldResultType.fetalNicknameTextFieldEmpty.errorMessage
-        fetalNickNameErrorLabel.isHidden = false
-    }
-    
-    func textFieldSettingWhenValid() {
-        delegate?.checkFetalNickname(resultType: .fetalNicknameTextFieldValid)
-        fetalNickNameErrorLabel.isHidden = true
-    }
-    
-    func textFieldSettingWhenOver() {
-        delegate?.checkFetalNickname(resultType: .fetalNicknameTextFieldOver)
-        fetalNickNameErrorLabel.text = OnboardingFetalNicknameTextFieldResultType.fetalNicknameTextFieldOver.errorMessage
-        fetalNickNameErrorLabel.isHidden = false
     }
 }

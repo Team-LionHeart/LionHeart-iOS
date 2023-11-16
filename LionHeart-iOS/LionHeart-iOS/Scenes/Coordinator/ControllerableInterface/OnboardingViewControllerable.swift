@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol OnboardingViewControllerable where Self: UIViewController {
-    var navigator: OnboardingNavigation { get set }
-    func setKakaoAccessToken(_ token: String?)
-}
+//protocol OnboardingViewControllerable where Self: UIViewController {
+//    var navigator: OnboardingNavigation { get set }
+//    func setKakaoAccessToken(_ token: String?)
+//}
