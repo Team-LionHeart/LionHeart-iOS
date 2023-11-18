@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 import Lottie
 
+protocol ChallengeViewControllerable where Self: UIViewController {}
+
 final class ChallengeViewController: UIViewController, ChallengeViewControllerable {
-    
     private enum ChallengeSection { case calendar }
-    
-    var navigator: ChallengeNavigation
-    private var manager: ChallengeManager
+    private let navigationLeftButtonTapped = PassthroughSubject<Void, Never>()
+    private let navigationRightButtonTapped = PassthroughSubject<Void, Never>()
+    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
+    private var cancelBag = Set<AnyCancellable>()
+    private let viewModel: any ChallengeViewModel
     
     private let leftSeperateLine = LHUnderLine(lineColor: .background)
     private let rightSeperateLine = LHUnderLine(lineColor: .background)
@@ -27,22 +31,20 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
     private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05, contentMode: .scaleToFill)
     private lazy var lottieImageView = LHLottie()
     private let challengeDayCheckCollectionView = LHCollectionView()
-    
     private var diffableDataSource: UICollectionViewDiffableDataSource<ChallengeSection, Int>!
     
-    init(manager: ChallengeManager, navigator: ChallengeNavigation) {
-        self.manager = manager
-        self.navigator = navigator
+    init(viewModel: some ChallengeViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUIFromNetworking()
+        self.viewWillAppearSubject.send(())
     }
     
     override func viewDidLoad() {
@@ -52,7 +54,28 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
         setLayout()
         setNavigationBar()
         setDelegate()
-        setAddTarget()
+        bindInput()
+        bind()
+    }
+    
+    private func bindInput() {
+        navigationBar.rightFirstBarItem.tapPublisher
+            .sink { [weak self] in self?.navigationLeftButtonTapped.send($0) }
+            .store(in: &cancelBag)
+        navigationBar.rightSecondBarItem.tapPublisher
+            .sink { [weak self] in self?.navigationRightButtonTapped.send($0) }
+            .store(in: &cancelBag)
+    }
+    
+    private func bind() {
+        let input = ChallengeViewModelInput(navigationLeftButtonTapped: navigationLeftButtonTapped, navigationRightButtonTapped: navigationRightButtonTapped, viewWillAppearSubject: viewWillAppearSubject)
+        let output = viewModel.transform(input: input)
+        output.viewWillAppearSubject
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                self?.configureData($0)
+            }
+            .store(in: &cancelBag)
     }
 }
 
@@ -61,6 +84,7 @@ private extension ChallengeViewController {
         setText(by: input)
         setImage(by: input)
         setDataSource(by: input)
+        updateSections()
     }
     
     func setDataSource(by input: ChallengeData) {
@@ -74,9 +98,9 @@ private extension ChallengeViewController {
     func setText(by input: ChallengeData) {
         self.nicknameLabel.text = "\(input.babyDaddyName)아빠 님,"
         self.challengeDayLabel.text = "\(input.howLongDay)일째 도전 중"
-        let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)
+        let levelText = String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)
+        let fullText = "사자력 Lv." + levelText
         let attributtedString = NSMutableAttributedString(string: fullText)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white)!, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)))
         self.challengelevelLabel.attributedText = attributtedString
     }
     
@@ -86,20 +110,11 @@ private extension ChallengeViewController {
         self.lottieImageView.play()
     }
     
-    func setUIFromNetworking() {
-        Task {
-            do {
-                let inputData = try await manager.inquireChallengeInfo()
-                configureData(inputData)
-                var snapShot = NSDiffableDataSourceSnapshot<ChallengeSection, Int>()
-                snapShot.appendSections([.calendar])
-                snapShot.appendItems([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
-                await diffableDataSource.apply(snapShot)
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
-            }
-        }
+    func updateSections() {
+        var snapshot = NSDiffableDataSourceSnapshot<ChallengeSection, Int>()
+        snapshot.appendSections([.calendar])
+        snapshot.appendItems([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
+        self.diffableDataSource.apply(snapshot)
     }
 }
 
@@ -149,14 +164,17 @@ private extension ChallengeViewController {
             make.height.equalTo(1)
             make.width.equalTo(36)
         }
+        
         levelBadge.snp.makeConstraints { make in
             make.top.equalTo(challengeDayLabel.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
         }
+        
         challengelevelLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(16)
             make.centerX.equalToSuperview()
         }
+        
         lottieImageView.snp.makeConstraints { make in
             make.top.equalTo(levelBadge.snp.bottom).offset(24)
             make.leading.equalTo(challengeDayCheckCollectionView.snp.leading)
@@ -178,16 +196,6 @@ private extension ChallengeViewController {
         navigationBar.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-        }
-    }
-    
-    func setAddTarget() {
-        navigationBar.rightFirstBarItemAction {
-            self.navigator.navigationLeftButtonTapped()
-        }
-        
-        navigationBar.rightSecondBarItemAction {
-            self.navigator.navigationRightButtonTapped()
         }
     }
 }

@@ -243,6 +243,8 @@
 		C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E262AC104D50058D56B /* LHImageButton.swift */; };
 		C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */; };
 		C0B15E2B2AC115F90058D56B /* LHView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E2A2AC115F90058D56B /* LHView.swift */; };
+		C0D47B602B08B640003B66E6 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */; };
+		C0D47B622B08B6A3003B66E6 /* ChallengeViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -568,6 +570,8 @@
 		C0B15E262AC104D50058D56B /* LHImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHImageButton.swift; sourceTree = "<group>"; };
 		C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByCategoryTableView.swift; sourceTree = "<group>"; };
 		C0B15E2A2AC115F90058D56B /* LHView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHView.swift; sourceTree = "<group>"; };
+		C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModelImpl.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -1688,6 +1692,8 @@
 			isa = PBXGroup;
 			children = (
 				C0DF03842A5AF7B70037F740 /* ChallengeViewController.swift */,
+				C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */,
+				C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2018,6 +2024,7 @@
 				C0856B652ABFB8640026D9F8 /* TodayManagerImpl.swift in Sources */,
 				4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */,
 				B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */,
+				C0D47B622B08B6A3003B66E6 /* ChallengeViewModelImpl.swift in Sources */,
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
 				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekRowZeroTableViewCell.swift in Sources */,
 				C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */,
@@ -2138,6 +2145,7 @@
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
 				C003CC3B2ADA4DA100AFFAAC /* DismissNavigation.swift in Sources */,
 				C003CC4B2ADA4F6300AFFAAC /* BookmarkNavigation.swift in Sources */,
+				C0D47B602B08B640003B66E6 /* ChallengeViewModel.swift in Sources */,
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
 				C003CC572ADA4FEB00AFFAAC /* UserState.swift in Sources */,
 				B59BFD352ADBBAE6005D2D81 /* CurriculumControllerable.swift in Sources */,

@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol ChallengeViewControllerable where Self: UIViewController {
-    var navigator: ChallengeNavigation { get set }
-}
+//protocol ChallengeViewControllerable where Self: UIViewController {
+//    var navigator: ChallengeNavigation { get set }
+//}
