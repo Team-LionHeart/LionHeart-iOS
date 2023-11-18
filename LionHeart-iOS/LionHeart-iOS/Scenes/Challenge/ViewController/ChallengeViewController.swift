@@ -30,13 +30,6 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
     
     private var diffableDataSource: UICollectionViewDiffableDataSource<ChallengeSection, Int>!
     
-    private var inputData: ChallengeData? {
-        didSet {
-            guard let inputData else { return }
-            configureData(inputData)
-        }
-    }
-    
     init(manager: ChallengeManager, navigator: ChallengeNavigation) {
         self.manager = manager
         self.navigator = navigator
@@ -66,22 +59,14 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
 private extension ChallengeViewController {
     func configureData(_ input: ChallengeData) {
         setText(by: input)
-        setLottie(by: input)
+        setImage(by: input)
         setDataSource(by: input)
     }
     
     func setDataSource(by input: ChallengeData) {
         diffableDataSource = .init(collectionView: challengeDayCheckCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = ChallengeDayCheckCollectionViewCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-            guard let inputData = self.inputData else { return cell }
-            if indexPath.item < inputData.daddyAttendances.count {
-                cell.inputString = inputData.daddyAttendances[indexPath.item]
-                cell.backgroundColor = .designSystem(.background)
-                cell.whiteTextColor = .designSystem(.white)
-            } else {
-                cell.inputString = "\(indexPath.section + indexPath.row + 1)"
-                cell.backgroundColor = .designSystem(.gray1000)
-            }
+            cell.configure(type: indexPath.item < input.daddyAttendances.count ? .read : .yet, input: input, indexPath: indexPath)
             return cell
         })
     }
@@ -89,14 +74,14 @@ private extension ChallengeViewController {
     func setText(by input: ChallengeData) {
         self.nicknameLabel.text = "\(input.babyDaddyName)아빠 님,"
         self.challengeDayLabel.text = "\(input.howLongDay)일째 도전 중"
-        self.levelBadge.image = BadgeLevel(rawValue: input.daddyLevel)!.badgeImage
         let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)
         let attributtedString = NSMutableAttributedString(string: fullText)
         attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white)!, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)))
         self.challengelevelLabel.attributedText = attributtedString
     }
     
-    func setLottie(by input: ChallengeData) {
+    func setImage(by input: ChallengeData) {
+        self.levelBadge.image = BadgeLevel(rawValue: input.daddyLevel)!.badgeImage
         self.lottieImageView.animation = .named(BadgeLevel(rawValue: input.daddyLevel)!.progreddbarLottie)
         self.lottieImageView.play()
     }
@@ -104,7 +89,8 @@ private extension ChallengeViewController {
     func setUIFromNetworking() {
         Task {
             do {
-                self.inputData = try await manager.inquireChallengeInfo()
+                let inputData = try await manager.inquireChallengeInfo()
+                configureData(inputData)
                 var snapShot = NSDiffableDataSourceSnapshot<ChallengeSection, Int>()
                 snapShot.appendSections([.calendar])
                 snapShot.appendItems([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
@@ -213,7 +199,7 @@ extension ChallengeViewController: UICollectionViewDelegateFlowLayout {
         let height = collectionView.frame.height / 5
         return CGSize(width: width, height: height)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
