@@ -46,19 +46,16 @@ final class ChallengeViewModelImpl: ChallengeViewModel, ChallengeViewModelPresen
             .store(in: &cancelBag)
         
         let viewWillAppearSubject = input.viewWillAppearSubject
-            .flatMap { _ -> AnyPublisher<ChallengeData, Never> in
-                return Future<ChallengeData, NetworkError> { promise in
+            .flatMap { _ -> AnyPublisher<Result<ChallengeData, NetworkError>, Never> in
+                return Future<Result<ChallengeData, NetworkError>, Never> { promise in
                     Task {
                         do {
                             let inputData = try await self.manager.inquireChallengeInfo()
-                            promise(.success(inputData))
+                            promise(.success(.success(inputData)))
                         } catch {
-                            promise(.failure(error as! NetworkError))
+                            promise(.success(.failure(error as! NetworkError)))
                         }
                     }
-                }
-                .catch { error in
-                    Just(ChallengeData(babyDaddyName: error.description, howLongDay: 0, daddyLevel: "", daddyAttendances: []))
                 }
                 .eraseToAnyPublisher()
             }
