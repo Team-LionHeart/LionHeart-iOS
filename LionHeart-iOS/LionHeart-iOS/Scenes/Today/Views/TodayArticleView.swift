@@ -34,7 +34,6 @@ final class TodayArticleView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        mainArticlImageView.setGradient(firstColor: .designSystem(.black)!.withAlphaComponent(0.2), secondColor: .designSystem(.gray1000)!, axis: .vertical)
         weekInfomationView.addSubview(weekInfomationLabel)
         mainArticlImageView.addSubviews(descriptionLabel, seperateLine, articleTitleLabel, weekInfomationView)
 
