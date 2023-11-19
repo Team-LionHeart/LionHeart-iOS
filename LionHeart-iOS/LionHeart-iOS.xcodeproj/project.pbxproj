@@ -245,6 +245,8 @@
 		C0B15E2B2AC115F90058D56B /* LHView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E2A2AC115F90058D56B /* LHView.swift */; };
 		C0D47B602B08B640003B66E6 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */; };
 		C0D47B622B08B6A3003B66E6 /* ChallengeViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */; };
+		C0D47B642B09A7A7003B66E6 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */; };
+		C0D47B662B09A845003B66E6 /* TodayViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B652B09A845003B66E6 /* TodayViewModelImpl.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -572,6 +574,8 @@
 		C0B15E2A2AC115F90058D56B /* LHView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHView.swift; sourceTree = "<group>"; };
 		C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
 		C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModelImpl.swift; sourceTree = "<group>"; };
+		C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		C0D47B652B09A845003B66E6 /* TodayViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModelImpl.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -1219,6 +1223,8 @@
 			isa = PBXGroup;
 			children = (
 				C0DF03722A5A9CB50037F740 /* TodayViewController.swift */,
+				C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */,
+				C0D47B652B09A845003B66E6 /* TodayViewModelImpl.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1970,6 +1976,7 @@
 				C003CC602ADA50AA00AFFAAC /* OnboardingManager.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */,
+				C0D47B642B09A7A7003B66E6 /* TodayViewModel.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
 				C0B15E212AC0450E0058D56B /* ArticleListTableView.swift in Sources */,
@@ -2029,6 +2036,7 @@
 				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekRowZeroTableViewCell.swift in Sources */,
 				C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
+				C0D47B662B09A845003B66E6 /* TodayViewModelImpl.swift in Sources */,
 				C034EE1E2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift in Sources */,
 				C003CC662ADA518E00AFFAAC /* ArticleDetailManager.swift in Sources */,
 				B53F4EF62ADE2DEB001C5752 /* ChallengeAdaptor.swift in Sources */,

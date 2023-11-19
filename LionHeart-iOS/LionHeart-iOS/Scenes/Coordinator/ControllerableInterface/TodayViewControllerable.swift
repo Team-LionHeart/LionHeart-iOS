@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol TodayViewControllerable where Self: UIViewController {
-    var navigator: TodayNavigation { get set }
-}
+//protocol TodayViewControllerable where Self: UIViewController {
+//    var navigator: TodayNavigation { get set }
+//}

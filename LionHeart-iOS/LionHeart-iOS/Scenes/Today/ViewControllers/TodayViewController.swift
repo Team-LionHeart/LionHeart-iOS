@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
+protocol TodayViewControllerable where Self: UIViewController {}
+
 final class TodayViewController: UIViewController, TodayViewControllerable {
-    
-    var navigator: TodayNavigation
-    private let manager: TodayManager
     
     private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
     private var titleLabel = LHTodayArticleTitle()
@@ -21,11 +21,15 @@ final class TodayViewController: UIViewController, TodayViewControllerable {
     private var mainArticleView = TodayArticleView()
     private var pointImage = LHImageView(in: UIImage(named: "TodayArticle_PointImage"), contentMode: .scaleAspectFit)
     
-    private var todayArticleID: Int?
+    private let viewModel: any TodayViewModel
+    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
+    private let navigationLeftButtonTapped = PassthroughSubject<Void, Never>()
+    private let navigationRightButtonTapped = PassthroughSubject<Void, Never>()
+    private let todayArticleTapped = PassthroughSubject<Void, Never>()
+    private var cancelBag = Set<AnyCancellable>()
     
-    init(manager: TodayManager, adaptor: TodayNavigation) {
-        self.manager = manager
-        self.navigator = adaptor
+    init(viewModel: some TodayViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,37 +44,35 @@ final class TodayViewController: UIViewController, TodayViewControllerable {
         setHierarchy()
         setLayout()
         setTapGesture()
-        setButtonAction()
+        bindInput()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         showLoading()
-        getInquireTodayArticle()
+        self.viewWillAppearSubject.send(())
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        mainArticleView.mainArticlImageView.removeGradient()
+    func bindInput() {
+        self.todayNavigationBar.rightFirstBarItem.tapPublisher
+            .sink { [weak self] in self?.navigationLeftButtonTapped.send(()) }
+            .store(in: &cancelBag)
+        
+        self.todayNavigationBar.rightSecondBarItem.tapPublisher
+            .sink { [weak self] in self?.navigationRightButtonTapped.send(()) }
+            .store(in: &cancelBag)
     }
-}
-
-extension TodayViewController {
-    func getInquireTodayArticle() {
-        Task {
-            do {
-                let responseArticle = try await manager.inquiryTodayArticle()
-                let image = try await LHKingFisherService.fetchImage(with: responseArticle.mainImageURL)
-                mainArticleView.mainArticlImageView.image = image
-                titleLabel.userNickName = responseArticle.fetalNickname
-                mainArticleView.data = responseArticle
-                todayArticleID = responseArticle.aticleID
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    self.hideLoading()
-                }
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
+    
+    func bind() {
+        let input = TodayViewModelInput(viewWillAppearSubject: viewWillAppearSubject, navigationLeftButtonTapped: navigationLeftButtonTapped, navigationRightButtonTapped: navigationRightButtonTapped, todayArticleTapped: todayArticleTapped)
+        let output = viewModel.transform(input: input)
+        output.viewWillAppearSubject
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                self?.mainArticleView.configureView(data: $0)
+                self?.hideLoading()
             }
-        }
+            .store(in: &cancelBag)
     }
 }
 
@@ -126,19 +128,8 @@ private extension TodayViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(articleTapped(_:)))
         mainArticleView.addGestureRecognizer(tapGesture)
     }
-
-    func setButtonAction() {
-        todayNavigationBar.rightFirstBarItemAction {
-            self.navigator.navigationLeftButtonTapped()
-        }
-        
-        todayNavigationBar.rightSecondBarItemAction {
-            self.navigator.navigationRightButtonTapped()
-        }
-    }
     
     @objc func articleTapped(_ sender: UIButton) {
-        guard let todayArticleID else { return }
-        self.navigator.todayArticleTapped(articleID: todayArticleID)
+        self.todayArticleTapped.send(())
     }
 }
