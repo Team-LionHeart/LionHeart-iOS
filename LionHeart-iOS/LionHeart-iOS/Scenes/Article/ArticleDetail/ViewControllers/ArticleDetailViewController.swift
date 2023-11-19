@@ -128,6 +128,12 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
                 }
             }
             .store(in: &cancelBag)
+        
+        output.bookmarkCompleted
+            .sink { str in
+                print(str)
+            }
+            .store(in: &cancelBag)
     }
 }
 
@@ -143,6 +149,7 @@ extension ArticleDetailViewController {
                 
                 cell.bookMarkButton.tapPublisher
                     .sink { [weak self] _ in
+                        cell.isMarked?.toggle()
                         self?.bookmarkButtonTapped.send(())
                     }
                     .store(in: &self.cancelBag)

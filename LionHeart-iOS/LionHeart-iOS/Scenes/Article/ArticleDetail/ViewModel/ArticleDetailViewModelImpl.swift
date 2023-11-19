@@ -72,6 +72,29 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
             .store(in: &cancelBag)
         
         
+        let bookMark = input.bookmarkButtonTapped
+            .flatMap { _ -> AnyPublisher<String, Never> in
+                return Future<String, NetworkError> { promise in
+                    Task {
+                        do {
+                            guard let isMarked = self.isBookMarked,
+                                  let articleId = self.articleId
+                            else { return }
+                            print(isMarked)
+                            try await self.articleBookMark(articleId: articleId, isSelected: !isMarked)
+                        } catch {
+                            promise(.failure(error as! NetworkError))
+                        }
+                    }
+                }.catch { error in
+                    self.handleError(error)
+                    return Just(error.description)
+                }
+                .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+        
+        
         let articleBlockTypes = input.viewWillAppear
             .flatMap { _ -> AnyPublisher<Result<Article, NetworkError>, Never> in
                 return Future<Result<Article, NetworkError>, NetworkError> { promise in
@@ -98,7 +121,7 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
             .eraseToAnyPublisher()
         
         
-        return Output(articleDetail: articleBlockTypes)
+        return Output(articleDetail: articleBlockTypes, bookmarkCompleted: bookMark)
     }
     
 }
@@ -110,19 +133,10 @@ extension ArticleDetailViewModelImpl {
         return try await manager.getArticleDetail(articleId: articleId)
     }
 
-    private func articleBookMark(articleId: Int, isSelected: Bool) {
-        Task {
-            do {
-                let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkRequestStatus: isSelected)
-                try await manager.postBookmark(model: bookmarkRequest)
-
-                isBookMarked = isSelected
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                self.handleError(error)
-            }
-        }
-
+    private func articleBookMark(articleId: Int, isSelected: Bool) async throws {
+        let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkRequestStatus: isSelected)
+        try await manager.postBookmark(model: bookmarkRequest)
+        isBookMarked = isSelected
     }
 }
 
@@ -131,7 +145,16 @@ extension ArticleDetailViewModelImpl {
         if case .unAuthorizedError = error {
             self.navigationSubject.send(.expired)
         }
+        
     }
+//    switch error {
+//        case .unAuthorizedError:
+//        self.navigationSubject.send(.expired)
+//        case .clientError(_, let message):
+//            LHToast.show(message: "\(message)")
+//        default:
+//            LHToast.show(message: error.description)
+//    }
 }
 
 

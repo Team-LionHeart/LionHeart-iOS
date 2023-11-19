@@ -22,4 +22,5 @@ struct ArticleDetailViewModelInput {
 
 struct ArticleDetailViewModelOutput {
     let articleDetail: AnyPublisher<Result<Article, NetworkError>, Never>
+    let bookmarkCompleted: AnyPublisher<String, Never>
 }
