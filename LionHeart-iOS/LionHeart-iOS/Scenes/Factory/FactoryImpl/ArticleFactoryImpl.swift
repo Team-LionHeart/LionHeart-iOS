@@ -8,19 +8,26 @@
 import Foundation
 
 struct ArticleFactoryImpl: ArticleFactory {
-    func makeAdaptor(coordinator: ArticleCoordinator) -> EntireArticleAdaptor {
-        let adaptor = ArticleAdaptor(coordinator: coordinator)
-        return adaptor
-    }
     
-    func makeArticleDetailViewController(coordinator: ArticleCoordinator) -> ArticleControllerable {
+    func makeArticleViewModel(coordinator: ArticleCoordinator) -> any ArticleDetailViewModel & ArticleDetailViewModelPresentable {
         let adaptor = self.makeAdaptor(coordinator: coordinator)
         let apiService = APIService()
         let bookmarkService = BookmarkServiceImpl(apiService: apiService)
         let articleService = ArticleServiceImpl(apiService: apiService)
         let manager = ArticleDetailManagerImpl(articleService: articleService,
                                                             bookmarkService: bookmarkService)
-        let articleDetailViewController = ArticleDetailViewController(manager: manager, adaptor: adaptor)
+        return ArticleDetailViewModelImpl(adaptor: adaptor, manager: manager)
+    }
+    
+    func makeAdaptor(coordinator: ArticleCoordinator) -> EntireArticleAdaptor {
+        let adaptor = ArticleAdaptor(coordinator: coordinator)
+        return adaptor
+    }
+    
+    func makeArticleDetailViewController(coordinator: ArticleCoordinator, articleId: Int) -> ArticleControllerable {
+        let viewModel = self.makeArticleViewModel(coordinator: coordinator)
+        viewModel.setArticleId(id: articleId)
+        let articleDetailViewController = ArticleDetailViewController(viewModel: viewModel)
         return articleDetailViewController
     }
 }

@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
 final class ArticleDetailViewController: UIViewController, ArticleControllerable {
     
-    // MARK: - UI Components
-    var adaptor: ArticleDetailModalNavigation
-    private let manager: ArticleDetailManager
+    
+    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
+    
+    private let closeButtonTapped = PassthroughSubject<Void, Never>()
+    
+    private let bookmarkButtonTapped = PassthroughSubject<Void, Never>()
+    
+    private let viewModel: any ArticleDetailViewModel
+    
+    private var cancelBag = Set<AnyCancellable>()
+    
+    private var datasource: UITableViewDiffableDataSource<ArticleDetailSection, BlockTypeAppData>!
+    
+//    var adaptor: ArticleDetailModalNavigation
+//    private let manager: ArticleDetailManager
     
     private lazy var navigationBar = LHNavigationBarView(type: .articleMain, viewController: self)
     
@@ -26,27 +39,26 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
 
     // MARK: - Properties
 
-    private var isBookMarked: Bool? {
-        didSet {
-            guard let isBookMarked else { return }
-            LHToast.show(message: isBookMarked ? "북마크가 추가되었습니다" : "북마크가 해제되었습니다")
-        }
-    }
+//    private var isBookMarked: Bool? {
+//        didSet {
+//            guard let isBookMarked else { return }
+//            LHToast.show(message: isBookMarked ? "북마크가 추가되었습니다" : "북마크가 해제되었습니다")
+//        }
+//    }
+//
+//    private var articleDatas: [BlockTypeAppData]? {
+//        didSet {
+//            self.articleTableView.reloadData()
+//            hideLoading()
+//        }
+//    }
 
-    private var articleDatas: [BlockTypeAppData]? {
-        didSet {
-            self.articleTableView.reloadData()
-            hideLoading()
-        }
-    }
-
-    private var articleId: Int?
+//    private var articleId: Int?
 
     private var contentOffsetY: CGFloat = 0
     
-    init(manager: ArticleDetailManager, adaptor: ArticleDetailModalNavigation) {
-        self.manager = manager
-        self.adaptor = adaptor
+    init(viewModel: some ArticleDetailViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,54 +72,167 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
         setTableView()
         setNavigationBar()
         setTabbar()
+        bindInput()
+        bind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewWillAppearSubject.send(())
         showLoading()
-        getArticleDetail()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    private func bindInput() {
+        scrollToTopButton.tapPublisher
+            .sink { [weak self] _ in
+                guard let self else { return }
+                let indexPath = IndexPath(row: 0, section: 0)
+                self.articleTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                self.scrollToTopButton.isHidden = true
+            }
+            .store(in: &cancelBag)
+        
+        navigationBar.leftBarItem.tapPublisher
+            .sink { _ in
+                self.closeButtonTapped.send(())
+            }
+            .store(in: &cancelBag)
+    }
+    
+    private func bind() {
+        let input = ArticleDetailViewModelInput(viewWillAppear: viewWillAppearSubject,
+                                                closeButtonTapped: closeButtonTapped,
+                                                bookmarkButtonTapped: bookmarkButtonTapped)
+        let output = viewModel.transform(input: input)
+        output.articleDetail
+            .sink { [weak self] result in
+                guard let self else { return }
+                self.hideLoading()
+                
+                switch result {
+                case .success(let article):
+                    //TODO: - DataSource apply snapshot
+                    self.setDatasource(blockTypes: article.blockTypes,
+                                       isBookMarked: article.isMarked)
+                    self.applySnapshot(article.blockTypes)
+                case .failure(let error):
+                    print(error.description)
+                }
+            }
+            .store(in: &cancelBag)
+    }
 }
-
-// MARK: - Network
 
 extension ArticleDetailViewController {
-    private func getArticleDetail() {
-        Task {
-            do {
-                guard let articleId else { return }
-                self.articleDatas = try await manager.getArticleDetail(articleId: articleId)
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
+    private func setDatasource(blockTypes: [BlockTypeAppData], isBookMarked: Bool) {
+        self.datasource = UITableViewDiffableDataSource(tableView: self.articleTableView,
+                                                        cellProvider: { tableView, indexPath, itemIdentifier in
+            switch itemIdentifier {
+            case .thumbnail(let isMarked, let thumbnailModel):
+                let cell = ThumnailTableViewCell.dequeueReusableCell(to: self.articleTableView)
+                cell.inputData = thumbnailModel
+                cell.selectionStyle = .none
+                
+                cell.bookMarkButton.tapPublisher
+                    .sink { [weak self] _ in
+                        self?.bookmarkButtonTapped.send(())
+                    }
+                    .store(in: &self.cancelBag)
+
+                if isBookMarked {
+                    cell.isMarked = isBookMarked
+                } else {
+                    cell.isMarked = isMarked
+                }
+                cell.setThumbnailImageView()
+                return cell
+            case .articleTitle(let titleModel):
+                let cell = TitleTableViewCell.dequeueReusableCell(to: self.articleTableView)
+                cell.inputData = titleModel
+                cell.selectionStyle = .none
+                return cell
+            case .editorNote(let editorModel):
+                let cell = EditorTableViewCell.dequeueReusableCell(to: self.articleTableView)
+                cell.inputData = editorModel
+                cell.selectionStyle = .none
+                return cell
+            case .chapterTitle(let chapterTitleModel):
+                let cell = ChapterTitleTableViewCell.dequeueReusableCell(to: self.articleTableView)
+                cell.inputData = chapterTitleModel
+                cell.selectionStyle = .none
+                return cell
+            case .body(let bodyModel):
+                let cell = BodyTableViewCell.dequeueReusableCell(to: self.articleTableView)
+                cell.inputData = bodyModel
+                cell.selectionStyle = .none
+                return cell
+            case .generalTitle(let generalTitleModel):
+                let cell = GeneralTitleTableViewCell.dequeueReusableCell(to: self.articleTableView)
+                cell.inputData = generalTitleModel
+                cell.selectionStyle = .none
+                return cell
+            case .image(let imageModel):
+                let cell = ThumnailTableViewCell.dequeueReusableCell(to: self.articleTableView)
+                cell.inputData = imageModel
+                cell.setImageTypeCell()
+                cell.selectionStyle = .none
+                return cell
+            case .endNote:
+                let cell = CopyRightTableViewCell.dequeueReusableCell(to: self.articleTableView)
+                cell.selectionStyle = .none
+                return cell
+            case .none:
+                return UITableViewCell()
             }
-        }
+        })
     }
-
-    private func articleBookMark(articleId: Int, isSelected: Bool) {
-        Task {
-            do {
-                let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkRequestStatus: isSelected)
-                try await manager.postBookmark(model: bookmarkRequest)
-
-                isBookMarked = isSelected
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                self.handleError(error)
-            }
-        }
-
+    
+    func applySnapshot(_ blocks: [BlockTypeAppData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<ArticleDetailSection, BlockTypeAppData>()
+        snapshot.appendSections([.articleMain])
+        snapshot.appendItems(blocks)
+        self.datasource.apply(snapshot, animatingDifferences: false)
     }
 }
+
+//// MARK: - Network
+//
+//extension ArticleDetailViewController {
+//    private func getArticleDetail() {
+//        Task {
+//            do {
+//                guard let articleId else { return }
+//                self.articleDatas = try await manager.getArticleDetail(articleId: articleId)
+//            } catch {
+//                guard let error = error as? NetworkError else { return }
+//                handleError(error)
+//            }
+//        }
+//    }
+//
+//    private func articleBookMark(articleId: Int, isSelected: Bool) {
+//        Task {
+//            do {
+//                let bookmarkRequest = BookmarkRequest(articleId: articleId, bookmarkRequestStatus: isSelected)
+//                try await manager.postBookmark(model: bookmarkRequest)
+//
+//                isBookMarked = isSelected
+//            } catch {
+//                guard let error = error as? NetworkError else { return }
+//                self.handleError(error)
+//            }
+//        }
+//
+//    }
+//}
 
 //extension ArticleDetailViewController: ViewControllerServiceable {
 //    func handleError(_ error: NetworkError) {
@@ -163,7 +288,7 @@ private extension ArticleDetailViewController {
 
     func setTableView() {
         articleTableView.delegate = self
-        articleTableView.dataSource = self
+//        articleTableView.dataSource = self
     }
 
     func setNavigationBar() {
@@ -172,18 +297,6 @@ private extension ArticleDetailViewController {
     
     func setTabbar() {
         self.tabBarController?.tabBar.isHidden = true
-    }
-
-    func setAddTarget() {
-        navigationBar.backButtonAction {
-            self.adaptor.closeButtonTapped()
-        }
-        
-        scrollToTopButton.addButtonAction { _ in
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.articleTableView.scrollToRow(at: indexPath, at: .top, animated: true)
-            self.scrollToTopButton.isHidden = true
-        }
     }
 }
 
@@ -205,79 +318,85 @@ extension ArticleDetailViewController: UITableViewDelegate {
 
 }
 
-extension ArticleDetailViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articleDatas?.count ?? 0
-    }
+//extension ArticleDetailViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return articleDatas?.count ?? 0
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let articleDatas else { return UITableViewCell() }
+//
+//        switch articleDatas[indexPath.row] {
+//        case .thumbnail(let isMarked, let thumbnailModel):
+//            let cell = ThumnailTableViewCell.dequeueReusableCell(to: articleTableView)
+//            cell.inputData = thumbnailModel
+//            cell.selectionStyle = .none
+//            cell.bookMarkButton.tapPublisher
+//                .sink { [weak self] _ in
+//                    self?.bookmarkButtonTapped.send(())
+//                }
+//                .store(in: &cancelBag)
+//                
+////            cell.bookmarkButtonDidTap = { isSelected in
+////                guard let articleId = self.articleId else { return }
+////
+////                self.articleBookMark(articleId: articleId, isSelected: isSelected)
+////            }
+//
+//            if let isBookMarked {
+//                cell.isMarked = isBookMarked
+//            } else {
+//                cell.isMarked = isMarked
+//            }
+//            cell.setThumbnailImageView()
+//            return cell
+//        case .articleTitle(let titleModel):
+//            let cell = TitleTableViewCell.dequeueReusableCell(to: articleTableView)
+//            cell.inputData = titleModel
+//            cell.selectionStyle = .none
+//            return cell
+//        case .editorNote(let editorModel):
+//            let cell = EditorTableViewCell.dequeueReusableCell(to: articleTableView)
+//            cell.inputData = editorModel
+//            cell.selectionStyle = .none
+//            return cell
+//        case .chapterTitle(let chapterTitleModel):
+//            let cell = ChapterTitleTableViewCell.dequeueReusableCell(to: articleTableView)
+//            cell.inputData = chapterTitleModel
+//            cell.selectionStyle = .none
+//            return cell
+//        case .body(let bodyModel):
+//            let cell = BodyTableViewCell.dequeueReusableCell(to: articleTableView)
+//            cell.inputData = bodyModel
+//            cell.selectionStyle = .none
+//            return cell
+//        case .generalTitle(let generalTitleModel):
+//            let cell = GeneralTitleTableViewCell.dequeueReusableCell(to: articleTableView)
+//            cell.inputData = generalTitleModel
+//            cell.selectionStyle = .none
+//            return cell
+//        case .image(let imageModel):
+//            let cell = ThumnailTableViewCell.dequeueReusableCell(to: articleTableView)
+//            cell.inputData = imageModel
+//            cell.setImageTypeCell()
+//            cell.selectionStyle = .none
+//            return cell
+//        case .endNote:
+//            let cell = CopyRightTableViewCell.dequeueReusableCell(to: articleTableView)
+//            cell.selectionStyle = .none
+//            return cell
+//        case .none:
+//            return UITableViewCell()
+//        }
+//    }
+//
+//}
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let articleDatas else { return UITableViewCell() }
 
-        switch articleDatas[indexPath.row] {
-        case .thumbnail(let isMarked, let thumbnailModel):
-            let cell = ThumnailTableViewCell.dequeueReusableCell(to: articleTableView)
-            cell.inputData = thumbnailModel
-            cell.selectionStyle = .none
-            cell.bookmarkButtonDidTap = { isSelected in
-                guard let articleId = self.articleId else { return }
-
-                self.articleBookMark(articleId: articleId, isSelected: isSelected)
-            }
-
-            if let isBookMarked {
-                cell.isMarked = isBookMarked
-            } else {
-                cell.isMarked = isMarked
-            }
-            cell.setThumbnailImageView()
-            return cell
-        case .articleTitle(let titleModel):
-            let cell = TitleTableViewCell.dequeueReusableCell(to: articleTableView)
-            cell.inputData = titleModel
-            cell.selectionStyle = .none
-            return cell
-        case .editorNote(let editorModel):
-            let cell = EditorTableViewCell.dequeueReusableCell(to: articleTableView)
-            cell.inputData = editorModel
-            cell.selectionStyle = .none
-            return cell
-        case .chapterTitle(let chapterTitleModel):
-            let cell = ChapterTitleTableViewCell.dequeueReusableCell(to: articleTableView)
-            cell.inputData = chapterTitleModel
-            cell.selectionStyle = .none
-            return cell
-        case .body(let bodyModel):
-            let cell = BodyTableViewCell.dequeueReusableCell(to: articleTableView)
-            cell.inputData = bodyModel
-            cell.selectionStyle = .none
-            return cell
-        case .generalTitle(let generalTitleModel):
-            let cell = GeneralTitleTableViewCell.dequeueReusableCell(to: articleTableView)
-            cell.inputData = generalTitleModel
-            cell.selectionStyle = .none
-            return cell
-        case .image(let imageModel):
-            let cell = ThumnailTableViewCell.dequeueReusableCell(to: articleTableView)
-            cell.inputData = imageModel
-            cell.setImageTypeCell()
-            cell.selectionStyle = .none
-            return cell
-        case .endNote:
-            let cell = CopyRightTableViewCell.dequeueReusableCell(to: articleTableView)
-            cell.selectionStyle = .none
-            return cell
-        case .none:
-            return UITableViewCell()
-        }
-    }
-
-}
-
-
-extension ArticleDetailViewController {
-    /// Article ID를 해당 메서드로 넘긴 후에 해당 VC를 present해주세요
-    /// - Parameter id: articleId
-    func setArticleId(id: Int?) {
-        self.articleId = id
-    }
-}
+//extension ArticleDetailViewController {
+//    /// Article ID를 해당 메서드로 넘긴 후에 해당 VC를 present해주세요
+//    /// - Parameter id: articleId
+//    func setArticleId(id: Int?) {
+//        self.articleId = id
+//    }
+//}

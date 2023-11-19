@@ -7,15 +7,20 @@
 
 import UIKit
 
+// MARK: - Section
+enum ArticleDetailSection {
+    case articleMain
+}
+
 // MARK: - AppData
 
-struct ArticleBlockData: AppData {
+struct ArticleBlockData: Hashable, AppData {
     let content: String
     let caption: String?
 }
 
 @frozen
-enum BlockTypeAppData {
+enum BlockTypeAppData: Hashable {
     case thumbnail(isMarked: Bool, model: ArticleBlockData)
     case articleTitle(model: ArticleBlockData)
     case editorNote(model: ArticleBlockData)

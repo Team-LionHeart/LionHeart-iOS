@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ArticleFactory {
+    func makeArticleViewModel(coordinator: ArticleCoordinator) -> any ArticleDetailViewModel & ArticleDetailViewModelPresentable
     func makeAdaptor(coordinator: ArticleCoordinator) -> EntireArticleAdaptor
-    func makeArticleDetailViewController(coordinator: ArticleCoordinator) -> ArticleControllerable
+    func makeArticleDetailViewController(coordinator: ArticleCoordinator, articleId: Int) -> ArticleControllerable
 }
