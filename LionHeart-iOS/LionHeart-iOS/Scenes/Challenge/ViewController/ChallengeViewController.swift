@@ -44,6 +44,7 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.showLoading()
         self.viewWillAppearSubject.send(())
     }
     
@@ -76,6 +77,7 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
                 switch result {
                 case .success(let data):
                     self?.configureData(data)
+                    self?.hideLoading()
                 case .failure(let error):
                     print(error.description)
                 }
