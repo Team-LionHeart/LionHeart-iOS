@@ -17,7 +17,7 @@ final class TodayArticleView: UIView {
     private var articleTitleLabel = LHLabel(type: .head2, color: .white, lines: 0)
     private var descriptionLabel = LHLabel(type: .body2R, color: .gray400, lines: 3)
     private var weekInfomationView = LHImageView(in: UIImage(named: "today_test_label"), contentMode: .scaleAspectFill)
-    var mainArticlImageView = LHImageView(contentMode: .scaleAspectFill).makeRound(4)
+    private var mainArticlImageView = LHImageView(contentMode: .scaleAspectFill).makeRound(4)
     private var seperateLine = LHImageView(in: UIImage(named: "MainArticleSeperateLine"), contentMode: .scaleAspectFill)
     
     override init(frame: CGRect) {
@@ -43,7 +43,6 @@ final class TodayArticleView: UIView {
         articleTitleLabel.setTextWithLineHeight(lineHeight: 32)
         descriptionLabel.setTextWithLineHeight(lineHeight: 24)
         descriptionLabel.lineBreakMode = .byTruncatingTail
-
     }
 }
 

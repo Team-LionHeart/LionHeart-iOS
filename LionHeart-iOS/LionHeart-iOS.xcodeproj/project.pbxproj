@@ -244,6 +244,8 @@
 		C0D47B642B09A7A7003B66E6 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */; };
 		C0D47B662B09A845003B66E6 /* TodayViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B652B09A845003B66E6 /* TodayViewModelImpl.swift */; };
 		C0D47B682B09B262003B66E6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B672B09B262003B66E6 /* ViewModel.swift */; };
+		C0D47B6A2B09B851003B66E6 /* GestureSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B692B09B851003B66E6 /* GestureSubscription.swift */; };
+		C0D47B6C2B09B98F003B66E6 /* GesturePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B6B2B09B98F003B66E6 /* GesturePublisher.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -570,6 +572,8 @@
 		C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		C0D47B652B09A845003B66E6 /* TodayViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModelImpl.swift; sourceTree = "<group>"; };
 		C0D47B672B09B262003B66E6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		C0D47B692B09B851003B66E6 /* GestureSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureSubscription.swift; sourceTree = "<group>"; };
+		C0D47B6B2B09B98F003B66E6 /* GesturePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturePublisher.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -946,6 +950,8 @@
 				B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */,
 				B57BEB642A6134B800D1727C /* setRootViewController.swift */,
 				B53BA2012A68717B006F9BFB /* LoadingIndicator.swift */,
+				C0D47B692B09B851003B66E6 /* GestureSubscription.swift */,
+				C0D47B6B2B09B98F003B66E6 /* GesturePublisher.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1977,6 +1983,7 @@
 				C003CC312AD918AB00AFFAAC /* ArticleCoordinator.swift in Sources */,
 				C003CC472ADA4F3400AFFAAC /* ArticleCategoryNavigation.swift in Sources */,
 				C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */,
+				C0D47B6C2B09B98F003B66E6 /* GesturePublisher.swift in Sources */,
 				C065F0052ADBD23E0094912C /* SplashFactoryImpl.swift in Sources */,
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
@@ -2121,6 +2128,7 @@
 				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
+				C0D47B6A2B09B851003B66E6 /* GestureSubscription.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
 				C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */,
 				C0856B812ABFCD830026D9F8 /* OnboardingManagerImpl.swift in Sources */,

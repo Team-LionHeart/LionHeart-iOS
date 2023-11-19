@@ -43,7 +43,6 @@ final class TodayViewController: UIViewController, TodayViewControllerable {
         setNavigationBar()
         setHierarchy()
         setLayout()
-        setTapGesture()
         bindInput()
         bind()
     }
@@ -60,6 +59,10 @@ final class TodayViewController: UIViewController, TodayViewControllerable {
         
         self.todayNavigationBar.rightSecondBarItem.tapPublisher
             .sink { [weak self] in self?.navigationRightButtonTapped.send(()) }
+            .store(in: &cancelBag)
+        
+        self.mainArticleView.tabPublisher
+            .sink { [weak self] in self?.todayArticleTapped.send(()) }
             .store(in: &cancelBag)
     }
     
@@ -122,14 +125,5 @@ private extension TodayViewController {
             make.centerX.equalToSuperview()
             make.height.equalTo(mainArticleView.snp.width).multipliedBy(TodayArticleImage.ratio)
         }
-    }
-    
-    func setTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(articleTapped(_:)))
-        mainArticleView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func articleTapped(_ sender: UIButton) {
-        self.todayArticleTapped.send(())
     }
 }
