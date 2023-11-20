@@ -24,25 +24,11 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
     private let manager: ArticleDetailManager
     
     private let navigationSubject = PassthroughSubject<FlowType, Never>()
-    
+    private let errorSubject = PassthroughSubject<NetworkError, Never>()
     private var cancelBag = Set<AnyCancellable>()
     
     private var isBookMarked: Bool?
-//    {
-//        didSet {
-//            guard let isBookMarked else { return }
-//            LHToast.show(message: isBookMarked ? "북마크가 추가되었습니다" : "북마크가 해제되었습니다")
-//        }
-//    }
-
     private var articleDatas: [BlockTypeAppData]?
-//    {
-//        didSet {
-//            self.articleTableView.reloadData()
-//            hideLoading()
-//        }
-//    }
-    
     private var articleId: Int?
     
     init(adaptor: ArticleDetailModalNavigation, manager: ArticleDetailManager) {
@@ -51,6 +37,12 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
     }
     
     func transform(input: ArticleDetailViewModelInput) -> ArticleDetailViewModelOutput {
+        
+        errorSubject
+            .sink { error in
+                print(error.description)
+            }
+            .store(in: &cancelBag)
         
         navigationSubject
             .receive(on: RunLoop.main)
@@ -80,7 +72,7 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
                             guard let isMarked = self.isBookMarked,
                                   let articleId = self.articleId
                             else { return }
-                            print(isMarked)
+                            
                             try await self.articleBookMark(articleId: articleId, isSelected: !isMarked)
                         } catch {
                             promise(.failure(error as! NetworkError))
@@ -96,8 +88,8 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
         
         
         let articleBlockTypes = input.viewWillAppear
-            .flatMap { _ -> AnyPublisher<Result<Article, NetworkError>, Never> in
-                return Future<Result<Article, NetworkError>, NetworkError> { promise in
+            .flatMap { _ -> AnyPublisher<Article, Never> in
+                return Future<Article, NetworkError> { promise in
                     Task {
                         do {
                             guard let articleId = self.articleId else { return }
@@ -105,23 +97,26 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
                             let thumbnail = articleBlocks[0]
                             if case .thumbnail(let isMarked, _) = thumbnail {
                                 self.isBookMarked = isMarked
-                                promise(.success(.success(Article(blockTypes: articleBlocks, isMarked: isMarked))))
+                                promise(.success(Article(blockTypes: articleBlocks, isMarked: isMarked)))
                             }
                         } catch {
                             guard let error = error as? NetworkError else { return }
-                            self.handleError(error)
+                            promise(.failure(error))
                         }
                     }
                 }
                 .catch { error in
-                    return Just(.failure(error))
+                    self.handleError(error)
+                    self.errorSubject.send(error)
+                    return Just(Article(blockTypes: [], isMarked: false))
                 }
                 .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
         
+        let scrollToTop = input.scrollToTopButtonTapped.eraseToAnyPublisher()
         
-        return Output(articleDetail: articleBlockTypes, bookmarkCompleted: bookMark)
+        return Output(articleDetail: articleBlockTypes, bookmarkCompleted: bookMark, scrollToTopButtonTapped: scrollToTop)
     }
     
 }
@@ -145,16 +140,7 @@ extension ArticleDetailViewModelImpl {
         if case .unAuthorizedError = error {
             self.navigationSubject.send(.expired)
         }
-        
     }
-//    switch error {
-//        case .unAuthorizedError:
-//        self.navigationSubject.send(.expired)
-//        case .clientError(_, let message):
-//            LHToast.show(message: "\(message)")
-//        default:
-//            LHToast.show(message: error.description)
-//    }
 }
 
 
