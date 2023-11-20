@@ -16,7 +16,6 @@ final class MyPageDataSource: UITableViewDiffableDataSource<MyPageSection, MyPag
                 let cell = MyPageCustomerServiceTableViewCell.dequeueReusableCell(to: tableView)
                 cell.selectionStyle = .none
                 cell.inputData = model.cellTitle
-
                 return cell
             case .appSettingSection(section: let model):
                 let cell = MyPageAppSettingTableViewCell.dequeueReusableCell(to: tableView)
@@ -25,14 +24,13 @@ final class MyPageDataSource: UITableViewDiffableDataSource<MyPageSection, MyPag
                 return cell
             }
         }
-        self.makeList()
     }
     
-    private func makeList() {
+    func makeList(_ appSection: [MyPageRow], _ customServiceSection: [MyPageRow]) {
         var snapShot = NSDiffableDataSourceSnapshot<MyPageSection, MyPageRow>()
         snapShot.appendSections([.customerServiceSetion, .appSettingSection])
-        snapShot.appendItems(MyPageRow.appSettingService, toSection: .appSettingSection)
-        snapShot.appendItems(MyPageRow.customSerive, toSection: .customerServiceSetion)
+        snapShot.appendItems(appSection, toSection: .appSettingSection)
+        snapShot.appendItems(customServiceSection, toSection: .customerServiceSetion)
         self.apply(snapShot)
     }
 }

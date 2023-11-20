@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
-protocol MyPageControllerable where Self: UIViewController {
-    var adaptor: MyPageNavigation { get set }
-}
+//
+//protocol MyPageControllerable where Self: UIViewController {
+//    var adaptor: MyPageNavigation { get set }
+//}
