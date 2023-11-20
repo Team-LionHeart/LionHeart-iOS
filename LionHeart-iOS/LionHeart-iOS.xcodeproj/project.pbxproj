@@ -17,7 +17,6 @@
 		4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A860AD52A6265B2002BA428 /* BookmarkModel.swift */; };
 		4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */; };
 		4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */; };
-		4A8980CA2A614F8700746C58 /* MyPageDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C92A614F8700746C58 /* MyPageDiffableModel.swift */; };
 		4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */; };
 		4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */; };
 		4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */; };
@@ -255,6 +254,10 @@
 		C0D47B922B0B2B66003B66E6 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B912B0B2B66003B66E6 /* MyPageViewModel.swift */; };
 		C0D47B942B0B2C46003B66E6 /* MyPageViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B932B0B2C46003B66E6 /* MyPageViewModelImpl.swift */; };
 		C0D47B962B0B3739003B66E6 /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B952B0B3739003B66E6 /* MyPageModel.swift */; };
+		C0D47B982B0B3813003B66E6 /* BadgeProfileAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B972B0B3813003B66E6 /* BadgeProfileAppData.swift */; };
+		C0D47B9A2B0B382B003B66E6 /* MyPageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B992B0B382B003B66E6 /* MyPageSection.swift */; };
+		C0D47B9C2B0B3837003B66E6 /* MyPageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B9B2B0B3837003B66E6 /* MyPageRow.swift */; };
+		C0D47B9E2B0B3843003B66E6 /* MyPageSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B9D2B0B3843003B66E6 /* MyPageSectionModel.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -359,7 +362,6 @@
 		4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomerServiceCollectionViewCell.swift; sourceTree = "<group>"; };
-		4A8980C92A614F8700746C58 /* MyPageDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDiffableModel.swift; sourceTree = "<group>"; };
 		4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
 		4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderViewRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAppSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -592,6 +594,10 @@
 		C0D47B912B0B2B66003B66E6 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		C0D47B932B0B2C46003B66E6 /* MyPageViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModelImpl.swift; sourceTree = "<group>"; };
 		C0D47B952B0B3739003B66E6 /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
+		C0D47B972B0B3813003B66E6 /* BadgeProfileAppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeProfileAppData.swift; sourceTree = "<group>"; };
+		C0D47B992B0B382B003B66E6 /* MyPageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSection.swift; sourceTree = "<group>"; };
+		C0D47B9B2B0B3837003B66E6 /* MyPageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRow.swift; sourceTree = "<group>"; };
+		C0D47B9D2B0B3843003B66E6 /* MyPageSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSectionModel.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -740,8 +746,11 @@
 		4A8980C82A614F5200746C58 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4A8980C92A614F8700746C58 /* MyPageDiffableModel.swift */,
 				C0D47B952B0B3739003B66E6 /* MyPageModel.swift */,
+				C0D47B972B0B3813003B66E6 /* BadgeProfileAppData.swift */,
+				C0D47B992B0B382B003B66E6 /* MyPageSection.swift */,
+				C0D47B9B2B0B3837003B66E6 /* MyPageRow.swift */,
+				C0D47B9D2B0B3843003B66E6 /* MyPageSectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2025,6 +2034,7 @@
 				C009E9F82ADBC43300112F18 /* BookmarkFactoryImpl.swift in Sources */,
 				B5C6A2BC2A5DE2A50021BE5E /* BodyTableViewCell.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
+				C0D47B9C2B0B3837003B66E6 /* MyPageRow.swift in Sources */,
 				C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */,
 				C003CC412ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift in Sources */,
 				C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */,
@@ -2164,6 +2174,7 @@
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
 				C034EDDE2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift in Sources */,
 				C003CC452ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift in Sources */,
+				C0D47B9A2B0B382B003B66E6 /* MyPageSection.swift in Sources */,
 				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
@@ -2177,7 +2188,6 @@
 				F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */,
 				C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */,
 				C003CC6C2ADA51D100AFFAAC /* CurriculumManager.swift in Sources */,
-				4A8980CA2A614F8700746C58 /* MyPageDiffableModel.swift in Sources */,
 				C009E9F22ADBC23B00112F18 /* ChallengeFactory.swift in Sources */,
 				4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
@@ -2240,6 +2250,7 @@
 				C009E9EE2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
+				C0D47B9E2B0B3843003B66E6 /* MyPageSectionModel.swift in Sources */,
 				C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */,
 				C003CC642ADA50ED00AFFAAC /* BookmarkManager.swift in Sources */,
 				C065F0032ADBD2270094912C /* AuthFactoryImpl.swift in Sources */,
@@ -2261,6 +2272,7 @@
 				D3AB54C12A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */,
 				B58095042AF354EB00FFCE1B /* LoginViewModelImpl.swift in Sources */,
 				B58095022AF354C700FFCE1B /* LoginViewModel.swift in Sources */,
+				C0D47B982B0B3813003B66E6 /* BadgeProfileAppData.swift in Sources */,
 				B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */,
 				C003CC4F2ADA4F8D00AFFAAC /* OnboardingNavigation.swift in Sources */,
 				C034EE202ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift in Sources */,
