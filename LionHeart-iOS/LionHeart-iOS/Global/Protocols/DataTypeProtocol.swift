@@ -8,4 +8,4 @@
 import Foundation
 
 protocol DTO {}
-protocol AppData {}
+protocol AppData: Hashable {}
