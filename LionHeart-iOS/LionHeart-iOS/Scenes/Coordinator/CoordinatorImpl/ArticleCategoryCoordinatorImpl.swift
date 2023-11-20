@@ -27,8 +27,7 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
     }
     
     func showArticleCategoryViewController() {
-        let articleCategoryAdaptor = ArticleCategoryAdaptor(coordinator: self)
-        let articleCategoryViewController = factory.makeArticleCategoryViewController(coordinator: articleCategoryAdaptor)
+        let articleCategoryViewController = factory.makeArticleCategoryViewController(coordinator: self)
         self.navigationController.pushViewController(articleCategoryViewController, animated: true)
     }
     
@@ -44,8 +43,7 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
     }
     
     func showArticleListbyCategoryViewController(categoryName: String) {
-        let articleListbyCategoryViewController = factory.makeArticleListByCategoryViewController(coordinator: self)
-        articleListbyCategoryViewController.categoryString = categoryName
+        let articleListbyCategoryViewController = factory.makeArticleListByCategoryViewController(coordinator: self, categoryName: categoryName)
         self.navigationController.pushViewController(articleListbyCategoryViewController, animated: true)
     }
     
