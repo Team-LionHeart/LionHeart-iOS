@@ -16,6 +16,7 @@ final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
     private let manager: MyPageManager
     private var cancelBag = Set<AnyCancellable>()
     private let navigationSubject = PassthroughSubject<FlowType, Never>()
+    private let errorSubject = PassthroughSubject<NetworkError, Never>()
     
     init(navigator: MyPageNavigation, manager: MyPageManager) {
         self.navigator = navigator
@@ -37,7 +38,7 @@ final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
                     }
                 }
                 .catch { error in
-                    print(error)
+                    self.errorSubject.send(error)
                     return Just(MyPageModel.empty)
                 }
                 .eraseToAnyPublisher()
@@ -56,6 +57,10 @@ final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
             }
             .store(in: &cancelBag)
         
+        errorSubject
+            .sink { print($0) }
+            .store(in: &cancelBag)
+         
         self.navigationSubject
             .receive(on: RunLoop.main)
             .sink { [weak self] in
@@ -70,29 +75,4 @@ final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
         
         return MyPageViewModelOutput(viewWillAppearSubject: viewWillAppearSubject)
     }
-    
-//    func setUIFromNetworking() {
-//        Task {
-//            do {
-//                let data = try await manager.getMyPage()
-//                badgeProfileAppData = data
-//                setTableViewHeader(data)
-//            } catch {
-//                guard let error = error as? NetworkError else { return }
-//                handleError(error)
-//            }
-//        }
-//    }
-//
-//    resignButton.addButtonAction { _ in
-//        Task {
-//            do {
-//                self.resignButton.isUserInteractionEnabled = false
-//                try await self.manager.resignUser()
-//                self.adaptor.checkTokenIsExpired()
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
 }
