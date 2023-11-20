@@ -15,11 +15,7 @@
 		4A52DD9F2ADBC0E500858230 /* AuthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52DD9E2ADBC0E500858230 /* AuthFactory.swift */; };
 		4A81C2912ACC7DC80056E815 /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81C2902ACC7DC80056E815 /* UICollectionViewCell+.swift */; };
 		4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A860AD52A6265B2002BA428 /* BookmarkModel.swift */; };
-		4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */; };
-		4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */; };
-		4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */; };
 		4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */; };
-		4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */; };
 		4A918E772AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */; };
 		4A918E792AE10BC2003CB8F9 /* MyPageAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */; };
 		4A918E7B2AE11839003CB8F9 /* ArticleAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E7A2AE11839003CB8F9 /* ArticleAdaptor.swift */; };
@@ -360,11 +356,7 @@
 		4A81C2902ACC7DC80056E815 /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		4A860AD52A6265B2002BA428 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionViewCell.swift; sourceTree = "<group>"; };
-		4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomerServiceCollectionViewCell.swift; sourceTree = "<group>"; };
-		4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
 		4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderViewRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
-		4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAppSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinatorImpl.swift; sourceTree = "<group>"; };
 		4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAdaptor.swift; sourceTree = "<group>"; };
 		4A918E7A2AE11839003CB8F9 /* ArticleAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleAdaptor.swift; sourceTree = "<group>"; };
@@ -1137,7 +1129,6 @@
 		B598920E2A56B41500CE1FEB /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				C0D47B8E2B0B20BD003B66E6 /* Dumy */,
 				4A8980C82A614F5200746C58 /* Model */,
 				4A8980C32A611ECB00746C58 /* Cells */,
 				B59892642A56B95600CE1FEB /* Views */,
@@ -1699,17 +1690,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		C0D47B8E2B0B20BD003B66E6 /* Dumy */ = {
-			isa = PBXGroup;
-			children = (
-				4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */,
-				4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */,
-				4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */,
-				4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */,
-			);
-			path = Dumy;
-			sourceTree = "<group>";
-		};
 		C0DF03292A5A91450037F740 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -2133,7 +2113,6 @@
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */,
 				C0B15E252AC103A50058D56B /* LHToggleImageButton.swift in Sources */,
-				4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */,
 				4A918E792AE10BC2003CB8F9 /* MyPageAdaptor.swift in Sources */,
 				C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */,
 				C003CC2F2AD9189F00AFFAAC /* MypageCoordinator.swift in Sources */,
@@ -2175,7 +2154,6 @@
 				C034EDDE2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift in Sources */,
 				C003CC452ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift in Sources */,
 				C0D47B9A2B0B382B003B66E6 /* MyPageSection.swift in Sources */,
-				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0D47B6A2B09B851003B66E6 /* GestureSubscription.swift in Sources */,
@@ -2189,7 +2167,6 @@
 				C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */,
 				C003CC6C2ADA51D100AFFAAC /* CurriculumManager.swift in Sources */,
 				C009E9F22ADBC23B00112F18 /* ChallengeFactory.swift in Sources */,
-				4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
 				C0B15E152AC011840058D56B /* LHLabel.swift in Sources */,
@@ -2255,7 +2232,6 @@
 				C003CC642ADA50ED00AFFAAC /* BookmarkManager.swift in Sources */,
 				C065F0032ADBD2270094912C /* AuthFactoryImpl.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
-				4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */,
 				C0B15E1F2AC024F20058D56B /* CurriculumTableView.swift in Sources */,
 				C0DF03AB2A5D73C80037F740 /* NHOnboardingTextfield.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
