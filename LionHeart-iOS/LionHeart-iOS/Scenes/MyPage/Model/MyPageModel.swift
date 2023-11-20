@@ -12,3 +12,9 @@ struct MyPageModel {
     let appSettingData: [MyPageRow]
     let customerServiceData: [MyPageRow]
 }
+
+extension MyPageModel {
+    static var empty: Self {
+        return .init(profileData: .empty, appSettingData: [], customerServiceData: [])
+    }
+}

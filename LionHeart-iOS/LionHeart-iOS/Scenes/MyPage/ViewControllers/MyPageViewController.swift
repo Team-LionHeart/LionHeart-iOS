@@ -137,9 +137,9 @@ extension MyPageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let item = dataSource.itemIdentifier(for: indexPath) {
             switch item {
-            case .appSettingSection(section: _):
+            case .appSettingRow(section: _):
                 return tableView.frame.width*(62/360)
-            case .customerServiceSetion(section: _):
+            case .customerServiceRow(section: _):
                 return tableView.frame.width*(52/360)
             }
         }

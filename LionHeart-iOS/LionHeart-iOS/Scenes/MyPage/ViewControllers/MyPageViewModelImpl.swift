@@ -38,7 +38,7 @@ final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
                 }
                 .catch { error in
                     print(error)
-                    return Just(MyPageModel(profileData: .empty, appSettingData: [], customerServiceData: []))
+                    return Just(MyPageModel.empty)
                 }
                 .eraseToAnyPublisher()
             }

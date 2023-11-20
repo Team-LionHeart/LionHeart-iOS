@@ -12,12 +12,12 @@ final class MyPageDataSource: UITableViewDiffableDataSource<MyPageSection, MyPag
     init(tableView: UITableView) {
         super.init(tableView: tableView) { tableView, indexPath, itemIdentifier in
             switch itemIdentifier {
-            case .customerServiceSetion(section: let model):
+            case .customerServiceRow(section: let model):
                 let cell = MyPageCustomerServiceTableViewCell.dequeueReusableCell(to: tableView)
                 cell.selectionStyle = .none
                 cell.inputData = model.cellTitle
                 return cell
-            case .appSettingSection(section: let model):
+            case .appSettingRow(section: let model):
                 let cell = MyPageAppSettingTableViewCell.dequeueReusableCell(to: tableView)
                 cell.selectionStyle = .none
                 cell.inputData = model.cellTitle
