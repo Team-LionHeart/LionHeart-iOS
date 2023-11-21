@@ -31,7 +31,7 @@ final class CurriculumArticleByWeekHeaderView: UIView {
         didSet {
             guard let inputData else { return }
             weekLabel.text = "\(inputData)주차"
-            weekBackGroundImageView.image = WeekBackgroundImage.dummy()[inputData-4].weekBackgroundImage
+            weekBackGroundImageView.image = WeekBackgroundImage.dummy()[Int.random(in: 0..<WeekBackgroundImage.dummy().count)].weekBackgroundImage
         }
     }
     
@@ -46,6 +46,11 @@ final class CurriculumArticleByWeekHeaderView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func buttonHidden(left: Bool, right: Bool) {
+        self.leftWeekButton.isHidden = !left
+        self.rightWeekButton.isHidden = !right
     }
 }
 

@@ -87,9 +87,10 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
         output.articleByWeekData
             .receive(on: RunLoop.main)
             .sink { [weak self] in
-                self?.applySnapshot(weekData: $0)
-                self?.setTableView(input: $0)
-                self?.navigationBar.setCurriculumWeek(week: $0.week ?? 0)
+                self?.applySnapshot(weekData: $0.0)
+                self?.setTableView(input: $0.0)
+                self?.navigationBar.setCurriculumWeek(week: $0.0.week ?? 0)
+                self?.headerView.buttonHidden(left: $0.1, right: $0.2)
             }
             .store(in: &cancelBag)
         
@@ -121,6 +122,7 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
                 return cell
             }
         })
+        self.datasoruce.defaultRowAnimation = .fade
     }
     
     private func applySnapshot(weekData: CurriculumWeekData) {
@@ -144,10 +146,6 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
 
 
 private extension CurriculumListWeekViewController {
-    
-    enum Size {
-        static let weekBackGroundImageSize: CGFloat = (60 / 375) * Constant.Screen.width
-    }
     
     func setUI() {
         view.backgroundColor = .designSystem(.background)
