@@ -95,16 +95,16 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel {
         let rightButtonTapped = input.rightButtonTapped
         let leftButtonTapped = input.leftButtonTapped
         let articleByWeekData = Publishers.Merge3(viewWillAppearSubject, rightButtonTapped, leftButtonTapped)
-            .flatMap { direction -> AnyPublisher<(CurriculumWeekData, Bool, Bool), Never> in
-                return Future<(CurriculumWeekData, Bool, Bool), NetworkError> { promise in
+            .flatMap { direction -> AnyPublisher<(data: CurriculumWeekData, leftButtonHidden: Bool, rightButtonHidden: Bool), Never> in
+                return Future<(data: CurriculumWeekData, leftButtonHidden: Bool, rightButtonHidden: Bool), NetworkError> { promise in
                     Task {
                         do {
                             self.weekCount += direction.addValue
-                            let leftButtonHidden = ((4...40) ~= self.weekCount - 1)
-                            let rightButtonHidden = ((4...40) ~= self.weekCount + 1)
+                            let leftButtonHidden = ((5...40) ~= self.weekCount)
+                            let rightButtonHidden = ((4..<40) ~= self.weekCount)
                             let articlesByWeek = try await self.manager.getArticleListByWeekInfo(week: self.weekCount)
                             self.curriculumWeekData = articlesByWeek
-                            promise(.success((articlesByWeek, leftButtonHidden, rightButtonHidden)))
+                            promise(.success((articlesByWeek, leftButtonHidden: leftButtonHidden, rightButtonHidden: rightButtonHidden)))
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }
@@ -112,7 +112,7 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel {
                 }
                 .catch { error in
                     self.errorSubject.send(error)
-                    return Just((CurriculumWeekData(articleData: [], week: 10), true, true))
+                    return Just((data: CurriculumWeekData(articleData: [], week: 10), leftButtonHidden: true, rightButtonHidden: true))
                 }
                 .eraseToAnyPublisher()
             }

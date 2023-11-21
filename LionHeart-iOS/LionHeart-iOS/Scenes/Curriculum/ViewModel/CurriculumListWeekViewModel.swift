@@ -24,7 +24,7 @@ struct CurriculumListWeekViewModelInput {
 }
 
 struct CurriculumListWeekViewModelOutput {
-    let articleByWeekData: AnyPublisher<(CurriculumWeekData, Bool, Bool), Never>
+    let articleByWeekData: AnyPublisher<(data: CurriculumWeekData, leftButtonHidden: Bool, rightButtonHidden: Bool), Never>
     let bookMarkCompleted: AnyPublisher<String, Never>
 }
 

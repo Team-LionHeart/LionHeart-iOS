@@ -79,10 +79,10 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
         output.articleByWeekData
             .receive(on: RunLoop.main)
             .sink { [weak self] in
-                self?.applySnapshot(weekData: $0.0)
-                self?.setTableView(input: $0.0)
-                self?.navigationBar.setCurriculumWeek(week: $0.0.week ?? 0)
-                self?.headerView.buttonHidden(left: $0.1, right: $0.2)
+                self?.applySnapshot(weekData: $0.data)
+                self?.setTableView(input: $0.data)
+                self?.navigationBar.setCurriculumWeek(week: $0.data.week ?? 0)
+                self?.headerView.buttonHidden(left: $0.leftButtonHidden, right: $0.rightButtonHidden)
             }
             .store(in: &cancelBag)
         
