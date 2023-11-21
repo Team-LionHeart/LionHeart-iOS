@@ -19,6 +19,8 @@ struct CurriculumListWeekViewModelInput {
     let rightButtonTapped: PassthroughSubject<Void, Never>
     let articleCellTapped: PassthroughSubject<IndexPath, Never>
     let bookmarkButtonTapped: PassthroughSubject<IndexPath, Never>
+    let viewWillAppearSubject: PassthroughSubject<Void, Never>
+    let backButtonTapped: PassthroughSubject<Void, Never>
 }
 
 struct CurriculumListWeekViewModelOutput {

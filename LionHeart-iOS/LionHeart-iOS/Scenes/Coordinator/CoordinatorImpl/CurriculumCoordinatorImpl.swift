@@ -40,8 +40,7 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator {
     }
     
     func showCurriculumListViewController(itemIndex: Int) {
-        let curriculumListViewController = factory.makeCurriculumListViewController(coordinator: self)
-        curriculumListViewController.setWeekIndexPath(week: itemIndex)
+        let curriculumListViewController = factory.makeCurriculumListViewController(coordinator: self, weekCount: itemIndex)
         navigationController.pushViewController(curriculumListViewController, animated: true)
     }
 

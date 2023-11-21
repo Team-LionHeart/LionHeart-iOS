@@ -1,16 +1,22 @@
 //
-//  CurriculumArticleByWeekRowZeroTableViewCell.swift
+//  CurriculumArticleByWeekHeaderView.swift
 //  LionHeart-iOS
 //
-//  Created by 곽성준 on 2023/07/14.
+//  Created by 김의성 on 2023/11/21.
 //  Copyright (c) 2023 CurriculumArticleByWeekRowZero. All rights reserved.
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
-final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
+final class CurriculumArticleByWeekHeaderView: UIView {
+    
+    enum ButtonType { case left, right }
+    
+    let curriculumWeekChangeButtonTapped = PassthroughSubject<ButtonType, Never>()
+    private var cancelBag = Set<AnyCancellable>()
     
     private lazy var leftWeekButton = LHImageButton(setImage: ImageLiterals.Curriculum.arrowLeftWeek)
     private lazy var rightWeekButton = LHImageButton(setImage: ImageLiterals.Curriculum.arrowRightWeek)
@@ -28,9 +34,9 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
             weekBackGroundImageView.image = WeekBackgroundImage.dummy()[inputData-4].weekBackgroundImage
         }
     }
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setUI()
         setHierarchy()
         setLayout()
@@ -43,11 +49,7 @@ final class CurriculumArticleByWeekRowZeroTableViewCell: UITableViewCell, TableV
     }
 }
 
-private extension CurriculumArticleByWeekRowZeroTableViewCell {
-    
-    enum Size {
-        static let weekBackGroundImageSize: CGFloat = 200 / 375
-    }
+private extension CurriculumArticleByWeekHeaderView {
     
     func setUI() {
         weekBackGroundImageView.backgroundColor = .designSystem(.gray500)
@@ -57,13 +59,12 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
     func setHierarchy() {
         curriculumAndWeekStackView.addArrangedSubviews(curriculumLabel, weekLabel)
         weekBackGroundImageView.addSubviews(blurblackView, curriculumAndWeekStackView)
-        contentView.addSubviews(weekBackGroundImageView, leftWeekButton, rightWeekButton)
+        addSubviews(weekBackGroundImageView, leftWeekButton, rightWeekButton)
     }
     
     func setLayout() {
         weekBackGroundImageView.snp.makeConstraints{
             $0.edges.equalToSuperview()
-            $0.height.equalTo(weekBackGroundImageView.snp.width).multipliedBy(Size.weekBackGroundImageSize)
         }
 
         blurblackView.snp.makeConstraints { make in
@@ -87,12 +88,16 @@ private extension CurriculumArticleByWeekRowZeroTableViewCell {
     }
     
     func setAddTarget() {
-        leftWeekButton.addButtonAction { _ in
-            NotificationCenter.default.post(name: NSNotification.Name("leftButton"), object: nil)
-        }
+        leftWeekButton.tapPublisher
+            .sink { [weak self] in
+                self?.curriculumWeekChangeButtonTapped.send(.left)
+            }
+            .store(in: &cancelBag)
         
-        rightWeekButton.addButtonAction { _ in
-            NotificationCenter.default.post(name: NSNotification.Name("rightButton"), object: nil)
-        }
+        rightWeekButton.tapPublisher
+            .sink { [weak self] in
+                self?.curriculumWeekChangeButtonTapped.send(.right)
+            }
+            .store(in: &cancelBag)
     }
 }

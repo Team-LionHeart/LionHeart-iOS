@@ -15,7 +15,6 @@ final class CurriculumListByWeekTableView: UITableView {
         self.backgroundColor = .designSystem(.background)
         self.separatorStyle = .none
         CurriculumArticleByWeekTableViewCell.register(to: self)
-        CurriculumArticleByWeekRowZeroTableViewCell.register(to: self)
         let footerView = UIView()
         footerView.backgroundColor = .designSystem(.background)
         footerView.frame.size.height = 76
