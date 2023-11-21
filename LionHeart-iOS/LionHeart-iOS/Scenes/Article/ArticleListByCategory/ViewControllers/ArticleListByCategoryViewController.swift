@@ -130,18 +130,18 @@ extension ArticleListByCategoryViewController: UITableViewDataSource {
         let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: articleListTableView)
         cell.inputData = articleListData[indexPath.row]
         cell.selectionStyle = .none
-        cell.bookMarkButtonTapped = { isSelected, indexPath in
-            Task {
-                do {
-                    try await self.manager.postBookmark(model: BookmarkRequest(articleId: self.articleListData[indexPath.row].articleId,
-                                                                                  bookmarkRequestStatus: isSelected))
-                    isSelected ? LHToast.show(message: "북마크에 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크에 해제되었습니다", isTabBar: true)
-                } catch {
-                    guard let error = error as? NetworkError else { return }
-                    self.handleError(error)
-                }
-            }
-        }
+//        cell.bookMarkButtonTapped = { isSelected, indexPath in
+//            Task {
+//                do {
+//                    try await self.manager.postBookmark(model: BookmarkRequest(articleId: self.articleListData[indexPath.row].articleId,
+//                                                                                  bookmarkRequestStatus: isSelected))
+//                    isSelected ? LHToast.show(message: "북마크에 추가되었습니다", isTabBar: true) : LHToast.show(message: "북마크에 해제되었습니다", isTabBar: true)
+//                } catch {
+//                    guard let error = error as? NetworkError else { return }
+//                    self.handleError(error)
+//                }
+//            }
+//        }
         return cell
     }
 }

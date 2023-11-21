@@ -18,11 +18,12 @@ struct CurriculumListWeekViewModelInput {
     let leftButtonTapped: PassthroughSubject<Void, Never>
     let rightButtonTapped: PassthroughSubject<Void, Never>
     let articleCellTapped: PassthroughSubject<IndexPath, Never>
-    let bookmarkButtonTapped: PassthroughSubject<IndexPath, Never>
+    let bookmarkButtonTapped: PassthroughSubject<(indexPath: IndexPath, isSelected: Bool), Never>
     let viewWillAppearSubject: PassthroughSubject<Void, Never>
     let backButtonTapped: PassthroughSubject<Void, Never>
 }
 
 struct CurriculumListWeekViewModelOutput {
     let articleByWeekData: AnyPublisher<CurriculumWeekData, Never>
+    let bookMarkCompleted: AnyPublisher<String, Never>
 }

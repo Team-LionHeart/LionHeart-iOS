@@ -15,13 +15,13 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
     private let leftButtonTapped = PassthroughSubject<Void, Never>()
     private let rightButtonTapped = PassthroughSubject<Void, Never>()
     private let articleCellTapped = PassthroughSubject<IndexPath, Never>()
-    private let bookmarkButtonTapped = PassthroughSubject<IndexPath, Never>()
+    private let bookmarkButtonTapped = PassthroughSubject<(indexPath: IndexPath, isSelected: Bool), Never>()
     private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
     private let backButtonTapped = PassthroughSubject<Void, Never>()
     
     private var cancelBag = Set<AnyCancellable>()
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
-    private lazy var datasoruce = CurriculumListWeekDiffableDataSource(tableView: curriculumListByWeekTableView)
+    private var datasoruce: UITableViewDiffableDataSource<CurriculumListWeekSection, CurriculumListWeekItem>!
     private lazy var headerView = CurriculumArticleByWeekHeaderView(frame: .init(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width*(200 / 375)))
     private let curriculumListByWeekTableView = CurriculumListByWeekTableView()
     
@@ -76,7 +76,12 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
     }
     
     private func bind() {
-        let input = CurriculumListWeekViewModelInput(leftButtonTapped: leftButtonTapped, rightButtonTapped: rightButtonTapped, articleCellTapped: articleCellTapped, bookmarkButtonTapped: bookmarkButtonTapped, viewWillAppearSubject: viewWillAppearSubject, backButtonTapped: backButtonTapped)
+        let input = CurriculumListWeekViewModelInput(leftButtonTapped: leftButtonTapped,
+                                                     rightButtonTapped: rightButtonTapped,
+                                                     articleCellTapped: articleCellTapped,
+                                                     bookmarkButtonTapped: bookmarkButtonTapped,
+                                                     viewWillAppearSubject: viewWillAppearSubject,
+                                                     backButtonTapped: backButtonTapped)
         let output = viewModel.transform(input: input)
         output.articleByWeekData
             .receive(on: RunLoop.main)
@@ -86,6 +91,36 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
                 self?.navigationBar.setCurriculumWeek(week: $0.week ?? 0)
             }
             .store(in: &cancelBag)
+        
+        output.bookMarkCompleted
+            .receive(on: RunLoop.main)
+            .sink { message in
+                print(message)
+                LHToast.show(message: message)
+            }
+            .store(in: &cancelBag)
+    }
+    
+    private func setDataSource() {
+        self.datasoruce = UITableViewDiffableDataSource(tableView: self.curriculumListByWeekTableView, cellProvider: { tableView, indexPath, itemIdentifier in
+            switch itemIdentifier {
+            case .article(let weekData):
+                let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: tableView)
+                
+                cell.bookMarkButton.tapPublisher
+                    .sink { _ in
+                        cell.isSelected.toggle()
+                        self.bookmarkButtonTapped.send((indexPath: indexPath, isSelected: !cell.isSelected))
+                    }
+                    .store(in: &self.cancelBag)
+                    
+                
+                cell.inputData = weekData
+                cell.selectionStyle = .none
+                cell.backgroundColor = .designSystem(.background)
+                return cell
+            }
+        })
     }
     
     private func applySnapshot(weekData: CurriculumWeekData) {
