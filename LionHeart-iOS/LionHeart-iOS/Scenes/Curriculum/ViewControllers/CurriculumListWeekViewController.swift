@@ -12,11 +12,11 @@ protocol CurriculumArticleByWeekControllerable where Self: UIViewController {}
 
 final class CurriculumListWeekViewController: UIViewController, CurriculumArticleByWeekControllerable {
     
-    private let leftButtonTapped = PassthroughSubject<Void, Never>()
-    private let rightButtonTapped = PassthroughSubject<Void, Never>()
+    private let leftButtonTapped = PassthroughSubject<CurriculumListWeekButtonType, Never>()
+    private let rightButtonTapped = PassthroughSubject<CurriculumListWeekButtonType, Never>()
     private let articleCellTapped = PassthroughSubject<IndexPath, Never>()
     private let bookmarkButtonTapped = PassthroughSubject<(indexPath: IndexPath, isSelected: Bool), Never>()
-    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
+    private let viewWillAppearSubject = PassthroughSubject<CurriculumListWeekButtonType, Never>()
     private let backButtonTapped = PassthroughSubject<Void, Never>()
     
     private var cancelBag = Set<AnyCancellable>()
@@ -27,14 +27,6 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
     
     private let viewModel: any CurriculumListWeekViewModel
     
-//    var weekCount: Int?
-//    var selectedIndexPath: IndexPath?
-//    var inputData: CurriculumWeekData? 
-//    {
-//        didSet {
-//            curriculumListByWeekTableView.reloadData()
-//        }
-//    }
     init(viewModel: some CurriculumListWeekViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -56,7 +48,7 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.viewWillAppearSubject.send(())
+        self.viewWillAppearSubject.send(.none)
     }
     
     private func bindInput() {
@@ -68,9 +60,9 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
             .sink { [weak self] type in
                 switch type {
                 case .left:
-                    self?.leftButtonTapped.send(())
+                    self?.leftButtonTapped.send(.left)
                 case .right:
-                    self?.rightButtonTapped.send(())
+                    self?.rightButtonTapped.send(.right)
                 }
             }
             .store(in: &cancelBag)
@@ -177,32 +169,5 @@ extension CurriculumListWeekViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.articleCellTapped.send(indexPath)
-//        if indexPath.row != 0 {
-//            
-//            
-//            guard let inputData else { return }
-//            NotificationCenter.default.post(name: NSNotification.Name("didSelectTableViewCell"), object: inputData.articleData[indexPath.row-1].articleId)
-//        }
     }
 }
-
-
-
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let inputData else { return 0 }
-//        return inputData.articleData.count + 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == 0 {
-//            let cell = CurriculumArticleByWeekRowZeroTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
-//            cell.inputData = inputData?.week
-//            return cell
-//        } else {
-//            let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: curriculumListByWeekTableView)
-//            cell.inputData = inputData?.articleData[indexPath.row - 1]
-//            cell.selectionStyle = .none
-//            cell.backgroundColor = .designSystem(.background)
-//            return cell
-//        }
-//    }

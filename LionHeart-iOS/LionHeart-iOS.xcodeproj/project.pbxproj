@@ -46,7 +46,6 @@
 		B5234FBA2B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */; };
 		B5234FBC2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */; };
 		B5234FBF2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */; };
-		B5234FC12B0C7D3100D6EE58 /* CurriculumListWeekDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FC02B0C7D3100D6EE58 /* CurriculumListWeekDiffableDataSource.swift */; };
 		B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
@@ -389,7 +388,6 @@
 		B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekViewModel.swift; sourceTree = "<group>"; };
 		B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekViewModelImpl.swift; sourceTree = "<group>"; };
 		B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekDiffableModel.swift; sourceTree = "<group>"; };
-		B5234FC02B0C7D3100D6EE58 /* CurriculumListWeekDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekDiffableDataSource.swift; sourceTree = "<group>"; };
 		B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -795,7 +793,6 @@
 			isa = PBXGroup;
 			children = (
 				B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */,
-				B5234FC02B0C7D3100D6EE58 /* CurriculumListWeekDiffableDataSource.swift */,
 			);
 			path = Diffable;
 			sourceTree = "<group>";
@@ -2204,7 +2201,6 @@
 				C0B15E232AC100690058D56B /* LHStackView.swift in Sources */,
 				B59BFD432ADBBFF5005D2D81 /* ArticleFactory.swift in Sources */,
 				B53F4EEE2ADE245B001C5752 /* CurriculumAdaptor.swift in Sources */,
-				B5234FC12B0C7D3100D6EE58 /* CurriculumListWeekDiffableDataSource.swift in Sources */,
 				C0856B732ABFC3070026D9F8 /* BookmarkMangerImpl.swift in Sources */,
 				B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */,
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,

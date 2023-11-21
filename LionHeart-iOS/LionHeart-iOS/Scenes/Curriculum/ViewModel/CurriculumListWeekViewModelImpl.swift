@@ -9,13 +9,16 @@ import Foundation
 import Combine
 
 
-final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel, CurriculumListWeekViewModelPresentable {
-    private let manager: CurriculumListManager
-    private let navigator: CurriculumListByWeekNavigation
-    private enum FlowType { 
+final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel {
+    
+    private enum FlowType {
         case backButtonTapped
         case articleCellTapped(articleId: Int)
     }
+    
+    private let manager: CurriculumListManager
+    private let navigator: CurriculumListByWeekNavigation
+    
     private let navigationSubject = PassthroughSubject<FlowType, Never>()
     private let errorSubject = PassthroughSubject<NetworkError, Never>()
     private var cancelBag = Set<AnyCancellable>()
@@ -44,31 +47,15 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel, Curric
                 }
             }
             .store(in: &cancelBag)
+        
+        self.errorSubject
+            .sink { error in
+                print(error.description)
+            }
+            .store(in: &cancelBag)
     }
     
     func transform(input: CurriculumListWeekViewModelInput) -> CurriculumListWeekViewModelOutput {
-        let viewWillAppearSubject = input.viewWillAppearSubject
-            .flatMap { _ -> AnyPublisher<(CurriculumWeekData, Bool, Bool), Never> in
-                return Future<(CurriculumWeekData, Bool, Bool), NetworkError> { promise in
-                    Task {
-                        do {
-                            let leftButtonHidden = ((4...40) ~= self.weekCount-1)
-                            let rightButtonHidden = ((4...40) ~= self.weekCount+1)
-                            let articlesByWeek = try await self.manager.getArticleListByWeekInfo(week: self.weekCount)
-                            self.curriculumWeekData = articlesByWeek
-                            promise(.success((articlesByWeek, leftButtonHidden, rightButtonHidden)))
-                        } catch {
-                            promise(.failure(error as! NetworkError))
-                        }
-                    }
-                }
-                .catch { error in
-                    self.errorSubject.send(error)
-                    return Just((CurriculumWeekData(articleData: [], week: 10), true, true))
-                }
-                .eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
         
         input.articleCellTapped
             .sink { [weak self] indexPath in
@@ -103,42 +90,18 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel, Curric
         input.backButtonTapped
             .sink { [weak self] in self?.navigationSubject.send(.backButtonTapped) }
             .store(in: &cancelBag)
-
         
+        let viewWillAppearSubject = input.viewWillAppearSubject
         let rightButtonTapped = input.rightButtonTapped
-            .flatMap { _ -> AnyPublisher<(CurriculumWeekData, Bool, Bool), Never> in
-                return Future<(CurriculumWeekData, Bool, Bool), NetworkError> { promise in
-                    Task {
-                        do {
-                            /// 40이면 rightbutton이 히든
-                            /// 4면 leftbutton이 히든
-                            self.weekCount += 1
-                            let leftButtonHidden = ((4...40) ~= self.weekCount-1)
-                            let rightButtonHidden = ((4...40) ~= self.weekCount+1)
-                            let articlesByWeek = try await self.manager.getArticleListByWeekInfo(week: self.weekCount)
-                            self.curriculumWeekData = articlesByWeek
-                            promise(.success((articlesByWeek, leftButtonHidden, rightButtonHidden)))
-                        } catch {
-                            promise(.failure(error as! NetworkError))
-                        }
-                    }
-                }
-                .catch { error in
-                    self.errorSubject.send(error)
-                    return Just((CurriculumWeekData(articleData: [], week: 10), true, true))
-                }
-                .eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
-        
         let leftButtonTapped = input.leftButtonTapped
-            .flatMap { _ -> AnyPublisher<(CurriculumWeekData, Bool, Bool), Never> in
+        let articleByWeekData = Publishers.Merge3(viewWillAppearSubject, rightButtonTapped, leftButtonTapped)
+            .flatMap { direction -> AnyPublisher<(CurriculumWeekData, Bool, Bool), Never> in
                 return Future<(CurriculumWeekData, Bool, Bool), NetworkError> { promise in
                     Task {
                         do {
-                            self.weekCount -= 1
-                            let leftButtonHidden = ((4...40) ~= self.weekCount-1)
-                            let rightButtonHidden = ((4...40) ~= self.weekCount+1)
+                            self.weekCount += direction.addValue
+                            let leftButtonHidden = ((4...40) ~= self.weekCount - 1)
+                            let rightButtonHidden = ((4...40) ~= self.weekCount + 1)
                             let articlesByWeek = try await self.manager.getArticleListByWeekInfo(week: self.weekCount)
                             self.curriculumWeekData = articlesByWeek
                             promise(.success((articlesByWeek, leftButtonHidden, rightButtonHidden)))
@@ -154,24 +117,19 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel, Curric
                 .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
-        
-        let articleByWeekData = Publishers.Merge3(viewWillAppearSubject, rightButtonTapped, leftButtonTapped)
-            .eraseToAnyPublisher()
-            
         
         return CurriculumListWeekViewModelOutput(articleByWeekData: articleByWeekData,
                                                  bookMarkCompleted: bookMarkCompleted)
     }
     
-    func bookmarkArticle(articleId: Int, isSelected: Bool) async throws {
+    private func bookmarkArticle(articleId: Int, isSelected: Bool) async throws {
         try await manager.postBookmark(model: BookmarkRequest(articleId: articleId,
                                                             bookmarkRequestStatus: isSelected))
     }
-    
-    
-    
+}
+
+extension CurriculumListWeekViewModelImpl: CurriculumListWeekViewModelPresentable {
     func setWeek(week: Int) {
         self.weekCount = week
     }
 }
-

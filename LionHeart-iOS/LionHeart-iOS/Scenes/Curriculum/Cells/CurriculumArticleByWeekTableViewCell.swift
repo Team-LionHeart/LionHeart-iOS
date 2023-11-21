@@ -23,8 +23,6 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
 
 //    var bookMarkButtonTapped: ((Bool, IndexPath) -> Void)?
     
-    var bookmarkSubject = PassthroughSubject<(indexPath: IndexPath, isSelected: Bool), Never>()
-    
     private let tableViewCellWholeView = UIView()
     private let articleTitleLabel = LHLabel(type: .head3, color: .white)
     private let articleTagLabel = LHLabel(type: .body4, color: .gray400)
@@ -42,7 +40,6 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -113,22 +110,6 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(10)
         }
-    }
-    
-    func setAddTarget() {
-//        bookMarkButton.tapPublisher
-//            .sink { [weak self] _ in
-//                self?.bookmarkSubject.send((indexPath: indexPath, isSelected: Bool))
-//            }
-//        bookMarkButton.addButtonAction { [weak self] _ in
-//            guard let self else { return }
-//            
-//            self.isSelected.toggle()
-//            self.bookMarkButtonTapped?(self.isSelected, indexPath)
-//            NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
-//                                            object: nil, userInfo: ["bookmarkCellIndexPath": max(0, indexPath.row - 1),
-//                                                                    "bookmarkButtonSelected": self.isSelected])
-//        }
     }
     
     func getIndexPath() -> IndexPath? {
