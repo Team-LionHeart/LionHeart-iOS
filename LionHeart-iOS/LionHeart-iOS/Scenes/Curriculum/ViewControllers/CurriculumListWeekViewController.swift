@@ -18,8 +18,8 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
     private let bookmarkButtonTapped = PassthroughSubject<(indexPath: IndexPath, isSelected: Bool), Never>()
     private let viewWillAppearSubject = PassthroughSubject<CurriculumListWeekButtonType, Never>()
     private let backButtonTapped = PassthroughSubject<Void, Never>()
-    
     private var cancelBag = Set<AnyCancellable>()
+    
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
     private var datasoruce: UITableViewDiffableDataSource<CurriculumListWeekSection, CurriculumListWeekItem>!
     private lazy var headerView = CurriculumArticleByWeekHeaderView(frame: .init(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width*(200 / 375)))

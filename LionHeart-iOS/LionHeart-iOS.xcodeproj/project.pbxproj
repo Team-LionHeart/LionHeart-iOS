@@ -315,9 +315,7 @@
 		F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */; };
 		F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */; };
 		F47329E12A66F5D0001605D4 /* CurriculumResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47329E02A66F5D0001605D4 /* CurriculumResponse.swift */; };
-		F4DB30AE2A611C7C00413EB9 /* CurriculumListByWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30AD2A611C7B00413EB9 /* CurriculumListByWeekViewController.swift */; };
 		F4DB30B02A611C9700413EB9 /* CurriculumListByWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30AF2A611C9700413EB9 /* CurriculumListByWeekData.swift */; };
-		F4DB30B42A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30B32A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift */; };
 		F4DB30B82A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30B72A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift */; };
 		F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30BB2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -653,9 +651,7 @@
 		F4490C062A5CEEA300A6D9D7 /* CurriculumDummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDummyData.swift; sourceTree = "<group>"; };
 		F46522FC2A6048650083FBB2 /* CurriculumImagesByWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumImagesByWeek.swift; sourceTree = "<group>"; };
 		F47329E02A66F5D0001605D4 /* CurriculumResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumResponse.swift; sourceTree = "<group>"; };
-		F4DB30AD2A611C7B00413EB9 /* CurriculumListByWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByWeekViewController.swift; sourceTree = "<group>"; };
 		F4DB30AF2A611C9700413EB9 /* CurriculumListByWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByWeekData.swift; sourceTree = "<group>"; };
-		F4DB30B32A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByWeekCollectionViewCell.swift; sourceTree = "<group>"; };
 		F4DB30B72A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumArticleByWeekTableViewCell.swift; sourceTree = "<group>"; };
 		F4DB30BB2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumArticleByWeekHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1279,7 +1275,6 @@
 			isa = PBXGroup;
 			children = (
 				C0DF034A2A5A9B6A0037F740 /* CurriculumViewController.swift */,
-				F4DB30AD2A611C7B00413EB9 /* CurriculumListByWeekViewController.swift */,
 				B5234FB62B0C78EB00D6EE58 /* CurriculumListWeekViewController.swift */,
 			);
 			path = ViewControllers;
@@ -1300,7 +1295,6 @@
 			isa = PBXGroup;
 			children = (
 				C0DF03442A5A9A910037F740 /* CurriculumTableViewCell.swift */,
-				F4DB30B32A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift */,
 				F4DB30B72A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift */,
 				F4DB30BB2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift */,
 			);
@@ -2041,7 +2035,6 @@
 				4A918E7D2AE11936003CB8F9 /* ArticleCoordinatorImpl.swift in Sources */,
 				C0B15E1B2AC0169D0058D56B /* LHCollectionView.swift in Sources */,
 				F4490C072A5CEEA300A6D9D7 /* CurriculumDummyData.swift in Sources */,
-				F4DB30AE2A611C7C00413EB9 /* CurriculumListByWeekViewController.swift in Sources */,
 				C06D23D02B0481F00048AFDB /* OnboardingViewModel.swift in Sources */,
 				B59892EC2A5B94E100CE1FEB /* UIApplication+.swift in Sources */,
 				C0856B652ABFB8640026D9F8 /* TodayManagerImpl.swift in Sources */,
@@ -2152,7 +2145,6 @@
 				C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */,
 				C0856B812ABFCD830026D9F8 /* OnboardingManagerImpl.swift in Sources */,
 				B57BEB6C2A6149AD00D1727C /* NetworkRequest.swift in Sources */,
-				F4DB30B42A61250500413EB9 /* CurriculumListByWeekCollectionViewCell.swift in Sources */,
 				C0856B692ABFB9140026D9F8 /* ArticleServiceImpl.swift in Sources */,
 				F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */,
 				C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */,

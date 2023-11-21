@@ -35,9 +35,12 @@ enum CurriculumListWeekButtonType {
     
     var addValue: Int {
         switch self {
-        case .left: -1
-        case .right: 1
-        case .none: 0
+        case .left:
+            return -1
+        case .right:
+            return 1
+        case .none:
+            return 0
         }
     }
 }

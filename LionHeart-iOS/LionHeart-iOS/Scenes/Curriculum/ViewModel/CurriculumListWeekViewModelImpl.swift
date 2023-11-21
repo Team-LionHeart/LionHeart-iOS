@@ -25,8 +25,6 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel {
     
     private var weekCount: Int = 0
     
-    var selectedIndexPath: IndexPath?
-    
     private var curriculumWeekData: CurriculumWeekData?
     
     init(manager: CurriculumListManager, navigator: CurriculumListByWeekNavigation) {
