@@ -50,6 +50,7 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
         setHierarchy()
         setLayout()
         setDelegate()
+        setDataSource()
         bindInput()
         bind()
     }
@@ -96,7 +97,6 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
             .receive(on: RunLoop.main)
             .sink { message in
                 print(message)
-                LHToast.show(message: message)
             }
             .store(in: &cancelBag)
     }

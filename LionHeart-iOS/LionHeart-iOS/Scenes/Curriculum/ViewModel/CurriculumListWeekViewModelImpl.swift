@@ -63,7 +63,7 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel, Curric
                 }
                 .catch { error in
                     self.errorSubject.send(error)
-                    return Just(CurriculumWeekData(articleData: [.init(articleId: 0, articleTitle: "", articleImage: "", articleContent: "", articleReadTime: 0, isArticleBookmarked: false, articleTags: [])], week: 10))
+                    return Just(CurriculumWeekData(articleData: [], week: 10))
                 }
                 .eraseToAnyPublisher()
             }
