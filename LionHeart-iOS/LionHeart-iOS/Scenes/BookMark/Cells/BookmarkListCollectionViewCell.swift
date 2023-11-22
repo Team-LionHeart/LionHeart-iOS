@@ -19,7 +19,7 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
     private let articleImageView = LHImageView(contentMode: .scaleToFill)
     private let articleTitleLabel = LHLabel(type: .title2, color: .white, lines: 2).priorty(.defaultLow, .horizontal)
     private let tagLabel = LHLabel(type: .body4, color: .gray400).priorty(.defaultLow, .horizontal)
-    private lazy var bookmarkButton = LHImageButton(setImage: .assetImage(.bookmarkActiveSmall)).priorty(.defaultHigh, .horizontal)
+    lazy var bookmarkButton = LHImageButton(setImage: .assetImage(.bookmarkActiveSmall)).priorty(.defaultHigh, .horizontal)
     private let bottomLineView = LHUnderLine(lineColor: .gray800)
     
     var bookmarkButtonClosure: ((IndexPath) -> Void)?

@@ -10,4 +10,5 @@ import Foundation
 protocol BookmarkFactory {
     func makeAdaptor(coordinator: BookmarkCoordinator) -> EntireBookmarkNavigation
     func makeBookmarkViewController(coordinator: BookmarkCoordinator) -> BookmarkViewControllerable
+    func makeBookmarkViewModel(coordinator: BookmarkCoordinator) -> any BookmarkViewModel & BookmarkViewModelPresentable
 }
