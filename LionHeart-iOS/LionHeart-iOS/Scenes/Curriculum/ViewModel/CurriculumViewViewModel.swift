@@ -22,6 +22,6 @@ struct CurriculumViewViewModelInput {
 
 struct CurriculumViewViewModelOutput {
     let firstScrollIndexPath: AnyPublisher<IndexPath, Never>
-    let curriculumMonth: AnyPublisher<[CurriculumMonthData], Never>
-    let userInfo: AnyPublisher<UserInfoData, Never>
+    let curriculumMonth: AnyPublisher<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), Never>
+//    let userInfo: AnyPublisher<UserInfoData, Never>
 }

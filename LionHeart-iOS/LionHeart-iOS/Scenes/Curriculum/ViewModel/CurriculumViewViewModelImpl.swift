@@ -96,15 +96,42 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
             .eraseToAnyPublisher()
         
         
-        input.viewWillAppear
-            .flatMap { _ -> AnyPublisher<[CurriculumMonthData], Never> in
-                
+        let curriculumMonth = input.viewWillAppear
+            .flatMap { _ -> AnyPublisher<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), Never> in
+                return Future<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), NetworkError> { promise in
+                    Task {
+                        do {
+                            let userInfo = try await self.getCurriculumData()
+                            promise(.success((userInfo: userInfo, monthData: CurriculumMonthData.dummy())))
+                        } catch {
+                            promise(.failure(error as! NetworkError))
+                        }
+                    }
+                }.catch { error in
+                    self.errorSubject.send(error)
+                    let empty = UserInfoData(userWeekInfo: 0, userDayInfo: 0, progress: 0, remainingDay: 0)
+                    let emptyMonth = CurriculumMonthData(month: "1", weekDatas: [])
+                    return Just((userInfo: empty, monthData: [emptyMonth]))
+                }
+                .eraseToAnyPublisher()
             }
+            .eraseToAnyPublisher()
+        
+//        
+//        
+//        
+//        
+//            .map {
+//                return CurriculumMonthData.dummy()
+//            }
+//            .eraseToAnyPublisher()
+        
+        
+            
         
         
         return Output(firstScrollIndexPath: scrollIndexPath,
-                      curriculumMonth: <#T##AnyPublisher<[CurriculumMonthData], Never>#>,
-                      userInfo: <#T##AnyPublisher<UserInfoData, Never>#>)
+                      curriculumMonth: curriculumMonth)
     }
     
 }

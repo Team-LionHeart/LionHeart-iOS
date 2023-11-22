@@ -26,7 +26,7 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
     
     private var cancelBag = Set<AnyCancellable>()
     
-    private var datasource: UITableViewDiffableDataSource<CurriculumViewSection, CurriculumViewItem>!
+    private var datasource: UITableViewDiffableDataSource<CurriculumMonthData, CurriculumDummyData>!
 
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumMain, viewController: self)
     private let progressBar = LHLottie()
@@ -59,14 +59,14 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
         setUI()
         setHierarchy()
         setLayout()
-//        setDelegate()
+        setDelegate()
         setDataSource()
         bindInput()
         bind()
     }
     
     override func viewDidLayoutSubviews() {
-        self.viewDidLayoutSubviewSubject.send(())
+//        self.viewDidLayoutSubviewSubject.send(())
 //        if isFirstPresented {
 //            self.scrollToUserWeek()
 //        }
@@ -103,60 +103,47 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
         let output = viewModel.transform(input: input)
         output.curriculumMonth
             .sink { [weak self] monthData in
-                self?.applySnapshot(monthData: monthData)
+                self?.applySnapshot(monthData: monthData.monthData)
             }
             .store(in: &cancelBag)
         
-        output.firstScrollIndexPath
-            .sink { [weak self] indexPath in
-                self?.scrollToUserWeek(indexPath: indexPath)
-            }
-            .store(in: &cancelBag)
+//        output.firstScrollIndexPath
+//            .sink { [weak self] indexPath in
+//                self?.scrollToUserWeek(indexPath: indexPath)
+//            }
+//            .store(in: &cancelBag)
     }
     
     private func setDataSource() {
         self.datasource = UITableViewDiffableDataSource(tableView: self.curriculumTableView, cellProvider: { tableView, indexPath, itemIdentifier in
-            switch itemIdentifier {
-            case .article(let weekData):
-                let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
-                
-                cell.toggleButtonTapped
-                    .sink { [weak self] _ in
-                        self?.toggleButtonTapped(indexPath: indexPath)
-                    }
-                    .store(in: &self.cancelBag)
-                
-                cell.rightArrowButtonTapped
-                    .sink { [weak self] _ in
-                        self?.moveToListByWeekButtonTapped(indexPath: indexPath)
-                    }
-                    .store(in: &self.cancelBag)
-                
-                cell.inputData = weekData
-                cell.selectionStyle = .none
-                
-//                let data = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
-//                cell.delegate = self
-//                cell.cellIndexPath = indexPath
-                
-                cell.curriculumToggleDirectionButton.isSelected = weekData.isExpanded
-                return cell
-            }
+            let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
+//            cell.toggleButtonTapped
+//                .sink { [weak self] _ in
+//                    self?.toggleButtonTapped(indexPath: indexPath)
+//                }
+//                .store(in: &self.cancelBag)
+            
+//            cell.rightArrowButtonTapped
+//                .sink { [weak self] _ in
+//                    self?.moveToListByWeekButtonTapped(indexPath: indexPath)
+//                }
+//                .store(in: &self.cancelBag)
+            
+            cell.inputData = itemIdentifier
+            cell.selectionStyle = .none
+            cell.curriculumToggleDirectionButton.isSelected = itemIdentifier.isExpanded
+            return cell
         })
     }
     
     private func applySnapshot(monthData: [CurriculumMonthData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<CurriculumViewSection, CurriculumViewItem>()
-        CurriculumViewSection.allCases.forEach {
-            snapshot.appendSections([$0])
+        var snapshot = NSDiffableDataSourceSnapshot<CurriculumMonthData, CurriculumDummyData>()
+        
+        monthData.forEach { month in
+            snapshot.appendSections([month])
+            snapshot.appendItems(month.weekDatas, toSection: month)
         }
         
-        let items = monthData.flatMap { data in
-            return data.weekDatas.map {
-                return CurriculumViewItem.article(weekData: $0)
-            }
-        }
-        snapshot.appendItems(items, toSection: .month2)
         self.datasource.apply(snapshot)
     }
 }
@@ -218,9 +205,9 @@ private extension CurriculumViewController {
         }
     }
     
-//    func setDelegate() {
-//        curriculumTableView.dataSource = self
-//    }
+    func setDelegate() {
+        curriculumTableView.delegate = self
+    }
     
     func scrollToUserWeek(indexPath: IndexPath) {
         self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
@@ -228,16 +215,26 @@ private extension CurriculumViewController {
     }
     
     func configureUserInfoData() {
-        guard let userInfoData else { return }
-        dDayLabel.text = "D-\(userInfoData.remainingDay)"
-        let progressName: String = "progressbar_\(userInfoData.progress)m"
-        progressBar.animation = .named(progressName)
-        progressBar.play()
-        curriculumUserInfoView.userInfo = userInfoData
+//        guard let userInfoData else { return }
+//        dDayLabel.text = "D-\(userInfoData.remainingDay)"
+//        let progressName: String = "progressbar_\(userInfoData.progress)m"
+//        progressBar.animation = .named(progressName)
+//        progressBar.play()
+//        curriculumUserInfoView.userInfo = userInfoData
     }
 }
 
-//extension CurriculumViewController: UITableViewDataSource {
+extension CurriculumViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionModel = datasource.snapshot().sectionIdentifiers[section]
+        
+        let headerView = CurriculumTableViewHeaderView()
+        headerView.configureHeaderView(month: sectionModel.month)
+        return headerView
+    }
+    
+}
+
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return curriculumViewDatas[section].weekDatas.count
 //    }
@@ -259,19 +256,19 @@ private extension CurriculumViewController {
 //}
 
 extension CurriculumViewController {
-    func toggleButtonTapped(indexPath: IndexPath?) {
-        self.isFirstPresented = false
-        guard let indexPath  else { return }
-        let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
-        curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
-        curriculumTableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-    
-    func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
-        guard let indexPath else { return }
-        let itemIndex = indexPath.section * 4 + indexPath.row + 4
-        self.navigator.articleListCellTapped(itemIndex: itemIndex)
-    }
+//    func toggleButtonTapped(indexPath: IndexPath?) {
+//        self.isFirstPresented = false
+//        guard let indexPath  else { return }
+//        let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
+//        curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
+//        curriculumTableView.reloadRows(at: [indexPath], with: .automatic)
+//    }
+//    
+//    func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
+//        guard let indexPath else { return }
+//        let itemIndex = indexPath.section * 4 + indexPath.row + 4
+//        self.navigator.articleListCellTapped(itemIndex: itemIndex)
+//    }
 }
 
 //extension CurriculumViewController: ViewControllerServiceable {
