@@ -18,10 +18,12 @@ struct CurriculumViewViewModelInput {
     let bookmarkButtonTapped: PassthroughSubject<Void, Never>
     let myPageButtonTapped: PassthroughSubject<Void, Never>
     let rightArrowButtonTapped: PassthroughSubject<Int, Never>
+    let toggleButtonTapped: PassthroughSubject<IndexPath, Never>
 }
 
 struct CurriculumViewViewModelOutput {
     let firstScrollIndexPath: AnyPublisher<IndexPath, Never>
     let curriculumMonth: AnyPublisher<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), Never>
+    let toggleButtonTapped: AnyPublisher<[CurriculumMonthData], Never>
 //    let userInfo: AnyPublisher<UserInfoData, Never>
 }

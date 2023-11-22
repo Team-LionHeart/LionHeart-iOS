@@ -80,6 +80,17 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
             }
             .store(in: &cancelBag)
         
+        let toggleButtonTapped = input.toggleButtonTapped
+            .map { [weak self] indexPath -> [CurriculumMonthData] in
+                guard let self = self else { return [] }
+                let previousWeekDatas = self.curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
+                self.curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
+                return self.curriculumViewDatas
+            }
+            .eraseToAnyPublisher()
+        
+            
+        
         
         let scrollIndexPath = input.viewDidLayoutSubviews
             .map { _ -> IndexPath in
@@ -131,7 +142,7 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
         
         
         return Output(firstScrollIndexPath: scrollIndexPath,
-                      curriculumMonth: curriculumMonth)
+                      curriculumMonth: curriculumMonth, toggleButtonTapped: toggleButtonTapped)
     }
     
 }

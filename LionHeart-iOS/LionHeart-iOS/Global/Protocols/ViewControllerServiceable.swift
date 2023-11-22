@@ -27,22 +27,22 @@ extension ViewControllerServiceable where Self: UIViewController {
     }
 
     func showLoading() {
-//            if let loadingView = getLoadingView() {
-//                loadingView.startAnimating()
-//                return
-//            }
-//            let loadingView = LHLoadingView()
-//            loadingView.startAnimating()
-//
-//            view.addSubview(loadingView)
-//            loadingView.snp.makeConstraints { make in
-//                make.edges.equalToSuperview()
-//            }
+            if let loadingView = getLoadingView() {
+                loadingView.startAnimating()
+                return
+            }
+            let loadingView = LHLoadingView()
+            loadingView.startAnimating()
+
+            view.addSubview(loadingView)
+            loadingView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
     }
 
     func hideLoading() {
-//        getLoadingView()?.stopAnimating()
-//        getLoadingView()?.removeFromSuperview()
+        getLoadingView()?.stopAnimating()
+        getLoadingView()?.removeFromSuperview()
     }
 
     private func getLoadingView() -> LHLoadingView? {

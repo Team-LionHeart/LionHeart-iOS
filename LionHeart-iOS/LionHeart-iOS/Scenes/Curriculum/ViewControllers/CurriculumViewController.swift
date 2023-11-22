@@ -23,6 +23,7 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
     private let bookmarkButtonTapped = PassthroughSubject<Void, Never>()
     private let myPageButtonTapped = PassthroughSubject<Void, Never>()
     private let rightArrowButtonTapped = PassthroughSubject<Int, Never>()
+    private let toggleButtonTapped = PassthroughSubject<IndexPath, Never>()
     
     private var cancelBag = Set<AnyCancellable>()
     
@@ -37,7 +38,7 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
     private let curriculumTableView = CurriculumTableView()
     
     private let viewModel: any CurriculumViewViewModel
-//    private var isFirstPresented: Bool = true
+    private var isFirstPresented: Bool = true
 //    private var curriculumViewDatas = CurriculumMonthData.dummy()
 //    private var userInfoData: UserInfoData? {
 //        didSet {
@@ -99,11 +100,22 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
                                                  viewWillAppear: viewWillAppearSubject,
                                                  bookmarkButtonTapped: bookmarkButtonTapped,
                                                  myPageButtonTapped: myPageButtonTapped,
-                                                 rightArrowButtonTapped: rightArrowButtonTapped)
+                                                 rightArrowButtonTapped: rightArrowButtonTapped,
+                                                 toggleButtonTapped: toggleButtonTapped)
         let output = viewModel.transform(input: input)
         output.curriculumMonth
+            .receive(on: RunLoop.main)
             .sink { [weak self] monthData in
                 self?.applySnapshot(monthData: monthData.monthData)
+                self?.configureUserInfoData(userInfoData: monthData.userInfo)
+                self?.hideLoading()
+            }
+            .store(in: &cancelBag)
+        
+        output.toggleButtonTapped
+            .receive(on: RunLoop.main)
+            .sink { [weak self] datas in
+                self?.applySnapshot(monthData: datas)
             }
             .store(in: &cancelBag)
         
@@ -117,17 +129,17 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
     private func setDataSource() {
         self.datasource = UITableViewDiffableDataSource(tableView: self.curriculumTableView, cellProvider: { tableView, indexPath, itemIdentifier in
             let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
-//            cell.toggleButtonTapped
-//                .sink { [weak self] _ in
-//                    self?.toggleButtonTapped(indexPath: indexPath)
-//                }
-//                .store(in: &self.cancelBag)
+            cell.toggleButtonTapped
+                .sink { [weak self] _ in
+                    self?.toggleButtonTapped.send(indexPath)
+                }
+                .store(in: &self.cancelBag)
             
-//            cell.rightArrowButtonTapped
-//                .sink { [weak self] _ in
-//                    self?.moveToListByWeekButtonTapped(indexPath: indexPath)
-//                }
-//                .store(in: &self.cancelBag)
+            cell.rightArrowButtonTapped
+                .sink { [weak self] _ in
+                    print(indexPath.section, indexPath.row)
+                }
+                .store(in: &cell.cancelBag)
             
             cell.inputData = itemIdentifier
             cell.selectionStyle = .none
@@ -143,8 +155,9 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
             snapshot.appendSections([month])
             snapshot.appendItems(month.weekDatas, toSection: month)
         }
-        
+        self.datasource.defaultRowAnimation = .middle
         self.datasource.apply(snapshot)
+        
     }
 }
 
@@ -214,13 +227,13 @@ private extension CurriculumViewController {
         
     }
     
-    func configureUserInfoData() {
-//        guard let userInfoData else { return }
-//        dDayLabel.text = "D-\(userInfoData.remainingDay)"
-//        let progressName: String = "progressbar_\(userInfoData.progress)m"
-//        progressBar.animation = .named(progressName)
-//        progressBar.play()
-//        curriculumUserInfoView.userInfo = userInfoData
+    func configureUserInfoData(userInfoData: UserInfoData?) {
+        guard let userInfoData else { return }
+        dDayLabel.text = "D-\(userInfoData.remainingDay)"
+        let progressName: String = "progressbar_\(userInfoData.progress)m"
+        progressBar.animation = .named(progressName)
+        progressBar.play()
+        curriculumUserInfoView.userInfo = userInfoData
     }
 }
 

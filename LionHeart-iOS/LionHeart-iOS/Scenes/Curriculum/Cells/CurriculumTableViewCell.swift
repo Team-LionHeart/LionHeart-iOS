@@ -11,10 +11,10 @@ import Combine
 
 import SnapKit
 
-protocol CurriculumTableViewToggleButtonTappedProtocol: AnyObject {
-    func toggleButtonTapped(indexPath: IndexPath?)
-    func moveToListByWeekButtonTapped(indexPath: IndexPath?)
-}
+//protocol CurriculumTableViewToggleButtonTappedProtocol: AnyObject {
+//    func toggleButtonTapped(indexPath: IndexPath?)
+//    func moveToListByWeekButtonTapped(indexPath: IndexPath?)
+//}
 
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
@@ -23,7 +23,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     
     var cancelBag = Set<AnyCancellable>()
 
-    weak var delegate: CurriculumTableViewToggleButtonTappedProtocol?
+//    weak var delegate: CurriculumTableViewToggleButtonTappedProtocol?
 
     var cellIndexPath: IndexPath?
     
