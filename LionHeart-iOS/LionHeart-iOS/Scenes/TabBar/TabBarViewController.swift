@@ -10,10 +10,24 @@ import UIKit
 
 import SnapKit
 
-final class TabBarViewController: UITabBarController {
+protocol Tabbar {
+    var load: ((UINavigationController) -> ())? { get set }
+    var todayArticleTapSelected: ((UINavigationController) -> ())? { get set }
+    var searchTapSelected: ((UINavigationController) -> ())? { get set }
+    var curriculumTapSelected: ((UINavigationController) -> ())? { get set }
+    var challengeTapSelected: ((UINavigationController) -> ())? { get set }
+}
+
+final class TabBarViewController: UITabBarController, Tabbar {
+    var load: ((UINavigationController) -> ())?
+    var todayArticleTapSelected: ((UINavigationController) -> ())?
+    var searchTapSelected: ((UINavigationController) -> ())?
+    var curriculumTapSelected: ((UINavigationController) -> ())?
+    var challengeTapSelected: ((UINavigationController) -> ())?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        delegate = self
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.backgroundColor = .black
         let tabBarItemAppearance = UITabBarItemAppearance()
@@ -33,5 +47,21 @@ final class TabBarViewController: UITabBarController {
         super.viewDidLayoutSubviews()
         tabBar.frame.size.height = 100
         tabBar.frame.origin.y = view.frame.height - 100
+    }
+}
+
+extension TabBarViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        guard let controller = viewControllers?[selectedIndex] as? UINavigationController else { return }
+        switch selectedIndex {
+        case 0:
+            todayArticleTapSelected?(controller)
+        case 1:
+            
+        case 2:
+        case 3:
+        default:
+            break
+        }
     }
 }
