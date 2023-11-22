@@ -8,8 +8,8 @@
 import Foundation
 
 enum BookmarkRow: Hashable {
-    case detail(String)
-    case list(ArticleSummaries)
+    case detail(nickname: String)
+    case list(articleList: ArticleSummaries)
 }
 
 struct BookmarkSectionModel {

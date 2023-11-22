@@ -55,19 +55,13 @@ final class BookmarkViewModelImpl: BookmarkViewModel, BookmarkViewModelPresentab
             }
             .store(in: &cancelBag)
         
-        // diffable section model 낼 학교 가면서 의성 오빠 PR 다시 보귀
-        
         let viewWillAppear = input.viewWillAppear
-            .flatMap { _ -> AnyPublisher<BookmarkSectionModel, Never> in
-                return Future<BookmarkSectionModel, NetworkError> { promise in
+            .flatMap { _ -> AnyPublisher<BookmarkAppData, Never> in
+                return Future<BookmarkAppData, NetworkError> { promise in
                     Task {
                         do {
                             self.bookmarkAppData = try await self.manager.getBookmark()
-                            
-                            let data = self.bookmarkAppData.articleSummaries.map{$0}
-                            
-                            promise(.success(BookmarkSectionModel(detailData: [BookmarkRow.detail(self.bookmarkAppData.nickName)],
-                                                                           listData: [BookmarkRow.list(data)])))
+                            promise(.success(self.bookmarkAppData))
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }
@@ -75,19 +69,20 @@ final class BookmarkViewModelImpl: BookmarkViewModel, BookmarkViewModelPresentab
                 }
                 .catch { error in
                     self.errorSubject.send(error)
-                    // 빈 배열 들어갈 예정
-//                    return Just([BookmarkSectionModel(detailData: [], listData: [])])
+                    return Just(BookmarkAppData.empty)
                 }
                 .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
         
         let bookmarkButtonTapped = input.bookmarkButtonTapped
-            .flatMap { indexPath -> AnyPublisher<String, Never> in
-                return Future<String, NetworkError> { promise in
+            .flatMap { indexPath -> AnyPublisher<BookmarkAppData, Never> in
+                return Future<BookmarkAppData, NetworkError> { promise in
                     Task {
                         do {
                             try await self.manager.postBookmark(model: .init(articleId: self.bookmarkAppData.articleSummaries[indexPath.item].articleID, bookmarkRequestStatus: !self.bookmarkAppData.articleSummaries[indexPath.item].bookmarked))
+                            self.bookmarkAppData.articleSummaries.remove(at: indexPath.item)
+                            promise(.success(self.bookmarkAppData))
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }
@@ -95,7 +90,7 @@ final class BookmarkViewModelImpl: BookmarkViewModel, BookmarkViewModelPresentab
                 }
                 .catch { error in
                     self.errorSubject.send(error)
-                    return Just(error.description)
+                    return Just(BookmarkAppData.empty)
                 }
                 .eraseToAnyPublisher()
             }
@@ -114,12 +109,6 @@ final class BookmarkViewModelImpl: BookmarkViewModel, BookmarkViewModelPresentab
 
 extension BookmarkViewModelImpl {
     func handleError(_ error: NetworkError) {
-//        if case .clientError(let code, _) = error {
-//            if code == NetworkErrorCode.unfoundUserErrorCode {
-//                DispatchQueue.main.async {
-//                    self.navigator.checkUserIsVerified(userState: .nonVerified, kakaoToken: self.token)
-//                }
-//            }
-//        }
+        print(error.description)
     }
 }

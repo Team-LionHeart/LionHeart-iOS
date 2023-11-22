@@ -9,7 +9,7 @@ import Foundation
 
 protocol BookmarkService {
     func getBookmark() async throws -> BookmarkResponse?
-    func postBookmark(model: BookmarkRequest) async throws -> BookmarkResponse?
+    func postBookmark(model: BookmarkRequest) async throws -> String?
 }
 
 final class BookmarkServiceImpl: BookmarkService {
@@ -25,7 +25,7 @@ final class BookmarkServiceImpl: BookmarkService {
         return try await apiService.request(request)
     }
     
-    func postBookmark(model: BookmarkRequest) async throws -> BookmarkResponse? {
+    func postBookmark(model: BookmarkRequest) async throws -> String? {
         let request = try makePostBookmakrUrlRequest(model: model)
         return try await apiService.request(request)
     }

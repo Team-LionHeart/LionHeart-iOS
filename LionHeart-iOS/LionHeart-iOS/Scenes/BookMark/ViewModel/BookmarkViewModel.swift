@@ -20,6 +20,6 @@ struct BookmarkViewModelInput {
 }
 
 struct BookmarkViewModelOutput {
-    let viewWillAppear: AnyPublisher<BookmarkSectionModel, Never>
-    let bookmarkButtonTapped: AnyPublisher<String, Never>
+    let viewWillAppear: AnyPublisher<BookmarkAppData, Never>
+    let bookmarkButtonTapped: AnyPublisher<BookmarkAppData, Never>
 }

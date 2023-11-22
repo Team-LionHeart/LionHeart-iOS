@@ -31,8 +31,6 @@ final class BookmarkViewController: UIViewController, BookmarkViewControllerable
     private lazy var bookmarkCollectionView = LHCollectionView()
     private var diffableDataSource: UICollectionViewDiffableDataSource<BookmarkSection, BookmarkRow>!
     
-    private var bookmarkAppData: BookmarkAppData?
-    
     init(viewModel: some BookmarkViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -47,12 +45,12 @@ final class BookmarkViewController: UIViewController, BookmarkViewControllerable
         setUI()
         setHierarchy()
         registerCell()
+        setLayout()
         setTabbar()
+        setDelegate()
         setDataSource()
-        
         bind()
         bindInput()
-        setDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +77,6 @@ private extension BookmarkViewController {
     }
     
     func setLayout() {
-
         navigationBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
@@ -100,6 +97,10 @@ private extension BookmarkViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    func setDelegate() {
+        bookmarkCollectionView.delegate = self
+    }
+    
     private func bind() {
         let input = BookmarkViewModelInput(viewWillAppear: viewWillAppear,
                                            articleCellTapped: articleCellTapped,
@@ -109,14 +110,14 @@ private extension BookmarkViewController {
         let output = viewModel.transform(input: input)
         
         output.viewWillAppear
-            .sink { [weak self] result in
-                switch result {
-                case .success(let data):
-                    // 데이터!
-                    self?.updateDiffableDataSource(section: data)
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
+            .sink { [weak self] data in
+                self?.updateDiffableDataSource(sectionModel: data)
+            }
+            .store(in: &cancelBag)
+        
+        output.bookmarkButtonTapped
+            .sink { [weak self] data in
+                self?.updateDiffableDataSource(sectionModel: data)
             }
             .store(in: &cancelBag)
     }
@@ -129,17 +130,26 @@ private extension BookmarkViewController {
             .store(in: &cancelBag)
     }
     
-    private func updateDiffableDataSource(section: BookmarkSectionModel) {
+    private func updateDiffableDataSource(sectionModel: BookmarkAppData) {
         var snapshot = NSDiffableDataSourceSnapshot<BookmarkSection, BookmarkRow>()
         snapshot.appendSections([.detailBookmark, .listBookmark])
-        snapshot.appendItems(section.detailData, toSection: .detailBookmark)
-        print("출력점", section.listData)
-        snapshot.appendItems(section.listData, toSection: .listBookmark)
-        self.diffableDataSource.apply(snapshot)
+        snapshot.appendItems([BookmarkRow.detail(nickname: sectionModel.nickName)], toSection: .detailBookmark)
+
+        var item = sectionModel.articleSummaries.map {
+            return BookmarkRow.list(articleList: ArticleSummaries(title: $0.title, articleID: $0.articleID, articleImage: $0.articleImage, bookmarked: $0.bookmarked, tags: $0.tags))
+        }
+        
+        if item.isEmpty {
+            item = [BookmarkRow.list(articleList: ArticleSummaries.empty)]
+        }
+    
+        snapshot.appendItems(item, toSection: .listBookmark)
+        self.diffableDataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func setDataSource() {
-        self.diffableDataSource = UICollectionViewDiffableDataSource<BookmarkSection, BookmarkRow>(collectionView: self.bookmarkCollectionView) { (collectionView, indexPath, identifier) -> UICollectionViewCell? in
+        self.diffableDataSource = UICollectionViewDiffableDataSource<BookmarkSection, BookmarkRow>(collectionView: self.bookmarkCollectionView, cellProvider: {
+            collectionView, indexPath, identifier in
             
             switch identifier {
                 
@@ -147,32 +157,30 @@ private extension BookmarkViewController {
                 let cell = BookmarkDetailCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
                 cell.inputData = nickname
                 return cell
-            case .list(let appData):
+            case .list(let bookmarkAppData):
                 let cell = BookmarkListCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
                 
-                if appData.isEmpty {
+                if bookmarkAppData.title == "empty" {
                     collectionView.setEmptyView(emptyText: """
                                                             아직 담아본 아티클이 없어요.
                                                             다른 아티클을 읽어볼까요?
                                                             """)
-                    return cell
-                    
+                    cell.isHidden = true
                 } else {
-                    // indexPath 안 써도 되는 거 아니뉴
-                    cell.inputData = appData[indexPath.item]
+                    cell.inputData = bookmarkAppData
                     cell.bookmarkButtonClosure = { indexPath in
                         self.bookmarkButtonTapped.send(indexPath)
                     }
-                    return cell
                 }
-                
-                // 북마크 데이터 상태값 전환 후, collectionViewData 지우기
-                
-                // 이거 이따가...
-                //                        collectionView.deleteItems(at: [indexPath])
-                //                        LHToast.show(message: "북마크가 해제되었습니다")
+                return cell
             }
-        }
+        })
+    }
+}
+
+extension BookmarkViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.articleCellTapped.send(indexPath)
     }
 }
 
@@ -191,9 +199,5 @@ extension BookmarkViewController: UICollectionViewDelegateFlowLayout {
         } else {
             return CGSize(width: Constant.Screen.width - 40, height: ScreenUtils.getHeight(100))
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.articleCellTapped.send(indexPath)
     }
 }
