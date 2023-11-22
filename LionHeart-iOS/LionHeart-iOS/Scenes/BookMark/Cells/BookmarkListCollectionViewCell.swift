@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
@@ -22,7 +23,8 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
     lazy var bookmarkButton = LHImageButton(setImage: .assetImage(.bookmarkActiveSmall)).priorty(.defaultHigh, .horizontal)
     private let bottomLineView = LHUnderLine(lineColor: .gray800)
     
-    var bookmarkButtonClosure: ((IndexPath) -> Void)?
+    let bookmarkButtonTapped = PassthroughSubject<IndexPath, Never>()
+    private var cancelBag = Set<AnyCancellable>()
     
     var inputData: ArticleSummaries? {
         didSet {
@@ -87,9 +89,11 @@ private extension BookmarkListCollectionViewCell {
     }
     
     func setButtonAction() {
-        bookmarkButton.addButtonAction { _ in
-            guard let indexPath = self.getIndexPath() else { return }
-            self.bookmarkButtonClosure?(indexPath)
-        }
+        bookmarkButton.tapPublisher
+            .sink { [weak self] _ in
+                guard let indexPath = self?.getIndexPath() else { return }
+                self?.bookmarkButtonTapped.send(indexPath)
+            }
+            .store(in: &cancelBag)
     }
 }

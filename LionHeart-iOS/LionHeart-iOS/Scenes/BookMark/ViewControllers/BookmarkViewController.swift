@@ -168,9 +168,12 @@ private extension BookmarkViewController {
                     cell.isHidden = true
                 } else {
                     cell.inputData = bookmarkAppData
-                    cell.bookmarkButtonClosure = { indexPath in
-                        self.bookmarkButtonTapped.send(indexPath)
-                    }
+                    
+                    cell.bookmarkButtonTapped
+                        .sink { [weak self] indexPath in
+                            self?.bookmarkButtonTapped.send(indexPath)
+                        }
+                        .store(in: &self.cancelBag)
                 }
                 return cell
             }
