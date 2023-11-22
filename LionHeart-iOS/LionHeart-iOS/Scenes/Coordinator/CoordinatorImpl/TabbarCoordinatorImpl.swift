@@ -29,10 +29,10 @@ final class TabbarCoordinatorImpl: Coordinator {
         let curriculumNavigationController = UINavigationController()
         let challengeNavigationController = UINavigationController()
         
-        startTodayArticleFlow(todayNavigationController)
-        startArticleCategoryFlow(articleCategoryNavigationController)
-        startCurriculumFlow(curriculumNavigationController)
-        startChallengeFlow(challengeNavigationController)
+        startTodayArticleFlow(todayNavigationController, from: parentCoordinator)
+        startArticleCategoryFlow(articleCategoryNavigationController, from: parentCoordinator)
+        startCurriculumFlow(curriculumNavigationController, from: parentCoordinator)
+        startChallengeFlow(challengeNavigationController, from: parentCoordinator)
         
         tabbarController.viewControllers = [todayNavigationController, articleCategoryNavigationController, curriculumNavigationController, challengeNavigationController]
         
@@ -44,35 +44,35 @@ final class TabbarCoordinatorImpl: Coordinator {
 
 private extension TabbarCoordinatorImpl {
     
-    func startTodayArticleFlow(_ navi: UINavigationController) {
+    func startTodayArticleFlow(_ navi: UINavigationController, from parent: Coordinator?) {
         let todayCoordinator = TodayCoordinatorImpl(navigationController: navi, factory: TodayFactoryImpl())
-        todayCoordinator.parentCoordinator = parentCoordinator
+        todayCoordinator.parentCoordinator = parent
         navi.tabBarItem = .makeTabItem(.today)
-        self.parentCoordinator?.children.append(todayCoordinator)
+        parent?.children.append(todayCoordinator)
         todayCoordinator.showTodayViewController()
     }
     
-    func startArticleCategoryFlow(_ navi: UINavigationController) {
+    func startArticleCategoryFlow(_ navi: UINavigationController, from parent: Coordinator?) {
         let articleCategoryCoordinator = ArticleCategoryCoordinatorImpl(navigationController: navi, factory: ArticleCategortFactoryImpl())
-        articleCategoryCoordinator.parentCoordinator = parentCoordinator
+        articleCategoryCoordinator.parentCoordinator = parent
         navi.tabBarItem = .makeTabItem(.category)
-        self.parentCoordinator?.children.append(articleCategoryCoordinator)
+        parent?.children.append(articleCategoryCoordinator)
         articleCategoryCoordinator.showArticleCategoryViewController()
     }
     
-    func startCurriculumFlow(_ navi: UINavigationController) {
+    func startCurriculumFlow(_ navi: UINavigationController, from parent: Coordinator?) {
         let curriculumCoordinator = CurriculumCoordinatorImpl(navigationController: navi, factory: CurriculumFactoryImpl())
         navi.tabBarItem = .makeTabItem(.curriculum)
-        curriculumCoordinator.parentCoordinator = parentCoordinator
-        self.parentCoordinator?.children.append(curriculumCoordinator)
+        curriculumCoordinator.parentCoordinator = parent
+        parent?.children.append(curriculumCoordinator)
         curriculumCoordinator.showCurriculumViewController()
     }
 
-    func startChallengeFlow(_ navi: UINavigationController) {
+    func startChallengeFlow(_ navi: UINavigationController, from parent: Coordinator?) {
         let challengeCoordinator = ChallengeCoordinatorImpl(navigationController: navi, factory: ChallengeFactoryImpl())
-        challengeCoordinator.parentCoordinator = parentCoordinator
+        challengeCoordinator.parentCoordinator = parent
         navi.tabBarItem = .makeTabItem(.challenge)
-        self.parentCoordinator?.children.append(challengeCoordinator)
+        parent?.children.append(challengeCoordinator)
         challengeCoordinator.showChallengeViewController()
     }
 }
