@@ -181,6 +181,7 @@
 		C034EDE02ADE3A4A00AD6FF3 /* LionHeart_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8482A5525C800F0DB19 /* LionHeart_iOSTests.swift */; };
 		C034EE1E2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EE1D2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift */; };
 		C034EE202ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EE1F2ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift */; };
+		C03FCD422B0DD11C00C4EA0D /* UITabbarItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FCD412B0DD11C00C4EA0D /* UITabbarItem+.swift */; };
 		C04BE3AD2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */; };
 		C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */; };
 		C065F0032ADBD2270094912C /* AuthFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */; };
@@ -518,6 +519,7 @@
 		C034EDDD2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewControllerable.swift; sourceTree = "<group>"; };
 		C034EE1D2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryAdaptor.swift; sourceTree = "<group>"; };
 		C034EE1F2ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryCoordinator.swift; sourceTree = "<group>"; };
+		C03FCD412B0DD11C00C4EA0D /* UITabbarItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabbarItem+.swift"; sourceTree = "<group>"; };
 		C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinatorImpl.swift; sourceTree = "<group>"; };
 		C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdaptor.swift; sourceTree = "<group>"; };
 		C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFactoryImpl.swift; sourceTree = "<group>"; };
@@ -955,6 +957,7 @@
 				D34280762A66B90C00DA1499 /* UILabelPadding.swift */,
 				4A81C2902ACC7DC80056E815 /* UICollectionViewCell+.swift */,
 				B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */,
+				C03FCD412B0DD11C00C4EA0D /* UITabbarItem+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2179,6 +2182,7 @@
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
 				C003CC572ADA4FEB00AFFAAC /* UserState.swift in Sources */,
 				B59BFD352ADBBAE6005D2D81 /* CurriculumControllerable.swift in Sources */,
+				C03FCD422B0DD11C00C4EA0D /* UITabbarItem+.swift in Sources */,
 				B53BA2022A68717B006F9BFB /* LoadingIndicator.swift in Sources */,
 				C0856B7F2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift in Sources */,
 				C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */,
