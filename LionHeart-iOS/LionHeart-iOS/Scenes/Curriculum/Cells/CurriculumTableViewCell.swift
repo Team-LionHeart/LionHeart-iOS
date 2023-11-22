@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
@@ -16,6 +17,11 @@ protocol CurriculumTableViewToggleButtonTappedProtocol: AnyObject {
 }
 
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
+    
+    var toggleButtonTapped = PassthroughSubject<Void, Never>()
+    var rightArrowButtonTapped = PassthroughSubject<Void, Never>()
+    
+    var cancelBag = Set<AnyCancellable>()
 
     weak var delegate: CurriculumTableViewToggleButtonTappedProtocol?
 
@@ -45,7 +51,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
+        bindInput()
     }
     
     @available(*, unavailable)
@@ -117,14 +123,18 @@ private extension CurriculumTableViewCell {
         }
     }
     
-    func setAddTarget() {
-        curriculumToggleDirectionButton.addButtonAction { _ in
-            self.delegate?.toggleButtonTapped(indexPath: self.cellIndexPath)
-        }
+    func bindInput() {
+        curriculumToggleDirectionButton.tapPublisher
+            .sink { _ in
+                self.toggleButtonTapped.send(())
+            }
+            .store(in: &cancelBag)
         
-        moveToArticleListByWeekButton.addButtonAction { _ in
-            self.delegate?.moveToListByWeekButtonTapped(indexPath: self.cellIndexPath)
-        }
+        moveToArticleListByWeekButton.tapPublisher
+                .sink { _ in
+                    self.rightArrowButtonTapped.send(())
+                }
+                .store(in: &cancelBag)
     }
     
     func configureData(_ inputData: CurriculumDummyData) {

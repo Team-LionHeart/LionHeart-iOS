@@ -46,6 +46,9 @@
 		B5234FBA2B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */; };
 		B5234FBC2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */; };
 		B5234FBF2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */; };
+		B5234FC62B0DC31E00D6EE58 /* CurriculumViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FC52B0DC31E00D6EE58 /* CurriculumViewViewModel.swift */; };
+		B5234FC82B0DC32A00D6EE58 /* CurriculumViewViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FC72B0DC32A00D6EE58 /* CurriculumViewViewModelImpl.swift */; };
+		B5234FCA2B0DC77200D6EE58 /* CurriculumViewDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FC92B0DC77200D6EE58 /* CurriculumViewDiffableModel.swift */; };
 		B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
@@ -386,6 +389,9 @@
 		B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekViewModel.swift; sourceTree = "<group>"; };
 		B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekViewModelImpl.swift; sourceTree = "<group>"; };
 		B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekDiffableModel.swift; sourceTree = "<group>"; };
+		B5234FC52B0DC31E00D6EE58 /* CurriculumViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModel.swift; sourceTree = "<group>"; };
+		B5234FC72B0DC32A00D6EE58 /* CurriculumViewViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModelImpl.swift; sourceTree = "<group>"; };
+		B5234FC92B0DC77200D6EE58 /* CurriculumViewDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewDiffableModel.swift; sourceTree = "<group>"; };
 		B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -781,6 +787,8 @@
 			children = (
 				B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */,
 				B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */,
+				B5234FC52B0DC31E00D6EE58 /* CurriculumViewViewModel.swift */,
+				B5234FC72B0DC32A00D6EE58 /* CurriculumViewViewModelImpl.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -789,6 +797,7 @@
 			isa = PBXGroup;
 			children = (
 				B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */,
+				B5234FC92B0DC77200D6EE58 /* CurriculumViewDiffableModel.swift */,
 			);
 			path = Diffable;
 			sourceTree = "<group>";
@@ -2082,6 +2091,7 @@
 				C09A564D2B030C070012A7FD /* GetPregnancyViewModel.swift in Sources */,
 				B57BEB702A6275F500D1727C /* ViewControllerServiceable.swift in Sources */,
 				C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */,
+				B5234FC82B0DC32A00D6EE58 /* CurriculumViewViewModelImpl.swift in Sources */,
 				B53F4EFC2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift in Sources */,
 				C0856B6D2ABFBD840026D9F8 /* BookmarkServiceImpl.swift in Sources */,
 				B59892EE2A5B9AF300CE1FEB /* NavigationBarLayoutManager.swift in Sources */,
@@ -2142,6 +2152,7 @@
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
+				B5234FCA2B0DC77200D6EE58 /* CurriculumViewDiffableModel.swift in Sources */,
 				C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */,
 				C0856B812ABFCD830026D9F8 /* OnboardingManagerImpl.swift in Sources */,
 				B57BEB6C2A6149AD00D1727C /* NetworkRequest.swift in Sources */,
@@ -2222,6 +2233,7 @@
 				C0DF03412A5A95E40037F740 /* UIImage+.swift in Sources */,
 				C0F62FE72A691FC40003ADFA /* LHLoadingView.swift in Sources */,
 				C0B15E132AC010CD0058D56B /* LHKingfisherService.swift in Sources */,
+				B5234FC62B0DC31E00D6EE58 /* CurriculumViewViewModel.swift in Sources */,
 				C009E9F62ADBC41D00112F18 /* BookmarkFactory.swift in Sources */,
 				4A918E7B2AE11839003CB8F9 /* ArticleAdaptor.swift in Sources */,
 				B5E78E002B03302200EA67A2 /* GetFetalNicknameViewModel.swift in Sources */,

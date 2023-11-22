@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct UserInfoData: AppData{
+struct UserInfoData: AppData {
     let userWeekInfo: Int
     let userDayInfo: Int
     let progress: Int
@@ -18,12 +18,12 @@ extension UserInfoData {
     static var emptyUserInfoData = UserInfoData(userWeekInfo: 0, userDayInfo: 0, progress: 0, remainingDay: 0)
 }
 
-struct CurriculumMonthData: AppData{
+struct CurriculumMonthData: Hashable, AppData{
     let month: String
     var weekDatas: [CurriculumDummyData]
 }
 
-struct CurriculumDummyData: AppData {
+struct CurriculumDummyData: Hashable, AppData {
     let curriculumWeek: String
     let curriculumWeekTitle: String
     let curriculumImage: UIImage
