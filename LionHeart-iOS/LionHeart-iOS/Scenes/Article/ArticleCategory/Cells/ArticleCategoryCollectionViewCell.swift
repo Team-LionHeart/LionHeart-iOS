@@ -20,7 +20,7 @@ final class ArticleCategoryCollectionViewCell: UICollectionViewCell, CollectionV
         didSet {
             guard let data = inputData else { return }
             categoryImageView.image = data.image
-            categoryInfoLabel.text = data.infoDdescription
+            categoryInfoLabel.text = data.infoDescription
         }
     }
 

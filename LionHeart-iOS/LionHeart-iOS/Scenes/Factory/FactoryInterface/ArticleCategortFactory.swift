@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ArticleCategortFactory {
+    func makeArticleCategoryViewModel(cooridnator: ArticleCategoryNavigation) -> any ArticleCategoryViewModel & ArticleCategoryViewModelPresentable
     func makeArticleCategoryAdaptor(coordinator: ArticleCategoryCoordinator) -> EntireArticleCategoryNavigation
     func makeArticleListByCategoryViewController(coordinator: ArticleCategoryCoordinator) -> ArticleListByCategoryViewControllerable
-    func makeArticleCategoryViewController(navigator: ArticleCategoryNavigation) -> ArticleCategoryViewControllerable
+    func makeArticleCategoryViewController(coordinator: ArticleCategoryNavigation) -> ArticleCategoryViewControllerable
 }

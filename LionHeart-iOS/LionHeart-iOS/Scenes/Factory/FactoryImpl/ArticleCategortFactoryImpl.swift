@@ -8,6 +8,10 @@
 import Foundation
 
 struct ArticleCategortFactoryImpl: ArticleCategortFactory {
+    func makeArticleCategoryViewModel(cooridnator: ArticleCategoryNavigation) -> any ArticleCategoryViewModel & ArticleCategoryViewModelPresentable {
+        return ArticleCategoryViewModelImpl(navigator: cooridnator)
+    }
+    
     func makeArticleCategoryAdaptor(coordinator: ArticleCategoryCoordinator) -> EntireArticleCategoryNavigation {
         return ArticleCategoryAdaptor(coordinator: coordinator)
     }
@@ -16,7 +20,8 @@ struct ArticleCategortFactoryImpl: ArticleCategortFactory {
         return ArticleListByCategoryViewController(manager: ArticleListByCategoryMangerImpl(articleService: ArticleServiceImpl(apiService: APIService()), bookmarkService: BookmarkServiceImpl(apiService: APIService())), navigator: self.makeArticleCategoryAdaptor(coordinator: coordinator))
     }
     
-    func makeArticleCategoryViewController(navigator: ArticleCategoryNavigation) -> ArticleCategoryViewControllerable {
-        return ArticleCategoryViewController(navigator: navigator)
+    func makeArticleCategoryViewController(coordinator: ArticleCategoryNavigation) -> ArticleCategoryViewControllerable {
+        let viewModel = self.makeArticleCategoryViewModel(cooridnator: coordinator)
+        return ArticleCategoryViewController(viewModel: viewModel)
     }
 }
