@@ -42,6 +42,8 @@
 		B520EA6C2A670C010027356E /* progressbar_2m.json in Resources */ = {isa = PBXBuildFile; fileRef = B520EA632A670C010027356E /* progressbar_2m.json */; };
 		B520EA6D2A670C010027356E /* progressbar_3m.json in Resources */ = {isa = PBXBuildFile; fileRef = B520EA642A670C010027356E /* progressbar_3m.json */; };
 		B520EA6E2A670C010027356E /* progressbar_5m.json in Resources */ = {isa = PBXBuildFile; fileRef = B520EA652A670C010027356E /* progressbar_5m.json */; };
+		B5234F9B2B0A61D700D6EE58 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234F9A2B0A61D700D6EE58 /* ArticleDetailViewModel.swift */; };
+		B5234F9D2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234F9C2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift */; };
 		B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
@@ -383,6 +385,8 @@
 		B520EA632A670C010027356E /* progressbar_2m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_2m.json; sourceTree = "<group>"; };
 		B520EA642A670C010027356E /* progressbar_3m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_3m.json; sourceTree = "<group>"; };
 		B520EA652A670C010027356E /* progressbar_5m.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressbar_5m.json; sourceTree = "<group>"; };
+		B5234F9A2B0A61D700D6EE58 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
+		B5234F9C2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModelImpl.swift; sourceTree = "<group>"; };
 		B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -778,6 +782,15 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		B5234F992B0A61CE00D6EE58 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5234F9A2B0A61D700D6EE58 /* ArticleDetailViewModel.swift */,
+				B5234F9C2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B532E8252A5525C600F0DB19 = {
 			isa = PBXGroup;
 			children = (
@@ -1090,6 +1103,7 @@
 		B598920B2A56B3A300CE1FEB /* ArticleDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B5234F992B0A61CE00D6EE58 /* ViewModel */,
 				B5C6A2C92A5EF5210021BE5E /* Model */,
 				B598922B2A56B6C100CE1FEB /* Cells */,
 				B598922A2A56B6BE00CE1FEB /* Views */,
@@ -2089,6 +2103,8 @@
 				C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */,
 				C003CC2F2AD9189F00AFFAAC /* MypageCoordinator.swift in Sources */,
 				C003CC5E2ADA508A00AFFAAC /* LoginManager.swift in Sources */,
+				B5234F9B2B0A61D700D6EE58 /* ArticleDetailViewModel.swift in Sources */,
+				C065F00B2ADBD2800094912C /* LoginViewControllerable.swift in Sources */,
 				C06E38232A65353F00B00600 /* LoginType.swift in Sources */,
 				C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */,
 				C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */,
@@ -2096,6 +2112,7 @@
 				C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				C003CC682ADA51A700AFFAAC /* ArticleListByCategoryManager.swift in Sources */,
+				B5234F9D2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift in Sources */,
 				C003CC6A2ADA51C000AFFAAC /* MyPageManager.swift in Sources */,
 				4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */,
 				C003CC622ADA50C000AFFAAC /* TodayManager.swift in Sources */,
