@@ -11,6 +11,8 @@ import UIKit
 import SnapKit
 import Lottie
 
+protocol CurriculumControllerable where Self: UIViewController {}
+
 final class CurriculumViewController: UIViewController, CurriculumControllerable  {
     
     var navigator: CurriculumNavigation

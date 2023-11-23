@@ -11,6 +11,8 @@ import Combine
 
 import SnapKit
 
+protocol ArticleListByCategoryViewControllerable where Self: UIViewController {}
+
 final class ArticleListByCategoryViewController: UIViewController, ArticleListByCategoryViewControllerable {
     
     private let viewWillAppear = PassthroughSubject<Void, Never>()

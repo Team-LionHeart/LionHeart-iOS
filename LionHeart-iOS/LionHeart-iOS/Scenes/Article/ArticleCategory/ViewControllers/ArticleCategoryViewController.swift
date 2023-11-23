@@ -11,6 +11,8 @@ import Combine
 
 import SnapKit
 
+protocol ArticleCategoryViewControllerable where Self: UIViewController {}
+
 final class ArticleCategoryViewController: UIViewController, ArticleCategoryViewControllerable {
     
     private lazy var navigationBar = LHNavigationBarView(type: .explore, viewController: self)
