@@ -8,6 +8,11 @@
 import Foundation
 
 struct MyPageFactoryImpl: MyPageFactory {
+    
+    func makeAdaptor(coordinator: MyPageCoordinator) -> EntireMyPageNavigation {
+        return MyPageAdaptor(coordindator: coordinator)
+    }
+    
     func makeMyPageViewModel(coordinator: MyPageCoordinator) -> any MyPageViewModel & MyPageViewModelPresentable {
         let adaptor = self.makeAdaptor(coordinator: coordinator)
         let apiService = APIService()
@@ -15,12 +20,6 @@ struct MyPageFactoryImpl: MyPageFactory {
         let myPageService = MyPageServiceImpl(apiService: apiService)
         let manager = MyPageManagerImpl(mypageService: myPageService, authService: authService)
         return MyPageViewModelImpl(navigator: adaptor, manager: manager)
-    }
-    
-    
-    
-    func makeAdaptor(coordinator: MyPageCoordinator) -> EntireMyPageNavigation {
-        return MyPageAdaptor(coordindator: coordinator)
     }
     
     func makeMyPageViewController(coordinator: MyPageCoordinator) -> MyPageControllerable {

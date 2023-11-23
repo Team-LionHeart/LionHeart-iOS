@@ -30,10 +30,6 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
     private var progressBar = LHProgressView()
     private let articleTableView = ArticleDetailTableView()
     private let scrollToTopButton = LHImageButton(setImage: ImageLiterals.Article.icFab)
-
-    // MARK: - Properties
-
-    private var contentOffsetY: CGFloat = 0
     
     init(viewModel: some ArticleDetailViewModel) {
         self.viewModel = viewModel
@@ -190,8 +186,6 @@ extension ArticleDetailViewController {
     }
 }
 
-// MARK: - UI & Layout
-
 private extension ArticleDetailViewController {
 
     func setStyle() {
@@ -249,11 +243,9 @@ extension ArticleDetailViewController: UITableViewDelegate {
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        // 컨텐츠를 위로 올릴 시
         if velocity.y <= 0 {
             self.scrollToTopButton.isHidden = false
         } else {
-            // 컨텐츠를 아래로 내릴 시
             self.scrollToTopButton.isHidden = true
         }
     }

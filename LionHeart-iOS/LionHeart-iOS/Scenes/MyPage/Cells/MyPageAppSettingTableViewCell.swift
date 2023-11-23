@@ -9,11 +9,6 @@ import UIKit
 
 import SnapKit
 
-enum CellType: String {
-    case alaram = "알림 설정"
-    case version = "앱 버전"
-}
-
 final class MyPageAppSettingTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
     private let settingLabel = LHLabel(type: .body2M, color: .white)
@@ -24,10 +19,6 @@ final class MyPageAppSettingTableViewCell: UITableViewCell, TableViewCellRegiste
         didSet {
             guard let inputData = inputData else { return }
             settingLabel.text = inputData
-            
-            if CellType.alaram == CellType(rawValue: inputData) {
-                versionLabel.isHidden = true
-            }
         }
     }
     

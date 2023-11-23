@@ -19,11 +19,7 @@ final class AuthCoordinatorImpl: AuthCoordinator {
         self.navigationController = navigationController
         self.factory = factory
     }
-    
-    func start() {
-        showLoginViewController()
-    }
-    
+
     func showLoginViewController() {
         let loginViewController = factory.makeLoginViewController(coordinator: self)
         self.navigationController.pushViewController(loginViewController, animated: true)

@@ -26,7 +26,6 @@ final class MyPageCustomerServiceTableViewCell: UITableViewCell, TableViewCellRe
         self.backgroundColor = .designSystem(.background)
         setHierarchy()
         setLayout()
-        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -55,12 +54,6 @@ private extension MyPageCustomerServiceTableViewCell {
         bottomView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(1)
-        }
-    }
-    
-    func setAddTarget() {
-        nextButton.addButtonAction { _ in
-            print("눌리냐")
         }
     }
 }

@@ -9,7 +9,6 @@ import Foundation
 
 typealias EntireCurriculumNavigation = CurriculumNavigation & CurriculumListByWeekNavigation
 
-
 final class CurriculumAdaptor: EntireCurriculumNavigation {
 
     let coordinator: CurriculumCoordinator

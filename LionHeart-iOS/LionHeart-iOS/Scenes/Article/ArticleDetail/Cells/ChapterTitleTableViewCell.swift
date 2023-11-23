@@ -26,14 +26,9 @@ final class ChapterTitleTableViewCell: UITableViewCell, TableViewCellRegisterDeq
         }
     }
     
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        // MARK: - addsubView
         setHierarchy()
-        
-        // MARK: - autolayout설정
         setLayout()
 
     }

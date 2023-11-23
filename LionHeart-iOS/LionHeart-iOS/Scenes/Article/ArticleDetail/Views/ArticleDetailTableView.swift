@@ -40,5 +40,4 @@ class ArticleDetailTableView: UITableView {
         GeneralTitleTableViewCell.register(to: self)
         CopyRightTableViewCell.register(to: self)
     }
-
 }

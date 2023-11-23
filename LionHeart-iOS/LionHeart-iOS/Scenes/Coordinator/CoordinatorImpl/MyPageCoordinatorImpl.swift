@@ -21,10 +21,6 @@ final class MyPageCoordinatorImpl: MyPageCoordinator {
         self.factory = factory
     }
     
-    func start() {
-        showMyPageViewController()
-    }
-    
     func showMyPageViewController() {
         let myPageViewController = factory.makeMyPageViewController(coordinator: self)
         self.navigationController.pushViewController(myPageViewController, animated: true)

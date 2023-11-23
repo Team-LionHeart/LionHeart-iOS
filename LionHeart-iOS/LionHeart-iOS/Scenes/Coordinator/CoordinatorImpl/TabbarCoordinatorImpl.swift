@@ -18,10 +18,6 @@ final class TabbarCoordinatorImpl: Coordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
-        showTabbarController()
-    }
-    
     func showTabbarController() {
         let tabbarController = TabBarViewController()
         let todayNavigationController = UINavigationController()

@@ -9,7 +9,11 @@ import Foundation
 
 
 struct CurriculumFactoryImpl: CurriculumFactory {
-
+    
+    func makeAdaptor(coordinator: CurriculumCoordinator) -> EntireCurriculumNavigation {
+        let adaptor = CurriculumAdaptor(coordinator: coordinator)
+        return adaptor
+    }
     
     func makeCurriculumListByWeekViewModel(coordinator: CurriculumCoordinator) -> any CurriculumListWeekViewModel & CurriculumListWeekViewModelPresentable {
         let adaptor = self.makeAdaptor(coordinator: coordinator)
@@ -18,11 +22,6 @@ struct CurriculumFactoryImpl: CurriculumFactory {
         let bookmarkService = BookmarkServiceImpl(apiService: apiService)
         let curriculumListManager = CurriculumListManagerImpl(bookmarkService: bookmarkService, curriculumService: curriculumService)
         return CurriculumListWeekViewModelImpl(manager: curriculumListManager, navigator: adaptor)
-    }
-    
-    func makeAdaptor(coordinator: CurriculumCoordinator) -> EntireCurriculumNavigation {
-        let adaptor = CurriculumAdaptor(coordinator: coordinator)
-        return adaptor
     }
     
     func makeCurriculumViewController(coordinator: CurriculumCoordinator) -> CurriculumControllerable {

@@ -26,7 +26,6 @@ final class GeneralTitleTableViewCell: UITableViewCell, TableViewCellRegisterDeq
         }
     }
     
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setHierarchy()
@@ -59,6 +58,4 @@ private extension GeneralTitleTableViewCell {
         titleLabel.text = model.content
         titleLabel.setTextWithLineHeight(lineHeight: 32)
     }
-    
-
 }

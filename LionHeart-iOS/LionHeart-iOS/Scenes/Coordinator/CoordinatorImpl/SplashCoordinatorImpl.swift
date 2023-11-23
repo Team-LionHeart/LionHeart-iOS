@@ -21,10 +21,6 @@ final class SplashCoordinatorImpl: SplashCoordinator {
         self.factory = factory
     }
     
-    func start() {
-        showSplashViewController()
-    }
-    
     func showSplashViewController() {
         let splashViewController = factory.makeSplashViewController(coordinator: self)
         self.navigationController.pushViewController(splashViewController, animated: false)

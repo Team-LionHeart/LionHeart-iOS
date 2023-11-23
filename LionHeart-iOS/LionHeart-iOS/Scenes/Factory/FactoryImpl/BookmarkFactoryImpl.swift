@@ -8,6 +8,12 @@
 import Foundation
 
 struct BookmarkFactoryImpl: BookmarkFactory {
+    
+    func makeAdaptor(coordinator: BookmarkCoordinator) -> EntireBookmarkNavigation {
+        let adaptor = BookmarkAdaptor(coordinator: coordinator)
+        return adaptor
+    }
+    
     func makeBookmarkViewModel(coordinator: BookmarkCoordinator) -> any BookmarkViewModel & BookmarkViewModelPresentable {
          let adaptor = self.makeAdaptor(coordinator: coordinator)
          let apiService = APIService()
@@ -15,11 +21,6 @@ struct BookmarkFactoryImpl: BookmarkFactory {
          let managerImpl = BookmarkMangerImpl(bookmarkService: serviceImpl)
          return BookmarkViewModelImpl(navigator: adaptor, manager: managerImpl)
      }
-    
-    func makeAdaptor(coordinator: BookmarkCoordinator) -> EntireBookmarkNavigation {
-        let adaptor = BookmarkAdaptor(coordinator: coordinator)
-        return adaptor
-    }
     
     func makeBookmarkViewController(coordinator: BookmarkCoordinator) -> BookmarkViewControllerable {
         let viewModel = self.makeBookmarkViewModel(coordinator: coordinator)

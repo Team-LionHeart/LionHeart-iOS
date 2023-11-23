@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum ArticleListByCategorySection {
     case article
 }
