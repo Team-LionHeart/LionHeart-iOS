@@ -43,6 +43,9 @@
 		B5234FA72B0B2D1F00D6EE58 /* ArticleCategoryViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FA62B0B2D1F00D6EE58 /* ArticleCategoryViewModelImpl.swift */; };
 		B5234FA92B0B33CB00D6EE58 /* ArticleCategoryDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FA82B0B33CB00D6EE58 /* ArticleCategoryDiffableModel.swift */; };
 		B5234FAB2B0B36DF00D6EE58 /* ArticleCategoryDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FAA2B0B36DF00D6EE58 /* ArticleCategoryDiffableDataSource.swift */; };
+		B5234FAF2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FAE2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift */; };
+		B5234FB12B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FB02B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift */; };
+		B5234FB32B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FB22B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift */; };
 		B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
@@ -398,6 +401,9 @@
 		B5234FA62B0B2D1F00D6EE58 /* ArticleCategoryViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewModelImpl.swift; sourceTree = "<group>"; };
 		B5234FA82B0B33CB00D6EE58 /* ArticleCategoryDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryDiffableModel.swift; sourceTree = "<group>"; };
 		B5234FAA2B0B36DF00D6EE58 /* ArticleCategoryDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryDiffableDataSource.swift; sourceTree = "<group>"; };
+		B5234FAE2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewModel.swift; sourceTree = "<group>"; };
+		B5234FB02B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewModelImpl.swift; sourceTree = "<group>"; };
+		B5234FB22B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryDiffableModel.swift; sourceTree = "<group>"; };
 		B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -827,6 +833,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B5234FAD2B0B404500D6EE58 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5234FAE2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift */,
+				B5234FB02B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B532E8252A5525C600F0DB19 = {
 			isa = PBXGroup;
 			children = (
@@ -1151,8 +1166,10 @@
 		B598920C2A56B3B700CE1FEB /* ArticleListByCategory */ = {
 			isa = PBXGroup;
 			children = (
+				B5234FAD2B0B404500D6EE58 /* ViewModel */,
 				B59892122A56B52F00CE1FEB /* ViewControllers */,
 				B59892112A56B52B00CE1FEB /* Views */,
+				B5234FB22B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift */,
 			);
 			path = ArticleListByCategory;
 			sourceTree = "<group>";
@@ -2060,6 +2077,7 @@
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
 				4AE19A1F2A66F2E200C1DB7E /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */,
+				B5234FAF2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
 				B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */,
 				D342807A2A67F12200DA1499 /* ChallengeDataResponse.swift in Sources */,
@@ -2156,6 +2174,7 @@
 				C003CC5E2ADA508A00AFFAAC /* LoginManager.swift in Sources */,
 				B5234F9B2B0A61D700D6EE58 /* ArticleDetailViewModel.swift in Sources */,
 				C065F00B2ADBD2800094912C /* LoginViewControllerable.swift in Sources */,
+				B5234FB12B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift in Sources */,
 				C06E38232A65353F00B00600 /* LoginType.swift in Sources */,
 				C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */,
 				C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */,
@@ -2260,6 +2279,7 @@
 				B59BFD452ADBC08D005D2D81 /* MyPageControllerable.swift in Sources */,
 				C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
+				B5234FB32B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift in Sources */,
 				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
 				B51220602A60111C006CBE2D /* Token.swift in Sources */,
 				C034EDD62ADE21BD00AD6FF3 /* SplashCoordinator.swift in Sources */,

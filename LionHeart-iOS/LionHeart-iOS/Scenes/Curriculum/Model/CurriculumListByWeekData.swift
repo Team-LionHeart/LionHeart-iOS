@@ -7,12 +7,12 @@
 
 import UIKit
 
-struct CurriculumWeekData: AppData {
+struct CurriculumWeekData: Hashable, AppData {
     var articleData: [ArticleDataByWeek]
     let week: Int?
 }
 
-struct ArticleDataByWeek: AppData {
+struct ArticleDataByWeek: Hashable, AppData {
     let articleId: Int
     let articleTitle: String
     let articleImage: String

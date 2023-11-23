@@ -27,7 +27,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
     private let articleTagLabel = LHLabel(type: .body4, color: .gray400)
     private let articleReadTimeLabel = LHLabel(type: .body4, color: .gray500)
     private let articleContentLabel = LHLabel(type: .body3R, color: .gray300, lines: 2)
-    private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkSmall,
+    lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkSmall,
                                                           select: ImageLiterals.BookMark.activeBookmarkSmall)
     private let articleImageView = LHImageView(contentMode: .scaleToFill).makeRound(4).opacity(0.4)
     private let readTimeAndBookmarkView = LHView(color: .designSystem(.black)).makeRound(4).opacity(0.6)
