@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
@@ -20,7 +21,7 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         }
     }
 
-    var bookMarkButtonTapped: ((Bool, IndexPath) -> Void)?
+//    var bookMarkButtonTapped: ((Bool, IndexPath) -> Void)?
     
     private let tableViewCellWholeView = UIView()
     private let articleTitleLabel = LHLabel(type: .head3, color: .white)
@@ -39,7 +40,6 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -109,18 +109,6 @@ private extension CurriculumArticleByWeekTableViewCell {
             $0.top.equalTo(articleTitleLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(10)
-        }
-    }
-    
-    func setAddTarget() {
-        bookMarkButton.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            guard var indexPath = self.getIndexPath() else { return }
-            self.isSelected.toggle()
-            self.bookMarkButtonTapped?(self.isSelected, indexPath)
-            NotificationCenter.default.post(name: NSNotification.Name("isArticleBookmarked"),
-                                            object: nil, userInfo: ["bookmarkCellIndexPath": max(0, indexPath.row - 1),
-                                                                    "bookmarkButtonSelected": self.isSelected])
         }
     }
     

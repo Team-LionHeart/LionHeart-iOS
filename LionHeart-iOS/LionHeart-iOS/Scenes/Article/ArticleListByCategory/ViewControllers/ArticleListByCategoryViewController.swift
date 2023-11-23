@@ -76,10 +76,12 @@ final class ArticleListByCategoryViewController: UIViewController, ArticleListBy
             .store(in: &cancelBag)
         
         output.articles
+            .receive(on: RunLoop.main)
             .sink { [weak self] articleDatas in
                 guard let self else { return }
                 self.setDataSource()
                 self.applySnapshot(articleDatas: articleDatas)
+                self.hideLoading()
             }
             .store(in: &cancelBag)
     }
