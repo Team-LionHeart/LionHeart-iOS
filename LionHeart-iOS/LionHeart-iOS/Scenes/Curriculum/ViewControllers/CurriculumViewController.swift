@@ -190,7 +190,7 @@ extension CurriculumViewController: CurriculumTableViewToggleButtonTappedProtoco
     
     func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
         guard let indexPath else { return }
-        let itemIndex = indexPath.section * 4 + indexPath.row
+        let itemIndex = indexPath.section * 4 + indexPath.row + 4
         self.navigator.articleListCellTapped(itemIndex: itemIndex)
     }
 }

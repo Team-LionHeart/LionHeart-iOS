@@ -1,16 +1,15 @@
 //
-//  MyPageListCollectionViewCell.swift
+//  MyPageCustomerServiceTableViewCell.swift
 //  LionHeart-iOS
 //
-//  Created by 황찬미 on 2023/07/14.
-//  Copyright (c) 2023 MyPageList. All rights reserved.
+//  Created by uiskim on 2023/11/20.
 //
 
 import UIKit
 
 import SnapKit
 
-final class MyPageCustomerServiceCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
+final class MyPageCustomerServiceTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
     private let listNameLabel = LHLabel(type: .body2M, color: .white)
     private lazy var nextButton = LHImageButton(setImage: ImageLiterals.Curriculum.arrowRightSmall)
@@ -22,8 +21,9 @@ final class MyPageCustomerServiceCollectionViewCell: UICollectionViewCell, Colle
         }
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .designSystem(.background)
         setHierarchy()
         setLayout()
         setAddTarget()
@@ -35,7 +35,7 @@ final class MyPageCustomerServiceCollectionViewCell: UICollectionViewCell, Colle
     }
 }
 
-private extension MyPageCustomerServiceCollectionViewCell {
+private extension MyPageCustomerServiceTableViewCell {
     func setHierarchy() {
         addSubviews(listNameLabel, nextButton, bottomView)
     }

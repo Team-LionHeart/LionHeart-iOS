@@ -7,6 +7,4 @@
 
 import UIKit
 
-protocol ArticleCategoryViewControllerable where Self: UIViewController {
-    var navigator: ArticleCategoryNavigation {get set}
-}
+protocol ArticleCategoryViewControllerable where Self: UIViewController {}

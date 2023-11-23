@@ -50,9 +50,6 @@ extension WeekBackgroundImage {
                 WeekBackgroundImage(weekBackgroundImage: ImageLiterals.Curriculum.week38Image),
                 WeekBackgroundImage(weekBackgroundImage: ImageLiterals.Curriculum.week39Image),
                 WeekBackgroundImage(weekBackgroundImage: ImageLiterals.Curriculum.week40Image)
-
-
-
         ]
 
     }

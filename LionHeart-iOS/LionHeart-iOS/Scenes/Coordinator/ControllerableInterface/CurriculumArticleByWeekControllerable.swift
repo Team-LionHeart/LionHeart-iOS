@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol CurriculumArticleByWeekControllerable where Self: UIViewController {
-    func setWeekIndexPath(week: Int)
-    var navigator: CurriculumListByWeekNavigation { get set }
-}
+//protocol CurriculumArticleByWeekControllerable where Self: UIViewController {
+//    func setWeekIndexPath(week: Int)
+//    var navigator: CurriculumListByWeekNavigation { get set }
+//}

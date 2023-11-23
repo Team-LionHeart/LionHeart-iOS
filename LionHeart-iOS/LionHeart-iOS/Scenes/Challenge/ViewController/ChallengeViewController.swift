@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 import Lottie
 
+protocol ChallengeViewControllerable where Self: UIViewController {}
+
 final class ChallengeViewController: UIViewController, ChallengeViewControllerable {
-    
-    
-    var navigator: ChallengeNavigation
-    private var manager: ChallengeManager
+    private enum ChallengeSection { case calendar }
+    private let navigationLeftButtonTapped = PassthroughSubject<Void, Never>()
+    private let navigationRightButtonTapped = PassthroughSubject<Void, Never>()
+    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
+    private var cancelBag = Set<AnyCancellable>()
+    private let viewModel: any ChallengeViewModel
     
     private let leftSeperateLine = LHUnderLine(lineColor: .background)
     private let rightSeperateLine = LHUnderLine(lineColor: .background)
@@ -26,27 +31,21 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
     private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05, contentMode: .scaleToFill)
     private lazy var lottieImageView = LHLottie()
     private let challengeDayCheckCollectionView = LHCollectionView()
+    private var diffableDataSource: UICollectionViewDiffableDataSource<ChallengeSection, Int>!
     
-    private var inputData: ChallengeData? {
-        didSet {
-            guard let inputData else { return }
-            configureData(inputData)
-        }
-    }
-    
-    init(manager: ChallengeManager, navigator: ChallengeNavigation) {
-        self.manager = manager
-        self.navigator = navigator
+    init(viewModel: some ChallengeViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUIFromNetworking()
+        self.showLoading()
+        self.viewWillAppearSubject.send(())
     }
     
     override func viewDidLoad() {
@@ -56,41 +55,73 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
         setLayout()
         setNavigationBar()
         setDelegate()
-        setAddTarget()
+        bindInput()
+        bind()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        leftSeperateLine.setGradient(firstColor: .designSystem(.gray800)!, secondColor: .designSystem(.gray400)!, axis: .horizontal)
-        rightSeperateLine.setGradient(firstColor: .designSystem(.gray400)!, secondColor: .designSystem(.gray800)!, axis: .horizontal)
+    private func bindInput() {
+        navigationBar.rightFirstBarItem.tapPublisher
+            .sink { [weak self] in self?.navigationLeftButtonTapped.send($0) }
+            .store(in: &cancelBag)
+        navigationBar.rightSecondBarItem.tapPublisher
+            .sink { [weak self] in self?.navigationRightButtonTapped.send($0) }
+            .store(in: &cancelBag)
+    }
+    
+    private func bind() {
+        let input = ChallengeViewModelInput(navigationLeftButtonTapped: navigationLeftButtonTapped, navigationRightButtonTapped: navigationRightButtonTapped, viewWillAppearSubject: viewWillAppearSubject)
+        let output = viewModel.transform(input: input)
+        output.viewWillAppearSubject
+            .receive(on: RunLoop.main)
+            .sink { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.configureData(data)
+                    self?.hideLoading()
+                case .failure(let error):
+                    print(error.description)
+                }
+            }
+            .store(in: &cancelBag)
     }
 }
 
 private extension ChallengeViewController {
     func configureData(_ input: ChallengeData) {
+        setText(by: input)
+        setImage(by: input)
+        setDataSource(by: input)
+        updateSections()
+    }
+    
+    func setDataSource(by input: ChallengeData) {
+        diffableDataSource = .init(collectionView: challengeDayCheckCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            let cell = ChallengeDayCheckCollectionViewCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
+            cell.configure(type: indexPath.item < input.daddyAttendances.count ? .read : .yet, input: input, indexPath: indexPath)
+            return cell
+        })
+    }
+    
+    func setText(by input: ChallengeData) {
         self.nicknameLabel.text = "\(input.babyDaddyName)아빠 님,"
         self.challengeDayLabel.text = "\(input.howLongDay)일째 도전 중"
-        self.levelBadge.image = BadgeLevel(rawValue: input.daddyLevel)!.badgeImage
-        self.lottieImageView.animation = .named(BadgeLevel(rawValue: input.daddyLevel)!.progreddbarLottie)
-        self.lottieImageView.play()
-        let fullText = "사자력 Lv." + String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)
+        let levelText = String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)
+        let fullText = "사자력 Lv." + levelText
         let attributtedString = NSMutableAttributedString(string: fullText)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.designSystem(.white)!, range: (fullText as NSString).range(of: "Lv." + String(BadgeLevel(rawValue: input.daddyLevel)!.badgeLevel)))
         self.challengelevelLabel.attributedText = attributtedString
     }
     
-    func setUIFromNetworking() {
-        Task {
-            do {
-                self.showLoading()
-                self.inputData = try await manager.inquireChallengeInfo()
-                self.challengeDayCheckCollectionView.reloadData()
-                self.hideLoading()
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
-            }
-        }
+    func setImage(by input: ChallengeData) {
+        self.levelBadge.image = BadgeLevel(rawValue: input.daddyLevel)!.badgeImage
+        self.lottieImageView.animation = .named(BadgeLevel(rawValue: input.daddyLevel)!.progreddbarLottie)
+        self.lottieImageView.play()
+    }
+    
+    func updateSections() {
+        var snapshot = NSDiffableDataSourceSnapshot<ChallengeSection, Int>()
+        snapshot.appendSections([.calendar])
+        snapshot.appendItems([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
+        self.diffableDataSource.apply(snapshot)
     }
 }
 
@@ -140,14 +171,17 @@ private extension ChallengeViewController {
             make.height.equalTo(1)
             make.width.equalTo(36)
         }
+        
         levelBadge.snp.makeConstraints { make in
             make.top.equalTo(challengeDayLabel.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
         }
+        
         challengelevelLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(16)
             make.centerX.equalToSuperview()
         }
+        
         lottieImageView.snp.makeConstraints { make in
             make.top.equalTo(levelBadge.snp.bottom).offset(24)
             make.leading.equalTo(challengeDayCheckCollectionView.snp.leading)
@@ -163,23 +197,12 @@ private extension ChallengeViewController {
     
     func setDelegate() {
         challengeDayCheckCollectionView.delegate = self
-        challengeDayCheckCollectionView.dataSource = self
     }
     
     func setNavigation() {
         navigationBar.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-        }
-    }
-    
-    func setAddTarget() {
-        navigationBar.rightFirstBarItemAction {
-            self.navigator.navigationLeftButtonTapped()
-        }
-        
-        navigationBar.rightSecondBarItemAction {
-            self.navigator.navigationRightButtonTapped()
         }
     }
 }
@@ -195,50 +218,8 @@ extension ChallengeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }
-
-extension ChallengeViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = ChallengeDayCheckCollectionViewCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-        guard let inputData else { return cell }
-        if indexPath.item < inputData.daddyAttendances.count {
-            cell.inputString = inputData.daddyAttendances[indexPath.item]
-            cell.backgroundColor = .designSystem(.background)
-            cell.whiteTextColor = .designSystem(.white)
-        } else {
-            cell.inputString = "\(indexPath.section + indexPath.row + 1)"
-            cell.backgroundColor = .designSystem(.gray1000)
-        }
-        return cell
-    }
-}
-
-//extension ChallengeViewController: ViewControllerServiceable {]
-//    func handleError(_ error: NetworkError) {
-//        switch error {
-//        case .urlEncodingError:
-//            LHToast.show(message: "url인코딩에러")
-//        case .jsonDecodingError:
-//            LHToast.show(message: "챌린지Decode에러")
-//        case .badCasting:
-//            LHToast.show(message: "배드캐스팅")
-//        case .fetchImageError:
-//            LHToast.show(message: "챌린지 이미지 패치 에러")
-//        case .unAuthorizedError:
-//            self.navigator.checkTokenIsExpired()
-//        case .clientError(_, let message):
-//            LHToast.show(message: message)
-//        case .serverError:
-//            LHToast.show(message: error.description)
-//        }
-//    }
-//}

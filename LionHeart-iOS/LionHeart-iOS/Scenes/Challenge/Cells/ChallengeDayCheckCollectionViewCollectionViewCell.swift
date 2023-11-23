@@ -12,20 +12,13 @@ import SnapKit
 
 final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
     
+    enum ChallengeCellType { case read, yet }
+    
     private let countLabel = LHLabel(type: .body2M, color: .gray700, alignment: .center)
     private let lineView = LHUnderLine(lineColor: .gray900)
     
-    var inputString: String? {
-        didSet {
-            countLabel.text = inputString
-        }
-    }
-    
-    var whiteTextColor: UIColor?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
         setHierarchy()
         setLayout()
     }
@@ -39,13 +32,22 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
         countLabel.font = .pretendard(.body2M)
         countLabel.textColor = .designSystem(.gray700)
     }
+    
+    func configure(type: ChallengeCellType, input: ChallengeData, indexPath: IndexPath) {
+        switch type {
+        case .read:
+            countLabel.text = input.daddyAttendances[indexPath.item]
+            backgroundColor = .designSystem(.background)
+            countLabel.textColor = .designSystem(.white)
+        case .yet:
+            countLabel.text = "\(indexPath.section + indexPath.row + 1)"
+            backgroundColor = .designSystem(.gray1000)
+        }
+    }
 }
 
 private extension ChallengeDayCheckCollectionViewCollectionViewCell {
-    func setUI() {
-        backgroundColor = .designSystem(.gray1000)
-    }
-    
+
     func setHierarchy() {
         contentView.addSubviews(countLabel, lineView)
     }

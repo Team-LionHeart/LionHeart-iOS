@@ -7,39 +7,101 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
 final class ArticleCategoryViewController: UIViewController, ArticleCategoryViewControllerable {
     
-    var navigator: ArticleCategoryNavigation
-
     private lazy var navigationBar = LHNavigationBarView(type: .explore, viewController: self)
     private lazy var titleLabel = LHLabel(type: .head2, color: .white, lines: 2, basicText: "카테고리별\n아티클 모아보기")
     private lazy var subtitleLabel = LHLabel(type: .body3R, color: .gray400, basicText: "똑똑한 아빠들의 비밀 습관")
     private lazy var categoryArticleCollectionView = LHCollectionView(color: .background)
     
-    private var dummyCase = CategoryImage.dummy()
+    private var datasource: UICollectionViewDiffableDataSource<ArticleCategorySection, ArticleCategoryItem>!
 
+    private let viewModel: any ArticleCategoryViewModel
+    
+    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
+    private let bookMarkButtonTapped = PassthroughSubject<Void, Never>()
+    private let myPageButtonTapped = PassthroughSubject<Void, Never>()
+    private let categoryCellTapped = PassthroughSubject<IndexPath, Never>()
+    
+    private var cancelBag = Set<AnyCancellable>()
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setHierarchy()
         setNavigation()
         setLayout()
-        setAddTarget()
         setDelegate()
         setCollectionView()
+        bindInput()
+        bind()
     }
     
-    init(navigator: ArticleCategoryNavigation) {
-        self.navigator = navigator
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewWillAppearSubject.send(())
+    }
+    
+    init(viewModel: some ArticleCategoryViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func bindInput() {
+        navigationBar.rightFirstBarItem.tapPublisher
+            .sink { [weak self] _ in
+                self?.bookMarkButtonTapped.send(())
+            }
+            .store(in: &cancelBag)
+        
+        navigationBar.rightSecondBarItem.tapPublisher
+            .sink { [weak self] _ in
+                self?.myPageButtonTapped.send(())
+            }
+            .store(in: &cancelBag)
+    }
+    
+    func bind() {
+        let input = ArticleCategoryViewModelInput(
+            viewWillAppear: viewWillAppearSubject,
+            bookMarkButtonTapped: bookMarkButtonTapped,
+            myPageButtonTapped: myPageButtonTapped,
+            categoryCellTapped: categoryCellTapped)
+        let output = viewModel.transform(input: input)
+        
+        output.categoryTitle
+            .sink { [weak self] categoryImages in
+                guard let self else { return }
+                self.setDataSource()
+                self.applySnapshot(categoryImages: categoryImages)
+            }
+            .store(in: &cancelBag)
+    }
+    
+    private func setDataSource() {
+        self.datasource = ArticleCategoryDiffableDataSource(collectionView: self.categoryArticleCollectionView)
+    }
+    
+    private func applySnapshot(categoryImages: [CategoryImage]) {
+        var snapshot = NSDiffableDataSourceSnapshot<ArticleCategorySection, ArticleCategoryItem>()
+        snapshot.appendSections([.articleCategory])
+        
+        let items = categoryImages.map {
+            return ArticleCategoryItem.category(title: $0)
+        }
+        
+        snapshot.appendItems(items, toSection: .articleCategory)
+        self.datasource.apply(snapshot)
+    }
+    
 }
 
 private extension ArticleCategoryViewController {
@@ -76,19 +138,8 @@ private extension ArticleCategoryViewController {
          }
     }
     
-    func setAddTarget() {
-        navigationBar.rightFirstBarItemAction {
-            self.navigator.navigationLeftButtonTapped()
-        }
-        
-        navigationBar.rightSecondBarItemAction {
-            self.navigator.navigationRightButtonTapped()
-        }
-    }
-    
     func setDelegate() {
         categoryArticleCollectionView.delegate = self
-        categoryArticleCollectionView.dataSource = self
     }
     
     func setNavigation() {
@@ -104,20 +155,10 @@ private extension ArticleCategoryViewController {
     }
 }
 
-extension ArticleCategoryViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyCase.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = ArticleCategoryCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-        cell.inputData = dummyCase[indexPath.item]
-        return cell
-    }
-    
+extension ArticleCategoryViewController: UICollectionViewDelegate {
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigator.articleListCellTapped(categoryName: dummyCase[indexPath.item].categoryString)
+        categoryCellTapped.send(indexPath)
     }
 }
 
