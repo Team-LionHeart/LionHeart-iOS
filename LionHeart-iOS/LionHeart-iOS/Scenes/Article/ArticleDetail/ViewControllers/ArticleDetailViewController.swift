@@ -88,6 +88,7 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
                                                 scrollToTopButtonTapped: scrollToTopButtonTapped)
         let output = viewModel.transform(input: input)
         output.articleDetail
+            .receive(on: RunLoop.main)
             .sink { [weak self] article in
                 guard let self else { return }
                 self.hideLoading()
