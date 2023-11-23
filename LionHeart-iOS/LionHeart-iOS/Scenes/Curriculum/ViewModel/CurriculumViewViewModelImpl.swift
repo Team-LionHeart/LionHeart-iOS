@@ -76,18 +76,19 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
         
         input.rightArrowButtonTapped
             .sink { [weak self] index in
-                self?.navigationSubject.send(.rightArrowButton(index: index))
+                let itemIndex = index.section * 4 + index.row + 4
+                self?.navigationSubject.send(.rightArrowButton(index: itemIndex))
             }
             .store(in: &cancelBag)
         
-        let toggleButtonTapped = input.toggleButtonTapped
-            .map { [weak self] indexPath -> [CurriculumMonthData] in
-                guard let self = self else { return [] }
-                let previousWeekDatas = self.curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
-                self.curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
-                return self.curriculumViewDatas
-            }
-            .eraseToAnyPublisher()
+//        let toggleButtonTapped = input.toggleButtonTapped
+//            .map { [weak self] indexPath -> [CurriculumMonthData] in
+//                guard let self = self else { return [] }
+//                let previousWeekDatas = self.curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
+//                self.curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
+//                return self.curriculumViewDatas
+//            }
+//            .eraseToAnyPublisher()
         
             
         
@@ -141,8 +142,7 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
             
         
         
-        return Output(firstScrollIndexPath: scrollIndexPath,
-                      curriculumMonth: curriculumMonth, toggleButtonTapped: toggleButtonTapped)
+        return Output(curriculumMonth: curriculumMonth)
     }
     
 }

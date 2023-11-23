@@ -16,14 +16,10 @@ protocol CurriculumControllerable where Self: UIViewController {}
 
 final class CurriculumViewController: UIViewController, CurriculumControllerable  {
     
-//    var navigator: CurriculumNavigation
-//    private let manager: CurriculumManager
-    private let viewDidLayoutSubviewSubject = PassthroughSubject<Void, Never>()
     private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
     private let bookmarkButtonTapped = PassthroughSubject<Void, Never>()
     private let myPageButtonTapped = PassthroughSubject<Void, Never>()
-    private let rightArrowButtonTapped = PassthroughSubject<Int, Never>()
-    private let toggleButtonTapped = PassthroughSubject<IndexPath, Never>()
+    private let rightArrowButtonTapped = PassthroughSubject<IndexPath, Never>()
     
     private var cancelBag = Set<AnyCancellable>()
     
@@ -38,14 +34,7 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
     private let curriculumTableView = CurriculumTableView()
     
     private let viewModel: any CurriculumViewViewModel
-    private var isFirstPresented: Bool = true
-//    private var curriculumViewDatas = CurriculumMonthData.dummy()
-//    private var userInfoData: UserInfoData? {
-//        didSet {
-//            configureUserInfoData()
-//        }
-//    }
-    
+
     init(viewModel: some CurriculumViewViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -58,6 +47,7 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setNavigation()
         setHierarchy()
         setLayout()
         setDelegate()
@@ -66,16 +56,8 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
         bind()
     }
     
-    override func viewDidLayoutSubviews() {
-//        self.viewDidLayoutSubviewSubject.send(())
-//        if isFirstPresented {
-//            self.scrollToUserWeek()
-//        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         showLoading()
-//        getCurriculumData()
         self.viewWillAppearSubject.send(())
     }
     
@@ -96,12 +78,10 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
     }
     
     private func bind() {
-        let input = CurriculumViewViewModelInput(viewDidLayoutSubviews: viewDidLayoutSubviewSubject,
-                                                 viewWillAppear: viewWillAppearSubject,
+        let input = CurriculumViewViewModelInput(viewWillAppear: viewWillAppearSubject,
                                                  bookmarkButtonTapped: bookmarkButtonTapped,
                                                  myPageButtonTapped: myPageButtonTapped,
-                                                 rightArrowButtonTapped: rightArrowButtonTapped,
-                                                 toggleButtonTapped: toggleButtonTapped)
+                                                 rightArrowButtonTapped: rightArrowButtonTapped)
         let output = viewModel.transform(input: input)
         output.curriculumMonth
             .receive(on: RunLoop.main)
@@ -111,53 +91,30 @@ final class CurriculumViewController: UIViewController, CurriculumControllerable
                 self?.hideLoading()
             }
             .store(in: &cancelBag)
-        
-        output.toggleButtonTapped
-            .receive(on: RunLoop.main)
-            .sink { [weak self] datas in
-                self?.applySnapshot(monthData: datas)
-            }
-            .store(in: &cancelBag)
-        
-//        output.firstScrollIndexPath
-//            .sink { [weak self] indexPath in
-//                self?.scrollToUserWeek(indexPath: indexPath)
-//            }
-//            .store(in: &cancelBag)
     }
     
     private func setDataSource() {
         self.datasource = UITableViewDiffableDataSource(tableView: self.curriculumTableView, cellProvider: { tableView, indexPath, itemIdentifier in
             let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
-            cell.toggleButtonTapped
-                .sink { [weak self] _ in
-                    self?.toggleButtonTapped.send(indexPath)
-                }
-                .store(in: &self.cancelBag)
-            
             cell.rightArrowButtonTapped
                 .sink { [weak self] _ in
-                    print(indexPath.section, indexPath.row)
+                    self?.rightArrowButtonTapped.send(indexPath)
                 }
                 .store(in: &cell.cancelBag)
-            
             cell.inputData = itemIdentifier
             cell.selectionStyle = .none
-            cell.curriculumToggleDirectionButton.isSelected = itemIdentifier.isExpanded
             return cell
         })
     }
     
     private func applySnapshot(monthData: [CurriculumMonthData]) {
         var snapshot = NSDiffableDataSourceSnapshot<CurriculumMonthData, CurriculumDummyData>()
-        
         monthData.forEach { month in
             snapshot.appendSections([month])
             snapshot.appendItems(month.weekDatas, toSection: month)
         }
         self.datasource.defaultRowAnimation = .middle
         self.datasource.apply(snapshot)
-        
     }
 }
 
@@ -171,13 +128,16 @@ private extension CurriculumViewController {
         view.backgroundColor = .designSystem(.background)
     }
     
+    func setNavigation() {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     func setHierarchy() {
         dDayView.addSubview(dDayLabel)
         view.addSubviews(navigationBar, progressBar, curriculumUserInfoView, curriculumTableView, gradientImage, dDayView)
     }
     
     func setLayout() {
-        self.navigationController?.isNavigationBarHidden = true
         navigationBar.snp.makeConstraints{
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.equalToSuperview()
@@ -222,11 +182,6 @@ private extension CurriculumViewController {
         curriculumTableView.delegate = self
     }
     
-    func scrollToUserWeek(indexPath: IndexPath) {
-        self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
-        
-    }
-    
     func configureUserInfoData(userInfoData: UserInfoData?) {
         guard let userInfoData else { return }
         dDayLabel.text = "D-\(userInfoData.remainingDay)"
@@ -240,73 +195,8 @@ private extension CurriculumViewController {
 extension CurriculumViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionModel = datasource.snapshot().sectionIdentifiers[section]
-        
         let headerView = CurriculumTableViewHeaderView()
         headerView.configureHeaderView(month: sectionModel.month)
         return headerView
     }
-    
 }
-
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return curriculumViewDatas[section].weekDatas.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = CurriculumTableViewCell.dequeueReusableCell(to: tableView)
-//        let data = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
-//        cell.inputData = data
-//        cell.selectionStyle = .none
-////        cell.delegate = self
-//        cell.cellIndexPath = indexPath
-//        cell.curriculumToggleDirectionButton.isSelected = data.isExpanded
-//        return cell
-//    }
-//    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return curriculumViewDatas.count
-//    }
-//}
-
-extension CurriculumViewController {
-//    func toggleButtonTapped(indexPath: IndexPath?) {
-//        self.isFirstPresented = false
-//        guard let indexPath  else { return }
-//        let previousWeekDatas = curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
-//        curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
-//        curriculumTableView.reloadRows(at: [indexPath], with: .automatic)
-//    }
-//    
-//    func moveToListByWeekButtonTapped(indexPath: IndexPath?) {
-//        guard let indexPath else { return }
-//        let itemIndex = indexPath.section * 4 + indexPath.row + 4
-//        self.navigator.articleListCellTapped(itemIndex: itemIndex)
-//    }
-}
-
-//extension CurriculumViewController: ViewControllerServiceable {
-//    func handleError(_ error: NetworkError) {
-//        switch error {
-//        case .unAuthorizedError:
-//            self.navigator.checkTokenIsExpired()
-//        case .clientError(_, let message):
-//            LHToast.show(message: "\(message)")
-//        default:
-//            LHToast.show(message: error.description)
-//        }
-//    }
-//}
-
-//extension CurriculumViewController {
-//    func getCurriculumData() {
-//        Task {
-//            do {
-//                userInfoData = try await manager.getCurriculumServiceInfo()
-//                hideLoading()
-//            } catch {
-//                guard let error = error as? NetworkError else { return }
-//                handleError(error)
-//            }
-//        }
-//    }
-//}

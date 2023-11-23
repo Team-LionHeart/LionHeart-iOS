@@ -11,21 +11,10 @@ import Combine
 
 import SnapKit
 
-//protocol CurriculumTableViewToggleButtonTappedProtocol: AnyObject {
-//    func toggleButtonTapped(indexPath: IndexPath?)
-//    func moveToListByWeekButtonTapped(indexPath: IndexPath?)
-//}
-
 final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
-    var toggleButtonTapped = PassthroughSubject<Void, Never>()
     var rightArrowButtonTapped = PassthroughSubject<Void, Never>()
-    
     var cancelBag = Set<AnyCancellable>()
-
-//    weak var delegate: CurriculumTableViewToggleButtonTappedProtocol?
-
-    var cellIndexPath: IndexPath?
     
     private let curriculumWeekLabelView = UIView()
     private let curriculumWholeStackView = LHStackView(axis: .vertical, spacing: 15)
@@ -35,9 +24,7 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     private let contentTextLabel = LHLabel(type: .body3R, color: .gray500, lines: 0)
     private let contentImageView = LHImageView(contentMode: .scaleToFill)
     private let divider = LHUnderLine(lineColor: .gray800)
-    lazy var curriculumToggleDirectionButton = LHToggleImageButton(normal: ImageLiterals.Curriculum.arrowDownSmall,
-                                                                           select: ImageLiterals.Curriculum.arrowUpSmall)
-    private lazy var moveToArticleListByWeekButton = LHImageButton(setImage: ImageLiterals.Curriculum.arrowRightCircle)
+    private var moveToArticleListByWeekButton = LHImageButton(setImage: ImageLiterals.Curriculum.arrowRightCircle)
     
     var inputData: CurriculumDummyData? {
         didSet {
@@ -58,6 +45,11 @@ final class CurriculumTableViewCell: UITableViewCell, TableViewCellRegisterDeque
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancelBag.removeAll()
+    }
 }
 
 private extension CurriculumTableViewCell {
@@ -70,13 +62,10 @@ private extension CurriculumTableViewCell {
         self.backgroundColor = .designSystem(.background)
         weekTitleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         contentImageView.isUserInteractionEnabled = true
-        curriculumToggleDirectionButton.marginImageWithText(margin: 19)
-        curriculumToggleDirectionButton.setContentCompressionResistancePriority(.required, for: .horizontal)
-        
     }
     
     func setHierarchy() {
-        curriculumWeekLabelView.addSubviews(weekLabel, weekTitleLabel, curriculumToggleDirectionButton)
+        curriculumWeekLabelView.addSubviews(weekLabel, weekTitleLabel)
         contentImageView.addSubviews(moveToArticleListByWeekButton)
         curriculumContentStackView.addArrangedSubviews(contentImageView, contentTextLabel)
         curriculumWholeStackView.addArrangedSubviews(curriculumWeekLabelView, curriculumContentStackView)
@@ -95,12 +84,7 @@ private extension CurriculumTableViewCell {
             $0.centerY.equalTo(weekLabel)
             $0.leading.equalTo(weekLabel.snp.trailing).offset(8).priority(.high)
         }
-        
-        curriculumToggleDirectionButton.snp.makeConstraints {
-            $0.leading.greaterThanOrEqualTo(weekTitleLabel.snp.trailing).offset(8)
-            $0.centerY.equalTo(weekLabel)
-            $0.trailing.equalToSuperview().offset(12)
-        }
+    
         
         curriculumWholeStackView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(16)
@@ -124,17 +108,9 @@ private extension CurriculumTableViewCell {
     }
     
     func bindInput() {
-        curriculumToggleDirectionButton.tapPublisher
-            .sink { _ in
-                self.toggleButtonTapped.send(())
-            }
-            .store(in: &cancelBag)
-        
-        moveToArticleListByWeekButton.tapPublisher
-                .sink { _ in
-                    self.rightArrowButtonTapped.send(())
-                }
-                .store(in: &cancelBag)
+        moveToArticleListByWeekButton.addButtonAction { sender in
+            self.rightArrowButtonTapped.send(())
+        }
     }
     
     func configureData(_ inputData: CurriculumDummyData) {
@@ -143,9 +119,6 @@ private extension CurriculumTableViewCell {
         self.contentImageView.image = inputData.curriculumImage
         self.contentTextLabel.text = inputData.curriculumText
         self.contentTextLabel.setTextWithLineHeight(lineHeight: 22)
-        self.curriculumContentStackView.isHidden = !inputData.isExpanded
         self.weekLabel.textColor = inputData.isExpanded ? .designSystem(.componentLionRed) : .designSystem(.gray500)
     }
 }
-
-
