@@ -1,21 +1,20 @@
 //
-//  MyPageAppSettingCollectionViewCell.swift
+//  MyPageAppSettingTableViewCell.swift
 //  LionHeart-iOS
 //
-//  Created by 황찬미 on 2023/07/14.
-//  Copyright (c) 2023 MyPageAppSetting. All rights reserved.
+//  Created by uiskim on 2023/11/20.
 //
+
+import UIKit
+
+import SnapKit
 
 enum CellType: String {
     case alaram = "알림 설정"
     case version = "앱 버전"
 }
 
-import UIKit
-
-import SnapKit
-
-final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
+final class MyPageAppSettingTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
     
     private let settingLabel = LHLabel(type: .body2M, color: .white)
     private let versionLabel = LHLabel(type: .body3R, color: .gray500)
@@ -31,10 +30,10 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
             }
         }
     }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .designSystem(.background)
         setHierarchy()
         setLayout()
     }
@@ -45,7 +44,7 @@ final class MyPageAppSettingCollectionViewCell: UICollectionViewCell, Collection
     }
 }
 
-private extension MyPageAppSettingCollectionViewCell {
+private extension MyPageAppSettingTableViewCell {
     func setHierarchy() {
         addSubviews(settingLabel, versionLabel, bottomView)
     }

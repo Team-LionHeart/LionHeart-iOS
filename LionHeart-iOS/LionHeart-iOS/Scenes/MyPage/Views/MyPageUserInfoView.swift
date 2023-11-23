@@ -1,16 +1,15 @@
 //
-//  MyPageProfileCollectionViewCell.swift
+//  MyPageUserInfoView.swift
 //  LionHeart-iOS
 //
-//  Created by 황찬미 on 2023/07/14.
-//  Copyright (c) 2023 MyPageProfile. All rights reserved.
+//  Created by uiskim on 2023/11/20.
 //
 
 import UIKit
 
 import SnapKit
 
-final class MyPageProfileCollectionViewCell: UICollectionViewCell, CollectionViewCellRegisterDequeueProtocol {
+final class MyPageUserInfoView: UIView {
     
     private enum Size {
         static let buttonMutipleSize: CGFloat = 40/320
@@ -51,20 +50,18 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell, CollectionVie
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setDelegate()
+        
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
-private extension MyPageProfileCollectionViewCell {
+private extension MyPageUserInfoView {
     func setHierarchy() {
         addSubviews(badgeImageView, profileLabel, profileEditButton)
     }
@@ -88,12 +85,4 @@ private extension MyPageProfileCollectionViewCell {
             $0.height.equalTo(profileEditButton.snp.width).multipliedBy(Size.buttonMutipleSize)
         }
    }
-    
-    func setAddTarget() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
 }

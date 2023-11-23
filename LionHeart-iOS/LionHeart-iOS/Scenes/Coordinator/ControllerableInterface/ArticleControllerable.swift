@@ -8,7 +8,4 @@
 import UIKit
 
 
-protocol ArticleControllerable where Self: UIViewController {
-    func setArticleId(id: Int?)
-    var adaptor: ArticleDetailModalNavigation { get set }
-}
+protocol ArticleControllerable where Self: UIViewController {}

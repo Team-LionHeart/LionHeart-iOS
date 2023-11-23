@@ -15,12 +15,7 @@
 		4A52DD9F2ADBC0E500858230 /* AuthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52DD9E2ADBC0E500858230 /* AuthFactory.swift */; };
 		4A81C2912ACC7DC80056E815 /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81C2902ACC7DC80056E815 /* UICollectionViewCell+.swift */; };
 		4A860AD62A6265B2002BA428 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A860AD52A6265B2002BA428 /* BookmarkModel.swift */; };
-		4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */; };
-		4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */; };
-		4A8980CA2A614F8700746C58 /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C92A614F8700746C58 /* MyPageModel.swift */; };
-		4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */; };
 		4A8980CE2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */; };
-		4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */; };
 		4A918E772AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */; };
 		4A918E792AE10BC2003CB8F9 /* MyPageAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */; };
 		4A918E7B2AE11839003CB8F9 /* ArticleAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918E7A2AE11839003CB8F9 /* ArticleAdaptor.swift */; };
@@ -46,6 +41,15 @@
 		B5234FBA2B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */; };
 		B5234FBC2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */; };
 		B5234FBF2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */; };
+		B5234F9B2B0A61D700D6EE58 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234F9A2B0A61D700D6EE58 /* ArticleDetailViewModel.swift */; };
+		B5234F9D2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234F9C2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift */; };
+		B5234FA52B0B2C3700D6EE58 /* ArticleCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FA42B0B2C3700D6EE58 /* ArticleCategoryViewModel.swift */; };
+		B5234FA72B0B2D1F00D6EE58 /* ArticleCategoryViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FA62B0B2D1F00D6EE58 /* ArticleCategoryViewModelImpl.swift */; };
+		B5234FA92B0B33CB00D6EE58 /* ArticleCategoryDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FA82B0B33CB00D6EE58 /* ArticleCategoryDiffableModel.swift */; };
+		B5234FAB2B0B36DF00D6EE58 /* ArticleCategoryDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FAA2B0B36DF00D6EE58 /* ArticleCategoryDiffableDataSource.swift */; };
+		B5234FAF2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FAE2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift */; };
+		B5234FB12B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FB02B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift */; };
+		B5234FB32B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FB22B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift */; };
 		B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
@@ -180,7 +184,6 @@
 		C009E9F62ADBC41D00112F18 /* BookmarkFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F52ADBC41D00112F18 /* BookmarkFactory.swift */; };
 		C009E9F82ADBC43300112F18 /* BookmarkFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F72ADBC43300112F18 /* BookmarkFactoryImpl.swift */; };
 		C009E9FA2ADBC4DE00112F18 /* BookmarkViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */; };
-		C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */; };
 		C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */; };
 		C0138C282B05FAEE002BA766 /* CompleteOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0138C272B05FAEE002BA766 /* CompleteOnboardingViewModel.swift */; };
 		C034EDD62ADE21BD00AD6FF3 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C034EDD52ADE21BD00AD6FF3 /* SplashCoordinator.swift */; };
@@ -196,9 +199,6 @@
 		C065F0032ADBD2270094912C /* AuthFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */; };
 		C065F0052ADBD23E0094912C /* SplashFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0042ADBD23E0094912C /* SplashFactoryImpl.swift */; };
 		C065F0072ADBD24B0094912C /* TodayFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0062ADBD24B0094912C /* TodayFactoryImpl.swift */; };
-		C065F0092ADBD2640094912C /* TodayViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F0082ADBD2640094912C /* TodayViewControllerable.swift */; };
-		C065F00B2ADBD2800094912C /* LoginViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */; };
-		C065F00D2ADBD29A0094912C /* OnboardingViewControllerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */; };
 		C06D23D02B0481F00048AFDB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D23CF2B0481F00048AFDB /* OnboardingViewModel.swift */; };
 		C06D23D22B04821B0048AFDB /* OnboardingViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D23D12B04821B0048AFDB /* OnboardingViewModelImpl.swift */; };
 		C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E381A2A65346700B00600 /* UserDefaultToken.swift */; };
@@ -247,6 +247,26 @@
 		C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E262AC104D50058D56B /* LHImageButton.swift */; };
 		C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */; };
 		C0B15E2B2AC115F90058D56B /* LHView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E2A2AC115F90058D56B /* LHView.swift */; };
+		C0D47B602B08B640003B66E6 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */; };
+		C0D47B622B08B6A3003B66E6 /* ChallengeViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */; };
+		C0D47B642B09A7A7003B66E6 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */; };
+		C0D47B662B09A845003B66E6 /* TodayViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B652B09A845003B66E6 /* TodayViewModelImpl.swift */; };
+		C0D47B682B09B262003B66E6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B672B09B262003B66E6 /* ViewModel.swift */; };
+		C0D47B6A2B09B851003B66E6 /* GestureSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B692B09B851003B66E6 /* GestureSubscription.swift */; };
+		C0D47B6C2B09B98F003B66E6 /* GesturePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B6B2B09B98F003B66E6 /* GesturePublisher.swift */; };
+		C0D47B852B0AF6B2003B66E6 /* MyPageCustomerServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B842B0AF6B2003B66E6 /* MyPageCustomerServiceTableViewCell.swift */; };
+		C0D47B872B0AF6FF003B66E6 /* MyPageAppSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B862B0AF6FF003B66E6 /* MyPageAppSettingTableViewCell.swift */; };
+		C0D47B892B0AF7A8003B66E6 /* MyPageUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B882B0AF7A8003B66E6 /* MyPageUserInfoView.swift */; };
+		C0D47B8B2B0AF7FF003B66E6 /* MyPageTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B8A2B0AF7FF003B66E6 /* MyPageTableSectionHeaderView.swift */; };
+		C0D47B8D2B0AF8EE003B66E6 /* MyPageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B8C2B0AF8EE003B66E6 /* MyPageTableView.swift */; };
+		C0D47B902B0B2A02003B66E6 /* MyPageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B8F2B0B2A02003B66E6 /* MyPageDataSource.swift */; };
+		C0D47B922B0B2B66003B66E6 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B912B0B2B66003B66E6 /* MyPageViewModel.swift */; };
+		C0D47B942B0B2C46003B66E6 /* MyPageViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B932B0B2C46003B66E6 /* MyPageViewModelImpl.swift */; };
+		C0D47B962B0B3739003B66E6 /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B952B0B3739003B66E6 /* MyPageModel.swift */; };
+		C0D47B982B0B3813003B66E6 /* BadgeProfileAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B972B0B3813003B66E6 /* BadgeProfileAppData.swift */; };
+		C0D47B9A2B0B382B003B66E6 /* MyPageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B992B0B382B003B66E6 /* MyPageSection.swift */; };
+		C0D47B9C2B0B3837003B66E6 /* MyPageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B9B2B0B3837003B66E6 /* MyPageRow.swift */; };
+		C0D47B9E2B0B3843003B66E6 /* MyPageSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B9D2B0B3843003B66E6 /* MyPageSectionModel.swift */; };
 		C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */; };
 		C0DF032D2A5A91D90037F740 /* DataTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */; };
 		C0DF032F2A5A92170037F740 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF032E2A5A92170037F740 /* NameSpace.swift */; };
@@ -347,12 +367,7 @@
 		4A81C2902ACC7DC80056E815 /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		4A860AD52A6265B2002BA428 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionViewCell.swift; sourceTree = "<group>"; };
-		4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomerServiceCollectionViewCell.swift; sourceTree = "<group>"; };
-		4A8980C92A614F8700746C58 /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
-		4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderView.swift; sourceTree = "<group>"; };
 		4A8980CD2A617F7100746C58 /* CollectionHeaderViewRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderViewRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
-		4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAppSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A918E762AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinatorImpl.swift; sourceTree = "<group>"; };
 		4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAdaptor.swift; sourceTree = "<group>"; };
 		4A918E7A2AE11839003CB8F9 /* ArticleAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleAdaptor.swift; sourceTree = "<group>"; };
@@ -386,6 +401,15 @@
 		B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekViewModel.swift; sourceTree = "<group>"; };
 		B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekViewModelImpl.swift; sourceTree = "<group>"; };
 		B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekDiffableModel.swift; sourceTree = "<group>"; };
+		B5234F9A2B0A61D700D6EE58 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
+		B5234F9C2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModelImpl.swift; sourceTree = "<group>"; };
+		B5234FA42B0B2C3700D6EE58 /* ArticleCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewModel.swift; sourceTree = "<group>"; };
+		B5234FA62B0B2D1F00D6EE58 /* ArticleCategoryViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewModelImpl.swift; sourceTree = "<group>"; };
+		B5234FA82B0B33CB00D6EE58 /* ArticleCategoryDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryDiffableModel.swift; sourceTree = "<group>"; };
+		B5234FAA2B0B36DF00D6EE58 /* ArticleCategoryDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryDiffableDataSource.swift; sourceTree = "<group>"; };
+		B5234FAE2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewModel.swift; sourceTree = "<group>"; };
+		B5234FB02B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryViewModelImpl.swift; sourceTree = "<group>"; };
+		B5234FB22B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListByCategoryDiffableModel.swift; sourceTree = "<group>"; };
 		B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -509,7 +533,6 @@
 		C009E9F52ADBC41D00112F18 /* BookmarkFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFactory.swift; sourceTree = "<group>"; };
 		C009E9F72ADBC43300112F18 /* BookmarkFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFactoryImpl.swift; sourceTree = "<group>"; };
 		C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewControllerable.swift; sourceTree = "<group>"; };
-		C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewControllerable.swift; sourceTree = "<group>"; };
 		C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategoryViewControllerable.swift; sourceTree = "<group>"; };
 		C0138C272B05FAEE002BA766 /* CompleteOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnboardingViewModel.swift; sourceTree = "<group>"; };
 		C034EDD52ADE21BD00AD6FF3 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
@@ -524,9 +547,6 @@
 		C065F0022ADBD2270094912C /* AuthFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFactoryImpl.swift; sourceTree = "<group>"; };
 		C065F0042ADBD23E0094912C /* SplashFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFactoryImpl.swift; sourceTree = "<group>"; };
 		C065F0062ADBD24B0094912C /* TodayFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayFactoryImpl.swift; sourceTree = "<group>"; };
-		C065F0082ADBD2640094912C /* TodayViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewControllerable.swift; sourceTree = "<group>"; };
-		C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerable.swift; sourceTree = "<group>"; };
-		C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewControllerable.swift; sourceTree = "<group>"; };
 		C06D23CF2B0481F00048AFDB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		C06D23D12B04821B0048AFDB /* OnboardingViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelImpl.swift; sourceTree = "<group>"; };
 		C06E381A2A65346700B00600 /* UserDefaultToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultToken.swift; sourceTree = "<group>"; };
@@ -574,6 +594,26 @@
 		C0B15E262AC104D50058D56B /* LHImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHImageButton.swift; sourceTree = "<group>"; };
 		C0B15E282AC106CA0058D56B /* CurriculumListByCategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByCategoryTableView.swift; sourceTree = "<group>"; };
 		C0B15E2A2AC115F90058D56B /* LHView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHView.swift; sourceTree = "<group>"; };
+		C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModelImpl.swift; sourceTree = "<group>"; };
+		C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		C0D47B652B09A845003B66E6 /* TodayViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModelImpl.swift; sourceTree = "<group>"; };
+		C0D47B672B09B262003B66E6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		C0D47B692B09B851003B66E6 /* GestureSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureSubscription.swift; sourceTree = "<group>"; };
+		C0D47B6B2B09B98F003B66E6 /* GesturePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturePublisher.swift; sourceTree = "<group>"; };
+		C0D47B842B0AF6B2003B66E6 /* MyPageCustomerServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCustomerServiceTableViewCell.swift; sourceTree = "<group>"; };
+		C0D47B862B0AF6FF003B66E6 /* MyPageAppSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAppSettingTableViewCell.swift; sourceTree = "<group>"; };
+		C0D47B882B0AF7A8003B66E6 /* MyPageUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageUserInfoView.swift; sourceTree = "<group>"; };
+		C0D47B8A2B0AF7FF003B66E6 /* MyPageTableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableSectionHeaderView.swift; sourceTree = "<group>"; };
+		C0D47B8C2B0AF8EE003B66E6 /* MyPageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableView.swift; sourceTree = "<group>"; };
+		C0D47B8F2B0B2A02003B66E6 /* MyPageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDataSource.swift; sourceTree = "<group>"; };
+		C0D47B912B0B2B66003B66E6 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		C0D47B932B0B2C46003B66E6 /* MyPageViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModelImpl.swift; sourceTree = "<group>"; };
+		C0D47B952B0B3739003B66E6 /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
+		C0D47B972B0B3813003B66E6 /* BadgeProfileAppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeProfileAppData.swift; sourceTree = "<group>"; };
+		C0D47B992B0B382B003B66E6 /* MyPageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSection.swift; sourceTree = "<group>"; };
+		C0D47B9B2B0B3837003B66E6 /* MyPageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRow.swift; sourceTree = "<group>"; };
+		C0D47B9D2B0B3843003B66E6 /* MyPageSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSectionModel.swift; sourceTree = "<group>"; };
 		C0DF032A2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterDequeueProtocol.swift; sourceTree = "<group>"; };
 		C0DF032C2A5A91D90037F740 /* DataTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeProtocol.swift; sourceTree = "<group>"; };
 		C0DF032E2A5A92170037F740 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
@@ -711,9 +751,8 @@
 		4A8980C32A611ECB00746C58 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4A8980C62A6146D900746C58 /* MyPageCustomerServiceCollectionViewCell.swift */,
-				4A8980CF2A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift */,
-				4A8980C42A611EE200746C58 /* MyPageProfileCollectionViewCell.swift */,
+				C0D47B842B0AF6B2003B66E6 /* MyPageCustomerServiceTableViewCell.swift */,
+				C0D47B862B0AF6FF003B66E6 /* MyPageAppSettingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -721,7 +760,11 @@
 		4A8980C82A614F5200746C58 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4A8980C92A614F8700746C58 /* MyPageModel.swift */,
+				C0D47B952B0B3739003B66E6 /* MyPageModel.swift */,
+				C0D47B972B0B3813003B66E6 /* BadgeProfileAppData.swift */,
+				C0D47B992B0B382B003B66E6 /* MyPageSection.swift */,
+				C0D47B9B2B0B3837003B66E6 /* MyPageRow.swift */,
+				C0D47B9D2B0B3843003B66E6 /* MyPageSectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -781,6 +824,15 @@
 			children = (
 				B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */,
 				B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */,
+      );
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5234F992B0A61CE00D6EE58 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5234F9A2B0A61D700D6EE58 /* ArticleDetailViewModel.swift */,
+				B5234F9C2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -791,6 +843,24 @@
 				B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */,
 			);
 			path = Diffable;
+      sourceTree = "<group>";
+		};
+		B5234FAC2B0B3F5600D6EE58 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5234FA42B0B2C3700D6EE58 /* ArticleCategoryViewModel.swift */,
+				B5234FA62B0B2D1F00D6EE58 /* ArticleCategoryViewModelImpl.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5234FAD2B0B404500D6EE58 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5234FAE2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift */,
+				B5234FB02B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B532E8252A5525C600F0DB19 = {
@@ -965,6 +1035,8 @@
 				B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */,
 				B57BEB642A6134B800D1727C /* setRootViewController.swift */,
 				B53BA2012A68717B006F9BFB /* LoadingIndicator.swift */,
+				C0D47B692B09B851003B66E6 /* GestureSubscription.swift */,
+				C0D47B6B2B09B98F003B66E6 /* GesturePublisher.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1103,6 +1175,7 @@
 		B598920B2A56B3A300CE1FEB /* ArticleDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B5234F992B0A61CE00D6EE58 /* ViewModel */,
 				B5C6A2C92A5EF5210021BE5E /* Model */,
 				B598922B2A56B6C100CE1FEB /* Cells */,
 				B598922A2A56B6BE00CE1FEB /* Views */,
@@ -1114,8 +1187,10 @@
 		B598920C2A56B3B700CE1FEB /* ArticleListByCategory */ = {
 			isa = PBXGroup;
 			children = (
+				B5234FAD2B0B404500D6EE58 /* ViewModel */,
 				B59892122A56B52F00CE1FEB /* ViewControllers */,
 				B59892112A56B52B00CE1FEB /* Views */,
+				B5234FB22B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift */,
 			);
 			path = ArticleListByCategory;
 			sourceTree = "<group>";
@@ -1147,6 +1222,7 @@
 		B59892102A56B47C00CE1FEB /* ArticleCategory */ = {
 			isa = PBXGroup;
 			children = (
+				B5234FAC2B0B3F5600D6EE58 /* ViewModel */,
 				D3BA0B722A5CFA6400B6361F /* Model */,
 				B598922C2A56B6CA00CE1FEB /* Cells */,
 				B59892252A56B6A000CE1FEB /* ViewControllers */,
@@ -1238,6 +1314,8 @@
 			isa = PBXGroup;
 			children = (
 				C0DF03722A5A9CB50037F740 /* TodayViewController.swift */,
+				C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */,
+				C0D47B652B09A845003B66E6 /* TodayViewModelImpl.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1305,6 +1383,8 @@
 			isa = PBXGroup;
 			children = (
 				C0DF034E2A5A9B9C0037F740 /* MyPageViewController.swift */,
+				C0D47B912B0B2B66003B66E6 /* MyPageViewModel.swift */,
+				C0D47B932B0B2C46003B66E6 /* MyPageViewModelImpl.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1312,7 +1392,10 @@
 		B59892642A56B95600CE1FEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4A8980CB2A61795500746C58 /* MyPageHeaderView.swift */,
+				C0D47B882B0AF7A8003B66E6 /* MyPageUserInfoView.swift */,
+				C0D47B8A2B0AF7FF003B66E6 /* MyPageTableSectionHeaderView.swift */,
+				C0D47B8C2B0AF8EE003B66E6 /* MyPageTableView.swift */,
+				C0D47B8F2B0B2A02003B66E6 /* MyPageDataSource.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1349,11 +1432,7 @@
 				B59BFD3C2ADBBEF8005D2D81 /* ArticleControllerable.swift */,
 				B53F4EE82ADBC44B001C5752 /* CurriculumArticleByWeekControllerable.swift */,
 				C009E9F92ADBC4DE00112F18 /* BookmarkViewControllerable.swift */,
-				C009E9FB2ADBC4FD00112F18 /* ChallengeViewControllerable.swift */,
 				C009E9FD2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift */,
-				C065F0082ADBD2640094912C /* TodayViewControllerable.swift */,
-				C065F00A2ADBD2800094912C /* LoginViewControllerable.swift */,
-				C065F00C2ADBD29A0094912C /* OnboardingViewControllerable.swift */,
 				C034EDDD2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift */,
 			);
 			path = ControllerableInterface;
@@ -1692,6 +1771,7 @@
 				B57BEB6D2A6275D600D1727C /* Serviceable.swift */,
 				B57BEB6F2A6275F500D1727C /* ViewControllerServiceable.swift */,
 				C003CC1A2AD9176B00AFFAAC /* Coordinator.swift */,
+				C0D47B672B09B262003B66E6 /* ViewModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1710,6 +1790,8 @@
 			isa = PBXGroup;
 			children = (
 				C0DF03842A5AF7B70037F740 /* ChallengeViewController.swift */,
+				C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */,
+				C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1775,7 +1857,9 @@
 		D3BA0B722A5CFA6400B6361F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B5234FAA2B0B36DF00D6EE58 /* ArticleCategoryDiffableDataSource.swift */,
 				D3BA0B732A5CFA7B00B6361F /* ArticleCategoryModel.swift */,
+				B5234FA82B0B33CB00D6EE58 /* ArticleCategoryDiffableModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1987,22 +2071,24 @@
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				B5234FB72B0C78EB00D6EE58 /* CurriculumListWeekViewController.swift in Sources */,
 				C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */,
+				C0D47B642B09A7A7003B66E6 /* TodayViewModel.swift in Sources */,
 				C0DF034F2A5A9B9C0037F740 /* MyPageViewController.swift in Sources */,
 				C0DF03A92A5CF0460037F740 /* UserOnboardingModel.swift in Sources */,
 				C0B15E212AC0450E0058D56B /* ArticleListTableView.swift in Sources */,
 				C034EDDA2ADE2A0E00AD6FF3 /* AuthCoordinator.swift in Sources */,
-				C065F0092ADBD2640094912C /* TodayViewControllerable.swift in Sources */,
 				B5C6A2B42A5DB11A0021BE5E /* ThumnailTableViewCell.swift in Sources */,
 				B59BFD412ADBBFB2005D2D81 /* MyPageFactory.swift in Sources */,
 				C003CC312AD918AB00AFFAAC /* ArticleCoordinator.swift in Sources */,
 				C003CC472ADA4F3400AFFAAC /* ArticleCategoryNavigation.swift in Sources */,
 				C0F029CB2A5F034400E0D185 /* LHOnboardingButton.swift in Sources */,
+				C0D47B6C2B09B98F003B66E6 /* GesturePublisher.swift in Sources */,
 				C065F0052ADBD23E0094912C /* SplashFactoryImpl.swift in Sources */,
 				B59893112A5D039B00CE1FEB /* ArticleBlockType.swift in Sources */,
 				C0DF03332A5A931B0037F740 /* UIView+.swift in Sources */,
 				C009E9F82ADBC43300112F18 /* BookmarkFactoryImpl.swift in Sources */,
 				B5C6A2BC2A5DE2A50021BE5E /* BodyTableViewCell.swift in Sources */,
 				C0DF03852A5AF7B70037F740 /* ChallengeViewController.swift in Sources */,
+				C0D47B9C2B0B3837003B66E6 /* MyPageRow.swift in Sources */,
 				C09217692A605DEE00231C66 /* OnboardingPregnancyTextFieldResultType.swift in Sources */,
 				C003CC412ADA4EE000AFFAAC /* CurriculumListByWeekNavigation.swift in Sources */,
 				C009E9FE2ADBC51400112F18 /* ArticleCategoryViewControllerable.swift in Sources */,
@@ -2014,6 +2100,7 @@
 				F435E0542A5E67BF0098E691 /* NSObject+.swift in Sources */,
 				4AE19A1F2A66F2E200C1DB7E /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				D3AB54B62A625A7B0017BF53 /* ArticleListByCategoryHeaderView.swift in Sources */,
+				B5234FAF2B0B405200D6EE58 /* ArticleListByCategoryViewModel.swift in Sources */,
 				B59892E82A5B14FE00CE1FEB /* NavigationBarType.swift in Sources */,
 				B57BEB6E2A6275D600D1727C /* Serviceable.swift in Sources */,
 				D342807A2A67F12200DA1499 /* ChallengeDataResponse.swift in Sources */,
@@ -2030,6 +2117,7 @@
 				B532E8652A5529F100F0DB19 /* BaseResponse.swift in Sources */,
 				B5E78E132B05D33B00EA67A2 /* SplashViewModel.swift in Sources */,
 				F4DB30B82A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift in Sources */,
+				C0D47B8D2B0AF8EE003B66E6 /* MyPageTableView.swift in Sources */,
 				C0DF03452A5A9A910037F740 /* CurriculumTableViewCell.swift in Sources */,
 				C07CB81E2A62C5B1000198CC /* TodayArticleView.swift in Sources */,
 				4A918E7D2AE11936003CB8F9 /* ArticleCoordinatorImpl.swift in Sources */,
@@ -2040,10 +2128,14 @@
 				C0856B652ABFB8640026D9F8 /* TodayManagerImpl.swift in Sources */,
 				4AE19A1A2A65886100C1DB7E /* BookmarkReponse.swift in Sources */,
 				B5F323E92A6A8F0000047869 /* CurriculumWeekBackgroundDummy.swift in Sources */,
+				C0D47B942B0B2C46003B66E6 /* MyPageViewModelImpl.swift in Sources */,
+				C0D47B622B08B6A3003B66E6 /* ChallengeViewModelImpl.swift in Sources */,
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
 				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift in Sources */,
 				C009E9FC2ADBC4FD00112F18 /* ChallengeViewControllerable.swift in Sources */,
+				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekRowZeroTableViewCell.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
+				C0D47B662B09A845003B66E6 /* TodayViewModelImpl.swift in Sources */,
 				C034EE1E2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift in Sources */,
 				C003CC662ADA518E00AFFAAC /* ArticleDetailManager.swift in Sources */,
 				B53F4EF62ADE2DEB001C5752 /* ChallengeAdaptor.swift in Sources */,
@@ -2052,6 +2144,7 @@
 				C003CC6E2ADA51E200AFFAAC /* CurriculumListManager.swift in Sources */,
 				B53F4EFA2ADE3151001C5752 /* BookmarkAdaptor.swift in Sources */,
 				D35272D12A681E13002D7FCB /* ChallengeData.swift in Sources */,
+				B5234FAB2B0B36DF00D6EE58 /* ArticleCategoryDiffableDataSource.swift in Sources */,
 				C065F00D2ADBD29A0094912C /* OnboardingViewControllerable.swift in Sources */,
 				B59893132A5D3A4D00CE1FEB /* NetworkError.swift in Sources */,
 				C0DF03392A5A945D0037F740 /* UIViewController+.swift in Sources */,
@@ -2065,7 +2158,9 @@
 				C003CC432ADA4EFF00AFFAAC /* MyPageNavigation.swift in Sources */,
 				C003CC512ADA4FA600AFFAAC /* CompleteOnboardingNavigation.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
+				C0D47B962B0B3739003B66E6 /* MyPageModel.swift in Sources */,
 				B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */,
+				B5234FA92B0B33CB00D6EE58 /* ArticleCategoryDiffableModel.swift in Sources */,
 				C06D23D22B04821B0048AFDB /* OnboardingViewModelImpl.swift in Sources */,
 				B5E78E152B05D38B00EA67A2 /* SplashViewModelImpl.swift in Sources */,
 				B532E8632A5529B000F0DB19 /* HTTPHeaderField.swift in Sources */,
@@ -2090,18 +2185,20 @@
 				C0DF03372A5A93680037F740 /* CALayer+.swift in Sources */,
 				C0DF03A12A5CAC220037F740 /* GetFetalNicknameViewController.swift in Sources */,
 				C0856B852ABFD0F50026D9F8 /* CurriculumManagerImpl.swift in Sources */,
+				C0D47B8B2B0AF7FF003B66E6 /* MyPageTableSectionHeaderView.swift in Sources */,
 				C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */,
 				B59BFD3D2ADBBEF8005D2D81 /* ArticleControllerable.swift in Sources */,
 				C0DF03812A5AF51C0037F740 /* Constant.swift in Sources */,
 				B59892942A57A93300CE1FEB /* Config.swift in Sources */,
 				4AD6AE1A2A68436B00A3D745 /* ArticleListByCategoryResponse.swift in Sources */,
 				C0B15E252AC103A50058D56B /* LHToggleImageButton.swift in Sources */,
-				4A8980D02A61850500746C58 /* MyPageAppSettingCollectionViewCell.swift in Sources */,
 				4A918E792AE10BC2003CB8F9 /* MyPageAdaptor.swift in Sources */,
 				C0B15E292AC106CA0058D56B /* CurriculumListByCategoryTableView.swift in Sources */,
 				C003CC2F2AD9189F00AFFAAC /* MypageCoordinator.swift in Sources */,
 				C003CC5E2ADA508A00AFFAAC /* LoginManager.swift in Sources */,
+				B5234F9B2B0A61D700D6EE58 /* ArticleDetailViewModel.swift in Sources */,
 				C065F00B2ADBD2800094912C /* LoginViewControllerable.swift in Sources */,
+				B5234FB12B0B405900D6EE58 /* ArticleListByCategoryViewModelImpl.swift in Sources */,
 				C06E38232A65353F00B00600 /* LoginType.swift in Sources */,
 				C0856B6B2ABFBC9D0026D9F8 /* ArticleDetailManagerImpl.swift in Sources */,
 				C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */,
@@ -2109,6 +2206,7 @@
 				C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
 				C003CC682ADA51A700AFFAAC /* ArticleListByCategoryManager.swift in Sources */,
+				B5234F9D2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift in Sources */,
 				C003CC6A2ADA51C000AFFAAC /* MyPageManager.swift in Sources */,
 				4A3D72872A5D405C00A36189 /* BookmarkListCollectionViewCell.swift in Sources */,
 				C003CC622ADA50C000AFFAAC /* TodayManager.swift in Sources */,
@@ -2122,6 +2220,7 @@
 				C003CC492ADA4F4600AFFAAC /* ArticleDetailModalNavigation.swift in Sources */,
 				C0DF032B2A5A918F0037F740 /* TableViewCellRegisterDequeueProtocol.swift in Sources */,
 				C003CC5C2ADA506800AFFAAC /* SplashManager.swift in Sources */,
+				C0D47B682B09B262003B66E6 /* ViewModel.swift in Sources */,
 				B51220642A6039AA006CBE2D /* HttpMethod.swift in Sources */,
 				C009E9F02ADBC08A00112F18 /* ArticleCategortFactory.swift in Sources */,
 				C003CC1D2AD917CF00AFFAAC /* AppCoordinatorImpl.swift in Sources */,
@@ -2138,9 +2237,10 @@
 				F435E04C2A5DA6A40098E691 /* CurriculumUserInfoView.swift in Sources */,
 				C034EDDE2ADE2F3500AD6FF3 /* ArticleListByCategoryViewControllerable.swift in Sources */,
 				C003CC452ADA4F1E00AFFAAC /* ArticleListByCategoryNavigation.swift in Sources */,
-				4A8980C72A6146DA00746C58 /* MyPageCustomerServiceCollectionViewCell.swift in Sources */,
+				C0D47B9A2B0B382B003B66E6 /* MyPageSection.swift in Sources */,
 				C0856B752ABFC4CB0026D9F8 /* MyPageManagerImpl.swift in Sources */,
 				C0DF03752A5A9CD00037F740 /* TabBarViewController.swift in Sources */,
+				C0D47B6A2B09B851003B66E6 /* GestureSubscription.swift in Sources */,
 				C0DF03532A5A9BC80037F740 /* ArticleListByCategoryViewController.swift in Sources */,
 				C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */,
 				C0856B812ABFCD830026D9F8 /* OnboardingManagerImpl.swift in Sources */,
@@ -2149,10 +2249,9 @@
 				F46522FD2A6048660083FBB2 /* CurriculumImagesByWeek.swift in Sources */,
 				C003CC352AD923AF00AFFAAC /* BarNavigation.swift in Sources */,
 				C003CC6C2ADA51D100AFFAAC /* CurriculumManager.swift in Sources */,
-				4A8980CA2A614F8700746C58 /* MyPageModel.swift in Sources */,
 				C009E9F22ADBC23B00112F18 /* ChallengeFactory.swift in Sources */,
-				4A8980C52A611EE200746C58 /* MyPageProfileCollectionViewCell.swift in Sources */,
 				D3BA0B742A5CFA7B00B6361F /* ArticleCategoryModel.swift in Sources */,
+				B5234FA72B0B2D1F00D6EE58 /* ArticleCategoryViewModelImpl.swift in Sources */,
 				C0DF033F2A5A959A0037F740 /* UIButton+.swift in Sources */,
 				C0B15E152AC011840058D56B /* LHLabel.swift in Sources */,
 				F4DB30B02A611C9700413EB9 /* CurriculumListByWeekData.swift in Sources */,
@@ -2161,6 +2260,7 @@
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
 				C003CC3B2ADA4DA100AFFAAC /* DismissNavigation.swift in Sources */,
 				C003CC4B2ADA4F6300AFFAAC /* BookmarkNavigation.swift in Sources */,
+				C0D47B602B08B640003B66E6 /* ChallengeViewModel.swift in Sources */,
 				C09A33222A62D46300B40770 /* LHToast.swift in Sources */,
 				C003CC572ADA4FEB00AFFAAC /* UserState.swift in Sources */,
 				B59BFD352ADBBAE6005D2D81 /* CurriculumControllerable.swift in Sources */,
@@ -2176,6 +2276,7 @@
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
 				4A52DD9B2ADBBF2C00858230 /* SpalshFactory.swift in Sources */,
 				C034EDD82ADE21D200AD6FF3 /* SplashAdaptor.swift in Sources */,
+				C0D47B852B0AF6B2003B66E6 /* MyPageCustomerServiceTableViewCell.swift in Sources */,
 				4A81C2912ACC7DC80056E815 /* UICollectionViewCell+.swift in Sources */,
 				C003CC2D2AD9189100AFFAAC /* BookmarkCoordinator.swift in Sources */,
 				C0856B772ABFC4EA0026D9F8 /* MyPageServiceImpl.swift in Sources */,
@@ -2186,9 +2287,11 @@
 				C09217732A61895A00231C66 /* UIWindow+.swift in Sources */,
 				D3BA0B712A5CFA2300B6361F /* ArticleCategoryCollectionViewCell.swift in Sources */,
 				C003CC212AD9181600AFFAAC /* TodayCoordinator.swift in Sources */,
+				C0D47B922B0B2B66003B66E6 /* MyPageViewModel.swift in Sources */,
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				4A52DD9F2ADBC0E500858230 /* AuthFactory.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
+				C0D47B872B0AF6FF003B66E6 /* MyPageAppSettingTableViewCell.swift in Sources */,
 				C003CC3D2ADA4EB300AFFAAC /* ChallengeNavigation.swift in Sources */,
 				C0B15E232AC100690058D56B /* LHStackView.swift in Sources */,
 				B59BFD432ADBBFF5005D2D81 /* ArticleFactory.swift in Sources */,
@@ -2201,6 +2304,7 @@
 				B59BFD452ADBC08D005D2D81 /* MyPageControllerable.swift in Sources */,
 				C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
+				B5234FB32B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift in Sources */,
 				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
 				B51220602A60111C006CBE2D /* Token.swift in Sources */,
 				B5234FBF2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift in Sources */,
@@ -2210,11 +2314,11 @@
 				C009E9EE2ADBC07700112F18 /* ArticleCategortFactoryImpl.swift in Sources */,
 				B5C6A2C82A5EF4EB0021BE5E /* ArticleDetail.swift in Sources */,
 				C0DF03312A5A92730037F740 /* CollectionViewCellRegisterDequeueProtocol.swift in Sources */,
+				C0D47B9E2B0B3843003B66E6 /* MyPageSectionModel.swift in Sources */,
 				C06E381D2A65348A00B00600 /* LoginRequest.swift in Sources */,
 				C003CC642ADA50ED00AFFAAC /* BookmarkManager.swift in Sources */,
 				C065F0032ADBD2270094912C /* AuthFactoryImpl.swift in Sources */,
 				C0DF033D2A5A95420037F740 /* UIStackView+.swift in Sources */,
-				4A8980CC2A61795500746C58 /* MyPageHeaderView.swift in Sources */,
 				C0B15E1F2AC024F20058D56B /* CurriculumTableView.swift in Sources */,
 				C0DF03AB2A5D73C80037F740 /* NHOnboardingTextfield.swift in Sources */,
 				C0DF033B2A5A94BA0037F740 /* UITextField+.swift in Sources */,
@@ -2231,16 +2335,20 @@
 				D3AB54C12A62CE3F0017BF53 /* ChallengeDayCheckCollectionViewCollectionViewCell.swift in Sources */,
 				B58095042AF354EB00FFCE1B /* LoginViewModelImpl.swift in Sources */,
 				B58095022AF354C700FFCE1B /* LoginViewModel.swift in Sources */,
+				C0D47B982B0B3813003B66E6 /* BadgeProfileAppData.swift in Sources */,
 				B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */,
 				C003CC4F2ADA4F8D00AFFAAC /* OnboardingNavigation.swift in Sources */,
 				C034EE202ADE450600AD6FF3 /* ArticleCategoryCoordinator.swift in Sources */,
 				B59892E12A5AF39300CE1FEB /* LHNavigationBarView.swift in Sources */,
+				B5234FA52B0B2C3700D6EE58 /* ArticleCategoryViewModel.swift in Sources */,
 				C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */,
 				C0856B712ABFC0FB0026D9F8 /* ChallengeManagerImpl.swift in Sources */,
 				B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */,
 				B53F4EE72ADBC29F001C5752 /* CurriculumFactoryImpl.swift in Sources */,
 				C0DF03672A5A9C680037F740 /* ArticleDetailViewController.swift in Sources */,
+				C0D47B902B0B2A02003B66E6 /* MyPageDataSource.swift in Sources */,
 				B5E78E022B03304F00EA67A2 /* GetFetalNicknameViewModelImpl.swift in Sources */,
+				C0D47B892B0AF7A8003B66E6 /* MyPageUserInfoView.swift in Sources */,
 				C003CC392ADA4D9600AFFAAC /* PopNavigation.swift in Sources */,
 				C003CC4D2ADA4F7600AFFAAC /* TodayNavigation.swift in Sources */,
 				4AE19A1E2A6597E700C1DB7E /* BookmarkRequest.swift in Sources */,
