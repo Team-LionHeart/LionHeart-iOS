@@ -14,10 +14,10 @@ final class BookmarkDetailCollectionViewCell: UICollectionViewCell, CollectionVi
     
     private let bookmarkDetailLabel = LHLabel(type: .head3, color: .white, lines: 2)
     
-    var inputData: BookmarkAppData? {
+    var inputData: String? {
         didSet {
             guard let inputData else { return }
-            bookmarkDetailLabel.text = inputData.nickName +  " 아빠님이\n보관한 아티클이에요"
+            bookmarkDetailLabel.text = inputData +  " 아빠님이\n보관한 아티클이에요"
         }
     }
 
