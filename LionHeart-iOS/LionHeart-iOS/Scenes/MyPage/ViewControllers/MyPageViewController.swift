@@ -7,23 +7,22 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
-final class MyPageViewController: UIViewController, MyPageControllerable {
+protocol MyPageControllerable where Self: UIViewController {}
 
-    var adaptor: MyPageNavigation
-    private let manager: MyPageManager
+final class MyPageViewController: UIViewController, MyPageControllerable {
     
+    private var viewModel: any MyPageViewModel
     private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
-    private let myPageCollectionView = LHCollectionView(color: .background)
-    
-    private var sections = MyPageSection.sectionArray
-    private var badgeProfileAppData = BadgeProfileAppData.empty {
-        didSet {
-            myPageCollectionView.reloadData()
-        }
-    }
+    private let myPageTableView = MyPageTableView()
+    private lazy var dataSource = MyPageDataSource(tableView: myPageTableView)
+    private let backButtonTapped = PassthroughSubject<Void, Never>()
+    private let resignButtonTapped = PassthroughSubject<Void, Never>()
+    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
+    private var cancelBag = Set<AnyCancellable>()
     
     // MARK: - 회원탈퇴를 위한 임시 버튼
     private let resignButton: UIButton = {
@@ -32,9 +31,8 @@ final class MyPageViewController: UIViewController, MyPageControllerable {
         return button
     }()
 
-    init(manager: MyPageManager, adaptor: MyPageNavigation) {
-        self.manager = manager
-        self.adaptor = adaptor
+    init(viewModel: some MyPageViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -47,21 +45,27 @@ final class MyPageViewController: UIViewController, MyPageControllerable {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
         setDelegate()
-        registerCell()
         hiddenNavigationBar()
         setTabbar()
+        bindInput()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUIFromNetworking()
+        viewWillAppearSubject.send(())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func setTableViewHeader(_ input: BadgeProfileAppData) {
+        let headerView = MyPageUserInfoView(frame: .init(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width*(224/360)))
+        headerView.inputData = input
+        myPageTableView.tableHeaderView = headerView
     }
 }
 
@@ -71,7 +75,7 @@ private extension MyPageViewController {
     }
     
     func setHierarchy() {
-        view.addSubviews(navigtaionBar, myPageCollectionView, resignButton)
+        view.addSubviews(navigtaionBar, myPageTableView, resignButton)
     }
     
     func setLayout() {
@@ -81,7 +85,7 @@ private extension MyPageViewController {
             $0.leading.trailing.equalToSuperview()
         }
         
-        myPageCollectionView.snp.makeConstraints {
+        myPageTableView.snp.makeConstraints {
             $0.top.equalTo(navigtaionBar.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
@@ -94,34 +98,8 @@ private extension MyPageViewController {
         }
     }
     
-    func setAddTarget() {
-        navigtaionBar.backButtonAction {
-            self.adaptor.backButtonTapped()
-        }
-        
-        resignButton.addButtonAction { _ in
-            Task {
-                do {
-                    self.resignButton.isUserInteractionEnabled = false
-                    try await self.manager.resignUser()
-                    self.adaptor.checkTokenIsExpired()
-                } catch {
-                    print(error)
-                }
-            }
-        }
-    }
-    
     func setDelegate() {
-        myPageCollectionView.delegate = self
-        myPageCollectionView.dataSource = self
-    }
-    
-    func registerCell() {
-        MyPageProfileCollectionViewCell.register(to: myPageCollectionView)
-        MyPageCustomerServiceCollectionViewCell.register(to: myPageCollectionView)
-        MyPageAppSettingCollectionViewCell.register(to: myPageCollectionView)
-        MyPageHeaderView.registerHeaderView(to: myPageCollectionView)
+        myPageTableView.delegate = self
     }
     
     func hiddenNavigationBar() {
@@ -132,116 +110,49 @@ private extension MyPageViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    func setUIFromNetworking() {
-        Task {
-            do {
-                let data = try await manager.getMyPage()
-                badgeProfileAppData = data
-            } catch {
-                guard let error = error as? NetworkError else { return }
-                handleError(error)
+    func bindInput() {
+        self.navigtaionBar.leftBarItem.tapPublisher
+            .sink { [weak self] in self?.backButtonTapped.send(()) }
+            .store(in: &cancelBag)
+        
+        self.resignButton.tapPublisher
+            .sink { [weak self] in self?.resignButtonTapped.send(()) }
+            .store(in: &cancelBag)
+    }
+    
+    func bind() {
+        let input = MyPageViewModelInput(backButtonTapped: backButtonTapped, resignButtonTapped: resignButtonTapped, viewWillAppearSubject: viewWillAppearSubject)
+        let output = viewModel.transform(input: input)
+        output.viewWillAppearSubject
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                self?.setTableViewHeader($0.profileData)
+                self?.dataSource.makeList($0.appSettingData, $0.customerServiceData)
+            }
+            .store(in: &cancelBag)
+    }
+}
+
+extension MyPageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let item = dataSource.itemIdentifier(for: indexPath) {
+            switch item {
+            case .appSettingRow(section: _):
+                return tableView.frame.width*(62/360)
+            case .customerServiceRow(section: _):
+                return tableView.frame.width*(52/360)
             }
         }
-    }
-}
-//
-//extension MyPageViewController: ViewControllerServiceable {
-//    func handleError(_ error: NetworkError) {
-//        switch error {
-//        case .urlEncodingError:
-//            LHToast.show(message: "URL Error")
-//        case .jsonDecodingError:
-//            LHToast.show(message: "Decoding Error")
-//        case .badCasting:
-//            LHToast.show(message: "Bad Casting")
-//        case .fetchImageError:
-//            LHToast.show(message: "Image Error")
-//        case .unAuthorizedError:
-//            adaptor.checkTokenIsExpired()
-//        case .clientError(_, let message):
-//            LHToast.show(message: message)
-//        case .serverError:
-//            LHToast.show(message: error.description)
-//        }
-//    }
-//}
-
-extension MyPageViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
+        return UITableView.automaticDimension
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch sections[section] {
-        case .badgeSection:
-            return 1
-        case .customerServiceSetion(let sectionArray):
-            return sectionArray.cellTitle.count
-        case .appSettingSection(let sectionArray):
-            return sectionArray.cellTitle.count
-        }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch sections[indexPath.section] {
-        case .badgeSection:
-            let cell = MyPageProfileCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-            cell.inputData = badgeProfileAppData
-            return cell
-        case .customerServiceSetion(let section):
-            let cell = MyPageCustomerServiceCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-            cell.inputData = section.cellTitle[indexPath.item]
-            return cell
-        case .appSettingSection(let section):
-            let cell = MyPageAppSettingCollectionViewCell.dequeueReusableCell(to: collectionView, indexPath: indexPath)
-            cell.inputData = section.cellTitle[indexPath.item]
-            return cell
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch sections[indexPath.section] {
-        case .badgeSection:
-            return UICollectionReusableView()
-        case .customerServiceSetion(let section):
-            let headerView = MyPageHeaderView.dequeueReusableheaderView(to: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath)
-            headerView.inputData = section.sectionTitle
-            return headerView
-        case .appSettingSection(let section):
-            let headerView = MyPageHeaderView.dequeueReusableheaderView(to: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath)
-            headerView.inputData = section.sectionTitle
-            return headerView
-        }
-    }
-}
-
-extension MyPageViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch sections[indexPath.section] {
-        case .badgeSection:
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(224/360))
-        case .customerServiceSetion:
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(52/360))
-        case .appSettingSection:
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(62/360))
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch sections[section] {
-        case .badgeSection, .customerServiceSetion:
-            return UIEdgeInsets(top: 0, left: 0, bottom: 36, right: 0)
-        case .appSettingSection:
-            return UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        switch sections[section] {
-        case .badgeSection:
-            return CGSize()
-        case .customerServiceSetion, .appSettingSection:
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.width*(36/360))
-        }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: MyPageTableSectionHeaderView.identifier) as? MyPageTableSectionHeaderView else { return MyPageTableSectionHeaderView() }
+        cell.inputData = MyPageSection.allCases[section].rawValue
+        return cell
     }
 }

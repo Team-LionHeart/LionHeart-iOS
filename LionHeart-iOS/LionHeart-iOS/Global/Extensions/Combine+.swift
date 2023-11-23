@@ -45,7 +45,6 @@ extension UIControl {
             self.control = control
             self.subscriber = subscriber
             self.event = event
-            
             control.addTarget(self, action: #selector(eventDidOccur), for: event)
         }
         
@@ -76,5 +75,11 @@ extension UIButton {
         controlPublisher(for: .touchUpInside)
             .map { _ in }
             .eraseToAnyPublisher()
+    }
+}
+
+extension UIView {
+    var tabPublisher: GesturePublisher {
+        .init(view: self, gestureType: .tap())
     }
 }

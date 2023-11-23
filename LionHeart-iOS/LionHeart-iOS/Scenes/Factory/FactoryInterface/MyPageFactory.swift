@@ -8,6 +8,7 @@
 import Foundation
 
 protocol MyPageFactory {
+    func makeMyPageViewModel(coordinator: MyPageCoordinator) -> any MyPageViewModel & MyPageViewModelPresentable
     func makeAdaptor(coordinator: MyPageCoordinator) -> EntireMyPageNavigation
     func makeMyPageViewController(coordinator: MyPageCoordinator) -> MyPageControllerable
 }
