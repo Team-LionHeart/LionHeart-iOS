@@ -1104,7 +1104,6 @@
 			isa = PBXGroup;
 			children = (
 				C04BE3A92ADD4E86001967B5 /* Adaptor */,
-				C003CC322AD9237F00AFFAAC /* NavigationInterface */,
 				C009E9EA2ADBBB7B00112F18 /* Factory */,
 				C003CC192AD9175700AFFAAC /* Coordinator */,
 				C0DF03822A5AF7A20037F740 /* Challenge */,
@@ -1560,6 +1559,7 @@
 		C04BE3A92ADD4E86001967B5 /* Adaptor */ = {
 			isa = PBXGroup;
 			children = (
+				C003CC322AD9237F00AFFAAC /* NavigationInterface */,
 				C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */,
 				4A918E782AE10BC2003CB8F9 /* MyPageAdaptor.swift */,
 				4A918E7A2AE11839003CB8F9 /* ArticleAdaptor.swift */,
