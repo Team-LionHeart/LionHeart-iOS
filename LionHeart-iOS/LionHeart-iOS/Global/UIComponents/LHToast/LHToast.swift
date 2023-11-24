@@ -17,7 +17,7 @@ final class LHToast {
         window.subviews
             .filter { $0 is LHToastView }
             .forEach { $0.removeFromSuperview() }
-//        window.addSubview(toastView)
+        window.addSubview(toastView)
         
         toastView.snp.makeConstraints { make in
             if isTabBar {

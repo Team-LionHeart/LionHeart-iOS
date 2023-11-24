@@ -50,8 +50,8 @@ final class BookmarkViewController: UIViewController, BookmarkViewControllerable
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showLoading()
         
+        showLoading()
         viewWillAppear.send(())
     }
     
@@ -72,9 +72,9 @@ private extension BookmarkViewController {
     }
     
     func setLayout() {
-        navigationBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.trailing.equalToSuperview()
+        navigationBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
         }
         
         bookmarkCollectionView.snp.makeConstraints {
@@ -105,14 +105,18 @@ private extension BookmarkViewController {
         let output = viewModel.transform(input: input)
         
         output.viewWillAppear
+            .receive(on: RunLoop.main)
             .sink { [weak self] data in
                 self?.updateDiffableDataSource(sectionModel: data)
+                self?.hideLoading()
             }
             .store(in: &cancelBag)
         
         output.bookmarkButtonTapped
+            .receive(on: RunLoop.main)
             .sink { [weak self] data in
                 self?.updateDiffableDataSource(sectionModel: data)
+                LHToast.show(message: "북마크 해제")
             }
             .store(in: &cancelBag)
     }
@@ -165,10 +169,11 @@ private extension BookmarkViewController {
                     cell.inputData = bookmarkAppData
                     
                     cell.bookmarkButtonTapped
+                        .receive(on: RunLoop.main)
                         .sink { [weak self] indexPath in
                             self?.bookmarkButtonTapped.send(indexPath)
                         }
-                        .store(in: &self.cancelBag)
+                        .store(in: &cell.cancelBag)
                 }
                 return cell
             }

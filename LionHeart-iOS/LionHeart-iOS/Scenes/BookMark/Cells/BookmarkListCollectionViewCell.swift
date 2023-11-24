@@ -24,7 +24,7 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
     private let bottomLineView = LHUnderLine(lineColor: .gray800)
     
     let bookmarkButtonTapped = PassthroughSubject<IndexPath, Never>()
-    private var cancelBag = Set<AnyCancellable>()
+    var cancelBag = Set<AnyCancellable>()
     
     var inputData: ArticleSummaries? {
         didSet {
@@ -51,6 +51,11 @@ final class BookmarkListCollectionViewCell: UICollectionViewCell,
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancelBag.removeAll()
     }
 }
 
