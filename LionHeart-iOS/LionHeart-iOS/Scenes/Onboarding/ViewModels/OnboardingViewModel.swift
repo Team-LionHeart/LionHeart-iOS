@@ -26,4 +26,5 @@ struct OnboardingViewModelOutput {
     let fetalButtonState: AnyPublisher<Bool, Never>
     let onboardingFlow: AnyPublisher<OnbardingFlowType, Never>
     let signUpSubject: AnyPublisher<String, Never>
+    let userSigningSubject: AnyPublisher<Bool, Never>
 }

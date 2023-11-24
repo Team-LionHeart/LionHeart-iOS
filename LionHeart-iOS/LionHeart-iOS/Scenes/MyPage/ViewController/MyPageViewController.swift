@@ -54,6 +54,7 @@ final class MyPageViewController: UIViewController, MyPageControllerable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.showLoading()
         viewWillAppearSubject.send(())
     }
     
@@ -72,6 +73,7 @@ final class MyPageViewController: UIViewController, MyPageControllerable {
 private extension MyPageViewController {
     func setUI() {
         view.backgroundColor = .designSystem(.background)
+        resignButton.backgroundColor = .designSystem(.lionRed)
     }
     
     func setHierarchy() {
@@ -79,7 +81,7 @@ private extension MyPageViewController {
     }
     
     func setLayout() {
-        resignButton.backgroundColor = .designSystem(.lionRed)
+        
         navigtaionBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
@@ -128,6 +130,7 @@ private extension MyPageViewController {
             .sink { [weak self] in
                 self?.setTableViewHeader($0.profileData)
                 self?.dataSource.makeList($0.appSettingData, $0.customerServiceData)
+                self?.hideLoading()
             }
             .store(in: &cancelBag)
     }

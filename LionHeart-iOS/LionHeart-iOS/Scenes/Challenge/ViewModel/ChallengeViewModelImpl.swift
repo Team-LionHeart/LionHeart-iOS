@@ -14,6 +14,7 @@ final class ChallengeViewModelImpl: ChallengeViewModel, ChallengeViewModelPresen
     
     private let navigationSubject = PassthroughSubject<FlowType, Never>()
     private var cancelBag = Set<AnyCancellable>()
+    private let errorSubject = PassthroughSubject<NetworkError, Never>()
     
     private var navigator: ChallengeNavigation
     private var manager: ChallengeManager
@@ -25,6 +26,11 @@ final class ChallengeViewModelImpl: ChallengeViewModel, ChallengeViewModelPresen
     
     
     func transform(input: ChallengeViewModelInput) -> ChallengeViewModelOutput {
+        
+        errorSubject
+            .sink { print($0) }
+            .store(in: &self.cancelBag)
+        
         navigationSubject
             .receive(on: RunLoop.main)
             .sink { [weak self] flow in
@@ -46,16 +52,20 @@ final class ChallengeViewModelImpl: ChallengeViewModel, ChallengeViewModelPresen
             .store(in: &cancelBag)
         
         let viewWillAppearSubject = input.viewWillAppearSubject
-            .flatMap { _ -> AnyPublisher<Result<ChallengeData, NetworkError>, Never> in
-                return Future<Result<ChallengeData, NetworkError>, Never> { promise in
+            .flatMap { _ -> AnyPublisher<ChallengeData, Never> in
+                return Future<ChallengeData, NetworkError> { promise in
                     Task {
                         do {
                             let inputData = try await self.manager.inquireChallengeInfo()
-                            promise(.success(.success(inputData)))
+                            promise(.success(inputData))
                         } catch {
-                            promise(.success(.failure(error as! NetworkError)))
+                            promise(.failure(error as! NetworkError))
                         }
                     }
+                }
+                .catch { error in
+                    self.errorSubject.send(error)
+                    return Just(ChallengeData.empty)
                 }
                 .eraseToAnyPublisher()
             }

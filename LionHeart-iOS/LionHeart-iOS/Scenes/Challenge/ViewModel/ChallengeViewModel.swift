@@ -19,5 +19,5 @@ struct ChallengeViewModelInput {
 }
 
 struct ChallengeViewModelOutput {
-    let viewWillAppearSubject: AnyPublisher<Result<ChallengeData, NetworkError>, Never>
+    let viewWillAppearSubject: AnyPublisher<ChallengeData, Never>
 }

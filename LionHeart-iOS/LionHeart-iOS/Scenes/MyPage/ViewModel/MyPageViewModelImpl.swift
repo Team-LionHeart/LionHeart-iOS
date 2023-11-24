@@ -52,10 +52,29 @@ final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
             .store(in: &cancelBag)
         
         input.resignButtonTapped
-            .sink { [weak self] in
+            .flatMap { _ -> AnyPublisher<Void, Never> in
+                return Future<Void, NetworkError> { promise in
+                    Task {
+                        do {
+                            try await self.manager.resignUser()
+                            promise(.success(()))
+                        } catch {
+                            promise(.failure(error as! NetworkError))
+                        }
+                    }
+                }
+                .catch { error in
+                    self.errorSubject.send(error)
+                    return Just(())
+                }
+                .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+            .sink { [weak self] _ in
                 self?.navigationSubject.send(.resignButtonTapped)
             }
             .store(in: &cancelBag)
+
         
         errorSubject
             .sink { print($0) }
