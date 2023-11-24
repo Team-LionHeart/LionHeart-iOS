@@ -74,6 +74,9 @@
 		B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */; };
 		B53F4EFA2ADE3151001C5752 /* BookmarkAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */; };
 		B53F4EFC2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */; };
+		B579ED092B105E5B005AE58A /* CurriculumViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579ED072B105E5B005AE58A /* CurriculumViewViewModel.swift */; };
+		B579ED0A2B105E5B005AE58A /* CurriculumViewViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579ED082B105E5B005AE58A /* CurriculumViewViewModelImpl.swift */; };
+		B579ED0C2B105F11005AE58A /* CurriculumViewDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579ED0B2B105F11005AE58A /* CurriculumViewDiffableModel.swift */; };
 		B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */; };
 		B57BEB632A612DA100D1727C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */; };
 		B57BEB652A6134B800D1727C /* setRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB642A6134B800D1727C /* setRootViewController.swift */; };
@@ -410,6 +413,9 @@
 		B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekViewModel.swift; sourceTree = "<group>"; };
 		B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekViewModelImpl.swift; sourceTree = "<group>"; };
 		B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListWeekDiffableModel.swift; sourceTree = "<group>"; };
+		B5234FC52B0DC31E00D6EE58 /* CurriculumViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModel.swift; sourceTree = "<group>"; };
+		B5234FC72B0DC32A00D6EE58 /* CurriculumViewViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModelImpl.swift; sourceTree = "<group>"; };
+		B5234FC92B0DC77200D6EE58 /* CurriculumViewDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewDiffableModel.swift; sourceTree = "<group>"; };
 		B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -437,6 +443,9 @@
 		B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCoordinatorImpl.swift; sourceTree = "<group>"; };
 		B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdaptor.swift; sourceTree = "<group>"; };
 		B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCoordinatorImpl.swift; sourceTree = "<group>"; };
+		B579ED072B105E5B005AE58A /* CurriculumViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModel.swift; sourceTree = "<group>"; };
+		B579ED082B105E5B005AE58A /* CurriculumViewViewModelImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModelImpl.swift; sourceTree = "<group>"; };
+		B579ED0B2B105F11005AE58A /* CurriculumViewDiffableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculumViewDiffableModel.swift; sourceTree = "<group>"; };
 		B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorCode.swift; sourceTree = "<group>"; };
 		B57BEB622A612DA100D1727C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B57BEB642A6134B800D1727C /* setRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setRootViewController.swift; sourceTree = "<group>"; };
@@ -853,6 +862,8 @@
 		B5234FB82B0C798700D6EE58 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B579ED072B105E5B005AE58A /* CurriculumViewViewModel.swift */,
+				B579ED082B105E5B005AE58A /* CurriculumViewViewModelImpl.swift */,
 				B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */,
 				B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */,
 			);
@@ -862,6 +873,7 @@
 		B5234FBD2B0C7C9E00D6EE58 /* Diffable */ = {
 			isa = PBXGroup;
 			children = (
+				B579ED0B2B105F11005AE58A /* CurriculumViewDiffableModel.swift */,
 				B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */,
 			);
 			path = Diffable;
@@ -1674,6 +1686,9 @@
 				F433555F2A67E40400016CAB /* progressbar_2m.json */,
 				F433555D2A67E40400016CAB /* progressbar_5m.json */,
 				F433555B2A67E40400016CAB /* progressbar_6m.json */,
+				B5234FC72B0DC32A00D6EE58 /* CurriculumViewViewModelImpl.swift */,
+				B5234FC92B0DC77200D6EE58 /* CurriculumViewDiffableModel.swift */,
+				B5234FC52B0DC31E00D6EE58 /* CurriculumViewViewModel.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -2141,6 +2156,7 @@
 				4A918E772AE10A89003CB8F9 /* MyPageCoordinatorImpl.swift in Sources */,
 				C003CC532ADA4FC100AFFAAC /* LoginNavigation.swift in Sources */,
 				B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */,
+				B579ED0C2B105F11005AE58A /* CurriculumViewDiffableModel.swift in Sources */,
 				B53F4EE52ADBC23F001C5752 /* MyPageFactoryImpl.swift in Sources */,
 				B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */,
 				C07CB81A2A62C54D000198CC /* TodayModel.swift in Sources */,
@@ -2194,6 +2210,7 @@
 				B5C6A2B62A5DD5FE0021BE5E /* TitleTableViewCell.swift in Sources */,
 				C003CC272AD9185A00AFFAAC /* ArticleCategoryCoordinatorImpl.swift in Sources */,
 				C0DF03962A5B8FB10037F740 /* Palette.swift in Sources */,
+				B579ED092B105E5B005AE58A /* CurriculumViewViewModel.swift in Sources */,
 				C003CC682ADA51A700AFFAAC /* ArticleListByCategoryManager.swift in Sources */,
 				B5234F9D2B0A61DE00D6EE58 /* ArticleDetailViewModelImpl.swift in Sources */,
 				C003CC6A2ADA51C000AFFAAC /* MyPageManager.swift in Sources */,
@@ -2256,6 +2273,7 @@
 				C0856B6F2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift in Sources */,
 				B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */,
 				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
+				B579ED0A2B105E5B005AE58A /* CurriculumViewViewModelImpl.swift in Sources */,
 				B5C6A2BA2A5DE14E0021BE5E /* ChapterTitleTableViewCell.swift in Sources */,
 				4A52DD9D2ADBBF4C00858230 /* TodayFactory.swift in Sources */,
 				C065F0072ADBD24B0094912C /* TodayFactoryImpl.swift in Sources */,

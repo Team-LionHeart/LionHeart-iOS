@@ -40,6 +40,7 @@ private extension CurriculumTableViewHeaderView {
         headerNameLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().inset(20)
             $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(10)
         }
     }
 }
