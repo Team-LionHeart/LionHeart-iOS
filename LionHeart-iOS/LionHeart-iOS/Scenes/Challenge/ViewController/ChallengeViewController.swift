@@ -72,14 +72,9 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
         let output = viewModel.transform(input: input)
         output.viewWillAppearSubject
             .receive(on: RunLoop.main)
-            .sink { [weak self] result in
-                switch result {
-                case .success(let data):
-                    self?.configureData(data)
-                    self?.hideLoading()
-                case .failure(let error):
-                    print(error.description)
-                }
+            .sink { [weak self] data in
+                self?.configureData(data)
+                self?.hideLoading()
             }
             .store(in: &cancelBag)
     }
