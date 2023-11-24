@@ -90,24 +90,6 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
 //            }
 //            .eraseToAnyPublisher()
         
-            
-        
-        
-        let scrollIndexPath = input.viewDidLayoutSubviews
-            .map { _ -> IndexPath in
-                guard let userInfoData = self.userInfoData else { return IndexPath() }
-                let userWeek = userInfoData.userWeekInfo
-                let weekPerMonth = 4
-                let desireSection = userWeek == 40 ? (userWeek/weekPerMonth)-2 : (userWeek/weekPerMonth)-1
-                let desireRow = (userWeek % weekPerMonth)
-                let weekDataRow = userWeek == 40 ? desireRow + 4 : desireRow
-                self.curriculumViewDatas[desireSection].weekDatas[weekDataRow].isExpanded = true
-                
-                return IndexPath(row: desireRow, section: desireSection)
-            }
-            .eraseToAnyPublisher()
-        
-        
         let curriculumMonth = input.viewWillAppear
             .flatMap { _ -> AnyPublisher<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), Never> in
                 return Future<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), NetworkError> { promise in

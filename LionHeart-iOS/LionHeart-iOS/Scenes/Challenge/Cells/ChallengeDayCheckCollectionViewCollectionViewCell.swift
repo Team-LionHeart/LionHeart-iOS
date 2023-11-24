@@ -2,7 +2,7 @@
 //  challengeDayCheckCollectionViewCollectionViewCell.swift
 //  LionHeart-iOS
 //
-//  Created by 김동현 on 2023/07/14.
+//  Created by 김의성 on 2023/11/23.
 //  Copyright (c) 2023 challengeDayCheckCollectionView. All rights reserved.
 //
 

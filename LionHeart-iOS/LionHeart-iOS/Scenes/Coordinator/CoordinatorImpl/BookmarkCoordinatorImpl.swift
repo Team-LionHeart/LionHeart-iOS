@@ -21,10 +21,6 @@ final class BookmarkCoordinatorImpl: BookmarkCoordinator {
         self.factory = factory
     }
     
-    func start() {
-        showBookmarkViewController()
-    }
-    
     func showBookmarkViewController() {
         let bookmarkViewController = factory.makeBookmarkViewController(coordinator: self)
         self.navigationController.pushViewController(bookmarkViewController, animated: true)

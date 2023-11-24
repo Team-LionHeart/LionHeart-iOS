@@ -8,6 +8,11 @@
 import UIKit
 
 struct AuthFactoryImpl: AuthFactory {
+    
+    func makeAuthAdaptor(coordinator: AuthCoordinator) -> EntireAuthNaviation {
+        return AuthAdaptor(coordinator: coordinator)
+    }
+    
     func makeCompleteOnboardingViewModel(coordinator: AuthCoordinator, data: UserOnboardingModel) -> any CompleteOnboardingViewModel & CompleteOnboardingViewModelPresentable {
         let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
         let viewModel = CompleteOnboardingViewModelImpl(navigator: adaptor)
@@ -31,10 +36,6 @@ struct AuthFactoryImpl: AuthFactory {
         return LoginViewModelImpl(navigator: adaptor, manager: managerImpl)
     }
     
-    func makeAuthAdaptor(coordinator: AuthCoordinator) -> EntireAuthNaviation {
-        return AuthAdaptor(coordinator: coordinator)
-    }
-    
     func makeLoginViewController(coordinator: AuthCoordinator) -> LoginViewControllerable {
         let viewModel = self.makeLoginViewModel(coordinator: coordinator)
         return LoginViewController(viewModel: viewModel)
@@ -50,5 +51,4 @@ struct AuthFactoryImpl: AuthFactory {
         viewModel.setKakaoAccessToken(token)
         return OnboardingViewController(viewModel: viewModel)
     }
-    
 }

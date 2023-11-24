@@ -21,10 +21,6 @@ final class ChallengeCoordinatorImpl: ChallengeCoordinator {
         self.factory = factory
     }
     
-    func start() {
-        showChallengeViewController()
-    }
-    
     func showChallengeViewController() {
         let challengeViewController = factory.makeChallengeViewController(coordinator: self)
         navigationController.pushViewController(challengeViewController, animated: true)

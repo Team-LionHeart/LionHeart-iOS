@@ -20,10 +20,6 @@ final class TodayCoordinatorImpl: TodayCoordinator {
         self.factory = factory
     }
     
-    func start() {
-        showTodayViewController()
-    }
-    
     func showTodayViewController() {
         let todayViweController = factory.makeTodayViewController(coordinator: self)
         self.navigationController.pushViewController(todayViweController, animated: true)

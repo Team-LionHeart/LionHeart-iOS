@@ -9,6 +9,9 @@ import Foundation
 
 struct ArticleCategortFactoryImpl: ArticleCategortFactory {
     
+    func makeArticleCategoryAdaptor(coordinator: ArticleCategoryCoordinator) -> EntireArticleCategoryNavigation {
+        return ArticleCategoryAdaptor(coordinator: coordinator)
+    }
     
     func makeArticleListByCategoryViewModel(cooridnator: ArticleCategoryCoordinator) -> any ArticleListByCategoryViewModel & ArticleListByCategoryViewModelPresentable {
         let adaptor = self.makeArticleCategoryAdaptor(coordinator: cooridnator)
@@ -24,10 +27,6 @@ struct ArticleCategortFactoryImpl: ArticleCategortFactory {
     func makeArticleCategoryViewModel(cooridnator: ArticleCategoryCoordinator) -> any ArticleCategoryViewModel & ArticleCategoryViewModelPresentable {
         let adaptor = self.makeArticleCategoryAdaptor(coordinator: cooridnator)
         return ArticleCategoryViewModelImpl(navigator: adaptor)
-    }
-    
-    func makeArticleCategoryAdaptor(coordinator: ArticleCategoryCoordinator) -> EntireArticleCategoryNavigation {
-        return ArticleCategoryAdaptor(coordinator: coordinator)
     }
     
     func makeArticleListByCategoryViewController(coordinator: ArticleCategoryCoordinator, categoryName: String) -> ArticleListByCategoryViewControllerable {

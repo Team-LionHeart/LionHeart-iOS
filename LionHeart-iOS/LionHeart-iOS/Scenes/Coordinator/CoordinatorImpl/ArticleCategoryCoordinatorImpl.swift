@@ -22,10 +22,6 @@ final class ArticleCategoryCoordinatorImpl: ArticleCategoryCoordinator {
         self.factory = factory
     }
     
-    func start() {
-        showArticleCategoryViewController()
-    }
-    
     func showArticleCategoryViewController() {
         let articleCategoryViewController = factory.makeArticleCategoryViewController(coordinator: self)
         self.navigationController.pushViewController(articleCategoryViewController, animated: true)

@@ -22,12 +22,7 @@ final class CurriculumCoordinatorImpl: CurriculumCoordinator {
         self.navigationController = navigationController
         self.factory = factory
     }
-    
-    func start() {
-        showCurriculumViewController()
-    }
-    
-    /// CurriculumListByWeekVC -> ArticleDetailVC
+
     func showArticleDetailViewController(articleId: Int) {
         let articleCoordinator = ArticleCoordinatorImpl(
             navigationController: navigationController,

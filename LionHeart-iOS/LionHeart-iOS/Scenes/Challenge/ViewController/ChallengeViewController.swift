@@ -15,7 +15,6 @@ import Lottie
 protocol ChallengeViewControllerable where Self: UIViewController {}
 
 final class ChallengeViewController: UIViewController, ChallengeViewControllerable {
-    private enum ChallengeSection { case calendar }
     private let navigationLeftButtonTapped = PassthroughSubject<Void, Never>()
     private let navigationRightButtonTapped = PassthroughSubject<Void, Never>()
     private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
