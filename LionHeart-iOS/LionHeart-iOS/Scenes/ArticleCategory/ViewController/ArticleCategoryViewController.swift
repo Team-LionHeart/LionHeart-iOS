@@ -45,6 +45,8 @@ final class ArticleCategoryViewController: UIViewController, ArticleCategoryView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        showLoading()
         viewWillAppearSubject.send(())
     }
     
@@ -80,10 +82,12 @@ final class ArticleCategoryViewController: UIViewController, ArticleCategoryView
         let output = viewModel.transform(input: input)
         
         output.categoryTitle
+            .receive(on: RunLoop.main)
             .sink { [weak self] categoryImages in
                 guard let self else { return }
                 self.setDataSource()
                 self.applySnapshot(categoryImages: categoryImages)
+                self.hideLoading()
             }
             .store(in: &cancelBag)
     }

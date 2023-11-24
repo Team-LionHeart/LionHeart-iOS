@@ -21,5 +21,5 @@ struct BookmarkViewModelInput {
 
 struct BookmarkViewModelOutput {
     let viewWillAppear: AnyPublisher<BookmarkAppData, Never>
-    let bookmarkButtonTapped: AnyPublisher<BookmarkAppData, Never>
+    let bookmarkButtonTapped: AnyPublisher<(model: BookmarkAppData, message: String), Never>
 }
