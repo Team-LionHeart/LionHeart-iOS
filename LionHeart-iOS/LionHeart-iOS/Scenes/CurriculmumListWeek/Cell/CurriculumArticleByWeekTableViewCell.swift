@@ -20,15 +20,17 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
             configureData(inputData)
         }
     }
-
-//    var bookMarkButtonTapped: ((Bool, IndexPath) -> Void)?
+    
+    var cancelBag = Set<AnyCancellable>()
+    
+    var bookmarkSubject = PassthroughSubject<Bool, Never>()
     
     private let tableViewCellWholeView = UIView()
     private let articleTitleLabel = LHLabel(type: .head3, color: .white)
     private let articleTagLabel = LHLabel(type: .body4, color: .gray400)
     private let articleReadTimeLabel = LHLabel(type: .body4, color: .gray500)
     private let articleContentLabel = LHLabel(type: .body3R, color: .gray300, lines: 2)
-    lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkSmall,
+    private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkSmall,
                                                           select: ImageLiterals.BookMark.activeBookmarkSmall)
     private let articleImageView = LHImageView(contentMode: .scaleToFill).makeRound(4).opacity(0.4)
     private let readTimeAndBookmarkView = LHView(color: .designSystem(.black)).makeRound(4).opacity(0.6)
@@ -40,11 +42,16 @@ final class CurriculumArticleByWeekTableViewCell: UITableViewCell, TableViewCell
         setUI()
         setHierarchy()
         setLayout()
+        bindInput()
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        cancelBag.removeAll()
     }
 }
 
@@ -112,9 +119,11 @@ private extension CurriculumArticleByWeekTableViewCell {
         }
     }
     
-    func getIndexPath() -> IndexPath? {
-        guard let superView = self.superview as? UITableView else { return nil }
-        return superView.indexPath(for: self)
+    func bindInput() {
+        self.bookMarkButton.addButtonAction { [weak self] in
+            $0.isSelected.toggle()
+            self?.bookmarkSubject.send($0.isSelected)
+        }
     }
     
     func configureData(_ inputData: ArticleDataByWeek) {
@@ -130,6 +139,5 @@ private extension CurriculumArticleByWeekTableViewCell {
         articleContentLabel.lineBreakStrategy = .pushOut
         articleContentLabel.lineBreakMode = .byTruncatingTail
         bookMarkButton.isSelected = inputData.isArticleBookmarked
-
     }
 }
