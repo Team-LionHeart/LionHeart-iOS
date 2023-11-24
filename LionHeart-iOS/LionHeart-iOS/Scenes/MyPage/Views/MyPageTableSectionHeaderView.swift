@@ -1,15 +1,17 @@
 //
-//  MyPageHeaderView.swift
+//  MyPageTableSectionHeaderView.swift
 //  LionHeart-iOS
 //
-//  Created by 황찬미 on 2023/07/14.
+//  Created by uiskim on 2023/11/20.
 //
 
 import UIKit
 
 import SnapKit
 
-final class MyPageHeaderView: UICollectionReusableView, CollectionSectionViewRegisterDequeueProtocol {
+final class MyPageTableSectionHeaderView: UITableViewHeaderFooterView {
+    
+    static let identifier = "MyPageTableSectionHeaderView"
     
     private let sectionTitleLabel = LHLabel(type: .body3R, color: .gray500)
     
@@ -19,9 +21,8 @@ final class MyPageHeaderView: UICollectionReusableView, CollectionSectionViewReg
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         setUI()
         setHierarchy()
         setLayout()
@@ -34,7 +35,7 @@ final class MyPageHeaderView: UICollectionReusableView, CollectionSectionViewReg
 
 }
 
-private extension MyPageHeaderView {
+private extension MyPageTableSectionHeaderView {
     
     func setUI() {
         backgroundColor = .designSystem(.background)

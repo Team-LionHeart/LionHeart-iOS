@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct BookmarkAppData: AppData {
+struct BookmarkAppData: AppData, Hashable {
     let nickName: String
-    let articleSummaries: [ArticleSummaries]
+    var articleSummaries: [ArticleSummaries]
 }
 
 extension BookmarkAppData {
@@ -18,10 +18,14 @@ extension BookmarkAppData {
     }
 }
 
-struct ArticleSummaries: AppData {
+struct ArticleSummaries: AppData, Hashable {
     let title: String
     let articleID: Int
     let articleImage: String
     let bookmarked: Bool
     let tags: [String]
+}
+
+extension ArticleSummaries {
+    static let empty = ArticleSummaries(title: "empty", articleID: 0, articleImage: "", bookmarked: false, tags: [])
 }

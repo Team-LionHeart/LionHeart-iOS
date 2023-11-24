@@ -15,9 +15,9 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
     private let gradientImageView = LHImageView(in: ImageLiterals.Curriculum.gradient, contentMode: .scaleAspectFill)
     private let thumbnailImageView = LHImageView(contentMode: .scaleAspectFill)
     private let imageCaptionLabel = LHLabel(type: .body4, color: .gray500)
-    private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkBig, select: ImageLiterals.BookMark.activeBookmarkBig)
+    lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkBig, select: ImageLiterals.BookMark.activeBookmarkBig)
 
-    var bookmarkButtonDidTap: ((Bool) -> Void)?
+//    var bookmarkButtonDidTap: ((Bool) -> Void)?
     var inputData: ArticleBlockData? {
         didSet {
             configureCell(inputData)
@@ -95,11 +95,11 @@ private extension ThumnailTableViewCell {
     }
     
     func setAddTarget() {
-        bookMarkButton.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            self.isSelected.toggle()
-            self.bookmarkButtonDidTap?(self.isSelected)
-        }
+//        bookMarkButton.addButtonAction { [weak self] _ in
+//            guard let self else { return }
+//            self.isSelected.toggle()
+//            self.bookmarkButtonDidTap?(self.isSelected)
+//        }
     }
 }
 

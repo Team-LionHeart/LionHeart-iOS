@@ -8,11 +8,21 @@
 import UIKit
 
 struct TodayFactoryImpl: TodayFactory {
+    func makeTodayViewModel(coordinator: TodayCoordinator) -> any TodayViewModel & TodayViewModelPresentable {
+        let adaptor = self.makeAuthAdaptor(coordinator: coordinator)
+        let apiService = APIService()
+        let serviceImpl = ArticleServiceImpl(apiService: apiService)
+        let managerImpl = TodayManagerImpl(articleService: serviceImpl)
+        return TodayViewModelImpl(navigator: adaptor, manager: managerImpl)
+    }
+    
+    
     func makeAuthAdaptor(coordinator: TodayCoordinator) -> EntireTodayNavigation {
         return TodayAdaptor(coordinator: coordinator)
     }
     
     func makeTodayViewController(coordinator: TodayCoordinator) -> TodayViewControllerable {
-        return TodayViewController(manager: TodayManagerImpl(articleService: ArticleServiceImpl(apiService: APIService())), adaptor: TodayAdaptor(coordinator: coordinator))
+        let viewModel = self.makeTodayViewModel(coordinator: coordinator)
+        return TodayViewController(viewModel: viewModel)
     }
 }

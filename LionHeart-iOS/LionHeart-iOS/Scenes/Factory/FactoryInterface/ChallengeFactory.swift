@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ChallengeFactory {
+    func makeChallengeViewModel(coordinator: ChallengeCoordinator) -> any ChallengeViewModel & ChallengeViewModelPresentable
     func makeAdaptor(coordinator: ChallengeCoordinator) -> EntireChallengeNavigation
     func makeChallengeViewController(coordinator: ChallengeCoordinator) -> ChallengeViewControllerable
 }
