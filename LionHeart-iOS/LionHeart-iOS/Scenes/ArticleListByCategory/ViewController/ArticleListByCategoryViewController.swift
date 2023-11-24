@@ -98,11 +98,11 @@ extension ArticleListByCategoryViewController {
                 cell.inputData = articleData
                 cell.selectionStyle = .none
                 
-                cell.bookMarkButton.tapPublisher
-                    .sink { [weak self] _ in
-                        self?.bookmarkTapped.send((isSelected: cell.isSelected, indexPath: indexPath))
-                    }
-                    .store(in: &self.cancelBag)
+//                cell.bookMarkButton.tapPublisher
+//                    .sink { [weak self] _ in
+//                        self?.bookmarkTapped.send((isSelected: cell.isSelected, indexPath: indexPath))
+//                    }
+//                    .store(in: &self.cancelBag)
                 return cell
             }
         })
