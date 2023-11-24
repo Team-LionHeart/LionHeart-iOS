@@ -19,19 +19,12 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
     private let navigator: CurriculumNavigation
     private let manager: CurriculumManager
     
-    private var isFirstPresented: Bool = true
     private var curriculumViewDatas = CurriculumMonthData.dummy()
     private var userInfoData: UserInfoData?
     
     private let navigationSubject = PassthroughSubject<FlowType, Never>()
     private let errorSubject = PassthroughSubject<NetworkError, Never>()
     private var cancelBag = Set<AnyCancellable>()
-    
-//    {
-//        didSet {
-//            configureUserInfoData()
-//        }
-//    }
     
     init(navigator: CurriculumNavigation, manager: CurriculumManager) {
         self.navigator = navigator
@@ -81,15 +74,6 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
             }
             .store(in: &cancelBag)
         
-//        let toggleButtonTapped = input.toggleButtonTapped
-//            .map { [weak self] indexPath -> [CurriculumMonthData] in
-//                guard let self = self else { return [] }
-//                let previousWeekDatas = self.curriculumViewDatas[indexPath.section].weekDatas[indexPath.row]
-//                self.curriculumViewDatas[indexPath.section].weekDatas[indexPath.row].isExpanded = !previousWeekDatas.isExpanded
-//                return self.curriculumViewDatas
-//            }
-//            .eraseToAnyPublisher()
-        
         let curriculumMonth = input.viewWillAppear
             .flatMap { _ -> AnyPublisher<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), Never> in
                 return Future<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), NetworkError> { promise in
@@ -110,52 +94,16 @@ final class CurriculumViewViewModelImpl: CurriculumViewViewModel, CurriculumView
                 .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
-        
-//        
-//        
-//        
-//        
-//            .map {
-//                return CurriculumMonthData.dummy()
-//            }
-//            .eraseToAnyPublisher()
-        
-        
-            
-        
-        
+
         return Output(curriculumMonth: curriculumMonth)
     }
     
 }
 
 extension CurriculumViewViewModelImpl {
-    func scrollToUserWeek() {
-        guard let userInfoData else { return }
-        let userWeek = userInfoData.userWeekInfo
-        let weekPerMonth = 4
-        let desireSection = userWeek == 40 ? (userWeek/weekPerMonth)-2 : (userWeek/weekPerMonth)-1
-        let desireRow = (userWeek % weekPerMonth)
-        let indexPath = IndexPath(row: desireRow, section: desireSection)
-        let weekDataRow = userWeek == 40 ? desireRow + 4 : desireRow
-        curriculumViewDatas[desireSection].weekDatas[weekDataRow].isExpanded = true
-        
-        
-//        self.curriculumTableView.reloadData()
-//        self.curriculumTableView.scrollToRow(at: indexPath, at: .top, animated: false)
-        
-    }
     
     func getCurriculumData() async throws -> UserInfoData {
         return try await manager.getCurriculumServiceInfo()
-//        Task {
-//            do {
-//                userInfoData =
-//            } catch {
-////                guard let error = error as? NetworkError else { return }
-////                handleError(error)
-//            }
-//        }
     }
     
 }

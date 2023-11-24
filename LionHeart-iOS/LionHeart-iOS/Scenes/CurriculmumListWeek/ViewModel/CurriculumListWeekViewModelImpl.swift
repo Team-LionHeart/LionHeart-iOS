@@ -70,8 +70,15 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel {
                         do {
                             guard let articleId = self.curriculumWeekData?.articleData[indexPath.row].articleId
                             else { return }
+                            
                             try await self.bookmarkArticle(articleId: articleId, isSelected: isSelected)
-                            promise(.success("북마크 저장에 성공했습니다."))
+                            
+                            if isSelected {
+                                promise(.success(BookmarkCompleted.save.message))
+                            } else {
+                                promise(.success(BookmarkCompleted.delete.message))
+                            }
+//                            promise(.success(BookmarkCompleted.success.message))
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }
@@ -79,7 +86,7 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel {
                 }
                 .catch { error in
                     self.errorSubject.send(error)
-                    return Just("북마크 저장이 실패했습니다.")
+                    return Just(BookmarkCompleted.failure.message)
                 }
                 .eraseToAnyPublisher()
             })
