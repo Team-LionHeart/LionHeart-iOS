@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
@@ -15,9 +16,11 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
     private let gradientImageView = LHImageView(in: ImageLiterals.Curriculum.gradient, contentMode: .scaleAspectFill)
     private let thumbnailImageView = LHImageView(contentMode: .scaleAspectFill)
     private let imageCaptionLabel = LHLabel(type: .body4, color: .gray500)
-    lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkBig, select: ImageLiterals.BookMark.activeBookmarkBig)
+    private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkBig, select: ImageLiterals.BookMark.activeBookmarkBig)
 
-//    var bookmarkButtonDidTap: ((Bool) -> Void)?
+    var bookmarkSubject = PassthroughSubject<Void, Never>()
+    var cancelBag = Set<AnyCancellable>()
+    
     var inputData: ArticleBlockData? {
         didSet {
             configureCell(inputData)
@@ -44,6 +47,7 @@ final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeue
     }
 
     override func prepareForReuse() {
+        cancelBag.removeAll()
         self.thumbnailImageView.image = nil
     }
 }
@@ -95,11 +99,11 @@ private extension ThumnailTableViewCell {
     }
     
     func setAddTarget() {
-//        bookMarkButton.addButtonAction { [weak self] _ in
-//            guard let self else { return }
-//            self.isSelected.toggle()
-//            self.bookmarkButtonDidTap?(self.isSelected)
-//        }
+        bookMarkButton.addButtonAction { [weak self] _ in
+            guard let self else { return }
+            self.bookMarkButton.isSelected.toggle()
+            self.bookmarkSubject.send(())
+        }
     }
 }
 

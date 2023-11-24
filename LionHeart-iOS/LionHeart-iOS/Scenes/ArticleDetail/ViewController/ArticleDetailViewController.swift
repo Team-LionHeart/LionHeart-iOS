@@ -89,21 +89,22 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
             .receive(on: RunLoop.main)
             .sink { [weak self] article in
                 guard let self else { return }
-                self.hideLoading()
-                
                 self.setDatasource(blockTypes: article.blockTypes,
                                    isBookMarked: article.isMarked)
                 self.applySnapshot(article.blockTypes)
+                self.hideLoading()
             }
             .store(in: &cancelBag)
         
         output.bookmarkCompleted
-            .sink { str in
-                print(str)
+            .receive(on: RunLoop.main)
+            .sink { message in
+                LHToast.show(message: message)
             }
             .store(in: &cancelBag)
         
         output.scrollToTopButtonTapped
+            .receive(on: RunLoop.main)
             .sink { _ in
                 let indexPath = IndexPath(row: 0, section: 0)
                 self.articleTableView.scrollToRow(at: indexPath, at: .top, animated: true)
@@ -123,17 +124,16 @@ extension ArticleDetailViewController {
                 cell.inputData = thumbnailModel
                 cell.selectionStyle = .none
                 
-                cell.bookMarkButton.tapPublisher
+                cell.bookmarkSubject
                     .sink { [weak self] _ in
-                        cell.isMarked?.toggle()
                         self?.bookmarkButtonTapped.send(())
                     }
-                    .store(in: &self.cancelBag)
+                    .store(in: &cell.cancelBag)
 
                 if isBookMarked {
-                    cell.isMarked = isBookMarked
+                    cell.isSelected = isBookMarked
                 } else {
-                    cell.isMarked = isMarked
+                    cell.isSelected = isMarked
                 }
                 cell.setThumbnailImageView()
                 return cell

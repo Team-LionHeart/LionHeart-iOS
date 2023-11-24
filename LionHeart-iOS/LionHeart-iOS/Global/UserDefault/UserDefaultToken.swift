@@ -11,6 +11,7 @@ import Foundation
 struct UserDefaultToken: AppData, Codable {
     var refreshToken: String?
     var accessToken: String?
+    var kakaoToken: String?
     let fcmToken: String?
     
     var isExistJWT: Bool {

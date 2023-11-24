@@ -12,13 +12,36 @@ import Combine
 
 
 final class LoginViewModelImpl: LoginViewModel, LoginViewModelPresentable {
-    var navigator: LoginNavigation
-    private var token: String?
+    
+    private let navigator: LoginNavigation
     private let manager: LoginManager
+    
+    private let errorSubject = PassthroughSubject<NetworkError, Never>()
+    private let navigationSubject = PassthroughSubject<(userState: UserState, token: String), Never>()
+    private var cancelBag = Set<AnyCancellable>()
     
     init(navigator: LoginNavigation, manager: LoginManager) {
         self.navigator = navigator
         self.manager = manager
+        bind()
+    }
+    
+    private func bind() {
+        errorSubject
+            .sink { [weak self] error in
+                guard let self,
+                      let kakaoToken = UserDefaultsManager.tokenKey?.kakaoToken
+                else { return }
+                self.handleError(error, token: kakaoToken)
+            }
+            .store(in: &cancelBag)
+        
+        navigationSubject
+            .receive(on: RunLoop.main)
+            .sink { [weak self] (userState, token) in
+                self?.navigator.checkUserIsVerified(userState: userState, kakaoToken: token)
+            }
+            .store(in: &cancelBag)
     }
     
     func transform(input: Input) -> Output {
@@ -28,16 +51,17 @@ final class LoginViewModelImpl: LoginViewModel, LoginViewModelPresentable {
                     Task {
                         do {
                             let token = try await self.loginKakaoWithWeb()
-                            self.token = token
+                            UserDefaultsManager.tokenKey?.kakaoToken = token
                             try await self.loginAPI(kakaoToken: token)
-                            promise(.success(token))
+                            self.navigationSubject.send((userState: .verified, token: token))
                         } catch {
+                            
                             promise(.failure(error as! NetworkError))
                         }
                     }
                 }
                 .catch { error in
-                    self.handleError(error)
+                    self.errorSubject.send(error)
                     return Just(error.description)
                 }
                 .eraseToAnyPublisher()
@@ -83,12 +107,10 @@ final class LoginViewModelImpl: LoginViewModel, LoginViewModelPresentable {
 }
 
 extension LoginViewModelImpl {
-    func handleError(_ error: NetworkError) {
+    func handleError(_ error: NetworkError, token: String) {
         if case .clientError(let code, _) = error {
             if code == NetworkErrorCode.unfoundUserErrorCode {
-                DispatchQueue.main.async {
-                    self.navigator.checkUserIsVerified(userState: .nonVerified, kakaoToken: self.token)
-                }
+                self.navigationSubject.send((userState: .nonVerified, token: token))
             }
         }
     }
@@ -97,9 +119,6 @@ extension LoginViewModelImpl {
 extension LoginViewModelImpl {
     private func loginAPI(kakaoToken: String) async throws {
         try await manager.login(type: .kakao, kakaoToken: kakaoToken)
-        DispatchQueue.main.async {
-            self.navigator.checkUserIsVerified(userState: .verified, kakaoToken: kakaoToken)
-        }
     }
 }
 

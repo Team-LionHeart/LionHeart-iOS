@@ -48,6 +48,7 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.showLoading()
         self.viewWillAppearSubject.send(.none)
     }
     
@@ -83,13 +84,14 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
                 self?.setTableView(input: $0.data)
                 self?.navigationBar.setCurriculumWeek(week: $0.data.week ?? 0)
                 self?.headerView.buttonHidden(left: $0.leftButtonHidden, right: $0.rightButtonHidden)
+                self?.hideLoading()
             }
             .store(in: &cancelBag)
         
         output.bookMarkCompleted
             .receive(on: RunLoop.main)
             .sink { message in
-                print(message)
+                LHToast.show(message: message)
             }
             .store(in: &cancelBag)
     }
@@ -100,12 +102,11 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
             case .article(let weekData):
                 let cell = CurriculumArticleByWeekTableViewCell.dequeueReusableCell(to: tableView)
                 
-                cell.bookMarkButton.tapPublisher
-                    .sink { _ in
-                        cell.isSelected.toggle()
-                        self.bookmarkButtonTapped.send((indexPath: indexPath, isSelected: !cell.isSelected))
+                cell.bookmarkSubject
+                    .sink { isSelected in
+                        self.bookmarkButtonTapped.send((indexPath: indexPath, isSelected: isSelected))
                     }
-                    .store(in: &self.cancelBag)
+                    .store(in: &cell.cancelBag)
                     
                 
                 cell.inputData = weekData

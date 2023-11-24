@@ -39,7 +39,8 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
     func transform(input: ArticleDetailViewModelInput) -> ArticleDetailViewModelOutput {
         
         errorSubject
-            .sink { error in
+            .sink { [weak self] error in
+                self?.handleError(error)
                 print(error.description)
             }
             .store(in: &cancelBag)
@@ -73,14 +74,22 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
                                   let articleId = self.articleId
                             else { return }
                             
-                            try await self.articleBookMark(articleId: articleId, isSelected: !isMarked)
+                            let requestStatus = !isMarked
+                            
+                            try await self.articleBookMark(articleId: articleId, isSelected: requestStatus)
+                            
+                            if requestStatus {
+                                promise(.success(BookmarkCompleted.save.message))
+                            } else {
+                                promise(.success(BookmarkCompleted.delete.message))
+                            }
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }
                     }
                 }.catch { error in
-                    self.handleError(error)
-                    return Just(error.description)
+                    self.errorSubject.send(error)
+                    return Just(BookmarkCompleted.failure.message)
                 }
                 .eraseToAnyPublisher()
             }

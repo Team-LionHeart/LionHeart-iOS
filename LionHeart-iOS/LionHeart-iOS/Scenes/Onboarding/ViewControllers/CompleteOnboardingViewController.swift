@@ -65,6 +65,7 @@ final class CompleteOnboardingViewController: UIViewController, CompleteOnboardi
         let output = viewModel.transform(input: input)
         
         output.fetalNickname
+            .receive(on: RunLoop.main)
             .sink { [weak self] fetalNickname in
                 guard let fetalNickname = fetalNickname else { return }
                 self?.titleLabel.text = "\(fetalNickname)님\n반가워요!"
@@ -74,6 +75,7 @@ final class CompleteOnboardingViewController: UIViewController, CompleteOnboardi
     
     private func bindInput() {
         startButton.tapPublisher
+            .receive(on: RunLoop.main)
             .sink { [weak self] in
                 self?.startButtonTapped.send(())
             }
