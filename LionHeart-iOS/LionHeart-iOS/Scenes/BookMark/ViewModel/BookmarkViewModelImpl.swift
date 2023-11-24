@@ -76,13 +76,13 @@ final class BookmarkViewModelImpl: BookmarkViewModel, BookmarkViewModelPresentab
             .eraseToAnyPublisher()
         
         let bookmarkButtonTapped = input.bookmarkButtonTapped
-            .flatMap { indexPath -> AnyPublisher<BookmarkAppData, Never> in
-                return Future<BookmarkAppData, NetworkError> { promise in
+            .flatMap { indexPath -> AnyPublisher<(model: BookmarkAppData, message: String), Never> in
+                return Future<(model: BookmarkAppData, message: String), NetworkError> { promise in
                     Task {
                         do {
                             try await self.manager.postBookmark(model: .init(articleId: self.bookmarkAppData.articleSummaries[indexPath.item].articleID, bookmarkRequestStatus: !self.bookmarkAppData.articleSummaries[indexPath.item].bookmarked))
                             self.bookmarkAppData.articleSummaries.remove(at: indexPath.item)
-                            promise(.success(self.bookmarkAppData))
+                            promise(.success((model: self.bookmarkAppData, message: BookmarkCompleted.delete.message)))
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }
@@ -90,7 +90,7 @@ final class BookmarkViewModelImpl: BookmarkViewModel, BookmarkViewModelPresentab
                 }
                 .catch { error in
                     self.errorSubject.send(error)
-                    return Just(BookmarkAppData.empty)
+                    return Just((model: BookmarkAppData.empty, message: BookmarkCompleted.failure.message))
                 }
                 .eraseToAnyPublisher()
             }

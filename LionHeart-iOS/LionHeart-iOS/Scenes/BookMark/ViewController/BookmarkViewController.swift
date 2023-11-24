@@ -114,9 +114,9 @@ private extension BookmarkViewController {
         
         output.bookmarkButtonTapped
             .receive(on: RunLoop.main)
-            .sink { [weak self] data in
+            .sink { [weak self] (data, message) in
                 self?.updateDiffableDataSource(sectionModel: data)
-                LHToast.show(message: "북마크 해제")
+                LHToast.show(message: message)
             }
             .store(in: &cancelBag)
     }
