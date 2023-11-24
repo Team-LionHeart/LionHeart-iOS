@@ -10,7 +10,7 @@
 
 ## 프로젝트 기간
 - **2023.12 ~ 3차 리팩터링 (진행 예정 ✨) (Unit test도입 및 모듈화(tuist도입))** <br>
-- **2023.10 ~ 2차 리팩터링 (진행 중 🚧) (MVC-C -> MVVM-C(+Combine))** <br>
+- **[2023.10 ~ 2021.11 2차 리팩터링 (MVC-C -> MVVM-C(+Combine))](#2차-리팩터링)** <br>
 - **[2023.08 ~ 2023.10 1차 리팩터링(MVC -> MVC-C)](#1차-리팩터링)** <br>
 - **[2023.06 ~ 2023.07 UI 설계 및 구현(1차 프로젝트)](#UI-설계-및-구현)** <br>
 
@@ -20,17 +20,120 @@
 
 <br>
 
-# 1차 리팩터링
-기존 MVC 패턴에서 ViewController의 책임을 분리하기 위한 여러가지 디자인패턴 및 구조 적용
-
-<br>
-
-### 참여 인원
+# 리팩터링 참여 인원
 <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/61596b76-5a50-4b29-9d0b-b62bb6a86b8f" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/2bfbb1fe-2c2a-42b2-a589-cdd01b113e30" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/1423bb08-4f33-41b9-8caa-56432794ecca" width="165">|
 :---------:|:----------:|:---------:
 [ffalswo2](https://github.com/ffalswo2) | [kimscastle](https://github.com/kimscastle) |[cchanmi](https://github.com/cchanmi) |
 
 <br>
+
+# 2차 리팩터링
+기존 MVC-C패턴에서 완전한 로직분리를 위한 MVVM-C패턴으로 리팩터링, 데이터 바인딩의 경우엔 combine을 활용
+
+## Lion Heart MVVM 리팩터링 원칙
+### viewModel은 input과 output의 구조로 설계후 combine을 활용해 data binding을 구현
+- 이때 ViewController쪽에서 받는 Publisher의 errortype은 항상 Never type으로 구성했습니다.
+그 이유로 UI는 error를 알필요가 없이 단순히 action으로 ViewModel에 값만 넘겨주면되며, ViewController에서 completion에 해당하는 error를 받게되면 stream이 끊어지고, 끊어진 stream에서 본래 받고자 하는 user input은 화면을 재진입하지 않는 이상 어떠한 요청도 받지 못하게 되기 때문입니다.
+- navigation을 관리하는 publisher를 ViewModel내부에서 구현하고 특정 input에따라 화면전환 타입을 넘겨주고 navigation publisher가 타입에따라 화면전환담당 객체인 coordintor의 메서드 호출하는 구조를 가집니다.
+- error를 관리하는 publisher를 ViewModel내부에서 구현하고 error가 발생했을시 ViewModel에서 에러처리에 관련한 로직을 수행합니다.
+
+### 여전히 ViewModel을 의존성주입하는 이유
+DIP의 본질은 “변화하지 않는 것에 의존한다”이며 이 뜻은 “추상화”에 의존한다는 뜻입니다. 그리고 Swift에서 추상화를 위한 도구로 protocol을 제공합니다.
+레이어상으로 UI에 가장가까운 ViewModel의 경우 변화에 민감할수있기에, ViewModel의 DIP를 위한 protocol 또한 변화에 민감합니다. 이는 DIP의 본질에 맞지 않습니다.
+따라서 상대적으로 변화가 잦은 UI와 직접적으로 영향을 받는 ViewModel을 서로 구체 타입을 바라보게끔 하는 구조도 고려를 했습니다. 하지만 해당 프로젝트에서는 Input-Output구조를 채택하고있으며 Input, Output 구조체 타입과 transform이라는 메서드로 추상화된 ViewModel protocol은 기획이 변하더라도 “변하지 않는 것”이라고 판단했습니다. 따라서 해당 프로젝트에서는 ViewController와 ViewModel또한 DIP를 통해 객체간 결합도를 낮추는 방향으로 프로젝트를 구성하기로 결정했습니다.
+
+---------------------------------------
+<br>
+
+## 기존 async/await을 통한 네트워킹 + Combine 결합
+### async / await과 Combine을 같이 쓰는 이유
+< 향후 PR 링크 추가 >
+
+<br>
+
+### async / await과 Combine을 결합한 네트워크 방법
+1. 네트워킹시 completion을 통해 상위 stream의 끊어짐을 방지하기 위해 flatmap operator를 사용하고, 내부적으로는 비동기 적으로 stream을 생성하기 위한 future를 사용해서 async/await과 Combine을 혼합해서 사용했습니다.
+```swift
+let curriculumMonth = input.viewWillAppear
+    .flatMap { _ -> AnyPublisher<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), NetWorkError> in
+        return Future<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), NetworkError> { promise in
+            Task {
+                do {
+                    let userInfo = try await self.getCurriculumData()
+                    promise(.success((userInfo: userInfo, monthData: CurriculumMonthData.dummy())))
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }
+				.eraseToAnyPublisher()
+```
+
+<br>
+
+2. 네트워크 통신시 발생하는 error를 combine의 catch operator를 통해서 최종적으로는 error를 never type으로하는 stream으로 바꿉니다.
+```swift
+let curriculumMonth = input.viewWillAppear
+    .flatMap { _ -> AnyPublisher<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), Never> in
+        return Future<(userInfo: UserInfoData, monthData: [CurriculumMonthData]), NetworkError> { promise in
+            Task {
+                do {
+                    let userInfo = try await self.getCurriculumData()
+                    promise(.success((userInfo: userInfo, monthData: CurriculumMonthData.dummy())))
+                } catch {
+                    promise(.failure(error as! NetworkError))
+                }
+            }
+        }.catch { error in
+            self.errorSubject.send(error)
+            let empty = UserInfoData(userWeekInfo: 0, userDayInfo: 0, progress: 0, remainingDay: 0)
+            let emptyMonth = CurriculumMonthData(month: "1", weekDatas: [])
+            return Just((userInfo: empty, monthData: [emptyMonth]))
+        }
+        .eraseToAnyPublisher()
+    }
+    .eraseToAnyPublisher()
+```
+해당 과정을 통해 catch가 없을때의 코드와 달라진점은 flaMap을 통해 return해주는 Publisher의 Error Type을 Never로 만들어줄 수 있어 1번 원칙에서의 ***UI는 error를 알필요가없다*** 라는 원칙을 지킬 수 있습니다.
+<br>
+<br>
+💡 해당 방식이 유의미한 이유는 어떤 error가 발생했을때 UI/UX적인 관점에서 유저에게 보여줄수있는 최소한의 UI는 구성을 해야하기에 default값을 넣어줘 유저가 보기에는 UI가 깨지지않은 view를 볼수있고, 내부적으로 error를 handling해주는 stream을 통해 에러에 대한 처리를 해주면 유저입장에서는 에러가 발생한 사실을 모르게 처리해줄수있어 긍정적인 사용자 경험을 얻을수 있게 됩니다.
+
+<br>
+
+3. 기존의 delegate pattern대신 combine의 stream을 활용한 data passing방식으로 통일
+> cell 내부의 button action을 처리할때 datasource로 인해 생성되는 data stream이 누적되는 문제와 cell내부에서 data stream이 생성되는 문제를 prepareForReuse와 stream을 저장하는 위치를 조정함으로써 해결합니다.
+- [[REFACTOR] CurriculumView Diffable 및 MVVM(Combine)-C로 리팩터링 (#179)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/187)
+ 
+<br>
+
+---------------------------------------
+
+## 기존 TableView, CollectionView를 DiffableDataSource로 변경
+- 해당 앱에서는 데이터의 변화에 따른 애니메이션이 필요한 상황이 존재하고 해당 경우에 Snapshot을 활용해 UI/UX적으로 보다 나은 경험을 제공해주는 DiffableDataSource를 활용해 보다 더 나은 유저 경험을 제공할 수 있는 방향으로 리팩터링했습니다.
+
+### cell reuse
+- [[REFACTOR] CurriculumView Diffable 및 MVVM(Combine)-C로 리팩터링 (#179)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/187)
+
+### MVVM 원칙
+- [[REFACTOR] LoginViewController MVVM-C로 변경 (#162)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/163)
+- [[REFACTOR] Auth관련 VC들 MVVM(Combine)-C으로 변경 (#164)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/165)
+
+### ResultType을 통한 error처리에 대한 고민
+- [[REFACTOR] ChallengeVC를 DiffableDataSource와 MVVM(Combine)으로 리팩터링](https://github.com/Team-LionHeart/LionHeart-iOS/pull/170)
+
+<br>
+
+---------------------------------------
+
+<br>
+
+# 1차 리팩터링
+기존 MVC 패턴에서 ViewController의 책임을 분리하기 위한 여러가지 디자인패턴 및 구조 적용
+
+
+<br>
+
 
 ### 1. 기존 네트워크 레이어를 singleton에서 의존성주입방식(Dependency Injectcion)으로 변경
 추후에 Unit Test 도입을 고려하여 응집도는 높고 결합도는 낮은 객체 설계를 목표로 설계에 임했습니다. 기존의 싱글톤 방식은 SRP 원칙과 OCP 원칙에 위반되고 특정 값에 대한 테스트를 진행하는데 어려움이 있으며 Data race의 위험성 또한 존재할 수 있습니다. 따라서 기존 싱글톤에서 Dependency Injection을 통한 의존성 주입 방식을 도입 및 적용했습니다.
