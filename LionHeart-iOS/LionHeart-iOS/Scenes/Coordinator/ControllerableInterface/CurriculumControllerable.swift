@@ -8,8 +8,6 @@
 import UIKit
 
 
-protocol CurriculumControllerable where Self: UIViewController {
-    var navigator: CurriculumNavigation { get set }
-}
+//protocol CurriculumControllerable where Self: UIViewController {}
 
 
