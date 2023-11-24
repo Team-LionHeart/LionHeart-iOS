@@ -65,15 +65,25 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
         let input = OnboardingViewModelInput(pregenacy: pregenacy, fetalNickname: fetalNickname, backButtonTapped: backButtonTapped, nextButtonTapped: nextButtonTapped)
         let output = viewModel.transform(input: input)
         
+        output.userSigningSubject
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                $0 ? self?.hideLoading() : self?.showLoading()
+            }
+            .store(in: &cancelBag)
+        
         output.fetalButtonState
+            .receive(on: RunLoop.main)
             .sink { [ weak self ] in self?.nextButton.isHidden = $0 }
             .store(in: &cancelBag)
         
         output.pregenacyButtonState
+            .receive(on: RunLoop.main)
             .sink { [ weak self ] in self?.nextButton.isHidden = $0 }
             .store(in: &cancelBag)
         
         output.onboardingFlow
+            .receive(on: RunLoop.main)
             .sink { [weak self] in
                 if $0 == .toCompleteOnboarding {
                     self?.nextButton.isUserInteractionEnabled = false

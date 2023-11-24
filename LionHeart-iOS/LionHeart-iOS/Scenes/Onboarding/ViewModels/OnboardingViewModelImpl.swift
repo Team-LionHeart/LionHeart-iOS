@@ -20,6 +20,7 @@ final class OnboardingViewModelImpl: OnboardingViewModel {
     private var kakaoAccessToken: String?
     private let signUpSubject = PassthroughSubject<Void, Never>()
     private var navigatorSubject = PassthroughSubject<FlowType, Never>()
+    private var userSigningSubject = PassthroughSubject<Bool, Never>()
     private var cancelBag = Set<AnyCancellable>()
     private var currentPage: OnboardingPageType = .getPregnancy
     private var onboardingFlow: OnbardingFlowType = .toGetPregnacny
@@ -30,6 +31,10 @@ final class OnboardingViewModelImpl: OnboardingViewModel {
     }
     
     func transform(input: OnboardingViewModelInput) -> OnboardingViewModelOutput {
+        
+        let userSigningSubject = userSigningSubject
+            .map { $0 }
+            .eraseToAnyPublisher()
         
         navigatorSubject
             .receive(on: RunLoop.main)
@@ -66,8 +71,10 @@ final class OnboardingViewModelImpl: OnboardingViewModel {
                 return Future<String, NetworkError> { promise  in
                     Task {
                         do {
+                            self.userSigningSubject.send(false)
                             let passingData = UserOnboardingModel(kakaoAccessToken: self.kakaoAccessToken, pregnacny: input.pregenacy.value.pregnancy, fetalNickname: input.fetalNickname.value.fetalNickname)
                             try await self.manager.signUp(type: .kakao, onboardingModel: passingData)
+                            self.userSigningSubject.send(true)
                             self.navigatorSubject.send(.onboardingCompleted(passingData))
                         } catch {
                             promise(.failure(error as! NetworkError))
@@ -87,7 +94,7 @@ final class OnboardingViewModelImpl: OnboardingViewModel {
             }
             .store(in: &cancelBag)
         
-        return OnboardingViewModelOutput(pregenacyButtonState: pregenacyButtonState, fetalButtonState: fetalButtonState, onboardingFlow: onboardingFlow, signUpSubject: signUpSubject)
+        return OnboardingViewModelOutput(pregenacyButtonState: pregenacyButtonState, fetalButtonState: fetalButtonState, onboardingFlow: onboardingFlow, signUpSubject: signUpSubject, userSigningSubject: userSigningSubject)
     }
 }
 
