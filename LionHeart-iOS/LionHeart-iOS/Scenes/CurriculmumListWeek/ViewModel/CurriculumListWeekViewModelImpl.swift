@@ -78,7 +78,6 @@ final class CurriculumListWeekViewModelImpl: CurriculumListWeekViewModel {
                             } else {
                                 promise(.success(BookmarkCompleted.delete.message))
                             }
-//                            promise(.success(BookmarkCompleted.success.message))
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }

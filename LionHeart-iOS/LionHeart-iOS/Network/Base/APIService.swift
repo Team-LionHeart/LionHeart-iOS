@@ -11,9 +11,22 @@ protocol Requestable {
     func request<T: Decodable>(_ request: URLRequest) async throws -> T?
 }
 
+protocol LHURLSession {
+    func data(for request: URLRequest) async throws -> (Data, URLResponse)
+}
+
+extension URLSession: LHURLSession {}
+
 final class APIService: Requestable {
+    
+    private let session: LHURLSession
+    
+    init(session: LHURLSession = URLSession.shared) {
+        self.session = session
+    }
+    
     func request<T: Decodable>(_ request: URLRequest) async throws -> T? {
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await session.data(for: request)
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(BaseResponse<T>.self, from: data) else {
             throw NetworkError.jsonDecodingError
