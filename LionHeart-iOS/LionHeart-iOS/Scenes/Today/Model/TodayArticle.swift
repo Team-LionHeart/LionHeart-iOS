@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TodayArticle: AppData {
+struct TodayArticle: Equatable, AppData {
     var fetalNickname: String
     var articleTitle: String
     var articleDescription: String
