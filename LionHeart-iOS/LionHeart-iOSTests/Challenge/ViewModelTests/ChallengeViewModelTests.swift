@@ -69,7 +69,6 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
         self.viewModel.navigationSubject
             .sink { flow in
                 flowType = flow
-                self.navigation.navigationLeftButtonTapped()
                 expectation.fulfill()
             }
             .store(in: &cancelBag)
@@ -78,7 +77,6 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
         //then
         wait(for: [expectation], timeout: 0.3)
         XCTAssertEqual(flowType, .bookmarkButtonTapped)
-        XCTAssertTrue(self.navigation.leftButtonTapped)
     }
     
     func test_ChallengeVM의_rightButtonTapped가_올바른값을전달하고있는지() {
