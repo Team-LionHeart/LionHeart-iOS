@@ -1,15 +1,15 @@
 //
-//  ServiceTests.swift
+//  ChallengeServiceTests.swift
 //  LionHeart-iOSTests
 //
 //  Created by 김의성 on 12/01/23.
 //
 
 import XCTest
-@testable import FirebaseMessaging
+@testable import Firebase
 @testable import LionHeart_iOS
 
-final class ServiceTests: XCTestCase {
+final class ChallengeServiceTests: XCTestCase {
     
     var apiService: Requestable!
     var urlSession: URLSessionStub!
@@ -24,14 +24,12 @@ final class ServiceTests: XCTestCase {
         self.jsonLoader = nil
         self.url = nil
     }
+    
+
 
     func test_챌린지API_호출을_성공했을때() async throws {
         //given
-        self.url = jsonLoader.load(fileName: "ChallengeSuccess")
-        let data = try Data(contentsOf: self.url)
-        let urlRequest = URLRequest(url: self.url)
-        self.urlSession = URLSessionStub(data: data)
-        self.apiService = APIService(session: urlSession)
+        let urlRequest = try self.setChallengeAPITest(fileName: "ChallengeSuccess")
         
         //when
         guard let result: ChallengeDataResponse = try await self.apiService.request(urlRequest) else {
@@ -47,11 +45,7 @@ final class ServiceTests: XCTestCase {
     
     func test_챌린지API_호출했을때_서버에러가발생한경우() async throws {
         //given
-        self.url = jsonLoader.load(fileName: "ChallengeFailure")
-        let data = try Data(contentsOf: self.url)
-        let urlRequest = URLRequest(url: self.url)
-        self.urlSession = URLSessionStub(data: data)
-        self.apiService = APIService(session: urlSession)
+        let urlRequest = try self.setChallengeAPITest(fileName: "ChallengeFailure_Server")
 
         //when
         var willOccureError: NetworkError?
@@ -66,5 +60,35 @@ final class ServiceTests: XCTestCase {
         //then
         let expectation = NetworkError.serverError
         XCTAssertEqual(willOccureError, expectation)
+    }
+    
+    func test_챌린지API_호출했을때_존재하지않는_챌린지인경우() async throws {
+        //given
+        let urlRequest = try self.setChallengeAPITest(fileName: "ChallengeFailure_Client")
+
+        //when
+        var willOccureError: NetworkError?
+        do {
+            let _: ChallengeDataResponse? = try await self.apiService.request(urlRequest)
+            XCTFail("성공할수없는 case입니다")
+        } catch {
+            let error = error as? NetworkError
+            willOccureError = error
+        }
+
+        //then
+        let expectation = NetworkError.clientError(code: "N004", message: "클라이언트에러")
+        XCTAssertEqual(willOccureError, expectation)
+    }
+}
+
+private extension ChallengeServiceTests {
+    func setChallengeAPITest(fileName: String) throws -> URLRequest {
+        self.url = jsonLoader.load(fileName: fileName)
+        let data = try Data(contentsOf: self.url)
+        let urlRequest = URLRequest(url: self.url)
+        self.urlSession = URLSessionStub(data: data)
+        self.apiService = APIService(session: urlSession)
+        return urlRequest
     }
 }
