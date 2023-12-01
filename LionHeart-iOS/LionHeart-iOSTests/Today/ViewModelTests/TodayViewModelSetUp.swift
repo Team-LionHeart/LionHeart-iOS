@@ -22,13 +22,13 @@ class TodayViewModelSetUp: XCTestCase {
 
     var manager: TodayManagerStub!
     var navigation: TodayNavigationSpy!
-    var viewModel: TodayViewModelSpy!
+    var viewModel: TodayViewModelImpl!
     var cancelBag: Set<AnyCancellable>!
     
     override func setUp() {
         self.manager = TodayManagerStub()
         self.navigation = TodayNavigationSpy()
-        self.viewModel = TodayViewModelSpy(navigator: self.navigation, manager: self.manager)
+        self.viewModel = TodayViewModelImpl(navigator: self.navigation, manager: self.manager)
 
         self.viewWillAppearSubject = PassthroughSubject()
         self.navigationLeftButtonTapped = PassthroughSubject()
@@ -54,8 +54,6 @@ class TodayViewModelSetUp: XCTestCase {
         self.navigation = nil
         self.viewModel = nil
     }
-
-    
 }
 
     
