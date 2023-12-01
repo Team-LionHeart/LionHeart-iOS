@@ -73,51 +73,60 @@ final class TodayTest: XCTestCase {
         }
     }
     
-    func test_Transform_투데이_아티클_조회_API() throws {
-        // Given
-        let expectation = XCTestExpectation(description: "getTodayArticle")
-        
-        let fileURL = jsonLoader.load(fileName: "TodayArticle")
-        let data = try Data(contentsOf: fileURL)
-        let decoder = JSONDecoder()
-        let decodedData = try decoder.decode(BaseResponse<TodayArticleResponse>.self, from: data)
-        let urlSession = URLSessionStub(data: data)
-        let apiService = APIService(session: urlSession)
-        let articleService = ArticleServiceImpl(apiService: apiService)
-        let manager = TodayManagerImpl(articleService: articleService)
-        let viewModel = TodayViewModelSpy(navigator: adaptor, manager: manager)
-        let todayViewController = TodayViewController(viewModel: viewModel)
-        
-    
-        let input = TodayViewModelInput(viewWillAppearSubject: todayViewController.viewWillAppearSubject,
-                                        navigationLeftButtonTapped: todayViewController.navigationLeftButtonTapped,
-                                        navigationRightButtonTapped: todayViewController.navigationRightButtonTapped,
-                                        todayArticleTapped: todayViewController.todayArticleTapped)
-        let output = viewModel.transform(input: input)
-        
-        var result: TodayArticle!
-        output.viewWillAppearSubject
-            .sink { article in
-                result = article
-                expectation.fulfill()
-            }
-            .store(in: &cancelBag)
-        
-        // When
-        todayViewController.viewWillAppearSubject
-            .send(())
-        
-        wait(for: [expectation], timeout: 0.5)
-        
-        // Then
-        XCTAssertEqual(decodedData.data?.toAppData(), result)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+//    func test_Transform_투데이_아티클_조회_API() throws {
+//        // Given
+//        let expectation = XCTestExpectation(description: "ViewModelTransformCheck")
+//        
+//        let fileURL = jsonLoader.load(fileName: "TodayArticle")
+//        let data = try Data(contentsOf: fileURL)
+//        
+//        let decoder = JSONDecoder()
+//        let decodedData = try decoder.decode(BaseResponse<TodayArticleResponse>.self, from: data)
+//        
+//        
+//        
+//        
+//        let urlSession = URLSessionStub(data: data)
+//        let apiService = APIService(session: urlSession)
+//        let articleService = ArticleServiceImpl(apiService: apiService)
+//        let manager = TodayManagerImpl(articleService: articleService)
+//        let viewModel = TodayViewModelSpy(navigator: adaptor, manager: manager)
+//        let todayViewController = TodayViewController(viewModel: viewModel)
+//        
+//    
+////        let input = TodayViewModelInput(viewWillAppearSubject: todayViewController.viewWillAppearSubject,
+////                                        navigationLeftButtonTapped: todayViewController.navigationLeftButtonTapped,
+////                                        navigationRightButtonTapped: todayViewController.navigationRightButtonTapped,
+////                                        todayArticleTapped: todayViewController.todayArticleTapped)
+//        let viewWilAppearSubject = PassthroughSubject<Void, Never>()
+//        let input = TodayViewModelInput(viewWillAppearSubject: viewWilAppearSubject, navigationLeftButtonTapped: <#T##PassthroughSubject<Void, Never>#>, navigationRightButtonTapped: <#T##PassthroughSubject<Void, Never>#>, todayArticleTapped: <#T##PassthroughSubject<Void, Never>#>)
+//        
+//        let output = viewModel.transform(input: input)
+//        
+//        var result: TodayArticle!
+//        output.viewWillAppearSubject
+//            .sink { article in
+//                result = article
+//                expectation.fulfill()
+//            }
+//            .store(in: &cancelBag)
+//        
+//        // When
+////        todayViewController.viewWillAppearSubject
+////            .send(())
+//        viewWilAppearSubject.send(())
+//        
+//        wait(for: [expectation], timeout: 0.5)
+//        
+//        XCTAssertEqual(result, decodedData)
+//        // Then
+//    }
+//
+//    func testPerformanceExample() throws {
+//        // This is an example of a performance test case.
+//        self.measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
 
 }
