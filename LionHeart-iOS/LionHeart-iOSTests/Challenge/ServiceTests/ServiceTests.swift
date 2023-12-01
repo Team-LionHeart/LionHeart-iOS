@@ -14,12 +14,10 @@ final class ServiceTests: XCTestCase {
     var apiService: Requestable!
     var urlSession: URLSessionStub!
     var jsonLoader: JSONLoader!
-    var data: Data!
     var url: URL!
 
     override func setUpWithError() throws {
         self.jsonLoader = JSONLoader()
-        self.url = URL(string: "https://api/v1/challenge/progress")
     }
 
     override func tearDownWithError() throws {
@@ -27,17 +25,17 @@ final class ServiceTests: XCTestCase {
         self.url = nil
     }
 
-    func test_챌린지API_호출이_잘되는지() async throws {
+    func test_챌린지API_호출을_성공했을때() async throws {
         //given
-        let url = jsonLoader.load(fileName: "ChallengeSuccessJson")
-        self.data = try Data(contentsOf: url)
-        self.urlSession = URLSessionStub(data: self.data)
+        self.url = jsonLoader.load(fileName: "ChallengeSuccess")
+        let data = try Data(contentsOf: self.url)
+        let urlRequest = URLRequest(url: self.url)
+        self.urlSession = URLSessionStub(data: data)
         self.apiService = APIService(session: urlSession)
         
         //when
-        let urlRequest = URLRequest(url: self.url)
         guard let result: ChallengeDataResponse = try await self.apiService.request(urlRequest) else {
-            return XCTFail()
+            return XCTFail("옵셔널언래핑에 실패했습니다")
         }
         
         //then
@@ -45,5 +43,28 @@ final class ServiceTests: XCTestCase {
         XCTAssertEqual(result.babyNickname, expectation.babyNickname)
         XCTAssertEqual(result.day, expectation.day)
         XCTAssertEqual(result.attendances.count, expectation.attendances.count)
+    }
+    
+    func test_챌린지API_호출했을때_서버에러가발생한경우() async throws {
+        //given
+        self.url = jsonLoader.load(fileName: "ChallengeFailure")
+        let data = try Data(contentsOf: self.url)
+        let urlRequest = URLRequest(url: self.url)
+        self.urlSession = URLSessionStub(data: data)
+        self.apiService = APIService(session: urlSession)
+
+        //when
+        var willOccureError: NetworkError?
+        do {
+            let _: ChallengeDataResponse? = try await self.apiService.request(urlRequest)
+            XCTFail("성공할수없는 case입니다")
+        } catch {
+            let error = error as? NetworkError
+            willOccureError = error
+        }
+
+        //then
+        let expectation = NetworkError.serverError
+        XCTAssertEqual(willOccureError, expectation)
     }
 }
