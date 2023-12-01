@@ -25,8 +25,6 @@ final class ChallengeServiceTests: XCTestCase {
         self.url = nil
     }
     
-
-
     func test_챌린지API_호출을_성공했을때() async throws {
         //given
         let urlRequest = try self.setChallengeAPITest(fileName: "ChallengeSuccess")
@@ -40,7 +38,7 @@ final class ChallengeServiceTests: XCTestCase {
         let expectation = ChallengeDataResponse(babyNickname: "Test닉네임", day: 10, level: "LEVEL_ONE", attendances: ["11/1","11/2","11/3"])
         XCTAssertEqual(result.babyNickname, expectation.babyNickname)
         XCTAssertEqual(result.day, expectation.day)
-        XCTAssertEqual(result.attendances.count, expectation.attendances.count)
+        XCTAssertEqual(result.attendances, expectation.attendances)
     }
     
     func test_챌린지API_호출했을때_서버에러가발생한경우() async throws {
