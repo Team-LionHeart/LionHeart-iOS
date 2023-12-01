@@ -12,6 +12,7 @@ import Combine
 final class ChallengeViewControllerTests: XCTestCase {
     var viewModel: ChallengeViewModelStub!
     var cancelBag: Set<AnyCancellable>!
+    
     override func setUpWithError() throws {
         self.viewModel = ChallengeViewModelStub()
         self.cancelBag = Set<AnyCancellable>()
@@ -51,7 +52,7 @@ final class ChallengeViewControllerTests: XCTestCase {
         
     }
     
-    func test_ChallengeVC의_CollectionView에_데이터가_잘들어갔는지() {
+    func test_ChallengeVC의_CollectionView에_데이터가_잘_반영되었는지() {
         //given
         let inputData = ChallengeData(babyDaddyName: "튼튼이", howLongDay: 10, daddyLevel: "LEVEL_ONE", daddyAttendances: ["11/1", "11/2", "11/3"])
         let viewController = ChallengeViewController(viewModel: self.viewModel)
@@ -126,16 +127,5 @@ final class ChallengeViewControllerTests: XCTestCase {
         //then
         wait(for: [expectation], timeout: 0.3)
         XCTAssertEqual(navigationType, .myPageButtonTapped)
-    }
-    
-    func test_ChallengeVC의_CollectionView의_CellSize가_5분의1인지() {
-        //given
-        let viewController = ChallengeViewController(viewModel: self.viewModel)
-        viewController.loadViewIfNeeded()
-        
-        let collectionView = viewController.challengeDayCheckCollectionView.contentSize
-        
-        let cell0 = viewContro
-        
     }
 }
