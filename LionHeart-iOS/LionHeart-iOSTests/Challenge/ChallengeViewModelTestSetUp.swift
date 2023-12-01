@@ -7,6 +7,8 @@
 
 import XCTest
 import Combine
+import Firebase
+import FirebaseMessaging
 @testable import LionHeart_iOS
 
 class ChallengeViewModelTestSetUp: XCTestCase {
@@ -24,6 +26,7 @@ class ChallengeViewModelTestSetUp: XCTestCase {
     var cancelBag: Set<AnyCancellable>!
 
     override func setUp() {
+        FirebaseApp.configure()
         self.manager = ChallengeManagerStub()
         self.navigation = ChallengeNavigationStub()
         self.viewModel = ChallengeViewModelImpl(navigator: self.navigation, manager: self.manager)

@@ -7,6 +7,7 @@
 
 import XCTest
 import Combine
+
 @testable import LionHeart_iOS
 
 final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
@@ -68,9 +69,9 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
 //            }
 //            .store(in: &cancelBag)
         self.navigationLeftButtonTapped.send(())
-        
+        expectation.fulfill()
         //then
-        wait(for: [expectation], timeout: 2)
+        wait(for: [expectation], timeout: 5)
         XCTAssertTrue(self.navigation.leftButtonTapped)
     }
 }

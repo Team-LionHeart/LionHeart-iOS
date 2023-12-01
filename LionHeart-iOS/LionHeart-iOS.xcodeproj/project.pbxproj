@@ -120,6 +120,9 @@
 		B59BFD3F2ADBBF2B005D2D81 /* CurriculumFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD3E2ADBBF2B005D2D81 /* CurriculumFactory.swift */; };
 		B59BFD412ADBBFB2005D2D81 /* MyPageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD402ADBBFB2005D2D81 /* MyPageFactory.swift */; };
 		B59BFD432ADBBFF5005D2D81 /* ArticleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD422ADBBFF5005D2D81 /* ArticleFactory.swift */; };
+		B59FC6BA2B19C2DC000996CA /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FC6B92B19C2DC000996CA /* TestingAppDelegate.swift */; };
+		B59FC6BC2B19C330000996CA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FC6BB2B19C330000996CA /* main.swift */; };
+		B59FC6BD2B19C569000996CA /* CurriculumArticleByWeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30BB2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift */; };
 		B5BE51C12B15B8F100042EF3 /* ChallengeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C02B15B8F100042EF3 /* ChallengeServiceTests.swift */; };
 		B5BE51C72B15C75F00042EF3 /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C62B15C75F00042EF3 /* URLSessionStub.swift */; };
 		B5BE51C92B15CB9600042EF3 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C82B15CB9600042EF3 /* JSONLoader.swift */; };
@@ -197,7 +200,6 @@
 		C03FCD422B0DD11C00C4EA0D /* UITabbarItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FCD412B0DD11C00C4EA0D /* UITabbarItem+.swift */; };
 		C04BE3AD2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AC2ADD4F5D001967B5 /* TodayCoordinatorImpl.swift */; };
 		C04BE3AF2ADD4F7F001967B5 /* TodayAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04BE3AE2ADD4F7F001967B5 /* TodayAdaptor.swift */; };
-		C060EAF82B195F1E00AB2855 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C060EAF72B195F1E00AB2855 /* FirebaseMessaging */; };
 		C06318082B10623000DE1995 /* ChallengeViewDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06318072B10623000DE1995 /* ChallengeViewDiffableModel.swift */; };
 		C06318142B1064C400DE1995 /* ArticleDataByWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06318132B1064C400DE1995 /* ArticleDataByWeek.swift */; };
 		C063181A2B10658400DE1995 /* ArticleDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06318192B10658400DE1995 /* ArticleDetailSection.swift */; };
@@ -327,7 +329,6 @@
 		C0F029E62A5FB9E000E0D185 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E52A5FB9DF00E0D185 /* ContainerView.swift */; };
 		C0F029E82A5FB9EF00E0D185 /* RoundContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E72A5FB9EF00E0D185 /* RoundContainerView.swift */; };
 		C0F029EA2A5FD32900E0D185 /* LHRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F029E92A5FD32900E0D185 /* LHRoundButton.swift */; };
-		C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */; };
 		C0F62FE72A691FC40003ADFA /* LHLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F62FE62A691FC40003ADFA /* LHLoadingView.swift */; };
 		C0FF46BC2B1963D300D487D7 /* ChallengeSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = C0FF46BB2B1963D300D487D7 /* ChallengeSuccess.json */; };
 		C0FF46BE2B19786500D487D7 /* ChallengeFailure_Server.json in Resources */ = {isa = PBXBuildFile; fileRef = C0FF46BD2B1974CC00D487D7 /* ChallengeFailure_Server.json */; };
@@ -351,7 +352,6 @@
 		F47329E12A66F5D0001605D4 /* CurriculumResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47329E02A66F5D0001605D4 /* CurriculumResponse.swift */; };
 		F4DB30B02A611C9700413EB9 /* CurriculumWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30AF2A611C9700413EB9 /* CurriculumWeekData.swift */; };
 		F4DB30B82A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30B72A612D2800413EB9 /* CurriculumArticleByWeekTableViewCell.swift */; };
-		F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30BB2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -485,6 +485,8 @@
 		B59BFD3E2ADBBF2B005D2D81 /* CurriculumFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumFactory.swift; sourceTree = "<group>"; };
 		B59BFD402ADBBFB2005D2D81 /* MyPageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFactory.swift; sourceTree = "<group>"; };
 		B59BFD422ADBBFF5005D2D81 /* ArticleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFactory.swift; sourceTree = "<group>"; };
+		B59FC6B92B19C2DC000996CA /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		B59FC6BB2B19C330000996CA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B5BE51C02B15B8F100042EF3 /* ChallengeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeServiceTests.swift; sourceTree = "<group>"; };
 		B5BE51C62B15C75F00042EF3 /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
 		B5BE51C82B15CB9600042EF3 /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
@@ -758,7 +760,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C060EAF82B195F1E00AB2855 /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1380,6 +1381,7 @@
 				B532E83C2A5525C700F0DB19 /* LaunchScreen.storyboard */,
 				B532E8312A5525C600F0DB19 /* AppDelegate.swift */,
 				B532E8332A5525C600F0DB19 /* SceneDelegate.swift */,
+				B59FC6BB2B19C330000996CA /* main.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1460,6 +1462,7 @@
 				B5BE51BF2B15B8C300042EF3 /* ServiceTests */,
 				C0B234FD2B19995F00AFC5BB /* ChallengeViewModelTests.swift */,
 				C0B235032B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift */,
+				B59FC6B92B19C2DC000996CA /* TestingAppDelegate.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -2147,7 +2150,6 @@
 			);
 			name = "LionHeart-iOSTests";
 			packageProductDependencies = (
-				C060EAF72B195F1E00AB2855 /* FirebaseMessaging */,
 			);
 			productName = "LionHeart-iOSTests";
 			productReference = B532E8442A5525C800F0DB19 /* LionHeart-iOSTests.xctest */;
@@ -2283,6 +2285,7 @@
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */,
 				C003CC602ADA50AA00AFFAAC /* OnboardingManager.swift in Sources */,
+				B59FC6BC2B19C330000996CA /* main.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				B5234FB72B0C78EB00D6EE58 /* CurriculumListWeekViewController.swift in Sources */,
 				C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */,
@@ -2347,8 +2350,6 @@
 				C0D47B942B0B2C46003B66E6 /* MyPageViewModelImpl.swift in Sources */,
 				C0D47B622B08B6A3003B66E6 /* ChallengeViewModelImpl.swift in Sources */,
 				C0DF039F2A5CABC10037F740 /* GetPregnancyViewController.swift in Sources */,
-				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift in Sources */,
-				F4DB30BC2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift in Sources */,
 				C0DF039A2A5B908E0037F740 /* CGColor+.swift in Sources */,
 				C0D47B662B09A845003B66E6 /* TodayViewModelImpl.swift in Sources */,
 				C034EE1E2ADE44E200AD6FF3 /* ArticleCategoryAdaptor.swift in Sources */,
@@ -2372,6 +2373,7 @@
 				C06E38212A65351600B00600 /* SignUpRequest.swift in Sources */,
 				C003CC432ADA4EFF00AFFAAC /* MyPageNavigation.swift in Sources */,
 				C003CC512ADA4FA600AFFAAC /* CompleteOnboardingNavigation.swift in Sources */,
+				B59FC6BD2B19C569000996CA /* CurriculumArticleByWeekHeaderView.swift in Sources */,
 				C09A33232A62D46300B40770 /* LHToastView.swift in Sources */,
 				C0D47B962B0B3739003B66E6 /* MyPageModel.swift in Sources */,
 				B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */,
@@ -2518,7 +2520,6 @@
 				C0DF037B2A5A9CF30037F740 /* OnboardingViewController.swift in Sources */,
 				4A3F0C312B05E8E8004BD076 /* CompleteOnboardingViewModelImpl.swift in Sources */,
 				C09217682A605DEE00231C66 /* OnboardingFetalNicknameTextFieldResultType.swift in Sources */,
-				C0F62FCA2A67CDCE0003ADFA /* BookmarkDetailCollectionViewCell.swift in Sources */,
 				C0DF03592A5A9BF80037F740 /* ArticleCategoryViewController.swift in Sources */,
 				B5234FB32B0B451800D6EE58 /* ArticleListByCategoryDiffableModel.swift in Sources */,
 				C00780BA2A60149D0043EB36 /* LHTodayArticleTitle.swift in Sources */,
@@ -2579,6 +2580,7 @@
 				C0B235042B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift in Sources */,
 				B5BE51C12B15B8F100042EF3 /* ChallengeServiceTests.swift in Sources */,
 				C0B234FE2B19995F00AFC5BB /* ChallengeViewModelTests.swift in Sources */,
+				B59FC6BA2B19C2DC000996CA /* TestingAppDelegate.swift in Sources */,
 				C0B235022B199F4D00AFC5BB /* ChallengeNavigationStub.swift in Sources */,
 				B5BE51C72B15C75F00042EF3 /* URLSessionStub.swift in Sources */,
 				C0B235002B199E4000AFC5BB /* ChallengeManagerStub.swift in Sources */,
@@ -3070,11 +3072,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B59893142A5D40FC00CE1FEB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		C060EAF72B195F1E00AB2855 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
