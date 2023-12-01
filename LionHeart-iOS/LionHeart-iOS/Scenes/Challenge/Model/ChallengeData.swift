@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ChallengeData: AppData {
+struct ChallengeData: AppData, Equatable {
     let babyDaddyName: String
     let howLongDay: Int
     let daddyLevel: String

@@ -255,6 +255,10 @@
 		C0B15E272AC104D50058D56B /* LHImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E262AC104D50058D56B /* LHImageButton.swift */; };
 		C0B15E292AC106CA0058D56B /* CurriculumListByWeekTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E282AC106CA0058D56B /* CurriculumListByWeekTableView.swift */; };
 		C0B15E2B2AC115F90058D56B /* LHView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B15E2A2AC115F90058D56B /* LHView.swift */; };
+		C0B234FE2B19995F00AFC5BB /* ChallengeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B234FD2B19995F00AFC5BB /* ChallengeViewModelTests.swift */; };
+		C0B235002B199E4000AFC5BB /* ChallengeManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B234FF2B199E4000AFC5BB /* ChallengeManagerStub.swift */; };
+		C0B235022B199F4D00AFC5BB /* ChallengeNavigationStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B235012B199F4D00AFC5BB /* ChallengeNavigationStub.swift */; };
+		C0B235042B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B235032B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift */; };
 		C0D47B602B08B640003B66E6 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */; };
 		C0D47B622B08B6A3003B66E6 /* ChallengeViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */; };
 		C0D47B642B09A7A7003B66E6 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */; };
@@ -615,6 +619,10 @@
 		C0B15E262AC104D50058D56B /* LHImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHImageButton.swift; sourceTree = "<group>"; };
 		C0B15E282AC106CA0058D56B /* CurriculumListByWeekTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumListByWeekTableView.swift; sourceTree = "<group>"; };
 		C0B15E2A2AC115F90058D56B /* LHView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHView.swift; sourceTree = "<group>"; };
+		C0B234FD2B19995F00AFC5BB /* ChallengeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModelTests.swift; sourceTree = "<group>"; };
+		C0B234FF2B199E4000AFC5BB /* ChallengeManagerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManagerStub.swift; sourceTree = "<group>"; };
+		C0B235012B199F4D00AFC5BB /* ChallengeNavigationStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeNavigationStub.swift; sourceTree = "<group>"; };
+		C0B235032B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModelTestSetUp.swift; sourceTree = "<group>"; };
 		C0D47B5F2B08B640003B66E6 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
 		C0D47B612B08B6A3003B66E6 /* ChallengeViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModelImpl.swift; sourceTree = "<group>"; };
 		C0D47B632B09A7A7003B66E6 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
@@ -1450,6 +1458,8 @@
 				C0FF46BA2B1963BC00D487D7 /* ChallengeJSON */,
 				C060EAEE2B1956C200AB2855 /* ViewControllerTest */,
 				B5BE51BF2B15B8C300042EF3 /* ServiceTests */,
+				C0B234FD2B19995F00AFC5BB /* ChallengeViewModelTests.swift */,
+				C0B235032B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -1467,6 +1477,8 @@
 			children = (
 				B5BE51C82B15CB9600042EF3 /* JSONLoader.swift */,
 				B5BE51C62B15C75F00042EF3 /* URLSessionStub.swift */,
+				C0B234FF2B199E4000AFC5BB /* ChallengeManagerStub.swift */,
+				C0B235012B199F4D00AFC5BB /* ChallengeNavigationStub.swift */,
 			);
 			path = URLSessionStub;
 			sourceTree = "<group>";
@@ -2564,8 +2576,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5BE51C92B15CB9600042EF3 /* JSONLoader.swift in Sources */,
+				C0B235042B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift in Sources */,
 				B5BE51C12B15B8F100042EF3 /* ChallengeServiceTests.swift in Sources */,
+				C0B234FE2B19995F00AFC5BB /* ChallengeViewModelTests.swift in Sources */,
+				C0B235022B199F4D00AFC5BB /* ChallengeNavigationStub.swift in Sources */,
 				B5BE51C72B15C75F00042EF3 /* URLSessionStub.swift in Sources */,
+				C0B235002B199E4000AFC5BB /* ChallengeManagerStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
