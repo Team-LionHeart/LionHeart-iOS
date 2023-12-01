@@ -1,5 +1,5 @@
 //
-//  TodayTest.swift
+//  TodayServiceTest.swift
 //  LionHeart-iOSTests
 //
 //  Created by 김민재 on 11/30/23.
@@ -10,49 +10,24 @@ import UIKit
 import Combine
 @testable import LionHeart_iOS
 
-final class TodayTest: XCTestCase {
-    var adaptor: TodayNavigation!
+final class TodayServiceTest: XCTestCase {
+    
     var manager: TodayManager!
     var jsonLoader: JSONLoader!
-    var cancelBag: Set<AnyCancellable>!
-    
-    var viewWillAppearSubject: PassthroughSubject<Void, Never>!
-    var navigationLeftButtonTapped: PassthroughSubject<Void, Never>!
-    var navigationRightButtonTapped: PassthroughSubject<Void, Never>!
-    var todayArticleTapped: PassthroughSubject<Void, Never>!
     
     override func setUp() {
-        super.setUp()
-        let navigationController = UINavigationController()
-        let factory = TodayFactoryImpl()
-        let coordinator = TodayCoordinatorImpl(navigationController: navigationController, factory: factory)
-        adaptor = TodayAdaptor(coordinator: coordinator)
         jsonLoader = JSONLoader()
-        cancelBag = Set()
-        
-        viewWillAppearSubject = PassthroughSubject()
-        navigationLeftButtonTapped = PassthroughSubject()
-        navigationRightButtonTapped = PassthroughSubject()
-        todayArticleTapped = PassthroughSubject()
     }
     
     override func tearDown() {
-        adaptor = nil
         manager = nil
-        cancelBag = nil
-        super.tearDown()
+        jsonLoader = nil
     }
 
-    func test_투데이_아티클_조회_API() async throws {
-        
+    func test_투데이_아티클_조회_API_성공() async throws {
         do {
             // Given
-            let fileURL = jsonLoader.load(fileName: "TodayArticle")
-            let data = try Data(contentsOf: fileURL)
-            let urlSession = URLSessionStub(data: data)
-            let apiService = APIService(session: urlSession)
-            let articleService = ArticleServiceImpl(apiService: apiService)
-            let manager = TodayManagerImpl(articleService: articleService)
+            manager = try self.setManager(fileName: "TodayArticleSuccess")
             
             // When
             let result = try await manager.inquiryTodayArticle()
@@ -67,66 +42,57 @@ final class TodayTest: XCTestCase {
             
             // Then
             XCTAssertEqual(result, expectation)
-            
         } catch {
             XCTFail("Error occured: \(error)")
         }
     }
-    
-//    func test_Transform_투데이_아티클_조회_API() throws {
-//        // Given
-//        let expectation = XCTestExpectation(description: "ViewModelTransformCheck")
-//        
-//        let fileURL = jsonLoader.load(fileName: "TodayArticle")
-//        let data = try Data(contentsOf: fileURL)
-//        
-//        let decoder = JSONDecoder()
-//        let decodedData = try decoder.decode(BaseResponse<TodayArticleResponse>.self, from: data)
-//        
-//        
-//        
-//        
-//        let urlSession = URLSessionStub(data: data)
-//        let apiService = APIService(session: urlSession)
-//        let articleService = ArticleServiceImpl(apiService: apiService)
-//        let manager = TodayManagerImpl(articleService: articleService)
-//        let viewModel = TodayViewModelSpy(navigator: adaptor, manager: manager)
-//        let todayViewController = TodayViewController(viewModel: viewModel)
-//        
-//    
-////        let input = TodayViewModelInput(viewWillAppearSubject: todayViewController.viewWillAppearSubject,
-////                                        navigationLeftButtonTapped: todayViewController.navigationLeftButtonTapped,
-////                                        navigationRightButtonTapped: todayViewController.navigationRightButtonTapped,
-////                                        todayArticleTapped: todayViewController.todayArticleTapped)
-//        let viewWilAppearSubject = PassthroughSubject<Void, Never>()
-//        let input = TodayViewModelInput(viewWillAppearSubject: viewWilAppearSubject, navigationLeftButtonTapped: <#T##PassthroughSubject<Void, Never>#>, navigationRightButtonTapped: <#T##PassthroughSubject<Void, Never>#>, todayArticleTapped: <#T##PassthroughSubject<Void, Never>#>)
-//        
-//        let output = viewModel.transform(input: input)
-//        
-//        var result: TodayArticle!
-//        output.viewWillAppearSubject
-//            .sink { article in
-//                result = article
-//                expectation.fulfill()
-//            }
-//            .store(in: &cancelBag)
-//        
-//        // When
-////        todayViewController.viewWillAppearSubject
-////            .send(())
-//        viewWilAppearSubject.send(())
-//        
-//        wait(for: [expectation], timeout: 0.5)
-//        
-//        XCTAssertEqual(result, decodedData)
-//        // Then
-//    }
-//
-//    func testPerformanceExample() throws {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
 
+    func test_투데이_아티클_조회_API_서버에러() async throws {
+        var networkError: NetworkError?
+        do {
+            // Given
+            manager = try self.setManager(fileName: "TodayServerError")
+            
+            // When
+            let result = try await manager.inquiryTodayArticle()
+            XCTFail("Server Error: 성공할 수 없는 케이스입니다.")
+        } catch {
+            let error = error as? NetworkError
+            networkError = error
+        }
+        
+        // Then
+        let expectation = NetworkError.serverError
+        XCTAssertEqual(networkError, expectation)
+    }
+    
+    func test_투데이_아티클_조회_API_클라이언트에러() async throws {
+        var networkError: NetworkError?
+        do {
+            // Given
+            manager = try self.setManager(fileName: "TodayClientError")
+            
+            // When
+            let result = try await manager.inquiryTodayArticle()
+            XCTFail("Server Error: 성공할 수 없는 케이스입니다.")
+        } catch {
+            let error = error as? NetworkError
+            networkError = error
+        }
+        
+        // Then
+        XCTAssertEqual(networkError, NetworkError.clientError(code: "N003", message: "클라이언트 에러입니다."))
+    }
+}
+
+extension TodayServiceTest {
+    private func setManager(fileName: String) throws -> TodayManager {
+        let fileURL = jsonLoader.load(fileName: fileName)
+        let data = try Data(contentsOf: fileURL)
+        let urlSessionStub = URLSessionStub(data: data)
+        let apiService = APIService(session: urlSessionStub)
+        let articleService = ArticleServiceImpl(apiService: apiService)
+        let manager = TodayManagerImpl(articleService: articleService)
+        return manager
+    }
 }
