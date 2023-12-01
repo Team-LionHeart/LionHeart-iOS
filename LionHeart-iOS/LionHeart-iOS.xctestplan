@@ -9,7 +9,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
     "targetForVariableExpansion" : {
       "containerPath" : "container:LionHeart-iOS.xcodeproj",
       "identifier" : "B532E82D2A5525C600F0DB19",

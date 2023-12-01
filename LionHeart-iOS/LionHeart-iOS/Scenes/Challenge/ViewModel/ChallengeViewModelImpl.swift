@@ -12,11 +12,7 @@ final class ChallengeViewModelImpl: ChallengeViewModel, ChallengeViewModelPresen
     
     enum FlowType { case bookmarkButtonTapped, myPageButtonTapped }
     
-    var navigationSubject = PassthroughSubject<FlowType, Never>() {
-        didSet {
-            print("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅")
-        }
-    }
+    var navigationSubject = PassthroughSubject<FlowType, Never>()
     private var cancelBag = Set<AnyCancellable>()
     let errorSubject = PassthroughSubject<NetworkError, Never>()
     

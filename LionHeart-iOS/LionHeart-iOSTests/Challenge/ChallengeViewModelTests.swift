@@ -46,35 +46,56 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
                 expectation.fulfill()
             }
             .store(in: &cancelBag)
+        
+        var willOccureError: NetworkError?
+        self.viewModel.errorSubject
+            .sink { willOccureError = $0 }
+            .store(in: &cancelBag)
+        
         viewWillAppearSubject.send(())
+        
         
         //then
         wait(for: [expectation], timeout: 0.2)
         XCTAssertEqual(data, ChallengeData.empty)
+        XCTAssertEqual(willOccureError, NetworkError.badCasting)
     }
     
     func test_ChallengeVM의_leftButtonTapped가_올바른값을전달하고있는지() {
-        //give
-
-        
         //when
         let expectation = XCTestExpectation(description: "네비게이션왼쪽버튼이 눌렸을때")
         
         var flowType: ChallengeViewModelImpl.FlowType!
         self.viewModel.navigationSubject
             .sink { flow in
-                if flow == .bookmarkButtonTapped {
-                    flowType = flow
-                    expectation.fulfill()
-                }
+                flowType = flow
+                self.navigation.navigationLeftButtonTapped()
+                expectation.fulfill()
             }
             .store(in: &cancelBag)
         
-        
-        self.navigationLeftButtonTapped.send(()) // 1.
-
+        self.navigationLeftButtonTapped.send(())
         //then
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 0.3)
         XCTAssertEqual(flowType, .bookmarkButtonTapped)
+        XCTAssertTrue(self.navigation.leftButtonTapped)
+    }
+    
+    func test_ChallengeVM의_rightButtonTapped가_올바른값을전달하고있는지() {
+        //when
+        let expectation = XCTestExpectation(description: "네비게이션오른쪽버튼이 눌렸을때")
+        
+        var flowType: ChallengeViewModelImpl.FlowType!
+        self.viewModel.navigationSubject
+            .sink { flow in
+                flowType = flow
+                expectation.fulfill()
+            }
+            .store(in: &cancelBag)
+        
+        self.navigationRightButtonTapped.send(())
+        //then
+        wait(for: [expectation], timeout: 0.3)
+        XCTAssertEqual(flowType, .myPageButtonTapped)
     }
 }

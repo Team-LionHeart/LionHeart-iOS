@@ -9,19 +9,16 @@ import Foundation
 @testable import LionHeart_iOS
 
 final class ChallengeNavigationStub: ChallengeNavigation {
-    var leftButtonTapped = false
-    var rightButtonTapped = false
-    var appExit = false
     
     func navigationRightButtonTapped() {
-        self.rightButtonTapped = true
+        print("왼쪽버튼눌림")
     }
     
     func navigationLeftButtonTapped() {
-        self.leftButtonTapped.toggle()
+        print("오른쪽버튼눌림")
     }
     
     func checkTokenIsExpired() {
-        self.appExit = true
+        print("앱강제종료")
     }
 }
