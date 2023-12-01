@@ -2,34 +2,48 @@
 //  ServiceTests.swift
 //  LionHeart-iOSTests
 //
-//  Created by 김민재 on 11/28/23.
+//  Created by 김의성 on 12/01/23.
 //
 
 import XCTest
+@testable import FirebaseMessaging
+@testable import LionHeart_iOS
 
 final class ServiceTests: XCTestCase {
+    
+    var apiService: Requestable!
+    var urlSession: URLSessionStub!
+    var jsonLoader: JSONLoader!
+    var data: Data!
+    var url: URL!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.jsonLoader = JSONLoader()
+        self.url = URL(string: "https://api/v1/challenge/progress")
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.jsonLoader = nil
+        self.url = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_챌린지API_호출이_잘되는지() async throws {
+        //given
+        let url = jsonLoader.load(fileName: "ChallengeSuccessJson")
+        self.data = try Data(contentsOf: url)
+        self.urlSession = URLSessionStub(data: self.data)
+        self.apiService = APIService(session: urlSession)
+        
+        //when
+        let urlRequest = URLRequest(url: self.url)
+        guard let result: ChallengeDataResponse = try await self.apiService.request(urlRequest) else {
+            return XCTFail()
         }
+        
+        //then
+        let expectation = ChallengeDataResponse(babyNickname: "Test닉네임", day: 10, level: "LEVEL_ONE", attendances: ["11/1","11/2","11/3"])
+        XCTAssertEqual(result.babyNickname, expectation.babyNickname)
+        XCTAssertEqual(result.day, expectation.day)
+        XCTAssertEqual(result.attendances.count, expectation.attendances.count)
     }
-
 }
