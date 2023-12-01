@@ -11,16 +11,31 @@ import Combine
 
 final class ChallengeViewControllerTests: XCTestCase {
     var viewModel: ChallengeViewModelStub!
-
+    var cancelBag: Set<AnyCancellable>!
     override func setUpWithError() throws {
         self.viewModel = ChallengeViewModelStub()
+        self.cancelBag = Set<AnyCancellable>()
     }
 
     override func tearDownWithError() throws {
         self.viewModel = nil
+        self.cancelBag = nil
+    }
+    
+    func test_viewWillAppear의_시점이_viewModel에_잘_전달되었는지() {
+        //given
+        let inputData = ChallengeData(babyDaddyName: "튼튼이", howLongDay: 10, daddyLevel: "LEVEL_ONE", daddyAttendances: ["11/1", "11/2", "11/3"])
+        self.viewModel.inputData = inputData
+        let viewController = ChallengeViewController(viewModel: self.viewModel)
+        
+        //when
+        viewController.loadViewIfNeeded()
+        viewController.viewWillAppear(false)
+        
+        XCTAssertEqual(self.viewModel.willPublishedData, inputData)
     }
 
-    func testExample() throws {
+    func test_ChallengeVC의_UserData가_UI에_잘_반영되었는지() throws {
         //given
         let inputData = ChallengeData(babyDaddyName: "튼튼이", howLongDay: 10, daddyLevel: "LEVEL_ONE", daddyAttendances: ["11/1", "11/2", "11/3"])
         let viewController = ChallengeViewController(viewModel: self.viewModel)
@@ -36,7 +51,7 @@ final class ChallengeViewControllerTests: XCTestCase {
         
     }
     
-    func test_Challenge현황판이_잘보이는지() {
+    func test_ChallengeVC의_CollectionView에_데이터가_잘들어갔는지() {
         //given
         let inputData = ChallengeData(babyDaddyName: "튼튼이", howLongDay: 10, daddyLevel: "LEVEL_ONE", daddyAttendances: ["11/1", "11/2", "11/3"])
         let viewController = ChallengeViewController(viewModel: self.viewModel)
@@ -67,5 +82,60 @@ final class ChallengeViewControllerTests: XCTestCase {
         let cell3 = viewController.challengeDayCheckCollectionView.dataSource?.collectionView(viewController.challengeDayCheckCollectionView, cellForItemAt: IndexPath(row: 3, section: 0)) as! ChallengeDayCheckCollectionViewCollectionViewCell
         XCTAssertEqual(cell3.countLabel.text, "\(0+3+1)")
         XCTAssertEqual(cell3.backgroundColor, .designSystem(.gray1000))
+    }
+    
+    func test_Navigation의_북마크버튼이_잘_동작하는지() {
+        //given
+        let viewController = ChallengeViewController(viewModel: self.viewModel)
+        viewController.loadViewIfNeeded()
+        
+        //when
+        let expectation = XCTestExpectation(description: "네비게이션왼쪽버튼이 눌렸을때")
+        var navigationType: ChallengeViewModelStub.FlowType?
+        viewModel.navigationSubject
+            .sink { type in
+                navigationType = type
+                expectation.fulfill()
+            }
+            .store(in: &cancelBag)
+        
+        viewController.navigationBar.rightFirstBarItem.sendActions(for: .touchUpInside)
+        
+        //then
+        wait(for: [expectation], timeout: 0.3)
+        XCTAssertEqual(navigationType, .bookmarkButtonTapped)
+    }
+    
+    func test_Navigation의_마이페이지버튼이_잘_동작하는지() {
+        //given
+        let viewController = ChallengeViewController(viewModel: self.viewModel)
+        viewController.loadViewIfNeeded()
+        
+        //when
+        let expectation = XCTestExpectation(description: "네비게이션오른쪽버튼이 눌렸을때")
+        var navigationType: ChallengeViewModelStub.FlowType?
+        viewModel.navigationSubject
+            .sink { type in
+                navigationType = type
+                expectation.fulfill()
+            }
+            .store(in: &cancelBag)
+        
+        viewController.navigationBar.rightSecondBarItem.sendActions(for: .touchUpInside)
+        
+        //then
+        wait(for: [expectation], timeout: 0.3)
+        XCTAssertEqual(navigationType, .myPageButtonTapped)
+    }
+    
+    func test_ChallengeVC의_CollectionView의_CellSize가_5분의1인지() {
+        //given
+        let viewController = ChallengeViewController(viewModel: self.viewModel)
+        viewController.loadViewIfNeeded()
+        
+        let collectionView = viewController.challengeDayCheckCollectionView.contentSize
+        
+        let cell0 = viewContro
+        
     }
 }

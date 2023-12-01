@@ -16,6 +16,7 @@ final class ChallengeViewModelStub: ChallengeViewModel {
     var navigationSubject = PassthroughSubject<FlowType, Never>()
     private var cancelBag = Set<AnyCancellable>()
     let errorSubject = PassthroughSubject<NetworkError, Never>()
+    var willPublishedData: ChallengeData?
     
     var inputData: ChallengeData!
     
@@ -35,6 +36,7 @@ final class ChallengeViewModelStub: ChallengeViewModel {
         
         let viewWillAppearSubject = input.viewWillAppearSubject
             .flatMap { _ -> AnyPublisher<ChallengeData, Never> in
+                self.willPublishedData = self.inputData
                 return Just(self.inputData)
                     .eraseToAnyPublisher()
             }

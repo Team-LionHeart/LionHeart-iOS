@@ -23,7 +23,7 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
     
     private let leftSeperateLine = LHUnderLine(lineColor: .background)
     private let rightSeperateLine = LHUnderLine(lineColor: .background)
-    private lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
+    lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
     let nicknameLabel = LHLabel(type: .body2R, color: .gray200)
     let challengeDayLabel = LHLabel(type: .head3, color: .white)
     let challengelevelLabel = LHLabel(type: .body4, color: .gray500)
