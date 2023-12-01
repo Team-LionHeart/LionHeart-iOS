@@ -18,7 +18,7 @@ final class ChallengeNavigationStub: ChallengeNavigation {
     }
     
     func navigationLeftButtonTapped() {
-        self.leftButtonTapped = true
+        self.leftButtonTapped.toggle()
     }
     
     func checkTokenIsExpired() {

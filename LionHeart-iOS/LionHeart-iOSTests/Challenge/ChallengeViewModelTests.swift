@@ -59,19 +59,22 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
         
         //when
         let expectation = XCTestExpectation(description: "네비게이션왼쪽버튼이 눌렸을때")
-//        self.viewModel.navigationSubject
-//            .sink { flow in
-//                if flow == .bookmarkButtonTapped {
-//                    self.navigation.navigationLeftButtonTapped()
-//                    expectation.fulfill()
-//                }
-//
-//            }
-//            .store(in: &cancelBag)
-        self.navigationLeftButtonTapped.send(())
-        expectation.fulfill()
+        
+        var flowType: ChallengeViewModelImpl.FlowType!
+        self.viewModel.navigationSubject
+            .sink { flow in
+                if flow == .bookmarkButtonTapped {
+                    flowType = flow
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancelBag)
+        
+        
+        self.navigationLeftButtonTapped.send(()) // 1.
+
         //then
-        wait(for: [expectation], timeout: 5)
-        XCTAssertTrue(self.navigation.leftButtonTapped)
+        wait(for: [expectation], timeout: 0.5)
+        XCTAssertEqual(flowType, .bookmarkButtonTapped)
     }
 }

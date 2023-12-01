@@ -48,11 +48,15 @@ final class ChallengeViewModelImpl: ChallengeViewModel, ChallengeViewModelPresen
             .store(in: &cancelBag)
         
         input.navigationLeftButtonTapped
-            .sink { [weak self] in self?.navigationSubject.send(.bookmarkButtonTapped) }
+            .sink { [weak self] in 
+                self?.navigationSubject.send(.bookmarkButtonTapped)
+            }
             .store(in: &cancelBag)
         
         input.navigationRightButtonTapped
-            .sink { [weak self] in self?.navigationSubject.send(.myPageButtonTapped) }
+            .sink { 
+                [weak self] in self?.navigationSubject.send(.myPageButtonTapped)
+            }
             .store(in: &cancelBag)
         
         let viewWillAppearSubject = input.viewWillAppearSubject

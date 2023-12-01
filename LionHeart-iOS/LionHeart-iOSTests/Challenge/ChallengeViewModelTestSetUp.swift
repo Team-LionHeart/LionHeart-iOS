@@ -26,7 +26,6 @@ class ChallengeViewModelTestSetUp: XCTestCase {
     var cancelBag: Set<AnyCancellable>!
 
     override func setUp() {
-        FirebaseApp.configure()
         self.manager = ChallengeManagerStub()
         self.navigation = ChallengeNavigationStub()
         self.viewModel = ChallengeViewModelImpl(navigator: self.navigation, manager: self.manager)

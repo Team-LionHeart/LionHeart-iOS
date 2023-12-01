@@ -121,7 +121,6 @@
 		B59BFD412ADBBFB2005D2D81 /* MyPageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD402ADBBFB2005D2D81 /* MyPageFactory.swift */; };
 		B59BFD432ADBBFF5005D2D81 /* ArticleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59BFD422ADBBFF5005D2D81 /* ArticleFactory.swift */; };
 		B59FC6BA2B19C2DC000996CA /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FC6B92B19C2DC000996CA /* TestingAppDelegate.swift */; };
-		B59FC6BC2B19C330000996CA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FC6BB2B19C330000996CA /* main.swift */; };
 		B59FC6BD2B19C569000996CA /* CurriculumArticleByWeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB30BB2A61691F00413EB9 /* CurriculumArticleByWeekHeaderView.swift */; };
 		B5BE51C12B15B8F100042EF3 /* ChallengeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C02B15B8F100042EF3 /* ChallengeServiceTests.swift */; };
 		B5BE51C72B15C75F00042EF3 /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C62B15C75F00042EF3 /* URLSessionStub.swift */; };
@@ -486,7 +485,6 @@
 		B59BFD402ADBBFB2005D2D81 /* MyPageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFactory.swift; sourceTree = "<group>"; };
 		B59BFD422ADBBFF5005D2D81 /* ArticleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFactory.swift; sourceTree = "<group>"; };
 		B59FC6B92B19C2DC000996CA /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
-		B59FC6BB2B19C330000996CA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B5BE51C02B15B8F100042EF3 /* ChallengeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeServiceTests.swift; sourceTree = "<group>"; };
 		B5BE51C62B15C75F00042EF3 /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
 		B5BE51C82B15CB9600042EF3 /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
@@ -1381,7 +1379,6 @@
 				B532E83C2A5525C700F0DB19 /* LaunchScreen.storyboard */,
 				B532E8312A5525C600F0DB19 /* AppDelegate.swift */,
 				B532E8332A5525C600F0DB19 /* SceneDelegate.swift */,
-				B59FC6BB2B19C330000996CA /* main.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -2285,7 +2282,6 @@
 				C0DF03732A5A9CB50037F740 /* TodayViewController.swift in Sources */,
 				C00780B72A5FFE0E0043EB36 /* UILabel+.swift in Sources */,
 				C003CC602ADA50AA00AFFAAC /* OnboardingManager.swift in Sources */,
-				B59FC6BC2B19C330000996CA /* main.swift in Sources */,
 				C0DF03942A5B8C610037F740 /* UIFont+.swift in Sources */,
 				B5234FB72B0C78EB00D6EE58 /* CurriculumListWeekViewController.swift in Sources */,
 				C0B15E192AC015FE0058D56B /* LHLottie.swift in Sources */,
