@@ -1,0 +1,9 @@
+{
+  "code": "200",
+  "message": "성공",
+  "data": {
+    "babyNickname": "짠미",
+    "level": "LEVEL_ONE",
+    "notificationStatus": "ON"
+  }
+}
