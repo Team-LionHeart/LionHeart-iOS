@@ -21,6 +21,8 @@ final class MyPageServiceTest: XCTestCase {
 
     override func tearDownWithError() throws {
         jsonLoader = nil
+        urlSession = nil
+        apiService = nil
     }
 
     func testExample() throws {
