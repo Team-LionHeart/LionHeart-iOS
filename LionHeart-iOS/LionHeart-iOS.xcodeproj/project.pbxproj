@@ -130,6 +130,7 @@
 		B59FC6B82B19B525000996CA /* TodayClientError.json in Resources */ = {isa = PBXBuildFile; fileRef = B59FC6B72B19B525000996CA /* TodayClientError.json */; };
 		B59FC6BF2B19FA2F000996CA /* TodayServerError.json in Resources */ = {isa = PBXBuildFile; fileRef = B59FC6BE2B19FA2F000996CA /* TodayServerError.json */; };
 		B59FC6C12B1A0A04000996CA /* TodayArticleEmptyData.json in Resources */ = {isa = PBXBuildFile; fileRef = B59FC6C02B1A0A04000996CA /* TodayArticleEmptyData.json */; };
+		B59FC6C52B1B8D21000996CA /* TodayViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FC6C42B1B8D21000996CA /* TodayViewControllerTests.swift */; };
 		B5BE51C12B15B8F100042EF3 /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C02B15B8F100042EF3 /* ServiceTests.swift */; };
 		B5BE51C72B15C75F00042EF3 /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C62B15C75F00042EF3 /* URLSessionStub.swift */; };
 		B5BE51C92B15CB9600042EF3 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C82B15CB9600042EF3 /* JSONLoader.swift */; };
@@ -500,6 +501,7 @@
 		B59FC6B72B19B525000996CA /* TodayClientError.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TodayClientError.json; sourceTree = "<group>"; };
 		B59FC6BE2B19FA2F000996CA /* TodayServerError.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TodayServerError.json; sourceTree = "<group>"; };
 		B59FC6C02B1A0A04000996CA /* TodayArticleEmptyData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TodayArticleEmptyData.json; sourceTree = "<group>"; };
+		B59FC6C42B1B8D21000996CA /* TodayViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewControllerTests.swift; sourceTree = "<group>"; };
 		B5BE51C02B15B8F100042EF3 /* ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTests.swift; sourceTree = "<group>"; };
 		B5BE51C62B15C75F00042EF3 /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
 		B5BE51C82B15CB9600042EF3 /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
@@ -1553,6 +1555,7 @@
 			isa = PBXGroup;
 			children = (
 				B59FC6A82B18C48F000996CA /* TodayViewModelSpy.swift */,
+				B59FC6C42B1B8D21000996CA /* TodayViewControllerTests.swift */,
 			);
 			path = ViewControllerTests;
 			sourceTree = "<group>";
@@ -2629,6 +2632,7 @@
 				C034EDE02ADE3A4A00AD6FF3 /* LionHeart_iOSTests.swift in Sources */,
 				B59FC6B62B19AD7D000996CA /* TodayViewModelTests.swift in Sources */,
 				B5BE51C12B15B8F100042EF3 /* ServiceTests.swift in Sources */,
+				B59FC6C52B1B8D21000996CA /* TodayViewControllerTests.swift in Sources */,
 				B59FC6A92B18C48F000996CA /* TodayViewModelSpy.swift in Sources */,
 				B5BE51C72B15C75F00042EF3 /* URLSessionStub.swift in Sources */,
 				B59FC6A52B1893E9000996CA /* TodayServiceTest.swift in Sources */,
