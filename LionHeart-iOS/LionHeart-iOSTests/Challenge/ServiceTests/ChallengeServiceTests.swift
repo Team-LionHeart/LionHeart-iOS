@@ -6,7 +6,6 @@
 //
 
 import XCTest
-@testable import Firebase
 @testable import LionHeart_iOS
 
 final class ChallengeServiceTests: XCTestCase {

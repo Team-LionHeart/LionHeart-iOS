@@ -242,7 +242,6 @@
 		C09A33242A630A6400B40770 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DF036C2A5A9C9A0037F740 /* BookmarkViewController.swift */; };
 		C09A564D2B030C070012A7FD /* GetPregnancyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A564C2B030C070012A7FD /* GetPregnancyViewModel.swift */; };
 		C09A564F2B030CB20012A7FD /* GetPregnancyViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A564E2B030CB20012A7FD /* GetPregnancyViewModelImpl.swift */; };
-		C0A4BBE32B19F0F7000BDDC5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C0A4BBE22B19F0F7000BDDC5 /* FirebaseMessaging */; };
 		C0A4BBE82B19F6EB000BDDC5 /* ChallengeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A4BBE72B19F6EB000BDDC5 /* ChallengeViewControllerTests.swift */; };
 		C0A4BBEA2B19F709000BDDC5 /* ChallengeViewModelSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A4BBE92B19F709000BDDC5 /* ChallengeViewModelSpy.swift */; };
 		C0AC2ACF2B199474003BDFC0 /* ChallengeFailure_Client.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AC2ACE2B199474003BDFC0 /* ChallengeFailure_Client.json */; };
@@ -761,7 +760,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0A4BBE32B19F0F7000BDDC5 /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2168,7 +2166,6 @@
 			);
 			name = "LionHeart-iOSTests";
 			packageProductDependencies = (
-				C0A4BBE22B19F0F7000BDDC5 /* FirebaseMessaging */,
 			);
 			productName = "LionHeart-iOSTests";
 			productReference = B532E8442A5525C800F0DB19 /* LionHeart-iOSTests.xctest */;
@@ -2846,7 +2843,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LionHeart-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LionHeart-iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LionHeart-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)LionHeart-iOS";
 			};
 			name = Debug;
 		};
@@ -2872,7 +2869,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LionHeart-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LionHeart-iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LionHeart-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)LionHeart-iOS";
 			};
 			name = Release;
 		};
@@ -3091,11 +3088,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B59893142A5D40FC00CE1FEB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		C0A4BBE22B19F0F7000BDDC5 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

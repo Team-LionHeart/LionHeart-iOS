@@ -7,7 +7,7 @@
 
 import XCTest
 import Combine
-@testable import FirebaseMessaging
+
 @testable import LionHeart_iOS
 
 class ChallengeViewModelTestSetUp: XCTestCase {
