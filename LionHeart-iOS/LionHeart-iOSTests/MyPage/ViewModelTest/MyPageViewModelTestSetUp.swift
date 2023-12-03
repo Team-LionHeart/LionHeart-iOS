@@ -21,8 +21,6 @@ class MyPageViewModelTestSetUp: XCTestCase {
     var resignButtonTapped: PassthroughSubject<Void, Never>!
     var viewWillAppearSubject: PassthroughSubject<Void, Never>!
     
-    var outputViewWillAppearSubject: AnyPublisher<MyPageModel, Never>!
-    
     var input: MyPageViewModelInput!
     var output: MyPageViewModelOutput!
     
@@ -39,13 +37,22 @@ class MyPageViewModelTestSetUp: XCTestCase {
         self.input = MyPageViewModelInput(backButtonTapped: self.backButtonTapped,
                                           resignButtonTapped: self.resignButtonTapped,
                                           viewWillAppearSubject: self.viewWillAppearSubject)
-        
         self.output = self.viewModel.transform(input: self.input)
         
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.navigation = nil
+        self.manager = nil
+        self.viewModel = nil
+        self.cancelBag = nil
+        
+        self.backButtonTapped = nil
+        self.resignButtonTapped = nil
+        self.viewWillAppearSubject = nil
+        
+        self.input = nil
+        self.output = nil
     }
 
 }
