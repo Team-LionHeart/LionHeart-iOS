@@ -22,7 +22,9 @@ final class CurriculumListWeekViewController: UIViewController, CurriculumArticl
     
     private lazy var navigationBar = LHNavigationBarView(type: .curriculumByWeek, viewController: self)
     private var datasoruce: UITableViewDiffableDataSource<CurriculumListWeekSection, CurriculumListWeekItem>!
-    private lazy var headerView = CurriculumArticleByWeekHeaderView(frame: .init(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width*(200 / 375)))
+    private lazy var headerView =
+    CurriculumArticleByWeekHeaderView(frame: .init(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width*(200 / 375)))
+    
     private let curriculumListByWeekTableView = CurriculumListByWeekTableView()
     
     private let viewModel: any CurriculumListWeekViewModel
