@@ -10,11 +10,11 @@ import Combine
 
 final class ChallengeViewModelImpl: ChallengeViewModel, ChallengeViewModelPresentable {
     
-    private enum FlowType { case bookmarkButtonTapped, myPageButtonTapped }
+    enum FlowType { case bookmarkButtonTapped, myPageButtonTapped }
     
-    private let navigationSubject = PassthroughSubject<FlowType, Never>()
+    var navigationSubject = PassthroughSubject<FlowType, Never>()
     private var cancelBag = Set<AnyCancellable>()
-    private let errorSubject = PassthroughSubject<NetworkError, Never>()
+    let errorSubject = PassthroughSubject<NetworkError, Never>()
     
     private var navigator: ChallengeNavigation
     private var manager: ChallengeManager
@@ -44,11 +44,15 @@ final class ChallengeViewModelImpl: ChallengeViewModel, ChallengeViewModelPresen
             .store(in: &cancelBag)
         
         input.navigationLeftButtonTapped
-            .sink { [weak self] in self?.navigationSubject.send(.bookmarkButtonTapped) }
+            .sink { [weak self] in 
+                self?.navigationSubject.send(.bookmarkButtonTapped)
+            }
             .store(in: &cancelBag)
         
         input.navigationRightButtonTapped
-            .sink { [weak self] in self?.navigationSubject.send(.myPageButtonTapped) }
+            .sink { 
+                [weak self] in self?.navigationSubject.send(.myPageButtonTapped)
+            }
             .store(in: &cancelBag)
         
         let viewWillAppearSubject = input.viewWillAppearSubject

@@ -23,13 +23,13 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
     
     private let leftSeperateLine = LHUnderLine(lineColor: .background)
     private let rightSeperateLine = LHUnderLine(lineColor: .background)
-    private lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
-    private let nicknameLabel = LHLabel(type: .body2R, color: .gray200)
-    private let challengeDayLabel = LHLabel(type: .head3, color: .white)
-    private let challengelevelLabel = LHLabel(type: .body4, color: .gray500)
-    private let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05, contentMode: .scaleToFill)
+    lazy var navigationBar = LHNavigationBarView(type: .challenge, viewController: self)
+    let nicknameLabel = LHLabel(type: .body2R, color: .gray200)
+    let challengeDayLabel = LHLabel(type: .head3, color: .white)
+    let challengelevelLabel = LHLabel(type: .body4, color: .gray500)
+    let levelBadge = LHImageView(in: ImageLiterals.ChallengeBadge.level05, contentMode: .scaleToFill)
     private lazy var lottieImageView = LHLottie()
-    private let challengeDayCheckCollectionView = LHCollectionView()
+    let challengeDayCheckCollectionView = LHCollectionView()
     private var diffableDataSource: UICollectionViewDiffableDataSource<ChallengeSection, Int>!
     
     init(viewModel: some ChallengeViewModel) {
@@ -80,7 +80,7 @@ final class ChallengeViewController: UIViewController, ChallengeViewControllerab
     }
 }
 
-private extension ChallengeViewController {
+extension ChallengeViewController {
     func configureData(_ input: ChallengeData) {
         setText(by: input)
         setImage(by: input)

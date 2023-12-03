@@ -1,0 +1,14 @@
+{
+  "code": "SUCCESS",
+  "message": "정보조회에성공했습니다",
+  "data": {
+    "babyNickname": "Test닉네임",
+    "day": 10,
+    "level": "LEVEL_ONE",
+    "attendances": [
+      "11/1",
+      "11/2",
+      "11/3"
+    ]
+  }
+}

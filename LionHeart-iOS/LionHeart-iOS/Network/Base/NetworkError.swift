@@ -8,7 +8,7 @@
 import Foundation
 
 @frozen
-enum NetworkError: Error, CustomStringConvertible {
+enum NetworkError: Error, CustomStringConvertible, Equatable {
     case urlEncodingError
     case jsonDecodingError
     case badCasting
