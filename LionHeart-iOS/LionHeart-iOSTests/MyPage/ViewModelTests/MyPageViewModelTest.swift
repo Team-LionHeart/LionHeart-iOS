@@ -15,7 +15,7 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
     func test_MypageVM_viewWillAppear이후_AppData가_들어왔을때() {
         // given
         let expectation = XCTestExpectation(description: "app data가 성공적으로 들어왔을 때")
-        self.manager.appData = .init(badgeImage: "test", nickname: "짠미", isAlarm: "On")
+        self.manager.appData = .init(badgeImage: "LEVEL_ONE", nickname: "짠미", isAlarm: "On")
         
         // when
         var myPageModel: BadgeProfileAppData?
