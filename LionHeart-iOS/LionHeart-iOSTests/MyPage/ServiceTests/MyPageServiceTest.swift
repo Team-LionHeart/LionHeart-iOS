@@ -15,39 +15,22 @@ final class MyPageServiceTest: XCTestCase {
     var urlSession: URLSessionStub!
     var apiService: APIService!
 
-    override func setUpWithError() throws {
+    override func setUp() {
         jsonLoader = JSONLoader()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         jsonLoader = nil
         urlSession = nil
         apiService = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     func test_마이페이지API_성공_데이터가_있을때() async throws {
         // given
         let urlRequest = try makeURLRequest(fileName: "SuccessResponse")
         
         // when
-        guard let result: MyPageResponse = try await apiService.request(urlRequest) else {
-            return XCTFail("옵셔널 언래핑 에러")
-        }
+        let returnData: MyPageResponse? = try await apiService.request(urlRequest)
+        let result = try XCTUnwrap(returnData, "언래핑 실패")
         
         let expectation = MyPageResponse(babyNickname: "짠미", level: "LEVEL_ONE", notificationStatus: "ON")
         
