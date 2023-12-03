@@ -16,8 +16,9 @@ protocol MyPageControllerable where Self: UIViewController {}
 final class MyPageViewController: UIViewController, MyPageControllerable {
     
     private var viewModel: any MyPageViewModel
-    private lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
-    private let myPageTableView = MyPageTableView()
+    lazy var navigtaionBar = LHNavigationBarView(type: .myPage, viewController: self)
+    let myPageTableView = MyPageTableView()
+    lazy var headerView = MyPageUserInfoView(frame: .init(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width*(224/360)))
     private lazy var dataSource = MyPageDataSource(tableView: myPageTableView)
     private let backButtonTapped = PassthroughSubject<Void, Never>()
     private let resignButtonTapped = PassthroughSubject<Void, Never>()
@@ -25,7 +26,7 @@ final class MyPageViewController: UIViewController, MyPageControllerable {
     private var cancelBag = Set<AnyCancellable>()
     
     // MARK: - 회원탈퇴를 위한 임시 버튼
-    private let resignButton: UIButton = {
+    let resignButton: UIButton = {
         let button = UIButton()
         button.alpha = 0.1
         return button
@@ -64,7 +65,6 @@ final class MyPageViewController: UIViewController, MyPageControllerable {
     }
     
     func setTableViewHeader(_ input: BadgeProfileAppData) {
-        let headerView = MyPageUserInfoView(frame: .init(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width*(224/360)))
         headerView.inputData = input
         myPageTableView.tableHeaderView = headerView
     }

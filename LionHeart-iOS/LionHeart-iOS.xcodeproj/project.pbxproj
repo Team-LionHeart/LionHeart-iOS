@@ -35,6 +35,8 @@
 		4AE19A1E2A6597E700C1DB7E /* BookmarkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE19A1D2A6597E700C1DB7E /* BookmarkRequest.swift */; };
 		4AE19A1F2A66F2E200C1DB7E /* BookmarkDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8980C12A5FD6AF00746C58 /* BookmarkDetailCollectionViewCell.swift */; };
 		4AF491EB2B1CBCFA00C9D7C1 /* MyPageViewModelTestSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF491EA2B1CBCFA00C9D7C1 /* MyPageViewModelTestSetUp.swift */; };
+		4AF491ED2B1CBF6200C9D7C1 /* MyPageViewModelSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF491EC2B1CBF6200C9D7C1 /* MyPageViewModelSpy.swift */; };
+		4AF491EF2B1CC5CC00C9D7C1 /* MyPageViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF491EE2B1CC5CC00C9D7C1 /* MyPageViewControllerTest.swift */; };
 		4AF94F062B1B28FA000BEAB9 /* ServerFailureResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF94F052B1B28FA000BEAB9 /* ServerFailureResponse.json */; };
 		B512205A2A5FAA47006CBE2D /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51220592A5FAA47006CBE2D /* ImageLiterals.swift */; };
 		B51220602A60111C006CBE2D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512205F2A60111C006CBE2D /* Token.swift */; };
@@ -410,6 +412,8 @@
 		4AE19A192A65886100C1DB7E /* BookmarkReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkReponse.swift; sourceTree = "<group>"; };
 		4AE19A1D2A6597E700C1DB7E /* BookmarkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRequest.swift; sourceTree = "<group>"; };
 		4AF491EA2B1CBCFA00C9D7C1 /* MyPageViewModelTestSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModelTestSetUp.swift; sourceTree = "<group>"; };
+		4AF491EC2B1CBF6200C9D7C1 /* MyPageViewModelSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModelSpy.swift; sourceTree = "<group>"; };
+		4AF491EE2B1CC5CC00C9D7C1 /* MyPageViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewControllerTest.swift; sourceTree = "<group>"; };
 		4AF94F022B1B2707000BEAB9 /* LionHeart-iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "LionHeart-iOS.xctestplan"; path = "LionHeart-iOSTests/MyPage/LionHeart-iOS.xctestplan"; sourceTree = "<group>"; };
 		4AF94F052B1B28FA000BEAB9 /* ServerFailureResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ServerFailureResponse.json; sourceTree = "<group>"; };
 		B51220592A5FAA47006CBE2D /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
@@ -796,7 +800,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8784552B189AD9005BCDEA /* JSON */,
-				4A8784562B189ADD005BCDEA /* ViewModelTest */,
+				4A8784562B189ADD005BCDEA /* ViewModelTests */,
 				4A8784592B189AF1005BCDEA /* ServiceTests */,
 				4A87845A2B189AF7005BCDEA /* ViewControllerTests */,
 			);
@@ -813,7 +817,7 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
-		4A8784562B189ADD005BCDEA /* ViewModelTest */ = {
+		4A8784562B189ADD005BCDEA /* ViewModelTests */ = {
 			isa = PBXGroup;
 			children = (
 				4ACBE31C2B1C6C63003412A7 /* MyPageNavigationDummy.swift */,
@@ -821,7 +825,7 @@
 				4ACBE3142B1B6B19003412A7 /* MyPageViewModelTest.swift */,
 				4AF491EA2B1CBCFA00C9D7C1 /* MyPageViewModelTestSetUp.swift */,
 			);
-			path = ViewModelTest;
+			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
 		4A8784592B189AF1005BCDEA /* ServiceTests */ = {
@@ -835,6 +839,8 @@
 		4A87845A2B189AF7005BCDEA /* ViewControllerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4AF491EC2B1CBF6200C9D7C1 /* MyPageViewModelSpy.swift */,
+				4AF491EE2B1CC5CC00C9D7C1 /* MyPageViewControllerTest.swift */,
 			);
 			path = ViewControllerTests;
 			sourceTree = "<group>";
@@ -2666,11 +2672,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF491ED2B1CBF6200C9D7C1 /* MyPageViewModelSpy.swift in Sources */,
 				B5BE51C92B15CB9600042EF3 /* JSONLoader.swift in Sources */,
 				4ACBE3152B1B6B19003412A7 /* MyPageViewModelTest.swift in Sources */,
 				C034EDE02ADE3A4A00AD6FF3 /* LionHeart_iOSTests.swift in Sources */,
 				4ACBE3112B1B365D003412A7 /* MyPageServiceTest.swift in Sources */,
 				4AF491EB2B1CBCFA00C9D7C1 /* MyPageViewModelTestSetUp.swift in Sources */,
+				4AF491EF2B1CC5CC00C9D7C1 /* MyPageViewControllerTest.swift in Sources */,
 				B5BE51C12B15B8F100042EF3 /* ServiceTests.swift in Sources */,
 				4ACBE31D2B1C6C63003412A7 /* MyPageNavigationDummy.swift in Sources */,
 				4ACBE31B2B1C3056003412A7 /* MyPageManagerStub.swift in Sources */,

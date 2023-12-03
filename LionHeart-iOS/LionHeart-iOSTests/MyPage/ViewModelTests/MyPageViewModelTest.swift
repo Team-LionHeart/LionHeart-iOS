@@ -29,7 +29,7 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
         viewWillAppearSubject.send(())
         
         // then
-        let expectedValue = BadgeProfileAppData(badgeImage: "test", nickname: "짠미", isAlarm: "On")
+        let expectedValue = BadgeProfileAppData(badgeImage: "LEVEL_ONE", nickname: "짠미", isAlarm: "On")
         
         wait(for: [expectation], timeout: 0.3)
         XCTAssertEqual(myPageModel, expectedValue)
