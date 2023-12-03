@@ -30,9 +30,8 @@ final class ChallengeServiceTests: XCTestCase {
         let urlRequest = try self.setChallengeAPITest(fileName: "ChallengeSuccess")
         
         //when
-        guard let result: ChallengeDataResponse = try await self.apiService.request(urlRequest) else {
-            return XCTFail("옵셔널언래핑에 실패했습니다")
-        }
+        let returnData: ChallengeDataResponse? = try await self.apiService.request(urlRequest)
+        let result = try XCTUnwrap(returnData, "언래핑실패")
         
         //then
         let expectation = ChallengeDataResponse(babyNickname: "Test닉네임", day: 10, level: "LEVEL_ONE", attendances: ["11/1","11/2","11/3"])

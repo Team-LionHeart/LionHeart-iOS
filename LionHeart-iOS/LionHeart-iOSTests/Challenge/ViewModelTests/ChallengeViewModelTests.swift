@@ -28,7 +28,7 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
         viewWillAppearSubject.send(())
         
         //then
-        let expectedValue = ChallengeData.init(babyDaddyName: "test", howLongDay: 12, daddyLevel: "LEVEL_ONE", daddyAttendances: [])
+        let expectedValue = ChallengeData(babyDaddyName: "test", howLongDay: 12, daddyLevel: "LEVEL_ONE", daddyAttendances: [])
         wait(for: [expectation], timeout: 0.2)
         XCTAssertEqual(data, expectedValue)
     }
