@@ -796,11 +796,9 @@
 			isa = PBXGroup;
 			children = (
 				4A8784552B189AD9005BCDEA /* JSON */,
-				4ACBE3162B1C3002003412A7 /* Stub */,
 				4A8784562B189ADD005BCDEA /* ViewModelTest */,
 				4A8784592B189AF1005BCDEA /* ServiceTests */,
 				4A87845A2B189AF7005BCDEA /* ViewControllerTests */,
-				4ACBE31C2B1C6C63003412A7 /* MyPageNavigationDummy.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -818,6 +816,8 @@
 		4A8784562B189ADD005BCDEA /* ViewModelTest */ = {
 			isa = PBXGroup;
 			children = (
+				4ACBE31C2B1C6C63003412A7 /* MyPageNavigationDummy.swift */,
+				4ACBE31A2B1C3056003412A7 /* MyPageManagerStub.swift */,
 				4ACBE3142B1B6B19003412A7 /* MyPageViewModelTest.swift */,
 				4AF491EA2B1CBCFA00C9D7C1 /* MyPageViewModelTestSetUp.swift */,
 			);
@@ -862,14 +862,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4ACBE3162B1C3002003412A7 /* Stub */ = {
-			isa = PBXGroup;
-			children = (
-				4ACBE31A2B1C3056003412A7 /* MyPageManagerStub.swift */,
-			);
-			path = Stub;
 			sourceTree = "<group>";
 		};
 		4AD2163E2A69AC0A00C9F2F2 /* MyPage */ = {
