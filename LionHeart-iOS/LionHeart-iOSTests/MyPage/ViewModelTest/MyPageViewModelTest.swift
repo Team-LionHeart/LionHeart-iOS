@@ -10,58 +10,7 @@ import Combine
 
 @testable import LionHeart_iOS
 
-final class MyPageViewModelTest: XCTestCase {
-    
-    var navigation: MyPageNavigationDummy!
-    var manager: MyPageManagerStub!
-    var viewModel: MyPageViewModelImpl!
-    var cancelBag: Set<AnyCancellable>!
-    
-    var backButtonTapped: PassthroughSubject<Void, Never>!
-    var resignButtonTapped: PassthroughSubject<Void, Never>!
-    var viewWillAppearSubject: PassthroughSubject<Void, Never>!
-    
-    var outputViewWillAppearSubject: AnyPublisher<MyPageModel, Never>!
-    
-    var input: MyPageViewModelInput!
-    var output: MyPageViewModelOutput!
-    
-    override func setUp() {
-        self.navigation = MyPageNavigationDummy()
-        self.manager = MyPageManagerStub()
-        self.viewModel = MyPageViewModelImpl(navigator: self.navigation, manager: self.manager)
-        self.cancelBag = Set<AnyCancellable>()
-        
-        self.backButtonTapped = PassthroughSubject<Void, Never>()
-        self.resignButtonTapped = PassthroughSubject<Void, Never>()
-        self.viewWillAppearSubject = PassthroughSubject<Void, Never>()
-        
-        self.input = MyPageViewModelInput(backButtonTapped: self.backButtonTapped,
-                                          resignButtonTapped: self.resignButtonTapped,
-                                          viewWillAppearSubject: self.viewWillAppearSubject)
-        
-        self.output = self.viewModel.transform(input: self.input)
-        
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+final class MyPageViewModelTest: MyPageViewModelTestSetUp {
     
     func test_MypageVM_viewWillAppear이후_AppData가_들어왔을때() {
         // given
