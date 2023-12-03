@@ -10,13 +10,13 @@ import Combine
 
 final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
     
-    private enum FlowType { case backButtonTapped, resignButtonTapped }
+    enum FlowType { case backButtonTapped, resignButtonTapped }
     
     private let navigator: MyPageNavigation
     private let manager: MyPageManager
     private var cancelBag = Set<AnyCancellable>()
-    private let navigationSubject = PassthroughSubject<FlowType, Never>()
-    private let errorSubject = PassthroughSubject<NetworkError, Never>()
+    let navigationSubject = PassthroughSubject<FlowType, Never>()
+    let errorSubject = PassthroughSubject<NetworkError, Never>()
     
     init(navigator: MyPageNavigation, manager: MyPageManager) {
         self.navigator = navigator

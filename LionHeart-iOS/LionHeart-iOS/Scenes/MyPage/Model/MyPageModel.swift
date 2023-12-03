@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MyPageModel {
+struct MyPageModel: Equatable {
     let profileData: BadgeProfileAppData
     let appSettingData: [MyPageRow]
     let customerServiceData: [MyPageRow]
