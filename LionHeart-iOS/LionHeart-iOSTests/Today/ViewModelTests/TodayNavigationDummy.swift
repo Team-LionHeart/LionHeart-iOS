@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import XCTest
 
 @testable import LionHeart_iOS
 
 
-final class TodayNavigationDummy: XCTestCase, TodayNavigation {
+final class TodayNavigationDummy: TodayNavigation {
     func todayArticleTapped(articleID: Int) {
         print("아티클 탭 tapped")
     }

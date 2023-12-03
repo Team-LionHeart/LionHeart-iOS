@@ -54,7 +54,7 @@ final class TodayServiceTest: XCTestCase {
             manager = try self.setManager(fileName: "TodayServerError")
             
             // When
-            let result = try await manager.inquiryTodayArticle()
+            let _ = try await manager.inquiryTodayArticle()
             XCTFail("Server Error: 성공할 수 없는 케이스입니다.")
         } catch {
             let error = error as? NetworkError
@@ -73,7 +73,7 @@ final class TodayServiceTest: XCTestCase {
             manager = try self.setManager(fileName: "TodayClientError")
             
             // When
-            let result = try await manager.inquiryTodayArticle()
+            let _ = try await manager.inquiryTodayArticle()
             XCTFail("Server Error: 성공할 수 없는 케이스입니다.")
         } catch {
             let error = error as? NetworkError

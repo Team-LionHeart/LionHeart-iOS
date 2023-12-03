@@ -132,7 +132,6 @@
 		B59FC6E12B1C31BF000996CA /* TodayViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FC6D62B1C31BF000996CA /* TodayViewModelTests.swift */; };
 		B59FC6E32B1C31BF000996CA /* TodayManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FC6D82B1C31BF000996CA /* TodayManagerStub.swift */; };
 		B59FC6E52B1C373A000996CA /* TodayNavigationDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FC6D72B1C31BF000996CA /* TodayNavigationDummy.swift */; };
-		B5BE51C12B15B8F100042EF3 /* ChallengeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C02B15B8F100042EF3 /* ChallengeServiceTests.swift */; };
 		B5BE51C72B15C75F00042EF3 /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C62B15C75F00042EF3 /* URLSessionStub.swift */; };
 		B5BE51C92B15CB9600042EF3 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE51C82B15CB9600042EF3 /* JSONLoader.swift */; };
 		B5C6A2B22A5DB0B10021BE5E /* ArticleDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6A2B12A5DB0B10021BE5E /* ArticleDetailTableView.swift */; };
@@ -2690,14 +2689,12 @@
 			files = (
 				B59FC6DD2B1C31BF000996CA /* TodayViewControllerTests.swift in Sources */,
 				B5BE51C92B15CB9600042EF3 /* JSONLoader.swift in Sources */,
-				B5BE51C12B15B8F100042EF3 /* ChallengeServiceTests.swift in Sources */,
 				B59FC6E52B1C373A000996CA /* TodayNavigationDummy.swift in Sources */,
 				B59FC6E32B1C31BF000996CA /* TodayManagerStub.swift in Sources */,
 				C0B235042B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift in Sources */,
 				B59FC6DF2B1C31BF000996CA /* TodayServiceTest.swift in Sources */,
 				B59FC6E12B1C31BF000996CA /* TodayViewModelTests.swift in Sources */,
 				C0A4BBE82B19F6EB000BDDC5 /* ChallengeViewControllerTests.swift in Sources */,
-				B5BE51C12B15B8F100042EF3 /* ChallengeServiceTests.swift in Sources */,
 				C0B234FE2B19995F00AFC5BB /* ChallengeViewModelTests.swift in Sources */,
 				B59FC6E02B1C31BF000996CA /* TodayViewModelSetUp.swift in Sources */,
 				C0B235022B199F4D00AFC5BB /* ChallengeNavigationDummy.swift in Sources */,
