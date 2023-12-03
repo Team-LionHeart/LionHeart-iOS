@@ -10,14 +10,20 @@ import Combine
 
 final class TodayViewModelImpl: TodayViewModel, TodayViewModelPresentable {
     
-    private enum FlowType { case bookmarkButtonTapped, myPageButtonTapped }
+    enum FlowType: Equatable { 
+        case bookmarkButtonTapped
+        case myPageButtonTapped
+        case articleTapped(articleId: Int)
+    }
     
     private let navigator: TodayNavigation
     private let manager: TodayManager
     
-    private let navigationSubject = PassthroughSubject<FlowType, Never>()
+    let navigationSubject = PassthroughSubject<FlowType, Never>()
+    let errorSubject = PassthroughSubject<NetworkError, Never>()
+    
     private var cancelBag = Set<AnyCancellable>()
-    private var articleID: Int?
+    var articleID: Int?
     
     init(navigator: TodayNavigation, manager: TodayManager) {
         self.navigator = navigator
@@ -26,14 +32,23 @@ final class TodayViewModelImpl: TodayViewModel, TodayViewModelPresentable {
     
     func transform(input: TodayViewModelInput) -> TodayViewModelOutput {
         
+        self.errorSubject
+            .sink { 
+                print($0)
+            }
+            .store(in: &cancelBag)
+        
         self.navigationSubject
             .receive(on: RunLoop.main)
             .sink { [weak self] in
+                guard let self else { return }
                 switch $0 {
                 case .bookmarkButtonTapped:
-                    self?.navigator.navigationLeftButtonTapped()
+                    self.navigator.navigationLeftButtonTapped()
                 case .myPageButtonTapped:
-                    self?.navigator.navigationRightButtonTapped()
+                    self.navigator.navigationRightButtonTapped()
+                case .articleTapped(let articleId):
+                    self.navigator.todayArticleTapped(articleID: articleId)
                 }
             }
             .store(in: &cancelBag)
@@ -48,8 +63,10 @@ final class TodayViewModelImpl: TodayViewModel, TodayViewModelPresentable {
         
         input.todayArticleTapped
             .sink { [weak self] in
-                guard let articleID = self?.articleID else { return }
-                self?.navigator.todayArticleTapped(articleID: articleID)
+                guard let articleID = self?.articleID else { 
+                    return
+                }
+                self?.navigationSubject.send(.articleTapped(articleId: articleID))
             }
             .store(in: &cancelBag)
 
@@ -68,7 +85,8 @@ final class TodayViewModelImpl: TodayViewModel, TodayViewModelPresentable {
                     }
                 }
                 .catch { error in
-                    Just(TodayArticle.emptyArticle)
+                    self.errorSubject.send(error)
+                    return Just(TodayArticle.emptyArticle)
                 }
                 .eraseToAnyPublisher()
             }
