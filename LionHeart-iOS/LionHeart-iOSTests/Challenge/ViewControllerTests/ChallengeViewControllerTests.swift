@@ -87,11 +87,11 @@ final class ChallengeViewControllerTests: XCTestCase {
     
     func test_Navigation의_북마크버튼이_잘_동작하는지() {
         //given
+        let expectation = XCTestExpectation(description: "네비게이션왼쪽버튼이 눌렸을때")
         let viewController = ChallengeViewController(viewModel: self.viewModel)
         viewController.loadViewIfNeeded()
         
         //when
-        let expectation = XCTestExpectation(description: "네비게이션왼쪽버튼이 눌렸을때")
         var navigationType: ChallengeViewModelStub.FlowType?
         viewModel.navigationSubject
             .sink { type in
@@ -109,11 +109,11 @@ final class ChallengeViewControllerTests: XCTestCase {
     
     func test_Navigation의_마이페이지버튼이_잘_동작하는지() {
         //given
+        let expectation = XCTestExpectation(description: "네비게이션오른쪽버튼이 눌렸을때")
         let viewController = ChallengeViewController(viewModel: self.viewModel)
         viewController.loadViewIfNeeded()
         
         //when
-        let expectation = XCTestExpectation(description: "네비게이션오른쪽버튼이 눌렸을때")
         var navigationType: ChallengeViewModelStub.FlowType?
         viewModel.navigationSubject
             .sink { type in

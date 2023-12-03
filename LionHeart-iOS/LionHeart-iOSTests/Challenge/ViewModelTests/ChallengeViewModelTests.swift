@@ -14,10 +14,10 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
 
     func test_ChallengeVM의_viewWillAppear이후의_AppData변환이_잘이루어졌을때() {
         //given
+        let expectation = XCTestExpectation(description: "manager에서 제대로된 값이 들어왔을때")
         self.manager.returnValue = .init(babyNickname: "test", day: 12, level: "LEVEL_ONE", attendances: [])
         
         //when
-        let expectation = XCTestExpectation(description: "manager에서 제대로된 값이 들어왔을때")
         var data: ChallengeData?
         output.viewWillAppearSubject
             .sink { value in
@@ -35,11 +35,13 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
     
     func test_ChallengeVM의_viewWillAppear이후의_제대로된데이터가_전달되지않았을때() {
         //given
+        let expectation = XCTestExpectation(description: "manager에서 nil이 들어왔을때")
         self.manager.returnValue = nil
         
         //when
-        let expectation = XCTestExpectation(description: "manager에서 nil이 들어왔을때")
         var data: ChallengeData?
+        var willOccureError: NetworkError?
+        
         output.viewWillAppearSubject
             .sink { value in
                 data = value
@@ -47,7 +49,6 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
             }
             .store(in: &cancelBag)
         
-        var willOccureError: NetworkError?
         self.viewModel.errorSubject
             .sink { willOccureError = $0 }
             .store(in: &cancelBag)
@@ -62,9 +63,10 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
     }
     
     func test_ChallengeVM의_leftButtonTapped가_올바른값을전달하고있는지() {
-        //when
+        //given
         let expectation = XCTestExpectation(description: "네비게이션왼쪽버튼이 눌렸을때")
         
+        //when
         var flowType: ChallengeViewModelImpl.FlowType!
         self.viewModel.navigationSubject
             .sink { flow in
@@ -80,9 +82,10 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
     }
     
     func test_ChallengeVM의_rightButtonTapped가_올바른값을전달하고있는지() {
-        //when
+        //given
         let expectation = XCTestExpectation(description: "네비게이션오른쪽버튼이 눌렸을때")
         
+        //when
         var flowType: ChallengeViewModelImpl.FlowType!
         self.viewModel.navigationSubject
             .sink { flow in
@@ -92,6 +95,7 @@ final class ChallengeViewModelTests: ChallengeViewModelTestSetUp {
             .store(in: &cancelBag)
         
         self.navigationRightButtonTapped.send(())
+        
         //then
         wait(for: [expectation], timeout: 0.3)
         XCTAssertEqual(flowType, .myPageButtonTapped)
