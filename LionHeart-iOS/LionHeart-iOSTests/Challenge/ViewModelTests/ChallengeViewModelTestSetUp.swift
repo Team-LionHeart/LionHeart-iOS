@@ -20,13 +20,13 @@ class ChallengeViewModelTestSetUp: XCTestCase {
     var output: ChallengeViewModelOutput!
     
     var manager: ChallengeManagerStub!
-    var navigation: ChallengeNavigationStub!
+    var navigation: ChallengeNavigationDummy!
     var viewModel: ChallengeViewModelImpl!
     var cancelBag: Set<AnyCancellable>!
 
     override func setUp() {
         self.manager = ChallengeManagerStub()
-        self.navigation = ChallengeNavigationStub()
+        self.navigation = ChallengeNavigationDummy()
         self.viewModel = ChallengeViewModelImpl(navigator: self.navigation, manager: self.manager)
         
         self.navigationLeftButtonTapped = PassthroughSubject<Void, Never>()

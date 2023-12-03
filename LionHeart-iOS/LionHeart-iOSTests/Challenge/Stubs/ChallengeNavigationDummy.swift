@@ -8,7 +8,7 @@
 import Foundation
 @testable import LionHeart_iOS
 
-final class ChallengeNavigationStub: ChallengeNavigation {
+final class ChallengeNavigationDummy: ChallengeNavigation {
     
     func navigationRightButtonTapped() {
         print("왼쪽버튼눌림")
