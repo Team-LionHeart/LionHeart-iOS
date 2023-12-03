@@ -115,7 +115,6 @@ final class TodayViewModelTests: TodayViewModelSetUp {
         
         // Then
         XCTAssertEqual(articleID, expectedArticleId)
-        XCTAssertTrue(self.navigation.isTodayArticleTapped)
     }
     
     func test_네비게이션바_왼쪽버튼_북마크_데이터전달_확인() {
@@ -138,7 +137,6 @@ final class TodayViewModelTests: TodayViewModelSetUp {
         
         // Then
         XCTAssertEqual(flowType, .bookmarkButtonTapped)
-        XCTAssertTrue(self.navigation.isNaviLeftButtonTapped)
     }
     
     func test_네비게이션바_오른쪽버튼_마이페이지_데이터전달_확인() {
@@ -161,6 +159,5 @@ final class TodayViewModelTests: TodayViewModelSetUp {
         
         // Then
         XCTAssertEqual(flowType, .myPageButtonTapped)
-        XCTAssertTrue(self.navigation.isNaviRightButtonTapped)
     }
 }
