@@ -9,7 +9,7 @@ import Foundation
 import Combine
 @testable import LionHeart_iOS
 
-final class ChallengeViewModelStub: ChallengeViewModel {
+final class ChallengeViewModelSpy: ChallengeViewModel {
     
     enum FlowType { case bookmarkButtonTapped, myPageButtonTapped }
     
