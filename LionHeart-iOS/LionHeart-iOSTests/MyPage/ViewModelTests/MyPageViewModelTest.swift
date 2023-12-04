@@ -70,7 +70,7 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
     
     func test_MyPageVM_resignButtonTapped이후_회원탈퇴성공하고_올바른값을전달하는지() {
         // given
-//        let expectation = XCTestExpectation(description: "resignButtonTapped success")
+        let expectation = XCTestExpectation(description: "resignButtonTapped success")
         self.manager.resignResult = true
         
         // when
@@ -78,7 +78,7 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
         self.viewModel.navigationSubject
             .sink { type in
                 flowType = type
-//                expectation.fulfill()
+                expectation.fulfill()
             }
             .store(in: &cancelBag)
         
@@ -87,14 +87,14 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
         // then
         let expectedType = MyPageViewModelImpl.FlowType.resignButtonTapped
         
-//        wait(for: [expectation], timeout: 0.3)
-        XCTAssertEqual(flowType, nil)
+        wait(for: [expectation], timeout: 0.3)
+        XCTAssertEqual(flowType, expectedType)
 
     }
     
     func test_MyPageVM_resignButtonTapped이후_에러발생했을때() {
         // given
-//        let expectation = XCTestExpectation(description: "resinButtonTapped failure")
+        let expectation = XCTestExpectation(description: "resinButtonTapped failure")
         self.manager.resignResult = nil
         
         // when
@@ -103,7 +103,7 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
         self.viewModel.errorSubject
             .sink { error in
                 willOccurError = error
-//                expectation.fulfill()
+                expectation.fulfill()
             }
             .store(in: &cancelBag)
         
@@ -112,8 +112,8 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
         // then
         let expectedType = NetworkError.clientError(code: "V001", message: "탈퇴 실패")
         
-//        wait(for: [expectation], timeout: 0.3)
-        XCTAssertEqual(willOccurError, nil)
+        wait(for: [expectation], timeout: 0.3)
+        XCTAssertEqual(willOccurError, expectedType)
     }
     
     func test_MyPageVM_backButtonTapped_올바른값전달하는지() {
