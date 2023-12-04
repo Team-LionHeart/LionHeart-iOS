@@ -91,7 +91,7 @@ final class MyPageViewControllerTest: XCTestCase {
         XCTAssertTrue(isEventOccured!)
     }
     
-    func test_데이터바인딩성공() {
+    func test_MyPage데이터가_들어왔을때_UI에_잘반영되는지() {
         // given
         let viewController = MyPageViewController(viewModel: self.viewModel)
         let badgeData = BadgeProfileAppData(badgeImage: "LEVEL_ONE", nickname: "test nickname", isAlarm: "on")
