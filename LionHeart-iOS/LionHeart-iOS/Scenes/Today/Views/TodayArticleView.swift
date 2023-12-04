@@ -13,11 +13,11 @@ import SnapKit
 final class TodayArticleView: UIView {
     
     private let backgroundView = LHView(color: .designSystem(.black)?.withAlphaComponent(0.7)).makeRound(4)
-    private var weekInfomationLabel = LHLabel(type: .body2R, color: .componentLionRed)
-    private var articleTitleLabel = LHLabel(type: .head2, color: .white, lines: 0)
-    private var descriptionLabel = LHLabel(type: .body2R, color: .gray400, lines: 3)
+    var weekInfomationLabel = LHLabel(type: .body2R, color: .componentLionRed)
+    var articleTitleLabel = LHLabel(type: .head2, color: .white, lines: 0)
+    var descriptionLabel = LHLabel(type: .body2R, color: .gray400, lines: 3)
     private var weekInfomationView = LHImageView(in: UIImage(named: "today_test_label"), contentMode: .scaleAspectFill)
-    private var mainArticlImageView = LHImageView(contentMode: .scaleAspectFill).makeRound(4)
+    var mainArticlImageView = LHImageView(contentMode: .scaleAspectFill).makeRound(4)
     private var seperateLine = LHImageView(in: UIImage(named: "MainArticleSeperateLine"), contentMode: .scaleAspectFill)
     
     override init(frame: CGRect) {

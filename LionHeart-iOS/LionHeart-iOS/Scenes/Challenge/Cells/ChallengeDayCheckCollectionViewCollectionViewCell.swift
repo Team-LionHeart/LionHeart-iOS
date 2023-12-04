@@ -14,7 +14,7 @@ final class ChallengeDayCheckCollectionViewCollectionViewCell: UICollectionViewC
     
     enum ChallengeCellType { case read, yet }
     
-    private let countLabel = LHLabel(type: .body2M, color: .gray700, alignment: .center)
+    let countLabel = LHLabel(type: .body2M, color: .gray700, alignment: .center)
     private let lineView = LHUnderLine(lineColor: .gray900)
     
     override init(frame: CGRect) {

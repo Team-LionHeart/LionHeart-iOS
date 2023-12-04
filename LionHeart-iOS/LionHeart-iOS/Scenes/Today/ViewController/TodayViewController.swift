@@ -15,17 +15,17 @@ protocol TodayViewControllerable where Self: UIViewController {}
 
 final class TodayViewController: UIViewController, TodayViewControllerable {
     
-    private lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
-    private var titleLabel = LHTodayArticleTitle()
+    lazy var todayNavigationBar = LHNavigationBarView(type: .today, viewController: self)
+    var titleLabel = LHTodayArticleTitle()
     private var subTitleLable = LHTodayArticleTitle(initalizeString: "오늘의 아티클이에요")
-    private var mainArticleView = TodayArticleView()
+    var mainArticleView = TodayArticleView()
     private var pointImage = LHImageView(in: UIImage(named: "TodayArticle_PointImage"), contentMode: .scaleAspectFit)
     
     private let viewModel: any TodayViewModel
-    private let viewWillAppearSubject = PassthroughSubject<Void, Never>()
-    private let navigationLeftButtonTapped = PassthroughSubject<Void, Never>()
-    private let navigationRightButtonTapped = PassthroughSubject<Void, Never>()
-    private let todayArticleTapped = PassthroughSubject<Void, Never>()
+    let viewWillAppearSubject = PassthroughSubject<Void, Never>()
+    let navigationLeftButtonTapped = PassthroughSubject<Void, Never>()
+    let navigationRightButtonTapped = PassthroughSubject<Void, Never>()
+    let todayArticleTapped = PassthroughSubject<Void, Never>()
     private var cancelBag = Set<AnyCancellable>()
     
     init(viewModel: some TodayViewModel) {
@@ -54,15 +54,21 @@ final class TodayViewController: UIViewController, TodayViewControllerable {
     
     func bindInput() {
         self.todayNavigationBar.rightFirstBarItem.tapPublisher
-            .sink { [weak self] in self?.navigationLeftButtonTapped.send(()) }
+            .sink { [weak self] in
+                self?.navigationLeftButtonTapped.send(())
+            }
             .store(in: &cancelBag)
         
         self.todayNavigationBar.rightSecondBarItem.tapPublisher
-            .sink { [weak self] in self?.navigationRightButtonTapped.send(()) }
+            .sink { [weak self] in
+                self?.navigationRightButtonTapped.send(())
+            }
             .store(in: &cancelBag)
         
         self.mainArticleView.tabPublisher
-            .sink { [weak self] in self?.todayArticleTapped.send(()) }
+            .sink { [weak self] in
+                self?.todayArticleTapped.send(())
+            }
             .store(in: &cancelBag)
     }
     
