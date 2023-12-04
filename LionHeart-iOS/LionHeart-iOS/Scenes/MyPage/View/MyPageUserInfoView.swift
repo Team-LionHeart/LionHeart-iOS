@@ -15,8 +15,8 @@ final class MyPageUserInfoView: UIView {
         static let buttonMutipleSize: CGFloat = 40/320
     }
     
-    private let badgeImageView = LHImageView(contentMode: .scaleAspectFit)
-    private let profileLabel = LHLabel(type: .head3, color: .white, lines: 0)
+    let badgeImageView = LHImageView(contentMode: .scaleAspectFit)
+    let profileLabel = LHLabel(type: .head3, color: .white, lines: 0)
     
     private lazy var profileEditButton = {
         var titleAttr = AttributedString.init("정보 수정")

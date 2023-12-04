@@ -10,13 +10,13 @@ import Combine
 
 final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
     
-    private enum FlowType { case backButtonTapped, resignButtonTapped }
+    enum FlowType { case backButtonTapped, resignButtonTapped }
     
     private let navigator: MyPageNavigation
-    private let manager: MyPageManager
+    let manager: MyPageManager
     private var cancelBag = Set<AnyCancellable>()
-    private let navigationSubject = PassthroughSubject<FlowType, Never>()
-    private let errorSubject = PassthroughSubject<NetworkError, Never>()
+    let navigationSubject = PassthroughSubject<FlowType, Never>()
+    let errorSubject = PassthroughSubject<NetworkError, Never>()
     
     init(navigator: MyPageNavigation, manager: MyPageManager) {
         self.navigator = navigator
@@ -52,12 +52,12 @@ final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
             .store(in: &cancelBag)
         
         input.resignButtonTapped
-            .flatMap { _ -> AnyPublisher<Void, Never> in
-                return Future<Void, NetworkError> { promise in
+            .flatMap { _ -> AnyPublisher<Bool, Never> in
+                return Future<Bool, NetworkError> { promise in
                     Task {
                         do {
                             try await self.manager.resignUser()
-                            promise(.success(()))
+                            promise(.success(true))
                         } catch {
                             promise(.failure(error as! NetworkError))
                         }
@@ -65,13 +65,15 @@ final class MyPageViewModelImpl: MyPageViewModel, MyPageViewModelPresentable {
                 }
                 .catch { error in
                     self.errorSubject.send(error)
-                    return Just(())
+                    return Just(false)
                 }
                 .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
-            .sink { [weak self] _ in
-                self?.navigationSubject.send(.resignButtonTapped)
+            .sink { [weak self] resignComplete in
+                if resignComplete {
+                    self?.navigationSubject.send(.resignButtonTapped)
+                }
             }
             .store(in: &cancelBag)
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MyPageResponse: DTO, Response {
+struct MyPageResponse: DTO, Response, Equatable {
     let babyNickname: String
     let level: String
     let notificationStatus: String

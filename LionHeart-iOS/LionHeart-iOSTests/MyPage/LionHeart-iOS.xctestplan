@@ -1,0 +1,45 @@
+{
+  "configurations" : [
+    {
+      "id" : "ACC161F9-0266-4F7D-8ED9-B90939B96F11",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:LionHeart-iOS.xcodeproj",
+          "identifier" : "B532E8432A5525C800F0DB19",
+          "name" : "LionHeart-iOSTests"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:LionHeart-iOS.xcodeproj",
+      "identifier" : "B532E82D2A5525C600F0DB19",
+      "name" : "LionHeart-iOS"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:LionHeart-iOS.xcodeproj",
+        "identifier" : "B532E8432A5525C800F0DB19",
+        "name" : "LionHeart-iOSTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:LionHeart-iOS.xcodeproj",
+        "identifier" : "B532E84D2A5525C800F0DB19",
+        "name" : "LionHeart-iOSUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

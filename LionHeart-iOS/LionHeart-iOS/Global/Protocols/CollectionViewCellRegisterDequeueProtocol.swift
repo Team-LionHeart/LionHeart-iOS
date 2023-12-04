@@ -8,11 +8,9 @@
 import UIKit
 
 protocol CollectionViewCellRegisterDequeueProtocol where Self: UICollectionViewCell {
-//    associatedtype T: AppData
     static func register(to collectionView: UICollectionView)
     static func dequeueReusableCell(to collectionView: UICollectionView, indexPath: IndexPath) -> Self
     static var reuseIdentifier: String { get }
-//    var inputData: T? { get set }
 }
 
 
