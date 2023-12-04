@@ -10,11 +10,11 @@ import Combine
 @testable import LionHeart_iOS
 
 final class ChallengeViewControllerTests: XCTestCase {
-    var viewModel: ChallengeViewModelSpy!
+    var viewModel: ChallengeViewModelStub!
     var cancelBag: Set<AnyCancellable>!
     
     override func setUpWithError() throws {
-        self.viewModel = ChallengeViewModelSpy()
+        self.viewModel = ChallengeViewModelStub()
         self.cancelBag = Set<AnyCancellable>()
     }
 
@@ -92,7 +92,7 @@ final class ChallengeViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
         
         //when
-        var navigationType: ChallengeViewModelSpy.FlowType?
+        var navigationType: ChallengeViewModelStub.FlowType?
         viewModel.navigationSubject
             .sink { type in
                 navigationType = type
@@ -114,7 +114,7 @@ final class ChallengeViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
         
         //when
-        var navigationType: ChallengeViewModelSpy.FlowType?
+        var navigationType: ChallengeViewModelStub.FlowType?
         viewModel.navigationSubject
             .sink { type in
                 navigationType = type
