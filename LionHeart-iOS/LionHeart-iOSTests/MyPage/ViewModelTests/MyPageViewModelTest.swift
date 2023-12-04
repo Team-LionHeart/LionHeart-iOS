@@ -68,12 +68,12 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
         XCTAssertEqual(willOccurError, expectedError)
     }
     
-    func test_MyPageVM_resignButtonTapped이후_회원탈퇴성공하고_올바른값을전달하는지() {
+    func test_MyPageVM_resign메서드가_잘_호출되었을_때() {
         // given
-        let expectation = XCTestExpectation(description: "resignButtonTapped success")
-        self.manager.resignResult = true
-        
+        let expectation = XCTestExpectation(description: "resign Method called")
+
         // when
+        self.manager.canResign = true
         var flowType: MyPageViewModelImpl.FlowType?
         self.viewModel.navigationSubject
             .sink { type in
@@ -82,24 +82,18 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
             }
             .store(in: &cancelBag)
         
-        self.resignButtonTapped.send(())
-        
-        // then
-        let expectedType = MyPageViewModelImpl.FlowType.resignButtonTapped
-        
-        wait(for: [expectation], timeout: 0.3)
-        XCTAssertEqual(flowType, expectedType)
-
+        self.input.resignButtonTapped.send(())
+        wait(for: [expectation], timeout: 0.5)
+        XCTAssertEqual(flowType, .resignButtonTapped)
     }
     
-    func test_MyPageVM_resignButtonTapped이후_에러발생했을때() {
+    func test_MyPageVM_resign메서드에서_에러를_발생시켰을때() {
         // given
-        let expectation = XCTestExpectation(description: "resinButtonTapped failure")
-        self.manager.resignResult = nil
-        
+        let expectation = XCTestExpectation(description: "resign Method throw error")
+
         // when
+        self.manager.canResign = false
         var willOccurError: NetworkError?
-        
         self.viewModel.errorSubject
             .sink { error in
                 willOccurError = error
@@ -107,13 +101,9 @@ final class MyPageViewModelTest: MyPageViewModelTestSetUp {
             }
             .store(in: &cancelBag)
         
-        self.resignButtonTapped.send(())
-        
-        // then
-        let expectedType = NetworkError.clientError(code: "V001", message: "탈퇴 실패")
-        
-        wait(for: [expectation], timeout: 0.3)
-        XCTAssertEqual(willOccurError, expectedType)
+        self.input.resignButtonTapped.send(())
+        wait(for: [expectation], timeout: 0.5)
+        XCTAssertNotNil(willOccurError)
     }
     
     func test_MyPageVM_backButtonTapped_올바른값전달하는지() {

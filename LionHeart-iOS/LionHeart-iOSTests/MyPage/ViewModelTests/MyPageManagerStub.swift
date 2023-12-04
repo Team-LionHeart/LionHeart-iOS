@@ -12,7 +12,7 @@ import Foundation
 final class MyPageManagerStub: MyPageManager {
     
     var appData: BadgeProfileAppData?
-    var resignResult: Bool?
+    var canResign = false
     
     func getMyPage() async throws -> LionHeart_iOS.BadgeProfileAppData {
         guard let appData = appData else { throw NetworkError.badCasting }
@@ -20,7 +20,7 @@ final class MyPageManagerStub: MyPageManager {
     }
     
     func resignUser() async throws {
-        guard let _ = resignResult else { throw NetworkError.clientError(code: "V001", message: "탈퇴 실패") }
+        guard canResign else { throw NetworkError.clientError(code: "V001", message: "탈퇴실패")}
     }
     
     func logout(token: LionHeart_iOS.UserDefaultToken) async throws {
