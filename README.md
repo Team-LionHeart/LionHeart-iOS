@@ -9,7 +9,7 @@
 <br>
 
 ## 프로젝트 기간
-- **2023.11 ~ 3차 리팩터링 (진행 중🚧) (Unit test 적용)** <br>
+- **[2023.11 ~ 2021.12 3차 리팩터링 (Unit test 적용)](#3차-리팩터링)** <br>
 - **[2023.10 ~ 2021.11 2차 리팩터링 (MVC-C -> MVVM-C(+Combine))](#2차-리팩터링)** <br>
 - **[2023.08 ~ 2023.10 1차 리팩터링(MVC -> MVC-C)](#1차-리팩터링)** <br>
 - **[2023.06 ~ 2023.07 UI 설계 및 구현(1차 프로젝트)](#UI-설계-및-구현)** <br>
@@ -24,6 +24,57 @@
 <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/61596b76-5a50-4b29-9d0b-b62bb6a86b8f" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/2bfbb1fe-2c2a-42b2-a589-cdd01b113e30" width="165"> | <img src="https://github.com/gosopt-LionHeart/LionHeart-iOS/assets/113027703/1423bb08-4f33-41b9-8caa-56432794ecca" width="165">|
 :---------:|:----------:|:---------:
 [ffalswo2](https://github.com/ffalswo2) | [kimscastle](https://github.com/kimscastle) |[cchanmi](https://github.com/cchanmi) |
+
+<br>
+
+# 3차 리팩터링
+## Unit test 목표
+```
+Test 적용 대상들 각각 커버리지 70% 이상
+```
+
+## Unit test의 적용
+> 현재 Today, MyPage, Challenge 적용 완료.
+
+### Manager Layer
+- URLSessionStub를 이용해서 실제 네트워크 통신없이 API 호출 로직 검증했습니다.
+- [[TEST] API Unit Test 관련 파일들 추가 (#195)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/196)
+
+<br>
+
+### ViewModel Layer
+- NavigationDummy
+  - ViewModel에서 Coordinator로 올바른 flow type을 전달하는 것 까지만 테스트를 진행하기 때문에, ViewModel에 필요한 의존성 객체의 자리만 채워주는 용도로 Dummy를 사용했습니다.
+    
+- ManagerStub
+  - URLSessionStub를 활용해 ManagerLayer의 로직 검증이 완료된 상태이기때문에 ManagerStub를 활용해 ViewModel Layer의 로직을 검증했습니다.
+    
+- 관련 PR (변경 이전 ViewController Test 포함)
+  - [[TEST]Challenge Unit test code 작성](https://github.com/Team-LionHeart/LionHeart-iOS/pull/200)
+  - [[TEST]Today Unit test 작성](https://github.com/Team-LionHeart/LionHeart-iOS/pull/201)
+  - [[TEST]My Page Unit Test code 작성](https://github.com/Team-LionHeart/LionHeart-iOS/pull/202)
+
+<br>
+
+### ViewController Layer
+- ViewModelSpy
+  - ViewModel Layer의 unit test를 통해서 검증된로직은 `input에 따른 올바른 값이 output으로 반환되는가` 였기때문에 단순히 ViewController에서 동기적으로 특정Data가 들어왔다고 가정하고 unit test를 진행하려 했습니다.
+  - 하지만 viewModel의 output이 ViewController로 원하는 시점에 잘 들어와 반영 되었는지를 검증해야 유의미하다고 생각해, viewModel의 output이 viewController로 잘 들어오는지 그리고 데이터가 UI 컴포넌트들에 잘 적용이 되었는지를 비동기 테스트하는 방식으로 변경했습니다.
+    
+ - 관련 PR
+> 추후 링크 추가될 예정
+
+---------------------------------------
+<br>
+
+### ViewModel을 Stub가 아닌 Spy로 만든 이유
+```
+ViewController는 event을 ViewModel에 전달해주고, Output을 통해 값이 변하면 UI에 데이터를 올바르게 적용을 하는 책임을 가지고 있습니다.
+따라서 ViewModel이 “ViewController가 전달한 이벤트”를 제대로 수신했는지를 확인하기 위한 행위 검증이 필요로 합니다.
+추가로, 미리 지정한 Output을 보냄으로써 ViewController의 Output binding 동작을 검증하기 위해 가짜 객체를 받습니다. 이는 상태 검증에 속합니다.
+
+따라서 “행위”와 “상태”를 모두 검증하기에 ViewModel Spy로 구성하였습니다.
+```
 
 <br>
 
