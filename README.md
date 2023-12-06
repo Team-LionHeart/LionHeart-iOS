@@ -101,8 +101,9 @@ ViewModel을 구체 타입을 바라보는 구조도 고려를 했지만 현재 
 < 향후 관련 포스팅 링크 추가 >
 <br>
 2. 네트워크 통신시 발생하는 error를 combine의 catch operator를 통해서 최종적으로는 error를 never type으로하는 stream으로 바꿉니다.
+- [[LionHeart] Combine Catch Deep Dive(1)](https://velog.io/@kimscastle/iOS-combine의-catch는-어떻게-동작할까-1)
+- [[LionHeart] Combine Catch Deep Dive(2)](https://velog.io/@kimscastle/iOS-combine의-catch는-어떻게-동작할까2) 
 
-< 향후 관련 포스팅 링크 추가 >
 <br>
 해당 과정을 통해 catch가 없을때의 코드와 달라진점은 flaMap을 통해 return해주는 Publisher의 Error Type을 Never로 만들어줄 수 있어 1번 원칙에서의 ***UI는 error를 알필요가없다*** 라는 원칙을 지킬 수 있습니다.
 <br>
@@ -122,7 +123,7 @@ ViewModel을 구체 타입을 바라보는 구조도 고려를 했지만 현재 
 ## 기존 TableView, CollectionView를 DiffableDataSource로 변경
 - 해당 앱에서는 데이터의 변화에 따른 애니메이션이 필요한 상황이 존재하고 해당 경우에 Snapshot을 활용해 UI/UX적으로 보다 나은 경험을 제공해주는 DiffableDataSource를 활용해 보다 더 나은 유저 경험을 제공할 수 있는 방향으로 리팩터링했습니다.
 
-### cell reuse
+### Cell Reuse Trouble Shooting
 - [[REFACTOR] CurriculumView Diffable 및 MVVM(Combine)-C로 리팩터링 (#179)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/187)
 
 ### MVVM 원칙
