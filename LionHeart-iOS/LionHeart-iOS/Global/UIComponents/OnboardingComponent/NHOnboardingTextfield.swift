@@ -25,18 +25,10 @@ final class NHOnboardingTextfield: UITextField {
     
     private var textFieldType: TextFieldType
     
-    private lazy var clearButton: UIButton = {
-        let button = UIButton()
-        button.setImage(.assetImage(.textFieldClear), for: .normal)
-        button.contentMode = .scaleAspectFill
-        return button
-    }()
-    
     init(textFieldType: TextFieldType) {
         self.textFieldType = textFieldType
         super.init(frame: .zero)
         setUI()
-        setButtonAction()
     }
     
     required init?(coder: NSCoder) {
@@ -47,17 +39,7 @@ final class NHOnboardingTextfield: UITextField {
         self.backgroundColor = .clear
         self.font = .pretendard(.head2)
         self.textColor = .designSystem(.white)
-        clearButton.frame = .init(x: 0, y: 0, width: 28, height: 28)
-        clearButton.contentMode = .scaleAspectFit
         self.setPlaceholder(placeholder: textFieldType.placeHolder, fontColor: .designSystem(.gray700), font: .pretendard(.head2))
-        self.rightView = clearButton
         self.tintColor = .designSystem(.lionRed)
-    }
-    
-    private func setButtonAction() {
-        clearButton.addButtonAction { sender in
-            self.text = ""
-            sender.isHidden = true
-        }
     }
 }
