@@ -115,7 +115,6 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
                     }
                 }
                 .catch { error in
-                    self.handleError(error)
                     self.errorSubject.send(error)
                     return Just(Article(blockTypes: [], isMarked: false))
                 }
