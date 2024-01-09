@@ -96,7 +96,7 @@ ViewModel을 구체 타입을 바라보는 구조도 고려를 했지만 현재 
 ### async / await과 Combine을 결합한 네트워크 방법
 1. 네트워킹시 completion을 통해 상위 stream의 끊어짐을 방지하기 위해 flatmap operator를 사용하고, 내부적으로는 비동기 적으로 stream을 생성하기 위한 future를 사용해서 async/await과 Combine을 혼합해서 사용했습니다.
 
-[async/await Combine 함께 쓰기](https://codingmon.tistory.com/76)
+- [async/await Combine 함께 쓰기](https://codingmon.tistory.com/76)
 <br>
 2. 네트워크 통신시 발생하는 error를 combine의 catch operator를 통해서 최종적으로는 error를 never type으로하는 stream으로 바꿉니다.
 - [[LionHeart] Combine Catch Deep Dive(1)](https://velog.io/@kimscastle/iOS-combine의-catch는-어떻게-동작할까-1)
