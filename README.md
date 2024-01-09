@@ -34,8 +34,6 @@ Test 적용 대상들 각각 커버리지 70% 이상
 ```
 
 ## Unit test의 적용
-> 현재 Today, MyPage, Challenge 적용 완료.
-
 ### Manager Layer
 - URLSessionStub를 이용해서 실제 네트워크 통신없이 API 호출 로직 검증했습니다.
 - [[TEST] API Unit Test 관련 파일들 추가 (#195)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/196)
@@ -62,7 +60,7 @@ Test 적용 대상들 각각 커버리지 70% 이상
   - 하지만 viewModel의 output이 ViewController로 원하는 시점에 잘 들어와 반영 되었는지를 검증해야 유의미하다고 생각해, viewModel의 output이 viewController로 잘 들어오는지 그리고 데이터가 UI 컴포넌트들에 잘 적용이 되었는지를 비동기 테스트하는 방식으로 변경했습니다.
     
  - 관련 PR
-> 추후 링크 추가될 예정
+ - [API Unit Test PR](https://github.com/Team-LionHeart/LionHeart-iOS/pull/196)
 
 <br>
 
@@ -98,7 +96,7 @@ ViewModel을 구체 타입을 바라보는 구조도 고려를 했지만 현재 
 ### async / await과 Combine을 결합한 네트워크 방법
 1. 네트워킹시 completion을 통해 상위 stream의 끊어짐을 방지하기 위해 flatmap operator를 사용하고, 내부적으로는 비동기 적으로 stream을 생성하기 위한 future를 사용해서 async/await과 Combine을 혼합해서 사용했습니다.
 
-< 향후 관련 포스팅 링크 추가 >
+[async/await Combine 함께 쓰기](https://codingmon.tistory.com/76)
 <br>
 2. 네트워크 통신시 발생하는 error를 combine의 catch operator를 통해서 최종적으로는 error를 never type으로하는 stream으로 바꿉니다.
 - [[LionHeart] Combine Catch Deep Dive(1)](https://velog.io/@kimscastle/iOS-combine의-catch는-어떻게-동작할까-1)
