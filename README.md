@@ -97,19 +97,21 @@ ViewModel을 구체 타입을 바라보는 구조도 고려를 했지만 현재 
 1. 네트워킹시 completion을 통해 상위 stream의 끊어짐을 방지하기 위해 flatmap operator를 사용하고, 내부적으로는 비동기 적으로 stream을 생성하기 위한 future를 사용해서 async/await과 Combine을 혼합해서 사용했습니다.
 
 - [async/await Combine 함께 쓰기](https://codingmon.tistory.com/76)
+  
 <br>
 2. 네트워크 통신시 발생하는 error를 combine의 catch operator를 통해서 최종적으로는 error를 never type으로하는 stream으로 바꿉니다.
+
 - [[LionHeart] Combine Catch Deep Dive(1)](https://velog.io/@kimscastle/iOS-combine의-catch는-어떻게-동작할까-1)
 - [[LionHeart] Combine Catch Deep Dive(2)](https://velog.io/@kimscastle/iOS-combine의-catch는-어떻게-동작할까2) 
 
 <br>
-해당 과정을 통해 catch가 없을때의 코드와 달라진점은 flaMap을 통해 return해주는 Publisher의 Error Type을 Never로 만들어줄 수 있어 1번 원칙에서의 ***UI는 error를 알필요가없다*** 라는 원칙을 지킬 수 있습니다.
+해당 과정을 통해 catch가 없을때의 코드와 달라진점은 flaMap을 통해 return해주는 Publisher의 Error Type을 Never로 만들어줄 수 있어 1번 원칙에서의 UI는 error를 알필요가없다 라는 원칙을 지킬 수 있습니다.
 <br>
 <br>
-💡 해당 방식이 유의미한 이유는 어떤 error가 발생했을때 UI/UX적인 관점에서 유저에게 보여줄수있는 최소한의 UI는 구성을 해야하기에 default값을 넣어줘 유저가 보기에는 UI가 깨지지않은 view를 볼수있고, 내부적으로 error를 handling해주는 stream을 통해 에러에 대한 처리를 해주면 유저입장에서는 에러가 발생한 사실을 모르게 처리해줄수있어 긍정적인 사용자 경험을 얻을수 있게 됩니다.
+해당 방식이 유의미한 이유는 어떤 error가 발생했을때 UI/UX적인 관점에서 유저에게 보여줄수있는 최소한의 UI는 구성을 해야하기에 default값을 넣어줘 유저가 보기에는 UI가 깨지지않은 view를 볼수있고, 내부적으로 error를 handling해주는 stream을 통해 에러에 대한 처리를 해주면 유저입장에서는 에러가 발생한 사실을 모르게 처리해줄수있어 긍정적인 사용자 경험을 얻을수 있게 됩니다.
+<br>
 
 <br>
-
 3. 기존의 delegate pattern대신 combine의 stream을 활용한 data passing방식으로 통일했습니다
 > cell 내부의 button action을 처리할때 datasource로 인해 생성되는 data stream이 누적되는 문제와 cell내부에서 data stream이 생성되는 문제를 prepareForReuse와 stream을 저장하는 위치를 조정함으로써 해결합니다.
 - [[REFACTOR] CurriculumView Diffable 및 MVVM(Combine)-C로 리팩터링 (#179)](https://github.com/Team-LionHeart/LionHeart-iOS/pull/187)
