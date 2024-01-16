@@ -1,65 +1,38 @@
 //
-//  ThumnailTableViewCell.swift
+//  ThumbnailContent.swift
 //  LionHeart-iOS
 //
-//  Created by 김민재 on 2023/07/12.
-//  Copyright (c) 2023 Thumnail. All rights reserved.
+//  Created by 김민재 on 1/16/24.
 //
 
 import UIKit
-import Combine
 
-import SnapKit
 
-final class ThumnailTableViewCell: UITableViewCell, TableViewCellRegisterDequeueProtocol {
+final class ThumbnailContent: UIView {
+    enum Size {
+        static let thumbnailWidthHeightRatio: CGFloat = 224 / 375
+    }
+    
+    var onSelect: (() -> Void)?
     
     private let gradientImageView = LHImageView(in: ImageLiterals.Curriculum.gradient, contentMode: .scaleAspectFill)
-    private let thumbnailImageView = LHImageView(contentMode: .scaleAspectFill)
+    let thumbnailImageView = LHImageView(contentMode: .scaleAspectFill)
     private let imageCaptionLabel = LHLabel(type: .body4, color: .gray500)
     private lazy var bookMarkButton = LHToggleImageButton(normal: ImageLiterals.BookMark.inactiveBookmarkBig, select: ImageLiterals.BookMark.activeBookmarkBig)
-
-    var bookmarkSubject = PassthroughSubject<Void, Never>()
-    var cancelBag = Set<AnyCancellable>()
     
-    var inputData: ArticleBlockData? {
-        didSet {
-            configureCell(inputData)
-        }
-    }
-
-    var isMarked: Bool? {
-        didSet {
-            guard let isMarked else { return }
-            bookMarkButton.isSelected = isMarked
-        }
-    }
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setHierarchy()
         setLayout()
         setAddTarget()
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func prepareForReuse() {
-        cancelBag.removeAll()
-        self.thumbnailImageView.image = nil
-    }
-}
-
-extension ThumnailTableViewCell {
-    
-    enum Size {
-        static let thumbnailWidthHeightRatio: CGFloat = 224 / 375
-    }
     
     private func setHierarchy() {
-        contentView.addSubviews(thumbnailImageView, imageCaptionLabel, bookMarkButton)
+        self.addSubviews(thumbnailImageView, imageCaptionLabel, bookMarkButton)
         thumbnailImageView.addSubview(gradientImageView)
     }
     
@@ -85,9 +58,15 @@ extension ThumnailTableViewCell {
             $0.top.equalToSuperview().inset(10)
             $0.trailing.equalToSuperview().inset(10)
         }
-
     }
-
+    
+    private func setAddTarget() {
+        bookMarkButton.addButtonAction { [weak self] _ in
+            guard let self else { return }
+            self.bookMarkButton.isSelected.toggle()
+            onSelect?()
+        }
+    }
     
     func configureCell(_ model: ArticleBlockData?) {
         guard let model else { return }
@@ -98,26 +77,4 @@ extension ThumnailTableViewCell {
         imageCaptionLabel.text = model.caption
     }
     
-    private func setAddTarget() {
-        bookMarkButton.addButtonAction { [weak self] _ in
-            guard let self else { return }
-            self.bookMarkButton.isSelected.toggle()
-            self.bookmarkSubject.send(())
-        }
-    }
-}
-
-extension ThumnailTableViewCell {
-    func setThumbnailImageView() {
-        bookMarkButton.isHidden = false
-        gradientImageView.isHidden = false
-    }
-
-    func setImageTypeCell() {
-        imageCaptionLabel.snp.updateConstraints { make in
-            make.bottom.equalToSuperview().inset(72)
-        }
-        gradientImageView.isHidden = true
-        bookMarkButton.isHidden = true
-    }
 }

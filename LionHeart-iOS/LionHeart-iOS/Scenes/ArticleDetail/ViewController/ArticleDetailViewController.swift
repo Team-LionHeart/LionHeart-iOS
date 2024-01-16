@@ -10,6 +10,7 @@ import UIKit
 import Combine
 
 import SnapKit
+import Carbon
 
 protocol ArticleControllerable where Self: UIViewController {}
 
@@ -31,6 +32,11 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
     private let articleTableView = ArticleDetailTableView()
     private let scrollToTopButton = LHImageButton(setImage: ImageLiterals.Article.icFab)
     
+    private let renderer = Renderer(
+        adapter: UITableViewAdapter(),
+        updater: UITableViewUpdater()
+    )
+    
     init(viewModel: some ArticleDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -51,6 +57,7 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
         setTabbar()
         bindInput()
         bind()
+        renderer.target = articleTableView
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +69,38 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func render(blocks: [BlockTypeAppData]) {
+        
+        
+        
+        renderer.render {
+            self.makeComponent(type: blocks[0]) {
+                print("dfdf")
+            }
+            
+            
+            HelloItem(title: "minjae")
+            HelloItem(title: "minjae")
+            HelloItem(title: "minjae")
+            HelloItem(title: "minjae")
+            HelloItem(title: "minjae")
+            HelloItem(title: "minjae")
+            HelloItem(title: "minjae")
+            HelloItem(title: "minjae")
+            HelloItem(title: "minjae")
+            
+        }
+    }
+    
+    func makeComponent(type: BlockTypeAppData, onSelect: @escaping () -> Void) -> some IdentifiableComponent {
+        switch type {
+        case .thumbnail(let _, let model):
+            return ThumbnailComponent(model: model, onSelect: onSelect)
+        default:
+            return ThumbnailComponent(model: .init(content: "asdfasdfsf", caption: "asdfasdfsf"), onSelect: onSelect)
+        }
     }
     
     private func bindInput() {
@@ -89,9 +128,10 @@ final class ArticleDetailViewController: UIViewController, ArticleControllerable
             .receive(on: RunLoop.main)
             .sink { [weak self] article in
                 guard let self else { return }
-                self.setDatasource(blockTypes: article.blockTypes,
-                                   isBookMarked: article.isMarked)
-                self.applySnapshot(article.blockTypes)
+                render(blocks: article.blockTypes)
+//                self.setDatasource(blockTypes: article.blockTypes,
+//                                   isBookMarked: article.isMarked)
+//                self.applySnapshot(article.blockTypes)
                 self.hideLoading()
             }
             .store(in: &cancelBag)

@@ -84,6 +84,11 @@
 		B53F4EF82ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */; };
 		B53F4EFA2ADE3151001C5752 /* BookmarkAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */; };
 		B53F4EFC2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */; };
+		B56570572B55E87C00F46525 /* Carbon in Frameworks */ = {isa = PBXBuildFile; productRef = B56570562B55E87C00F46525 /* Carbon */; };
+		B56570592B55E89B00F46525 /* ThumbnailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56570582B55E89B00F46525 /* ThumbnailComponent.swift */; };
+		B565705C2B55EAA400F46525 /* ThumbnailContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B565705B2B55EAA400F46525 /* ThumbnailContent.swift */; };
+		B565705E2B5658A900F46525 /* ThumbnailCellAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B565705D2B5658A900F46525 /* ThumbnailCellAdaptor.swift */; };
+		B56570602B565C2900F46525 /* TestComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B565705F2B565C2900F46525 /* TestComponent.swift */; };
 		B579ED092B105E5B005AE58A /* CurriculumViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579ED072B105E5B005AE58A /* CurriculumViewViewModel.swift */; };
 		B579ED0A2B105E5B005AE58A /* CurriculumViewViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579ED082B105E5B005AE58A /* CurriculumViewViewModelImpl.swift */; };
 		B57BEB612A60E97100D1727C /* NetworkErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */; };
@@ -486,6 +491,10 @@
 		B53F4EF72ADE2FB0001C5752 /* ChallengeCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCoordinatorImpl.swift; sourceTree = "<group>"; };
 		B53F4EF92ADE3151001C5752 /* BookmarkAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdaptor.swift; sourceTree = "<group>"; };
 		B53F4EFB2ADE3341001C5752 /* BookmarkCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCoordinatorImpl.swift; sourceTree = "<group>"; };
+		B56570582B55E89B00F46525 /* ThumbnailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailComponent.swift; sourceTree = "<group>"; };
+		B565705B2B55EAA400F46525 /* ThumbnailContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailContent.swift; sourceTree = "<group>"; };
+		B565705D2B5658A900F46525 /* ThumbnailCellAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCellAdaptor.swift; sourceTree = "<group>"; };
+		B565705F2B565C2900F46525 /* TestComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestComponent.swift; sourceTree = "<group>"; };
 		B579ED072B105E5B005AE58A /* CurriculumViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModel.swift; sourceTree = "<group>"; };
 		B579ED082B105E5B005AE58A /* CurriculumViewViewModelImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModelImpl.swift; sourceTree = "<group>"; };
 		B57BEB602A60E97100D1727C /* NetworkErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorCode.swift; sourceTree = "<group>"; };
@@ -799,6 +808,7 @@
 				B59892972A57AA3000CE1FEB /* SnapKit in Frameworks */,
 				B598928C2A57A80A00CE1FEB /* KakaoSDKShare in Frameworks */,
 				B59892792A56C21800CE1FEB /* FirebaseInstallations in Frameworks */,
+				B56570572B55E87C00F46525 /* Carbon in Frameworks */,
 				B598926F2A56C21800CE1FEB /* FirebaseAnalytics in Frameworks */,
 				B59892752A56C21800CE1FEB /* FirebaseInAppMessaging-Beta in Frameworks */,
 				B59893162A5D40FC00CE1FEB /* Kingfisher in Frameworks */,
@@ -906,13 +916,6 @@
 				C0D47B972B0B3813003B66E6 /* BadgeProfileAppData.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		4AAA16D52B18D9F9004A4D2A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		4AD2163E2A69AC0A00C9F2F2 /* MyPage */ = {
@@ -1324,6 +1327,10 @@
 				B598922B2A56B6C100CE1FEB /* Cells */,
 				B598922A2A56B6BE00CE1FEB /* View */,
 				C06318182B10657B00DE1995 /* Diffable */,
+				B56570582B55E89B00F46525 /* ThumbnailComponent.swift */,
+				B565705B2B55EAA400F46525 /* ThumbnailContent.swift */,
+				B565705D2B5658A900F46525 /* ThumbnailCellAdaptor.swift */,
+				B565705F2B565C2900F46525 /* TestComponent.swift */,
 			);
 			path = ArticleDetail;
 			sourceTree = "<group>";
@@ -2314,6 +2321,7 @@
 				B59892962A57AA3000CE1FEB /* SnapKit */,
 				B59892992A57AA8000CE1FEB /* Lottie */,
 				B59893152A5D40FC00CE1FEB /* Kingfisher */,
+				B56570562B55E87C00F46525 /* Carbon */,
 			);
 			productName = "LionHeart-iOS";
 			productReference = B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */;
@@ -2395,6 +2403,7 @@
 				B59892952A57AA3000CE1FEB /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B59892982A57AA8000CE1FEB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				B59893142A5D40FC00CE1FEB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B56570552B55E87C00F46525 /* XCRemoteSwiftPackageReference "Carbon" */,
 			);
 			productRefGroup = B532E82F2A5525C600F0DB19 /* Products */;
 			projectDirPath = "";
@@ -2621,6 +2630,7 @@
 				F41A97A12A5D4F2500DFF9F3 /* CurriculumTableViewHeaderView.swift in Sources */,
 				4A2050152A5DCD1900C7AF3C /* UICollectionView+.swift in Sources */,
 				C0DF037F2A5A9D090037F740 /* SplashViewController.swift in Sources */,
+				B56570592B55E89B00F46525 /* ThumbnailComponent.swift in Sources */,
 				C003CC292AD9186B00AFFAAC /* CurriculumCoordinator.swift in Sources */,
 				C0F029D12A5FA87900E0D185 /* Float+.swift in Sources */,
 				B532E86C2A5564DD00F0DB19 /* Encodable+.swift in Sources */,
@@ -2663,6 +2673,7 @@
 				F4DB30B02A611C9700413EB9 /* CurriculumWeekData.swift in Sources */,
 				B5234FBC2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift in Sources */,
 				C0DF034D2A5A9B8D0037F740 /* (null) in Sources */,
+				B565705E2B5658A900F46525 /* ThumbnailCellAdaptor.swift in Sources */,
 				C003CC3B2ADA4DA100AFFAAC /* DismissNavigation.swift in Sources */,
 				C003CC4B2ADA4F6300AFFAAC /* BookmarkNavigation.swift in Sources */,
 				C0D47B602B08B640003B66E6 /* ChallengeViewModel.swift in Sources */,
@@ -2673,6 +2684,7 @@
 				C0856B7F2ABFCBF20026D9F8 /* ArticleListByCategoryMangerImpl.swift in Sources */,
 				C06E381B2A65346700B00600 /* UserDefaultToken.swift in Sources */,
 				C0856B6F2ABFBFF00026D9F8 /* ChallengeServiceImpl.swift in Sources */,
+				B56570602B565C2900F46525 /* TestComponent.swift in Sources */,
 				B5C6A2B82A5DDDFD0021BE5E /* EditorTableViewCell.swift in Sources */,
 				C063181F2B1065DB00DE1995 /* BookmarkSection.swift in Sources */,
 				C0F029C72A5EFB9D00E0D185 /* LHProgressView.swift in Sources */,
@@ -2699,6 +2711,7 @@
 				B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */,
 				4A52DD9F2ADBC0E500858230 /* AuthFactory.swift in Sources */,
 				C0F029CD2A5F8D2F00E0D185 /* UIPageViewController+.swift in Sources */,
+				B565705C2B55EAA400F46525 /* ThumbnailContent.swift in Sources */,
 				C0D47B872B0AF6FF003B66E6 /* MyPageAppSettingTableViewCell.swift in Sources */,
 				C003CC3D2ADA4EB300AFFAAC /* ChallengeNavigation.swift in Sources */,
 				C0B15E232AC100690058D56B /* LHStackView.swift in Sources */,
@@ -2769,11 +2782,9 @@
 				B59FC6DD2B1C31BF000996CA /* TodayViewControllerTests.swift in Sources */,
 				B5BE51C92B15CB9600042EF3 /* JSONLoader.swift in Sources */,
 				4ACBE3152B1B6B19003412A7 /* MyPageViewModelTest.swift in Sources */,
-				C034EDE02ADE3A4A00AD6FF3 /* LionHeart_iOSTests.swift in Sources */,
 				4ACBE3112B1B365D003412A7 /* MyPageServiceTest.swift in Sources */,
 				4AF491EB2B1CBCFA00C9D7C1 /* MyPageViewModelTestSetUp.swift in Sources */,
 				4AF491EF2B1CC5CC00C9D7C1 /* MyPageViewControllerTest.swift in Sources */,
-				B5BE51C12B15B8F100042EF3 /* ServiceTests.swift in Sources */,
 				4ACBE31D2B1C6C63003412A7 /* MyPageNavigationDummy.swift in Sources */,
 				4ACBE31B2B1C3056003412A7 /* MyPageManagerStub.swift in Sources */,
 				B59FC6E52B1C373A000996CA /* TodayNavigationDummy.swift in Sources */,
@@ -3140,6 +3151,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B56570552B55E87C00F46525 /* XCRemoteSwiftPackageReference "Carbon" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ra1028/Carbon.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -3183,6 +3202,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B56570562B55E87C00F46525 /* Carbon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B56570552B55E87C00F46525 /* XCRemoteSwiftPackageReference "Carbon" */;
+			productName = Carbon;
+		};
 		B598926E2A56C21800CE1FEB /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B598926D2A56C21800CE1FEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

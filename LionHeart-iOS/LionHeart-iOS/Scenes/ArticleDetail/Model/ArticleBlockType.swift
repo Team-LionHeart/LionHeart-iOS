@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Carbon
 
 struct ArticleBlockData: Hashable, AppData {
     let content: String
@@ -23,4 +24,13 @@ enum BlockTypeAppData: Hashable {
     case image(model: ArticleBlockData)
     case endNote
     case none
+    
+//    var component: any IdentifiableComponent {
+//        switch self {
+//        case .thumbnail(let _, let model):
+//            return ThumbnailComponent(model: model)
+//        default:
+//            return ThumbnailComponent(model: .init(content: "sdfdfd", caption: "msdfds"))
+//        }
+//    }
 }
