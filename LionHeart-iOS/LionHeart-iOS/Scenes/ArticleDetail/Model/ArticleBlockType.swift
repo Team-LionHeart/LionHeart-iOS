@@ -13,7 +13,7 @@ struct ArticleBlockData: Hashable, AppData {
 }
 
 @frozen
-enum BlockTypeAppData: Hashable {
+enum BlockTypeAppData: Hashable, Equatable {
     case thumbnail(isMarked: Bool, model: ArticleBlockData)
     case articleTitle(model: ArticleBlockData)
     case editorNote(model: ArticleBlockData)

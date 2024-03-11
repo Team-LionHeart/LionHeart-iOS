@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-struct Article {
+struct Article: Equatable {
     let blockTypes: [BlockTypeAppData]
     let isMarked: Bool
 }
@@ -27,9 +27,9 @@ final class ArticleDetailViewModelImpl: ArticleDetailViewModel, ArticleDetailVie
     private let errorSubject = PassthroughSubject<NetworkError, Never>()
     private var cancelBag = Set<AnyCancellable>()
     
-    private var isBookMarked: Bool?
+    var isBookMarked: Bool?
     private var articleDatas: [BlockTypeAppData]?
-    private var articleId: Int?
+    var articleId: Int?
     
     init(adaptor: ArticleDetailModalNavigation, manager: ArticleDetailManager) {
         self.adaptor = adaptor

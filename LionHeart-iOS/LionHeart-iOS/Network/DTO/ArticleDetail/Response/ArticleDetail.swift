@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - DTO
 
-struct ArticleDetail: Response, DTO {
+struct ArticleDetail: Response, DTO, Equatable {
     let title: String
     let author: String
     let mainImageUrl: String
@@ -19,7 +19,7 @@ struct ArticleDetail: Response, DTO {
     let contents: [ArticleBlock]
 }
 
-struct ArticleBlock: Response, DTO {
+struct ArticleBlock: Response, DTO, Equatable {
     let type: String
     let content: String
     let caption: String?

@@ -1,0 +1,18 @@
+{
+  "code": "string",
+  "message": "string",
+  "data": {
+    "title": "string",
+    "author": "string",
+    "mainImageUrl": "string",
+    "mainImageCaption": "string",
+    "isMarked": true,
+    "contents": [
+      {
+        "content": "string",
+        "caption": "string",
+        "type": "EDITOR_NOTE"
+      }
+    ]
+  }
+}

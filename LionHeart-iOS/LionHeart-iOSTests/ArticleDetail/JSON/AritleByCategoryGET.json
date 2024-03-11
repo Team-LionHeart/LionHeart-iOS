@@ -1,0 +1,19 @@
+{
+  "code": "string",
+  "message": "string",
+  "data": {
+    "articleSummaries": [
+      {
+        "articleId": 0,
+        "title": "string",
+        "mainImageUrl": "string",
+        "firstBodyContent": "string",
+        "requiredTime": 0,
+        "isMarked": true,
+        "tags": [
+          "string"
+        ]
+      }
+    ]
+  }
+}

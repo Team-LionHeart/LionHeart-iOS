@@ -63,6 +63,16 @@
 		B5234FBA2B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FB92B0C799B00D6EE58 /* CurriculumListWeekViewModel.swift */; };
 		B5234FBC2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FBB2B0C79A100D6EE58 /* CurriculumListWeekViewModelImpl.swift */; };
 		B5234FBF2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5234FBE2B0C7CB500D6EE58 /* CurriculumListWeekDiffableModel.swift */; };
+		B52853932B9F45F000D96B0D /* ArticleServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52853922B9F45F000D96B0D /* ArticleServiceTests.swift */; };
+		B52853962B9F4F5B00D96B0D /* TodayArticleGET.json in Resources */ = {isa = PBXBuildFile; fileRef = B52853952B9F4F5B00D96B0D /* TodayArticleGET.json */; };
+		B52853982B9F4FBF00D96B0D /* ArticleDetailGET.json in Resources */ = {isa = PBXBuildFile; fileRef = B52853972B9F4FBF00D96B0D /* ArticleDetailGET.json */; };
+		B528539A2B9F4FED00D96B0D /* AritleByCategoryGET.json in Resources */ = {isa = PBXBuildFile; fileRef = B52853992B9F4FED00D96B0D /* AritleByCategoryGET.json */; };
+		B528539D2B9F5E2C00D96B0D /* ArticleManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528539C2B9F5E2C00D96B0D /* ArticleManagerTests.swift */; };
+		B52853A02B9F5EB800D96B0D /* ArticleServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528539F2B9F5EB800D96B0D /* ArticleServiceStub.swift */; };
+		B52853A22B9F5EC200D96B0D /* BookmarkServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52853A12B9F5EC200D96B0D /* BookmarkServiceStub.swift */; };
+		B52853A52B9F6F6200D96B0D /* ArticleDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52853A42B9F6F6200D96B0D /* ArticleDetailViewModelTests.swift */; };
+		B52853A72B9F759B00D96B0D /* ArticleAdaptorDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52853A62B9F759B00D96B0D /* ArticleAdaptorDummy.swift */; };
+		B52853AA2B9F75EC00D96B0D /* ArticleDetailManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52853A92B9F75EC00D96B0D /* ArticleDetailManagerStub.swift */; };
 		B52C6BB42AF8AE1D008E3B99 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */; };
 		B532E8322A5525C600F0DB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8312A5525C600F0DB19 /* AppDelegate.swift */; };
 		B532E8342A5525C600F0DB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532E8332A5525C600F0DB19 /* SceneDelegate.swift */; };
@@ -460,6 +470,16 @@
 		B5234FC52B0DC31E00D6EE58 /* CurriculumViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModel.swift; sourceTree = "<group>"; };
 		B5234FC72B0DC32A00D6EE58 /* CurriculumViewViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewViewModelImpl.swift; sourceTree = "<group>"; };
 		B5234FC92B0DC77200D6EE58 /* CurriculumViewDiffableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewDiffableModel.swift; sourceTree = "<group>"; };
+		B52853922B9F45F000D96B0D /* ArticleServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleServiceTests.swift; sourceTree = "<group>"; };
+		B52853952B9F4F5B00D96B0D /* TodayArticleGET.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TodayArticleGET.json; sourceTree = "<group>"; };
+		B52853972B9F4FBF00D96B0D /* ArticleDetailGET.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ArticleDetailGET.json; sourceTree = "<group>"; };
+		B52853992B9F4FED00D96B0D /* AritleByCategoryGET.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AritleByCategoryGET.json; sourceTree = "<group>"; };
+		B528539C2B9F5E2C00D96B0D /* ArticleManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManagerTests.swift; sourceTree = "<group>"; };
+		B528539F2B9F5EB800D96B0D /* ArticleServiceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleServiceStub.swift; sourceTree = "<group>"; };
+		B52853A12B9F5EC200D96B0D /* BookmarkServiceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkServiceStub.swift; sourceTree = "<group>"; };
+		B52853A42B9F6F6200D96B0D /* ArticleDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModelTests.swift; sourceTree = "<group>"; };
+		B52853A62B9F759B00D96B0D /* ArticleAdaptorDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleAdaptorDummy.swift; sourceTree = "<group>"; };
+		B52853A92B9F75EC00D96B0D /* ArticleDetailManagerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailManagerStub.swift; sourceTree = "<group>"; };
 		B52C6BB32AF8AE1D008E3B99 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		B532E82E2A5525C600F0DB19 /* LionHeart-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LionHeart-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532E8312A5525C600F0DB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -908,13 +928,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		4AAA16D52B18D9F9004A4D2A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		4AD2163E2A69AC0A00C9F2F2 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,6 +1022,71 @@
 			path = Diffable;
 			sourceTree = "<group>";
 		};
+		B52853902B9F44C900D96B0D /* ArticleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B52853A32B9F6F5100D96B0D /* ViewModelTests */,
+				B528539B2B9F5E1A00D96B0D /* ManagerTests */,
+				B52853942B9F4F4C00D96B0D /* JSON */,
+				B52853912B9F45BA00D96B0D /* ServiceTests */,
+			);
+			path = ArticleDetail;
+			sourceTree = "<group>";
+		};
+		B52853912B9F45BA00D96B0D /* ServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				B52853922B9F45F000D96B0D /* ArticleServiceTests.swift */,
+			);
+			path = ServiceTests;
+			sourceTree = "<group>";
+		};
+		B52853942B9F4F4C00D96B0D /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				B52853952B9F4F5B00D96B0D /* TodayArticleGET.json */,
+				B52853972B9F4FBF00D96B0D /* ArticleDetailGET.json */,
+				B52853992B9F4FED00D96B0D /* AritleByCategoryGET.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		B528539B2B9F5E1A00D96B0D /* ManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				B528539E2B9F5E6A00D96B0D /* TestDouble */,
+				B528539C2B9F5E2C00D96B0D /* ArticleManagerTests.swift */,
+			);
+			path = ManagerTests;
+			sourceTree = "<group>";
+		};
+		B528539E2B9F5E6A00D96B0D /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				B528539F2B9F5EB800D96B0D /* ArticleServiceStub.swift */,
+				B52853A12B9F5EC200D96B0D /* BookmarkServiceStub.swift */,
+			);
+			path = TestDouble;
+			sourceTree = "<group>";
+		};
+		B52853A32B9F6F5100D96B0D /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				B52853A82B9F75DE00D96B0D /* TestDouble */,
+				B52853A42B9F6F6200D96B0D /* ArticleDetailViewModelTests.swift */,
+			);
+			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
+		B52853A82B9F75DE00D96B0D /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				B52853A62B9F759B00D96B0D /* ArticleAdaptorDummy.swift */,
+				B52853A92B9F75EC00D96B0D /* ArticleDetailManagerStub.swift */,
+			);
+			path = TestDouble;
+			sourceTree = "<group>";
+		};
 		B532E8252A5525C600F0DB19 = {
 			isa = PBXGroup;
 			children = (
@@ -1050,6 +1128,7 @@
 		B532E8472A5525C800F0DB19 /* LionHeart-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				B52853902B9F44C900D96B0D /* ArticleDetail */,
 				4A8784542B189AD2005BCDEA /* MyPage */,
 				B59FC6C92B1C31BF000996CA /* Today */,
 				B5BE51C32B15BD6200042EF3 /* URLSessionStub */,
@@ -2442,11 +2521,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AF94F062B1B28FA000BEAB9 /* ServerFailureResponse.json in Resources */,
+				B52853962B9F4F5B00D96B0D /* TodayArticleGET.json in Resources */,
 				4AAA16D92B18E483004A4D2A /* SuccessResponse.json in Resources */,
 				4A57202C2B1B323100F295BE /* ClientFailureResponse.json in Resources */,
 				B59FC6DB2B1C31BF000996CA /* TodayArticleEmptyData.json in Resources */,
+				B528539A2B9F4FED00D96B0D /* AritleByCategoryGET.json in Resources */,
 				C0AC2ACF2B199474003BDFC0 /* ChallengeFailure_Client.json in Resources */,
 				C0FF46BE2B19786500D487D7 /* ChallengeFailure_Server.json in Resources */,
+				B52853982B9F4FBF00D96B0D /* ArticleDetailGET.json in Resources */,
 				B59FC6DC2B1C31BF000996CA /* TodayArticleSuccess.json in Resources */,
 				C0FF46BC2B1963D300D487D7 /* ChallengeSuccess.json in Resources */,
 				B59FC6D92B1C31BF000996CA /* TodayClientError.json in Resources */,
@@ -2766,26 +2848,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AF491ED2B1CBF6200C9D7C1 /* MyPageViewModelSpy.swift in Sources */,
+				B52853A22B9F5EC200D96B0D /* BookmarkServiceStub.swift in Sources */,
 				B59FC6DD2B1C31BF000996CA /* TodayViewControllerTests.swift in Sources */,
 				B5BE51C92B15CB9600042EF3 /* JSONLoader.swift in Sources */,
 				4ACBE3152B1B6B19003412A7 /* MyPageViewModelTest.swift in Sources */,
-				C034EDE02ADE3A4A00AD6FF3 /* LionHeart_iOSTests.swift in Sources */,
 				4ACBE3112B1B365D003412A7 /* MyPageServiceTest.swift in Sources */,
+				B52853932B9F45F000D96B0D /* ArticleServiceTests.swift in Sources */,
 				4AF491EB2B1CBCFA00C9D7C1 /* MyPageViewModelTestSetUp.swift in Sources */,
 				4AF491EF2B1CC5CC00C9D7C1 /* MyPageViewControllerTest.swift in Sources */,
-				B5BE51C12B15B8F100042EF3 /* ServiceTests.swift in Sources */,
 				4ACBE31D2B1C6C63003412A7 /* MyPageNavigationDummy.swift in Sources */,
 				4ACBE31B2B1C3056003412A7 /* MyPageManagerStub.swift in Sources */,
 				B59FC6E52B1C373A000996CA /* TodayNavigationDummy.swift in Sources */,
+				B528539D2B9F5E2C00D96B0D /* ArticleManagerTests.swift in Sources */,
 				B59FC6E32B1C31BF000996CA /* TodayManagerStub.swift in Sources */,
 				C0B235042B19AA4800AFC5BB /* ChallengeViewModelTestSetUp.swift in Sources */,
 				B59FC6DF2B1C31BF000996CA /* TodayServiceTest.swift in Sources */,
+				B52853A02B9F5EB800D96B0D /* ArticleServiceStub.swift in Sources */,
 				B59FC6E12B1C31BF000996CA /* TodayViewModelTests.swift in Sources */,
 				C0A4BBE82B19F6EB000BDDC5 /* ChallengeViewControllerTests.swift in Sources */,
+				B52853A52B9F6F6200D96B0D /* ArticleDetailViewModelTests.swift in Sources */,
 				C0B234FE2B19995F00AFC5BB /* ChallengeViewModelTests.swift in Sources */,
 				B59FC6E02B1C31BF000996CA /* TodayViewModelSetUp.swift in Sources */,
 				C0B235022B199F4D00AFC5BB /* ChallengeNavigationDummy.swift in Sources */,
+				B52853A72B9F759B00D96B0D /* ArticleAdaptorDummy.swift in Sources */,
 				C0A4BBEA2B19F709000BDDC5 /* ChallengeViewModelStub.swift in Sources */,
+				B52853AA2B9F75EC00D96B0D /* ArticleDetailManagerStub.swift in Sources */,
 				B5BE51C72B15C75F00042EF3 /* URLSessionStub.swift in Sources */,
 				B59FC6DE2B1C31BF000996CA /* TodayViewModelSpy.swift in Sources */,
 				C0B235002B199E4000AFC5BB /* ChallengeManagerStub.swift in Sources */,

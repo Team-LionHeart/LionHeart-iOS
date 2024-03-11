@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TodayArticleResponse: DTO, Response {
+struct TodayArticleResponse: DTO, Response, Equatable {
     let babyNickname: String
     let title: String
     let mainImageUrl: String

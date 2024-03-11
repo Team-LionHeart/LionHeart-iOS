@@ -1,0 +1,13 @@
+{
+  "code": "string",
+  "message": "string",
+  "data": {
+    "articleId": 0,
+    "babyNickname": "minjae",
+    "title": "TITLE",
+    "mainImageUrl": "string",
+    "editorNoteContent": "editornote",
+    "week": 0,
+    "day": 0
+  }
+}

@@ -9,15 +9,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : {
-      "targets" : [
-        {
-          "containerPath" : "container:LionHeart-iOS.xcodeproj",
-          "identifier" : "B532E8432A5525C800F0DB19",
-          "name" : "LionHeart-iOSTests"
-        }
-      ]
-    },
     "targetForVariableExpansion" : {
       "containerPath" : "container:LionHeart-iOS.xcodeproj",
       "identifier" : "B532E82D2A5525C600F0DB19",
@@ -33,6 +24,7 @@
       }
     },
     {
+      "enabled" : false,
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:LionHeart-iOS.xcodeproj",

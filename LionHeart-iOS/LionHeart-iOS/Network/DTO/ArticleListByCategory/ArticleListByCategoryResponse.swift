@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CategoryList: DTO, Response {
+struct CategoryList: DTO, Response, Equatable {
     let articleSummaries: [ArticleListByCategoryResponse]
 }
 
-struct ArticleListByCategoryResponse: DTO, Response {
+struct ArticleListByCategoryResponse: DTO, Response, Equatable {
     let articleId: Int
     let title: String
     let mainImageUrl: String
